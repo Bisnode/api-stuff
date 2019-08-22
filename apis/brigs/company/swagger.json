@@ -1,0 +1,95 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "demo",
+    "description" : "Bisnode Risk and Credit data API",
+    "contact" : {
+      "email" : "team-ninjas@bisnode.com"
+    },
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/jocke9/credit-data/v1",
+    "description" : "SwaggerHub API Auto Mocking - TODO update this"
+  } ],
+  "security" : [ {
+    "implicit" : [ "riskAndCredit" ]
+  } ],
+  "paths" : {
+    "/companies/se" : {
+      "post" : {
+        "summary" : "Fetch credit and risk data on a swedish registration-number",
+        "description" : "Fetch risk and credit data on swedish companies",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RequestModel"
+              },
+              "example" : {
+                "mock" : {
+                  "registrationNumber" : "00000000000",
+                  "reason" : "My important reason"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "RequestModel" : {
+        "title" : "RequestModel",
+        "required" : [ "registrationNumber" ],
+        "type" : "object",
+        "properties" : {
+          "registrationNumber" : {
+            "type" : "string",
+            "description" : "A national registrationNumber, can be a socialSecurityNumber for a Sole proprietor"
+          },
+          "reason" : {
+            "type" : "string",
+            "description" : "The reason why the client is requesting this data. The client needs a legitimate reason in certain situations. TODO - when ????"
+          },
+          "language" : {
+            "type" : "string",
+            "description" : "Supported languages for all the description fields where i18n is supported",
+            "enum" : [ "SE", "EN", "NO", "DK", "FI" ],
+            "default" : "EN"
+          }
+        },
+        "description" : "The request model for credit data"
+      },
+      "ResponseModel" : {
+        "$ref" : "https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData"
+      }
+    },
+    "securitySchemes" : {
+      "implicit" : {
+        "type" : "oauth2",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://login.bisnode.com/as/token.oauth2",
+            "scopes" : {
+              "riskAndCredit" : "allows access to Bisnode risk and credit data"
+            }
+          }
+        }
+      }
+    }
+  }
+}
