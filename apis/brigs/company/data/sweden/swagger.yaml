@@ -1542,10 +1542,12 @@ components:
       properties:
         chattelMortgages:
           type: array
+          description: "TODO - how many can we get here ???"
           items:
             "$ref": "#/components/schemas/ChattelMortgage"
         claimsOutOfBusiness:
           type: array
+          description: "TODO - how many can we get here ???"
           items:
             "$ref": "#/components/schemas/LiquidationClaim"
         financialStatements:
@@ -1605,6 +1607,7 @@ components:
           "$ref": "#/components/schemas/FinancialStatementKeyFigure"
         financialStatements:
           type: array
+          description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/FinancialStatement"
       required: []
