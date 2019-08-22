@@ -3069,38 +3069,47 @@ components:
         floatingCharges:
           type: string
           description: >-
+            A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
             
         propertyMortgage:
           type: string
           description: >-
+              A mortgage is a debt instrument, secured by the collateral of specified real estate property, that the borrower is obliged to pay back with a predetermined set of payments.
             
         otherSecurities:
           type: string
           description: >-
+            Other securities. TODO  - examples would be nice
               
         totalSecurities:
           type: string
           description: >-
+            The sum of floatingCharges, propertyMortgage and otherSecurities.
+            TODO - is this correct.
             
         commentsSecurities:
           type: string
           enum: ['F', 'Y', 'N']
           description: |
-            F - Contingent liabilities exist, but amount missing
+            F - Securities exist, but amount missing
             N - Data not available
-            Y - Additional contingent liabilities exist but amounts are not specified
+            Y - Additional securities exist
             
         conditionalShareholdersContribution:
           type: string
           description: >-
+            Contributions from shareholders where the owners have agreed that the contribution should be repaid whenever possible.
             
         otherContingentLiabilities:
           type: string
           description: >-
+            Contingent liability is a potential liability that may occur, depending on the outcome of an uncertain future event. A contingent liability is recorded in the accounting records if the contingency is likely and the amount of the liability can be reasonably estimated.
             
         totalContingentLiabilities:
           type: string
           description: >-
+            The sum of conditionalShareholdersContribution and otherContingentLiabilities 
+            TODO - is this correct
             
         commentsLiabilities:
           type: string
@@ -3117,14 +3126,17 @@ components:
         salariesAndEmolumentsToBoardMembers:
           type: string
           description: >-
+            Salaries and other emoluments (payments) paid to boardmembers.
             
         bonusToBoardMembers:
           type: string
           description: >-
+            Bonus paid to boardmembers.
             
         salariesToOthers:
           type: string
           description: >-
+            Todo - what others ???
             
         incentiveWagesToEmployees:
           type: string
@@ -3134,6 +3146,7 @@ components:
         socialCosts:
           type: string
           description: >-
+            TODO - what is this???
             
         severancePay:
           type: string
@@ -3144,7 +3157,9 @@ components:
         currentAccountCredit:
           type: string
           description: >-
+            Total credit given by banks and similar.
             
         usedAccountCredit:
           type: string
           description: >-
+            Credit used.
