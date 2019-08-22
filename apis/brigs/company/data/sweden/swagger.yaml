@@ -1621,7 +1621,7 @@ components:
           enum: ['C', 'R']
         auditorsReservationDescription:
           type: string
-          description: The auditors reservation/comment.
+          description: The auditors reservation/comment. TODO - is this correct???
         statementDate:
           type: string
           format: date
@@ -1681,7 +1681,7 @@ components:
         liquidAssetsOfTurnover:
           type: number
           format: double
-          description: liquidAssetsOf of total turnover.
+          description: liquid assets in percent of total turnover.
         netSalesEmployees:
           type: integer
           format: int64
@@ -1716,10 +1716,6 @@ components:
           format: double
           description: >-
             Return on total capital minus average interest on liabilities.
-        statementDate:
-          type: string
-          format: date
-          description: Date when the statement was ??? TODO -
         turnoverAssets:
           type: number
           format: double
@@ -2333,52 +2329,15 @@ components:
     FinancialStatement:
       type: object
       properties:
-        balanceSheet:
-          "$ref": "#/components/schemas/BalanceSheet"  
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
         accountPeriod:
           type: integer
           format: int32
           description: The length in months for the account period
           example: 12
-        currency:
-          type: string
-          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block containg monetary values.
-          example: SEK
-        accountsPayable:
-          type: integer
-          format: int64
-        accountsPayableTrade:
-          type: integer
-          format: int64
-        accountsReceivable:
-          type: integer
-          format: int64
-        administrativeExpenses:
-          type: integer
-          format: int64
-        appropriations:
-          type: integer
-          format: int64
-        auditorsReservation:
-          type: string
-        blockedAccounts:
-          type: integer
-          format: int32
-        bondLoans:
-          type: integer
-          format: int64
-        bonusToBoardMembers:
-          type: integer
-          format: int64
-        buildingsHeldForResale:
-          type: integer
-          format: int64
-        capitalisedExpenditureForRnd:
-          type: integer
-          format: int64
-        cashAndBankBalances:
-          type: integer
-          format: int64
         classificationCode:
           type: string
           enum: ['FUNCTION', 'COST']
@@ -2387,443 +2346,16 @@ components:
             
             Function based - https://xplaind.com/482208/income-statement-by-function
             Cost based - https://xplaind.com/588771/income-statement-by-nature
-            
-            TODO -  is this correct??'
-        concessionsEtc:
-          type: integer
-          format: int64
-        conditionalShareholdersContribution:
-          type: integer
-          format: int64
-        contingentLiabilities:
-          type: integer
-          format: int64
-        costOfGoods:
-          type: integer
-          format: int64
-        currentAccountCredit:
-          type: integer
-          format: int64
-        currentRatio:
-          type: integer
-          format: int64
-        depreciableAssets:
-          type: integer
-          format: int64
-        depreciation:
-          type: integer
-          format: int64
-        depreciations:
-          type: integer
-          format: int64
-        equipment:
-          type: integer
-          format: int64
-        equityRatio:
-          type: number
-          format: double
-          description: 
-          Example: 33.2
-        externalInterestExpenses:
-          type: integer
-          format: int64
-        externalInterestIncome:
-          type: integer
-          format: int64
-        extraordinaryExpenses:
-          type: integer
-          format: int64
-        extraordinaryFinCosts:
-          type: integer
-          format: int64
-        extraordinaryIncome:
-          type: integer
-          format: int64
-        extraordinaryItems:
-          type: integer
-          format: int64
-        finItemsAffectingComparability:
-          type: integer
-          format: int64
-        floatingCharges:
-          type: integer
-          format: int64
-        goodwill:
-          type: integer
-          format: int64
-        grossProfitLoss:
-          type: integer
-          format: int64
-        groupContributionB:
-          type: integer
-          format: int64
-        groupContributionR:
-          type: integer
-          format: int64
-        growthInTurnover:
-          type: integer
-          format: int64
-        incentiveWagesToEmployees:
-          type: integer
-          format: int64
-        incomeAfterFinancialItems:
-          type: integer
-          format: int64
-        incomeBeforeAllocations:
-          type: string
-          format: integer
-        incomeBeforeDepreciation:
-          type: integer
-          format: int64
-        incomeBeforeTax:
-          type: integer
-          format: int64
-        interestCover:
-          type: integer
-          format: int64
-        interestExpenseFromGroupCompanies:
-          type: integer
-          format: int64
-        interestExpenses:
-          type: integer
-          format: int64
-        interestIncome:
-          type: integer
-          format: int64
-        interestIncomeFromGroupCompanies:
-          type: string
-          format: integer
-        interestOnLiabilities:
-          type: string
-        issuedShareCapital:
-          type: string
-          format: integer
-        itemsAffectingComparabilityF:
-          type: string
-          format: integer
-        land:
-          type: string
-          format: integer
-        landAndBuildings:
-          type: string
-          format: integer
-        liabilitiesToCreditInstitutionsLongTerm:
-          type: string
-          format: integer
-        liabilitiesToCreditInstitutionsShortTerm:
-          type: string
-          format: integer
-        liabilitiesToGroupCompaniesLongTerm:
-          type: string
-          format: integer
-        liabilitiesToGroupCompaniesShortTerm:
-          type: string
-          format: integer
-        liabilityRatio:
-          type: string
-        liquidAssets:
-          type: string
-          format: integer
-        loansToPartner:
-          type: string
-          format: integer
-        longTermLiabilities:
-          type: string
-          format: integer
-        machinery:
-          type: string
-          format: integer
-        minorityShareholdingB:
-          type: string
-          format: integer
-        minorityShareholdingR:
-          type: string
-          format: integer
-        numberOfEmployees:
-          type: string
-          format: integer
-        numberOfEmployeesAverage:
-          type: string
-          format: integer
-        nbrOfMonthsCoveredByPL:
-          type: string
-          format: integer
-        netIncome:
-          type: string
-          format: integer
-        netProfitLossForTheYearB:
-          type: string
-          format: integer
-        netProfitLossForTheYearR:
-          type: string
-          format: integer
-        netSales:
-          type: integer
-          format: int64
-        netWorth:
-          type: string
-          format: integer
-          description: Net worth is the amount by which assets exceed liabilities. Net worth is a concept applicable to businesses as a key measure of how much an entity is worth.
-        nonDepreciableAssets:
-          type: string
-          format: integer
-        nonDepreciableFixedAssets:
-          type: string
-          format: integer
-        nonRestrictedEquity:
-          type: string
-          format: integer
-        ofWhichDepreciations:
-          type: string
-          format: integer
-        operatingProfitLoss:
-          type: string
-          format: integer
-        otherContingentLiabilities:
-          type: string
-          format: integer
-        otherCurrentAssets:
-          type: string
-          format: integer
-        otherCurrentLiabilities:
-          type: string
-          format: integer
-        otherFinAssets:
-          type: string
-          format: integer
-        otherFinExpenses:
-          type: string
-          format: integer
-        otherFinIncome:
-          type: string
-          format: integer
-        otherIntangibleAssets:
-          type: string
-          format: integer
-        otherInventories:
-          type: string
-          format: integer
-        otherLiabilities:
-          type: string
-          format: integer
-        otherLongTermLiabilities:
-          type: string
-          format: integer
-        otherOperatingExpensesF:
-          type: string
-          format: integer
-        otherOperatingIncomeF:
-          type: string
-          format: integer
-        otherReceivables:
-          type: string
-          format: integer
-        otherRestrictedEquity:
-          type: string
-          format: integer
-        otherSecurities:
-          type: string
-          format: integer
-        otherTangibleAssetsDepreciable:
-          type: string
-          format: integer
-        otherTangibleAssetsNonDepreciable:
-          type: string
-          format: integer
-        participationInGroupCompanies:
-          type: string
-          format: integer
-        pledgedAssets:
-          type: string
-          format: integer
-        profitBeforeFinancialItems:
-          type: string
-          format: integer
-        profitLossAfterFinItems:
-          type: string
-          format: integer
-        profitLossBeforeTax:
-          type: string
-          format: integer
-        profitMargin:
-          type: string
-        profitOrLossBroughtForward:
-          type: string
-          format: integer
-        propertyMortgage:
-          type: string
-          format: integer
-        quickRatio:
-          type: number
-          format: double
-          description: >-
-           Current assets minus inventories in percent of current liabilities.
-          example: 27.2
-        receivablesFromGroupCompaniesFinAssets:
-          type: string
-          format: integer
-        receivablesFromGroupCompaniesReceivables:
-          type: string
-          format: integer
-        resultBeforeAllocations:
-          type: string
-          format: integer
-        resultFromParticipationInGroupCompanies:
-          type: string
-          format: integer
-        returnOnEquity:
-          type: string
-          
-        returnOnTotalAssets:
-          type: number
-          format: double
-          description: >-
-            Profit/loss after financial items plus financial costs as a percentage of the total capital.
-        revaluationReserve:
-          type: string
-          format: integer
-        riskMargin:
-          type: string
-        rnd:
-          type: string
-          format: integer
-        salaries:
-          type: string
-          format: integer
-        salariesAndEmolumentsToBoardMembers:
-          type: string
-          format: integer
-        salariesToOthers:
-          type: string
-          format: integer
-        sellingExpenses:
-          type: string
-          format: integer
-        shareCapital:
-          type: string
-          format: integer
-        sharePremiumReserve:
-          type: string
-          format: integer
-        shareholdersContributionB:
-          type: string
-          format: integer
-        shareholdersContributionR:
-          type: string
-          format: integer
-        shareholdersEquity:
-          type: string
-          format: integer
-        socialCosts:
-          type: string
-          format: integer
-        statementDate:
-          type: string
-          format: integer
-        stocks:
-          type: string
-          format: integer
-        subscribedCapitalUnpaid:
-          type: string
-          format: integer
-        tax:
-          type: string
-          format: integer
-        totalAllocations:
-          type: string
-          format: integer
-        totalAssets:
-          type: string
-          format: integer
-        totalCapital:
-          type: string
-          format: integer
-        totalContingentLiabilities:
-          type: string
-          format: integer
-        totalCurrentAssets:
-          type: string
-          format: integer
-        totalCurrentLiabilities:
-          type: string
-          format: integer
-        totalEquityAndLiability2:
-          type: string
-          format: integer
-        totalExtraordinaryItems:
-          type: string
-          format: integer
-        totalFinAssets:
-          type: string
-          format: integer
-        totalFinCosts:
-          type: string
-          format: integer
-        totalFinIncome:
-          type: string
-          format: integer
-        totalFixedAssets2:
-          type: string
-          format: integer
-        totalIncome:
-          type: string
-          format: integer
-        totalIntagibleAssets:
-          type: string
-          format: integer
-        totalInventories:
-          type: string
-          format: integer
-        totalLiability:
-          type: string
-          format: integer
-        totalLongTermAssets:
-          type: string
-          format: integer
-        totalLongTermLiabilities:
-          type: string
-          format: integer
-        totalMachineryAndEquipment:
-          type: string
-          format: integer
-        totalNonRestrictedCapital:
-          type: string
-          format: integer
-        totalOperatingExpenses:
-          type: string
-          format: integer
-        totalReceivables:
-          type: string
-          format: integer
-        totalRenewal:
-          type: string
-          format: integer
-        totalRestrictedEquity:
-          type: string
-          format: integer
-        totalSecurities:
-          type: string
-          format: integer
-        totalShortTermInvestments:
-          type: string
-          format: integer
-        totalTangibleAssets:
-          type: string
-          format: integer
-        turnoverAssets:
-          type: string
-        turnoverPerEmployee:
-          type: string
-          format: integer
-        untaxedReserves:
-          type: string
-          format: integer
-        usedAccountCredit:
-          type: string
-          format: integer
-        workInProgress:
-          type: string
-          format: integer
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: SEK
+        balanceSheet:
+          "$ref": "#/components/schemas/BalanceSheet"
+        incomeStatement:
+          "$ref": "#/components/schemas/IncomeStatement"
+        notesAndOtherInformation:
+          "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
     GroupAccount:
@@ -2852,53 +2384,43 @@ components:
       title: GroupAccountAuditorsReservation
     IndustryKeyFigure:
       type: object
+      description: For detailed description on all the fields below, take a look at the corresponding field in the FinancialStatementKeyFigure section.
       properties:
         currentRatio:
-          type: string
+          type: number
+          format: double
         equityCapitalRatio:
-          type: string
-        growthInNetWorth:
-          type: string
-        growthInTotalCapital:
-          type: string
-        growthInTurnover:
-          type: string
+          type: number
+          format: double
         interestCoverage:
-          type: string
+          type: number
+          format: double
         liquidAssetsOfTurnover:
           type: string
-        netWorth:
-          type: integer
-          format: int64
-          description: Net worth is the amount by which assets exceed liabilities. Net worth is a concept applicable to businesses as a key measure of how much an entity is worth.
-        profitLossAfterFinancialItems:
-          type: string
-          format: integer
         profitMargin:
-          type: string
+          type: number
+          format: double
         quickRatio:
-          type: string
+          type: number
+          format: double
         returnOnEquity:
-          type: string
+          type: number
+          format: double
         returnOnTotalAssets:
-          type: string
-        totalCapital:
-          type: string
-          format: integer
-        totalLiabilities:
-          type: string
-          format: integer
-        turnoverPerEmployee:
-          type: string
-          format: integer
+          type: number
+          format: double
         interestOnLiability:
-          type: string
+          type: number
+          format: double
         liabilityRatio:
-          type: string
+          type: number
+          format: double
         riskMargin:
-          type: string
+          type: number
+          format: double
         turnoverAssets:
-          type: string
+          type: number
+          format: double
       required: []
       title: IndustryKeyFigure
     PayrollTax:
