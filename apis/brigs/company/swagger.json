@@ -9,8 +9,7 @@
     "version" : "v1"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/jocke9/credit-data/v1",
-    "description" : "SwaggerHub API Auto Mocking - TODO update this"
+    "url" : "/"
   } ],
   "security" : [ {
     "implicit" : [ "riskAndCredit" ]
