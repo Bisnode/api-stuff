@@ -1,1 +1,1 @@
-### Folder for Brigs report for swedish company report.
+### Folder for Brigs swedish company report.
