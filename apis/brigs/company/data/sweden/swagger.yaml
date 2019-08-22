@@ -1602,7 +1602,7 @@ components:
           items:
             "$ref": "#/components/schemas/FinancialStatementKeyFigure"
         industryKeyFigures:
-          "$ref": "#/components/schemas/IndustryKeyFigure"
+          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
         financialStatements:
           type: array
           items:
@@ -2382,47 +2382,7 @@ components:
           type: string
       required: []
       title: GroupAccountAuditorsReservation
-    IndustryKeyFigure:
-      type: object
-      description: For detailed description on all the fields below, take a look at the corresponding field in the FinancialStatementKeyFigure section.
-      properties:
-        currentRatio:
-          type: number
-          format: double
-        equityCapitalRatio:
-          type: number
-          format: double
-        interestCoverage:
-          type: number
-          format: double
-        liquidAssetsOfTurnover:
-          type: string
-        profitMargin:
-          type: number
-          format: double
-        quickRatio:
-          type: number
-          format: double
-        returnOnEquity:
-          type: number
-          format: double
-        returnOnTotalAssets:
-          type: number
-          format: double
-        interestOnLiability:
-          type: number
-          format: double
-        liabilityRatio:
-          type: number
-          format: double
-        riskMargin:
-          type: number
-          format: double
-        turnoverAssets:
-          type: number
-          format: double
-      required: []
-      title: IndustryKeyFigure
+
     PayrollTax:
       type: object
       description: >- 
