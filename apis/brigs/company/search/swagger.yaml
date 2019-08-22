@@ -1,1 +1,150 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
 
+#######################
+# Optional info section
+#######################
+info:
+  title: Bisnode Organization Search
+  description: Common components for Organization Search REST APIs
+  version: '1.0.0'
+
+components:
+    
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    SearchResponse:
+      type: object
+      description: Searchmodel. The order in the list will always be best matches first. TODO - Add some  basic rules for the searches so the client understands the order in the result list..
+      properties:
+        hitCount:
+          type: integer
+          format: int32
+          description: The number of hits this search gave.
+        offset:
+          type: integer
+          format: int32
+          description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this??? I.e we don't support fetching lists larger than 10 000 ???
+          minValue: 0
+          default: 0
+        limit: 
+          type: integer
+          format: int32
+          description: Limit value sent in request or the default value if none was given.
+          minimum: 0
+          default: 20
+          maximum: 100
+        includeInactive:
+          type: boolean
+          description: 'Set to true to include inactive organizations'
+          default: false
+        includeBranches:
+          type: boolean
+          description: 'Set to true to include branches in the results'
+          default: false
+        organizations:
+          type: array
+          description: List of organizations
+          items:
+            "$ref": "#/components/schemas/Organization"
+        _links:
+          "$ref": '#/components/schemas/Links'
+      required:
+      - hitCount
+      - organizations
+      title: SearchResponse
+    Organization:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the organization
+        country:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          example: 'SE'
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+          example: '5564855582'
+        dunsNumber:
+          type: string
+          description: dunsnumber. 
+        address:
+          "$ref": "#/components/schemas/Address"
+      required: []
+      title: Organization
+    Address:
+      type: object
+      description: This is the visiting address of the company
+      properties:
+        street:
+          type: string
+          description: Streetname
+        town:
+          type: string
+          description: Postal town
+        postalCode:
+          type: string
+          description: postalCode
+      title: Address
+    Link:
+      type: object
+      properties:
+        href: 
+          type: string
+          description: A valid URI
+          example: 'https://api.bisnode.com/organization-search/v1/organizations/se?param1=xxxx'
+      title: Link
+    Links:
+      type: object
+      description: >-
+            Links for easy pagination. 
+      example: >-
+        '{
+          "next": {
+            "href": "https://api.bisnode.com/organization-search/v1/organizations/se?token=okjoqedqasd"
+          },
+          "prev": {
+            "href": "https://api.bisnode.com/organization-search/v1/organizations/se?token=sof2nkn2adz"
+          },
+          "self": {
+            "href": "https://api.bisnode.com/organization-search/v1/organizations/se?token=xcxxcx"
+          }
+        }'
+      properties:
+        next:
+          "$ref": '#/components/schemas/Link'
+        prev:
+          "$ref": '#/components/schemas/Link'
+        self:
+          "$ref": '#/components/schemas/Link'
+    SearchRequest:
+      type: object
+      description: Search input. TODO - is wildcards supported?
+      properties:
+        offset:
+          type: integer
+          format: int32
+          description: A positive number telling how many hits should be skipped. A value of 2 will skip the first 2 organizations that matched the search criteria.
+          minValue: 0
+          default: 0
+        limit: 
+          type: integer
+          format: int32
+          description: The number of hits per call, a value of 0 means only hitcount is returned.
+          minimum: 0
+          default: 20
+          maximum: 100
+        name:
+          type: string
+          description: The name of the organization
+          example: 'Bisnode AB'
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+          example: '5564855582'
+        address:
+          "$ref": "#/components/schemas/Address"
