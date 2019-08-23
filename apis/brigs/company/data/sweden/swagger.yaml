@@ -24,20 +24,19 @@ components:
   schemas:
     SwedishCompanyData:
       type: object
-      allOf:
-        properties:
-          risk:
-            "$ref": "#/components/schemas/Risk"
-          events:
-            "$ref": "#/components/schemas/Events"
-          ownership:
-            "$ref": "#/components/schemas/Ownership"
-          management:
-            "$ref": "#/components/schemas/Management"
-          companyInformation:
-            "$ref": "#/components/schemas/CompanyInformation"
-          finance:
-            "$ref": "#/components/schemas/Finance"
+      properties:
+        risk:
+          "$ref": "#/components/schemas/Risk"
+        events:
+          "$ref": "#/components/schemas/Events"
+        ownership:
+          "$ref": "#/components/schemas/Ownership"
+        management:
+          "$ref": "#/components/schemas/Management"
+        companyInformation:
+          "$ref": "#/components/schemas/CompanyInformation"
+        finance:
+          "$ref": "#/components/schemas/Finance"
       required: []
       title: CompanyData
       description: This is the root object defining which structures reside under the root path.
