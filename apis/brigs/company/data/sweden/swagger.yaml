@@ -2621,7 +2621,7 @@ components:
             N - Data not available
             Y - Additional contingent liabilities exist but amounts are not specified
         numberOfEmployees:
-          type: int
+          type: integer
           format: int64
           description: >-
             The number of employees at the time of this annual report.
