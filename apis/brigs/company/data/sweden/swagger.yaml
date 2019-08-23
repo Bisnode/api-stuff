@@ -25,9 +25,18 @@ components:
     SwedishCompanyData:
       type: object
       properties:
-        
+        risk:
+          "$ref": "#/components/schemas/Risk"
+        management:
+          "$ref": "#/components/schemas/Management"
+        companyInformation:
+          "$ref": "#/components/schemas/CompanyInformation"
         finance:
           "$ref": "#/components/schemas/Finance"
+        ownership:
+          "$ref": "#/components/schemas/Ownership"
+        events:
+          "$ref": "#/components/schemas/Events"
       required: []
       title: CompanyData
       description: This is the root object defining which structures reside under the root path.
@@ -812,6 +821,8 @@ components:
           max: 100
         date:
           type: string
+          description: >-
+            what is 
         shareCapital:
           "$ref": "#/components/schemas/Amount"
       required: []
@@ -1233,7 +1244,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/AlternativeName"
-        formerNames:
+        historicalNames:
           type: array
           description: A list of historical names, does not include the current name.
           items:
@@ -1590,7 +1601,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        financialStatementKeyFigures:
+        keyFigures:
           type: array
           items:
             "$ref": "#/components/schemas/FinancialStatementKeyFigure"
@@ -1746,15 +1757,6 @@ components:
     IncomeStatement:
       type: object
       properties:
-        accountPeriod:
-          type: integer
-          format: int32
-          description: The length in months for the account period
-          example: 12
-        currency:
-          type: string
-          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block containg monetary values.
-          example: SEK
         netSales:
           type: integer
           format: int64
@@ -1984,18 +1986,6 @@ components:
     BalanceSheet:
       type: object
       properties:
-        closingPeriod:
-          type: integer
-          format: int32
-          description: >-
-            TODO -- set correct type and description   
-          example: 12
-        fiscalPeriod:
-          type: integer
-          format: int32
-          description: >-
-            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
-          example: 12
         assets: 
            "$ref": "#/components/schemas/Assets"
         liabilitiesAndEquity:
@@ -2353,10 +2343,11 @@ components:
           type: string
           description: Date when the financial statement was closed. The date will be year and month only.
           example: 2019-12
-        accountPeriod:
+        fiscalPeriod:
           type: integer
           format: int32
-          description: The length in months for the account period
+          description: >-
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
           example: 12
         classificationCode:
           type: string
