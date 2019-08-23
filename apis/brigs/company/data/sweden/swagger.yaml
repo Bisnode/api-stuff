@@ -732,6 +732,7 @@ components:
           "$ref": "#/components/schemas/SisterCompanies"
         familyTree:
           type: array
+          description: TODO - Is this the correct structure or is it a list of companies ???
           items:
             "$ref": "#/components/schemas/FamilyTree"
       required: []
