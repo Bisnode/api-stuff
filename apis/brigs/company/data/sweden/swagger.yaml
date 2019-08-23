@@ -25,10 +25,7 @@ components:
     SwedishCompanyData:
       type: object
       properties:
-        management:
-          "$ref": "#/components/schemas/Management"
-        companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
+        
         finance:
           "$ref": "#/components/schemas/Finance"
       required: []
