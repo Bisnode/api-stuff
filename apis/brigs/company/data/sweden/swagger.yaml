@@ -25,12 +25,6 @@ components:
     SwedishCompanyData:
       type: object
       properties:
-        risk:
-          "$ref": "#/components/schemas/Risk"
-        events:
-          "$ref": "#/components/schemas/Events"
-        ownership:
-          "$ref": "#/components/schemas/Ownership"
         management:
           "$ref": "#/components/schemas/Management"
         companyInformation:
