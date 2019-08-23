@@ -2556,9 +2556,6 @@ components:
       description: >-
         Misc information releated to the financial statement
       properties:
-        currency:
-          type: string
-          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block containg monetary values.
         floatingCharges:
           type: string
           description: >-
@@ -2602,7 +2599,7 @@ components:
           type: string
           description: >-
             The sum of conditionalShareholdersContribution and otherContingentLiabilities 
-            TODO - is this correct
+            TODO - is this correct???
             
         commentsLiabilities:
           type: string
