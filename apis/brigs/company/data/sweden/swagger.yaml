@@ -2611,7 +2611,7 @@ components:
         salariesAndEmolumentsToBoardMembers:
           type: string
           description: >-
-            Salaries and other emoluments (payments) paid to boardmembers.
+            Salaries and other emoluments (payments) made to boardmembers.
             
         bonusToBoardMembers:
           type: string
