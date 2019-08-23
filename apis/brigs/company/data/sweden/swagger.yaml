@@ -24,19 +24,20 @@ components:
   schemas:
     SwedishCompanyData:
       type: object
-      properties:
-        risk:
-          "$ref": "#/components/schemas/Risk"
-        events:
-          "$ref": "#/components/schemas/Events"
-        ownership:
-          "$ref": "#/components/schemas/Ownership"
-        management:
-          "$ref": "#/components/schemas/Management"
-        companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
-        finance:
-          "$ref": "#/components/schemas/Finance"
+      allOf:
+        properties:
+          risk:
+            "$ref": "#/components/schemas/Risk"
+          events:
+            "$ref": "#/components/schemas/Events"
+          ownership:
+            "$ref": "#/components/schemas/Ownership"
+          management:
+            "$ref": "#/components/schemas/Management"
+          companyInformation:
+            "$ref": "#/components/schemas/CompanyInformation"
+          finance:
+            "$ref": "#/components/schemas/Finance"
       required: []
       title: CompanyData
       description: This is the root object defining which structures reside under the root path.
@@ -1619,9 +1620,9 @@ components:
           type: string
           description: |
             A  -  AT LEAST ONE OF FOLLOWING THREE CRITERIA IS NOT RECOMMENDED BY THE AUDITOR:                                                               
-                 	1. RECOMMENDATION THAT THE INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.
-               	  2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.
-                	3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
+                   1. RECOMMENDATION THAT THE INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.
+                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.
+                  3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
             B  -  AT LEAST ONE BOARD MEMBER, OR THE MANAGING DIRECTOR, IS DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                    
             C  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH  SHOWS THAT THE COMPANY IS STILL BOUND TO LIQUIDATION.     DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY <50% OF SHARE CAPITAL.                                 
             D  -  AUDITOR DECLARE BOARDMEMBERS RESPONSIBILITY TO CREATE BALANCE SHEET FOR LIQUIDATION PURPOSES THEN COMPANY'S TOTAL CAPITAL IS < 50 % OF SHARE CAPITAL.                                                             
@@ -1633,21 +1634,21 @@ components:
             J  -  COMMENTS FROM THE AUDITOR.                                                 
             K  -  GENERAL INFORMATION OR COMMENT FROM THE AUDITOR IN THE ANNUAL REPORT.      
             L  -  AT LEAST ONE OF FOLLOWING 3 CRITERIA IS NOT RECOMMENDED BY THE AUDITOR, CONCERNING THE GROUP:                                             
-                 	1. RECOMMENDATION THAT THE CONSOLIDATED INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.                                         
-                 	2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.                              
-                 	3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
+                   1. RECOMMENDATION THAT THE CONSOLIDATED INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.                                         
+                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.                              
+                   3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
             M  -  SHAREHOLDERS WILL GUARANTEE CURRENT CAPITAL CONTRIBUTIONS IN ORDER TO COVER SHORT AND LONG-TERM FINANCING.                                       
             P  -  ANNUAL REPORT IS NOT SENT TO COMPANY HOUSE WITHIN STIPULATED TIME ALT. ANNUAL GENERAL MEETING NOT HELD IN ACCORDANCE WITH SWEDISH COMPANY ACT.    
             R  -  COMMENT FROM THE AUDITOR.                                                  
-            1	 -  CONCRETE OBSERVATIONS ON FLAWS IN ACCOUNTING PRACTICES                     
-            2	 -  CONDITIONAL FINDINGS DUE TO INADEQUATE REPORTING                           
-            3	 -  CONDITIONAL FINDINGS DUE TO INADEQUATCIES AND FLAWS                        
-            4	 -  NEGATIVE OBSERVATIONS (IN THE ACCOUNTING PRACTICES EMPLOYED)               
-            5	 -  THE AUDITOR REFRAINS FROM EXPRESSING HIS/HER OPINION  (DUE TO LACK/INACCESSIBILITY OF INFORMATION)            
-            6	 -  UNSECURED LOANS TO SHAREHOLDERS                                            
-            7	 -  WITHELD TAXES FROM EMPLOYEES ARE NOT DEPOSITED IN A SEPARATE ACCOUNT
-            8	 -  LACK OF SUPPORTING DOCUMENTS ON OFFICIAL TRANSACTIONS AND POOR INTERNAL CONTROL PROCEDURES
-            9	 -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
+            1   -  CONCRETE OBSERVATIONS ON FLAWS IN ACCOUNTING PRACTICES                     
+            2   -  CONDITIONAL FINDINGS DUE TO INADEQUATE REPORTING                           
+            3   -  CONDITIONAL FINDINGS DUE TO INADEQUATCIES AND FLAWS                        
+            4   -  NEGATIVE OBSERVATIONS (IN THE ACCOUNTING PRACTICES EMPLOYED)               
+            5   -  THE AUDITOR REFRAINS FROM EXPRESSING HIS/HER OPINION  (DUE TO LACK/INACCESSIBILITY OF INFORMATION)            
+            6   -  UNSECURED LOANS TO SHAREHOLDERS                                            
+            7   -  WITHELD TAXES FROM EMPLOYEES ARE NOT DEPOSITED IN A SEPARATE ACCOUNT
+            8   -  LACK OF SUPPORTING DOCUMENTS ON OFFICIAL TRANSACTIONS AND POOR INTERNAL CONTROL PROCEDURES
+            9   -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
         auditorsReservationDescription:
           type: string
           description: Textual description of the auditorsReservationCode
