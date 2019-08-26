@@ -1254,8 +1254,9 @@ components:
           type: string
           format: date
           description: The date when this name was registered??? - TODO is this correct
-        value:
+        name:
           type: string
+          description: Name
       required: []
       title: Name
     SecondaryName:
@@ -1286,6 +1287,7 @@ components:
           description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
         description:
           type: string
+          description: TODO - what is this
         date:
           type: string
           format: date
@@ -2419,8 +2421,8 @@ components:
           format: int32
           description: The number of properties this company own 100 percent of.
         numberOfPartlyOwned:
-          type: string
-          format: integer
+          type: integer
+          format: int32
           description: The number of properties this company own a part of. Excluding the ones it owns in full.
         assessedRealProperties:
           type: array
@@ -2489,13 +2491,14 @@ components:
       properties:
         blocked:
           type: string
-          description: >-
+          description: >- 
+            TODO 
             'if true it means that the information is under investigation by the tax office???
             '
         objectType:
           type: string
-          description: "
-            21A = lagfart/registered ownership
+          description: >-
+            "21A = lagfart/registered ownership
              23A = tomträtt/site-leasehold right"
         countyCode:
           type: string
