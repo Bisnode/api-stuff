@@ -1253,8 +1253,6 @@ definitions:
           "$ref": "#/definitions/PostalAddress"
         registeredAddress:
           "$ref": "#/definitions/RegisteredAddress"
-        visitingAddress:
-          "$ref": "#/definitions/RegisteredAddress"
       title: ContactPoints
     ElectronicContactPoints:
       type: object
