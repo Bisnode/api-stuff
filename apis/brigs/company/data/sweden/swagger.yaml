@@ -1301,11 +1301,11 @@ components:
         electronicContactPoints:
           "$ref": "#/components/schemas/ElectronicContactPoints"
         postalAddress:
-          "$ref": "#/components/schemas/PostalAddress"
+          "$ref": "#/components/schemas/StreetAddress"
         registeredAddress:
-          "$ref": "#/components/schemas/RegisteredAddress"
+          "$ref": "#/components/schemas/StreetAddress"
         visitingAddress:
-          "$ref": "#/components/schemas/RegisteredAddress"
+          "$ref": "#/components/schemas/StreetAddress"
       required: []
       title: ContactPoints
     ElectronicContactPoints:
@@ -1333,25 +1333,7 @@ components:
             type: string
       required: []
       title: ElectronicContactPoints
-    PostalAddress:
-      type: object
-      properties:
-        locationAddress:
-          "$ref": "#/components/schemas/LocationAddress"
-        streetAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-      required: []
-      title: PostalAddress
-    LocationAddress:
-      type: object
-      properties:
-        country:
-          type: string
-          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        location:
-          type: string
-      required: []
-      title: LocationAddress
+
     StreetAddress:
       type: object
       properties:
@@ -1373,16 +1355,7 @@ components:
           example: Rosenborgsgatan 4-6
       required: []
       title: StreetAddress
-    RegisteredAddress:
-      type: object
-      description: The address this company is registered at. may differ from the visiting address.
-      properties:
-        locationAddress:
-          "$ref": "#/components/schemas/LocationAddress"
-        streetAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-      required: []
-      title: RegisteredAddress
+   
     GeneralCompanyData:
       type: object
       properties:
