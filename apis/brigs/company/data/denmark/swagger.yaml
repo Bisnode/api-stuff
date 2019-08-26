@@ -1304,9 +1304,6 @@ components:
           "$ref": "#/components/schemas/StreetAddress"
         registeredAddress:
           "$ref": "#/components/schemas/StreetAddress"
-        visitingAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-      required: []
       title: ContactPoints
     ElectronicContactPoints:
       type: object
@@ -1365,10 +1362,6 @@ components:
         numberOfEmployees:
           type: integer
           format: int64
-        numberOfAlcoholServicePermits:
-          type: integer
-          format: int32
-          description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
