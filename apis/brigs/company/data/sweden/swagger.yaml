@@ -715,6 +715,8 @@ components:
         description:
           type: string
           description: A textual description of the event, can be in local language
+        eventCode: 
+          "$ref": "#/components/schemas/ReportCode"
       title: Event
     Events:
       type: array
