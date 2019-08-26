@@ -734,9 +734,17 @@ components:
           type: object
           description: The top company (Ultimate parent ???)
           items:
-            "$ref": "#/components/schemas/Company"
+            "$ref": "#/components/schemas/FamilyTree"
       required: []
       title: Ownership
+    FamilyTree:
+      type: object
+      description: A view of the owner structure. TODO - will we cap data???
+      properties:
+        ultimateParent:
+          "$ref": "#/components/schemas/Company"
+      required: []
+      title: FamilyTree
     Company:
       type: object
       properties:
