@@ -1777,8 +1777,8 @@ components:
           description: >-
             Other operating income includes revenue from all other operating activities which are not related to the principal activities of the company, such as gains/losses from disposals, interest income, dividend income, etc.
         totalTurnover:
-          type: string
-          format: integer
+          type: integer
+          format: int64
           description: >-
             The company’s total revenues. Net sales + otherOperatingIncome
         costOfGoods:
@@ -1789,8 +1789,8 @@ components:
             
             Function based only
         sellingExpenses:
-          type: string
-          format: integer
+          type: integer
+          format: int64
           description: >-
             Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service. 
             
