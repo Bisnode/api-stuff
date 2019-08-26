@@ -1340,7 +1340,7 @@ definitions:
           type: boolean
           description: If the company is actively paying Vat.
         import:
-           type: string
+          type: string
           enum: ['Y', 'N']
           description: |
             N - Is not an import company
