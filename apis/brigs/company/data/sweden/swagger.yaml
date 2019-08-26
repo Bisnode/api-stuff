@@ -731,44 +731,21 @@ components:
         sisterCompanies:
           "$ref": "#/components/schemas/SisterCompanies"
         familyTree:
-          type: array
-          description: TODO - Is this the correct structure or is it a list of companies ???
-          items:
-            "$ref": "#/components/schemas/FamilyTree"
-      required: []
-      title: Ownership
-    FamilyTree:
-      type: object
-      properties:
-        name:
-          type: string
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company, may be a social security number for Sole proprietors
-        dunsNumber:
-          type: string
-          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          min: 0
-          max: 100
-        companies:
-          type: array
-          description: A list of companies that the current company owns a part of.
+          type: object
+          description: The top company (Ultimate parent ???)
           items:
             "$ref": "#/components/schemas/Company"
       required: []
-      title: FamilyTree
+      title: Ownership
     Company:
       type: object
       properties:
         registrationNumber:
           type: string
           description: The national registrationNumber for this company.
+        dunsNumber:
+          type: string
+          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
@@ -857,6 +834,10 @@ components:
     Subsidiaries:
       type: object
       properties:
+        numberOfSubsidiaries:
+          type: integer
+          format: int32
+          description: Total number of subsidiaries this company have.
         subsidiaries:
           type: array
           items:
