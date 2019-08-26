@@ -122,6 +122,7 @@ components:
           "$ref": "#/components/schemas/Rating"
         historicalRatings:
           type: array
+          description: Max 99 items.
           items:
             "$ref": "#/components/schemas/Rating"
         partJudgements:
@@ -2541,6 +2542,32 @@ components:
         status:
           type: string
           description: 'TODO - what statuses can we have here????'
+        name:
+          type: string
+          description: Name of the court where bankrupcy was declared
+          example: Stockholms Tingsrätt
+        trustee:
+          "$ref": "#/components/schemas/Trustee"
+    Trustee:
+      type: object
+      description: Name and contact-info to the person/firm handling the bankruptcy
+      properties:
+        companyName:
+          type: string
+          description: Name ofthe company handling the bankruptcy
+          example: Advokatfirman demo
+        name:
+          type: string
+          description: Name of the person assigned to handle the bankruptcy.
+          example: Anders Svensson
+        phoneNumber:
+          type: string
+          description: Phonenumber to the person/company assigned to handle this bankruptcy
+          example: 08-11223344
+        address:
+          type: string
+          description: The address to the person/company assigned to handle this bankruptcy
+        example: 10390, Stockholm
     NotesAndOtherInformation:
       type: object
       description: >-
