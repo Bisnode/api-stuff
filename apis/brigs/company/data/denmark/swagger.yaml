@@ -1,5 +1,5 @@
 #######################
-# Optional info section
+# Optional info section 
 #######################
 info:
   title: Danish Company Credit Data
@@ -16,7 +16,6 @@ info:
   # Common data models
   ####################
 
-  
 definitions:
     DanishCompanyData:
       type: object
@@ -1253,8 +1252,6 @@ definitions:
           "$ref": "#/definitions/PostalAddress"
         registeredAddress:
           "$ref": "#/definitions/RegisteredAddress"
-        visitingAddress:
-          "$ref": "#/definitions/RegisteredAddress"
       title: ContactPoints
     ElectronicContactPoints:
       type: object
@@ -1335,31 +1332,24 @@ definitions:
         numberOfEmployees:
           type: integer
           format: int64
-        numberOfAlcoholServicePermits:
-          type: integer
-          format: int32
-          description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         activeInVat:
           type: boolean
-          description: If the company is actively paying Vat.  
-        offTheShelfCompany:
-          type: boolean
-          description: >-
-            A company which has already been registered by an accountant or lawyer, and which is ready for sale to someone who wants to set up a new company quickly.
-        registeredAsEmployer:
-          type: boolean
-          description: >-
-            'To have employees a company needs to be registered as an employer at the local tax office. More info here: https://www.skatteverket.se/foretagochorganisationer/arbetsgivare/arbetsgivarregistrering/registreradig.4.18e1b10334ebe8bc80003496.html'
-        registeredInVatList:
-          type: boolean
-          description: This indicates if the company is registered according to the Tax VAT register.
-        activeInVatStatusDate:
+          description: If the company is actively paying Vat.
+        import:
           type: string
-          format: date
-          description: Date when ??? - TODO
+          enum: ['Y', 'N']
+          description: |
+            N - Is not an import company
+            Y - Is an import company
+        export:
+          type: string
+          enum: ['Y', 'N']
+          description: |
+            N - Is not an export company
+            Y - Is an export company
       title: GeneralCompanyData
     Identifiers:
       type: object
