@@ -2544,7 +2544,7 @@ components:
           description: 'TODO - what statuses can we have here????'
         name:
           type: string
-          description: Name of the court where bankrupcy was declared
+          description: Name of the court where bankruptcy was declared
           example: Stockholms Tingsrätt
         trustee:
           "$ref": "#/components/schemas/Trustee"
