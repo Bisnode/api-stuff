@@ -1,10 +1,13 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
 #######################
-# Optional info section 
+# Optional info section
 #######################
 info:
-  title: Danish Company Credit Data
+  title: Swedish Company Credit Data
   description: >- 
-    Company model for Danish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
+    Company model for Swedish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
     
       Most of the descriptions for the financial items are taken from www.investopedia.com.
   
@@ -12,26 +15,29 @@ info:
   contact:
     email: team-ninjas@bisnode.com
 
+
+components:
+
   ####################
   # Common data models
   ####################
-
-definitions:
-    DanishCompanyData:
+  schemas:
+    SwedishCompanyData:
       type: object
       properties:
         risk:
-          "$ref": "#/definitions/Risk"
-        events:
-          "$ref": "#/definitions/Events"
-        ownership:
-          "$ref": "#/definitions/Ownership"
+          "$ref": "#/components/schemas/Risk"
         management:
-          "$ref": "#/definitions/Management"
+          "$ref": "#/components/schemas/Management"
         companyInformation:
-          "$ref": "#/definitions/CompanyInformation"
+          "$ref": "#/components/schemas/CompanyInformation"
         finance:
-          "$ref": "#/definitions/Finance"
+          "$ref": "#/components/schemas/Finance"
+        ownership:
+          "$ref": "#/components/schemas/Ownership"
+        events:
+          "$ref": "#/components/schemas/Events"
+      required: []
       title: CompanyData
       description: This is the root object defining which structures reside under the root path.
     Risk:
@@ -40,33 +46,35 @@ definitions:
         Risk section.
       properties:
         creditRatings:
-          "$ref": "#/definitions/CreditRatings"
+          "$ref": "#/components/schemas/CreditRatings"
         creditLimits:
-          "$ref": "#/definitions/CreditLimits"
+          "$ref": "#/components/schemas/CreditLimits"
         paymentRemarks:
-          "$ref": "#/definitions/PaymentRemarks"
+          "$ref": "#/components/schemas/PaymentRemarks"
         petitions:
-          "$ref": "#/definitions/Petitions"
+          "$ref": "#/components/schemas/Petitions"
         previousInquiries:
-          "$ref": "#/definitions/PreviousInquiries"
+          "$ref": "#/components/schemas/PreviousInquiries"
         paymentIndex:
-          "$ref": "#/definitions/PaymentIndex"
+          "$ref": "#/components/schemas/PaymentIndex"
         debtBalance:
-          "$ref": "#/definitions/DebtBalance"
+          "$ref": "#/components/schemas/DebtBalance"
         bankruptcy:
-          "$ref": "#/definitions/Bankruptcy"
+          "$ref": "#/components/schemas/Bankruptcy"
+      required: []
       title: Risk
     CreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
       properties:
         creditLimit:
-          "$ref": "#/definitions/CreditLimit"
+          "$ref": "#/components/schemas/CreditLimit"
         historicalCreditLimits:
           type: array
           description: TODO - max size ???
           items:
-            "$ref": "#/definitions/CreditLimit"
+            "$ref": "#/components/schemas/CreditLimit"
+      required: []
       title: CreditLimits
     Amount:
       type: object
@@ -79,6 +87,7 @@ definitions:
         currency:
           type: string
           description: As described in https://en.wikipedia.org/wiki/ISO_4217
+      required: []
       title: Amount
     CreditLimit:
       type: object
@@ -86,35 +95,39 @@ definitions:
         'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
       properties:
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date when the limit was changed/re-calculated.
+      required: []
       title: CreditLimit
     Inquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of the inquiry
+      required: []
       title: Inquiry
     CreditRatings:
       type: object
       description: Current and historical ratings
       properties:
         currentRating:
-          "$ref": "#/definitions/Rating"
+          "$ref": "#/components/schemas/Rating"
         historicalRatings:
           type: array
+          description: Max 99 items.
           items:
-            "$ref": "#/definitions/Rating"
+            "$ref": "#/components/schemas/Rating"
         partJudgements:
-          "$ref": "#/definitions/PartJudgements"
+          "$ref": "#/components/schemas/PartJudgements"
+      required: []
       title: CreditRatings
     Rating:
       type: object
@@ -134,6 +147,7 @@ definitions:
         description:
           type: string
           description: Textual description of the rating. 
+      required: []
       title: Rating
       maximum: 1100
     PartJudgements:
@@ -141,19 +155,20 @@ definitions:
       description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
       properties:
         abilityToPay:
-          "$ref": "#/definitions/PartJudgement"
+          "$ref": "#/components/schemas/PartJudgement"
         finance:
-          "$ref": "#/definitions/PartJudgement"
+          "$ref": "#/components/schemas/PartJudgement"
         historyOperation:
-          "$ref": "#/definitions/PartJudgement"
+          "$ref": "#/components/schemas/PartJudgement"
         ownership:
-          "$ref": "#/definitions/PartJudgement"
+          "$ref": "#/components/schemas/PartJudgement"
+      required: []
       title: PartJudgements
     PartJudgement:
       type: object
       description: A part judgement. 
       properties:
-        maximum:
+        max:
           type: integer
           format: int32
           description: The max value a company can have.
@@ -164,17 +179,19 @@ definitions:
         description:
           type: string
           description: A textual description of the part judgement.
+      required: []
       title: PartJudgement
     PaymentIndex:
       type: object
       description: A weighted average of the Payment Index of all companies in all industries of the country. 
       properties:
         currentPaymentIndex:
-          "$ref": "#/definitions/PaymentIndexModel"
+          "$ref": "#/components/schemas/PaymentIndexModel"
         historicalPaymentIndex:
           type: array
           items:
-            "$ref": "#/definitions/PaymentIndexModel"
+            "$ref": "#/components/schemas/PaymentIndexModel"
+      required: []
       title: PaymentIndex
     PaymentIndexModel:
       type: object
@@ -184,7 +201,7 @@ definitions:
           format: int32
           description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -217,6 +234,7 @@ definitions:
           minimum: 0
           maximum: 100
           description: The average paymentindex score for all companies in the same line of business in Sweden.
+      required: []
       title: PaydexModel
     PaymentRemarks:
       type: object
@@ -226,19 +244,20 @@ definitions:
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first. TODO - Max size ???
           items:
-            "$ref": "#/definitions/PaymentRemark"
+            "$ref": "#/components/schemas/PaymentRemark"
+      required: []
       title: PaymentRemarks
     PaymentRemark:
       type: object
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -247,11 +266,12 @@ definitions:
           type: string
           description: Creditor, concerning remark on payment.
         type:
-          "$ref": "#/definitions/ReportCode"
+          "$ref": "#/components/schemas/ReportCode"
         description:
           type: string
           description: A textual description of the event type
           example: FISSION - EXPIRED
+      required: []
       title: PaymentRemark
     ReportCode:
       type: object
@@ -590,18 +610,19 @@ definitions:
           format: int64
           description: Total number of petitions this company have.
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         petitions:
           type: array
           items:
-            "$ref": "#/definitions/Petition"
+            "$ref": "#/components/schemas/Petition"
+      required: []
       title: Petitions
     Petition:
       type: object
       description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
       properties:
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -613,7 +634,8 @@ definitions:
           type: string
           description: Creditor of petition
         type:
-          "$ref": "#/definitions/ReportCode"
+          "$ref": "#/components/schemas/ReportCode"
+      required: []
       title: Petition
     PreviousInquiries:
       type: object
@@ -626,19 +648,21 @@ definitions:
           type: array
           description: A list of the inquiries. TODO - is there a max size for this?
           items:
-            "$ref": "#/definitions/Inquiry"
+            "$ref": "#/components/schemas/Inquiry"
+      required: []
       title: PreviousInquiries
     DebtBalance:
       type: object
       description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
       properties:
         currentDebtBalance:
-          "$ref": "#/definitions/CurrentDebtBalance"
+          "$ref": "#/components/schemas/CurrentDebtBalance"
         historicalDebtBalance:
           type: array
           description: A list of historical Debtbalances
           items:
-            "$ref": "#/definitions/HistoricalDebtBalance"
+            "$ref": "#/components/schemas/HistoricalDebtBalance"
+      required: []
       title: DebtBalance
     CurrentDebtBalance:
       type: object
@@ -661,9 +685,10 @@ definitions:
           format: int64
           description: Total count of claims including public and private claims.
         privateClaimsAmount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         publicClaimsAmount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
+      required: []
       title: CurrentDebtBalance
     HistoricalDebtBalance:
       type: object
@@ -675,7 +700,8 @@ definitions:
           description: year and week number when the debt balance was valid.
           example: '2019-W33'
         balance:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
+      required: []
       title: HistoricalDebtBalance
     Event:
       type: object
@@ -689,35 +715,45 @@ definitions:
         description:
           type: string
           description: A textual description of the event, can be in local language
+        eventCode: 
+          "$ref": "#/components/schemas/ReportCode"
       title: Event
     Events:
       type: array
       title: Events
       description: Newest events come first. Max xx events. TODO - what is max ???
       items:
-        "$ref": "#/definitions/Event"
+        "$ref": "#/components/schemas/Event"
     Ownership:
       type: object
       properties:
         parentCompanies:
-          "$ref": "#/definitions/ParentCompanies"
+          "$ref": "#/components/schemas/ParentCompanies"
         subsidiaries:
-          "$ref": "#/definitions/Subsidiaries"
+          "$ref": "#/components/schemas/Subsidiaries"
         sisterCompanies:
-          "$ref": "#/definitions/SisterCompanies"
+          "$ref": "#/components/schemas/SisterCompanies"
         familyTree:
-          type: array
+          type: object
+          description: The top company (Ultimate parent ???)
           items:
-            "$ref": "#/definitions/FamilyTree"
+            "$ref": "#/components/schemas/FamilyTree"
+      required: []
       title: Ownership
     FamilyTree:
       type: object
+      description: A view of the owner structure. TODO - will we cap data???
       properties:
-        name:
-          type: string
+        ultimateParent:
+          "$ref": "#/components/schemas/Company"
+      required: []
+      title: FamilyTree
+    Company:
+      type: object
+      properties:
         registrationNumber:
           type: string
-          description: The national registrationNumber for this company, may be a social security number for Sole proprietors
+          description: The national registrationNumber for this company.
         dunsNumber:
           type: string
           description: For foreign companies a duns-number will be supplied instead of the registrationNumber
@@ -727,33 +763,14 @@ definitions:
         ownershipInPercent:
           type: integer
           format: int32
-          minimum: 0
-          maximum: 100
-        companies:
-          type: array
-          description: A list of companies that the current company owns a part of.
-          items:
-            "$ref": "#/definitions/Company"
-      title: FamilyTree
-    Company:
-      type: object
-      properties:
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
           description: Ownership in percent
-          minimum: 0
-          maximum: 100
+          min: 0
+          max: 100
         companies:
           type: array
           items:
-            "$ref": "#/definitions/Company"
+            "$ref": "#/components/schemas/Company"
+      required: []
       title: Company
     ParentCompanies:
       type: object
@@ -765,7 +782,8 @@ definitions:
           type: array
           description: A list of the parent companies.
           items:
-            "$ref": "#/definitions/ParentCompany"
+            "$ref": "#/components/schemas/ParentCompany"
+      required: []
       title: ParentCompanies
     ParentCompany:
       type: object
@@ -788,12 +806,15 @@ definitions:
           type: integer
           format: int32
           description: Ownership in percent
-          minimum: 0
-          maximum: 100
+          min: 0
+          max: 100
         date:
           type: string
+          description: >-
+            what is 
         shareCapital:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
+      required: []
       title: Parent
     SisterCompanies:
       type: object
@@ -804,7 +825,8 @@ definitions:
           type: array
           description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
           items:
-            "$ref": "#/definitions/SisterCompany"
+            "$ref": "#/components/schemas/SisterCompany"
+      required: []
       title: SisterCompanies
     SisterCompany:
       type: object
@@ -818,14 +840,20 @@ definitions:
         registrationNumber:
           type: string
           description: The national registrationNumber for this company.
+      required: []
       title: SisterCompany
     Subsidiaries:
       type: object
       properties:
+        numberOfSubsidiaries:
+          type: integer
+          format: int32
+          description: Total number of subsidiaries this company have.
         subsidiaries:
           type: array
           items:
-            "$ref": "#/definitions/Subsidiary"
+            "$ref": "#/components/schemas/Subsidiary"
+      required: []
       title: Subsidiaries
     Subsidiary:
       type: object
@@ -844,23 +872,25 @@ definitions:
           type: integer
           format: int32
           description: Ownership in percent
-          minimum: 0
-          maximum: 100
+          min: 0
+          max: 100
         date:
           type: string
           format: date
           description: TODO - what does this date mean???
         shareCapital:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
+      required: []
       title: Subsidiary
     Management:
       type: object
       description: Management section
       properties:
         boardMembers:
-          "$ref": "#/definitions/BoardMembers"
+          "$ref": "#/components/schemas/BoardMembers"
         auditors:
-          "$ref": "#/definitions/Auditors"
+          "$ref": "#/components/schemas/Auditors"
+      required: []
       title: Management
     Auditors:
       type: object
@@ -870,12 +900,13 @@ definitions:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "#/definitions/Position"
+            "$ref": "#/components/schemas/Position"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "#/definitions/HistoricalPosition"
+            "$ref": "#/components/schemas/HistoricalPosition"
+      required: []
       title: Auditors
     Position:
       type: object
@@ -947,6 +978,7 @@ definitions:
         description:
           type: string
           description: A textual description of the function
+      required: []
       title: Position
     HistoricalPosition:
       type: object
@@ -1017,6 +1049,7 @@ definitions:
           type: string
           format: date
           description: Date when this person/entity resigned from this position
+      required: []
       title: HistoricalPosition
     BoardMembers:
       type: object
@@ -1061,54 +1094,57 @@ definitions:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "#/definitions/Position"
+            "$ref": "#/components/schemas/Position"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
-            "$ref": "#/definitions/HistoricalPosition"
+            "$ref": "#/components/schemas/HistoricalPosition"
+      required: []
       title: BoardMembers
     CompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "#/definitions/Capital"
+          "$ref": "#/components/schemas/Capital"
         companyName:
-          "$ref": "#/definitions/CompanyName"
+          "$ref": "#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "#/definitions/ContactPoints"
+          "$ref": "#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "#/definitions/Identifiers"
+          "$ref": "#/components/schemas/Identifiers"
         industryCodeSet:
-          "$ref": "#/definitions/IndustryCodeSet"
+          "$ref": "#/components/schemas/IndustryCodeSet"
         legalForm:
-          "$ref": "#/definitions/LegalForm"
+          "$ref": "#/components/schemas/LegalForm"
         status:
-          "$ref": "#/definitions/Status"
+          "$ref": "#/components/schemas/Status"
         registrationInformation:
-          "$ref": "#/definitions/RegistrationInformation"
+          "$ref": "#/components/schemas/RegistrationInformation"
         generalCompanyData:
-          "$ref": "#/definitions/GeneralCompanyData"
+          "$ref": "#/components/schemas/GeneralCompanyData"
         branches:
-          "$ref": "#/definitions/Branches"
+          "$ref": "#/components/schemas/Branches"
         bankgiroAccounts:
           type: array
           description: A list of the bankgiro accounts this company holds.
           items:
-            "$ref": "#/definitions/BankgiroAccount"
+            "$ref": "#/components/schemas/BankgiroAccount"
+      required: []
       title: CompanyInformation
     BankgiroAccount:
       type: object
-      description: ''
+      description: 
       properties:
         address:
-          "$ref": "#/definitions/BankAddress"
+          "$ref": "#/components/schemas/BankAddress"
         bankgiroNumber:
           type: string
         valid:
           type: boolean
           description: 'True if the bankgiro account is currently active'
+      required: []
       title: BankgiroAccount
     BankAddress:
       type: object
@@ -1122,10 +1158,11 @@ definitions:
         street:
           type: string
           description: Streaet address
+      required: []
       title: Address
     Branches:
       type: object
-      description: ''
+      description: 
       properties:
         numberOfBranches:
           type: integer
@@ -1135,7 +1172,8 @@ definitions:
           type: array
           description: TODO - How many items can we have here???
           items:
-            "$ref": "#/definitions/Branch"
+            "$ref": "#/components/schemas/Branch"
+      required: []
       title: Branches
     Branch:
       type: object
@@ -1150,13 +1188,14 @@ definitions:
           type: string
           description: The registered address for the bankgiro account.
         address:
-          "$ref": "#/definitions/BranchAddress"
+          "$ref": "#/components/schemas/BranchAddress"
         officeNumber:
           type: string
           description: >-
             Branch office number. Unique id for this branch
         dunsNumber:
           type: string
+      required: []
       title: Branch
     BranchAddress:
       type: object
@@ -1166,21 +1205,24 @@ definitions:
           description: postalcode
         town:
           type: string
-          description: town
+          descripion: town
+      required: []
       title: BranchAddress
     Capital:
       type: object
       description: Capital section
       properties:
         shareCapital:
-          "$ref": "#/definitions/ShareCapital"
+          "$ref": "#/components/schemas/ShareCapital"
+      required: []
       title: Capital
     ShareCapital:
       type: object
       description: Share capital
       properties:
         amount:
-          "$ref": '#/definitions/Amount'
+          "$ref": '#/components/schemas/Amount'
+      required: []
       title: ShareCapital
     CompanyName:
       type: object
@@ -1190,25 +1232,32 @@ definitions:
         secondaryNames:
           type: array
           items:
-            "$ref": "#/definitions/SecondaryName"
+            "$ref": "#/components/schemas/SecondaryName"
         alternativeNames:
           type: array
           items:
-            "$ref": "#/definitions/AlternativeName"
-        formerNames:
+            "$ref": "#/components/schemas/AlternativeName"
+        historicalNames:
           type: array
           description: A list of historical names, does not include the current name.
           items:
-            "$ref": "#/definitions/Name"
+            "$ref": "#/components/schemas/Name"
         officialName:
-          "$ref": "#/definitions/Name"
+          "$ref": "#/components/schemas/Name"
+      required: []
       title: CompanyName
     Name:
       type: object
       description: A name object
       properties:
-        value:
+        date:
           type: string
+          format: date
+          description: The date when this name was registered??? - TODO is this correct
+        name:
+          type: string
+          description: Name
+      required: []
       title: Name
     SecondaryName:
       type: object
@@ -1227,6 +1276,7 @@ definitions:
         type:
           type: string
           description: Company type. TODO - is the same as legalform ???
+      required: []
       title: SecondaryName
     AlternativeName:
       type: object
@@ -1237,21 +1287,26 @@ definitions:
           description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
         description:
           type: string
+          description: TODO - what is this
         date:
           type: string
           format: date
           description: Date when this name was registrered
       title: AlternativeName
+      required: []
     ContactPoints:
       type: object
       description: Methods for getting in contact with this company.
       properties:
         electronicContactPoints:
-          "$ref": "#/definitions/ElectronicContactPoints"
+          "$ref": "#/components/schemas/ElectronicContactPoints"
         postalAddress:
-          "$ref": "#/definitions/PostalAddress"
+          "$ref": "#/components/schemas/StreetAddress"
         registeredAddress:
-          "$ref": "#/definitions/RegisteredAddress"
+          "$ref": "#/components/schemas/StreetAddress"
+        visitingAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+      required: []
       title: ContactPoints
     ElectronicContactPoints:
       type: object
@@ -1276,24 +1331,9 @@ definitions:
           description: A list of web addresses
           items:
             type: string
+      required: []
       title: ElectronicContactPoints
-    PostalAddress:
-      type: object
-      properties:
-        locationAddress:
-          "$ref": "#/definitions/LocationAddress"
-        streetAddress:
-          "$ref": "#/definitions/StreetAddress"
-      title: PostalAddress
-    LocationAddress:
-      type: object
-      properties:
-        country:
-          type: string
-          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        location:
-          type: string
-      title: LocationAddress
+
     StreetAddress:
       type: object
       properties:
@@ -1313,16 +1353,9 @@ definitions:
           type: string
           description: Street address
           example: Rosenborgsgatan 4-6
+      required: []
       title: StreetAddress
-    RegisteredAddress:
-      type: object
-      description: The address this company is registered at. may differ from the visiting address.
-      properties:
-        locationAddress:
-          "$ref": "#/definitions/LocationAddress"
-        streetAddress:
-          "$ref": "#/definitions/StreetAddress"
-      title: RegisteredAddress
+   
     GeneralCompanyData:
       type: object
       properties:
@@ -1332,24 +1365,32 @@ definitions:
         numberOfEmployees:
           type: integer
           format: int64
+        numberOfAlcoholServicePermits:
+          type: integer
+          format: int32
+          description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         activeInVat:
           type: boolean
-          description: If the company is actively paying Vat.
-        import:
+          description: If the company is actively paying Vat.  
+        offTheShelfCompany:
+          type: boolean
+          description: >-
+            A company which has already been registered by an accountant or lawyer, and which is ready for sale to someone who wants to set up a new company quickly.
+        registeredAsEmployer:
+          type: boolean
+          description: >-
+            'To have employees a company needs to be registered as an employer at the local tax office. More info here: https://www.skatteverket.se/foretagochorganisationer/arbetsgivare/arbetsgivarregistrering/registreradig.4.18e1b10334ebe8bc80003496.html'
+        registeredInVatList:
+          type: boolean
+          description: This indicates if the company is registered according to the Tax VAT register.
+        activeInVatStatusDate:
           type: string
-          enum: ['Y', 'N']
-          description: |
-            N - Is not an import company
-            Y - Is an import company
-        export:
-          type: string
-          enum: ['Y', 'N']
-          description: |
-            N - Is not an export company
-            Y - Is an export company
+          format: date
+          description: Date when ??? - TODO
+      required: []
       title: GeneralCompanyData
     Identifiers:
       type: object
@@ -1364,17 +1405,19 @@ definitions:
         dunsNumber:
           type: string
           description: duns-number
+      required: []
       title: Identifiers
     IndustryCodeSet:
       type: object
       description: Sni and nace code for classification of the business
       properties:
         sni2007IndustryCodes:
-          "$ref": "#/definitions/Sni2007IndustryCodes"
+          "$ref": "#/components/schemas/Sni2007IndustryCodes"
         naceCodes:
           type: array
           items:
-            "$ref": "#/definitions/NaceCode"
+            "$ref": "#/components/schemas/NaceCode"
+      required: []
       title: IndustryCodeSet
     NaceCode:
       type: object
@@ -1388,18 +1431,20 @@ definitions:
           type: string
           description: A textual description of the code.
           example: 'Gathering of wild growing non-wood products'
+      required: []
       title: NaceCode
     Sni2007IndustryCodes:
       type: object
-      description: ''
+      description: 
       properties:
         otherIndustryCodes:
           type: array
           description: Secondary codes 
           items:
-            "$ref": "#/definitions/Sni2007Code"
+            "$ref": "#/components/schemas/Sni2007Code"
         primaryIndustryCode:
-          "$ref": "#/definitions/Sni2007Code"
+          "$ref": "#/components/schemas/Sni2007Code"
+      required: []
       title: Sni2007IndustryCodes
     Sni2007Code:
       type: object
@@ -1413,6 +1458,7 @@ definitions:
           type: string
           description: A textual description of the code. 
           example: "Retail sale of men's, women's and children's clothing in spec. stores"
+      required: []
       title: IndustryCode
     LegalForm:
       type: object
@@ -1432,6 +1478,7 @@ definitions:
         description:
           type: string
           description: A textual description of the code.
+      required: []
       title: LegalForm
     RegistrationInformation:
       type: object
@@ -1445,6 +1492,7 @@ definitions:
           type: string
           format: date
           description: Date when the company was founded
+      required: []
       title: RegistrationInformation
     Status:
       type: object
@@ -1457,6 +1505,7 @@ definitions:
           type: string
           format: date
           description: Date when the status last changed
+      required: []
       title: Status
     Finance:
       type: object
@@ -1465,20 +1514,21 @@ definitions:
           type: array
           description: "TODO - how many can we get here ???"
           items:
-            "$ref": "#/definitions/ChattelMortgage"
+            "$ref": "#/components/schemas/ChattelMortgage"
         claimsOutOfBusiness:
           type: array
           description: "TODO - how many can we get here ???"
           items:
-            "$ref": "#/definitions/LiquidationClaim"
+            "$ref": "#/components/schemas/LiquidationClaim"
         financialStatements:
-          "$ref": "#/definitions/FinancialStatements"
+          "$ref": "#/components/schemas/FinancialStatements"
         payrollTaxes:
           type: array
           items:
-            "$ref": "#/definitions/PayrollTax"
+            "$ref": "#/components/schemas/PayrollTax"
         propertyHoldings:
-          "$ref": "#/definitions/PropertyHoldings"
+          "$ref": "#/components/schemas/PropertyHoldings"
+      required: []
       title: Finance
     ChattelMortgage:
       type: object
@@ -1488,10 +1538,11 @@ definitions:
           type: string
           description: Name of the entity/company this mortgage entails.
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: integer
+      required: []
       title: ChattelMortgage
     LiquidationClaim:
       type: object
@@ -1502,50 +1553,79 @@ definitions:
           type: string
           description: Name of the company this company has a claim on.
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date when the claim was made.
+      required: []
       title: LiquidationClaim
     FinancialStatements:
       type: object
       properties:
         groupAccount:
-          "$ref": "#/definitions/GroupAccount"
+          "$ref": "#/components/schemas/GroupAccount"
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/definitions/FinancialStatementsAuditorsReservation"
-        financialStatementKeyFigures:
+            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
+        keyFigures:
           type: array
           items:
-            "$ref": "#/definitions/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
         industryKeyFigures:
-          "$ref": "#/definitions/FinancialStatementKeyFigure"
+          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/definitions/FinancialStatement"
+            "$ref": "#/components/schemas/FinancialStatement"
+      required: []
       title: FinancialStatements
     FinancialStatementsAuditorsReservation:
       type: object
       properties:
         auditorsReservationCode:
           type: string
-          description: >-
-            ' TODO - seems to be more values 
-            
-            C - comment, R - reservation'
-          enum: ['C', 'R']
+          description: |
+            A  -  AT LEAST ONE OF FOLLOWING THREE CRITERIA IS NOT RECOMMENDED BY THE AUDITOR:                                                               
+                   1. RECOMMENDATION THAT THE INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.
+                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.
+                  3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
+            B  -  AT LEAST ONE BOARD MEMBER, OR THE MANAGING DIRECTOR, IS DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                    
+            C  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH  SHOWS THAT THE COMPANY IS STILL BOUND TO LIQUIDATION.     DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY <50% OF SHARE CAPITAL.                                 
+            D  -  AUDITOR DECLARE BOARDMEMBERS RESPONSIBILITY TO CREATE BALANCE SHEET FOR LIQUIDATION PURPOSES THEN COMPANY'S TOTAL CAPITAL IS < 50 % OF SHARE CAPITAL.                                                             
+            E  -  THE INCOME STATEMENT OR/AND BALANCE SHEET CONTAINS UNCERTAIN OR INCORRECT VALUED ITEMS.                     
+            F  -  DEFICIENCY IN THE COMPANY'S INTERNAL CONTROL.                              
+            G  -  TAXES HAVE NOT BEEN PAID PROPERLY.                                         
+            H  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH SHOWS THAT THE COMPANY IS NOT BOUND TO LIQUIDATION.DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY < 50 % OF SHARE CAPITAL.                               
+            I  -  UNLEGAL LOAN TO SHAREHOLDER(S).                                            
+            J  -  COMMENTS FROM THE AUDITOR.                                                 
+            K  -  GENERAL INFORMATION OR COMMENT FROM THE AUDITOR IN THE ANNUAL REPORT.      
+            L  -  AT LEAST ONE OF FOLLOWING 3 CRITERIA IS NOT RECOMMENDED BY THE AUDITOR, CONCERNING THE GROUP:                                             
+                   1. RECOMMENDATION THAT THE CONSOLIDATED INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.                                         
+                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.                              
+                   3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
+            M  -  SHAREHOLDERS WILL GUARANTEE CURRENT CAPITAL CONTRIBUTIONS IN ORDER TO COVER SHORT AND LONG-TERM FINANCING.                                       
+            P  -  ANNUAL REPORT IS NOT SENT TO COMPANY HOUSE WITHIN STIPULATED TIME ALT. ANNUAL GENERAL MEETING NOT HELD IN ACCORDANCE WITH SWEDISH COMPANY ACT.    
+            R  -  COMMENT FROM THE AUDITOR.                                                  
+            1   -  CONCRETE OBSERVATIONS ON FLAWS IN ACCOUNTING PRACTICES                     
+            2   -  CONDITIONAL FINDINGS DUE TO INADEQUATE REPORTING                           
+            3   -  CONDITIONAL FINDINGS DUE TO INADEQUATCIES AND FLAWS                        
+            4   -  NEGATIVE OBSERVATIONS (IN THE ACCOUNTING PRACTICES EMPLOYED)               
+            5   -  THE AUDITOR REFRAINS FROM EXPRESSING HIS/HER OPINION  (DUE TO LACK/INACCESSIBILITY OF INFORMATION)            
+            6   -  UNSECURED LOANS TO SHAREHOLDERS                                            
+            7   -  WITHELD TAXES FROM EMPLOYEES ARE NOT DEPOSITED IN A SEPARATE ACCOUNT
+            8   -  LACK OF SUPPORTING DOCUMENTS ON OFFICIAL TRANSACTIONS AND POOR INTERNAL CONTROL PROCEDURES
+            9   -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
         auditorsReservationDescription:
           type: string
-          description: The auditors reservation/comment. TODO - is this correct???
+          description: Textual description of the auditorsReservationCode
         statementDate:
           type: string
           format: date
           description: Date of the auditors reservation/comment.
+      required: []
       title: FinancialStatementsAuditorsReservation
     FinancialStatementKeyFigure:
       type: object
@@ -1601,7 +1681,7 @@ definitions:
           type: number
           format: double
           description: liquid assets in percent of total turnover.
-        netSalesEmployees:
+        netSalesPerEmployee:
           type: integer
           format: int64
           description: >-
@@ -1640,19 +1720,11 @@ definitions:
           format: double
           description: >-
             Capital turnover is measured as profit/loss in relation to assets.
+      required: []
       title: FinancialStatementKeyFigure
     IncomeStatement:
       type: object
       properties:
-        accountPeriod:
-          type: integer
-          format: int32
-          description: The length in months for the account period
-          example: 12
-        currency:
-          type: string
-          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block containg monetary values.
-          example: SEK
         netSales:
           type: integer
           format: int64
@@ -1680,8 +1752,8 @@ definitions:
           description: >-
             Other operating income includes revenue from all other operating activities which are not related to the principal activities of the company, such as gains/losses from disposals, interest income, dividend income, etc.
         totalTurnover:
-          type: string
-          format: integer
+          type: integer
+          format: int64
           description: >-
             The company’s total revenues. Net sales + otherOperatingIncome
         costOfGoods:
@@ -1692,8 +1764,8 @@ definitions:
             
             Function based only
         sellingExpenses:
-          type: string
-          format: integer
+          type: integer
+          format: int64
           description: >-
             Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service. 
             
@@ -1882,22 +1954,10 @@ definitions:
     BalanceSheet:
       type: object
       properties:
-        closingPeriod:
-          type: integer
-          format: int32
-          description: >-
-            TODO -- set correct type and description   
-          example: 12
-        fiscalPeriod:
-          type: integer
-          format: int32
-          description: >-
-            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
-          example: 12
         assets: 
-           "$ref": "#/definitions/Assets"
+           "$ref": "#/components/schemas/Assets"
         liabilitiesAndEquity:
-          "$ref": "#/definitions/LiabilitiesAndEquity"
+          "$ref": "#/components/schemas/LiabilitiesAndEquity"
       title: BalanceSheet
       description: >-
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
@@ -1905,9 +1965,9 @@ definitions:
       type: object
       properties:
         currentAssets:
-          "$ref": "#/definitions/CurrentAssets"
+          "$ref": "#/components/schemas/CurrentAssets"
         nonCurrentAssets:
-          "$ref": "#/definitions/NonCurrentAssets"
+          "$ref": "#/components/schemas/NonCurrentAssets"
       title: Assets
       description: >-
         Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
@@ -2092,9 +2152,9 @@ definitions:
       type: object
       properties:
         liabilities:
-          "$ref": "#/definitions/Liabilities"
+          "$ref": "#/components/schemas/Liabilities"
         shareholdersEquity:
-          "$ref": "#/definitions/ShareholdersEquity" 
+          "$ref": "#/components/schemas/ShareholdersEquity" 
         totalEquityAndLiabilities:
           type: integer
           format: int64
@@ -2104,9 +2164,9 @@ definitions:
       type: object
       properties:
         currentLiabilities:
-          "$ref": "#/definitions/CurrentLiabilities"
+          "$ref": "#/components/schemas/CurrentLiabilities"
         nonCurrentLiabilities:
-          "$ref": "#/definitions/LongTermLiabilities"
+          "$ref": "#/components/schemas/LongTermLiabilities"
       title: Liabilities
       description: >-
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
@@ -2251,10 +2311,11 @@ definitions:
           type: string
           description: Date when the financial statement was closed. The date will be year and month only.
           example: 2019-12
-        accountPeriod:
+        fiscalPeriod:
           type: integer
           format: int32
-          description: The length in months for the account period
+          description: >-
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
           example: 12
         classificationCode:
           type: string
@@ -2269,11 +2330,12 @@ definitions:
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
           example: SEK
         balanceSheet:
-          "$ref": "#/definitions/BalanceSheet"
+          "$ref": "#/components/schemas/BalanceSheet"
         incomeStatement:
-          "$ref": "#/definitions/IncomeStatement"
+          "$ref": "#/components/schemas/IncomeStatement"
         notesAndOtherInformation:
-          "$ref": "#/definitions/NotesAndOtherInformation"
+          "$ref": "#/components/schemas/NotesAndOtherInformation"
+      required: []
       title: FinancialStatement
     GroupAccount:
       type: object
@@ -2281,11 +2343,12 @@ definitions:
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/definitions/GroupAccountAuditorsReservation"
+            "$ref": "#/components/schemas/GroupAccountAuditorsReservation"
         financialStatementKeyFigures:
           type: array
           items:
-            "$ref": "#/definitions/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+      required: []
       title: GroupAccount
     GroupAccountAuditorsReservation:
       type: object
@@ -2296,6 +2359,7 @@ definitions:
           type: string
         statementDate:
           type: string
+      required: []
       title: GroupAccountAuditorsReservation
 
     PayrollTax:
@@ -2309,10 +2373,11 @@ definitions:
           format: date
           description: Date when ???
         amount:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         referenceNumber:
           type: string
           description: TODO - what is this???
+      required: []
       title: PayrollTax
     PropertyHoldings:
       type: object
@@ -2321,27 +2386,28 @@ definitions:
         
       properties:
         ownedPartOfTaxAssessment:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         taxAssessment:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         numberOfFullyOwned:
           type: integer
           format: int32
           description: The number of properties this company own 100 percent of.
         numberOfPartlyOwned:
-          type: string
-          format: integer
+          type: integer
+          format: int32
           description: The number of properties this company own a part of. Excluding the ones it owns in full.
         assessedRealProperties:
           type: array
           description: TODO - how many properties can we get here ???
           items:
-            "$ref": "#/definitions/AssessedRealProperty"
+            "$ref": "#/components/schemas/AssessedRealProperty"
         currentRealProperties:
           type: array
           description: TODO - how many properties can we get here ???
           items:
-            "$ref": "#/definitions/CurrentRealProperty"
+            "$ref": "#/components/schemas/CurrentRealProperty"
+      required: []
       title: PropertyHoldings
     AssessedRealProperty:
       type: object
@@ -2386,24 +2452,26 @@ definitions:
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
         taxAssessmentValueOfBuilding:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         taxAssessmentValueOfLand:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
         totalTaxAssessmentValue:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
+      required: []
       title: AssessedRealProperty
     CurrentRealProperty:
       type: object
       properties:
         blocked:
           type: string
-          description: >-
+          description: >- 
+            TODO 
             'if true it means that the information is under investigation by the tax office???
             '
         objectType:
           type: string
-          description: "
-            21A = lagfart/registered ownership
+          description: >-
+            "21A = lagfart/registered ownership
              23A = tomträtt/site-leasehold right"
         countyCode:
           type: string
@@ -2438,7 +2506,8 @@ definitions:
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
         totalTaxAssessmentValue:
-          "$ref": "#/definitions/Amount"
+          "$ref": "#/components/schemas/Amount"
+      required: []
       title: CurrentRealProperty
     Bankruptcy:
       type: object
@@ -2451,31 +2520,58 @@ definitions:
         status:
           type: string
           description: 'TODO - what statuses can we have here????'
+        name:
+          type: string
+          description: Name of the court where bankruptcy was declared
+          example: Stockholms Tingsrätt
+        trustee:
+          "$ref": "#/components/schemas/Trustee"
+    Trustee:
+      type: object
+      description: Name and contact-info to the person/firm handling the bankruptcy
+      properties:
+        companyName:
+          type: string
+          description: Name ofthe company handling the bankruptcy
+          example: Advokatfirman demo
+        name:
+          type: string
+          description: Name of the person assigned to handle the bankruptcy.
+          example: Anders Svensson
+        phoneNumber:
+          type: string
+          description: Phonenumber to the person/company assigned to handle this bankruptcy
+          example: 08-11223344
+        address:
+          type: string
+          description: The address to the person/company assigned to handle this bankruptcy
+        example: 10390, Stockholm
     NotesAndOtherInformation:
       type: object
       description: >-
         Misc information releated to the financial statement
       properties:
-        currency:
-          type: string
-          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block containg monetary values.
         floatingCharges:
-          type: string
+          type: integer
+          format: int64
           description: >-
             A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
             
         propertyMortgage:
-          type: string
+          type: integer
+          format: int64
           description: >-
               A mortgage is a debt instrument, secured by the collateral of specified real estate property, that the borrower is obliged to pay back with a predetermined set of payments.
             
         otherSecurities:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Other securities. TODO  - examples would be nice
               
         totalSecurities:
-          type: string
+          type: integer
+          format: int64
           description: >-
             The sum of floatingCharges, propertyMortgage and otherSecurities.
             TODO - is this correct.
@@ -2489,20 +2585,23 @@ definitions:
             Y - Additional securities exist
             
         conditionalShareholdersContribution:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Contributions from shareholders where the owners have agreed that the contribution should be repaid whenever possible.
             
         otherContingentLiabilities:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Contingent liability is a potential liability that may occur, depending on the outcome of an uncertain future event. A contingent liability is recorded in the accounting records if the contingency is likely and the amount of the liability can be reasonably estimated.
             
         totalContingentLiabilities:
-          type: string
+          type: integer
+          format: int64
           description: >-
             The sum of conditionalShareholdersContribution and otherContingentLiabilities 
-            TODO - is this correct
+            TODO - is this correct???
             
         commentsLiabilities:
           type: string
@@ -2517,42 +2616,51 @@ definitions:
           description: >-
             The number of employees at the time of this annual report.
         salariesAndEmolumentsToBoardMembers:
-          type: string
+          type: integer
+          format: int64
           description: >-
-            Salaries and other emoluments (payments) paid to boardmembers.
+            Salaries and other emoluments (payments) made to boardmembers.
             
         bonusToBoardMembers:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Bonus paid to boardmembers.
             
         salariesToOthers:
-          type: string
+          type: integer
+          format: int64
           description: >-
-            Todo - what others ???
+            Salaries to others. TODO - Others as in people not employed or what???
             
         incentiveWagesToEmployees:
-          type: string
+          type: integer
+          format: int64
           description: >-
             A monetary gift provided to an employee based on performance, which is thought of as one way to entice the employee to continue delivering positive results. Incentive pay may come in the form of a bonus, profit-sharing, or commission.
             
         socialCosts:
-          type: string
+          type: integer
+          format: int64
           description: >-
+            Social costs.
             TODO - what is this???
             
         severancePay:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Severance pay is the compensation and/or benefits an employer provides to an employee after employment is over. 
             
             Employers offer packages to employees who are laid off, whose jobs are eliminated because of downsizing, or who retire. Some employees who resign or are fired may also receive a severance package.
         currentAccountCredit:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Total credit given by banks and similar.
             
         usedAccountCredit:
-          type: string
+          type: integer
+          format: int64
           description: >-
             Credit used.
