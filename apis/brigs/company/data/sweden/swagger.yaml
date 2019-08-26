@@ -1703,7 +1703,7 @@ components:
           type: number
           format: double
           description: liquid assets in percent of total turnover.
-        netSalesEmployees:
+        netSalesPerEmployee:
           type: integer
           format: int64
           description: >-
