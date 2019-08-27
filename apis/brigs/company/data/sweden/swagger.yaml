@@ -2473,6 +2473,7 @@ components:
           description: >-
             "21A = lagfart/registered ownership
              23A = tomträtt/site-leasehold right"
+          example: 21A
         countyCode:
           type: string
           description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
@@ -2528,11 +2529,11 @@ components:
           "$ref": "#/components/schemas/Trustee"
     Trustee:
       type: object
-      description: Name and contact-info to the person/firm handling the bankruptcy
+      description: Name and contact-info to the person/company handling the bankruptcy
       properties:
         companyName:
           type: string
-          description: Name ofthe company handling the bankruptcy
+          description: Name of the company handling the bankruptcy
           example: Advokatfirman demo
         name:
           type: string
