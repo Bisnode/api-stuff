@@ -1392,7 +1392,7 @@ components:
         bisnodeId:
           type: string
           description: A unique id set by Bisnode
-        CVRNumber:
+        cvrNumber:
           type: string
           description: Central Business Register number
         dunsNumber:
