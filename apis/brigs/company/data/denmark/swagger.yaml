@@ -1392,9 +1392,9 @@ components:
         bisnodeId:
           type: string
           description: A unique id set by Bisnode
-        registrationNumber:
+        vatNumber:
           type: string
-          description: National registration number
+          description: VAT identification number, in Denmark VAT Number is same as CVR number (Central Business Register number)
         dunsNumber:
           type: string
           description: duns-number
