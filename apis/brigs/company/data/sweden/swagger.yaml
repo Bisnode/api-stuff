@@ -2357,7 +2357,7 @@ components:
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/components/schemas/GroupAccountAuditorsReservation"
+            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
         financialStatementKeyFigures:
           type: array
           description: The 5 latest 
@@ -2370,18 +2370,6 @@ components:
             "$ref": "#/components/schemas/FinancialStatement"
       required: []
       title: GroupAccount
-    GroupAccountAuditorsReservation:
-      type: object
-      properties:
-        auditorReservationCode:
-          type: string
-        auditorReservationDescription:
-          type: string
-        statementDate:
-          type: string
-      required: []
-      title: GroupAccountAuditorsReservation
-
     PayrollTax:
       type: object
       description: >- 
