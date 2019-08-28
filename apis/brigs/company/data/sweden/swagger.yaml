@@ -1687,9 +1687,10 @@ components:
           description: >-
             Net sales per employee.
         netSalesTrendIndex:
-          type: string
-          format: integer
+          type: number
+          format: double
           description: The trend for netsales. Comparing this years value with previous year. In percent
+          example: 5.0
         profitMargin:
           type: number
           format: double
