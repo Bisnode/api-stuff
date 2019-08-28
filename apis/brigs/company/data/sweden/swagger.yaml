@@ -1747,28 +1747,26 @@ components:
           type: integer
           format: int64
           description: >-
-            Net sales - sales from the companys main industry or industries.
+            Net sales is the sum of a company's gross sales minus its returns, allowances, and discounts.
         changeInInventories:
           type: integer
           format: int64
           description: >-
-            Inventory change is the difference between the inventory totals for the last reporting period and the current reporting period. 
+            Change in inventories and work in progress for the last reporting period and the current reporting period. 
             
             Cost based only
         workPerformedForOwnUse:
           type: integer
           format: int64
           description: >-
-            Work performed for own use.
-            
-            TODO - what does it mean ???
+            Work performed by the company for its own use and capitalized here when reported as assets.
             
             Cost based only    
         otherOperatingIncome:
           type: integer
           format: int64
           description: >-
-            Other operating income includes revenue from all other operating activities which are not related to the principal activities of the company, such as gains/losses from disposals, interest income, dividend income, etc.
+            Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
         totalTurnover:
           type: integer
           format: int64
@@ -1792,27 +1790,28 @@ components:
           type: integer
           format: int64
           description: >-
-            Administrative expenses/costs are the expenses that an organization incurs not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
+            Administrative expenses/costs are the expenses that an organization incurs for administrationcosts and not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
             
             Function based only
         commoditiesAndNecessities:
           type: integer
           format: int64
           description: >-
-            Raw materials and consumables
+            Raw materials and consumables for processing in production.
             
             Cost based only
         goodsForResale:
           type: integer
           format: int64
           description: >-
-            Goods for resale are one kind of inventory, but resale goods and inventory are not one in the same. Merchandisers may only have one kind of inventory -- goods to sell to customers -- but a manufacturer includes finished goods, raw materials, supplies and work in process in inventory calculation.
+            Procurement cost for sold gods.
+            
             Cost based only
         otherExternalExpenses:
           type: integer
           format: int64
           description: >-
-            Other external expenses.
+            Other external expenses includes costs for example rent, office supplies, leasing, energy, consumables/inventories, reperations or maintenance.
             
             Cost based only
         staffCosts:
@@ -1836,7 +1835,7 @@ components:
           type: integer
           format: int64
           description: >-
-            'TODO - is this the same as: other expenses not included in nonRecurringItems, researchAndDevelopment, administrativeCosts, costOfGoods and sellingExpenses'
+            Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
         depreciation:
           type: integer
           format: int64
@@ -1851,27 +1850,27 @@ components:
           type: integer
           format: int64
           description: >-
-            Operating profit is an accounting figure that measures the profit earned from a company's ongoing core business operations, thus excluding deductions of interest and taxes. This value also does not include any profit earned from the firm's investments, such as earnings from firms in which the company has partial interest.
+            The operating profit (loss) is the difference between the business revenue and costs including nonRecurringFinancialItems during the fiscal year.
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
           description: >-
-            Result from participation in group companies and associated. Example ???
+            The net from dividend income, impairment and reserved write-downs.
         interestIncomeFromGroupCompanies:
           type: integer
           format: int64
           description: >-
-            Interest income from group companies. Example ???
+            Interest payed to the company by group or affiliate.
         externalInterestIncome:
           type: integer
           format: int64
           description: >-
-            External interest income. Example ???
+            Interest payed to the company by banks or creditinstitutes.
         otherFinancialIncome:
           type: integer
           format: int64
           description: >-
-            Income for a company that comes from anything other than its ordinary operations. 
+            Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
         totalFinancialIncome:
           type: integer
           format: int64
@@ -1880,19 +1879,17 @@ components:
           type: integer
           format: int64
           description: >-
-            'Interest expenses to group companies. Example: loans'
+            Interest payed from the company to group or affiliate.
         externalInterestExpenses:
           type: integer
           format: int64
           description: >-
-            'Interest income from group companies. Example: Bank loans ???'
+            Interest payed from the company to banks or creditinstitutes.
         totalInterestExpenses:
           type: integer
           format: int64
           description: >-
-            An interest expense is the cost incurred by an entity for borrowed funds.
-          
-            Total interest expenses. A sum of externalInterestExpenses and interestExpenseToGroupCompanies. ???
+            Total sum of interest payed from the company.
         otherFinancialExpenses:
           type: integer
           format: int64
@@ -1912,7 +1909,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Result after financial items. 
+            Profit/Loss after financials shows the years total result of the business. 
         extraordinaryIncome:
           type: integer
           format: int64
@@ -1942,7 +1939,7 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO - what is this ???
+            Given or obtained contribution from/to group or affiliate.
         shareholdersContribution:
           type: integer
           format: int64
@@ -1952,8 +1949,7 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO - appropriations or allocations ???
-            Tax law allows companies to wait to pay tax for the year's profit. The rules are designed so that the company should report "pretense costs" if they want to wait for taxation, and report "pretense revenue" the year when they want to tax profits from previous years.
+            Appropriations is a way of postpone taxes for some of the companys result by allocations to untaxed reserves. The appropriations mainly used is tax allocation reserve.
         profitLossBeforeTax:
           type: integer
           format: int64
