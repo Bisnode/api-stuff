@@ -2360,8 +2360,14 @@ components:
             "$ref": "#/components/schemas/GroupAccountAuditorsReservation"
         financialStatementKeyFigures:
           type: array
+          description: The 5 latest 
           items:
             "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/FinancialStatement"
       required: []
       title: GroupAccount
     GroupAccountAuditorsReservation:
