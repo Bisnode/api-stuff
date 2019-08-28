@@ -1689,7 +1689,7 @@ components:
         netSalesTrendIndex:
           type: string
           format: integer
-          description: The trend for netsales. Comparing this years value with previous year. TODO - Is this percent or what????
+          description: The trend for netsales. Comparing this years value with previous year. In percent
         profitMargin:
           type: number
           format: double
@@ -1720,6 +1720,24 @@ components:
           format: double
           description: >-
             Capital turnover is measured as profit/loss in relation to assets.
+        grossMargin:
+          type: number
+          format: double
+          description: >-
+            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
+          example: 33.7
+        netMargin:
+          type: number
+          format: double
+          description: >-
+            The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage. 
+          example: 23.4
+        netWorth:
+          type: integer
+          format: int64
+          description: >-
+            Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
+          example: -1555000
       required: []
       title: FinancialStatementKeyFigure
     IncomeStatement:
