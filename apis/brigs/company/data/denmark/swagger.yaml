@@ -1383,6 +1383,14 @@ components:
           type: string
           format: date
           description: Date when ??? - TODO
+        export:
+          type: string
+          enum: ['YES', 'NO']
+          description: Is export company
+        import:
+          type: string
+          enum: ['YES', 'NO']
+          description: Is import company
       required: []
       title: GeneralCompanyData
     Identifiers:
