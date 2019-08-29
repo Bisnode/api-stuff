@@ -25,12 +25,12 @@ components:
     NorwegianCompanyData:
       type: object
       properties:
+        companyInformation:
+          "$ref": "#/components/schemas/CompanyInformation"
         risk:
           "$ref": "#/components/schemas/Risk"
         management:
           "$ref": "#/components/schemas/Management"
-        companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
         finance:
           "$ref": "#/components/schemas/Finance"
         ownership:
@@ -1124,98 +1124,27 @@ components:
           "$ref": "#/components/schemas/RegistrationInformation"
         generalCompanyData:
           "$ref": "#/components/schemas/GeneralCompanyData"
-        branches:
-          "$ref": "#/components/schemas/Branches"
-        bankgiroAccounts:
-          type: array
-          description: A list of the bankgiro accounts this company holds.
-          items:
-            "$ref": "#/components/schemas/BankgiroAccount"
       required: []
       title: CompanyInformation
-    BankgiroAccount:
-      type: object
-      description: 
-      properties:
-        address:
-          "$ref": "#/components/schemas/BankAddress"
-        bankgiroNumber:
-          type: string
-        valid:
-          type: boolean
-          description: 'True if the bankgiro account is currently active'
-      required: []
-      title: BankgiroAccount
-    BankAddress:
-      type: object
-      properties:
-        town:
-          type: string
-          description: town
-        postalCode:
-          type: string
-          description: postalcode
-        street:
-          type: string
-          description: Streaet address
-      required: []
-      title: Address
-    Branches:
-      type: object
-      description: 
-      properties:
-        numberOfBranches:
-          type: integer
-          format: int32
-          description: Total number of branches this company have.
-        branches:
-          type: array
-          description: TODO - How many items can we have here???
-          items:
-            "$ref": "#/components/schemas/Branch"
-      required: []
-      title: Branches
-    Branch:
-      type: object
-      description: What is a branch? https://bolagsverket.se/en/bus/business/branch/some-typical-features-of-a-branch-1.12787
-      properties:
-        name:
-          type: string
-        headQuarter:
-          type: boolean
-          description: 'True if this branch is the headquarter'
-        bankgiroAddress:
-          type: string
-          description: The registered address for the bankgiro account.
-        address:
-          "$ref": "#/components/schemas/BranchAddress"
-        officeNumber:
-          type: string
-          description: >-
-            Branch office number. Unique id for this branch
-        dunsNumber:
-          type: string
-      required: []
-      title: Branch
-    BranchAddress:
-      type: object
-      properties:
-        postalCode:
-          type: string
-          description: postalcode
-        town:
-          type: string
-          descripion: town
-      required: []
-      title: BranchAddress
+    
     Capital:
       type: object
-      description: Capital section
+      description: Capital section - TODO more descriptive here please.
       properties:
         shareCapital:
           "$ref": "#/components/schemas/ShareCapital"
+        paidUpCapital:
+          "$ref": "#/components/schemas/PaidUpCapital"
       required: []
       title: Capital
+    PaidUpCapital:
+      type: object
+      description: Paid up capital - TODO what is the diffrence to share capital
+      properties:
+        amount:
+          "$ref": '#/components/schemas/Amount'
+      required: []
+      title: PaidUpCapital
     ShareCapital:
       type: object
       description: Share capital
