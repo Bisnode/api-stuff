@@ -1367,11 +1367,7 @@ components:
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         activeInVat:
           type: boolean
-          description: If the company is actively paying Vat.  
-        offTheShelfCompany:
-          type: boolean
-          description: >-
-            A company which has already been registered by an accountant or lawyer, and which is ready for sale to someone who wants to set up a new company quickly.
+          description: If the company is actively paying Vat.
         registeredAsEmployer:
           type: boolean
           description: >-
