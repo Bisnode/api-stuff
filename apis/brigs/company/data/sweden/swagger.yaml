@@ -1390,6 +1390,10 @@ components:
           type: string
           format: date
           description: Date when ??? - TODO
+        officeType:
+          type: string
+          enum: ['HEADQUARTER', 'BRANCH']
+          description: Office location, TODO -add more info
       required: []
       title: GeneralCompanyData
     Identifiers:
