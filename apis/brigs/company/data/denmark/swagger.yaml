@@ -5,7 +5,7 @@ openapi: 3.0.0
 # Optional info section
 #######################
 info:
-  title: Swedish Company Credit Data
+  title: Danish Company Credit Data
   description: >- 
     Company model for Swedish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
     
@@ -22,7 +22,7 @@ components:
   # Common data models
   ####################
   schemas:
-    SwedishCompanyData:
+    DanishCompanyData:
       type: object
       properties:
         risk:
