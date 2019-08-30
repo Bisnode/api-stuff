@@ -1374,7 +1374,7 @@ components:
         officeType:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
-          description: Office location, TODO
+          description: Office location, TODO -add more info
       required: []
       title: GeneralCompanyData
     Identifiers:
