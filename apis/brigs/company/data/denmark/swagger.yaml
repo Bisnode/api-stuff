@@ -1371,6 +1371,10 @@ components:
           type: string
           enum: ['YES', 'NO']
           description: Is an import company
+        officeType:
+          type: string
+          enum: ['HEADQUARTER', 'BRANCH']
+          description: Office location, TODO
       required: []
       title: GeneralCompanyData
     Identifiers:
