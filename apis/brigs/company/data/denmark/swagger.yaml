@@ -7,7 +7,7 @@ openapi: 3.0.0
 info:
   title: Danish Company Credit Data
   description: >- 
-    Company model for Swedish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
+    Company model for Danish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
     
       Most of the descriptions for the financial items are taken from www.investopedia.com.
   
