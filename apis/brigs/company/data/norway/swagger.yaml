@@ -1371,12 +1371,13 @@ components:
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: >-
             '
-            TODO - are the enum above correct?
+            TODO - are the enum values above correct?
             TODO - add descriptions here
             '
         description:
           type: string
           description: A textual description of the code.
+          example: AS
       required: []
       title: LegalForm
     RegistrationInformation:
