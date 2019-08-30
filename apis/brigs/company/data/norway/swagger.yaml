@@ -1158,14 +1158,10 @@ components:
       description: >-
         Different set of names this company is known as or has been known as.
       properties:
-        secondaryNames:
+        tradingStyleNames:
           type: array
           items:
-            "$ref": "#/components/schemas/SecondaryName"
-        alternativeNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/AlternativeName"
+            "$ref": "#/components/schemas/TradingStyleName"
         historicalNames:
           type: array
           description: A list of historical names, does not include the current name.
@@ -1188,41 +1184,15 @@ components:
           description: Name
       required: []
       title: Name
-    SecondaryName:
+    TradingStyleName:
       type: object
-      description: A secondary name (bifirma) is a Swedish trading name, under which a the company can promote part of its business activities.
+      description: A trading style or trading name is a name a business chooses to use in addition to their official registered name.
       properties:
         name:
           type: string
-          description: The registered name
-        description:
-          type: string
-          description: Business description
-        date:
-          type: string
-          format: date
-          description: The date when this secondary name was registered.
-        type:
-          type: string
-          description: Company type. TODO - is the same as legalform ???
+          description: The additional name
       required: []
-      title: SecondaryName
-    AlternativeName:
-      type: object
-      description: A name of the company in another language. This is common in countries with more than one official language. The name may not be a translation of a another specific name type like a translation of the Registered name and is thus not the same as "Translated name".
-      properties:
-        name:
-          type: string
-          description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
-        description:
-          type: string
-          description: TODO - what is this
-        date:
-          type: string
-          format: date
-          description: Date when this name was registrered
-      title: AlternativeName
-      required: []
+      title: TradingStyleName
     ContactPoints:
       type: object
       description: Methods for getting in contact with this company.
@@ -1290,35 +1260,20 @@ components:
       properties:
         businessDescription:
           type: string
-          description: The description registered wth the local authorities describing the companys business.
+          description: The description registered with the local authorities describing the companys business.
         numberOfEmployees:
           type: integer
           format: int64
-        numberOfAlcoholServicePermits:
-          type: integer
-          format: int32
-          description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        activeInVat:
+        registeredInVat:
           type: boolean
-          description: If the company is actively paying Vat.  
-        offTheShelfCompany:
-          type: boolean
-          description: >-
-            A company which has already been registered by an accountant or lawyer, and which is ready for sale to someone who wants to set up a new company quickly.
-        registeredAsEmployer:
-          type: boolean
-          description: >-
-            'To have employees a company needs to be registered as an employer at the local tax office. More info here: https://www.skatteverket.se/foretagochorganisationer/arbetsgivare/arbetsgivarregistrering/registreradig.4.18e1b10334ebe8bc80003496.html'
-        registeredInVatList:
-          type: boolean
-          description: This indicates if the company is registered according to the Tax VAT register.
-        activeInVatStatusDate:
+          description: This indicates if the company is registered according to the Tax VAT register. TODO - is this correct
+        establishment:
           type: string
-          format: date
-          description: Date when ??? - TODO
+          description: >-
+            TODO - what is this?
       required: []
       title: GeneralCompanyData
     Identifiers:
@@ -1328,14 +1283,32 @@ components:
         bisnodeId:
           type: string
           description: A unique id set by Bisnode
-        registrationNumber:
-          type: string
-          description: National registration number
+        registration:
+          "$ref": "#/components/schemas/Registration"
         dunsNumber:
           type: string
           description: duns-number
+        vatNumber:
+          type: string
+          description: >-
+            A VAT identification number is an identifier used in many countries, including the countries of the European Union, for value added tax purposes. 
       required: []
       title: Identifiers
+    Registration:
+      type: object
+      properties:
+        registrationNumber:
+          type: string
+          description: National registration number
+        registrationDate:
+          type: string
+          format: date
+          description: Date of registration
+          example: 1937-03-01
+        registeredIn:
+          type: string
+          description: Where was the company registered.
+          example: Foretaksregisteret
     IndustryCodeSet:
       type: object
       description: Sni and nace code for classification of the business
@@ -1398,11 +1371,8 @@ components:
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: >-
             '
-            LIMITED_COMPANY - https://bolagsverket.se/en/bus/business/limited/2.1144
-            SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://bolagsverket.se/en/bus/business/sole
-            TRADING_PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400
-            LIMITED_PARTNERSHIP - https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
-            OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
+            TODO - are the enum above correct?
+            TODO - add descriptions here
             '
         description:
           type: string
