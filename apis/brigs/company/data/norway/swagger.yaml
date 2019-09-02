@@ -1469,12 +1469,12 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        keyFigures:
+        keyRatios:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
-        industryKeyFigures:
-          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/FinancialStatementKeyRatio"
+        industryKeyRatios:
+          "$ref": "#/components/schemas/FinancialStatementKeyRatio"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
@@ -1527,7 +1527,7 @@ components:
           description: Date of the auditors reservation/comment.
       required: []
       title: FinancialStatementsAuditorsReservation
-    FinancialStatementKeyFigure:
+    FinancialStatementKeyRatio:
       type: object
       properties:
         currentRatio:
@@ -1640,7 +1640,7 @@ components:
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
           example: -1555000
       required: []
-      title: FinancialStatementKeyFigure
+      title: FinancialStatementKeyRatio
     IncomeStatement:
       type: object
       properties:
@@ -2259,11 +2259,11 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        financialStatementKeyFigures:
+        financialStatementKeyRatios:
           type: array
           description: The 5 latest 
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/FinancialStatementKeyRatio"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
