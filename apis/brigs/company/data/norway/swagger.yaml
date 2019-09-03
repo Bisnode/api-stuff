@@ -1410,16 +1410,6 @@ components:
     Finance:
       type: object
       properties:
-        chattelMortgages:
-          type: array
-          description: "TODO - how many can we get here ???"
-          items:
-            "$ref": "#/components/schemas/ChattelMortgage"
-        claimsOutOfBusiness:
-          type: array
-          description: "TODO - how many can we get here ???"
-          items:
-            "$ref": "#/components/schemas/LiquidationClaim"
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
         payrollTaxes:
@@ -1430,20 +1420,7 @@ components:
           "$ref": "#/components/schemas/PropertyHoldings"
       required: []
       title: Finance
-    ChattelMortgage:
-      type: object
-      description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
-      properties:
-        creditor:
-          type: string
-          description: Name of the entity/company this mortgage entails.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: integer
-      required: []
-      title: ChattelMortgage
+    
     LiquidationClaim:
       type: object
       description: >-
@@ -1463,8 +1440,6 @@ components:
     FinancialStatements:
       type: object
       properties:
-        groupAccount:
-          "$ref": "#/components/schemas/GroupAccount"
         auditorsReservation:
           type: array
           items:
@@ -1488,36 +1463,8 @@ components:
         auditorsReservationCode:
           type: string
           description: |
-            A  -  AT LEAST ONE OF FOLLOWING THREE CRITERIA IS NOT RECOMMENDED BY THE AUDITOR:                                                               
-                   1. RECOMMENDATION THAT THE INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.
-                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.
-                  3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
-            B  -  AT LEAST ONE BOARD MEMBER, OR THE MANAGING DIRECTOR, IS DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                    
-            C  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH  SHOWS THAT THE COMPANY IS STILL BOUND TO LIQUIDATION.     DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY <50% OF SHARE CAPITAL.                                 
-            D  -  AUDITOR DECLARE BOARDMEMBERS RESPONSIBILITY TO CREATE BALANCE SHEET FOR LIQUIDATION PURPOSES THEN COMPANY'S TOTAL CAPITAL IS < 50 % OF SHARE CAPITAL.                                                             
-            E  -  THE INCOME STATEMENT OR/AND BALANCE SHEET CONTAINS UNCERTAIN OR INCORRECT VALUED ITEMS.                     
-            F  -  DEFICIENCY IN THE COMPANY'S INTERNAL CONTROL.                              
-            G  -  TAXES HAVE NOT BEEN PAID PROPERLY.                                         
-            H  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH SHOWS THAT THE COMPANY IS NOT BOUND TO LIQUIDATION.DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY < 50 % OF SHARE CAPITAL.                               
-            I  -  UNLEGAL LOAN TO SHAREHOLDER(S).                                            
-            J  -  COMMENTS FROM THE AUDITOR.                                                 
-            K  -  GENERAL INFORMATION OR COMMENT FROM THE AUDITOR IN THE ANNUAL REPORT.      
-            L  -  AT LEAST ONE OF FOLLOWING 3 CRITERIA IS NOT RECOMMENDED BY THE AUDITOR, CONCERNING THE GROUP:                                             
-                   1. RECOMMENDATION THAT THE CONSOLIDATED INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.                                         
-                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.                              
-                   3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
-            M  -  SHAREHOLDERS WILL GUARANTEE CURRENT CAPITAL CONTRIBUTIONS IN ORDER TO COVER SHORT AND LONG-TERM FINANCING.                                       
-            P  -  ANNUAL REPORT IS NOT SENT TO COMPANY HOUSE WITHIN STIPULATED TIME ALT. ANNUAL GENERAL MEETING NOT HELD IN ACCORDANCE WITH SWEDISH COMPANY ACT.    
-            R  -  COMMENT FROM THE AUDITOR.                                                  
-            1   -  CONCRETE OBSERVATIONS ON FLAWS IN ACCOUNTING PRACTICES                     
-            2   -  CONDITIONAL FINDINGS DUE TO INADEQUATE REPORTING                           
-            3   -  CONDITIONAL FINDINGS DUE TO INADEQUATCIES AND FLAWS                        
-            4   -  NEGATIVE OBSERVATIONS (IN THE ACCOUNTING PRACTICES EMPLOYED)               
-            5   -  THE AUDITOR REFRAINS FROM EXPRESSING HIS/HER OPINION  (DUE TO LACK/INACCESSIBILITY OF INFORMATION)            
-            6   -  UNSECURED LOANS TO SHAREHOLDERS                                            
-            7   -  WITHELD TAXES FROM EMPLOYEES ARE NOT DEPOSITED IN A SEPARATE ACCOUNT
-            8   -  LACK OF SUPPORTING DOCUMENTS ON OFFICIAL TRANSACTIONS AND POOR INTERNAL CONTROL PROCEDURES
-            9   -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
+            TODO - add proper codes for norway of they have this
+            
         auditorsReservationDescription:
           type: string
           description: Textual description of the auditorsReservationCode
@@ -1538,30 +1485,11 @@ components:
             
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
           example: 19.4
-        equityCapitalRatio:
-          type: number
-          format: double
-          description: >-
-            Calculated equity in percent of the total assets. ???
-        growthInNetWorth:
-          type: integer
-          format: int64
-          description: >-
-            Growth in net value of an organisation's assets, after deducting any liabilities, compared to the result from the previous statement.
-        growthInTotalCapital:
-          type: integer
-          format: int64
-          description: >-
-            Growth in total capital, compared to the result from the previous statement.
-        growthInTurnover:
-          type: integer
-          format: int64
-          description: >-
-            Growth in turnover, compared to the result from the previous statement.
         interestCoverage:
           type: number
           format: double
           description: >-
+            TODO - This is interest coverage ratio in brigs web - which one to use?
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
           example: 2.0
         interestOnLiability:
@@ -1570,64 +1498,31 @@ components:
           description: >-
             Interest on liability expressed in percent
           example: 5.0
-        liabilityRatio:
-          type: number
-          format: double
-          description: >-
-            Liabilities in percent of equity.
-            
-            The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
-        liquidAssetsOfTurnover:
-          type: number
-          format: double
-          description: liquid assets in percent of total turnover.
-        netSalesPerEmployee:
-          type: integer
-          format: int64
-          description: >-
-            Net sales per employee.
-        netSalesTrendIndex:
-          type: number
-          format: double
-          description: The trend for netsales. Comparing this years value with previous year. In percent
-          example: 5.0
-        profitMargin:
-          type: number
-          format: double
-          description: >-
-            Operating profit/loss plus financial income as a percentage of turnover.
         quickRatio:
           type: number
           format: double
           description: >-
            Current assets minus inventories in percent of current liabilities.
+           example: 17.0
         returnOnEquity:
           type: number
           format: double
           description: >-
             Profit/loss after financial items as a percentage of the total equity.
+          example: 22.55
         returnOnTotalAssets:
           type: number
           format: double
+          example: 25.0
           description: >-
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
-        riskMargin:
-          type: number
-          format: double
-          description: >-
-            Return on total capital minus average interest on liabilities.
         turnoverAssets:
           type: number
           format: double
           description: >-
             Capital turnover is measured as profit/loss in relation to assets.
-        grossMargin:
-          type: number
-          format: double
-          description: >-
-            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
           example: 33.7
-        netMargin:
+        netProfitMargin:
           type: number
           format: double
           description: >-
@@ -1639,6 +1534,72 @@ components:
           description: >-
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
           example: -1555000
+        grossMargin:
+          type: number
+          format: double
+          description: >-
+            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
+        equityToTurnover:
+          type: number
+          format: double
+          example: 20.15
+          description: >-
+            TODO - add description here
+        returnOnInvestments:
+          type: number
+          format: double
+          example: 22.25
+          description: >-
+            TODO - add description
+        equityRatio:
+          type: number
+          format: double
+          example: 13.0
+          description: >-
+            TODO - add description
+        liquidAssetsOfTurnover:
+          type: number
+          format: double
+          description: >-
+            Liquid assets in percent of total turnover. A liquid asset is an asset that can easily be converted into cash within a short amount of time.
+          example: 13.77
+        workingCapital:
+          type: integer
+          format: int64
+          example: 1200000
+          description: >-
+            Working capital is the difference between a company’s current assets, such as cash, accounts receivable (customers’ unpaid bills) and inventories of raw materials and finished goods, and its current liabilities, such as accounts payable. Working capital is a measure of a company's liquidity, operational efficiency and its short-term financial health
+        longTermStockFinancing:
+          type: number
+          format: double
+          example: 99.37
+          description: >-
+            TODO - add description
+        gearing:
+          type: number
+          format: double
+          example: 89.0
+          description: >-
+            TODO - add description
+        stockTurnover:
+          type: integer
+          format: int64
+          example: 233000
+          description: >-
+            TODO - add description
+        daysOfReceiveables:
+          type: integer
+          format: int32
+          example: 7
+          description: >-
+            TODO - add description
+        daysOfPayables:
+          type: integer
+          format: int32
+          example: 14
+          description: >-
+            TODO - add description
+        
       required: []
       title: FinancialStatementKeyRatio
     IncomeStatement:
