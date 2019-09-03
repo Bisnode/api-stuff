@@ -1305,7 +1305,9 @@ components:
         registeredAddress:
           "$ref": "#/components/schemas/StreetAddress"
         historicalAddress:
-          "$ref": "#/components/schemas/HistoricalStreetAddress"
+          type: array
+          items: 
+            "$ref": "#/components/schemas/HistoricalStreetAddress"
       title: ContactPoints
     ElectronicContactPoints:
       type: object
