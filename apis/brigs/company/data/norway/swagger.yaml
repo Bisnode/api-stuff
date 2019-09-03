@@ -1580,25 +1580,28 @@ components:
           format: double
           example: 89.0
           description: >-
-            TODO - add description
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
         stockTurnover:
-          type: integer
-          format: int64
-          example: 233000
+          type: number
+          format: double
+          example: 89.0
           description: >-
-            TODO - add description
+              Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
+
+              An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
+
         daysOfReceiveables:
           type: integer
           format: int32
           example: 7
           description: >-
-            TODO - add description
-        daysOfPayables:
+            TODO - Is it correct just to add the description below and change from pay to receive ???
+        daysPayable:
           type: integer
           format: int32
           example: 14
           description: >-
-            TODO - add description
+            Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
         
       required: []
       title: FinancialStatementKeyRatio
