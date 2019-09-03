@@ -1494,10 +1494,6 @@ components:
             "$ref": "#/components/schemas/LiquidationClaim"
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
-        payrollTaxes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PayrollTax"
         propertyHoldings:
           "$ref": "#/components/schemas/PropertyHoldings"
       required: []
@@ -2333,24 +2329,6 @@ components:
           type: string
       required: []
       title: GroupAccountAuditorsReservation
-
-    PayrollTax:
-      type: object
-      description: >- 
-        EmployersContribution or PayrollTax ???
-        TODO - describe this
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when ???
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        referenceNumber:
-          type: string
-          description: TODO - what is this???
-      required: []
-      title: PayrollTax
     PropertyHoldings:
       type: object
       description: >-
