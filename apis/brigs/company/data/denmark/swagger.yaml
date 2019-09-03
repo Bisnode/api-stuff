@@ -1118,6 +1118,10 @@ components:
           "$ref": "#/components/schemas/IndustryCodeSet"
         legalForm:
           "$ref": "#/components/schemas/LegalForm"
+        historicalLegalForm:
+          type: array
+          items:
+            "$ref": "#/components/schemas/HistoricalLegalForm"  
         status:
           "$ref": "#/components/schemas/Status"
         registrationInformation:
@@ -1481,7 +1485,7 @@ components:
       title: LegalForm
     HistoricalLegalForm:
       type: object
-      description: The company's legalform
+      description: Historical company legal forms
       properties:
         date: 
           type: string
