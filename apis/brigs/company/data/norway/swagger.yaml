@@ -1719,7 +1719,7 @@ components:
           format: int64
           description: >-
             Interest payed to the company by banks or creditinstitutes.
-            TODO - also names interestIncome
+            TODO - also named interestIncome
         otherFinancialIncome:
           type: integer
           format: int64
