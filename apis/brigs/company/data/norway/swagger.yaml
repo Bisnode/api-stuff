@@ -1550,13 +1550,14 @@ components:
           format: double
           example: 22.25
           description: >-
-            TODO - add description
+            Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an investment or compare the efficiency of a number of different investments. ROI tries to directly measure the amount of return on a particular investment, relative to the investment’s cost. To calculate ROI, the benefit (or return) of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
+
         equityRatio:
           type: number
           format: double
           example: 13.0
           description: >-
-            TODO - add description
+            The equity ratio is a financial ratio indicating the relative proportion of equity used to finance a company's assets. The two components are often taken from the firm's balance sheet or statement of financial position (so-called book value), but the ratio may also be calculated using market values for both, if the company's equities are publicly traded. 
         liquidAssetsOfTurnover:
           type: number
           format: double
