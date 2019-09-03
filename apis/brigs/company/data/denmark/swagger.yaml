@@ -1130,40 +1130,8 @@ components:
           "$ref": "#/components/schemas/GeneralCompanyData"
         branches:
           "$ref": "#/components/schemas/Branches"
-        bankgiroAccounts:
-          type: array
-          description: A list of the bankgiro accounts this company holds.
-          items:
-            "$ref": "#/components/schemas/BankgiroAccount"
       required: []
       title: CompanyInformation
-    BankgiroAccount:
-      type: object
-      description: 
-      properties:
-        address:
-          "$ref": "#/components/schemas/BankAddress"
-        bankgiroNumber:
-          type: string
-        valid:
-          type: boolean
-          description: 'True if the bankgiro account is currently active'
-      required: []
-      title: BankgiroAccount
-    BankAddress:
-      type: object
-      properties:
-        town:
-          type: string
-          description: town
-        postalCode:
-          type: string
-          description: postalcode
-        street:
-          type: string
-          description: Streaet address
-      required: []
-      title: Address
     Branches:
       type: object
       description: 
