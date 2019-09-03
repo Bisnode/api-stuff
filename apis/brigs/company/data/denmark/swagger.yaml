@@ -1414,8 +1414,10 @@ components:
       type: object
       description: Sni and nace code for classification of the business
       properties:
-        sni2007IndustryCodes:
-          "$ref": "#/components/schemas/Sni2007IndustryCodes"
+        sicCodes:
+          type: abject
+          items:
+            "$ref": "#/components/schemas/SicCode"
         naceCodes:
           type: array
           items:
@@ -1436,33 +1438,20 @@ components:
           example: 'Gathering of wild growing non-wood products'
       required: []
       title: NaceCode
-    Sni2007IndustryCodes:
+    SicCode:
       type: object
-      description: 
-      properties:
-        otherIndustryCodes:
-          type: array
-          description: Secondary codes 
-          items:
-            "$ref": "#/components/schemas/Sni2007Code"
-        primaryIndustryCode:
-          "$ref": "#/components/schemas/Sni2007Code"
-      required: []
-      title: Sni2007IndustryCodes
-    Sni2007Code:
-      type: object
-      description: 'Industry code. See https://www.scb.se/dokumentation/klassifikationer-och-standarder/standard-for-svensk-naringsgrensindelning-sni/ for more info.'
+      description: 'The Standard Industrial Classification (SIC) is a system for classifying industries by a four-digit code. . See https://en.wikipedia.org/wiki/Standard_Industrial_Classification/ for more info.'
       properties:
         code:
           type: string
-          description: the sni code
-          example: 82910
+          description: the sic code
+          example: 8730
         description:
           type: string
           description: A textual description of the code. 
-          example: "Retail sale of men's, women's and children's clothing in spec. stores"
+          example: "Research, Development, And Testing Services"
       required: []
-      title: IndustryCode
+      title: SicCode
     LegalForm:
       type: object
       description: The company's legalform
