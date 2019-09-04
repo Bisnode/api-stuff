@@ -1627,6 +1627,11 @@ components:
           format: double
           description: >-
             Operating profit/loss plus financial income as a percentage of turnover.
+        returnOnTotalAssets:
+          type: number
+          format: double
+          description: >-
+            Profit/loss after financial items plus financial costs as a percentage of the total capital.
         growthInNetWorth:
           type: integer
           format: int64
@@ -1679,11 +1684,6 @@ components:
           format: double
           description: >-
             Profit/loss after financial items as a percentage of the total equity.
-        returnOnTotalAssets:
-          type: number
-          format: double
-          description: >-
-            Profit/loss after financial items plus financial costs as a percentage of the total capital.
         riskMargin:
           type: number
           format: double
