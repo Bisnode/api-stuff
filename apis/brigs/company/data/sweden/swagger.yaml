@@ -1647,16 +1647,6 @@ components:
           format: double
           description: >-
             Calculated equity in percent of the total assets. ???
-        growthInNetWorth:
-          type: integer
-          format: int64
-          description: >-
-            Growth in net value of an organisation's assets, after deducting any liabilities, compared to the result from the previous statement.
-        growthInTotalCapital:
-          type: integer
-          format: int64
-          description: >-
-            Growth in total capital, compared to the result from the previous statement.
         growthInTurnover:
           type: integer
           format: int64
