@@ -890,6 +890,9 @@ components:
           "$ref": "#/components/schemas/BoardMembers"
         auditors:
           "$ref": "#/components/schemas/Auditors"
+        authorizedSignatory:
+          type: string
+          description: TODO ??
       required: []
       title: Management
     Auditors:
