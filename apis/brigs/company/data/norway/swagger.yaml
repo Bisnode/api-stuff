@@ -1840,6 +1840,244 @@ components:
       title: Assets
       description: >-
         Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
+    BalanceSheetAssets:
+      type: object
+      properties:
+        fixedAssetsTotal:
+          type: integer
+          format: int64
+        intangibleAssetsTotal:
+          type: integer
+          format: int64
+        researchAndDevelopment:
+          type: integer
+          format: int64
+        intangibleRights:
+          type: integer
+          format: int64
+        deferredTaxAsset:
+          type: integer
+          format: int64
+        goodwill:
+          type: integer
+          format: int64
+        tangibleAssetsTotal:
+          type: integer
+          format: int64
+        landAndBuildingsTotal:
+          type: integer
+          format: int64
+        plantAndMachinery:
+          type: integer
+          format: int64
+        shipsRigsAeroplanes:
+          type: integer
+          format: int64
+        Equipment:
+          type: integer
+          format: int64
+        financialAssetsTotal:
+          type: integer
+          format: int64
+        investmentInSubsidiaries:
+          type: integer
+          format: int64
+        investmentsInOtherGroupCompanies:
+          type: integer
+          format: int64
+        longTermReceivablesFromGroupEnterprises:
+          type: integer
+          format: int64
+        investmentsInAssociatedEnterprises:
+          type: integer
+          format: int64
+        longTermReceivablesFromAssociatedEnterprises:
+          type: integer
+          format: int64
+        investmentsInOtherEnterprises:
+          type: integer
+          format: int64
+        otherReceivables:
+          type: integer
+          format: int64
+        pensionFund:
+          type: integer
+          format: int64
+        otherFixedAssets:
+          type: integer
+          format: int64
+        currentAssets:
+          type: integer
+          format: int64
+        inventories:
+          type: integer
+          format: int64
+        rawMaterialAndConsumables:
+          type: integer
+          format: int64
+        producedGoods:
+          type: integer
+          format: int64
+        finishedProductsAndGoods:
+          type: integer
+          format: int64
+        currentReceivables:
+          type: integer
+          format: int64
+        otherShortTermReceivables:
+          type: integer
+          format: int64
+        shortTermReceivablesFromGroupEnterprises:
+          type: integer
+          format: int64
+        unpaidContributedCapitalShortTerm:
+          type: integer
+          format: int64
+        investmentsTotal:
+          type: integer
+          format: int64
+        investmentsInAssociatedEnterpricesTotal:
+          type: integer
+          format: int64
+        shortTermInvestmentShares:
+          type: integer
+          format: int64
+        shortTermInvestmentBonds:
+          type: integer
+          format: int64
+        shortTermInvestmentsFinancialInstruments:
+          type: integer
+          format: int64
+        otherFinancialIntruments:
+          type: integer
+          format: int64
+        cashAndBankBalance:
+          type: integer
+          format: int64
+        shortTermInvestmentsOther:
+          type: integer
+          format: int64
+        assetsTotal:
+          type: integer
+          format: int64
+    BalanceSheetLiabilities:
+      type: object
+      properties:
+        equity:
+          type: integer
+          format: int64
+        paidInCapital:
+          type: integer
+          format: int64
+        shareCapital:
+          type: integer
+          format: int64
+        ownShares:
+          type: integer
+          format: int64
+        sharePremium:
+          type: integer
+          format: int64
+        restrictedEquity:
+          type: integer
+          format: int64
+        retainedEarnings:
+          type: integer
+          format: int64
+        reserveForValuationVariances:
+          type: integer
+          format: int64
+        otherEquity:
+          type: integer
+          format: int64
+        minorityInterestsTotal:
+          type: integer
+          format: int64
+        liabilities:
+          type: integer
+          format: int64
+        longTermLiabilities:
+          type: integer
+          format: int64
+        provisions:
+          type: integer
+          format: int64
+        provisionsForPensionsAndSimilarLiabilities:
+          type: integer
+          format: int64
+        provisionsForDeferredTaxes:
+          type: integer
+          format: int64
+        otherProvisions:
+          type: integer
+          format: int64
+        longTermLiabilitiesOtherThanProvisions:
+          type: integer
+          format: int64
+        convertibleBonds:
+          type: integer
+          format: int64
+        bondLoans:
+          type: integer
+          format: int64
+        longTermDebtsToBanks:
+          type: integer
+          format: int64
+        longTermPayablesToGroupEnterprises:
+          type: integer
+          format: int64
+        subordinatedLoans:
+          type: integer
+          format: int64
+        otherlongTermLiabilities:
+          type: integer
+          format: int64
+        shortTermDebts:
+          type: integer
+          format: int64
+        convertibleLoans:
+          type: integer
+          format: int64
+        certificateLoans:
+          type: integer
+          format: int64
+        shortTermDebtsToBanks:
+          type: integer
+          format: int64
+        tradePayables:
+          type: integer
+          format: int64
+        taxPayables:
+          type: integer
+          format: int64
+        publicDutiesPayable:
+          type: integer
+          format: int64
+        shortTermPayablesToGroupEnterprises:
+          type: integer
+          format: int64
+        proposedDividends:
+          type: integer
+          format: int64
+        otherShortTermDebts:
+          type: integer
+          format: int64
+        liabilitiesAndEquity:
+          type: integer
+          format: int64
+        wagesToLeaderOrCeo:
+          type: integer
+          format: int64
+        renumerationToAuditor:
+          type: integer
+          format: int64
+        wagesAndPaymentsToBoard:
+          type: integer
+          format: int64
+        wagesAndPaymentsToConsultants:
+          type: integer
+          format: int64
+        
     CurrentAssets:
       type: object
       properties:
