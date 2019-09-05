@@ -1604,6 +1604,10 @@ components:
     FinancialStatementKeyFigure:
       type: object
       properties:
+        turnover: 
+          type: integer
+          format: int64
+          description: 
         currentRatio:
           type: number
           format: double
