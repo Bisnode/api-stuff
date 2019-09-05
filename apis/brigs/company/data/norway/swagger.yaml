@@ -1846,120 +1846,197 @@ components:
         fixedAssetsTotal:
           type: integer
           format: int64
-        intangibleAssetsTotal:
+          description: >-
+            A fixed asset is a long-term tangible piece of property or equipment that a firm owns and uses in its operations to generate income. Fixed assets are not expected to be consumed or converted into cash within a year. Fixed assets most commonly appear on the balance sheet as property, plant, and equipment (PP&E). 
+        totalIntangibleAssets:
           type: integer
           format: int64
+          description: >-
+            Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
         researchAndDevelopment:
           type: integer
           format: int64
+          description: >-
+            Research and development (R&D) expenses are associated with the research and development of a company's goods or services. A company generally incurs R&D expenses in the process of finding and creating new products or services.
         intangibleRights:
           type: integer
           format: int64
+          description: >-
+            Concessions, patents, licenses, trademarks and similar rights.
         deferredTaxAsset:
           type: integer
           format: int64
+          description: >-
+            A deferred tax asset is an asset on a company's balance sheet that may be used to reduce its taxable income. It can refer to a situation where a business has overpaid taxes or taxes paid in advance on its balance sheet. These taxes are eventually returned to the business in the form of tax relief, and the over-payment is, therefore, an asset for the company.
         goodwill:
           type: integer
           format: int64
-        tangibleAssetsTotal:
+          description: >-
+            Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset. 
+        tangibleAssets:
           type: integer
           format: int64
-        landAndBuildingsTotal:
+          description: >-
+            A tangible asset is an asset that has a finite monetary value and usually a physical form. Tangible assets can typically always be transacted for some monetary value though the liquidity of different markets will vary. Tangible assets are the opposite of intangible assets which have a theorized value rather than a transactional exchange value.
+        landAndBuildings:
           type: integer
           format: int64
+          description: >-
+            This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc.
         plantAndMachinery:
           type: integer
           format: int64
+          description: >-
+            plant and machinery
         shipsRigsAeroplanes:
           type: integer
           format: int64
-        Equipment:
+          description: >-
+            ships, rigs and aeroplanes
+        equipment:
           type: integer
           format: int64
+          description: equipment
         financialAssetsTotal:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         investmentInSubsidiaries:
           type: integer
           format: int64
+          description: >-
+            Investments made in subsidiaries
         investmentsInOtherGroupCompanies:
           type: integer
           format: int64
+          description: >-
+            Investments made in group companies
         longTermReceivablesFromGroupEnterprises:
           type: integer
           format: int64
+          description: >-
+            TODO - add description
         investmentsInAssociatedEnterprises:
           type: integer
           format: int64
+          description: >-
+            Investments made in associated enterprices
+            TODO - what does associated entrprises mean?
         longTermReceivablesFromAssociatedEnterprises:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         investmentsInOtherEnterprises:
           type: integer
           format: int64
+          description: >-
+            Investments made in other enterprises.
         otherReceivables:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         pensionFund:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         otherFixedAssets:
           type: integer
           format: int64
-        currentAssets:
+          description: >-
+            TODO - describe this
+        totalCurrentAssets:
           type: integer
           format: int64
+          description: >-  
+            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
         inventories:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         rawMaterialAndConsumables:
           type: integer
           format: int64
+          description: >-
+            Raw materials and consumables for processing in production.
         producedGoods:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         finishedProductsAndGoods:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         currentReceivables:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         otherShortTermReceivables:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         shortTermReceivablesFromGroupEnterprises:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         unpaidContributedCapitalShortTerm:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         investmentsTotal:
           type: integer
           format: int64
+          description: >-
+            Total amount spent on investments.
         investmentsInAssociatedEnterpricesTotal:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         shortTermInvestmentShares:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         shortTermInvestmentBonds:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         shortTermInvestmentsFinancialInstruments:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         otherFinancialIntruments:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         cashAndBankBalance:
           type: integer
           format: int64
+          description: >-
+            The sum of cash in hand and mony in the bank.
+            TODO - fix this description
         shortTermInvestmentsOther:
           type: integer
           format: int64
-        assetsTotal:
+        totalAssets:
           type: integer
           format: int64
+          description: >-
+            Total assets refers to the total amount of assets owned by this company.
     BalanceSheetLiabilities:
       type: object
       properties:
