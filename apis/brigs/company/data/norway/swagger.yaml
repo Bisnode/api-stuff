@@ -2150,12 +2150,12 @@ components:
           type: integer
           format: int64
           description: >-
-            Wages anf payments to board members
+            Wages and payments to board members
         wagesAndPaymentsToConsultants:
           type: integer
           format: int64
           description: >-
-            Wages anf payments to consultants.
+            Wages and payments to consultants.
     CurrentAssets:
       type: object
       properties:
