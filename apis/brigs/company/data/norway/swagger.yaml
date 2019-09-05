@@ -1966,118 +1966,196 @@ components:
         equity:
           type: integer
           format: int64
+          description: >-
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
         paidInCapital:
           type: integer
           format: int64
+          description: >-
+            Paid-up capital is the amount of money a company has received from shareholders in exchange for shares of stock. Paid-up capital is created when a company sells its shares on the primary market directly to investors. When shares are bought and sold among investors on the secondary market, no additional paid-up capital is created as proceeds in those transactions go to the selling shareholders, not the issuing company.
         shareCapital:
           type: integer
           format: int64
+          description: >-
+            Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock. The amount of share capital or equity financing a company has can change over time. A company that wishes to raise more equity can obtain authorization to issue and sell additional shares, thereby increasing its share capital.
         ownShares:
           type: integer
           format: int64
+          description: >-
+            The value of the shares the company owns in their own company.
         sharePremium:
           type: integer
           format: int64
+          description: >-
+            A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
         restrictedEquity:
           type: integer
           format: int64
+          description: >-
+            Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
+
+            Restricted equity is a security for other stakeholders (not shareholders) in a corporation such as lenders, suppliers, the state and employees. Restricted equity must exist since the shareholders never have to pay the debt in a bankruptcy. The shareholders in a limited company are free from liability in bankruptcy.
+
+            Restricted equity includes share capital, revaluation reserves and other reserves
         retainedEarnings:
           type: integer
           format: int64
+          description: >-    
+            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
         reserveForValuationVariances:
           type: integer
           format: int64
+          description: >-
+            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet for the purpose of maintaining a reserve account tied to certain assets. This line item can be used when a revaluation assessment finds that the carrying value of the asset has changed.
         otherEquity:
           type: integer
           format: int64
+          description: >-
+            TODO - examples
         minorityInterestsTotal:
           type: integer
           format: int64
+          description: >-
+            A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another company.
         liabilities:
           type: integer
           format: int64
+          description: >-
+            Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries.
         longTermLiabilities:
           type: integer
           format: int64
+          description: >-
+            Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
         provisions:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         provisionsForPensionsAndSimilarLiabilities:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         provisionsForDeferredTaxes:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         otherProvisions:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         longTermLiabilitiesOtherThanProvisions:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         convertibleBonds:
           type: integer
           format: int64
+          description: >-
+            A convertible bond is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
         bondLoans:
           type: integer
           format: int64
+          description: >-
+            A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
         longTermDebtsToBanks:
           type: integer
           format: int64
+          description: >-
+              "Long-term debt is debt that matures in more than one year. Long-term debt can be viewed from two perspectives: financial statement reporting by the issuer and financial investing. In financial statement reporting, companies must record long-term debt issuance and all of its associated payment obligations on its financial statements. On the flip side, investing in long-term debt includes putting money into debt investments with maturities of more than one year."
         longTermPayablesToGroupEnterprises:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         subordinatedLoans:
           type: integer
           format: int64
+          description: >-
+            Subordinated debt (loan) (also known as a subordinated debenture) is an unsecured loan or bond that ranks below other, more senior loans or securities with respect to claims on assets or earnings. Subordinated debentures are thus also known as junior securities. In the case of borrower default, creditors who own subordinated debt will not be paid out until after senior bondholders are paid in full.
         otherlongTermLiabilities:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         shortTermDebts:
           type: integer
           format: int64
+          description: >-
+            Short term debt, also called current liabilities, is a firm's financial obligations that are expected to be paid off within a year. It is listed under the current liabilities portion of the total liabilities section of a company's balance sheet.
         convertibleLoans:
           type: integer
           format: int64
+          description: >-
+            Loan that entitles the lender (or the holder of loan debenture) to convert the loan to common or preferred stock (ordinary or preference shares) at a specified conversion rate and within a specified timeframe.
         certificateLoans:
           type: integer
           format: int64
+          description: >-
+            A certificate secured loan is a type of agreement in which you pledge a type of deposit account to a financial institution in exchange for access to a sum of money. You can use this money to make a major purchase, consolidate bills, pay personal expenses or finance higher education. The deposit account that you pledge in a certificate loan is known as a certificate of deposit. With this type of account, you agree to invest a sum of money with a financial institution for a specific period of time and, in exchange, the bank agrees to pay you interest on your money.
         shortTermDebtsToBanks:
           type: integer
           format: int64
+          description: Short term debts to banks.
         tradePayables:
           type: integer
           format: int64
+          description: >-
+            Liabilities owed to suppliers for purchases or services rendered. More commonly referred to as accounts payable.
         taxPayables:
           type: integer
           format: int64
+          description: >-
+            Income tax payable is a type of account in the current liabilities section of a company's balance sheet. It is compiled of taxes due to the government within one year. The calculation of income tax payable is according to the prevailing tax law in the company's home country.
         publicDutiesPayable:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         shortTermPayablesToGroupEnterprises:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         proposedDividends:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         otherShortTermDebts:
           type: integer
           format: int64
+          description: >-
+            TODO - describe this
         liabilitiesAndEquity:
           type: integer
           format: int64
+          description: >-
+            Sum of liabilities and equity
         wagesToLeaderOrCeo:
           type: integer
           format: int64
+          description: >-
+            Wages paid to the head of the company. Usually the CEO.
         renumerationToAuditor:
           type: integer
           format: int64
+          description: >-
+            The audit fee payed by client to the auditor.
         wagesAndPaymentsToBoard:
           type: integer
           format: int64
+          description: >-
+            Wages anf payments to board members
         wagesAndPaymentsToConsultants:
           type: integer
           format: int64
-        
+          description: >-
+            Wages anf payments to consultants.
     CurrentAssets:
       type: object
       properties:
