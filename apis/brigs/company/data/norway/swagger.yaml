@@ -737,7 +737,7 @@ components:
           description: >-
             A list of Companies that holds shares in this company. 
             TODO - how many will be returned
-            TODO - Will we only display companies that ows more than 50% or similar???
+            TODO - Will we only display companies that owns more than 50% or similar???
           items:
             "$ref": "#/components/schemas/ShareholderCompany"
         subsidiaries:
@@ -1075,9 +1075,53 @@ components:
           "$ref": "#/components/schemas/RegistrationInformation"
         generalCompanyData:
           "$ref": "#/components/schemas/GeneralCompanyData"
+        branches:
+          "$ref": "#/components/schemas/Branches"
       required: []
       title: CompanyInformation
-    
+    Branches:
+      type: object
+      description: 
+      properties:
+        numberOfBranches:
+          type: integer
+          format: int32
+          description: >-
+            TODO - do we have this information?
+            Total number of branches this company have. (workplaces)
+        branches:
+          type: array
+          description: TODO - How many items can we have here???
+          items:
+            "$ref": "#/components/schemas/Branch"
+      required: []
+      title: Branches
+    Branch:
+      type: object
+      description: What is a branch? Is there a definition we can use?
+      properties:
+        name:
+          type: string
+        visitingAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+        postalAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+        registrationNumber:
+          description: Local registration number
+          type: string
+      required: []
+      title: Branch
+    BranchAddress:
+      type: object
+      properties:
+        postalCode:
+          type: string
+          description: postalcode
+        town:
+          type: string
+          descripion: town
+      required: []
+      title: BranchAddress
     Capital:
       type: object
       description: Capital section - TODO more descriptive here please.
