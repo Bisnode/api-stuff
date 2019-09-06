@@ -1364,11 +1364,15 @@ components:
             
         auditorsReservationDescription:
           type: string
-          description: Textual description of the auditorsReservationCode
+          description: >-
+            Textual description of the auditorsReservationCode ?? 
+            OR the actual comment ???
         statementDate:
           type: string
           format: date
-          description: Date of the auditors reservation/comment.
+          description: >-
+            TODO - Date of the auditors reservation/comment.
+                   Or the date of the annual report the audit ???
       required: []
       title: FinancialStatementsAuditorsReservation
     FinancialStatementKeyRatio:
