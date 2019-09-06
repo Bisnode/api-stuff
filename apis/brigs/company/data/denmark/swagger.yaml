@@ -1801,6 +1801,11 @@ components:
           format: int64
           description: >-
             External costs
+        productionCosts:
+          type: integer
+          format: int64
+          description: >-
+            Production costs
         otherExternalExpenses:
           type: integer
           format: int64
@@ -1811,7 +1816,6 @@ components:
           format: int64
           description: >-
             Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service. 
-            
         administrativeCosts:
           type: integer
           format: int64
