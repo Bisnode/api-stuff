@@ -1806,7 +1806,7 @@ components:
           format: int64
           description: >-
             Production costs
-      grossContributionMargin:
+        grossContributionMargin:
           type: integer
           format: int64
           description: >-
