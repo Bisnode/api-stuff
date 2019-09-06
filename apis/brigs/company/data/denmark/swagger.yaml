@@ -1624,6 +1624,11 @@ components:
           format: int64
           description: >-  
             Total assets
+        numberOfEmployees:
+          type: integer
+          format: int64
+          description: >-
+            The number of employees at the time of this annual report.
         currentRatio:
           type: number
           format: double
