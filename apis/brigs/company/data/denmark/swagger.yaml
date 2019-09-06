@@ -1734,6 +1734,11 @@ components:
           example: 89.0
           description: >-
             Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
+        profitRate:
+          type: integer
+          format: double
+          description: >-
+           Profit Rate. Shows in '%'.  TODO -- add more info here
         payoutRatio:
           type: integer
           format: double
