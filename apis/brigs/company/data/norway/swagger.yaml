@@ -733,27 +733,16 @@ components:
     Ownership:
       type: object
       properties:
-        parentCompanies:
-          "$ref": "#/components/schemas/ParentCompanies"
+        shareHolders:
+          description: >-
+            A list of Companies that holds shares in this company. 
+            TODO - how many will be returned
+            TODO - Will we only display companies that ows more than 50% or similar???
+          items:
+            "$ref": "#/components/schemas/ShareholderCompany"
         subsidiaries:
           "$ref": "#/components/schemas/Subsidiaries"
-        sisterCompanies:
-          "$ref": "#/components/schemas/SisterCompanies"
-        familyTree:
-          type: object
-          description: The top company (Ultimate parent ???)
-          items:
-            "$ref": "#/components/schemas/FamilyTree"
-      required: []
       title: Ownership
-    FamilyTree:
-      type: object
-      description: A view of the owner structure. TODO - will we cap data???
-      properties:
-        ultimateParent:
-          "$ref": "#/components/schemas/Company"
-      required: []
-      title: FamilyTree
     Company:
       type: object
       properties:
@@ -778,31 +767,13 @@ components:
             "$ref": "#/components/schemas/Company"
       required: []
       title: Company
-    ParentCompanies:
+    ShareholderCompany:
       type: object
-      properties:
-        numberOfParentCompanies:
-          type: integer
-          format: int32
-        parents:
-          type: array
-          description: A list of the parent companies.
-          items:
-            "$ref": "#/components/schemas/ParentCompany"
-      required: []
-      title: ParentCompanies
-    ParentCompany:
-      type: object
-      description: A company relates to another one as it's parent if it owns the majority (>50%) of the capital of that other company.
+      description: Company which owns shares in this company.
       properties:
         name:
           type: string
           description: Name of the company
-        type:
-          type: string
-          description: >-
-            The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
-          enum: ['PARENT', 'ULTIMATE_PARENT']
         dunsNumber:
           type: string
         countryCode:
@@ -821,40 +792,16 @@ components:
         shareCapital:
           "$ref": "#/components/schemas/Amount"
       required: []
-      title: Parent
-    SisterCompanies:
-      type: object
-      properties:
-        numberOfSisterCompanies:
-          type: integer
-        sisterCompanies:
-          type: array
-          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
-          items:
-            "$ref": "#/components/schemas/SisterCompany"
-      required: []
-      title: SisterCompanies
-    SisterCompany:
-      type: object
-      description: A company which is owned by the same parent company as another company. One parent company can have one or many subsidiaries, which all are sister companies to each other.
-      properties:
-        name:
-          type: string
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-      required: []
-      title: SisterCompany
+      title: ShareholderCompany
     Subsidiaries:
       type: object
       properties:
         numberOfSubsidiaries:
           type: integer
           format: int32
-          description: Total number of subsidiaries this company have.
+          description: >-
+            Total number of subsidiaries this company have.
+            TODO - do we have this information
         subsidiaries:
           type: array
           items:
@@ -884,8 +831,6 @@ components:
           type: string
           format: date
           description: TODO - what does this date mean???
-        shareCapital:
-          "$ref": "#/components/schemas/Amount"
       required: []
       title: Subsidiary
     Management:
