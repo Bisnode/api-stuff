@@ -1607,7 +1607,8 @@ components:
         turnover: 
           type: integer
           format: int64
-          description: 
+          description: >-
+            Net sales - sales from the companies main industry or industries
         currentRatio:
           type: number
           format: double
