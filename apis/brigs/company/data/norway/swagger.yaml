@@ -841,6 +841,14 @@ components:
           "$ref": "#/components/schemas/BoardMembers"
         auditors:
           "$ref": "#/components/schemas/Auditors"
+        authorizedSignatory:
+          type: string
+          description: >-
+            Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
+        procuration:
+          type: string
+          description: >-
+            TODO - add a good description here
       required: []
       title: Management
     Auditors:
@@ -875,60 +883,16 @@ components:
           description: The name of the person/entity holding this position
         registrationNumber:
           type: string
-          description: Typically a social security number
+          description: Typically a social security number, could be a duns-number as well
         function:
           type: integer
           format: int32
           description: >-
-            '
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
-            '
-        description:
+        location:
           type: string
-          description: A textual description of the function
+          description: >-
+            'A countrycode as described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+            TODO - is this correct?? or could it be other stuff here'
       required: []
       title: Position
     HistoricalPosition:
@@ -946,56 +910,13 @@ components:
           type: integer
           format: int32
           description: |
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
+            TODO - add description                 
         name:
           type: string
           description: The name of the person/entity holding this position
         registrationNumber:
           type: string
-          description: Typically a social securityNumber
+          description: Typically a social securityNumber, could be a duns-number as well.
         resignedDate:
           type: string
           format: date
@@ -1013,34 +934,6 @@ components:
           type: string
           format: date
           description: TODO - what is this ???
-        totalNumberOfDeputies:
-          type: integer
-          format: int32
-          description: The number of deputies the company currently have
-        minBoardMembers:
-          type: integer
-          format: int32
-          description: The minimum number of boardmembers the company must have according to the company's article of association ???
-        maxBoardMembers:
-          type: integer
-          format: int32
-          description: The maximum number of boardmembers the company can have according to the company's article of association ???
-        minDeputies:
-          type: integer
-          format: int32
-          description: The minimum number of deputies the company must have according to the company's article of association ???
-        maxDeputies:
-          type: integer
-          format: int32
-          description: The maximum number of deputies the company can have according to the company's article of association ???
-        bankruptcyCommitments:
-          type: integer
-          format: int32
-          description: Total number of bankruptcies the members of the current board has been involved in.
-        paymentRemarksOnBoardMembers:
-          type: integer
-          format: int32
-          description: Total number of paymentremarks the members of the current board has registered on themselves.
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
@@ -1102,6 +995,7 @@ components:
       properties:
         name:
           type: string
+          description: Name of the branch
         visitingAddress:
           "$ref": "#/components/schemas/StreetAddress"
         postalAddress:
@@ -1109,6 +1003,11 @@ components:
         registrationNumber:
           description: Local registration number
           type: string
+        numberOfEmployees:
+          type: integer
+          format: int32
+          description: >-
+            The number of empoyees that work at this branch
       required: []
       title: Branch
     BranchAddress:
