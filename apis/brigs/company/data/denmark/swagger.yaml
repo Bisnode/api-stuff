@@ -1696,6 +1696,12 @@ components:
           format: int64
           description: >-
            Break-even sales ?? TODO
+        marginOfSafety:
+          type: number
+          format: double
+          description: >-
+           The difference between actual sales and break-even sales.
+          example: 100.0
         growthInTotalCapital:
           type: integer
           format: int64
