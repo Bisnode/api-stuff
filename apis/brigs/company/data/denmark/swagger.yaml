@@ -1906,59 +1906,6 @@ components:
           format: int64
           description: >-
             Secondary items. ?? TODO - what is this??
-        resultBeforeExtraordinaryItems:  
-           type: integer
-          format: int64 
-          description: >-
-            Result before extraordinary items
-        nonRecurringItems:
-          type: integer
-          format: int64
-          description: >-
-            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations. 
-        otherExternalExpenses:
-          type: integer
-          format: int64
-          description: >-
-            Other external expenses.
-        totalOperatingExpenses:
-          type: integer
-          format: int64
-          description: >-
-            An operating expense is an expense a business incurs through its normal business operations. Often abbreviated as OPEX, operating expenses include rent, equipment, inventory costs, marketing, payroll, insurance, and funds allocated for research and development. One of the typical responsibilities that management must contend with is determining how to reduce operating expenses without significantly affecting a firm's ability to compete with its competitors.
-            
-        resultFromParticipationInGroupCompanies:
-          type: integer
-          format: int64
-          description: >-
-            Result from participation in group companies and associated. Example ???
-        interestIncomeFromGroupCompanies:
-          type: integer
-          format: int64
-          description: >-
-            Interest income from group companies. Example ???
-
-        interestExpenseToGroupCompanies:
-          type: integer
-          format: int64
-          description: >-
-            'Interest expenses to group companies. Example: loans'
-        totalInterestExpenses:
-          type: integer
-          format: int64
-          description: >-
-            An interest expense is the cost incurred by an entity for borrowed funds.
-            Total interest expenses. A sum of externalInterestExpenses and interestExpenseToGroupCompanies. ???
-        nonRecurringFinancialItems:
-          type: integer
-          format: int64
-          description: >-
-            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations.
-        profitLossAfterFinancialItems:
-          type: integer
-          format: int64
-          description: >-
-            Result after financial items. 
         extraordinaryIncome:
           type: integer
           format: int64
@@ -1975,39 +1922,51 @@ components:
           description: >-
              Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
              extraordinaryIncome - extraordinaryExpenses = totalExtraordinaryItems
-        resultBeforeAllocations:
-          type: integer
-          format: int64
-          description:  >-
-            Earnings before appropriations
-            or
-            Result before allocation
-        groupContribution:
-          type: integer
-          format: int64
-          description: >-
-            TODO - what is this ???
-        shareholdersContribution:
-          type: integer
-          format: int64
-          description: >-
-            A shareholder contribution means that any or all shareholders pay money to the company without obtaining new shares. The motive may be that the owners want to avoid the company having to be liquidated.
-        appropriations:
-          type: integer
-          format: int64
-          description: >-
-            TODO - appropriations or allocations ???
-            Tax law allows companies to wait to pay tax for the year's profit. The rules are designed so that the company should report "pretense costs" if they want to wait for taxation, and report "pretense revenue" the year when they want to tax profits from previous years.
         profitLossBeforeTax:
           type: integer
           format: int64
           description: >- 
             Result before tax
-        netProfitLoss:
+        taxOnExtraordinaryResult:
+          type: integer
+          format: int64
+          descriptoon: >-
+            Tax on extraordinary earnings
+        taxOnAnnualResult:
+          type: integer
+          format: int64
+          descriptoon: >-
+          Tax on profit or loss for the year 
+        taxesFromOtherYears:
+          type: integer
+          format: int64
+          descriptoon: >-
+            Taxes from other years  
+        otherTaxes:
+          type: integer
+          format: int64
+          descriptoon: >-
+            Other taxes   
+        resultBeforeExtraordinaryItems:  
+           type: integer
+          format: int64 
+          description: >-
+            Earnings before extraordinary items
+        annualResult:
           type: integer
           format: int64
           description: >-
-            A positive value means that the company made a net profit and a negative that it made a net loss.
+            Profit or loss for the year
+        minorityInterest:
+          type: integer
+          format: int64
+          description: >-
+            Minority interest -- ?? TODO - add more info
+        resultAfterMinorityInterestShare:
+          type: integer
+          format: int64
+          description: >-
+            Earnings after minority interest share
     BalanceSheet:
       type: object
       properties:
