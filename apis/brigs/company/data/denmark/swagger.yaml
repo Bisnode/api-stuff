@@ -1739,6 +1739,11 @@ components:
           format: double
           description: >-
            Profit Rate. Shows in '%'.  TODO -- add more info here
+        changesInSharecapital:
+          type: string
+          format: double
+          description: >-
+           Profit Rate. Shows in '%'.  TODO -- add more info here
         payoutRatio:
           type: integer
           format: double
