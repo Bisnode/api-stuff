@@ -1645,7 +1645,7 @@ components:
           description: >-
             Current assets in percent of Short term liabilities.
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
-          example: 19.
+          example: 19.25
         profitMargin:
           type: number
           format: double
