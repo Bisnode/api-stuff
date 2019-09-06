@@ -1619,6 +1619,11 @@ components:
           format: int64  
           description: >-     
             Total equity
+        totalAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Total assets
         currentRatio:
           type: number
           format: double
