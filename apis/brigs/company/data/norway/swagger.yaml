@@ -1303,10 +1303,6 @@ components:
       properties:
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
-        payrollTaxes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PayrollTax"
         propertyHoldings:
           "$ref": "#/components/schemas/PropertyHoldings"
       required: []
@@ -1328,9 +1324,19 @@ components:
           description: Date when the claim was made.
       required: []
       title: LiquidationClaim
+    GroupAccount:
+      type: object
+      properties:
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/FinancialStatement"
     FinancialStatements:
       type: object
       properties:
+        groupAccount:
+          "$ref": "#/components/schemas/GroupAccount"
         auditorsReservation:
           type: array
           items:
