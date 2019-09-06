@@ -1896,6 +1896,11 @@ components:
           format: int64
           description: >-
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
+        incomeFromShare:
+          type: integer
+          format: int64
+          description: >-
+            Income from shares - ?? TODO add more info
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
