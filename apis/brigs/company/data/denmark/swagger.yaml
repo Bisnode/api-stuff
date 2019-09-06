@@ -1609,6 +1609,16 @@ components:
           format: int64
           description: >-
             Net sales - sales from the companies main industry or industries.
+        profitLossBeforeTax:
+          type: integer
+          format: int64
+          description: >- 
+            Result before tax
+        totalEquity:
+          type: integer
+          format: int64  
+          description: >-     
+            Total equity
         currentRatio:
           type: number
           format: double
@@ -1852,7 +1862,6 @@ components:
           format: int64
           description: >-
             An interest expense is the cost incurred by an entity for borrowed funds.
-          
             Total interest expenses. A sum of externalInterestExpenses and interestExpenseToGroupCompanies. ???
         otherFinancialExpenses:
           type: integer
@@ -1889,9 +1898,7 @@ components:
           format: int64
           description: >-
              Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
-             
              extraordinaryIncome - extraordinaryExpenses = totalExtraordinaryItems
-             
         resultBeforeAllocations:
           type: integer
           format: int64
@@ -2299,7 +2306,7 @@ components:
         currency:
           type: string
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
-          example: SEK
+          example: kDKK
         balanceSheet:
           "$ref": "#/components/schemas/BalanceSheet"
         incomeStatement:
