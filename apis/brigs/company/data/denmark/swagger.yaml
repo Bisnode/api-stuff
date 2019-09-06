@@ -1686,7 +1686,12 @@ components:
           format: int64
           description: >-
             Growth in net value of an organisation's assets, after deducting any liabilities, compared to the result from the previous statement.
-        growthInTotalCapital:
+        capacityRatio:
+          type: number
+          format: double
+          description: >-
+           Capacity Ratio ?? TODO
+         growthInTotalCapital:
           type: integer
           format: int64
           description: >-
