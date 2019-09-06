@@ -1656,6 +1656,17 @@ components:
           format: double
           description: >-
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
+        returnOnEquity:
+          type: number
+          format: double
+          description: >-
+            Profit/loss after financial items as a percentage of the total equity.
+        liabilityRatio:
+          type: number
+          format: double
+          description: >-
+            Liabilities in percent of equity.
+            The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
         growthInNetWorth:
           type: integer
           format: int64
@@ -1683,13 +1694,6 @@ components:
           description: >-
             Interest on liability expressed in percent
           example: 5.0
-        liabilityRatio:
-          type: number
-          format: double
-          description: >-
-            Liabilities in percent of equity.
-            
-            The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
         liquidAssetsOfTurnover:
           type: number
           format: double
@@ -1703,11 +1707,6 @@ components:
           type: string
           format: integer
           description: The trend for netsales. Comparing this years value with previous year. TODO - Is this percent or what????
-        returnOnEquity:
-          type: number
-          format: double
-          description: >-
-            Profit/loss after financial items as a percentage of the total equity.
         riskMargin:
           type: number
           format: double
