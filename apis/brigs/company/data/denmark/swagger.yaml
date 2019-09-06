@@ -1691,7 +1691,12 @@ components:
           format: double
           description: >-
            Capacity Ratio ?? TODO
-         growthInTotalCapital:
+        breakEvenSales:
+          type: number
+          format: int64
+          description: >-
+           Break-even sales ?? TODO
+        growthInTotalCapital:
           type: integer
           format: int64
           description: >-
