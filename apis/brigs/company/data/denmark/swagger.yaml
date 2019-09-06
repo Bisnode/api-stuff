@@ -1667,6 +1667,11 @@ components:
           description: >-
             Liabilities in percent of equity.
             The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
+        turnoverAssets:
+          type: number
+          format: double
+          description: >-
+            Capital turnover is measured as profit/loss in relation to assets.
         growthInNetWorth:
           type: integer
           format: int64
@@ -1712,11 +1717,6 @@ components:
           format: double
           description: >-
             Return on total capital minus average interest on liabilities.
-        turnoverAssets:
-          type: number
-          format: double
-          description: >-
-            Capital turnover is measured as profit/loss in relation to assets.
       required: []
       title: FinancialStatementKeyFigure
     IncomeStatement:
