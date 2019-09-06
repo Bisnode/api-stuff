@@ -1702,6 +1702,16 @@ components:
           description: >-
            The difference between actual sales and break-even sales.
           example: 100.0
+        daysOfPayables:
+          type: number
+          format: double
+          description: >-
+             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies. TODO - is this correct??
+        daysOfReceivables:
+          type: number
+          format: double
+          description: >-
+            A measure of the average number of days that it takes a company to collect payment after a sale has been made. TODO - is this correct ??.
         growthInTotalCapital:
           type: integer
           format: int64
