@@ -1906,9 +1906,11 @@ components:
           format: int64
           description: >-
             Secondary items. ?? TODO - what is this??
-            
-            
-            
+        resultBeforeExtraordinaryItems:  
+           type: integer
+          format: int64 
+          description: >-
+            Result before extraordinary items
         nonRecurringItems:
           type: integer
           format: int64
