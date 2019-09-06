@@ -1926,6 +1926,11 @@ components:
           format: int64
           description: >-
             Total financial costs. A sum of all costs.
+        secondaryItems:
+          type: integer
+          format: int64
+          description: >-
+            Secondary items. ?? TODO - what is this??
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
