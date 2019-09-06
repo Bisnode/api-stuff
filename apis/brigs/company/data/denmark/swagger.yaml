@@ -1739,16 +1739,21 @@ components:
           format: double
           description: >-
            Profit Rate. Shows in '%'.  TODO -- add more info here
-        changesInSharecapital:
-          type: string
-          format: double
-          description: >-
-           Profit Rate. Shows in '%'.  TODO -- add more info here
         payoutRatio:
           type: integer
           format: double
           description: >-
            The payout ratio shows the proportion of earnings paid out as dividends to shareholders, typically expressed as a percentage of the company's earnings. The payout ratio can also be expressed as dividends paid out as a proportion of cash flow. The payout ratio is also known as the dividend payout ratio.
+        changesInSharecapital:
+          type: string
+          enum: ['YES', 'NO']
+          description: >-
+           Changes in share capital
+        changeOfAccountingPeriod:
+          type: string
+          enum: ['YES', 'NO']
+          description: >-
+           Change of accouting period
       required: []
       title: FinancialStatementKeyFigure
     IncomeStatement:
