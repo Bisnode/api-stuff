@@ -1672,6 +1672,15 @@ components:
           format: double
           description: >-
             Capital turnover is measured as profit/loss in relation to assets.
+        grossmargin:
+          type: number
+          format: double
+          description: >-
+            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts.
+            The Formula for Gross Margin Is:
+                  Gross Margin=Net Sales−COGS
+            where:
+              COGS=Cost of goods sold
         growthInNetWorth:
           type: integer
           format: int64
