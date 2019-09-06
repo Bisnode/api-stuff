@@ -1841,36 +1841,11 @@ components:
           format: int64
           description: >-
             'TODO - is this the same as: other expenses not included in nonRecurringItems, researchAndDevelopment, administrativeCosts, costOfGoods and sellingExpenses'
-        commoditiesAndNecessities:
-          type: integer
-          format: int64
-          description: >-
-            Raw materials and consumables
-        goodsForResale:
-          type: integer
-          format: int64
-          description: >-
-            Goods for resale are one kind of inventory, but resale goods and inventory are not one in the same. Merchandisers may only have one kind of inventory -- goods to sell to customers -- but a manufacturer includes finished goods, raw materials
-        nonRecurringItems:
-          type: integer
-          format: int64
-          description: >-
-            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations. 
-        otherExternalExpenses:
-          type: integer
-          format: int64
-          description: >-
-            Other external expenses.
-        totalOperatingExpenses:
-          type: integer
-          format: int64
-          description: >-
-            An operating expense is an expense a business incurs through its normal business operations. Often abbreviated as OPEX, operating expenses include rent, equipment, inventory costs, marketing, payroll, insurance, and funds allocated for research and development. One of the typical responsibilities that management must contend with is determining how to reduce operating expenses without significantly affecting a firm's ability to compete with its competitors.
         otherRevenues:
           type: integer
           format: int64
           description: >-
-           ?? TODO What is difference between 'otherRevenues' and  'otherFinancialIncome'
+            Other Revenues
         operatingProfitAfterDepreciation:
           type: integer
           format: int64
@@ -1931,6 +1906,25 @@ components:
           format: int64
           description: >-
             Secondary items. ?? TODO - what is this??
+            
+            
+            
+        nonRecurringItems:
+          type: integer
+          format: int64
+          description: >-
+            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations. 
+        otherExternalExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Other external expenses.
+        totalOperatingExpenses:
+          type: integer
+          format: int64
+          description: >-
+            An operating expense is an expense a business incurs through its normal business operations. Often abbreviated as OPEX, operating expenses include rent, equipment, inventory costs, marketing, payroll, insurance, and funds allocated for research and development. One of the typical responsibilities that management must contend with is determining how to reduce operating expenses without significantly affecting a firm's ability to compete with its competitors.
+            
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
