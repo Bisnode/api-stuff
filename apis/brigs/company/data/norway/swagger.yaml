@@ -712,11 +712,17 @@ components:
           format: date
           description: Date when the event occured
           example: '2019-03-03'
-        description:
+        details:
           type: string
-          description: A textual description of the event, can be in local language
-        eventCode: 
-          "$ref": "#/components/schemas/ReportCode"
+          description: Details of the events. TODO - I18n??
+        type: 
+          type: string
+          description: >-
+            TODO - what types do we have here?
+        source:
+          type: string
+          description: Where did the event come from
+          example: FORETAKSREGISTERET
       title: Event
     Events:
       type: array
@@ -1283,8 +1289,9 @@ components:
         bisnodeId:
           type: string
           description: A unique id set by Bisnode
-        registration:
-          "$ref": "#/components/schemas/Registration"
+        registrationNumber:
+          type: string
+          description: National registration number
         dunsNumber:
           type: string
           description: duns-number
@@ -1294,21 +1301,6 @@ components:
             A VAT identification number is an identifier used in many countries, including the countries of the European Union, for value added tax purposes. 
       required: []
       title: Identifiers
-    Registration:
-      type: object
-      properties:
-        registrationNumber:
-          type: string
-          description: National registration number
-        registrationDate:
-          type: string
-          format: date
-          description: Date of registration
-          example: 1937-03-01
-        registeredIn:
-          type: string
-          description: Where was the company registered.
-          example: Foretaksregisteret
     IndustryCodeSet:
       type: object
       description: Sni and nace code for classification of the business
@@ -1382,16 +1374,27 @@ components:
       title: LegalForm
     RegistrationInformation:
       type: object
-      description: TODO - what is the difference between these 2 dates
+      description: TODO - what is the difference between these 3 dates
       properties:
         articlesOfAssociationDate:
           type: string
           format: date
+          example: 2018-10-01
           description: Date when the article of association was created/submitted???
         foundationDate:
           type: string
           format: date
+          example: 2018-08-11
           description: Date when the company was founded
+        registrationDate:
+          type: string
+          format: date
+          description: Date of registration
+          example: 1937-03-01
+        registeredIn:
+          type: string
+          description: Where was the company registered.
+          example: Foretaksregisteret
       required: []
       title: RegistrationInformation
     Status:
@@ -1400,11 +1403,11 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - More detailed description on the statuses goes here, when is a company not started or dormant
+          description: TODO - What statuses do we have
         date:
           type: string
           format: date
-          description: Date when the status last changed
+          description: TODO - do we have a date
       required: []
       title: Status
     Finance:
@@ -1463,7 +1466,7 @@ components:
         auditorsReservationCode:
           type: string
           description: |
-            TODO - add proper codes for norway of they have this
+            TODO - add proper codes for norway if they have this
             
         auditorsReservationDescription:
           type: string
@@ -1824,22 +1827,13 @@ components:
       type: object
       properties:
         assets: 
-           "$ref": "#/components/schemas/Assets"
+           "$ref": "#/components/schemas/BalanceSheetAssets"
         liabilitiesAndEquity:
-          "$ref": "#/components/schemas/LiabilitiesAndEquity"
+          "$ref": "#/components/schemas/BalanceSheetLiabilities"
       title: BalanceSheet
       description: >-
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
-    Assets:
-      type: object
-      properties:
-        currentAssets:
-          "$ref": "#/components/schemas/CurrentAssets"
-        nonCurrentAssets:
-          "$ref": "#/components/schemas/NonCurrentAssets"
-      title: Assets
-      description: >-
-        Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
+    
     BalanceSheetAssets:
       type: object
       properties:
@@ -2233,339 +2227,6 @@ components:
           format: int64
           description: >-
             Wages and payments to consultants.
-    CurrentAssets:
-      type: object
-      properties:
-        workInProgress: 
-          type: integer
-          format: int64
-          description: >-  
-            Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
-        otherInventories: 
-          type: integer
-          format: int64
-          description: >-  
-            Other inventories
-        totalInventories: 
-          type: integer
-          format: int64
-          description: >-  
-            Total inventories
-        accountsReceivable: 
-          type: integer
-          format: int64
-          description: >-  
-            Accounts receivable is the balance of money due to a firm for goods or services delivered or used but not yet paid for by customers.
-        receivableFromGroupAndAssociatedCompanies: 
-          type: integer
-          format: int64
-          description: >-  
-            Receivable from group and associated companies.
-        otherReceivables: 
-          type: integer
-          format: int64
-          description: >-  
-           Other receivables
-        totalCurrentReceivables: 
-          type: integer
-          format: int64
-          description: >-  
-            Total current receivables
-        totalCurrentInvestments: 
-          type: integer
-          format: int64
-          description: >-  
-            Total current investments
-        totalCashBank: 
-          type: integer
-          format: int64
-          description: >-  
-            Total cash/bank
-        otherCurrentAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
-        totalCurrentAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-        totalAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Total assets
-      title: CurrentAssets
-      description: >-
-        Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
-    NonCurrentAssets:
-      type: object
-      properties:
-        claimOnPayment:
-          type: integer
-          format: int64
-          description: >-
-            Claim on payment, company capital.
-        capitalisedCostForRnd:
-          type: integer
-          format: int64
-          description: >-
-            Capitalized cost for Research and Development.
-        intangibleRights:
-          type: integer
-          format: int64
-          description: >-
-            Concessions, patents, licenses, trademarks and similar rights.  
-        goodwill:
-          type: integer
-          format: int64
-          description: >-
-            Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.  
-        otherIntangibleAssets: 
-          type: integer
-          format: int64
-          description: >-
-            These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
-        totalIntangibleAssets: 
-          type: integer
-          format: int64
-          description: >-
-            Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
-        landAndBuildings: 
-          type: integer
-          format: int64
-          description: >-
-            This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
-        includingLand: 
-          type: integer
-          format: int64
-          description: >-
-            Land is real estate or property, minus buildings and equipment. 
-        machinery: 
-          type: integer
-          format: int64
-          description: Machinery.
-        inventory: 
-          type: integer
-          format: int64
-          description: >-  
-            Inventory is the term for the goods available for sale and raw materials used to produce goods available for sale.
-        totalMachineryAndInventory: 
-          type: integer
-          format: int64
-          description: >-  
-            Total machinery and inventory.
-        otherTangibleAssetsNonDepreciable: 
-          type: integer
-          format: int64
-          description: >-  
-            Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
-        otherTangibleFixedAssetsDepreciable: 
-          type: integer
-          format: int64
-          description: >-  
-            Tangible assets that is a subject for depreciation.
-        totalTangibleNonCurrentAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Total tangible non-current assets.
-        sharesInGroupCompaniesAndAssociates: 
-          type: integer
-          format: int64
-          description: >-  
-            Shares in group companies and associated companies.
-        receivableFromGroupCompaniesAndAssociates: 
-          type: integer
-          format: int64
-          description: >-  
-            Receivable from group and associated companies.
-        loansToShareholdersAndRelatedParty: 
-          type: integer
-          format: int64
-          description: >-  
-            Loans to shareholders and related party.
-        otherNonCurrentAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Other non-current assets.
-        totalFinancialNonCurrentAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Total financial non-current assets.
-        totalNonCurrentAssets: 
-          type: integer
-          format: int64
-          description: >-  
-            Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
-              Non-current assets can be considered anything not classified as current.
-        whereofNotDepreciableNonCurrentCosts: 
-          type: integer
-          format: int64
-          description: >-  
-            Whereof not depreciable non-current costs. Refers to Total non current assets.
-      title: NonCurrentAssets
-      description: >-
-        A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
-    LiabilitiesAndEquity:
-      type: object
-      properties:
-        liabilities:
-          "$ref": "#/components/schemas/Liabilities"
-        shareholdersEquity:
-          "$ref": "#/components/schemas/ShareholdersEquity" 
-        totalEquityAndLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            Total equity and liabilities
-    Liabilities:
-      type: object
-      properties:
-        currentLiabilities:
-          "$ref": "#/components/schemas/CurrentLiabilities"
-        nonCurrentLiabilities:
-          "$ref": "#/components/schemas/LongTermLiabilities"
-      title: Liabilities
-      description: >-
-        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
-    CurrentLiabilities:
-      type: object
-      properties:
-        shortTermLiabilitiesToCreditInstitutions:
-          type: integer
-          format: int64  
-          description: >-
-            Short-term liabilities to credit institutions. 
-        accountsPayable:
-          type: integer
-          format: int64  
-          description: >-
-            Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
-        liabilitiesToGroupCompaniesAndAssociates:
-          type: integer
-          format: int64  
-          description: >-    
-            Short-term liabilities to group companies and associates.
-        otherCurrentLiabilities:
-          type: integer
-          format: int64  
-          description: >-    
-            Other current liabilities.
-        totalCurrentLiabilities:
-          type: integer
-          format: int64  
-          description: >-    
-            Total current liabilities.
-      title: CurrentLiabilities
-      description: >-
-        Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
-    LongTermLiabilities:
-      type: object
-      properties:
-        bond:
-          type: integer
-          format: int64  
-          description: >-
-            Bond.  
-        longTermLiabilitiesToCreditInstitutions:
-          type: integer
-          format: int64  
-          description: >-
-            Non-current liabilities to credit institutions.
-        liabilitiesToGroupCompaniesAndAssociates:
-          type: integer
-          format: int64  
-          description: >-    
-            Long-term liabilities to group companies and associates.
-        otherLongTermLiabilities:
-          type: integer
-          format: int64  
-          description: >-    
-            Other long-term liabilities.
-        totalLongTermLiabilities:
-          type: integer
-          format: int64  
-          description: >-    
-            Total long-term liabilities
-            
-      title: LongTermLiabilities
-      description: >-
-        Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
-    ShareholdersEquity:
-      type: object
-      properties:
-        shareCapital:
-          type: integer
-          format: int64  
-          description: >-
-            Share capital refers to funds raised by issuing shares in return for cash or other considerations.
-        sharePremiumReserve:
-          type: integer
-          format: int64  
-          description: >-
-            A share premium account is the amount of money paid for a share above the cost of the share.
-        revaluationReserve:
-          type: integer
-          format: int64  
-          description: >-    
-            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
-        otherTiedEquity:
-          type: integer
-          format: int64  
-          description: >-    
-            Other tied equity.
-        totalRestrictedEquity:
-          type: integer
-          format: int64  
-          description: >-    
-            Total restricted equity.
-        retainedEarnings:
-          type: integer
-          format: int64  
-          description: >-    
-            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
-        receivedPaidGroupContribution:
-          type: integer
-          format: int64  
-          description: >-     
-            Received/paid group contribution.
-        receivedGivenShareholdersContribution:
-          type: integer
-          format: int64  
-          description: >-     
-            Received/given shareholder's contribution.
-        profitOrlossForTheYear:
-          type: integer
-          format: int64  
-          description: >-     
-            Profit or loss for the year.
-        totalNonRestrictedEquity:
-          type: integer
-          format: int64  
-          description: >-     
-            Total non-restricted equity.
-        totalEquity:
-          type: integer
-          format: int64  
-          description: >-     
-            Total equity
-        totalUntaxedReserves:
-          type: integer
-          format: int64  
-          description: >-     
-            Total untaxed reserves.
-        totalProvisions:
-          type: integer
-          format: int64  
-          description: >-     
-            Total provisions  
-      title: ShareholdersEquity
-      description: >-
-        Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
     FinancialStatement:
       type: object
       properties:
@@ -2579,14 +2240,6 @@ components:
           description: >-
             Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
           example: 12
-        classificationCode:
-          type: string
-          enum: ['FUNCTION', 'COST']
-          description: >-
-            'Classification of the financial statement.
-            
-            Function based - https://xplaind.com/482208/income-statement-by-function
-            Cost based - https://xplaind.com/588771/income-statement-by-nature
         currency:
           type: string
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
@@ -2599,25 +2252,7 @@ components:
           "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
-    GroupAccount:
-      type: object
-      properties:
-        auditorsReservation:
-          type: array
-          items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        financialStatementKeyRatios:
-          type: array
-          description: The 5 latest 
-          items:
-            "$ref": "#/components/schemas/FinancialStatementKeyRatio"
-        financialStatements:
-          type: array
-          description: "The 5 latest will be returned sorted on date desc"
-          items:
-            "$ref": "#/components/schemas/FinancialStatement"
-      required: []
-      title: GroupAccount
+   
     PayrollTax:
       type: object
       description: >- 
