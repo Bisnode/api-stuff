@@ -1806,6 +1806,11 @@ components:
           format: int64
           description: >-
             Production costs
+      grossContributionMargin:
+          type: integer
+          format: int64
+          description: >-
+           Gross contribution margin ?? TODO - add more info
         otherExternalExpenses:
           type: integer
           format: int64
