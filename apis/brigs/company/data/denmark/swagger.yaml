@@ -1906,6 +1906,16 @@ components:
           format: int64
           description: >-
             Income from other shares - ?? TODO add more info
+        impairmentsOfFinancialAssets:
+          type: integer
+          format: int64
+          desription: >-
+            Impairments of financial assets
+         unspecifiedFinancialItems:
+          type: integer
+          format: int64
+          desription: >-
+            Unspecified financial items
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
