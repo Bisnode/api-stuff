@@ -51,14 +51,6 @@ components:
           "$ref": "#/components/schemas/CreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
-        petitions:
-          "$ref": "#/components/schemas/Petitions"
-        previousInquiries:
-          "$ref": "#/components/schemas/PreviousInquiries"
-        paymentIndex:
-          "$ref": "#/components/schemas/PaymentIndex"
-        debtBalance:
-          "$ref": "#/components/schemas/DebtBalance"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
@@ -238,11 +230,19 @@ components:
       title: PaydexModel
     PaymentRemarks:
       type: object
+      description: >-
+        TODO - add description. What does amount referr to?
       properties:
-        count:
+        paidInFullCount:
           type: integer
           format: int32
-          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
+          description: >-
+            Number of remarks that have been paid in full
+        paidInPartCount:
+          type: integer
+          format: int32
+          description: >-
+            Number of remarks that have been paid in part
         amount:
           "$ref": "#/components/schemas/Amount"
         paymentRemarks:
@@ -250,6 +250,11 @@ components:
           description: A list of remarks, most recent ones comes first. TODO - Max size ???
           items:
             "$ref": "#/components/schemas/PaymentRemark"
+        voluntaryPledges:
+          type: array
+          description: A list of voluntary pledges
+          items:
+            "$ref": "#/components/schemas/VoluntaryPledge"
       required: []
       title: PaymentRemarks
     PaymentRemark:
@@ -261,18 +266,65 @@ components:
         date:
           type: string
           format: date
-          description: Date of remark
+          description: Date
         creditor:
           type: string
-          description: Creditor, concerning remark on payment.
+          description: Creditor
+          example: Bisnode AS
         type:
-          "$ref": "#/components/schemas/ReportCode"
-        description:
           type: string
-          description: A textual description of the event type
-          example: FISSION - EXPIRED
+          description: >-
+            TODO - what types do we have here?
+        source:
+          type: string
+          description: The source of the information
+          example: SVEA FINANS AS
+        reference:
+          type: string
+          description: >-
+            A reference id
+        dueDate:
+          type: string
+          format: date
+          description: >-
+            Date when this remark should be paid.
+        
+        
       required: []
       title: PaymentRemark
+    VoluntaryPledge:
+      type: object
+      description: >-
+        TODO - what is this?
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date
+        creditor:
+          type: string
+          description: Creditor
+          example: Bisnode AS
+        type:
+          type: string
+          description: >-
+            TODO - what types do we have here?
+        source:
+          type: string
+          description: The source of the information
+          example: LØSØREREGISTERET
+        reference:
+          type: string
+          description: >-
+            A reference id
+        diaryNumber:
+          type: string
+          description: >-
+            Diary number
+      required: []
+      title: VoluntaryPledge
     ReportCode:
       type: object
       description: Common codes
@@ -601,108 +653,6 @@ components:
             ZAP       -  TRANSFEREE BY FISSION - START UP        
             ZAS       -  TRANSFEREE BY FISSION - EXECUTED        
             ZAT       -  FISSION - PERMISSION REGISTRATION              
-    Petitions:
-      type: object
-      description: Holder for petitions, the list of petitions may be capped if list is too large. The amount of all petitions is the sum on all petitions currently available in Bisnode's database and may differ from doing a sum on all the petitions in the list. 
-      properties:
-        count:
-          type: integer
-          format: int64
-          description: Total number of petitions this company have.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        petitions:
-          type: array
-          items:
-            "$ref": "#/components/schemas/Petition"
-      required: []
-      title: Petitions
-    Petition:
-      type: object
-      description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
-      properties:
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date of petition
-        description:
-          type: string
-          description: A textual description of the petition, may be in the local language.
-        creditor:
-          type: string
-          description: Creditor of petition
-        type:
-          "$ref": "#/components/schemas/ReportCode"
-      required: []
-      title: Petition
-    PreviousInquiries:
-      type: object
-      properties:
-        numberOfInquiries:
-          type: integer
-          format: int32
-          description: Total number of inquiries made on this company
-        previousInquiries:
-          type: array
-          description: A list of the inquiries. TODO - is there a max size for this?
-          items:
-            "$ref": "#/components/schemas/Inquiry"
-      required: []
-      title: PreviousInquiries
-    DebtBalance:
-      type: object
-      description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
-      properties:
-        currentDebtBalance:
-          "$ref": "#/components/schemas/CurrentDebtBalance"
-        historicalDebtBalance:
-          type: array
-          description: A list of historical Debtbalances
-          items:
-            "$ref": "#/components/schemas/HistoricalDebtBalance"
-      required: []
-      title: DebtBalance
-    CurrentDebtBalance:
-      type: object
-      description: Claims are split into public claims (A-claims), and private claims (E-claims).
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when the claim was submitted to authorities ???
-        privateClaimsCount:
-          type: integer
-          format: int64
-          description: Total count of private claims.
-        publicClaimsCount:
-          type: integer
-          format: int64
-          description: Total count of public claims.
-        totalClaimsCount:
-          type: integer
-          format: int64
-          description: Total count of claims including public and private claims.
-        privateClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
-        publicClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: CurrentDebtBalance
-    HistoricalDebtBalance:
-      type: object
-      description: A list of historical debt balances
-      properties:
-        date:
-          type: string
-          format: date
-          description: year and week number when the debt balance was valid.
-          example: '2019-W33'
-        balance:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: HistoricalDebtBalance
     Event:
       type: object
       description: Event as received from authority.
@@ -1303,27 +1253,8 @@ components:
       properties:
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
-        propertyHoldings:
-          "$ref": "#/components/schemas/PropertyHoldings"
       required: []
       title: Finance
-    
-    LiquidationClaim:
-      type: object
-      description: >-
-        'Claims that can be made in bankruptcy and which therefore entitle to dividend are called liquidation claims. For more info see: https://www4.skatteverket.se/rattsligvagledning/edition/2015.8/322188.html#h-Konkursfordringar'
-      properties:
-        company:
-          type: string
-          description: Name of the company this company has a claim on.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when the claim was made.
-      required: []
-      title: LiquidationClaim
     GroupAccount:
       type: object
       properties:
@@ -2150,155 +2081,6 @@ components:
           "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
-   
-    PayrollTax:
-      type: object
-      description: >- 
-        EmployersContribution or PayrollTax ???
-        TODO - describe this
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when ???
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        referenceNumber:
-          type: string
-          description: TODO - what is this???
-      required: []
-      title: PayrollTax
-    PropertyHoldings:
-      type: object
-      description: >-
-        TODO - how many can we get here ???
-        
-      properties:
-        ownedPartOfTaxAssessment:
-          "$ref": "#/components/schemas/Amount"
-        taxAssessment:
-          "$ref": "#/components/schemas/Amount"
-        numberOfFullyOwned:
-          type: integer
-          format: int32
-          description: The number of properties this company own 100 percent of.
-        numberOfPartlyOwned:
-          type: integer
-          format: int32
-          description: The number of properties this company own a part of. Excluding the ones it owns in full.
-        assessedRealProperties:
-          type: array
-          description: TODO - how many properties can we get here ???
-          items:
-            "$ref": "#/components/schemas/AssessedRealProperty"
-        currentRealProperties:
-          type: array
-          description: TODO - how many properties can we get here ???
-          items:
-            "$ref": "#/components/schemas/CurrentRealProperty"
-      required: []
-      title: PropertyHoldings
-    AssessedRealProperty:
-      type: object
-      description: >-
-        Taxed property holdings. 
-        
-        totalTaxAssessmentValue: Total value of all taxed properties
-        taxAssessmentValueOfLand: whereof land
-        taxAssessmentValueOfBuilding: whereof buildings
-         
-      properties:
-        countyCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        countyName:
-          type: string
-          description: Name of the county. As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityName:
-          type: string
-          description: https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        ownershipInPercent:
-          type: number
-          format: double
-          description: Ownership in percent
-          example: 50.0
-        propertyTypeCode:
-          type: string
-          description: >-
-              As described on skatteverket: https://www.skatteverket.se/foretagochorganisationer/skatter/fastighet/fastighetstaxering/typkoder.4.3f4496fd14864cc5ac9126d.html
-        propertyTypeDescription:
-          type: string
-          description: A textual description of the propertyTypeCode
-        propertyAcreage:
-          type: integer
-          format: int32
-          description: Property area size in square meters.
-        propertyDesignation:
-          type: string
-          description: Real Estate registration key. 'Fastighetsbeteckning'
-          example: Baggeby 8:1
-        taxAssessmentValueOfBuilding:
-          "$ref": "#/components/schemas/Amount"
-        taxAssessmentValueOfLand:
-          "$ref": "#/components/schemas/Amount"
-        totalTaxAssessmentValue:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: AssessedRealProperty
-    CurrentRealProperty:
-      type: object
-      properties:
-        blocked:
-          type: string
-          description: >- 
-            TODO 
-            'if true it means that the information is under investigation by the tax office???
-            '
-        objectType:
-          type: string
-          description: >-
-            "21A = lagfart/registered ownership
-             23A = tomträtt/site-leasehold right"
-          example: 21A
-        countyCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        countyName:
-          type: string
-          description: Name of the county. As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityName:
-          type: string
-          description: https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        ownershipInPercent:
-          type: number
-          format: double
-          description: Ownership in percent
-          example: 50.0
-        propertyTypeCode:
-          type: string
-          description: >-
-              As described on skatteverket: https://www.skatteverket.se/foretagochorganisationer/skatter/fastighet/fastighetstaxering/typkoder.4.3f4496fd14864cc5ac9126d.html
-        propertyTypeDescription:
-          type: string
-          description: A textual description of the propertyTypeCode
-        propertyAcreage:
-          type: integer
-          format: int32
-          description: Property area size in square meters.
-        propertyDesignation:
-          type: string
-          description: Real Estate registration key. 'Fastighetsbeteckning'
-          example: Baggeby 8:1
-        totalTaxAssessmentValue:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: CurrentRealProperty
     Bankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
