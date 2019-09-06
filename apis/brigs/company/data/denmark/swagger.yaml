@@ -1713,6 +1713,21 @@ components:
           description: >-
             A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
              TODO - is this correct ??.
+        inventoriesToTurnover:
+          type: integer
+          format: double
+          description: >-
+            The ratio is used for investigating how much of the capital is tied up in inventories. A high value indicates that the turnover of the stock is slow.
+        equityOfTurnover:
+          type: integer
+          format: double
+          description: >-
+           Shows in '%'
+        cashAndCashEquivalentsOfTurnover:
+          type: integer
+          format: double
+          description: >-
+           Shows in '%' TODO -- add more info here
         growthInTotalCapital:
           type: integer
           format: int64
