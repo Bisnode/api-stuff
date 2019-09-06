@@ -1886,6 +1886,11 @@ components:
           format: int64
           description: >-
             Income for a company that comes from anything other than its ordinary operations. 
+        externalInterestExpenses:
+          type: integer
+          format: int64
+          description: >-
+            'Interest income from group companies. Example: Bank loans ???'
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
@@ -1905,11 +1910,6 @@ components:
           format: int64
           description: >-
             'Interest expenses to group companies. Example: loans'
-        externalInterestExpenses:
-          type: integer
-          format: int64
-          description: >-
-            'Interest income from group companies. Example: Bank loans ???'
         totalInterestExpenses:
           type: integer
           format: int64
