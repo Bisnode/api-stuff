@@ -1677,10 +1677,6 @@ components:
           format: double
           description: >-
             Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts.
-            The Formula for Gross Margin Is:
-                  Gross Margin=Net Sales−COGS
-            where:
-              COGS=Cost of goods sold
         growthInNetWorth:
           type: integer
           format: int64
@@ -1723,51 +1719,26 @@ components:
           format: double
           description: >-
            Shows in '%'
-        cashAndCashEquivalentsOfTurnover:
-          type: integer
-          format: double
-          description: >-
-           Shows in '%' TODO -- add more info here
-        growthInTotalCapital:
-          type: integer
-          format: int64
-          description: >-
-            Growth in total capital, compared to the result from the previous statement.
-        growthInTurnover:
-          type: integer
-          format: int64
-          description: >-
-            Growth in turnover, compared to the result from the previous statement.
-        interestCoverage:
-          type: number
-          format: double
-          description: >-
-            Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
-          example: 2.0
-        interestOnLiability:
-          type: number
-          format: double
-          description: >-
-            Interest on liability expressed in percent
-          example: 5.0
         liquidAssetsOfTurnover:
           type: number
           format: double
           description: liquid assets in percent of total turnover.
-        netSalesPerEmployee:
+        grossMarginInPercent:
           type: integer
-          format: int64
-          description: >-
-            Net sales per employee.
-        netSalesTrendIndex:
-          type: string
-          format: integer
-          description: The trend for netsales. Comparing this years value with previous year. TODO - Is this percent or what????
-        riskMargin:
-          type: number
           format: double
           description: >-
-            Return on total capital minus average interest on liabilities.
+           Shows in '%' TODO -- add more info here
+        gearing:
+          type: number
+          format: double
+          example: 89.0
+          description: >-
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
+        payoutRatio:
+          type: integer
+          format: double
+          description: >-
+           The payout ratio shows the proportion of earnings paid out as dividends to shareholders, typically expressed as a percentage of the company's earnings. The payout ratio can also be expressed as dividends paid out as a proportion of cash flow. The payout ratio is also known as the dividend payout ratio.
       required: []
       title: FinancialStatementKeyFigure
     IncomeStatement:
