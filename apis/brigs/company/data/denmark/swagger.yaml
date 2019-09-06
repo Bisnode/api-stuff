@@ -1891,6 +1891,11 @@ components:
           format: int64
           description: >-
             'Interest income from group companies. Example: Bank loans ???'
+        otherFinancialExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
         resultFromParticipationInGroupCompanies:
           type: integer
           format: int64
@@ -1916,11 +1921,6 @@ components:
           description: >-
             An interest expense is the cost incurred by an entity for borrowed funds.
             Total interest expenses. A sum of externalInterestExpenses and interestExpenseToGroupCompanies. ???
-        otherFinancialExpenses:
-          type: integer
-          format: int64
-          description: >-
-            Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
         totalFinancialCosts:
           type: integer
           format: int64
