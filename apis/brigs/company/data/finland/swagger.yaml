@@ -1328,19 +1328,8 @@ components:
           description: "TODO - how many can we get here ???"
           items:
             "$ref": "#/components/schemas/ChattelMortgage"
-        claimsOutOfBusiness:
-          type: array
-          description: "TODO - how many can we get here ???"
-          items:
-            "$ref": "#/components/schemas/LiquidationClaim"
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
-        payrollTaxes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PayrollTax"
-        propertyHoldings:
-          "$ref": "#/components/schemas/PropertyHoldings"
       required: []
       title: Finance
     ChattelMortgage:
@@ -1357,27 +1346,10 @@ components:
           format: integer
       required: []
       title: ChattelMortgage
-    LiquidationClaim:
-      type: object
-      description: >-
-        'Claims that can be made in bankruptcy and which therefore entitle to dividend are called liquidation claims. For more info see: https://www4.skatteverket.se/rattsligvagledning/edition/2015.8/322188.html#h-Konkursfordringar'
-      properties:
-        company:
-          type: string
-          description: Name of the company this company has a claim on.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when the claim was made.
-      required: []
-      title: LiquidationClaim
     FinancialStatements:
       type: object
-      properties:
-        groupAccount:
-          "$ref": "#/components/schemas/GroupAccount"
+      description: >-
+
         auditorsReservation:
           type: array
           items:
@@ -1451,53 +1423,31 @@ components:
             
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
           example: 19.4
-        equityCapitalRatio:
+        equityAssetsRatio:
           type: number
           format: double
           description: >-
             Calculated equity in percent of the total assets. ???
-        growthInTurnover:
-          type: integer
-          format: int64
-          description: >-
-            Growth in turnover, compared to the result from the previous statement.
-        interestCoverage:
+        gearing:
           type: number
           format: double
+          example: 89.0
           description: >-
-            Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
-          example: 2.0
-        interestOnLiability:
-          type: number
-          format: double
-          description: >-
-            Interest on liability expressed in percent
-          example: 5.0
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
         liabilityRatio:
           type: number
           format: double
           description: >-
+            Debt/equity ratio in brigs web
+            
             Liabilities in percent of equity.
             
             The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
-        liquidAssetsOfTurnover:
-          type: number
-          format: double
-          description: liquid assets in percent of total turnover.
-        netSalesPerEmployee:
-          type: integer
-          format: int64
-          description: >-
-            Net sales per employee.
-        netSalesTrendIndex:
-          type: number
-          format: double
-          description: The trend for netsales. Comparing this years value with previous year. In percent
-          example: 5.0
         profitMargin:
           type: number
           format: double
           description: >-
+            profit rate in brigs web
             Operating profit/loss plus financial income as a percentage of turnover.
         quickRatio:
           type: number
@@ -1509,39 +1459,54 @@ components:
           format: double
           description: >-
             Profit/loss after financial items as a percentage of the total equity.
+        returnOnInvestments:
+          type: number
+          format: double
+          description: >-
+            TODO - add description
         returnOnTotalAssets:
+          type: integer
+          format: int64
+          example: 5500000
+          description: >-
+            TODO - add description here
+        turnover:
           type: number
           format: double
           description: >-
-            Profit/loss after financial items plus financial costs as a percentage of the total capital.
-        riskMargin:
-          type: number
-          format: double
+            TODO  - add description
+        numberOfEmployees:
+          type: integer
+          format: int64
+          example: 5200
           description: >-
-            Return on total capital minus average interest on liabilities.
-        turnoverAssets:
-          type: number
-          format: double
-          description: >-
-            Capital turnover is measured as profit/loss in relation to assets.
-        grossMargin:
-          type: number
-          format: double
-          description: >-
-            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
-          example: 33.7
-        netMargin:
-          type: number
-          format: double
-          description: >-
-            The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage. 
-          example: 23.4
+            Number of employees
         netWorth:
           type: integer
           format: int64
           description: >-
+            Called equity in brigs web
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
           example: -1555000
+        totalAssets:
+          type: integer
+          format: int64
+          example: 23444000
+          description: >-
+            TODO - add description
+        daysOfReceiveables:
+          type: number
+          format: double
+          example: 1.4
+          description: >-
+            TODO - Is it correct just to add the description below and change from pay to receive ???
+        daysOfPayables:
+          type: number
+          format: double
+          example: 14.0
+          description: >-
+            Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
+            
       required: []
       title: FinancialStatementKeyFigure
     IncomeStatement:
