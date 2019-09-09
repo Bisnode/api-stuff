@@ -2180,21 +2180,61 @@ components:
     CurrentLiabilities:
       type: object
       properties:
-        shortTermLiabilitiesToCreditInstitutions:
+        liabilitiesToCreditInstitutions:
           type: integer
           format: int64  
           description: >-
             Short-term liabilities to credit institutions. 
-        accountsPayable:
+        liabilitiesToBank:
           type: integer
           format: int64  
           description: >-
-            Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
+            Current bank liabilities. 
         liabilitiesToGroupCompaniesAndAssociates:
           type: integer
           format: int64  
           description: >-    
             Short-term liabilities to group companies and associates.
+        liabilitiesToOwners:
+          type: integer
+          format: int64  
+          description: >-    
+           Short-term liabilities to owners.
+        accountsPayable:
+          type: integer
+          format: int64  
+          description: >-
+            Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
+        companyTaxes:
+          type: integer
+          format: int64  
+          description: >-    
+           Company taxes.
+        dividents:
+          type: integer
+          format: int64  
+          description: >-    
+           Dividents.
+        advancePayments:
+          type: integer
+          format: int64  
+          description: >-    
+           Advance payments.
+        onAccountForWorkInProgress:
+          type: integer
+          format: int64  
+          description: >-    
+           On-account for work in progress     
+        otherLiabilities:
+          type: integer
+          format: int64  
+          description: >-    
+            Other liabilities. ?? TODO - what is this (exists in BRiGS)??
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64  
+          description: >-    
+            Accrued revenues and deferred expenses.
         otherCurrentLiabilities:
           type: integer
           format: int64  
@@ -2226,12 +2266,12 @@ components:
           format: int64  
           description: >-    
             Total subordinated loans.
-        longTermLiabilitiesToCreditInstitutions:
+        liabilitiesToCreditInstitutions:
           type: integer
           format: int64  
           description: >-
             Long-term liabilities to credit institutions.
-        longTermBankLiabilities:
+        liabilitiesToBank:
           type: integer
           format: int64  
           description: >-
