@@ -1044,90 +1044,8 @@ components:
           "$ref": "#/components/schemas/RegistrationInformation"
         generalCompanyData:
           "$ref": "#/components/schemas/GeneralCompanyData"
-        branches:
-          "$ref": "#/components/schemas/Branches"
-        bankgiroAccounts:
-          type: array
-          description: A list of the bankgiro accounts this company holds.
-          items:
-            "$ref": "#/components/schemas/BankgiroAccount"
       required: []
       title: CompanyInformation
-    BankgiroAccount:
-      type: object
-      description: 
-      properties:
-        address:
-          "$ref": "#/components/schemas/BankAddress"
-        bankgiroNumber:
-          type: string
-        valid:
-          type: boolean
-          description: 'True if the bankgiro account is currently active'
-      required: []
-      title: BankgiroAccount
-    BankAddress:
-      type: object
-      properties:
-        town:
-          type: string
-          description: town
-        postalCode:
-          type: string
-          description: postalcode
-        street:
-          type: string
-          description: Streaet address
-      required: []
-      title: Address
-    Branches:
-      type: object
-      description: 
-      properties:
-        numberOfBranches:
-          type: integer
-          format: int32
-          description: Total number of branches this company have.
-        branches:
-          type: array
-          description: TODO - How many items can we have here???
-          items:
-            "$ref": "#/components/schemas/Branch"
-      required: []
-      title: Branches
-    Branch:
-      type: object
-      description: What is a branch? https://bolagsverket.se/en/bus/business/branch/some-typical-features-of-a-branch-1.12787
-      properties:
-        name:
-          type: string
-        headQuarter:
-          type: boolean
-          description: 'True if this branch is the headquarter'
-        bankgiroAddress:
-          type: string
-          description: The registered address for the bankgiro account.
-        address:
-          "$ref": "#/components/schemas/BranchAddress"
-        officeNumber:
-          type: string
-          description: >-
-            Branch office number. Unique id for this branch
-        dunsNumber:
-          type: string
-      required: []
-      title: Branch
-    BranchAddress:
-      type: object
-      properties:
-        postalCode:
-          type: string
-          description: postalcode
-        town:
-          type: string
-          descripion: town
-      required: []
-      title: BranchAddress
     Capital:
       type: object
       description: Capital section
@@ -1153,10 +1071,6 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/SecondaryName"
-        alternativeNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/AlternativeName"
         historicalNames:
           type: array
           description: A list of historical names, does not include the current name.
@@ -1198,22 +1112,6 @@ components:
           description: Company type. TODO - is the same as legalform ???
       required: []
       title: SecondaryName
-    AlternativeName:
-      type: object
-      description: A name of the company in another language. This is common in countries with more than one official language. The name may not be a translation of a another specific name type like a translation of the Registered name and is thus not the same as "Translated name".
-      properties:
-        name:
-          type: string
-          description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
-        description:
-          type: string
-          description: TODO - what is this
-        date:
-          type: string
-          format: date
-          description: Date when this name was registrered
-      title: AlternativeName
-      required: []
     ContactPoints:
       type: object
       description: Methods for getting in contact with this company.
@@ -1282,23 +1180,9 @@ components:
         businessDescription:
           type: string
           description: The description registered wth the local authorities describing the companys business.
-        numberOfEmployees:
-          type: integer
-          format: int64
-        numberOfAlcoholServicePermits:
-          type: integer
-          format: int32
-          description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        activeInVat:
-          type: boolean
-          description: If the company is actively paying Vat.  
-        offTheShelfCompany:
-          type: boolean
-          description: >-
-            A company which has already been registered by an accountant or lawyer, and which is ready for sale to someone who wants to set up a new company quickly.
         registeredAsEmployer:
           type: boolean
           description: >-
@@ -1306,14 +1190,24 @@ components:
         registeredInVatList:
           type: boolean
           description: This indicates if the company is registered according to the Tax VAT register.
-        activeInVatStatusDate:
+        import:
+          type: boolean
+          description: >-
+            true if this company is registered for importing goods
+        export:
+          type: boolean
+          description: >-
+            true if this company is registered for exporting goods
+        corporateTax:
+          type: boolean
+          description: >-
+            True if this company, TODO - add description here
+        employeeRange:
           type: string
-          format: date
-          description: Date when ??? - TODO
-        officeType:
-          type: string
-          enum: ['HEADQUARTER', 'BRANCH']
-          description: Office location, TODO -add more info
+          example: 50-99
+          description: >-
+            A textual description of the range of employees this company have.
+            
       required: []
       title: GeneralCompanyData
     Identifiers:
@@ -1393,11 +1287,7 @@ components:
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: >-
             '
-            LIMITED_COMPANY - https://bolagsverket.se/en/bus/business/limited/2.1144
-            SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://bolagsverket.se/en/bus/business/sole
-            TRADING_PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400
-            LIMITED_PARTNERSHIP - https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
-            OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
+            TODO - add docs here on what legalforms are available
             '
         description:
           type: string
@@ -1406,16 +1296,13 @@ components:
       title: LegalForm
     RegistrationInformation:
       type: object
-      description: TODO - what is the difference between these 2 dates
+      description: >-
+        
       properties:
-        articlesOfAssociationDate:
+        registrationDate:
           type: string
           format: date
-          description: Date when the article of association was created/submitted???
-        foundationDate:
-          type: string
-          format: date
-          description: Date when the company was founded
+          description: Official registration date of this company
       required: []
       title: RegistrationInformation
     Status:
@@ -1424,7 +1311,7 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - More detailed description on the statuses goes here, when is a company not started or dormant
+          description: TODO - Are these statuses correct
         date:
           type: string
           format: date
