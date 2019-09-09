@@ -674,6 +674,24 @@ components:
           description: Where did the event come from
           example: FORETAKSREGISTERET
       title: Event
+    SpecialEvent:
+      type: object
+      description: Special events concerning bancruptcy.
+      properties:
+        date:
+          type: string
+          format: date
+          description: Date when the event occured
+          example: '2019-03-03'
+        status:
+          type: string
+          description: >-
+            TODO - what statuses do we have?
+        name: 
+          type: string
+          description: >-
+            Name of the events. TODO examples
+      title: SpecialEvent
     Events:
       type: array
       title: Events
@@ -2077,8 +2095,6 @@ components:
           "$ref": "#/components/schemas/BalanceSheet"
         incomeStatement:
           "$ref": "#/components/schemas/IncomeStatement"
-        notesAndOtherInformation:
-          "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
     Bankruptcy:
@@ -2090,144 +2106,4 @@ components:
           format: date
           description: Date when this company went bankrupt.
         events:
-          "$ref": "#/components/schemas/Event"
-        trustee:
-          "$ref": "#/components/schemas/Trustee"
-    Trustee:
-      type: object
-      description: Name and contact-info to the person/company handling the bankruptcy
-      properties:
-        companyName:
-          type: string
-          description: Name of the company handling the bankruptcy
-          example: Advokatfirman demo
-        name:
-          type: string
-          description: Name of the person assigned to handle the bankruptcy.
-          example: Anders Svensson
-        phoneNumber:
-          type: string
-          description: Phonenumber to the person/company assigned to handle this bankruptcy
-          example: 08-11223344
-        address:
-          type: string
-          description: The address to the person/company assigned to handle this bankruptcy
-        example: 10390, Stockholm
-    NotesAndOtherInformation:
-      type: object
-      description: >-
-        Misc information releated to the financial statement
-      properties:
-        floatingCharges:
-          type: integer
-          format: int64
-          description: >-
-            A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
-            
-        propertyMortgage:
-          type: integer
-          format: int64
-          description: >-
-              A mortgage is a debt instrument, secured by the collateral of specified real estate property, that the borrower is obliged to pay back with a predetermined set of payments.
-            
-        otherSecurities:
-          type: integer
-          format: int64
-          description: >-
-            Other securities. TODO  - examples would be nice
-              
-        totalSecurities:
-          type: integer
-          format: int64
-          description: >-
-            The sum of floatingCharges, propertyMortgage and otherSecurities.
-            TODO - is this correct.
-            
-        commentsSecurities:
-          type: string
-          enum: ['F', 'Y', 'N']
-          description: |
-            F - Securities exist, but amount missing
-            N - Data not available
-            Y - Additional securities exist
-            
-        conditionalShareholdersContribution:
-          type: integer
-          format: int64
-          description: >-
-            Contributions from shareholders where the owners have agreed that the contribution should be repaid whenever possible.
-            
-        otherContingentLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            Contingent liability is a potential liability that may occur, depending on the outcome of an uncertain future event. A contingent liability is recorded in the accounting records if the contingency is likely and the amount of the liability can be reasonably estimated.
-            
-        totalContingentLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            The sum of conditionalShareholdersContribution and otherContingentLiabilities 
-            TODO - is this correct???
-            
-        commentsLiabilities:
-          type: string
-          enum: ['F', 'Y', 'N']
-          description: |
-            F - Contingent liabilities exist, but amount missing
-            N - Data not available
-            Y - Additional contingent liabilities exist but amounts are not specified
-        numberOfEmployees:
-          type: integer
-          format: int64
-          description: >-
-            The number of employees at the time of this annual report.
-        salariesAndEmolumentsToBoardMembers:
-          type: integer
-          format: int64
-          description: >-
-            Salaries and other emoluments (payments) made to boardmembers.
-            
-        bonusToBoardMembers:
-          type: integer
-          format: int64
-          description: >-
-            Bonus paid to boardmembers.
-            
-        salariesToOthers:
-          type: integer
-          format: int64
-          description: >-
-            Salaries to others. TODO - Others as in people not employed or what???
-            
-        incentiveWagesToEmployees:
-          type: integer
-          format: int64
-          description: >-
-            A monetary gift provided to an employee based on performance, which is thought of as one way to entice the employee to continue delivering positive results. Incentive pay may come in the form of a bonus, profit-sharing, or commission.
-            
-        socialCosts:
-          type: integer
-          format: int64
-          description: >-
-            Social costs.
-            TODO - what is this???
-            
-        severancePay:
-          type: integer
-          format: int64
-          description: >-
-            Severance pay is the compensation and/or benefits an employer provides to an employee after employment is over. 
-            
-            Employers offer packages to employees who are laid off, whose jobs are eliminated because of downsizing, or who retire. Some employees who resign or are fired may also receive a severance package.
-        currentAccountCredit:
-          type: integer
-          format: int64
-          description: >-
-            Total credit given by banks and similar.
-            
-        usedAccountCredit:
-          type: integer
-          format: int64
-          description: >-
-            Credit used.
+          "$ref": "#/components/schemas/SpecialEvent"
