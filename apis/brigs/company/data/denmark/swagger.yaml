@@ -2091,25 +2091,16 @@ components:
           format: int64
           description: >-
             This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
-        includingLand: 
-          type: integer
-          format: int64
-          description: >-
-            Land is real estate or property, minus buildings and equipment. 
-        machinery: 
-          type: integer
-          format: int64
-          description: Machinery.
-        inventory: 
-          type: integer
-          format: int64
-          description: >-  
-            Inventory is the term for the goods available for sale and raw materials used to produce goods available for sale.
         totalMachineryAndInventory: 
           type: integer
           format: int64
           description: >-  
             Total machinery and inventory.
+        plantUnderConstruction: 
+          type: integer
+          format: int64
+          description: >-
+           Plant under construction
         otherTangibleAssetsNonDepreciable: 
           type: integer
           format: int64
