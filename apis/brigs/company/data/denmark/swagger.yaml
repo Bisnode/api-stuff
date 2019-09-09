@@ -2131,22 +2131,22 @@ components:
           format: int64
           description: >-  
            Own Shares.
-        totalFinancialNonCurrentAssets: 
+        otherlFinancialAssets: 
           type: integer
           format: int64
           description: >-  
-            Total financial non-current assets.
-        totalNonCurrentAssets: 
+            Other financial assets.
+        totalFinancialFixedAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Total financial fixed assets.
+        totalFixedAssets: 
           type: integer
           format: int64
           description: >-  
             Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
               Non-current assets can be considered anything not classified as current.
-        whereofNotDepreciableNonCurrentCosts: 
-          type: integer
-          format: int64
-          description: >-  
-            Whereof not depreciable non-current costs. Refers to Total non current assets.
       title: NonCurrentAssets
       description: >-
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
