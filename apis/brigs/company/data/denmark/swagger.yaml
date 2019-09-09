@@ -2278,26 +2278,38 @@ components:
           format: int64  
           description: >-     
             Other reserves
-        profitOrlossForTheYear:
+        equityBeforeMinorityInterest:
           type: integer
           format: int64  
           description: >-     
-            Profit or loss for the year.
-        totalNonRestrictedEquity:
+            Equity before minority interest.
+          example: 44 000
+        minorityInterest:
           type: integer
           format: int64  
           description: >-     
-            Total non-restricted equity.
+            Minority interest.
         totalEquity:
           type: integer
           format: int64  
           description: >-     
             Total equity
-        totalUntaxedReserves:
+            
+        deferredTax:
           type: integer
           format: int64  
           description: >-     
-            Total untaxed reserves.
+            Deferred tax.
+        pensions:
+          type: integer
+          format: int64  
+          description: >-     
+             Pensions 
+       otherProvisions:
+          type: integer
+          format: int64  
+          description: >-     
+            Other provisions 
         totalProvisions:
           type: integer
           format: int64  
