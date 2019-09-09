@@ -2071,11 +2071,6 @@ components:
           format: int64
           description: >-
             Concessions, patents, licenses, trademarks and similar rights. 
-        claimOnPayment:
-          type: integer
-          format: int64
-          description: >-
-            Claim on payment, company capital.
         otherIntangibleAssets: 
           type: integer
           format: int64
@@ -2101,31 +2096,26 @@ components:
           format: int64
           description: >-
            Plant under construction
-        otherTangibleAssetsNonDepreciable: 
+        otherTangibleAssets: 
           type: integer
           format: int64
           description: >-  
             Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
-        otherTangibleFixedAssetsDepreciable: 
+        tangibleFixedAssetsTotal: 
           type: integer
           format: int64
           description: >-  
-            Tangible assets that is a subject for depreciation.
-        totalTangibleNonCurrentAssets: 
+            Tangible assets total.
+        participatingInvestments: 
           type: integer
           format: int64
           description: >-  
-            Total tangible non-current assets.
-        sharesInGroupCompaniesAndAssociates: 
+            Participating investments.
+        otherInvestments: 
           type: integer
           format: int64
           description: >-  
-            Shares in group companies and associated companies.
-        receivableFromGroupCompaniesAndAssociates: 
-          type: integer
-          format: int64
-          description: >-  
-            Receivable from group and associated companies.
+            Other investments.
         loansToShareholdersAndRelatedParty: 
           type: integer
           format: int64
