@@ -2211,11 +2211,21 @@ components:
     LongTermLiabilities:
       type: object
       properties:
-        bond:
+        subordinatedLoanWithSpecialConditions:
           type: integer
           format: int64  
           description: >-
-            Bond.  
+           Subordinated loan with special conditions
+        subordinatedLoanWithoutSpecialConditions:
+          type: integer
+          format: int64  
+          description: >-
+           Subordinated loan without special conditions
+        totalSubordinatedLoans:
+          type: integer
+          format: int64  
+          description: >-    
+            Total subordinated loans.
         longTermLiabilitiesToCreditInstitutions:
           type: integer
           format: int64  
