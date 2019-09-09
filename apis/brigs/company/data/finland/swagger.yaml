@@ -49,18 +49,22 @@ components:
           "$ref": "#/components/schemas/CreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
-        petitions:
-          "$ref": "#/components/schemas/Petitions"
-        previousInquiries:
-          "$ref": "#/components/schemas/PreviousInquiries"
         paymentIndex:
           "$ref": "#/components/schemas/PaymentIndex"
-        debtBalance:
-          "$ref": "#/components/schemas/DebtBalance"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: Risk
+    DebtCollection:
+      type: object
+      properties:
+        debtCollectionCases:
+          type: boolean
+          description: >-
+            True if there has been any debt collection cases the last 12 months. (6 or 12, solsidan says 12)
+            TODO - descibe debt collection cases
+      required: []
+      title: DebtCollection
     CreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
@@ -649,58 +653,6 @@ components:
             "$ref": "#/components/schemas/Inquiry"
       required: []
       title: PreviousInquiries
-    DebtBalance:
-      type: object
-      description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
-      properties:
-        currentDebtBalance:
-          "$ref": "#/components/schemas/CurrentDebtBalance"
-        historicalDebtBalance:
-          type: array
-          description: A list of historical Debtbalances
-          items:
-            "$ref": "#/components/schemas/HistoricalDebtBalance"
-      required: []
-      title: DebtBalance
-    CurrentDebtBalance:
-      type: object
-      description: Claims are split into public claims (A-claims), and private claims (E-claims).
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when the claim was submitted to authorities ???
-        privateClaimsCount:
-          type: integer
-          format: int64
-          description: Total count of private claims.
-        publicClaimsCount:
-          type: integer
-          format: int64
-          description: Total count of public claims.
-        totalClaimsCount:
-          type: integer
-          format: int64
-          description: Total count of claims including public and private claims.
-        privateClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
-        publicClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: CurrentDebtBalance
-    HistoricalDebtBalance:
-      type: object
-      description: A list of historical debt balances
-      properties:
-        date:
-          type: string
-          format: date
-          description: year and week number when the debt balance was valid.
-          example: '2019-W33'
-        balance:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: HistoricalDebtBalance
     Ownership:
       type: object
       properties:
@@ -867,6 +819,10 @@ components:
           "$ref": "#/components/schemas/BoardMembers"
         auditors:
           "$ref": "#/components/schemas/Auditors"
+        authorizedSignatory:
+          type: string
+          description: >-
+            Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
       required: []
       title: Management
     Auditors:
@@ -878,11 +834,6 @@ components:
           description: Auditors currently auditing this company
           items:
             "$ref": "#/components/schemas/Position"
-        historicalAuditors:
-          type: array
-          description: Historical auditors
-          items:
-            "$ref": "#/components/schemas/HistoricalPosition"
       required: []
       title: Auditors
     Position:
