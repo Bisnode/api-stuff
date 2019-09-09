@@ -2056,26 +2056,26 @@ components:
     NonCurrentAssets:
       type: object
       properties:
-        claimOnPayment:
-          type: integer
-          format: int64
-          description: >-
-            Claim on payment, company capital.
-        capitalisedCostForRnd:
-          type: integer
-          format: int64
-          description: >-
-            Capitalized cost for Research and Development.
-        intangibleRights:
-          type: integer
-          format: int64
-          description: >-
-            Concessions, patents, licenses, trademarks and similar rights.  
         goodwill:
           type: integer
           format: int64
           description: >-
             Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.  
+        capitalisedCostForRnd:
+          type: integer
+          format: int64
+          description: >-
+            Capitalized cost for Research and Development.
+        claimOnPayment:
+          type: integer
+          format: int64
+          description: >-
+            Claim on payment, company capital.
+        intangibleRights:
+          type: integer
+          format: int64
+          description: >-
+            Concessions, patents, licenses, trademarks and similar rights.  
         otherIntangibleAssets: 
           type: integer
           format: int64
