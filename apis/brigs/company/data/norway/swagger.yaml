@@ -1321,7 +1321,7 @@ components:
           format: date
           description: >-
             TODO - Date of the auditors reservation/comment.
-                   Or the date of the annual report the audit ???
+                   Or the date of the annual report they audited ???
       required: []
       title: FinancialStatementsAuditorsReservation
     FinancialStatementKeyRatio:
