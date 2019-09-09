@@ -660,11 +660,9 @@ components:
           "$ref": "#/components/schemas/ParentCompanies"
         subsidiaries:
           "$ref": "#/components/schemas/Subsidiaries"
-        sisterCompanies:
-          "$ref": "#/components/schemas/SisterCompanies"
         familyTree:
           type: object
-          description: The top company (Ultimate parent ???)
+          description: Tree structure of the owner relationships.
           items:
             "$ref": "#/components/schemas/FamilyTree"
       required: []
@@ -683,18 +681,15 @@ components:
         registrationNumber:
           type: string
           description: The national registrationNumber for this company.
+        name:
+          type: string
+          description: name of this company
         dunsNumber:
           type: string
           description: For foreign companies a duns-number will be supplied instead of the registrationNumber
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
         companies:
           type: array
           items:
@@ -707,6 +702,8 @@ components:
         numberOfParentCompanies:
           type: integer
           format: int32
+          description: >-
+            TODO - do we have this
         parents:
           type: array
           description: A list of the parent companies.
@@ -725,18 +722,13 @@ components:
           type: string
           description: >-
             The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
+            TODO - do we have this information??
           enum: ['PARENT', 'ULTIMATE_PARENT']
         dunsNumber:
           type: string
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
         date:
           type: string
           description: >-
