@@ -2014,27 +2014,27 @@ components:
           type: integer
           format: int64
           description: >-  
-            Receivable from group and associated companies.
+            Short term receivable from group and associated companies.
+        receivablesFromOwners: 
+          type: integer
+          format: int64
+          description: >-  
+            Receivables from owners
         otherReceivables: 
           type: integer
           format: int64
           description: >-  
            Other receivables
-        totalCurrentReceivables: 
+        accruedRevenuesAndDeferredExpenses: 
           type: integer
           format: int64
           description: >-  
-            Total current receivables
-        totalCurrentInvestments: 
+            Deferred revenue is the portion of a company's revenue that has not been earned, but cash has been collected from customers in the form of a prepayment. Accrued expenses are the expenses of a company that have been incurred but not yet paid.
+        securities: 
           type: integer
           format: int64
           description: >-  
-            Total current investments
-        totalCashBank: 
-          type: integer
-          format: int64
-          description: >-  
-            Total cash/bank
+            Marketable securities are a type of liquid asset on the balance sheet of a financial report, meaning they can easily be converted to cash. They include holdings such as stocks, bonds, and other securities that are bought and sold daily.
         otherCurrentAssets: 
           type: integer
           format: int64
