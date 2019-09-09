@@ -2236,7 +2236,6 @@ components:
           format: int64  
           description: >-    
             Total long-term liabilities
-            
       title: LongTermLiabilities
       description: >-
         Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
