@@ -51,24 +51,10 @@ components:
           "$ref": "#/components/schemas/CreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
-        paymentIndex:
-          "$ref": "#/components/schemas/PaymentIndex"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
-        debtCollection:
-          "$ref": "#/components/schemas/DebtCollection"
       required: []
       title: Risk
-    DebtCollection:
-      type: object
-      properties:
-        debtCollectionCases:
-          type: boolean
-          description: >-
-            True if theres has been a Debt collection case in the last 6 months. TODO -  6 or 12, solsidan says 12.
-            TODO - describe DebtCollection
-      required: []
-      title: DebtCollection
     CreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
@@ -98,7 +84,7 @@ components:
     CreditLimit:
       type: object
       description: >- 
-        'Recommended credit limit: TODO - add description or link'
+        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
       properties:
         amount:
           "$ref": "#/components/schemas/Amount"
@@ -108,6 +94,18 @@ components:
           description: Date when the limit was changed/re-calculated.
       required: []
       title: CreditLimit
+    Inquiry:
+      type: object
+      description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date of the inquiry
+      required: []
+      title: Inquiry
     CreditRatings:
       type: object
       description: Current and historical ratings
@@ -125,8 +123,12 @@ components:
       title: CreditRatings
     Rating:
       type: object
-      description: 'Bisnode rating model. More info here: https://finland.bisnode.fi/aaa-rating-malli-ja-luokat/'
+      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
       properties:
+        annualReportDate:
+          type: string
+          format: date
+          description: Date of the annual report data the rating was calculated from. 
         date:
           type: string
           format: date
@@ -142,7 +144,7 @@ components:
       maximum: 1100
     PartJudgements:
       type: object
-      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: TODO - add a link'
+      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
       properties:
         abilityToPay:
           "$ref": "#/components/schemas/PartJudgement"
@@ -811,6 +813,10 @@ components:
           type: string
           description: >-
             Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
+        procuration:
+          type: string
+          description: >-
+            TODO - add a good description here
       required: []
       title: Management
     Auditors:
@@ -892,6 +898,10 @@ components:
           type: integer
           format: int32
           description: The number of boardmembers the company currently have
+        officalAppointmentDate:
+          type: string
+          format: date
+          description: TODO - what is this ???
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
