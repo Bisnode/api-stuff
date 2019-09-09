@@ -2248,21 +2248,16 @@ components:
           format: int64  
           description: >-
             Share capital refers to funds raised by issuing shares in return for cash or other considerations.
-        sharePremiumReserve:
-          type: integer
-          format: int64  
-          description: >-
-            A share premium account is the amount of money paid for a share above the cost of the share.
         revaluationReserve:
           type: integer
           format: int64  
           description: >-    
             Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
-        otherTiedEquity:
+        transferredResult:
           type: integer
           format: int64  
           description: >-    
-            Other tied equity.
+           Transferred earnings
         totalRestrictedEquity:
           type: integer
           format: int64  
@@ -2273,16 +2268,16 @@ components:
           format: int64  
           description: >-    
             Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
-        receivedPaidGroupContribution:
+        expectedDividend:
           type: integer
           format: int64  
           description: >-     
-            Received/paid group contribution.
-        receivedGivenShareholdersContribution:
+            Expected dividend.
+        otherReserves:
           type: integer
           format: int64  
           description: >-     
-            Received/given shareholder's contribution.
+            Other reserves
         profitOrlossForTheYear:
           type: integer
           format: int64  
