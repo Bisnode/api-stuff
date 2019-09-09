@@ -1990,21 +1990,21 @@ components:
     CurrentAssets:
       type: object
       properties:
+        inventories: 
+          type: integer
+          format: int64
+          description: >-  
+            Inventories represents raw materials, components and finished products.
         workInProgress: 
           type: integer
           format: int64
           description: >-  
             Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
-        otherInventories: 
+        propertyForSale: 
           type: integer
           format: int64
           description: >-  
-            Other inventories
-        totalInventories: 
-          type: integer
-          format: int64
-          description: >-  
-            Total inventories
+            Property for sale
         accountsReceivable: 
           type: integer
           format: int64
