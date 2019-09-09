@@ -1788,7 +1788,7 @@ components:
             Administrative expenses/costs are the expenses that an organization incurs for administrationcosts and not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
             
             Function based only
-        commoditiesAndNecessities:
+        rawMaterialAndConsumables:
           type: integer
           format: int64
           description: >-
@@ -2299,7 +2299,8 @@ components:
           type: integer
           format: int64  
           description: >-     
-            Total equity
+            Total equity.
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
         totalUntaxedReserves:
           type: integer
           format: int64  
