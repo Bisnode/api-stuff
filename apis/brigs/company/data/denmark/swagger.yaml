@@ -2116,7 +2116,7 @@ components:
           format: int64
           description: >-  
             Other investments.
-        longTermReceivablesIngroup: 
+        receivableFromGroupAndAssociatedCompanies: 
           type: integer
           format: int64
           description: >-  
