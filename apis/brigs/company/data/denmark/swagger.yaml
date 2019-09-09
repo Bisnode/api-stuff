@@ -1948,7 +1948,7 @@ components:
           descriptoon: >-
             Other taxes   
         resultBeforeExtraordinaryItems:  
-           type: integer
+          type: integer
           format: int64 
           description: >-
             Earnings before extraordinary items
