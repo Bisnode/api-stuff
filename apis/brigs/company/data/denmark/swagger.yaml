@@ -2230,12 +2230,22 @@ components:
           type: integer
           format: int64  
           description: >-
-            Non-current liabilities to credit institutions.
+            Long-term liabilities to credit institutions.
+        longTermBankLiabilities:
+          type: integer
+          format: int64  
+          description: >-
+            Long-term bank liabilities
         liabilitiesToGroupCompaniesAndAssociates:
           type: integer
           format: int64  
           description: >-    
             Long-term liabilities to group companies and associates.
+        liabilitiesToOwners:
+          type: integer
+          format: int64  
+          description: >-    
+           Long-term liabilities to owners.
         otherLongTermLiabilities:
           type: integer
           format: int64  
