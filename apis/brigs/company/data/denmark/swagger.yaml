@@ -2066,16 +2066,16 @@ components:
           format: int64
           description: >-
             Capitalized cost for Research and Development.
+        intangibleRights:
+          type: integer
+          format: int64
+          description: >-
+            Concessions, patents, licenses, trademarks and similar rights. 
         claimOnPayment:
           type: integer
           format: int64
           description: >-
             Claim on payment, company capital.
-        intangibleRights:
-          type: integer
-          format: int64
-          description: >-
-            Concessions, patents, licenses, trademarks and similar rights.  
         otherIntangibleAssets: 
           type: integer
           format: int64
