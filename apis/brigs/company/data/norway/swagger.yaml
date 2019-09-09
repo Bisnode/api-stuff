@@ -2104,6 +2104,6 @@ components:
         date:
           type: string
           format: date
-          description: Date when this company went bankrupt.
+          description: Date when this company went bankrupt. - TODO - do we have this or do we only have the special events??
         events:
           "$ref": "#/components/schemas/SpecialEvent"
