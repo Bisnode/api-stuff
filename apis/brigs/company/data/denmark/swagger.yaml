@@ -1886,7 +1886,7 @@ components:
           format: int64
           desription: >-
             Impairments of financial assets
-         unspecifiedFinancialItems:
+        unspecifiedFinancialItems:
           type: integer
           format: int64
           desription: >-
@@ -1936,7 +1936,7 @@ components:
           type: integer
           format: int64
           descriptoon: >-
-          Tax on profit or loss for the year 
+            Tax on profit or loss for the year 
         taxesFromOtherYears:
           type: integer
           format: int64
