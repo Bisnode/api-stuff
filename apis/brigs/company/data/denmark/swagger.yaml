@@ -2116,16 +2116,21 @@ components:
           format: int64
           description: >-  
             Other investments.
-        loansToShareholdersAndRelatedParty: 
+        longTermReceivablesIngroup: 
           type: integer
           format: int64
           description: >-  
-            Loans to shareholders and related party.
-        otherNonCurrentAssets: 
+           Long term Receivables in group.
+        otherFinacialReceivables: 
           type: integer
           format: int64
           description: >-  
-            Other non-current assets.
+           Other finacial receivables.
+        ownShares: 
+          type: integer
+          format: int64
+          description: >-  
+           Own Shares.
         totalFinancialNonCurrentAssets: 
           type: integer
           format: int64
