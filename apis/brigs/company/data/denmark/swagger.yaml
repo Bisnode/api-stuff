@@ -2035,6 +2035,11 @@ components:
           format: int64
           description: >-  
             Marketable securities are a type of liquid asset on the balance sheet of a financial report, meaning they can easily be converted to cash. They include holdings such as stocks, bonds, and other securities that are bought and sold daily.
+        cashAndCashEquivalents: 
+          type: integer
+          format: int64
+          description: >-  
+            Cash and cash equivalents refers to the line item on the balance sheet that reports the value of a company's assets that are cash or can be converted into cash immediately. These include bank accounts, marketable securities, commercial paper, Treasury bills, and short-term government bonds with a maturity date of three months or less. Marketable securities and money market holdings are considered cash equivalents because they are liquid and not subject to material fluctuations in value.
         otherCurrentAssets: 
           type: integer
           format: int64
