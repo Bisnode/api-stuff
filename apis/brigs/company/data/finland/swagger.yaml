@@ -1674,46 +1674,41 @@ components:
           format: int64
           description: >-  
             Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
-        otherInventories: 
-          type: integer
-          format: int64
-          description: >-  
-            Other inventories
         totalInventories: 
           type: integer
           format: int64
           description: >-  
             Total inventories
+        propertyForSale:
+          type: integer
+          format: int64
+          description: >-
+            Estimated value for properties that are to be sold. ????
         accountsReceivable: 
           type: integer
           format: int64
           description: >-  
             Accounts receivable is the balance of money due to a firm for goods or services delivered or used but not yet paid for by customers.
-        receivableFromGroupAndAssociatedCompanies: 
+        receivableFromGroupCompanies: 
           type: integer
           format: int64
           description: >-  
-            Receivable from group and associated companies.
-        otherReceivables: 
+            Receivable from group companies.
+        securities:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Accrued revenues and deferred expenses. Examples ???
+        cash: 
           type: integer
           format: int64
           description: >-  
-           Other receivables
-        totalCurrentReceivables: 
-          type: integer
-          format: int64
-          description: >-  
-            Total current receivables
-        totalCurrentInvestments: 
-          type: integer
-          format: int64
-          description: >-  
-            Total current investments
-        totalCashBank: 
-          type: integer
-          format: int64
-          description: >-  
-            Total cash/bank
+            Cash and cash equivalents
         otherCurrentAssets: 
           type: integer
           format: int64
@@ -1735,16 +1730,11 @@ components:
     NonCurrentAssets:
       type: object
       properties:
-        claimOnPayment:
-          type: integer
-          format: int64
-          description: >-
-            Claim on payment, company capital.
         capitalisedCostForRnd:
           type: integer
           format: int64
           description: >-
-            Capitalized cost for Research and Development.
+            Capitalized cost for Research and Development projects.
         intangibleRights:
           type: integer
           format: int64
@@ -1760,11 +1750,11 @@ components:
           format: int64
           description: >-
             These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
-        totalIntangibleAssets: 
+        intangibleFixedAssets: 
           type: integer
           format: int64
           description: >-
-            Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
+            intangible fixed assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
         landAndBuildings: 
           type: integer
           format: int64
@@ -1775,55 +1765,51 @@ components:
           format: int64
           description: >-
             Land is real estate or property, minus buildings and equipment. 
-        machinery: 
+        machineryAndTools: 
           type: integer
           format: int64
-          description: Machinery.
-        inventory: 
-          type: integer
-          format: int64
-          description: >-  
-            Inventory is the term for the goods available for sale and raw materials used to produce goods available for sale.
-        totalMachineryAndInventory: 
-          type: integer
-          format: int64
-          description: >-  
-            Total machinery and inventory.
-        otherTangibleAssetsNonDepreciable: 
+          description: >-
+            Machinery, tools and inventory, etc ...
+        otherTangibleAssets: 
           type: integer
           format: int64
           description: >-  
             Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
-        otherTangibleFixedAssetsDepreciable: 
-          type: integer
-          format: int64
-          description: >-  
-            Tangible assets that is a subject for depreciation.
         totalTangibleNonCurrentAssets: 
           type: integer
           format: int64
           description: >-  
             Total tangible non-current assets.
-        sharesInGroupCompaniesAndAssociates: 
+        sharesInAssociateCompanies: 
           type: integer
           format: int64
           description: >-  
-            Shares in group companies and associated companies.
-        receivableFromGroupCompaniesAndAssociates: 
+            Shares in associated companies.
+        otherInterests:
           type: integer
           format: int64
-          description: >-  
-            Receivable from group and associated companies.
-        loansToShareholdersAndRelatedParty: 
+          description: >-
+            TODO  - add description
+        longtermReceivablesFromGroup:
           type: integer
           format: int64
-          description: >-  
-            Loans to shareholders and related party.
-        otherNonCurrentAssets: 
+          description: >- 
+            TODO - add description
+        otherLongtermReceivables:
           type: integer
           format: int64
-          description: >-  
-            Other non-current assets.
+          description: >-
+            TODO - add description
+        ownShares:
+          type: integer
+          format: int64
+          description: >-
+            The value of the shares the company owns in their own company.
+        otherFinancialAssets:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
         totalFinancialNonCurrentAssets: 
           type: integer
           format: int64
@@ -1835,11 +1821,6 @@ components:
           description: >-  
             Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
               Non-current assets can be considered anything not classified as current.
-        whereofNotDepreciableNonCurrentCosts: 
-          type: integer
-          format: int64
-          description: >-  
-            Whereof not depreciable non-current costs. Refers to Total non current assets.
       title: NonCurrentAssets
       description: >-
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
@@ -1878,11 +1859,21 @@ components:
           format: int64  
           description: >-
             Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
-        liabilitiesToGroupCompaniesAndAssociates:
+        liabilitiesToGroupCompanies:
           type: integer
           format: int64  
           description: >-    
-            Short-term liabilities to group companies and associates.
+            Short-term liabilities to group companies.
+        otherLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            TODO  - add description. What is the difference to otherCurrentLiabilities ??
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
         otherCurrentLiabilities:
           type: integer
           format: int64  
@@ -1899,21 +1890,21 @@ components:
     LongTermLiabilities:
       type: object
       properties:
-        bond:
+        subordinatedLoans:
           type: integer
           format: int64  
           description: >-
-            Bond.  
+            Total subordinated loans.  
         longTermLiabilitiesToCreditInstitutions:
           type: integer
           format: int64  
           description: >-
             Non-current liabilities to credit institutions.
-        liabilitiesToGroupCompaniesAndAssociates:
+        liabilitiesToGroupCompanies:
           type: integer
           format: int64  
           description: >-    
-            Long-term liabilities to group companies and associates.
+            Long-term liabilities to group companies.
         otherLongTermLiabilities:
           type: integer
           format: int64  
@@ -1936,7 +1927,7 @@ components:
           format: int64  
           description: >-
             Share capital refers to funds raised by issuing shares in return for cash or other considerations.
-        sharePremiumReserve:
+        sharePremiumAccount:
           type: integer
           format: int64  
           description: >-
@@ -1946,53 +1937,33 @@ components:
           format: int64  
           description: >-    
             Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
-        otherTiedEquity:
+        transferredEarnings:
           type: integer
           format: int64  
           description: >-    
-            Other tied equity.
-        totalRestrictedEquity:
-          type: integer
-          format: int64  
-          description: >-    
-            Total restricted equity.
-        retainedEarnings:
-          type: integer
-          format: int64  
-          description: >-    
-            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
-        receivedPaidGroupContribution:
+            TODO - add description
+        equityBeforeMinorityInterest:
           type: integer
           format: int64  
           description: >-     
-            Received/paid group contribution.
-        receivedGivenShareholdersContribution:
+            TODO - add description
+        earningsAfterMinorityInterestShare:
           type: integer
           format: int64  
           description: >-     
-            Received/given shareholder's contribution.
-        profitOrlossForTheYear:
-          type: integer
-          format: int64  
-          description: >-     
-            Profit or loss for the year.
-        totalNonRestrictedEquity:
-          type: integer
-          format: int64  
-          description: >-     
-            Total non-restricted equity.
+            TODO - add description
         totalEquity:
           type: integer
           format: int64  
           description: >-     
             Total equity.
             Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
-        totalUntaxedReserves:
+        otherProvision:
           type: integer
           format: int64  
           description: >-     
-            Total untaxed reserves.
-        totalProvisions:
+            TODO - what is the difference to provisions ??
+        provisions:
           type: integer
           format: int64  
           description: >-     
