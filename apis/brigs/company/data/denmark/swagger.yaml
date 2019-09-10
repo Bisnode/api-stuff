@@ -731,13 +731,6 @@ components:
           "$ref": "#/components/schemas/ParentCompanies"
         subsidiaries:
           "$ref": "#/components/schemas/Subsidiaries"
-        sisterCompanies:
-          "$ref": "#/components/schemas/SisterCompanies"
-        familyTree:
-          type: object
-          description: The top company (Ultimate parent ???)
-          items:
-            "$ref": "#/components/schemas/FamilyTree"
       required: []
       title: Ownership
     FamilyTree:
