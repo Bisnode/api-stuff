@@ -783,6 +783,11 @@ components:
           description: A list of the parent companies.
           items:
             "$ref": "#/components/schemas/ParentCompany"
+        historicalParents:
+          type: array
+          description: A list of the historical parent companies.
+          items:
+            "$ref": "#/components/schemas/ParentCompany"
       required: []
       title: ParentCompanies
     ParentCompany:
