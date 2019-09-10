@@ -1055,42 +1055,6 @@ components:
     BoardMembers:
       type: object
       properties:
-        totalNumberOfBoardMembers:
-          type: integer
-          format: int32
-          description: The number of boardmembers the company currently have
-        officalAppointmentDate:
-          type: string
-          format: date
-          description: TODO - what is this ???
-        totalNumberOfDeputies:
-          type: integer
-          format: int32
-          description: The number of deputies the company currently have
-        minBoardMembers:
-          type: integer
-          format: int32
-          description: The minimum number of boardmembers the company must have according to the company's article of association ???
-        maxBoardMembers:
-          type: integer
-          format: int32
-          description: The maximum number of boardmembers the company can have according to the company's article of association ???
-        minDeputies:
-          type: integer
-          format: int32
-          description: The minimum number of deputies the company must have according to the company's article of association ???
-        maxDeputies:
-          type: integer
-          format: int32
-          description: The maximum number of deputies the company can have according to the company's article of association ???
-        bankruptcyCommitments:
-          type: integer
-          format: int32
-          description: Total number of bankruptcies the members of the current board has been involved in.
-        paymentRemarksOnBoardMembers:
-          type: integer
-          format: int32
-          description: Total number of paymentremarks the members of the current board has registered on themselves.
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
