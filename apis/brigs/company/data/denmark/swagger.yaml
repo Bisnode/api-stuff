@@ -891,9 +891,6 @@ components:
         authorizedSignatory:
           type: string
           description: TODO ??
-        procuration:
-          type: string
-          description: TODO ??
       required: []
       title: Management
     Auditors:
