@@ -1512,11 +1512,6 @@ components:
     IncomeStatement:
       type: object
       properties:
-        netSales:
-          type: integer
-          format: int64
-          description: >-
-            Net sales is the sum of a company's gross sales minus its returns, allowances, and discounts.
         changeInInventories:
           type: integer
           format: int64
@@ -1548,41 +1543,11 @@ components:
             Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
             
             Function based only
-        sellingExpenses:
+        externalCosts:
           type: integer
           format: int64
           description: >-
-            Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service. 
-            
-            Function based only
-        administrativeCosts:
-          type: integer
-          format: int64
-          description: >-
-            Administrative expenses/costs are the expenses that an organization incurs for administrationcosts and not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
-            
-            Function based only
-        rawMaterialAndConsumables:
-          type: integer
-          format: int64
-          description: >-
-            Raw materials and consumables for processing in production.
-            
-            Cost based only
-        goodsForResale:
-          type: integer
-          format: int64
-          description: >-
-            Procurement cost for sold gods.
-            
-            Cost based only
-        otherExternalExpenses:
-          type: integer
-          format: int64
-          description: >-
-            Other external expenses includes costs for example rent, office supplies, leasing, energy, consumables/inventories, reperations or maintenance.
-            
-            Cost based only
+            TODO - what is included in external costs?
         staffCosts:
           type: integer
           format: int64
@@ -1590,16 +1555,12 @@ components:
             'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
             
             Cost based only'
-        researchAndDevelopment:
+        resultBeforeExtraordinaryItems:
           type: integer
           format: int64
           description: >-
-            Research and development (R&D) expenses are associated with the research and development of a company's goods or services. A company generally incurs R&D expenses in the process of finding and creating new products or services. 
-        nonRecurringItems:
-          type: integer
-          format: int64
-          description: >-
-            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations. 
+            TODO - add description here.
+            An extraordinary item is an event or transaction that is considered abnormal, not related to ordinary company activities, and unlikely to recur in the foreseeable future.
         otherOperatingExpenses:
           type: integer
           format: int64
@@ -1610,26 +1571,6 @@ components:
           format: int64
           description: >-
             Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
-        totalOperatingExpenses:
-          type: integer
-          format: int64
-          description: >-
-            An operating expense is an expense a business incurs through its normal business operations. Often abbreviated as OPEX, operating expenses include rent, equipment, inventory costs, marketing, payroll, insurance, and funds allocated for research and development. One of the typical responsibilities that management must contend with is determining how to reduce operating expenses without significantly affecting a firm's ability to compete with its competitors.
-        operatingProfitAfterDepreciation:
-          type: integer
-          format: int64
-          description: >-
-            The operating profit (loss) is the difference between the business revenue and costs including nonRecurringFinancialItems during the fiscal year.
-        resultFromParticipationInGroupCompanies:
-          type: integer
-          format: int64
-          description: >-
-            The net from dividend income, impairment and reserved write-downs.
-        interestIncomeFromGroupCompanies:
-          type: integer
-          format: int64
-          description: >-
-            Interest payed to the company by group or affiliate.
         externalInterestIncome:
           type: integer
           format: int64
@@ -1640,45 +1581,51 @@ components:
           format: int64
           description: >-
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
-        totalFinancialIncome:
-          type: integer
-          format: int64
-          description: Total financial revenues
-        interestExpenseToGroupCompanies:
+        impairmentOfFinancialAssets:
           type: integer
           format: int64
           description: >-
-            Interest payed from the company to group or affiliate.
+            TODO - what is this???
+        incomeFromShares:
+          type: integer
+          format: int64
+          description: >-
+            Income from shares. 
+        unspecifiedFinancialItems:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description here
+        taxOnExtraordinaryEarnings:
+          type: integer
+          format: int64
+          description: >-
+            Taxes paid on extraordinary items.
         externalInterestExpenses:
           type: integer
           format: int64
           description: >-
             Interest payed from the company to banks or creditinstitutes.
-        totalInterestExpenses:
+        taxFromAnotherYear:
           type: integer
           format: int64
           description: >-
-            Total sum of interest payed from the company.
+            Taxes postphoned from another year. Examples please??
+        taxAdjustments:
+          type: integer
+          format: int64
+          description: >-
+            Tax adjustments. Examples please??
         otherFinancialExpenses:
           type: integer
           format: int64
           description: >-
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
-        totalFinancialCosts:
+        operatingResult:
           type: integer
           format: int64
           description: >-
-            Total financial costs. A sum of all costs.
-        nonRecurringFinancialItems:
-          type: integer
-          format: int64
-          description: >-
-            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations.
-        profitLossAfterFinancialItems:
-          type: integer
-          format: int64
-          description: >-
-            Profit/Loss after financials shows the years total result of the business. 
+            The operating shows what the company has earned in connection with its business activities, that is to say before deduction of interest and taxes
         extraordinaryIncome:
           type: integer
           format: int64
@@ -1689,41 +1636,6 @@ components:
           format: int64
           description: >-
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        totalExtraordinaryItems:
-          type: integer
-          format: int64
-          description: >-
-             Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
-             
-             extraordinaryIncome - extraordinaryExpenses = totalExtraordinaryItems
-             
-        resultBeforeAllocations:
-          type: integer
-          format: int64
-          description:  >-
-            Earnings before appropriations
-            or
-            Result before allocation
-        groupContribution:
-          type: integer
-          format: int64
-          description: >-
-            Given or obtained contribution from/to group or affiliate.
-        shareholdersContribution:
-          type: integer
-          format: int64
-          description: >-
-            A shareholder contribution means that any or all shareholders pay money to the company without obtaining new shares. The motive may be that the owners want to avoid the company having to be liquidated.
-        appropriations:
-          type: integer
-          format: int64
-          description: >-
-            Appropriations is a way of postpone taxes for some of the companys result by allocations to untaxed reserves. The appropriations mainly used is tax allocation reserve.
-        profitLossBeforeTax:
-          type: integer
-          format: int64
-          description: >- 
-            Result before tax
         tax:
           type: integer
           format: int64
@@ -2101,14 +2013,6 @@ components:
           description: >-
             Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
           example: 12
-        classificationCode:
-          type: string
-          enum: ['FUNCTION', 'COST']
-          description: >-
-            'Classification of the financial statement.
-            
-            Function based - https://xplaind.com/482208/income-statement-by-function
-            Cost based - https://xplaind.com/588771/income-statement-by-nature
         currency:
           type: string
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
@@ -2117,177 +2021,8 @@ components:
           "$ref": "#/components/schemas/BalanceSheet"
         incomeStatement:
           "$ref": "#/components/schemas/IncomeStatement"
-        notesAndOtherInformation:
-          "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
-    GroupAccount:
-      type: object
-      properties:
-        auditorsReservation:
-          type: array
-          items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        financialStatementKeyFigures:
-          type: array
-          description: The 5 latest 
-          items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
-        financialStatements:
-          type: array
-          description: "The 5 latest will be returned sorted on date desc"
-          items:
-            "$ref": "#/components/schemas/FinancialStatement"
-      required: []
-      title: GroupAccount
-    PayrollTax:
-      type: object
-      description: >- 
-        EmployersContribution or PayrollTax ???
-        TODO - describe this
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when ???
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        referenceNumber:
-          type: string
-          description: TODO - what is this???
-      required: []
-      title: PayrollTax
-    PropertyHoldings:
-      type: object
-      description: >-
-        TODO - how many can we get here ???
-        
-      properties:
-        ownedPartOfTaxAssessment:
-          "$ref": "#/components/schemas/Amount"
-        taxAssessment:
-          "$ref": "#/components/schemas/Amount"
-        numberOfFullyOwned:
-          type: integer
-          format: int32
-          description: The number of properties this company own 100 percent of.
-        numberOfPartlyOwned:
-          type: integer
-          format: int32
-          description: The number of properties this company own a part of. Excluding the ones it owns in full.
-        assessedRealProperties:
-          type: array
-          description: TODO - how many properties can we get here ???
-          items:
-            "$ref": "#/components/schemas/AssessedRealProperty"
-        currentRealProperties:
-          type: array
-          description: TODO - how many properties can we get here ???
-          items:
-            "$ref": "#/components/schemas/CurrentRealProperty"
-      required: []
-      title: PropertyHoldings
-    AssessedRealProperty:
-      type: object
-      description: >-
-        Taxed property holdings. 
-        
-        totalTaxAssessmentValue: Total value of all taxed properties
-        taxAssessmentValueOfLand: whereof land
-        taxAssessmentValueOfBuilding: whereof buildings
-         
-      properties:
-        countyCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        countyName:
-          type: string
-          description: Name of the county. As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityName:
-          type: string
-          description: https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        ownershipInPercent:
-          type: number
-          format: double
-          description: Ownership in percent
-          example: 50.0
-        propertyTypeCode:
-          type: string
-          description: >-
-              As described on skatteverket: https://www.skatteverket.se/foretagochorganisationer/skatter/fastighet/fastighetstaxering/typkoder.4.3f4496fd14864cc5ac9126d.html
-        propertyTypeDescription:
-          type: string
-          description: A textual description of the propertyTypeCode
-        propertyAcreage:
-          type: integer
-          format: int32
-          description: Property area size in square meters.
-        propertyDesignation:
-          type: string
-          description: Real Estate registration key. 'Fastighetsbeteckning'
-          example: Baggeby 8:1
-        taxAssessmentValueOfBuilding:
-          "$ref": "#/components/schemas/Amount"
-        taxAssessmentValueOfLand:
-          "$ref": "#/components/schemas/Amount"
-        totalTaxAssessmentValue:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: AssessedRealProperty
-    CurrentRealProperty:
-      type: object
-      properties:
-        blocked:
-          type: string
-          description: >- 
-            TODO 
-            'if true it means that the information is under investigation by the tax office???
-            '
-        objectType:
-          type: string
-          description: >-
-            "21A = lagfart/registered ownership
-             23A = tomträtt/site-leasehold right"
-          example: 21A
-        countyCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        countyName:
-          type: string
-          description: Name of the county. As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityCode:
-          type: string
-          description: As defined in https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        municipalityName:
-          type: string
-          description: https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
-        ownershipInPercent:
-          type: number
-          format: double
-          description: Ownership in percent
-          example: 50.0
-        propertyTypeCode:
-          type: string
-          description: >-
-              As described on skatteverket: https://www.skatteverket.se/foretagochorganisationer/skatter/fastighet/fastighetstaxering/typkoder.4.3f4496fd14864cc5ac9126d.html
-        propertyTypeDescription:
-          type: string
-          description: A textual description of the propertyTypeCode
-        propertyAcreage:
-          type: integer
-          format: int32
-          description: Property area size in square meters.
-        propertyDesignation:
-          type: string
-          description: Real Estate registration key. 'Fastighetsbeteckning'
-          example: Baggeby 8:1
-        totalTaxAssessmentValue:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: CurrentRealProperty
     Bankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
@@ -2318,121 +2053,3 @@ components:
           type: string
           description: The address to the person/company assigned to handle this bankruptcy
         example: 10390, Stockholm
-    NotesAndOtherInformation:
-      type: object
-      description: >-
-        Misc information releated to the financial statement
-      properties:
-        floatingCharges:
-          type: integer
-          format: int64
-          description: >-
-            A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
-            
-        propertyMortgage:
-          type: integer
-          format: int64
-          description: >-
-              A mortgage is a debt instrument, secured by the collateral of specified real estate property, that the borrower is obliged to pay back with a predetermined set of payments.
-            
-        otherSecurities:
-          type: integer
-          format: int64
-          description: >-
-            Other securities. TODO  - examples would be nice
-              
-        totalSecurities:
-          type: integer
-          format: int64
-          description: >-
-            The sum of floatingCharges, propertyMortgage and otherSecurities.
-            TODO - is this correct.
-            
-        commentsSecurities:
-          type: string
-          enum: ['F', 'Y', 'N']
-          description: |
-            F - Securities exist, but amount missing
-            N - Data not available
-            Y - Additional securities exist
-            
-        conditionalShareholdersContribution:
-          type: integer
-          format: int64
-          description: >-
-            Contributions from shareholders where the owners have agreed that the contribution should be repaid whenever possible.
-            
-        otherContingentLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            Contingent liability is a potential liability that may occur, depending on the outcome of an uncertain future event. A contingent liability is recorded in the accounting records if the contingency is likely and the amount of the liability can be reasonably estimated.
-            
-        totalContingentLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            The sum of conditionalShareholdersContribution and otherContingentLiabilities 
-            TODO - is this correct???
-            
-        commentsLiabilities:
-          type: string
-          enum: ['F', 'Y', 'N']
-          description: |
-            F - Contingent liabilities exist, but amount missing
-            N - Data not available
-            Y - Additional contingent liabilities exist but amounts are not specified
-        numberOfEmployees:
-          type: integer
-          format: int64
-          description: >-
-            The number of employees at the time of this annual report.
-        salariesAndEmolumentsToBoardMembers:
-          type: integer
-          format: int64
-          description: >-
-            Salaries and other emoluments (payments) made to boardmembers.
-            
-        bonusToBoardMembers:
-          type: integer
-          format: int64
-          description: >-
-            Bonus paid to boardmembers.
-            
-        salariesToOthers:
-          type: integer
-          format: int64
-          description: >-
-            Salaries to others. TODO - Others as in people not employed or what???
-            
-        incentiveWagesToEmployees:
-          type: integer
-          format: int64
-          description: >-
-            A monetary gift provided to an employee based on performance, which is thought of as one way to entice the employee to continue delivering positive results. Incentive pay may come in the form of a bonus, profit-sharing, or commission.
-            
-        socialCosts:
-          type: integer
-          format: int64
-          description: >-
-            Social costs.
-            TODO - what is this???
-            
-        severancePay:
-          type: integer
-          format: int64
-          description: >-
-            Severance pay is the compensation and/or benefits an employer provides to an employee after employment is over. 
-            
-            Employers offer packages to employees who are laid off, whose jobs are eliminated because of downsizing, or who retire. Some employees who resign or are fired may also receive a severance package.
-        currentAccountCredit:
-          type: integer
-          format: int64
-          description: >-
-            Total credit given by banks and similar.
-            
-        usedAccountCredit:
-          type: integer
-          format: int64
-          description: >-
-            Credit used.
