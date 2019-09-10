@@ -884,6 +884,8 @@ components:
       type: object
       description: Management section
       properties:
+        directors:
+            "$ref": "#/components/schemas/Directors"
         decisionMakers:
             "$ref": "#/components/schemas/DecisionMakers"
         boardMembers:
