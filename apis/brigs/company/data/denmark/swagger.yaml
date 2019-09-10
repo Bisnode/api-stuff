@@ -1006,6 +1006,8 @@ components:
           description: List of the current decision makers
           items:
             "$ref": "#/components/schemas/HistoricalPosition" 
+      required: []
+      title: DecisionMakers
     Directors:
       type: object
       properties:
@@ -1019,6 +1021,8 @@ components:
           description: List of the current directors
           items:
             "$ref": "#/components/schemas/HistoricalPosition" 
+      required: []
+      title: Directors
     BoardMembers:
       type: object
       properties:
