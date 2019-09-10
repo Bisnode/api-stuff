@@ -1061,6 +1061,19 @@ components:
           description: List of the current decision makers
           items:
             "$ref": "#/components/schemas/HistoricalPosition" 
+    Directors:
+      type: object
+      properties:
+        currentDirectors:
+          type: array
+          description: List of the current directors
+          items:
+            "$ref": "#/components/schemas/Position"
+        historicalDirectors:
+          type: array
+          description: List of the current directors
+          items:
+            "$ref": "#/components/schemas/HistoricalPosition" 
     BoardMembers:
       type: object
       properties:
