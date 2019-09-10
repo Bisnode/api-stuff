@@ -912,14 +912,6 @@ components:
     Position:
       type: object
       properties:
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company? TODO - Merge OTHER and UNKNOWN????
         name:
           type: string
           description: The name of the person/entity holding this position
@@ -1065,6 +1057,11 @@ components:
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
             "$ref": "#/components/schemas/HistoricalPosition"
+        decisionMakers:
+          type: array
+          description: A list of the current boardmembers
+          items:
+            "$ref": "#/components/schemas/Position"
       required: []
       title: BoardMembers
     CompanyInformation:
