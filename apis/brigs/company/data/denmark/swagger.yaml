@@ -885,10 +885,7 @@ components:
       description: Management section
       properties:
         decisionMakers:
-          type: array
-          description: A list of the current boardmembers
-          items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "#/components/schemas/DecisionMakers"
         boardMembers:
           "$ref": "#/components/schemas/BoardMembers"
         auditors:
@@ -1061,7 +1058,7 @@ components:
           type: array
           description: List of the current decision makers
           items:
-            "$ref": "#/components/schemas/Position" 
+            "$ref": "#/components/schemas/HistoricalPosition" 
     BoardMembers:
       type: object
       properties:
