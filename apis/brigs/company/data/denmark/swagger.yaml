@@ -884,6 +884,11 @@ components:
       type: object
       description: Management section
       properties:
+        decisionMakers:
+          type: array
+          description: A list of the current boardmembers
+          items:
+            "$ref": "#/components/schemas/Position"
         boardMembers:
           "$ref": "#/components/schemas/BoardMembers"
         auditors:
@@ -1044,6 +1049,19 @@ components:
           description: Date when this person/entity resigned from this position
       required: []
       title: HistoricalPosition
+    DecisionMakers:
+      type: object
+      properties:
+        currentDecisionMakers:
+          type: array
+          description: List of the current decision makers
+          items:
+            "$ref": "#/components/schemas/Position"
+        historicalDecisionMakers:
+          type: array
+          description: List of the current decision makers
+          items:
+            "$ref": "#/components/schemas/Position" 
     BoardMembers:
       type: object
       properties:
@@ -1057,11 +1075,6 @@ components:
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
             "$ref": "#/components/schemas/HistoricalPosition"
-        decisionMakers:
-          type: array
-          description: A list of the current boardmembers
-          items:
-            "$ref": "#/components/schemas/Position"
       required: []
       title: BoardMembers
     CompanyInformation:
