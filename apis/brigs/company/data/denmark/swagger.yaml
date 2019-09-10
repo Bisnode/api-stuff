@@ -154,8 +154,6 @@ components:
       type: object
       description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
       properties:
-        abilityToPay:
-          "$ref": "#/components/schemas/PartJudgement"
         finance:
           "$ref": "#/components/schemas/PartJudgement"
         historyOperation:
