@@ -789,16 +789,6 @@ components:
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
-        date:
-          type: string
-          format: date
-          description: TODO - what does this date mean???
         shareCapital:
           "$ref": "#/components/schemas/Amount"
       required: []
@@ -850,50 +840,7 @@ components:
           format: int32
           description: >-
             '
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
+            TODO - what values do we have here?  
             '
         description:
           type: string
@@ -915,50 +862,7 @@ components:
           type: integer
           format: int32
           description: |
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
+            TODO - what values do we have here??
         name:
           type: string
           description: The name of the person/entity holding this position
@@ -974,42 +878,6 @@ components:
     BoardMembers:
       type: object
       properties:
-        totalNumberOfBoardMembers:
-          type: integer
-          format: int32
-          description: The number of boardmembers the company currently have
-        officalAppointmentDate:
-          type: string
-          format: date
-          description: TODO - what is this ???
-        totalNumberOfDeputies:
-          type: integer
-          format: int32
-          description: The number of deputies the company currently have
-        minBoardMembers:
-          type: integer
-          format: int32
-          description: The minimum number of boardmembers the company must have according to the company's article of association ???
-        maxBoardMembers:
-          type: integer
-          format: int32
-          description: The maximum number of boardmembers the company can have according to the company's article of association ???
-        minDeputies:
-          type: integer
-          format: int32
-          description: The minimum number of deputies the company must have according to the company's article of association ???
-        maxDeputies:
-          type: integer
-          format: int32
-          description: The maximum number of deputies the company can have according to the company's article of association ???
-        bankruptcyCommitments:
-          type: integer
-          format: int32
-          description: Total number of bankruptcies the members of the current board has been involved in.
-        paymentRemarksOnBoardMembers:
-          type: integer
-          format: int32
-          description: Total number of paymentremarks the members of the current board has registered on themselves.
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
