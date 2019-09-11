@@ -840,7 +840,50 @@ components:
           format: int32
           description: >-
             '
-            TODO - what values do we have here?  
+            ÄY    =	SLEEPING PARTNER 		
+            ANR 	=	EMPLOYEES REPRESENTATIVE 		
+            DGL 	=	MANAGING DIRECTOR		
+            EH	  =	PROPRIETOR 		
+            FI1 	=	PREVIOUS CHAIRMAN		
+            FI2 	=	DEPUTY CHAIRMAN		
+            FI3 	=	BOARD MEMBER 		
+            FI4 	=	SECRETARY		
+            FI5 	=	DEPUTY BOARD MEMBER		
+            FI6 	=	BOARD MEMBER 		
+            FI7 	=	DEPUTY CHAIRMAN		
+            FI8 	=	C E O		
+            HPJ 	=	CHAIRMAN 		
+            HPJV	=	DEPUTY CHAIRMAN		
+            HVJ 	=	BOARD MEMBER 		
+            HVJV	=	DEPUTY BOARD MEMBER		
+            HVJ2	=	BOARD MEMBER 		
+            INH 	=	PROPRIETOR 		
+            IS	  =	DIRECTOR 		
+            JOHT	=	DIRECTOR 		
+            NFM 	=	DEPUTY CHAIRMAN		
+            OBS 	=	OBSERVER 		
+            OI	  =	AUTHORIZED SIGNER		
+            OS	  =	SHAREHOLDER		
+            PÄÄ 	=	GENERAL MANAGER		
+            POS 	=	MAJOR SHAREHOLDER		
+            PR	  =	AUTHORISED TO SIGN 		
+            PT	  =	SENIOR PARTNER 		
+            REV 	=	AUDITOR		
+            SEL 	=	LIQUIDATOR 		
+            SIHT	=	SECRETARY		
+            STF 	=	CHAIRMAN OF THE BOARD		
+            STM 	=	BOARD MEMBER 		
+            TJ	  =	MANAGING DIRECTOR		
+            TNJ 	=	DEPUTY BOARD MEMBER		
+            VAM 	=	DEPUTY BOARD MEMBER		
+            VA2 	=	LIABLE PARTNER 		
+            VH	  =	ASSISTANT MANAGER		
+            VTJ 	=	VICE MANAGING DIRECTOR 		
+            VTJ2	=	LIABLE PARTNER 		
+            VY	  =	LIABLE PARTNER 		
+            VY2 	=	PARTNER		
+            Y 	  =	PARTNER		
+            Y2	  =	PARTNER	
             '
         description:
           type: string
@@ -1241,36 +1284,7 @@ components:
         auditorsReservationCode:
           type: string
           description: |
-            A  -  AT LEAST ONE OF FOLLOWING THREE CRITERIA IS NOT RECOMMENDED BY THE AUDITOR:                                                               
-                   1. RECOMMENDATION THAT THE INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.
-                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.
-                  3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
-            B  -  AT LEAST ONE BOARD MEMBER, OR THE MANAGING DIRECTOR, IS DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                    
-            C  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH  SHOWS THAT THE COMPANY IS STILL BOUND TO LIQUIDATION.     DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY <50% OF SHARE CAPITAL.                                 
-            D  -  AUDITOR DECLARE BOARDMEMBERS RESPONSIBILITY TO CREATE BALANCE SHEET FOR LIQUIDATION PURPOSES THEN COMPANY'S TOTAL CAPITAL IS < 50 % OF SHARE CAPITAL.                                                             
-            E  -  THE INCOME STATEMENT OR/AND BALANCE SHEET CONTAINS UNCERTAIN OR INCORRECT VALUED ITEMS.                     
-            F  -  DEFICIENCY IN THE COMPANY'S INTERNAL CONTROL.                              
-            G  -  TAXES HAVE NOT BEEN PAID PROPERLY.                                         
-            H  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH SHOWS THAT THE COMPANY IS NOT BOUND TO LIQUIDATION.DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY < 50 % OF SHARE CAPITAL.                               
-            I  -  UNLEGAL LOAN TO SHAREHOLDER(S).                                            
-            J  -  COMMENTS FROM THE AUDITOR.                                                 
-            K  -  GENERAL INFORMATION OR COMMENT FROM THE AUDITOR IN THE ANNUAL REPORT.      
-            L  -  AT LEAST ONE OF FOLLOWING 3 CRITERIA IS NOT RECOMMENDED BY THE AUDITOR, CONCERNING THE GROUP:                                             
-                   1. RECOMMENDATION THAT THE CONSOLIDATED INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.                                         
-                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.                              
-                   3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
-            M  -  SHAREHOLDERS WILL GUARANTEE CURRENT CAPITAL CONTRIBUTIONS IN ORDER TO COVER SHORT AND LONG-TERM FINANCING.                                       
-            P  -  ANNUAL REPORT IS NOT SENT TO COMPANY HOUSE WITHIN STIPULATED TIME ALT. ANNUAL GENERAL MEETING NOT HELD IN ACCORDANCE WITH SWEDISH COMPANY ACT.    
-            R  -  COMMENT FROM THE AUDITOR.                                                  
-            1   -  CONCRETE OBSERVATIONS ON FLAWS IN ACCOUNTING PRACTICES                     
-            2   -  CONDITIONAL FINDINGS DUE TO INADEQUATE REPORTING                           
-            3   -  CONDITIONAL FINDINGS DUE TO INADEQUATCIES AND FLAWS                        
-            4   -  NEGATIVE OBSERVATIONS (IN THE ACCOUNTING PRACTICES EMPLOYED)               
-            5   -  THE AUDITOR REFRAINS FROM EXPRESSING HIS/HER OPINION  (DUE TO LACK/INACCESSIBILITY OF INFORMATION)            
-            6   -  UNSECURED LOANS TO SHAREHOLDERS                                            
-            7   -  WITHELD TAXES FROM EMPLOYEES ARE NOT DEPOSITED IN A SEPARATE ACCOUNT
-            8   -  LACK OF SUPPORTING DOCUMENTS ON OFFICIAL TRANSACTIONS AND POOR INTERNAL CONTROL PROCEDURES
-            9   -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
+           TODO - add codes here                      
         auditorsReservationDescription:
           type: string
           description: Textual description of the auditorsReservationCode
