@@ -22,7 +22,7 @@ components:
   # Common data models
   ####################
   schemas:
-    SwedishCompanyData:
+    FinnishCompanyData:
       type: object
       properties:
         risk:
