@@ -1815,12 +1815,12 @@ components:
           type: integer
           format: int64
           desription: >-
-            Impairments of financial assets
+            Impairments of financial assets.
         unspecifiedFinancialItems:
           type: integer
           format: int64
           desription: >-
-            Unspecified financial items
+            Unspecified financial items.
         totalFinancialIncome:
           type: integer
           format: int64
