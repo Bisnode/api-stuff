@@ -1868,7 +1868,7 @@ components:
           type: integer
           format: int64
           description: >-
-            The sum of cash in hand and mony in the bank.
+            The sum of cash in hand and money in the bank.
             TODO - fix this description
         shortTermInvestmentsOther:
           type: integer
