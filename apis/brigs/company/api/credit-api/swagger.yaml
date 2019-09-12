@@ -25,14 +25,14 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+              mock: {"registrationNumber": "00000000000", "reference": "My important reason", }
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseModel'
+                $ref: '#/components/schemas/SwedishResponseModel'
   /companies/fi:
     post:
       summary: Fetch credit and risk data on a finnish company
@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseModel'
+                $ref: '#/components/schemas/FinnishResponseModel'
   /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
@@ -70,7 +70,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseModel'
+                $ref: '#/components/schemas/DanishResponseModel'
   /companies/no:
     post:
       summary: Fetch credit and risk data on a norwegian company
@@ -89,7 +89,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseModel'
+                $ref: '#/components/schemas/NorwegianResponseModel'
                   
 components:
   schemas:
@@ -100,9 +100,12 @@ components:
         registrationNumber: 
           type: string
           description: A national registrationNumber, can be a socialSecurityNumber for a Sole proprietor
-        reason:
+        reference:
           type: string
-          description: The reason why the client is requesting this data. The client needs a legitimate reason in certain situations. TODO - when ????
+          description: Freetext for own use. Text will be shown on report and invoice.
+        onBehalfOf:
+          type: string
+          description: Only to be used when ordering on behalf of someone else. This text will be displayed on the letter of notification.
         language:
           type: string
           enum: ['SE', 'EN', 'NO', 'DK', 'FI']
@@ -110,8 +113,14 @@ components:
           default: EN
       required: ['registrationNumber']
       title: RequestModel
-    ResponseModel:
+    SwedishResponseModel:
        $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
+    DanishResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
+    NorwegianResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
+    FinnishResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
   securitySchemes:
     implicit:
       type: oauth2
