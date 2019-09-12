@@ -836,35 +836,32 @@ components:
           type: string
           description: Typically a social security number
         function:
-          type: integer
-          format: int32
+          type: string
           description: |
             '
-            ÄY    =  SLEEPING PARTNER     
-            EH    =  PROPRIETOR     
-            HPJ   =  CHAIRMAN     
-            HPJV  =  DEPUTY CHAIRMAN    
-            HVJ   =  BOARD MEMBER     
-            HVJV  =  DEPUTY BOARD MEMBER    
-            HVJ2  =  BOARD MEMBER     
-            IS    =  DIRECTOR     
-            OI    =  AUTHORIZED SIGNER  
-            OI2   =  AUTHORIZED SIGNER  
-            OS    =  SHAREHOLDER    
-            PES1  =  ???
-            PES2  =  ???
-            PÄÄ   =  GENERAL MANAGER    
-            PR    =  AUTHORISED TO SIGN  
-            PR2   =  ???
-            SEL   =  LIQUIDATOR     
-            SIHT  =  SECRETARY    
-            STF   =  CHAIRMAN OF THE BOARD    
-            TJ    =  MANAGING DIRECTOR    
-            TNJ   =  DEPUTY BOARD MEMBER    
-            VTJ   =  VICE MANAGING DIRECTOR     
-            VY    =  LIABLE PARTNER     
-            VY2   =  PARTNER    
-            Y     =  PARTNER    
+            ÄY	  =	SLEEPING PARTNER
+            EH	  =	PROPRIETOR
+            HPJ	  =	CHAIRMAN
+            HPJV  =	DEPUTY CHAIRMAN
+            HVJ	  =	BOARD MEMBER
+            HVJV	=	DEPUTY BOARD MEMBER
+            IS	  =	DEPUTY LANDLORD
+            OS	  =	SHAREHOLDER
+            PÄÄ	  =	GENERAL MANAGER
+            PES1	=	BANKRUPTCY RECEIVER
+            PES2	=	RESTRUCTURING ADMINISTRATOR
+            SEL	  =	LIQUIDATOR
+            TJ	  =	MANAGING DIRECTOR
+            TJS	  =	DEPUTY MANAGING DIRECTOR
+            TNJ	  =	EXECUTIVE DIRECTOR
+            VTJ	  =	VICE MANAGING DIRECTOR
+            VY	  =	LIABLE PARTNER
+            Y	    =	PARTNER
+            HVJ2	=	BOARD MEMBERS JOINTLY
+            OI	  =	AUTHORIZED SIGNING ALONE
+            OI2	  =	AUTHORIZED SIGNING JOINTLY
+            PR	  =	ROCURATION HOLDER SIGNING ALONE
+            PR2	  =	PROCURATION HOLDER SIGNING JOINTLY
             '
         description:
           type: string
@@ -883,35 +880,32 @@ components:
           format: date
           description: Date when this person/entity entered this position.
         function:
-          type: integer
-          format: int32
+          type: string
           description: |
             '
-            ÄY    =  SLEEPING PARTNER     
-            EH    =  PROPRIETOR     
-            HPJ   =  CHAIRMAN     
-            HPJV  =  DEPUTY CHAIRMAN    
-            HVJ   =  BOARD MEMBER     
-            HVJV  =  DEPUTY BOARD MEMBER    
-            HVJ2  =  BOARD MEMBER     
-            IS    =  DIRECTOR     
-            OI    =  AUTHORIZED SIGNER  
-            OI2   =  AUTHORIZED SIGNER  
-            OS    =  SHAREHOLDER    
-            PES1  =  ???
-            PES2  =  ???
-            PÄÄ   =  GENERAL MANAGER    
-            PR    =  AUTHORISED TO SIGN  
-            PR2   =  ???
-            SEL   =  LIQUIDATOR     
-            SIHT  =  SECRETARY    
-            STF   =  CHAIRMAN OF THE BOARD    
-            TJ    =  MANAGING DIRECTOR    
-            TNJ   =  DEPUTY BOARD MEMBER    
-            VTJ   =  VICE MANAGING DIRECTOR     
-            VY    =  LIABLE PARTNER     
-            VY2   =  PARTNER    
-            Y     =  PARTNER    
+            ÄY	  =	SLEEPING PARTNER
+            EH	  =	PROPRIETOR
+            HPJ	  =	CHAIRMAN
+            HPJV  =	DEPUTY CHAIRMAN
+            HVJ	  =	BOARD MEMBER
+            HVJV	=	DEPUTY BOARD MEMBER
+            IS	  =	DEPUTY LANDLORD
+            OS	  =	SHAREHOLDER
+            PÄÄ	  =	GENERAL MANAGER
+            PES1	=	BANKRUPTCY RECEIVER
+            PES2	=	RESTRUCTURING ADMINISTRATOR
+            SEL	  =	LIQUIDATOR
+            TJ	  =	MANAGING DIRECTOR
+            TJS	  =	DEPUTY MANAGING DIRECTOR
+            TNJ	  =	EXECUTIVE DIRECTOR
+            VTJ	  =	VICE MANAGING DIRECTOR
+            VY	  =	LIABLE PARTNER
+            Y	    =	PARTNER
+            HVJ2	=	BOARD MEMBERS JOINTLY
+            OI	  =	AUTHORIZED SIGNING ALONE
+            OI2	  =	AUTHORIZED SIGNING JOINTLY
+            PR	  =	ROCURATION HOLDER SIGNING ALONE
+            PR2	  =	PROCURATION HOLDER SIGNING JOINTLY
             '
         name:
           type: string
