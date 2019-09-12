@@ -36,7 +36,7 @@ components:
         ownership:
           "$ref": "#/components/schemas/Ownership"
       required: []
-      title: CompanyData
+      title: FinnishCompanyData
       description: This is the root object defining which structures reside under the root path.
     Risk:
       type: object
