@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  version: "v1"
+  title: Bisnode company search API
+  description: >-
+    Bisnode Company search API
+    
+    Since we don't want to expose any personally identifiable information (PII) parameters in the URL,
+    GET requests with search parameters is not supported.
+    
+  contact:
+    email: team-ninjas@bisnode.com
+security:
+  - implicit:
+      - riskAndCredit
+paths:
+  /company-search:
+    post:
+      summary: Fetch credit and risk data on a swedish company
+      description: >-
+        Fetch risk and credit data on swedish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/CompanySearchModel/1.0.0#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/CompanySearchModel/1.0.0#/components/schemas/SearchResponse'
+components:
+  securitySchemes:
+    implicit:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://login.bisnode.com/as/token.oauth2'
+          scopes:
+            riskAndCredit: allows access to Bisnode risk and credit data
