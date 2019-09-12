@@ -5,11 +5,9 @@ openapi: 3.0.0
 # Optional info section
 #######################
 info:
-  title: Bisnode Organization Search
+  title: Bisnode Company Search
   description: >-
-    Common components for Organization Search REST APIs
-    
-    TODO - organization vs company
+    Common components for Company Search REST APIs
   version: '1.0.0'
 
 components:
@@ -41,29 +39,29 @@ components:
           maximum: 100
         includeInactive:
           type: boolean
-          description: 'Set to true to include inactive organizations'
+          description: 'Set to true to include inactive companies'
           default: false
         includeBranches:
           type: boolean
           description: 'Set to true to include branches in the results'
           default: false
-        organizations:
+        companies:
           type: array
-          description: List of organizations
+          description: List of companies
           items:
-            "$ref": "#/components/schemas/Organization"
+            "$ref": "#/components/schemas/Company"
         _links:
           "$ref": '#/components/schemas/Links'
       required:
       - hitCount
-      - organizations
+      - companies
       title: SearchResponse
-    Organization:
+    Company:
       type: object
       properties:
         name:
           type: string
-          description: The name of the organization
+          description: The name of the company
         country:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
@@ -78,7 +76,7 @@ components:
         address:
           "$ref": "#/components/schemas/Address"
       required: []
-      title: Organization
+      title: Company
     Address:
       type: object
       description: This is the visiting address of the company
@@ -99,7 +97,7 @@ components:
         href: 
           type: string
           description: A valid URI
-          example: 'https://api.bisnode.com/organization-search/v1/organizations/se?param1=xxxx'
+          example: 'https://api.bisnode.com/company-search/v1/companies?param1=xxxx'
       title: Link
     Links:
       type: object
@@ -108,13 +106,13 @@ components:
       example: >-
         '{
           "next": {
-            "href": "https://api.bisnode.com/organization-search/v1/organizations/se?token=okjoqedqasd"
+            "href": "https://api.bisnode.com/company-search/v1/companies?token=okjoqedqasd"
           },
           "prev": {
-            "href": "https://api.bisnode.com/organization-search/v1/organizations/se?token=sof2nkn2adz"
+            "href": "https://api.bisnode.com/company-search/v1/companies?token=sof2nkn2adz"
           },
           "self": {
-            "href": "https://api.bisnode.com/organization-search/v1/organizations/se?token=xcxxcx"
+            "href": "https://api.bisnode.com/company-search/v1/companies?token=xcxxcx"
           }
         }'
       properties:
@@ -131,7 +129,7 @@ components:
         offset:
           type: integer
           format: int32
-          description: A positive number telling how many hits should be skipped. A value of 2 will skip the first 2 organizations that matched the search criteria.
+          description: A positive number telling how many hits should be skipped. A value of 2 will skip the first 2 results that matched the search criteria.
           minValue: 0
           default: 0
         limit: 
@@ -143,7 +141,7 @@ components:
           maximum: 100
         name:
           type: string
-          description: The name of the organization
+          description: The name of the company
           example: 'Bisnode AB'
         registrationNumber:
           type: string
