@@ -838,52 +838,33 @@ components:
         function:
           type: integer
           format: int32
-          description: >-
+          description: |
             '
-            ÄY    =	SLEEPING PARTNER 		
-            ANR 	=	EMPLOYEES REPRESENTATIVE 		
-            DGL 	=	MANAGING DIRECTOR		
-            EH	  =	PROPRIETOR 		
-            FI1 	=	PREVIOUS CHAIRMAN		
-            FI2 	=	DEPUTY CHAIRMAN		
-            FI3 	=	BOARD MEMBER 		
-            FI4 	=	SECRETARY		
-            FI5 	=	DEPUTY BOARD MEMBER		
-            FI6 	=	BOARD MEMBER 		
-            FI7 	=	DEPUTY CHAIRMAN		
-            FI8 	=	C E O		
-            HPJ 	=	CHAIRMAN 		
-            HPJV	=	DEPUTY CHAIRMAN		
-            HVJ 	=	BOARD MEMBER 		
-            HVJV	=	DEPUTY BOARD MEMBER		
-            HVJ2	=	BOARD MEMBER 		
-            INH 	=	PROPRIETOR 		
-            IS	  =	DIRECTOR 		
-            JOHT	=	DIRECTOR 		
-            NFM 	=	DEPUTY CHAIRMAN		
-            OBS 	=	OBSERVER 		
-            OI	  =	AUTHORIZED SIGNER		
-            OS	  =	SHAREHOLDER		
-            PÄÄ 	=	GENERAL MANAGER		
-            POS 	=	MAJOR SHAREHOLDER		
-            PR	  =	AUTHORISED TO SIGN 		
-            PT	  =	SENIOR PARTNER 		
-            REV 	=	AUDITOR		
-            SEL 	=	LIQUIDATOR 		
-            SIHT	=	SECRETARY		
-            STF 	=	CHAIRMAN OF THE BOARD		
-            STM 	=	BOARD MEMBER 		
-            TJ	  =	MANAGING DIRECTOR		
-            TNJ 	=	DEPUTY BOARD MEMBER		
-            VAM 	=	DEPUTY BOARD MEMBER		
-            VA2 	=	LIABLE PARTNER 		
-            VH	  =	ASSISTANT MANAGER		
-            VTJ 	=	VICE MANAGING DIRECTOR 		
-            VTJ2	=	LIABLE PARTNER 		
-            VY	  =	LIABLE PARTNER 		
-            VY2 	=	PARTNER		
-            Y 	  =	PARTNER		
-            Y2	  =	PARTNER	
+            ÄY    =  SLEEPING PARTNER     
+            EH    =  PROPRIETOR     
+            HPJ   =  CHAIRMAN     
+            HPJV  =  DEPUTY CHAIRMAN    
+            HVJ   =  BOARD MEMBER     
+            HVJV  =  DEPUTY BOARD MEMBER    
+            HVJ2  =  BOARD MEMBER     
+            IS    =  DIRECTOR     
+            OI    =  AUTHORIZED SIGNER  
+            OI2   =  AUTHORIZED SIGNER  
+            OS    =  SHAREHOLDER    
+            PES1  =  ???
+            PES2  =  ???
+            PÄÄ   =  GENERAL MANAGER    
+            PR    =  AUTHORISED TO SIGN  
+            PR2   =  ???
+            SEL   =  LIQUIDATOR     
+            SIHT  =  SECRETARY    
+            STF   =  CHAIRMAN OF THE BOARD    
+            TJ    =  MANAGING DIRECTOR    
+            TNJ   =  DEPUTY BOARD MEMBER    
+            VTJ   =  VICE MANAGING DIRECTOR     
+            VY    =  LIABLE PARTNER     
+            VY2   =  PARTNER    
+            Y     =  PARTNER    
             '
         description:
           type: string
@@ -905,7 +886,33 @@ components:
           type: integer
           format: int32
           description: |
-            TODO - what values do we have here??
+            '
+            ÄY    =  SLEEPING PARTNER     
+            EH    =  PROPRIETOR     
+            HPJ   =  CHAIRMAN     
+            HPJV  =  DEPUTY CHAIRMAN    
+            HVJ   =  BOARD MEMBER     
+            HVJV  =  DEPUTY BOARD MEMBER    
+            HVJ2  =  BOARD MEMBER     
+            IS    =  DIRECTOR     
+            OI    =  AUTHORIZED SIGNER  
+            OI2   =  AUTHORIZED SIGNER  
+            OS    =  SHAREHOLDER    
+            PES1  =  ???
+            PES2  =  ???
+            PÄÄ   =  GENERAL MANAGER    
+            PR    =  AUTHORISED TO SIGN  
+            PR2   =  ???
+            SEL   =  LIQUIDATOR     
+            SIHT  =  SECRETARY    
+            STF   =  CHAIRMAN OF THE BOARD    
+            TJ    =  MANAGING DIRECTOR    
+            TNJ   =  DEPUTY BOARD MEMBER    
+            VTJ   =  VICE MANAGING DIRECTOR     
+            VY    =  LIABLE PARTNER     
+            VY2   =  PARTNER    
+            Y     =  PARTNER    
+            '
         name:
           type: string
           description: The name of the person/entity holding this position
@@ -1006,7 +1013,7 @@ components:
       title: Name
     SecondaryName:
       type: object
-      description: A secondary name (bifirma) is a Swedish trading name, under which a the company can promote part of its business activities.
+      description: A secondary name is a trading name, under which a the company can promote part of its business activities.
       properties:
         name:
           type: string
@@ -1090,14 +1097,14 @@ components:
       properties:
         businessDescription:
           type: string
-          description: The description registered wth the local authorities describing the companys business.
+          description: The description registered with the local authorities describing the companys business.
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         registeredAsEmployer:
           type: boolean
           description: >-
-            'To have employees a company needs to be registered as an employer at the local tax office. More info here: https://www.skatteverket.se/foretagochorganisationer/arbetsgivare/arbetsgivarregistrering/registreradig.4.18e1b10334ebe8bc80003496.html'
+            'To have employees a company needs to be registered as an employer at the local tax office.'
         registeredInVatList:
           type: boolean
           description: This indicates if the company is registered according to the Tax VAT register.
@@ -1224,7 +1231,7 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - Are these statuses correct
+          description: TODO - Are these statuses correct???
         date:
           type: string
           format: date
@@ -1245,7 +1252,7 @@ components:
       title: Finance
     ChattelMortgage:
       type: object
-      description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
+      description: 'TODO - add description'
       properties:
         creditor:
           type: string
