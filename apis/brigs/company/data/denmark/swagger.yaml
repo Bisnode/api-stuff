@@ -38,7 +38,7 @@ components:
         events:
           "$ref": "#/components/schemas/Events"
       required: []
-      title: CompanyData
+      title: DanishCompanyData
       description: This is the root object defining which structures reside under the root path.
     Risk:
       type: object
