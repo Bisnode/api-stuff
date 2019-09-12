@@ -12,9 +12,66 @@ security:
 paths:
   /companies/se:
     post:
-      summary: Fetch credit and risk data on a swedish registration-number
+      summary: Fetch credit and risk data on a swedish company
       description: >-
         Fetch risk and credit data on swedish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+  /companies/fi:
+    post:
+      summary: Fetch credit and risk data on a finnish company
+      description: >-
+        Fetch risk and credit data on finnish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+  /companies/dk:
+    post:
+      summary: Fetch credit and risk data on a danish company
+      description: >-
+        Fetch risk and credit data on danish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+  /companies/no:
+    post:
+      summary: Fetch credit and risk data on a norwegian company
+      description: >-
+        Fetch risk and credit data on norwegian companies
       requestBody:
         content:
           application/json:
