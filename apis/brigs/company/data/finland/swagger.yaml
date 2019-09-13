@@ -839,29 +839,34 @@ components:
           type: string
           description: |
             '
-            ÄY	  =	SLEEPING PARTNER
-            EH	  =	PROPRIETOR
-            HPJ	  =	CHAIRMAN
-            HPJV  =	DEPUTY CHAIRMAN
-            HVJ	  =	BOARD MEMBER
-            HVJV	=	DEPUTY BOARD MEMBER
-            IS	  =	DEPUTY LANDLORD
-            OS	  =	SHAREHOLDER
-            PÄÄ	  =	GENERAL MANAGER
-            PES1	=	BANKRUPTCY RECEIVER
-            PES2	=	RESTRUCTURING ADMINISTRATOR
-            SEL	  =	LIQUIDATOR
-            TJ	  =	MANAGING DIRECTOR
-            TJS	  =	DEPUTY MANAGING DIRECTOR
-            TNJ	  =	EXECUTIVE DIRECTOR
-            VTJ	  =	VICE MANAGING DIRECTOR
-            VY	  =	LIABLE PARTNER
-            Y	    =	PARTNER
-            HVJ2	=	BOARD MEMBERS JOINTLY
-            OI	  =	AUTHORIZED SIGNING ALONE
-            OI2	  =	AUTHORIZED SIGNING JOINTLY
-            PR	  =	ROCURATION HOLDER SIGNING ALONE
-            PR2	  =	PROCURATION HOLDER SIGNING JOINTLY
+            HVJV = Deputy member
+            SEL = Liquidator
+            VT = Deputy auditor
+            HPJV = Vice-chairperson
+            PIS = House manager with primary responsibility
+            U = Special representative
+            VAH = Responsible manager
+            HVJ = Ordinary member
+            PR = Holder of procuration
+            SEV = Deputy liquidator
+            VTJ = Deputy Managing Director
+            Y = Partner
+            ÄY = Silent partner
+            E = Guardian
+            EH = Trader
+            IS = House Manager
+            JO = Director
+            OI = Person authorised
+            SO = Person authorised during liquidation
+            TJS = Substitute for the Managing Director
+            EDU = Representative
+            HPJ = Chairperson
+            LT = Additional auditor
+            PTI = Auditor with principal responsibility
+            SANS = Administrator in restructuring
+            TIL = Auditor
+            TJ = Managing Director
+            UE = Foreign representative
             '
         description:
           type: string
@@ -883,29 +888,34 @@ components:
           type: string
           description: |
             '
-            ÄY	  =	SLEEPING PARTNER
-            EH	  =	PROPRIETOR
-            HPJ	  =	CHAIRMAN
-            HPJV  =	DEPUTY CHAIRMAN
-            HVJ	  =	BOARD MEMBER
-            HVJV	=	DEPUTY BOARD MEMBER
-            IS	  =	DEPUTY LANDLORD
-            OS	  =	SHAREHOLDER
-            PÄÄ	  =	GENERAL MANAGER
-            PES1	=	BANKRUPTCY RECEIVER
-            PES2	=	RESTRUCTURING ADMINISTRATOR
-            SEL	  =	LIQUIDATOR
-            TJ	  =	MANAGING DIRECTOR
-            TJS	  =	DEPUTY MANAGING DIRECTOR
-            TNJ	  =	EXECUTIVE DIRECTOR
-            VTJ	  =	VICE MANAGING DIRECTOR
-            VY	  =	LIABLE PARTNER
-            Y	    =	PARTNER
-            HVJ2	=	BOARD MEMBERS JOINTLY
-            OI	  =	AUTHORIZED SIGNING ALONE
-            OI2	  =	AUTHORIZED SIGNING JOINTLY
-            PR	  =	ROCURATION HOLDER SIGNING ALONE
-            PR2	  =	PROCURATION HOLDER SIGNING JOINTLY
+            HVJV = Deputy member
+            SEL = Liquidator
+            VT = Deputy auditor
+            HPJV = Vice-chairperson
+            PIS = House manager with primary responsibility
+            U = Special representative
+            VAH = Responsible manager
+            HVJ = Ordinary member
+            PR = Holder of procuration
+            SEV = Deputy liquidator
+            VTJ = Deputy Managing Director
+            Y = Partner
+            ÄY = Silent partner
+            E = Guardian
+            EH = Trader
+            IS = House Manager
+            JO = Director
+            OI = Person authorised
+            SO = Person authorised during liquidation
+            TJS = Substitute for the Managing Director
+            EDU = Representative
+            HPJ = Chairperson
+            LT = Additional auditor
+            PTI = Auditor with principal responsibility
+            SANS = Administrator in restructuring
+            TIL = Auditor
+            TJ = Managing Director
+            UE = Foreign representative
             '
         name:
           type: string
