@@ -37,14 +37,6 @@ components:
           minimum: 0
           default: 20
           maximum: 100
-        includeInactive:
-          type: boolean
-          description: 'Set to true to include inactive companies'
-          default: false
-        includeBranches:
-          type: boolean
-          description: 'Set to true to include branches in the results'
-          default: false
         companies:
           type: array
           description: List of companies
@@ -147,5 +139,13 @@ components:
           type: string
           description: The national registrationNumber for this company.
           example: '5564855582'
+        includeInactive:
+          type: boolean
+          description: 'Set to true to include inactive companies'
+          default: false
+        includeBranches:
+          type: boolean
+          description: 'Set to true to include branches in the results'
+          default: false
         address:
           "$ref": "#/components/schemas/Address"
