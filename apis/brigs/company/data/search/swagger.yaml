@@ -147,5 +147,9 @@ components:
           type: boolean
           description: 'Set to true to include branches in the results'
           default: false
+        country:
+          type: string
+          description: The country to search in
+          enum: ['SE', 'NO', 'FI', 'DK']
         address:
           "$ref": "#/components/schemas/Address"
