@@ -1992,12 +1992,12 @@ components:
           type: integer
           format: int64
           description: >-  
-            Other inventories
+            Summation of stock in trade from the annual report. Stock in trade includes raw materials and consumables, work in progress, finished goods and goods for resale.
         totalInventories: 
           type: integer
           format: int64
           description: >-  
-            Total inventories
+            The sum of the total inventories.
         accountsReceivable: 
           type: integer
           format: int64
@@ -2007,27 +2007,27 @@ components:
           type: integer
           format: int64
           description: >-  
-            Receivable from group and associated companies.
+            Current receivables within the same group company or associated company
         otherReceivables: 
           type: integer
           format: int64
           description: >-  
-           Other receivables
+           Other current receivables includes for example bills receivables and client funds.
         totalCurrentReceivables: 
           type: integer
           format: int64
           description: >-  
-            Total current receivables
+            The sum of all current receivables.
         totalCurrentInvestments: 
           type: integer
           format: int64
           description: >-  
-            Total current investments
+            Here the company accounts for funds that have been placed on a very short term, one to three days. In differ to the post cash bank theese funds are not immediately available in the business.
         totalCashBank: 
           type: integer
           format: int64
           description: >-  
-            Total cash/bank
+            Assets that immediately can be used as means of payment.
         otherCurrentAssets: 
           type: integer
           format: int64
@@ -2042,7 +2042,7 @@ components:
           type: integer
           format: int64
           description: >-  
-            Total assets
+            The sum of all assets.
       title: CurrentAssets
       description: >-
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
@@ -2053,7 +2053,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Claim on payment, company capital.
+            Registered, but not yet paid share capital
         capitalisedCostForRnd:
           type: integer
           format: int64
@@ -2089,10 +2089,12 @@ components:
           format: int64
           description: >-
             Land is real estate or property, minus buildings and equipment. 
+            TODO - remove this ????
         machinery: 
           type: integer
           format: int64
-          description: Machinery.
+          description: >-
+            Machinery are such tangible fixed assets that are intended to serve the business production.
         inventory: 
           type: integer
           format: int64
@@ -2102,7 +2104,7 @@ components:
           type: integer
           format: int64
           description: >-  
-            Total machinery and inventory.
+            The sum of the posts machinery and inventories, is used in the annual report when these values can't be separated.
         otherTangibleAssetsNonDepreciable: 
           type: integer
           format: int64
@@ -2117,32 +2119,32 @@ components:
           type: integer
           format: int64
           description: >-  
-            Total tangible non-current assets.
+            The sum of the companys physical tangible fixed assets. Land and buildings, machinery and inventories and other tangible fixed assets.
         sharesInGroupCompaniesAndAssociates: 
           type: integer
           format: int64
           description: >-  
-            Shares in group companies and associated companies.
+            Participation or shares in a subsidiary or associated company.
         receivableFromGroupCompaniesAndAssociates: 
           type: integer
           format: int64
           description: >-  
-            Receivable from group and associated companies.
+            Receivables on companies in group or associated company.
         loansToShareholdersAndRelatedParty: 
           type: integer
           format: int64
           description: >-  
-            Loans to shareholders and related party.
+            Unusual post to occur since it is not allowed, according to ABL, with loans to related party (CEO or/and board).
         otherNonCurrentAssets: 
           type: integer
           format: int64
           description: >-  
-            Other non-current assets.
+            Other non-current assets thats not specified as receivables from/shares in group companies or loans to shareholders/related party.
         totalFinancialNonCurrentAssets: 
           type: integer
           format: int64
           description: >-  
-            Total financial non-current assets.
+            The sum of all financial assets
         totalNonCurrentAssets: 
           type: integer
           format: int64
@@ -2154,6 +2156,7 @@ components:
           format: int64
           description: >-  
             Whereof not depreciable non-current costs. Refers to Total non current assets.
+            TODO - remove this????
       title: NonCurrentAssets
       description: >-
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
@@ -2168,7 +2171,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Total equity and liabilities
+            The sum of all reported liabilities.
     Liabilities:
       type: object
       properties:
@@ -2196,17 +2199,17 @@ components:
           type: integer
           format: int64  
           description: >-    
-            Short-term liabilities to group companies and associates.
+            Current liabilities to group, affiliate or associated company.
         otherCurrentLiabilities:
           type: integer
           format: int64  
           description: >-    
-            Other current liabilities.
+            Other current liabilities then liabilities to credit institutions, accounts payable or liabilities to group comapines or associates.
         totalCurrentLiabilities:
           type: integer
           format: int64  
           description: >-    
-            Total current liabilities.
+            The sum of all reported current liabilities.
       title: CurrentLiabilities
       description: >-
         Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
@@ -2222,7 +2225,7 @@ components:
           type: integer
           format: int64  
           description: >-
-            Non-current liabilities to credit institutions.
+            Long-term liabilities to credit institutions.
         liabilitiesToGroupCompaniesAndAssociates:
           type: integer
           format: int64  
@@ -2232,13 +2235,12 @@ components:
           type: integer
           format: int64  
           description: >-    
-            Other long-term liabilities.
+            Other long-term liabilities then liabilities to credit institutions, accounts payable or liabilities to group comapines or associates.
         totalLongTermLiabilities:
           type: integer
           format: int64  
           description: >-    
-            Total long-term liabilities
-            
+            The sum of all reported long-term liabilities.
       title: LongTermLiabilities
       description: >-
         Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
@@ -2249,7 +2251,7 @@ components:
           type: integer
           format: int64  
           description: >-
-            Share capital refers to funds raised by issuing shares in return for cash or other considerations.
+            Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock.
         sharePremiumReserve:
           type: integer
           format: int64  
@@ -2264,12 +2266,12 @@ components:
           type: integer
           format: int64  
           description: >-    
-            Other tied equity.
+            Contains in most cases of legal reserves, in which the company are required to deposit at least 20% of the nominal value of the share capital.
         totalRestrictedEquity:
           type: integer
           format: int64  
           description: >-    
-            Total restricted equity.
+            Total restricted equity can consist of share capital, statutory reserve and revaluation reserve.
         retainedEarnings:
           type: integer
           format: int64  
@@ -2279,12 +2281,12 @@ components:
           type: integer
           format: int64  
           description: >-     
-            Received/paid group contribution.
+            Received/paid group contribution (excluding taxes) post belonging to total non restricted equity.
         receivedGivenShareholdersContribution:
           type: integer
           format: int64  
           description: >-     
-            Received/given shareholder's contribution.
+            Received/given shareholder's contribution, post belonging to total non restricted equity.
         profitOrlossForTheYear:
           type: integer
           format: int64  
@@ -2294,7 +2296,7 @@ components:
           type: integer
           format: int64  
           description: >-     
-            Total non-restricted equity.
+            The equity that the company can freely dispose of, for example upon dividend. 
         totalEquity:
           type: integer
           format: int64  
@@ -2305,12 +2307,12 @@ components:
           type: integer
           format: int64  
           description: >-     
-            Total untaxed reserves.
+            Today this post mainly consists of accumulated depreciation in addition to plan and tax allocation reserve.
         totalProvisions:
           type: integer
           format: int64  
           description: >-     
-            Total provisions  
+            Provisions/allocation differ from liabilities by the fact that on the end of accounting period, they should be sucure or probable in their existence but uncertain in amount and/or due date. (While liabilities are usualy secure on due date).
       title: ShareholdersEquity
       description: >-
         Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
