@@ -2139,7 +2139,7 @@ components:
           type: integer
           format: int64
           description: >-  
-            Other non-current assets thats not specified as receivables from/shares in group companies or loans to shareholders/related party.
+            Other non-current assets that is not specified as receivables from/shares in group companies or loans to shareholders/related party.
         totalFinancialNonCurrentAssets: 
           type: integer
           format: int64
