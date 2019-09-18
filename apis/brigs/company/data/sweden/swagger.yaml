@@ -2089,7 +2089,6 @@ components:
           format: int64
           description: >-
             Land is real estate or property, minus buildings and equipment. 
-            TODO - remove this ????
         machinery: 
           type: integer
           format: int64
@@ -2156,7 +2155,6 @@ components:
           format: int64
           description: >-  
             Whereof not depreciable non-current costs. Refers to Total non current assets.
-            TODO - remove this????
       title: NonCurrentAssets
       description: >-
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
