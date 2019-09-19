@@ -47,8 +47,8 @@ components:
       properties:
         creditRatings:
           "$ref": "#/components/schemas/CreditRatings"
-        creditLimits:
-          "$ref": "#/components/schemas/CreditLimits"
+        creditRatingLimits:
+          "$ref": "#/components/schemas/CreditRatingLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
         petitions:
@@ -63,19 +63,19 @@ components:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: Risk
-    CreditLimits:
+    CreditRatingLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
       properties:
         creditLimit:
-          "$ref": "#/components/schemas/CreditLimit"
+          "$ref": "#/components/schemas/CreditRatingLimit"
         historicalCreditLimits:
           type: array
           description: TODO - max size ???
           items:
-            "$ref": "#/components/schemas/CreditLimit"
+            "$ref": "#/components/schemas/CreditRatingLimit"
       required: []
-      title: CreditLimits
+      title: CreditRatingLimits
     Amount:
       type: object
       description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
@@ -89,7 +89,7 @@ components:
           description: As described in https://en.wikipedia.org/wiki/ISO_4217
       required: []
       title: Amount
-    CreditLimit:
+    CreditRatingLimit:
       type: object
       description: >- 
         'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
@@ -100,8 +100,12 @@ components:
           type: string
           format: date
           description: Date when the limit was changed/re-calculated.
+        annualReportDate:
+          type: string
+          description: Date of the annual report data the limit was calculated from. Comes in the format 2015-12
+          example: 2015-12
       required: []
-      title: CreditLimit
+      title: CreditRatingLimit
     Inquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
@@ -135,12 +139,13 @@ components:
       properties:
         annualReportDate:
           type: string
-          format: date
-          description: Date of the annual report data the rating was calculated from. 
+          description: Date of the annual report data the rating was calculated from. Comes in the format 2015-12
+          example: 2015-12
         date:
           type: string
           format: date
           description: Date when the rating was calculated.
+          example: 2018-01-02
         code:
           type: string
           description: Rating code. [ AAA, AA, A, B, C, AN, - ]
@@ -736,7 +741,7 @@ components:
         familyTree:
           type: object
           description: The top company (Ultimate parent ???)
-          items:
+          properties:
             "$ref": "#/components/schemas/FamilyTree"
       required: []
       title: Ownership
