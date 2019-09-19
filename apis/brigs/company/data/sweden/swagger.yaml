@@ -1546,6 +1546,8 @@ components:
         date:
           type: string
           format: integer
+          description: >-
+            TODO - date when ??
       required: []
       title: ChattelMortgage
     LiquidationClaim:
@@ -1561,7 +1563,7 @@ components:
         date:
           type: string
           format: date
-          description: Date when the claim was made.
+          description: Date of the bankruptcy.
       required: []
       title: LiquidationClaim
     FinancialStatements:
