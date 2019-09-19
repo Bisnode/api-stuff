@@ -1253,10 +1253,12 @@ components:
         date:
           type: string
           format: date
-          description: The date when this name was registered??? - TODO is this correct
+          description: The date when this name was registered
+          example: 2011-01-12
         name:
           type: string
           description: Name
+          example: Bisnode AB
       required: []
       title: Name
     SecondaryName:
@@ -1266,16 +1268,16 @@ components:
         name:
           type: string
           description: The registered name
+          example: Infodata Applicate
         description:
           type: string
           description: Business description
+          example: För den del av verksamheten som avser utveckling av informationsdatabaser.
         date:
           type: string
           format: date
           description: The date when this secondary name was registered.
-        type:
-          type: string
-          description: Company type. TODO - is the same as legalform ???
+          example: 2013-04-15
       required: []
       title: SecondaryName
     AlternativeName:
@@ -1337,9 +1339,9 @@ components:
     StreetAddress:
       type: object
       properties:
-        city:
+        town:
           type: string
-          description: City
+          description: town
           example: Stockholm
         country:
           type: string
@@ -1400,9 +1402,6 @@ components:
       type: object
       description: A set of identifiers for this company.
       properties:
-        bisnodeId:
-          type: string
-          description: A unique id set by Bisnode
         registrationNumber:
           type: string
           description: National registration number
@@ -2647,7 +2646,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Salaries to others. TODO - Others as in people not employed or what???
+            Salaries to others than those reported in salariesAndEmolumentsToBoardMembers.
             
         incentiveWagesToEmployees:
           type: integer
