@@ -47,8 +47,8 @@ components:
       properties:
         creditRatings:
           "$ref": "#/components/schemas/CreditRatings"
-        creditRatingLimits:
-          "$ref": "#/components/schemas/CreditRatingLimits"
+        ratingCreditLimits:
+          "$ref": "#/components/schemas/RatingCreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
         petitions:
@@ -63,19 +63,19 @@ components:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: Risk
-    CreditRatingLimits:
+    RatingCreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
       properties:
-        creditLimit:
-          "$ref": "#/components/schemas/CreditRatingLimit"
-        historicalCreditLimits:
+        ratingCreditLimit:
+          "$ref": "#/components/schemas/RatingCreditLimit"
+        historicalRatingCreditLimits:
           type: array
           description: TODO - max size ???
           items:
-            "$ref": "#/components/schemas/CreditRatingLimit"
+            "$ref": "#/components/schemas/RatingCreditLimit"
       required: []
-      title: CreditRatingLimits
+      title: RatingCreditLimits
     Amount:
       type: object
       description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
@@ -89,7 +89,7 @@ components:
           description: As described in https://en.wikipedia.org/wiki/ISO_4217
       required: []
       title: Amount
-    CreditRatingLimit:
+    RatingCreditLimit:
       type: object
       description: >- 
         'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
@@ -105,7 +105,7 @@ components:
           description: Date of the annual report data the limit was calculated from. Comes in the format 2015-12
           example: 2015-12
       required: []
-      title: CreditRatingLimit
+      title: RatingCreditLimit
     Inquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
