@@ -14,7 +14,64 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies/no:
+  /se:
+    post:
+      summary: Fetch credit and risk data on a swedish company
+      description: >-
+        Fetch risk and credit data on swedish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwedishResponseModel'
+  /fi:
+    post:
+      summary: Fetch credit and risk data on a finnish company
+      description: >-
+        Fetch risk and credit data on finnish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000001", "reason": "My important reason"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
+  /dk:
+    post:
+      summary: Fetch credit and risk data on a danish company
+      description: >-
+        Fetch risk and credit data on danish companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DanishResponseModel'
+  /no:
     post:
       summary: Fetch credit and risk data on a norwegian company
       description: >-
@@ -25,7 +82,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
       responses:
         '200':
           description: OK
