@@ -42,7 +42,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestModel'
+              $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
             example: 
               mock: {"registrationNumber": "00000000001", "reason": "My important reason"}
       responses:
