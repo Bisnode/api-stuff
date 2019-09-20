@@ -14,25 +14,7 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies/se:
-    post:
-      summary: Fetch credit and risk data on a swedish company
-      description: >-
-        Fetch risk and credit data on swedish companies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestModel'
-            example: 
-              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SwedishResponseModel'
+ 
   /companies/fi:
     post:
       summary: Fetch credit and risk data on a finnish company
