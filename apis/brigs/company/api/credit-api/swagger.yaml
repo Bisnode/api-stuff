@@ -42,7 +42,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestModel1'
+              $ref: '#/components/schemas/RequestModel'
             example: 
               mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
       responses:
