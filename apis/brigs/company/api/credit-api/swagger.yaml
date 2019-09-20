@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref:'#/components/schemas/FinnishResponseModel'
+                $ref: '#/components/schemas/FinnishResponseModel'
   /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
