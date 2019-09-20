@@ -33,7 +33,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SwedishResponseModel'
+                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
   /companies/fi:
     post:
       summary: Fetch credit and risk data on a finnish company
