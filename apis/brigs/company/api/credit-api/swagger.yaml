@@ -14,7 +14,7 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies/se:
+  /companies1/se:
     post:
       summary: Fetch credit and risk data on a swedish company
       description: >-
