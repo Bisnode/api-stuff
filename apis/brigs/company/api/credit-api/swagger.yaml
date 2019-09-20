@@ -14,11 +14,11 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies/fi:
+  /companies/dk:
     post:
-      summary: Fetch credit and risk data on a finnish company
+      summary: Fetch credit and risk data on a danish company
       description: >-
-        Fetch risk and credit data on finnish companies
+        Fetch risk and credit data on danish companies
       requestBody:
         content:
           application/json:
@@ -32,7 +32,26 @@ paths:
           content:
             application/json:
               schema:
-               $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
+                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
+  /companies/no:
+    post:
+      summary: Fetch credit and risk data on a norwegian company
+      description: >-
+        Fetch risk and credit data on norwegian companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestModel'
+            example: 
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
 components:
   schemas:
     RequestModel:
@@ -55,6 +74,14 @@ components:
           default: EN
       required: ['registrationNumber']
       title: RequestModel
+    SwedishResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
+    DanishResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
+    NorwegianResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
+    FinnishResponseModel:
+       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
   securitySchemes:
     implicit:
       type: oauth2
