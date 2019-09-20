@@ -108,7 +108,7 @@ components:
           description: Only to be used when ordering on behalf of someone else. This text will be displayed on the letter of notification.
         language:
           type: string
-          enum: ['SV', 'EN', 'NO', 'DK', 'FI']
+          enum: ['SV', 'EN', 'NO', 'DA', 'FI']
           description: Supported languages for all the description fields where i18n is supported
           default: EN
       required: ['registrationNumber']
