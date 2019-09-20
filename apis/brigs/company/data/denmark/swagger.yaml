@@ -1052,7 +1052,7 @@ components:
         legalForm:
           "$ref": "#/components/schemas/LegalForm"
         historicalLegalForm:
-        #  type: array
+          type: array
           items:
             "$ref": "#/components/schemas/HistoricalLegalForm"  
         status:
