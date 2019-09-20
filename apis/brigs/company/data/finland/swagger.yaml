@@ -15,6 +15,7 @@ info:
   contact:
     email: team-ninjas@bisnode.com
 
+
 components:
 
   ####################
@@ -1137,9 +1138,6 @@ components:
       type: object
       description: A set of identifiers for this company.
       properties:
-        bisnodeId:
-          type: string
-          description: A unique id set by Bisnode
         registrationNumber:
           type: string
           description: National registration number
@@ -1156,26 +1154,8 @@ components:
       properties:
         sni2007IndustryCodes:
           "$ref": "#/components/schemas/Sni2007IndustryCodes"
-        naceCodes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/NaceCode"
       required: []
       title: IndustryCodeSet
-    NaceCode:
-      type: object
-      description: 'NACE Rev. 2. See https://siccode.com/page/what-is-a-nace-code for more info'
-      properties:
-        code:
-          type: string
-          description: nace code
-          example: 0230
-        description:
-          type: string
-          description: A textual description of the code.
-          example: 'Gathering of wild growing non-wood products'
-      required: []
-      title: NaceCode
     Sni2007IndustryCodes:
       type: object
       description: 
@@ -1246,33 +1226,13 @@ components:
     Finance:
       type: object
       properties:
-        chattelMortgages:
-          type: array
-          description: "TODO - how many can we get here ???"
-          items:
-            "$ref": "#/components/schemas/ChattelMortgage"
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
       required: []
       title: Finance
-    ChattelMortgage:
-      type: object
-      description: 'TODO - add description'
-      properties:
-        creditor:
-          type: string
-          description: Name of the entity/company this mortgage entails.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: integer
-      required: []
-      title: ChattelMortgage
     FinancialStatements:
       type: object
       description: >-
-
         auditorsReservation:
           type: array
           items:
