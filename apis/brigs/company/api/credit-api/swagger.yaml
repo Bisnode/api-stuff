@@ -14,11 +14,11 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies/no:
+  /companies/fi:
     post:
-      summary: Fetch credit and risk data on a norwegian company
+      summary: Fetch credit and risk data on a finnish company
       description: >-
-        Fetch risk and credit data on norwegian companies
+        Fetch risk and credit data on finnish companies
       requestBody:
         content:
           application/json:
@@ -32,7 +32,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
+               $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
 components:
   schemas:
     RequestModel:
