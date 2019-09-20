@@ -26,7 +26,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -45,7 +45,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -64,7 +64,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -83,7 +83,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -108,7 +108,7 @@ components:
           description: Only to be used when ordering on behalf of someone else. This text will be displayed on the letter of notification.
         language:
           type: string
-          enum: ['SE', 'EN', 'NO', 'DK', 'FI']
+          enum: ['SV', 'EN', 'NO', 'DK', 'FI']
           description: Supported languages for all the description fields where i18n is supported
           default: EN
       required: ['registrationNumber']
