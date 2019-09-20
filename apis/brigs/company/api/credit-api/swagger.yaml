@@ -25,7 +25,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -44,7 +44,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -63,14 +63,14 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-             mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DanishResponseModel'
+                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
   /companies/no:
     post:
       summary: Fetch credit and risk data on a norwegian company
@@ -82,7 +82,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestModel'
             example: 
-              mock: {"registrationNumber": "00000000000", "language": "SV", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
@@ -112,14 +112,6 @@ components:
           default: EN
       required: ['registrationNumber']
       title: RequestModel
-    SwedishResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
-    DanishResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
-    NorwegianResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
-    FinnishResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
   securitySchemes:
     implicit:
       type: oauth2
