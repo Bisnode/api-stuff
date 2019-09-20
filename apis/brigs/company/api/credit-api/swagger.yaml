@@ -128,3 +128,7 @@ components:
           authorizationUrl: 'https://login.bisnode.com/as/token.oauth2'
           scopes:
             riskAndCredit: allows access to Bisnode risk and credit data
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/bisnode-apis/CompanyCreditData/v1
