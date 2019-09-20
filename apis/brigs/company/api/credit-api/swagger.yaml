@@ -14,7 +14,7 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies1/se:
+  /companies/se:
     post:
       summary: Fetch credit and risk data on a swedish company
       description: >-
@@ -33,7 +33,7 @@ paths:
             application/json:
               schema:
                 $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
-  /companies2/fi:
+  /companies/fi:
     post:
       summary: Fetch credit and risk data on a finnish company
       description: >-
@@ -52,7 +52,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FinnishResponseModel'
-  /companies3/dk:
+  /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
       description: >-
@@ -71,7 +71,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DanishResponseModel'
-  /companies4/no:
+  /companies/no:
     post:
       summary: Fetch credit and risk data on a norwegian company
       description: >-
