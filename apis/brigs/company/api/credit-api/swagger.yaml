@@ -75,4 +75,4 @@ components:
 # Added by API Auto Mocking Plugin
 servers:
   - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/bisnode-apis/CompanyCreditData/v1
+    url: https://virtserver.swaggerhub.com/bisnode-apis/CompanyCreditInformation/v1
