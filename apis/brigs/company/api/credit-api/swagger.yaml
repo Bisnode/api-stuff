@@ -32,7 +32,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SwedishResponseModel'
+                $ref: '#/components/schemas/DanishResponseModel'
   /companies/fi:
     post:
       summary: Fetch credit and risk data on a finnish company
