@@ -15,7 +15,6 @@ security:
       - riskAndCredit
       
 paths:
- 
   /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
