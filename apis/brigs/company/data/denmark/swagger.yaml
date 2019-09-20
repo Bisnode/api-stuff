@@ -23,19 +23,18 @@ components:
     DanishCompanyData:
       type: object
       properties:
-        risk:
+        companyInformation:
+          "$ref": "#/components/schemas/CompanyInformation"
+        risk: 
           "$ref": "#/components/schemas/Risk"
         management:
           "$ref": "#/components/schemas/Management"
-        companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
         finance:
           "$ref": "#/components/schemas/Finance"
         ownership:
           "$ref": "#/components/schemas/Ownership"
         events:
           "$ref": "#/components/schemas/Events"
-      required: []
       title: DanishCompanyData
       description: This is the root object defining which structures reside under the root path.
     Risk:
