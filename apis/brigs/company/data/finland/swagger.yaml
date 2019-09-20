@@ -64,7 +64,7 @@ components:
           type: boolean
           description: >-
             True if there has been any debt collection cases the last 12 months. (6 or 12, solsidan says 12)
-            TODO - descibe debt collection cases
+            TODO - describe debt collection cases
       required: []
       title: DebtCollection
     RatingCreditLimits:
