@@ -52,7 +52,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
+                $ref: '#/components/schemas/FinnishResponseModel'
   /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
@@ -90,7 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
+                $ref: '#/components/schemas/NorwegianResponseModel'
 components:
   schemas:
     RequestModel:
