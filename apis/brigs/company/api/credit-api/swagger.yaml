@@ -33,7 +33,7 @@ paths:
             application/json:
               schema:
                 $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
-  /companies2/fi:
+  /companies/fi:
     post:
       summary: Fetch credit and risk data on a finnish company
       description: >-
@@ -52,7 +52,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FinnishResponseModel'
-  /companies3/dk:
+  /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
       description: >-
@@ -61,7 +61,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestModel1'
+              $ref: '#/components/schemas/RequestModel'
             example: 
               mock: {"registrationNumber": "00000000000", "reason": "My important reason"}
       responses:
@@ -71,7 +71,7 @@ paths:
             application/json:
               schema:
                 $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
-  /companies4/no:
+  /companies/no:
     post:
       summary: Fetch credit and risk data on a norwegian company
       description: >-
