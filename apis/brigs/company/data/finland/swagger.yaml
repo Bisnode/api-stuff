@@ -1228,6 +1228,32 @@ components:
       properties:
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
+        floatingCharges:
+          type: array
+          description: >-
+            TODO - do we have a max size here?
+          items:
+            "$ref": '#/components/schemas/FloatingCharges'
+    FloatingCharges:
+      type: object
+      description: >-
+        TODO - what is this??
+      properties:
+        date:
+          description: Date when ???
+          type: string
+          format: date
+          example: 2019-01-01
+        reference:
+          description: reference id of the floating charge
+          type: string
+          example: A1223
+        creditor:
+          description: Creditor
+          type: string
+          example: Bisnode OY
+        amount:
+          "$ref": '#/components/schemas/Amount'
       required: []
       title: Finance
     FinancialStatements:
@@ -1864,14 +1890,12 @@ components:
       title: FinancialStatement
     Bankruptcy:
       type: object
-      description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
+      description: This section will be available if there is any data related to bankruptcy for this company.
       properties:
         date:
           type: string
           format: date
           description: Date when this company went bankrupt.
-        trustee:
-          "$ref": "#/components/schemas/Trustee"
     Trustee:
       type: object
       description: Name and contact-info to the person/company handling the bankruptcy
