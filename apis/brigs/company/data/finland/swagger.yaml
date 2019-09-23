@@ -1373,7 +1373,7 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO  - add description
+            The company’s total revenues. Net sales + otherOperatingIncome
         numberOfEmployees:
           type: integer
           format: int64
@@ -1524,7 +1524,7 @@ components:
           type: integer
           format: int64
           description: >-
-            The operating shows what the company has earned in connection with its business activities, that is to say before deduction of interest and taxes
+            The operating result shows what the company has earned in connection with its business activities, that is to say before deduction of interest and taxes
         extraordinaryIncome:
           type: integer
           format: int64
