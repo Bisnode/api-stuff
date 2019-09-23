@@ -23,8 +23,6 @@ components:
     DanishCompanyData:
       type: object
       properties:
-        management:
-          "$ref": "#/components/schemas/Management"
         finance:
           "$ref": "#/components/schemas/Finance"
         ownership:
