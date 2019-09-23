@@ -23,8 +23,6 @@ components:
     DanishCompanyData:
       type: object
       properties:
-        finance:
-          "$ref": "#/components/schemas/Finance"
         ownership:
           "$ref": "#/components/schemas/Ownership"
         events:
