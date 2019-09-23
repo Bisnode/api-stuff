@@ -55,14 +55,8 @@ components:
           default: EN
       required: ['registrationNumber']
       title: RequestModel
-    SwedishResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
     DanishResponseModel:
        $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
-    NorwegianResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/NorwegianCompanyCreditModel/1.0.0#/components/schemas/NorwegianCompanyData'
-    FinnishResponseModel:
-       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
   securitySchemes:
     implicit:
       type: oauth2
