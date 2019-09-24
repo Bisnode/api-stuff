@@ -2587,14 +2587,13 @@ components:
           type: integer
           format: int64
           description: >-
-            Other securities. TODO  - examples would be nice
+            Other securitys could be the value of capital insurances or other assets that provides security for pension commitments.
               
         totalSecurities:
           type: integer
           format: int64
           description: >-
-            The sum of floatingCharges, propertyMortgage and otherSecurities.
-            TODO - is this correct.
+            Securitys or pawns are assets, that explicit or implicit, has been submited in the balance sheet as a security for a loan.
             
         commentsSecurities:
           type: string
@@ -2620,8 +2619,7 @@ components:
           type: integer
           format: int64
           description: >-
-            The sum of conditionalShareholdersContribution and otherContingentLiabilities 
-            TODO - is this correct???
+            The total sum of contingent liabilities. It's commitments that could, but doesn't have to, have economical consequences.
             
         commentsLiabilities:
           type: string
@@ -2651,7 +2649,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Salaries to others than those reported in salariesAndEmolumentsToBoardMembers.
+            Salaries to all other employees except boardmembers.
             
         incentiveWagesToEmployees:
           type: integer
@@ -2663,8 +2661,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Social costs.
-            TODO - what is this???
+            Social costs for all employees, includes pension costs, payroll overhead and similar.
             
         severancePay:
           type: integer
@@ -2677,10 +2674,10 @@ components:
           type: integer
           format: int64
           description: >-
-            Total credit given by banks and similar.
+            Total credit, given by banks and similar.
             
         usedAccountCredit:
           type: integer
           format: int64
           description: >-
-            Credit used.
+            Credit used, given by banks and similar.
