@@ -1860,7 +1860,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Minority interest  -- --TODO - add more info
+            Minority interest -- TODO - add more info
         resultAfterMinorityInterestShare:
           type: integer
           format: int64
