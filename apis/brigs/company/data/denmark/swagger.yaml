@@ -1415,11 +1415,6 @@ components:
     Finance:
       type: object
       properties:
-        claimsOutOfBusiness:
-          type: array
-          description: "TODO - how many can we get here ???"
-          items:
-            "$ref": "#/components/schemas/LiquidationClaim"
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
         propertyHoldings:
