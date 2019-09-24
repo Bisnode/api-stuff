@@ -1448,16 +1448,6 @@ components:
     FinancialStatements:
       type: object
       properties:
-        auditorsReservation:
-          type: array
-          items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        keyFigures:
-          type: array
-          items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
-        industryKeyFigures:
-          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
