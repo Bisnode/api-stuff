@@ -1876,6 +1876,7 @@ components:
           format: int64
           description: >-
             Earnings after minority interest share
+      title: IncomeStatement
     BalanceSheet:
       type: object
       properties:
