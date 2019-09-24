@@ -1415,11 +1415,6 @@ components:
     Finance:
       type: object
       properties:
-        chattelMortgages:
-          type: array
-          description: "TODO - how many can we get here ???"
-          items:
-            "$ref": "#/components/schemas/ChattelMortgage"
         claimsOutOfBusiness:
           type: array
           description: "TODO - how many can we get here ???"
