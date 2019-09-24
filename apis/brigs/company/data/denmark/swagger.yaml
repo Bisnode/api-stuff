@@ -1774,12 +1774,12 @@ components:
           type: integer
           format: int64
           description: >-
-            Income from shares  ---TODO add more info
+            Income from shares  -TODO add more info
         incomeFromOtherShares:
           type: integer
           format: int64
           description: >-
-            Income from other shares  ---TODO add more info
+            Income from other shares  -TODO add more info
         impairmentsOfFinancialAssets:
           type: integer
           format: int64
