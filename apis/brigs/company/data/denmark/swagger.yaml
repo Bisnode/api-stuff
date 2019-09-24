@@ -1454,10 +1454,6 @@ components:
     FinancialStatements:
       type: object
       properties:
-        auditorsReservation:
-          type: array
-          items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
         keyFigures:
           type: array
           items:
