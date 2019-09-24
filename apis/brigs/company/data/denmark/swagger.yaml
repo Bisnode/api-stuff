@@ -1764,7 +1764,7 @@ components:
           type: integer
           format: int64
           description: >-
-            'Interest income from group companies. Example: Bank loans ?'
+            Interest income from group companies. Example- Bank loans ?
         otherFinancialExpenses:
           type: integer
           format: int64
