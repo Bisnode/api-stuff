@@ -1454,8 +1454,6 @@ components:
     FinancialStatements:
       type: object
       properties:
-        groupAccount:
-          "$ref": "#/components/schemas/GroupAccount"
         auditorsReservation:
           type: array
           items:
