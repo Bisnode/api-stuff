@@ -1587,7 +1587,7 @@ components:
           description: >-
             Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts.
         growthInNetWorth:
-          type: number
+          type: integer
           format: int64
           description: >-
             Growth in net value of an organisation's assets, after deducting any liabilities, compared to the result from the previous statement.
@@ -1597,7 +1597,7 @@ components:
           description: >-
            Capacity Ratio --TODO
         breakEvenSales:
-          type: number
+          type: integer
           format: int64
           description: >-
            Break-even sales --TODO
@@ -1619,12 +1619,12 @@ components:
             A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
              TODO - is this correct ?.
         inventoriesToTurnover:
-          type: integer
+          type: number
           format: double
           description: >-
             The ratio is used for investigating how much of the capital is tied up in inventories. A high value indicates that the turnover of the stock is slow.
         equityOfTurnover:
-          type: integer
+          type: number
           format: double
           description: >-
            Shows in '%'
@@ -1633,7 +1633,7 @@ components:
           format: double
           description: liquid assets in percent of total turnover.
         grossMarginInPercent:
-          type: integer
+          type: number
           format: double
           description: >-
            Shows in '%' TODO  -- add more info here
@@ -1644,12 +1644,12 @@ components:
           description: >-
             Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
         profitRate:
-          type: integer
+          type: number
           format: double
           description: >-
            Profit Rate. Shows in '%'.  TODO  -- add more info here
         payoutRatio:
-          type: integer
+          type: number
           format: double
           description: >-
            The payout ratio shows the proportion of earnings paid out as dividends to shareholders, typically expressed as a percentage of the company's earnings. The payout ratio can also be expressed as dividends paid out as a proportion of cash flow. The payout ratio is also known as the dividend payout ratio.
