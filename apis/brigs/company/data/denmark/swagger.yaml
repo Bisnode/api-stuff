@@ -2314,8 +2314,7 @@ components:
     PropertyHoldings:
       type: object
       description: >-
-        TODO - how many can we get here ?
-        
+        TODO - how many can we get here?
       properties:
         ownedPartOfTaxAssessment:
           "$ref": "#/components/schemas/Amount"
