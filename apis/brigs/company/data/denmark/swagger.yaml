@@ -1783,12 +1783,12 @@ components:
         impairmentsOfFinancialAssets:
           type: integer
           format: int64
-          desription: >-
+          description: >-
             Impairments of financial assets.
         unspecifiedFinancialItems:
           type: integer
           format: int64
-          desription: >-
+          description: >-
             Unspecified financial items.
         totalFinancialIncome:
           type: integer
@@ -1829,22 +1829,22 @@ components:
         taxOnExtraordinaryResult:
           type: integer
           format: int64
-          descriptoon: >-
+          description: >-
             Tax on extraordinary earnings
         taxOnAnnualResult:
           type: integer
           format: int64
-          descriptoon: >-
+          description: >-
             Tax on profit or loss for the year 
         taxesFromOtherYears:
           type: integer
           format: int64
-          descriptoon: >-
+          description: >-
             Taxes from other years  
         otherTaxes:
           type: integer
           format: int64
-          descriptoon: >-
+          description: >-
             Other taxes   
         resultBeforeExtraordinaryItems:  
           type: integer
