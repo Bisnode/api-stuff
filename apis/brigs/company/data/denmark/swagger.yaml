@@ -58,7 +58,7 @@ components:
           "$ref": "#/components/schemas/CreditLimit"
         historicalCreditLimits:
           type: array
-          description: TODO - max size ???
+          description: TODO - max size ?
           items:
             "$ref": "#/components/schemas/CreditLimit"
       required: []
@@ -227,12 +227,12 @@ components:
         count:
           type: integer
           format: int32
-          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
+          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ?
         amount:
           "$ref": "#/components/schemas/Amount"
         paymentRemarks:
           type: array
-          description: A list of remarks, most recent ones comes first. TODO - Max size ???
+          description: A list of remarks, most recent ones comes first. TODO - Max size ?
           items:
             "$ref": "#/components/schemas/PaymentRemark"
       required: []
@@ -607,7 +607,7 @@ components:
         date:
           type: string
           format: date
-          description: Date when the claim was submitted to authorities ???
+          description: Date when the claim was submitted to authorities ?
         privateClaimsCount:
           type: integer
           format: int64
@@ -657,7 +657,7 @@ components:
     Events:
       type: array
       title: Events
-      description: Newest events come first. Max xx events. TODO - what is max ???
+      description: Newest events come first. Max xx events. TODO - what is max ?
       items:
         "$ref": "#/components/schemas/Event"
     Ownership:
@@ -671,7 +671,7 @@ components:
       title: Ownership
     FamilyTree:
       type: object
-      description: A view of the owner structure. TODO - will we cap data???
+      description: A view of the owner structure. TODO - will we cap data?
       properties:
         ultimateParent:
           "$ref": "#/components/schemas/Company"
@@ -757,7 +757,7 @@ components:
           type: integer
         sisterCompanies:
           type: array
-          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
+          description: TODO - should we have this? requires some transformation logic since we don't have it today.
           items:
             "$ref": "#/components/schemas/SisterCompany"
       required: []
@@ -811,7 +811,7 @@ components:
         date:
           type: string
           format: date
-          description: TODO - what does this date mean???
+          description: TODO - what does this date mean?
         shareCapital:
           "$ref": "#/components/schemas/Amount"
       required: []
@@ -830,7 +830,7 @@ components:
           "$ref": "#/components/schemas/Auditors"
         authorizedSignatory:
           type: string
-          description: TODO ??
+          description: TODO ?
       required: []
       title: Management
     Auditors:
@@ -1024,7 +1024,7 @@ components:
             "$ref": "#/components/schemas/Position"
         historicalBoardMembers:
           type: array
-          description: A list of the historical boardmembers. TODO - is there a max size for this ???
+          description: A list of the historical boardmembers. TODO - is there a max size for this ?
           items:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
@@ -1069,7 +1069,7 @@ components:
           description: Total number of branches this company have.
         branches:
           type: array
-          description: TODO - How many items can we have here???
+          description: TODO - How many items can we have here?
           items:
             "$ref": "#/components/schemas/Branch"
       required: []
@@ -1152,7 +1152,7 @@ components:
         date:
           type: string
           format: date
-          description: The date when this name was registered??? - TODO is this correct
+          description: The date when this name was registered? - TODO is this correct
         name:
           type: string
           description: Name
@@ -1174,7 +1174,7 @@ components:
           description: The date when this secondary name was registered.
         type:
           type: string
-          description: Company type. TODO - is the same as legalform ???
+          description: Company type. TODO - is the same as legalform?
       required: []
       title: SecondaryName
     AlternativeName:
@@ -1386,7 +1386,7 @@ components:
         articlesOfAssociationDate:
           type: string
           format: date
-          description: Date when the article of association was created/submitted???
+          description: Date when the article of association was created/submitted?
         foundationDate:
           type: string
           format: date
@@ -1542,7 +1542,7 @@ components:
           type: number
           format: double
           description: >-
-            Calculated equity in percent of the total assets. ???
+            Calculated equity in percent of the total assets.
         quickRatio:
           type: number
           format: double
@@ -1595,12 +1595,12 @@ components:
           type: number
           format: double
           description: >-
-           Capacity Ratio ?? TODO
+           Capacity Ratio --TODO
         breakEvenSales:
           type: number
           format: int64
           description: >-
-           Break-even sales ?? TODO
+           Break-even sales --TODO
         marginOfSafety:
           type: number
           format: double
@@ -1611,13 +1611,13 @@ components:
           type: number
           format: double
           description: >-
-             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies. TODO - is this correct??
+             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies. TODO - is this correct?
         daysOfReceivables:
           type: number
           format: double
           description: >-
             A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
-             TODO - is this correct ??.
+             TODO - is this correct ?.
         inventoriesToTurnover:
           type: integer
           format: double
@@ -1636,7 +1636,7 @@ components:
           type: integer
           format: double
           description: >-
-           Shows in '%' TODO -- add more info here
+           Shows in '%' TODO  -- add more info here
         gearing:
           type: number
           format: double
@@ -1647,7 +1647,7 @@ components:
           type: integer
           format: double
           description: >-
-           Profit Rate. Shows in '%'.  TODO -- add more info here
+           Profit Rate. Shows in '%'.  TODO  -- add more info here
         payoutRatio:
           type: integer
           format: double
@@ -1673,7 +1673,7 @@ components:
           format: int64
           example: 482000
           description: >-
-            TODO - is this the same as sales/netSales ???
+            TODO - is this the same as sales/netSales ?
         tax:
           type: integer
           format: int64
@@ -1694,7 +1694,7 @@ components:
           format: int64
           description: >-
             Work performed for own use.
-            TODO - what does it mean ???
+            TODO - what does it mean ?
         otherOperatingIncome:
           type: integer
           format: int64
@@ -1719,7 +1719,7 @@ components:
           type: integer
           format: int64
           description: >-
-           Gross contribution margin ?? TODO - add more info
+           Gross contribution margin --TODO - add more info
         sellingExpenses:
           type: integer
           format: int64
@@ -1764,7 +1764,7 @@ components:
           type: integer
           format: int64
           description: >-
-            External interest income. Example ???
+            External interest income. Example ?
         otherFinancialIncome:
           type: integer
           format: int64
@@ -1774,7 +1774,7 @@ components:
           type: integer
           format: int64
           description: >-
-            'Interest income from group companies. Example: Bank loans ???'
+            'Interest income from group companies. Example: Bank loans ?'
         otherFinancialExpenses:
           type: integer
           format: int64
@@ -1784,12 +1784,12 @@ components:
           type: integer
           format: int64
           description: >-
-            Income from shares - ?? TODO add more info
+            Income from shares  ---TODO add more info
         incomeFromOtherShares:
           type: integer
           format: int64
           description: >-
-            Income from other shares - ?? TODO add more info
+            Income from other shares  ---TODO add more info
         impairmentsOfFinancialAssets:
           type: integer
           format: int64
@@ -1814,7 +1814,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Secondary items. ?? TODO - what is this??
+            Secondary items. --TODO - what is this?
         extraordinaryIncome:
           type: integer
           format: int64
@@ -1870,7 +1870,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Minority interest -- ?? TODO - add more info
+            Minority interest  -- --TODO - add more info
         resultAfterMinorityInterestShare:
           type: integer
           format: int64
@@ -2138,7 +2138,7 @@ components:
           type: integer
           format: int64  
           description: >-    
-            Other liabilities. ?? TODO - what is this (exists in BRiGS)??
+            Other liabilities. --TODO - what is this (exists in BRiGS)?
         accruedRevenuesAndDeferredExpenses:
           type: integer
           format: int64  
@@ -2338,7 +2338,7 @@ components:
     PropertyHoldings:
       type: object
       description: >-
-        TODO - how many can we get here ???
+        TODO - how many can we get here ?
         
       properties:
         ownedPartOfTaxAssessment:
@@ -2355,12 +2355,12 @@ components:
           description: The number of properties this company own a part of. Excluding the ones it owns in full.
         assessedRealProperties:
           type: array
-          description: TODO - how many properties can we get here ???
+          description: TODO - how many properties can we get here ?
           items:
             "$ref": "#/components/schemas/AssessedRealProperty"
         currentRealProperties:
           type: array
-          description: TODO - how many properties can we get here ???
+          description: TODO - how many properties can we get here ?
           items:
             "$ref": "#/components/schemas/CurrentRealProperty"
       required: []
@@ -2422,7 +2422,7 @@ components:
           type: string
           description: >- 
             TODO 
-            'if true it means that the information is under investigation by the tax office???
+            'if true it means that the information is under investigation by the tax office?
             '
         objectType:
           type: string
@@ -2475,7 +2475,7 @@ components:
           description: Date when the status changed
         status:
           type: string
-          description: 'TODO - what statuses can we have here????'
+          description: 'TODO - what statuses can we have here?'
         name:
           type: string
           description: Name of the court where bankruptcy was declared
@@ -2557,7 +2557,7 @@ components:
           format: int64
           description: >-
             The sum of conditionalShareholdersContribution and otherContingentLiabilities 
-            TODO - is this correct???
+            TODO - is this correct?
             
         commentsLiabilities:
           type: string
@@ -2587,7 +2587,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Salaries to others. TODO - Others as in people not employed or what???
+            Salaries to others. TODO - Others as in people not employed or what?
             
         incentiveWagesToEmployees:
           type: integer
@@ -2600,7 +2600,7 @@ components:
           format: int64
           description: >-
             Social costs.
-            TODO - what is this???
+            TODO - what is this?
             
         severancePay:
           type: integer
