@@ -24,11 +24,6 @@ components:
       type: object
       properties:
         companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
-        risk: 
-          "$ref": "#/components/schemas/Risk"
-        management:
-          "$ref": "#/components/schemas/Management"
         finance:
           "$ref": "#/components/schemas/Finance"
         ownership:
