@@ -23,7 +23,7 @@ components:
     DanishCompanyData:
       type: object
       properties:
-       companyInformation:
+        companyInformation:
           "$ref": "#/components/schemas/CompanyInformation"
         risk: 
           "$ref": "#/components/schemas/Risk"
