@@ -33,7 +33,6 @@ paths:
             application/json:
               schema:
                 $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
-
 components:
   schemas:
     RequestModel:
