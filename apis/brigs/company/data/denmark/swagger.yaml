@@ -2311,30 +2311,6 @@ components:
           "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
-    GroupAccount:
-      type: object
-      properties:
-        auditorsReservation:
-          type: array
-          items:
-            "$ref": "#/components/schemas/GroupAccountAuditorsReservation"
-        financialStatementKeyFigures:
-          type: array
-          items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
-      required: []
-      title: GroupAccount
-    GroupAccountAuditorsReservation:
-      type: object
-      properties:
-        auditorReservationCode:
-          type: string
-        auditorReservationDescription:
-          type: string
-        statementDate:
-          type: string
-      required: []
-      title: GroupAccountAuditorsReservation
     PropertyHoldings:
       type: object
       description: >-
