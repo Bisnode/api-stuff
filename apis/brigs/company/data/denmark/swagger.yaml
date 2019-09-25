@@ -1892,6 +1892,11 @@ components:
           format: int64
           description: >-
             Earnings after minority interest share
+        dividents:
+          type: integer
+          format: int64  
+          description: >-    
+           Dividents.
       title: IncomeStatement
     BalanceSheet:
       type: object
