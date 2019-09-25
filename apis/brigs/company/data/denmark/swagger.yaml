@@ -2330,8 +2330,6 @@ components:
           "$ref": "#/components/schemas/BalanceSheet"
         incomeStatement:
           "$ref": "#/components/schemas/IncomeStatement"
-        notesAndOtherInformation:
-          "$ref": "#/components/schemas/NotesAndOtherInformation"
       required: []
       title: FinancialStatement
     PropertyHoldings:
