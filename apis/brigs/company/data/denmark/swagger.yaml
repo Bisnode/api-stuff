@@ -1892,11 +1892,11 @@ components:
           format: int64
           description: >-
             Earnings after minority interest share
-        dividents:
+        dividends:
           type: integer
           format: int64  
           description: >-    
-           Dividents.
+           Dividend of result.
       title: IncomeStatement
     BalanceSheet:
       type: object
@@ -2141,11 +2141,11 @@ components:
           format: int64  
           description: >-    
            Company taxes.
-        dividents:
+        dividends:
           type: integer
           format: int64  
           description: >-    
-           Dividents.
+           Dividend of result.
         advancePayments:
           type: integer
           format: int64  
