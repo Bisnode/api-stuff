@@ -74,8 +74,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestModel'
-              example: 
-                mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
+            example: 
+              mock: {"registrationNumber": "00000000000", "language": "EN", "reference": "My important reason", "onBehalfOf": "Bisnode-test"}
       responses:
         '200':
           description: OK
