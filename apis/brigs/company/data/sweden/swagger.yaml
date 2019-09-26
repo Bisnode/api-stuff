@@ -1256,10 +1256,10 @@ components:
             "$ref": "#/components/schemas/AlternativeName"
         historicalNames:
           type: array
-          description: A list of historical names, does not include the current name.
+          description: A list of historical registered names, does not include the current name.
           items:
             "$ref": "#/components/schemas/Name"
-        officialName:
+        registeredName:
           "$ref": "#/components/schemas/Name"
       required: []
       title: CompanyName
