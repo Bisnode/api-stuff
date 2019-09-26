@@ -14,39 +14,6 @@ security:
   - implicit:
       - riskAndCredit
 paths:
-  /companies:
-    get:
-      tags:
-      - developers
-      summary: searches companies
-      operationId: searchCompany
-      produces:
-      - application/json
-      consumes:
-      - application/json
-      parameters:
-      - in: body
-        name: requestModel
-        description: Search params
-        schema: 
-          "$ref": "#/definitions/SearchRequest"
-     
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            $ref: '#/definitions/SearchResponse'
-        400:
-          description: bad input parameter
-        404:
-          description: Not found
-        default:
-           description: Error definition
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          
   /companies/se:
     post:
       summary: Fetch credit and risk data on a swedish company
