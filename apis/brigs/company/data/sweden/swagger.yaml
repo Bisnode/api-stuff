@@ -53,16 +53,22 @@ components:
           "$ref": "#/components/schemas/PaymentRemarks"
         petitions:
           "$ref": "#/components/schemas/Petitions"
-        previousInquiries:
-          "$ref": "#/components/schemas/PreviousInquiries"
-        paymentIndex:
-          "$ref": "#/components/schemas/PaymentIndex"
+        creditInquiries:
+          "$ref": "#/components/schemas/CreditInquiries"
+        trade:
+          "$ref": "#/components/schemas/Trade"
         debtBalance:
           "$ref": "#/components/schemas/DebtBalance"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: Risk
+    Trade:
+      type: object
+      properties:
+        paymentIndex:
+          "$ref": "#/components/schemas/PaymentIndex"
+      title: Trade
     RatingCreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
@@ -106,7 +112,7 @@ components:
           example: 2015-12
       required: []
       title: RatingCreditLimit
-    Inquiry:
+    CreditInquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
@@ -117,7 +123,7 @@ components:
           format: date
           description: Date of the inquiry
       required: []
-      title: Inquiry
+      title: CreditInquiry
     CreditRatings:
       type: object
       description: Current and historical ratings
@@ -129,8 +135,6 @@ components:
           description: Max 99 items.
           items:
             "$ref": "#/components/schemas/Rating"
-        partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
       required: []
       title: CreditRatings
     Rating:
@@ -152,6 +156,8 @@ components:
         description:
           type: string
           description: Textual description of the rating. 
+        partJudgements:
+          "$ref": "#/components/schemas/PartJudgements"
       required: []
       title: Rating
       maximum: 1100
@@ -268,8 +274,7 @@ components:
           format: date
           description: Date of remark
         creditor:
-          type: string
-          description: Creditor, concerning remark on payment.
+          "$ref": "#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/ReportCode"
         description:
@@ -278,6 +283,13 @@ components:
           example: FISSION - EXPIRED
       required: []
       title: PaymentRemark
+    Creditor:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            Name of the creditor
     ReportCode:
       type: object
       description: Common codes
@@ -642,20 +654,20 @@ components:
           "$ref": "#/components/schemas/ReportCode"
       required: []
       title: Petition
-    PreviousInquiries:
+    CreditInquiries:
       type: object
       properties:
         numberOfInquiries:
           type: integer
           format: int32
           description: Total number of inquiries made on this company
-        previousInquiries:
+        creditInquiries:
           type: array
           description: A list of the inquiries. TODO - is there a max size for this?
           items:
-            "$ref": "#/components/schemas/Inquiry"
+            "$ref": "#/components/schemas/CreditInquiry"
       required: []
-      title: PreviousInquiries
+      title: CreditInquiries
     DebtBalance:
       type: object
       description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
@@ -1422,11 +1434,20 @@ components:
         sni2007IndustryCodes:
           "$ref": "#/components/schemas/Sni2007IndustryCodes"
         naceCodes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/NaceCode"
+          "$ref": "#/components/schemas/NaceCodes"
       required: []
       title: IndustryCodeSet
+    NaceCodes:
+      type: object
+      properties:
+        primaryNaceCode:
+          "$ref": "#/components/schemas/NaceCode"
+        otherNaceCodes:
+          type: array
+          description: Secondary codes 
+          items:
+            "$ref": "#/components/schemas/NaceCode"
+      title: NaceCodes
     NaceCode:
       type: object
       description: 'NACE Rev. 2. See https://siccode.com/page/what-is-a-nace-code for more info'
