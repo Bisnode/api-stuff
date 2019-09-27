@@ -656,8 +656,7 @@ components:
           type: string
           description: A textual description of the petition, may be in the local language.
         creditor:
-          type: string
-          description: Creditor of petition
+          "$ref": "#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/ReportCode"
       required: []
@@ -1634,8 +1633,7 @@ components:
       description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
       properties:
         creditor:
-          type: string
-          description: Name of the entity/company this mortgage entails.
+          "$ref": "#/components/schemas/Creditor"
         amount:
           "$ref": "#/components/schemas/Amount"
         date:
