@@ -57,12 +57,20 @@ components:
           "$ref": "#/components/schemas/CreditInquiries"
         trade:
           "$ref": "#/components/schemas/Trade"
-        debtBalance:
-          "$ref": "#/components/schemas/DebtBalance"
+        financialCommitments:
+          "$ref": "#/components/schemas/FinancialCommitments"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: Risk
+    FinancialCommitments:
+      type: object
+      description: >-
+        Various types of financial commitments this company have.
+      properties:
+        debtBalance:
+          "$ref": "#/components/schemas/DebtBalance"
+      title: FinancialCommitments
     Trade:
       type: object
       properties:
