@@ -925,6 +925,18 @@ components:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
       title: Auditors
+    PositionEntity:
+      type: object
+      description: >-
+        An entity, can be a company or a provate person.
+      properties:
+        name:
+        type: string
+        description: The name of the person/entity holding this position
+      registrationNumber:
+        type: string
+        description: Typically a social security number or a oraganisation number in case of a company entity
+      title: PositionEntity
     Position:
       type: object
       properties:
@@ -934,14 +946,10 @@ components:
           description: Date when this person/entity entered this position.
         type:
           type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company? TODO - Merge OTHER and UNKNOWN????
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-        registrationNumber:
-          type: string
-          description: Typically a social security number
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
         function:
           type: integer
           format: int32
@@ -1056,12 +1064,8 @@ components:
             97  AUDITOR                                 
             98  DEPUTY AUDITOR                          
             99  DEPUTY LAY AUDITOR                      
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-        registrationNumber:
-          type: string
-          description: Typically a social securityNumber
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
         resignedDate:
           type: string
           format: date
