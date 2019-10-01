@@ -27,7 +27,7 @@ components:
         offset:
           type: integer
           format: int32
-          description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this??? I.e we don't support fetching lists larger than 10 000 ???
+          description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this? I.e we don't support fetching lists larger than 10 000 ?
           minValue: 0
           default: 0
         limit: 
