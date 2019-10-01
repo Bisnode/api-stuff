@@ -1,20 +1,16 @@
 swagger: "2.0"
-
-#######################
-# Optional info section
-#######################
 info:
   title: Bisnode Company Search
   description: >-
     Common components for Company Search REST APIs
   version: '1.0.0'
-
-components:
     
   ####################
   # Common data models
   ####################
-  schemas:
+schemes:
+  - https
+definitions:
     SearchResponse:
       type: object
       description: Searchmodel. The order in the list will always be best matches first. TODO - Add some  basic rules for the searches so the client understands the order in the result list..
@@ -27,7 +23,7 @@ components:
           type: integer
           format: int32
           description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this? I.e we don't support fetching lists larger than 10 000 ?
-          minValue: 0
+          minimum: 0
           default: 0
         limit: 
           type: integer
@@ -40,9 +36,9 @@ components:
           type: array
           description: List of companies
           items:
-            "$ref": "#/components/schemas/Company"
+            "$ref": "#/definitions/Company"
         _links:
-          "$ref": '#/components/schemas/Links'
+          "$ref": '#/definitions/Links'
       required:
       - hitCount
       - companies
@@ -65,8 +61,7 @@ components:
           type: string
           description: dunsnumber. 
         address:
-          "$ref": "#/components/schemas/Address"
-      required: []
+          "$ref": "#/definitions/Address"
       title: Company
     Address:
       type: object
@@ -108,11 +103,11 @@ components:
         }'
       properties:
         next:
-          "$ref": '#/components/schemas/Link'
+          "$ref": '#/definitions/Link'
         prev:
-          "$ref": '#/components/schemas/Link'
+          "$ref": '#/definitions/Link'
         self:
-          "$ref": '#/components/schemas/Link'
+          "$ref": '#/definitions/Link'
     SearchRequest:
       type: object
       description: Search input. TODO - is wildcards supported?
@@ -121,7 +116,7 @@ components:
           type: integer
           format: int32
           description: A positive number telling how many hits should be skipped. A value of 2 will skip the first 2 results that matched the search criteria.
-          minValue: 0
+          minimum: 0
           default: 0
         limit: 
           type: integer
@@ -151,4 +146,4 @@ components:
           description: The country to search in
           enum: ['SE', 'NO', 'FI', 'DK']
         address:
-          "$ref": "#/components/schemas/Address"
+          "$ref": "#/definitions/Address"
