@@ -1,5 +1,4 @@
-# OpenAPI version identifier - required for OpenAPI 3.0 domains
-openapi: 3.0.0
+swagger: "2.0"
 
 #######################
 # Optional info section
