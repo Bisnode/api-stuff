@@ -3,7 +3,6 @@ info:
   title: Bisnode company risk and credit data API
   description: |
     Bisnode Company Risk and Credit data API
-    
     Since we don't want to expose any personally identifiable information (PII) parameters in the URL,
     GET requests with a registrationNumber is not supported.
     
