@@ -1,3 +1,4 @@
+openapi: 3.0.0
 info:
   version: "v1"
   title: Bisnode company risk and credit data API
