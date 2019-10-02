@@ -1,13 +1,21 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
 info:
   title: Bisnode Company Search
   description: >-
     Common components for Company Search REST APIs
   version: '1.0.0'
+
+components:
     
   ####################
   # Common data models
   ####################
-definitions:
+  schemas:
     SearchResponse:
       type: object
       description: Searchmodel. The order in the list will always be best matches first. TODO - Add some  basic rules for the searches so the client understands the order in the result list..
@@ -19,8 +27,8 @@ definitions:
         offset:
           type: integer
           format: int32
-          description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this? I.e we don't support fetching lists larger than 10 000 ?
-          minimum: 0
+          description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this??? I.e we don't support fetching lists larger than 10 000 ???
+          minValue: 0
           default: 0
         limit: 
           type: integer
@@ -33,9 +41,9 @@ definitions:
           type: array
           description: List of companies
           items:
-            "$ref": "#/definitions/Company"
+            "$ref": "#/components/schemas/Company"
         _links:
-          "$ref": '#/definitions/Links'
+          "$ref": '#/components/schemas/Links'
       required:
       - hitCount
       - companies
@@ -58,7 +66,8 @@ definitions:
           type: string
           description: dunsnumber. 
         address:
-          "$ref": "#/definitions/Address"
+          "$ref": "#/components/schemas/Address"
+      required: []
       title: Company
     Address:
       type: object
@@ -100,11 +109,11 @@ definitions:
         }'
       properties:
         next:
-          "$ref": '#/definitions/Link'
+          "$ref": '#/components/schemas/Link'
         prev:
-          "$ref": '#/definitions/Link'
+          "$ref": '#/components/schemas/Link'
         self:
-          "$ref": '#/definitions/Link'
+          "$ref": '#/components/schemas/Link'
     SearchRequest:
       type: object
       description: Search input. TODO - is wildcards supported?
@@ -113,7 +122,7 @@ definitions:
           type: integer
           format: int32
           description: A positive number telling how many hits should be skipped. A value of 2 will skip the first 2 results that matched the search criteria.
-          minimum: 0
+          minValue: 0
           default: 0
         limit: 
           type: integer
@@ -143,4 +152,4 @@ definitions:
           description: The country to search in
           enum: ['SE', 'NO', 'FI', 'DK']
         address:
-          "$ref": "#/definitions/Address"
+          "$ref": "#/components/schemas/Address"
