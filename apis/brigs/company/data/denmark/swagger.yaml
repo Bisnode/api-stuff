@@ -44,8 +44,8 @@ components:
       properties:
         creditRatings:
           "$ref": "#/components/schemas/CreditRatings"
-        creditLimits:
-          "$ref": "#/components/schemas/CreditLimits"
+        ratingCreditLimits:
+          "$ref": "#/components/schemas/RatingCreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
         paymentIndex:
@@ -56,7 +56,7 @@ components:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: Risk
-    CreditLimits:
+    RatingCreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
       properties:
@@ -68,7 +68,7 @@ components:
           items:
             "$ref": "#/components/schemas/CreditLimit"
       required: []
-      title: CreditLimits
+      title: RatingCreditLimits
     Amount:
       type: object
       description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
