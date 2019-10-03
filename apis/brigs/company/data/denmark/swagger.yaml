@@ -1309,6 +1309,43 @@ components:
         description:
           type: string
           description: A textual description of the code.
+        localCode:
+          type: string
+          description: |
+            Raw code of the legalForm
+            
+            10  Natural persons
+            21  Partnerships
+            22  Limited shipping partnerships
+            23  Mutual funds
+            31  Limited partnerships
+            32  Mining partnerships
+            41  Limited banking companies
+            42  Limited insurance companies
+            49  Limited companies other than banking and insurance companies
+            51  Economic associations other than tenant-owners’ associations
+            53  Tenant-owners’ associations
+            61  Non-profit associations
+            62  Joint-ownership associations
+            63  Registered religious societies
+            71  Family foundations
+            72  Other foundations and funds, including pension funds and staff funds
+            81  Entities of central government
+            82  Municipalities
+            83  Federations of local government authorities
+            84  County councils
+            85  Social security offices
+            87  Public corporate bodies and institutions
+            88  Mortgage associations
+            89  Regional entities of central government
+            91  Estates of deceased persons
+            92  Mutual insurance corporations
+            93  Savings banks
+            94  Benevolent societies
+            95  Unemployment benefit funds
+            96  Foreign legal persons
+            98  Other Swedish legal persons subject to special legislation
+            99  Type of legal entity not established
       required: []
       title: LegalForm
     HistoricalLegalForm:
