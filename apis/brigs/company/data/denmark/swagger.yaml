@@ -222,7 +222,7 @@ components:
           maximum: 100
           description: The average paymentindex score for all companies in the same line of business in Sweden.
       required: []
-      title: PaydexModel
+      title: PaydexIndexModel
     PaymentRemarks:
       type: object
       properties:
