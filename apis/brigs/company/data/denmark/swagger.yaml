@@ -1314,38 +1314,121 @@ components:
           description: |
             Raw code of the legalForm
             
-            10  Natural persons
-            21  Partnerships
-            22  Limited shipping partnerships
-            23  Mutual funds
-            31  Limited partnerships
-            32  Mining partnerships
-            41  Limited banking companies
-            42  Limited insurance companies
-            49  Limited companies other than banking and insurance companies
-            51  Economic associations other than tenant-owners’ associations
-            53  Tenant-owners’ associations
-            61  Non-profit associations
-            62  Joint-ownership associations
-            63  Registered religious societies
-            71  Family foundations
-            72  Other foundations and funds, including pension funds and staff funds
-            81  Entities of central government
-            82  Municipalities
-            83  Federations of local government authorities
-            84  County councils
-            85  Social security offices
-            87  Public corporate bodies and institutions
-            88  Mortgage associations
-            89  Regional entities of central government
-            91  Estates of deceased persons
-            92  Mutual insurance corporations
-            93  Savings banks
-            94  Benevolent societies
-            95  Unemployment benefit funds
-            96  Foreign legal persons
-            98  Other Swedish legal persons subject to special legislation
-            99  Type of legal entity not established
+            AA	Public Limited Company	
+            AF	Sub Unit Of Natural Person	
+            AJ	Other Body Corporate	
+            AN	General Partnership	
+            AS	Private Limited Company	
+            ASA	Public Limited Company	
+            AV	Branch	
+            BA	Company With Limited Liability	
+            BL	House Building Cooperative	
+            BO	Other Estates	
+            BR	Housing Cooperative	
+            DA	Gernal Partnership Shared Liability	
+            EF	European Economic Enterprise Group	
+            EN	Sole Proprietorship	
+            ES	Condominum Flat Owner	
+            FK	County Municipal Business Enterprise	
+            FL	Association/Club/Organization	
+            FR	Colloborating Companies Vat	
+            FY	County	
+            F01	Sole Proprietorship	
+            F02	Limited Partnership	
+            F03	Private Limited Company	
+            F04	Co-Operative Society	
+            F06	Association / Foundation	
+            F09	Entrepreneur	
+            F20	Housing Co-Operative Society	
+            F21	Housing Company	
+            F22	General Partnership	
+            F23	Voluntary Association	
+            F24	Mortgage Association	
+            F25	Mutual Indemnity Insurance Ass.	
+            F26	Limited Partnership	
+            F27	Co-Operative Society	
+            F28	Co-Operative Bank	
+            F29	Private Limited Company	
+            F30	Foundation	
+            F31	Office Of Foreign Company	
+            F32	Savings Bank	
+            F33	Economic Association	
+            F34	Insurance Limited Company	
+            F35	Insurance Association	
+            F36	Sole Proprietorship	
+            F37	Gouvernment Authority	
+            F38	Other Legal Form	
+            F40	Group	
+            F41	Cooperative Building Society	
+            F42	Public Limited Company	
+            F43	Public Insurance Company	
+            F44	Limited Company	
+            F45	Eeig 	
+            F46	Real Estate Company	
+            GF	Mutual Insurance Company	
+            IJ	Other Non Body Corporate	
+            IK	Inter-Municipal Company 	
+            KB	Bankrupt Estate	
+            KF	Municipal Business Enterprise	
+            KI	Council Of Churches	
+            KO	Municipality	
+            KS	Limited Partnership	
+            KT	Joint Office	
+            NF	Norwegian Division Foreign Enterprise	
+            NR	Trading Society	
+            OL	Organization Section	
+            OP	Specially Sectioned Unit	
+            PE	Other Non Body Corporate	
+            PR	Jointly Owned Shipping Company	
+            RE	Accountant	
+            RV	Auditor	
+            SA	State	
+            SE	Joint Ownership Law Of Contract	
+            SF	Public Corporation	
+            SP	Savings Bank	
+            SR	Other Business According To Special Law	
+            ST	Foundation	
+            TV	Compulsary Registered In The Vat List	
+            UB	Voluntery Registration Of Rental Premise	
+            UD	Other	
+            UT	Foreign Entity	
+            VF	Jointly Operated Enterprise	
+            VP	Securities Funds	
+            01	Sole Proprietorship	
+            02	General Partnership	
+            03	Phys. Human Being	
+            04	Joint Shipping Comp	
+            05	Cooperative Society	
+            06	Limited Partnership	
+            07	Society	
+            09	Foundation	
+            10	Ltd. Liability Co.	
+            11	Private Company Ltd	
+            12	Branch	
+            13	Comp. W. Ltd. Liab.	
+            15	Comp. W. Ltd. Liab.	
+            17	Private Foundation	
+            20	Public Authority	
+            23	Vestry	
+            24	Public Management	
+            25	Collaboration	
+            30	Foreign Enterprise	
+            31	Foreign Branch	
+            32	Foreign Branch	
+            35	Eu Company Group	
+            52	Faeroese Priv. Ltd.	
+            53	Faeroese Ltd. Liab.	
+            54	Greenland Ltd. Liab.	
+            55	Greenland Priv. Ltd.	
+            80	Government	
+            81	Public Office	
+            82	Region	
+            83	Regional Office	
+            84	Municipality	
+            85	Municipality Office	
+            86	Church	
+            99	Other Undertaking	
+
       required: []
       title: LegalForm
     HistoricalLegalForm:
