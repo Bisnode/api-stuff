@@ -128,9 +128,9 @@ components:
       type: object
       description: Current and historical ratings
       properties:
-        currentRating:
+        currentCreditRating:
           "$ref": "#/components/schemas/Rating"
-        historicalRatings:
+        historicalCreditRatings:
           type: array
           description: Max 99 items.
           items:
