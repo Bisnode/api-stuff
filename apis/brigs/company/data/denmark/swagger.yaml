@@ -245,6 +245,13 @@ components:
             "$ref": "#/components/schemas/PaymentRemark"
       required: []
       title: PaymentRemarks
+    Creditor:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            Name of the creditor
     PaymentRemark:
       type: object
       description: Remarks on payments
