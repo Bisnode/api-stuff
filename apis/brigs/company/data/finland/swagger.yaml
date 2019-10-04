@@ -1488,15 +1488,11 @@ components:
           format: int64
           description: >-
             Change in inventories and work in progress for the last reporting period and the current reporting period. 
-            
-            Cost based only
         workPerformedForOwnUse:
           type: integer
           format: int64
           description: >-
             Work performed by the company for its own use and capitalized here when reported as assets.
-            
-            Cost based only    
         otherOperatingIncome:
           type: integer
           format: int64
