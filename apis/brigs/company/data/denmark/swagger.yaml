@@ -263,8 +263,7 @@ components:
           format: date
           description: Date of remark
         creditor:
-          type: string
-          description: Creditor, concerning remark on payment.
+         "$ref": "#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/ReportCode"
         description:
