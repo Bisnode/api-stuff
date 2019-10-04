@@ -1268,9 +1268,6 @@ components:
       type: object
       description: A set of identifiers for this company.
       properties:
-        bisnodeId:
-          type: string
-          description: A unique id set by Bisnode
         cvrNumber:
           type: string
           description: Central Business Register number
