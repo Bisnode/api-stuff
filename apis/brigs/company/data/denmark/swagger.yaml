@@ -1207,6 +1207,28 @@ components:
             type: string
       required: []
       title: ElectronicContactPoints
+    PhoneNumber:
+      type: object
+      description: >-
+        Can be a raw phonenumber or splitted into areacode and phonenumber
+      properties:
+        fullNumber:
+          type: string
+          example: 08-0000000
+          description: >-
+            Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
+        areaCode:
+          type: string
+          example: 08
+          description: >-
+            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
+        numberOnly:
+          type: string
+          example: 1000000
+          description: >-
+            TODO _ rename me
+            phoneNumber without areacode
+    
     HistoricalStreetAddress:
       type: object
       properties:
