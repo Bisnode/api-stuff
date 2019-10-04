@@ -1140,7 +1140,7 @@ components:
         businessDescription:
           type: string
           description: The description registered with the local authorities describing the companys business.
-        countryCode:
+        country:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         registeredAsEmployer:
