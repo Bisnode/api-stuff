@@ -857,14 +857,14 @@ components:
     PositionEntity:
       type: object
       description: >-
-        An entity, can be a company or a provate person.
+        An entity, can be a company or a private person.
       properties:
         name:
         type: string
         description: The name of the person/entity holding this position
       registrationNumber:
         type: string
-        description: Typically a social security number or a oraganisation number in case of a company entity
+        description: Typically a social security number or a organisation number in case of a company entity
       title: PositionEntity
     Position:
       type: object
@@ -1045,7 +1045,7 @@ components:
           description: A list of historical names, does not include the current name.
           items:
             "$ref": "#/components/schemas/Name"
-        officialName:
+        registeredName:
           "$ref": "#/components/schemas/Name"
       required: []
       title: CompanyName
@@ -1069,16 +1069,7 @@ components:
         name:
           type: string
           description: The registered name
-        description:
-          type: string
-          description: Business description
-        date:
-          type: string
-          format: date
-          description: The date when this secondary name was registered.
-        type:
-          type: string
-          description: Company type. TODO - is the same as legalform ???
+          example: Nokia Abp
       required: []
       title: SecondaryName
     ContactPoints:
