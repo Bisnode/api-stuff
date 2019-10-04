@@ -1385,7 +1385,7 @@ components:
         currency:
           type: string
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
-          example: SEK
+          example: EUR
         currentRatio:
           type: number
           format: double
@@ -1512,8 +1512,6 @@ components:
           format: int64
           description: >-
             Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
-            
-            Function based only
         externalCosts:
           type: integer
           format: int64
@@ -1523,9 +1521,7 @@ components:
           type: integer
           format: int64
           description: >-
-            'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
-            
-            Cost based only'
+            'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.'
         resultBeforeExtraordinaryItems:
           type: integer
           format: int64
