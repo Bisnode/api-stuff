@@ -49,9 +49,9 @@ components:
         paymentRemarks:
           "$ref": "#/components/schemas/PaymentRemarks"
         trade:
-           "$ref": "#/components/schemas/Trade"  
-        debtBalance:
-          "$ref": "#/components/schemas/DebtBalance"
+           "$ref": "#/components/schemas/Trade" 
+        financialCommitments:
+          "$ref": "#/components/schemas/FinancialCommitments"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
@@ -131,6 +131,14 @@ components:
       required: []
       title: Rating
       maximum: 1100
+    FinancialCommitments:
+      type: object
+      description: >-
+        Various types of financial commitments this company have.
+      properties:
+        debtBalance:
+          "$ref": "#/components/schemas/DebtBalance"
+      title: FinancialCommitments
     Trade:
       type: object
       properties:
