@@ -106,8 +106,6 @@ components:
           description: Max 99 items.
           items:
             "$ref": "#/components/schemas/Rating"
-        partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
       required: []
       title: CreditRatings
     Rating:
@@ -128,6 +126,8 @@ components:
         description:
           type: string
           description: Textual description of the rating. 
+        partJudgements:
+          "$ref": "#/components/schemas/PartJudgements"
       required: []
       title: Rating
       maximum: 1100
