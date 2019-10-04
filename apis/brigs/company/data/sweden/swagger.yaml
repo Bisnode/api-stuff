@@ -940,9 +940,11 @@ components:
         name:
           type: string
           description: The name of the person/entity holding this position
+          example: "Leo Messi"
         registrationNumber:
           type: string
           description: Typically a social security number or a oraganisation number in case of a company entity
+          example: "11111111111"
       title: PositionEntity
     Position:
       type: object
