@@ -946,12 +946,8 @@ components:
             97  AUDITOR                                 
             98  DEPUTY AUDITOR                          
             99  DEPUTY LAY AUDITOR                      
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-        registrationNumber:
-          type: string
-          description: Typically a social securityNumber
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
         resignedDate:
           type: string
           format: date
