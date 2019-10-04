@@ -799,15 +799,33 @@ components:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
       title: Auditors
-    Position:
+    PositionEntity:
       type: object
+      description: >-
+        An entity, can be a company or a provate person.
       properties:
         name:
           type: string
           description: The name of the person/entity holding this position
+          example: "Leo Messi"
         registrationNumber:
           type: string
-          description: Typically a social security number
+          description: Typically a social security number or a oraganisation number in case of a company entity
+          example: "11111111111"
+      title: PositionEntity
+    Position:
+      type: object
+      properties:
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
         function:
           type: integer
           format: int32
