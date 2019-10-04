@@ -938,8 +938,8 @@ components:
         An entity, can be a company or a provate person.
       properties:
         name:
-        type: string
-        description: The name of the person/entity holding this position
+          type: string
+          description: The name of the person/entity holding this position
       registrationNumber:
         type: string
         description: Typically a social security number or a oraganisation number in case of a company entity
