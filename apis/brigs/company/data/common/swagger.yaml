@@ -214,9 +214,10 @@ components:
     ParentCompanies:
       type: object
       properties:
-        numberOfParentCompanies:
+        count:
           type: integer
           format: int32
+          description: The number of parent companies
         parents:
           type: array
           description: A list of the parent companies.
@@ -258,8 +259,9 @@ components:
     SisterCompanies:
       type: object
       properties:
-        numberOfSisterCompanies:
+        count:
           type: integer
+          description: Number of sister companies
         sisterCompanies:
           type: array
           description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
@@ -585,7 +587,7 @@ components:
           type: string
           description: town
           example: Stockholm
-        country:
+        countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
           example: SE
