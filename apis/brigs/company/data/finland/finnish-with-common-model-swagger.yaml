@@ -1,0 +1,1985 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section 
+#######################
+info:
+  title: Finnish Company Credit Data
+  description: >- 
+    Company model for Finnish company credit data. The same model is used for all legalforms.
+    
+      Most of the descriptions for the financial items are taken from www.investopedia.com.
+  
+  version: "1.0.0"
+  contact:
+    email: team-ninjas@bisnode.com
+
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    FinnishCompanyData:
+      type: object
+      properties:
+        risk:
+          "$ref": "#/components/schemas/Risk"
+        management:
+          "$ref": "#/components/schemas/Management"
+        companyInformation:
+          "$ref": "#/components/schemas/CompanyInformation"
+        finance:
+          "$ref": "#/components/schemas/Finance"
+        ownership:
+          "$ref": "#/components/schemas/Ownership"
+      required: []
+      title: FinnishCompanyData
+      description: This is the root object defining which structures reside under the root path.
+    Risk:
+      type: object
+      description: >-
+        Risk section.
+      properties:
+        creditRatings:
+          "$ref": "#/components/schemas/CreditRatings"
+        ratingCreditLimits:
+          "$ref": "#/components/schemas/RatingCreditLimits"
+        paymentRemarks:
+          "$ref": "#/components/schemas/PaymentRemarks"
+        trade:
+          "$ref": "#/components/schemas/Trade"
+        bankruptcy:
+          "$ref": "#/components/schemas/Bankruptcy"
+        debtCollection:
+          "ref": "#/component/schemas/DebtCollection"
+      required: []
+      title: Risk
+    Trade:
+      type: object
+      properties:
+        paymentIndex:
+          "$ref": "#/components/schemas/PaymentIndex"
+      title: Trade
+    DebtCollection:
+      type: object
+      properties:
+        debtCollectionCases:
+          type: boolean
+          description: >-
+            True if there has been any debt collection cases the last 6 months.
+            TODO - describe debt collection cases
+      required: []
+      title: DebtCollection
+    RatingCreditLimits:
+      type: object
+      description: Current and historical credit limits as recommended by Bisnode. 
+      properties:
+        creditLimit:
+          "$ref": "#/components/schemas/RatingCreditLimit"
+        historicalRatingCreditLimits:
+          type: array
+          description: TODO - max size ???
+          items:
+            "$ref": "#/components/schemas/RatingCreditLimit"
+      required: []
+      title: CreditLimits
+    Amount:
+      type: object
+      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
+      properties:
+        monetaryAmount:
+          type: integer
+          format: int64
+          description: May be a negative number 
+        currency:
+          type: string
+          description: As described in https://en.wikipedia.org/wiki/ISO_4217
+      required: []
+      title: Amount
+    RatingCreditLimit:
+      type: object
+      description: >- 
+        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date when the limit was changed/re-calculated.
+      required: []
+      title: RatingCreditLimit
+    CreditInquiry:
+      type: object
+      description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date of the inquiry
+      required: []
+      title: CreditInquiry
+    CreditRatings:
+      type: object
+      description: Current and historical ratings
+      properties:
+        currentCreditRating:
+          "$ref": "#/components/schemas/Rating"
+        historicalCreditRatings:
+          type: array
+          description: Max 99 items.
+          items:
+            "$ref": "#/components/schemas/Rating"
+      required: []
+      title: CreditRatings
+    Rating:
+      type: object
+      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
+      properties:
+        annualReportDate:
+          type: string
+          format: date
+          description: Date of the annual report data the rating was calculated from.
+        date:
+          type: string
+          format: date
+          description: Date when the rating was calculated.
+        code:
+          type: string
+          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
+        description:
+          type: string
+          description: Textual description of the rating. 
+        partJudgements:
+          "$ref": "#/components/schemas/PartJudgements"
+      required: []
+      title: Rating
+      maximum: 1100
+    PartJudgements:
+      type: object
+      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
+      properties:
+        abilityToPay:
+          "$ref": "#/components/schemas/PartJudgement"
+        finance:
+          "$ref": "#/components/schemas/PartJudgement"
+        historyOperation:
+          "$ref": "#/components/schemas/PartJudgement"
+        ownership:
+          "$ref": "#/components/schemas/PartJudgement"
+      required: []
+      title: PartJudgements
+    PartJudgement:
+      type: object
+      description: A part judgement. 
+      properties:
+        max:
+          type: integer
+          format: int32
+          description: The max value a company can have.
+        value:
+          type: integer
+          format: int32
+          description: This company's value.
+        description:
+          type: string
+          description: A textual description of the part judgement.
+      required: []
+      title: PartJudgement
+    PaymentIndex:
+      type: object
+      description: A weighted average of the Payment Index of all companies in all industries of the country. 
+      properties:
+        currentPaymentIndex:
+          "$ref": "#/components/schemas/PaymentIndexModel"
+        historicalPaymentIndex:
+          type: array
+          items:
+            "$ref": "#/components/schemas/PaymentIndexModel"
+      required: []
+      title: PaymentIndex
+    PaymentIndexModel:
+      type: object
+      properties:
+        averageDelay:
+          type: integer
+          format: int32
+          description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date when this paymentindex score was calculated.
+        invoiceCount:
+          type: integer
+          format: int64
+          minimum: 0
+          description: The number of invoices used to calculate the payment index score
+        invoiceSuppliersCount:
+          type: integer
+          format: int64
+          minimum: 0
+          description: The number of suppliers that supplied the invoices used to calculate this paymentindex score
+        paymentIndex:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: The paymentindex score for this company. See https://en.wikipedia.org/wiki/Paydex for more info on paymentIndex.
+        paymentIndexAllCompanies:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: The average paymentindex score for all companies in Sweden
+        paymentIndexLineOfBusiness:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: The average paymentindex score for all companies in the same line of business in Sweden.
+      required: []
+      title: PaydexModel
+    PaymentRemarks:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        paymentRemarks:
+          type: array
+          description: A list of remarks, most recent ones comes first. TODO - Max size ???
+          items:
+            "$ref": "#/components/schemas/PaymentRemark"
+      required: []
+      title: PaymentRemarks
+    PaymentRemark:
+      type: object
+      description: Remarks on payments
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date of remark
+        creditor:
+          "$ref": "#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/ReportCode"
+        description:
+          type: string
+          description: A textual description of the event type
+          example: FISSION - EXPIRED
+      required: []
+      title: PaymentRemark
+    Creditor:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            Name of the creditor
+      title: Creditor
+    PhoneNumber:
+      type: object
+      description: >-
+        Can be a raw phonenumber or splitted into areacode and phonenumber
+      properties:
+        fullNumber:
+          type: string
+          example: 08-0000000
+          description: >-
+            Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
+        areaCode:
+          type: string
+          example: 08
+          description: >-
+            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
+        numberOnly:
+          type: string
+          example: 1000000
+          description: >-
+            TODO _ rename me
+            phoneNumber without areacode
+      title: PhoneNumber
+    ReportCode:
+      type: object
+      description: Common codes
+      properties:
+        code:
+          type: string
+          description: |
+            BOF       -  CRIME VICTIM FUND                       
+            BOM       -  (RESOURCES FROM) FINES                  
+            EUB       -  EU FINE                                 
+            FBO       -  CORPORATE FINE                          
+            NOB       -  NORDIC FINES,ETC.                       
+            NOS       -  NORDIC TAX                              
+            OKL       -  UNCLASSIFIED                            
+            ISA       -  INFRASTRUCTURE FEE                      
+            RGR       -  JUDICAL ASSITANCE - RIGHTS OF RECOURSE  
+            RHK       -  LEGAL AID COST                          
+            SRV       -  SPECIAL LEGAL EFFECT                    
+            STF       -  MISC. GOVERNMENT CLAIMS (RECEIVABLES)   
+            KKV       -  DECLARED BANKRUPT                       
+            UNS       -  NON-NORDIC TAX                          
+            VTE       -  FINE                                    
+            RFI       -  BUSINESS LINKED DEBT RECONSTR. INITIATED
+            RFB       -  BUSINESSLINKED DEBT RECONSTR. DETERMINED
+            RSI       -  RESOLUTION INITIATED                    
+            FBB       -  REVOKED PERMISSION TO RUN BAB/FAB       
+            FBA       -  CHANGED PERMISSIONDATE TO RUN BAB/FAB   
+            RFA       -  BUSINESS LINKED DEBT RECONSTR. WITHDRAWN
+            RSA       -  RESOLUTION ENDED                        
+            FBT       -  DATE OF PERMISSION TO RUN BAB/FAB       
+            RFU       -  BUSINESS LINKED DEBT RECONSTR. REVOKED  
+            BYB       -  NEW LEGAL FORM: BANKING COMPANY         
+            RSU       -  RESOLUTION REVOKED                      
+            BYF       -  NEW LEGAL FORM: INSURANCE COMPANY       
+            BYA       -  NEW LEGAL FORM: LIMITED COMPANY         
+            ÅF        -  REPOSSESSION OF GOODS                   
+            ÅT        -  REPOSSESSION                            
+            ÄB        -  CHANGE OF FINANCIAL STATEMENT DATE      
+            ÄD        -  CHANGE OF BOARD/PARTLY                  
+            ÄDE       -  CHANGE OF BOARD PARTIAL, NOT COMPLETE   
+            ÄDO       -  CHANGE OF BOARD PARTIAL, UNAUTHORIZED   
+            ÄF        -  MARRIAGE SETTLEMENT                     
+            ÄFF       -  CHANGE OF LEGAL FORM                    
+            ÄH        -  CHANGE OF PARTOWNERS                    
+            ÄHE       -  CHANGE OF PARTOWN.,ONLY ONE PARTOWN.LEFT
+            ÄHS       -  CHANGE OF PARTOWNERS,PARTOWNERS MISSING 
+            ÄK        -  CHANGE OF UNLIMITED PARTNER             
+            ÄKD       -  CHANGE OF LIMITED PARTNER               
+            ÄKE       -  CHANGE OF PARTNER(LIM.PARTNER MISSING)  
+            ÄKS       -  CHANGE OF UNLIM.PARTN,UNLIM.PARTN.MISS. 
+            ÄR        -  CHANGE OF AUDITOR                       
+            ÄS        -  CHANGE OF BOARD                         
+            ÄT        -  CHANGE OF BOARD/TOTAL                   
+            ÄTE       -  CHANGE OF BOARD TOTAL, NOT COMPLETE     
+            ÄTO       -  CHANGE OF BOARD TOTAL, UNAUTHORIZED     
+            ÖLA       -  OVERLOAD CHARGE                         
+            ÖV        -  ASSIGNMENT                              
+            AÄA       -  CHANGE OF ADDRESS                       
+            AÄP       -  CHANGE OF POST CODE/TOWN                
+            AAV       -  REPOSSESSION OF GOODS                   
+            ABD       -  CHANGE OF BOARD/PARTLY                  
+            AC        -  SANCTIONED COMPOSITION                  
+            AD        -  CHANGE OF PARTOWNERS                    
+            ADA       -  CHANGE OF ADDRESS                       
+            ADF       -  CHANGE OF PARTOWN, ONLY ONE PARTOWN LEFT
+            ADO       -  CHANGE OF BOARD PARTIAL, UNAUTHORIZED   
+            ADP       -  CHANGE OF POST CODE/TOWN                
+            ADS       -  CHANGE OF PARTOWNERS, PARTOWNERS MISSING
+            AF        -  COMPOSITION PROPOSAL                    
+            AFF       -  CHANGE OF LEGAL FORM                    
+            AFO       -  MARRIAGE SETTLEMENT                     
+            AH        -  EVICTION                                
+            AK        -  CHANGE OF SHARE CAPITAL                 
+            AKD       -  CHANGE OF LIMITED PARTNER               
+            AKE       -  CHANGE OF PARTNER(LIM PARTNER MISSING)  
+            AKF       -  ISSUE OF BONUS SHARES                   
+            AKL       -  CHANGE OF UNLIM PARTN,UNLIM PARTN MISS  
+            AKM       -  CHANGE OF UNLIMITED PARTNER             
+            AKN       -  ISSUE OF NEW SHARES                     
+            AKS       -  SHARE CAPITAL REDUCTION                 
+            ALI       -  LIQUIDATION ANNOUNCEMENT                
+            ARJ       -  REGISTERED AS EMPLOYER                  
+            ARN       -  NOT REGISTERED AS EMPLOYER              
+            ARR       -  CHANGE OF AUDITOR                       
+            ASD       -  CHANGE OF BOARD/PARTLY                  
+            ASF       -  CHANGE OF BOARD PARTIAL, NOT_COMPLETE   
+            AT        -  REPOSSESSION                            
+            AV        -  DELETED                                 
+            AVE       -  DELETED, OWN REQUEST                    
+            AVLIDEN   -  DECEASED                                
+            AVP       -  DELETED SINCE SHARE CAP < 100 TSEK      
+            BA        -  PETITION INJ. TO PAY                    
+            BD        -  INJUNCTION TO PAY                       
+            BFA       -  PETITION INJ. TO PAY                    
+            BFD       -  PETITION INJ. TO PAY PARTLY DENIED      
+            BFE       -  INJ. TO PAY PASSED TO COURT - REOPENING 
+            BFF       -  INJ TO PAY PASSED TO COURT DUE TO APPEAL
+            BFH       -  PETITION INJ. TO PAY TOTALLY DENIED     
+            BFI       -  INJUNCTION TO PAY ANNULLED BY COURT     
+            BFK       -  PETITION INJ. TO PAY WITHDRAWN          
+            BFL       -  PETITION INJ. TO PAY WITHDRAWN          
+            BFM       -  PETITION INJ. TO PAY TOTALLY DENIED     
+            BFN       -  PETITION INJ. TO PAY PARTLY DENIED      
+            BFO       -  PETITION INJ. TO PAY PASSED TO COURT    
+            BFP       -  PETITION INJ. TO PAY DEPRECIATED        
+            BFR       -  PETITION INJ. TO PAY PASSED TO COURT    
+            BFS       -  INJ. TO PAY PASSED TO COURT - REOPENING 
+            BFT       -  INJ TO PAY PASSED TO COURT DUE TO APPEAL
+            BFU       -  INJUNCTION TO PAY                       
+            BFV       -  PETITION INJ. TO PAY DEPRECIATED        
+            BFX       -  PETITION INJ. TO PAY                    
+            BFY       -  INJUNCTION TO PAY                       
+            BI        -  SUSPENSION OF PAYMENTS                  
+            BIH       -  SUSPENSION OF PAYMENTS CANCELED         
+            BSA       -  BUILDING CHARGE/SPECIAL CHARGE          
+            CÄ        -  CHANGE IN MARITAL STATUS                
+            CA        -  CHANGE OF MARITAL STATUS                
+            DÄR       -  REGISTRATION OFFICE ANNOUNCEMENT        
+            DÖF       -  OTHER CLAIMS                            
+            DÖK       -  INCREASED SHARE-CAPITAL                 
+            DAA       -  INCREASED SHARE-CAPITAL                 
+            DAB       -  DECISION ABOUT COMPOSITION              
+            DAF       -  COMPANY DELETED FROM PUBLIC REGISTER    
+            DAK       -  TRANSFORMATION OF SHARE-CAPITAL         
+            DAR       -  THE COMPANY HAS NO QUALIFIED AUDITOR    
+            DAU       -  COMPOSITION DISCONTINUED                
+            DAV       -  COMPANY DELETED FROM PUBLIC REGISTER    
+            DDE       -  FISSION                                 
+            DF        -  DECEASED                                
+            DFM       -  MERGER MOTHER- + DAUGHTER COMPANY       
+            DFO       -  GOVERNMENT CLAIMS                       
+            DFU       -  MERGER MESSAGE                          
+            DKA       -  BANKRUPTCY PROCEEDINGS CONCLUDED        
+            DKK       -  COMPANY BANKRUPT                        
+            DKU       -  DECISION ABOUT BANKRUPTCY CANCELLED     
+            DLÅ       -  DECISION ABOUT LIQUIDATION CANCELLED    
+            DLA       -  LIQUIDATION CONCLUDED                   
+            DLB       -  DECISION ABOUT LIQUIDATION CANCELLED    
+            DLF       -  LIQUIDATION CONTINUING                  
+            DLH       -  DECISION ABOUT LIQUIDATION CANCELLED    
+            DLI       -  LIQUIDATION/LIQUIDATOR                  
+            DLT       -  LIQUIDATION REPORTED TO COURT           
+            DLU       -  LIQUIDATION CANCELLED COMPANY DISSOLVED 
+            DNE       -  REDUCTION OF SHARE CAPITAL              
+            DNY       -  NEW FORMATION OF LIMITED COMPANY        
+            DOA       -  NEGOTIATIONS ABOUT PUBLIC COMPOSITION   
+            DOE       -  DECISION NOT TO CHANGE ARTICLES OF ASS. 
+            DOF       -  CHANGE IN ARTICLES OF ASSOCIATION + FIRM
+            DOP       -  CHANGE IN ARTICLES OF ASSOCIATION + FIRM
+            DOR       -  CHANGE IN ARTICLES OF ASSOCIATION       
+            DOS       -  CHANGE OF BOARD                         
+            DPA       -  CHANGE OF COMPANIES POSTAL ADDRESS      
+            DR        -  REGISTRATION OFFICE ANNOUNCEMENT        
+            DRÄ       -  CHANGE IN ARTICLES OF ASSOCIATION       
+            DRB       -  CHANGE IN ARTICLES OF ASSICIATION       
+            DRF       -  COURTS APPROVAL OF MERGER               
+            DRU       -  REGISTRATION WITHOUT FEE                
+            DSF       -  CHANGE OF BOARD/SIGNATURE/VICE PRESIDENT
+            DSG       -  CHANGE OF BOARD                         
+            DUR       -  CHANGE OF AUDITOR                       
+            DUS       -  CHANGE OF BOARD                         
+            DVO       -  CHANGE IN ARTICLES OF ASSOCIATION       
+            DVR       -  IMPOSED MONEY PENALTY                   
+            EKB       -  FINANCIAL AID                           
+            EUS       -  EU SOCIAL SECURIEU SOCIAL SECURITY      
+            FAA       -  MERGER CONCLUDED                        
+            FAF       -  MERGER                                  
+            FAI       -  MERGER                                  
+            FAO       -  MERGER                                  
+            FAP       -  MERGER                                  
+            FAR       -  MERGER                                  
+            FAS       -  MERGER CONCLUDED                        
+            FAT       -  MERGER                                  
+            FDA       -  MERGER CONCLUDED                        
+            FDF       -  MERGER                                  
+            FDI       -  MERGER                                  
+            FDO       -  MERGER                                  
+            FDP       -  MERGER                                  
+            FDR       -  MERGER                                  
+            FDS       -  MERGER CONCLUDED                        
+            FEA       -  DELAY CHARGES                           
+            FF        -  NEW LEGAL FORM                          
+            FI        -  CHATTEL MORTGAGE                        
+            FKA       -  MERGER CONCLUDED                        
+            FKF       -  MERGER                                  
+            FKI       -  MERGER                                  
+            FKN       -  MERGER                                  
+            FKO       -  MERGER                                  
+            FKP       -  MERGER                                  
+            FKR       -  MERGER                                  
+            FKT       -  MERGER                                  
+            FORV      -  ADMINISTRATOR                           
+            FPA       -  PARKING FINE                            
+            FS        -  CHATTEL MORTGAGE TOTAL AMOUNT           
+            FSO       -  NOT REGISTRED FOR F-TAX                 
+            FSP       -  NOT REGISTRED FOR F-TAX                 
+            FSPARR    -  THE PRIVATE FIRM IS BLOCKED             
+            FSQ       -  NOT REGISTRED FOR F-TAX                 
+            FSR       -  NOT REGISTRED FOR F-TAX                 
+            FSS       -  REGISTRED FOR F-TAX                     
+            FST       -  REGISTRED FOR F-TAX                     
+            FSTAT9    -  NOT ACTIVE                              
+            FS6       -  NOT REGISTRED FOR F-TAX                 
+            FS7       -  NOT REGISTRED FOR F-TAX                 
+            FS8       -  REGISTRED FOR F-TAX                     
+            FS9       -  REGISTRED FOR F-TAX                     
+            FU        -  MERGER                                  
+            FUA       -  MERGER CONCLUDED                        
+            FUO       -  MERGER                                  
+            FUP       -  MERGER                                  
+            HBSPARR   -  THE PARTNERSHIP IS BLOCKED              
+            HD          JUDGEMENT IN RENT SUIT                  
+            IK          COLLECTION                              
+            IOI         IMMIGRATED                              
+            IOU         EMIGRATED                               
+            KA          BANKRUPTCY PETITION                     
+            KAÅ         BANKRUP.PETITION REVERSED               
+            KAA         BANKRUP.PETITION, REJECTED              
+            KAC         BANKRUP.PETITION REVERSED               
+            KAE         BANKRUP.PETITION NOT CONCL.             
+            KCB         MOVE TO OWN GROUP                       
+            KCK         NEW ULTIMATE PARENT                     
+            KCM         NEW PARENT COMPANY                      
+            KCU         WITHDRAWN OF GROUP                      
+            KF          CLAIMS ON BANKRUPT COMPANIES            
+            KFS         UNPRIVILEGED CLAIMS                     
+            KK          BANKRUPTCY                              
+            KKF         BANKRUPTCY                              
+            KKM         BANKRUPTCY                              
+            RIN         INDIVIDUAL DEBT RECONSTRUCTION INITIATED
+            KLM         LAND SURVEYING CHARGE                   
+            KM          BANKRUPTCY                              
+            KMÖ         BANKRUPTCY                              
+            KN          BANKRUPTCY DISCONTINUED                 
+            KO          BANKRUPTCY                              
+            KPS         COUPON TAX                              
+            KS          CLAIMS ON BANKRUPT COMPANIES            
+            KUÖ         BANKRUPTCY CONCLUDED                    
+            LA          PETITION DEBT-RECOVERY CASE             
+            LD          JUDGEM.DEBT-RECOV.CASE                  
+            LI          LIQUIDATION                             
+            LIA         LIQUIDATION CONCLUDED                   
+            LIF         LIQUIDATION                             
+            LIK         LIQUIDATION                             
+            MBK         MISUSED BANKACCOUNT / MISUSED CREDIT    
+            MHB         MISUSED MORTGAGE LOAN                   
+            MKB         MISUSED CREDIT CARD / NEGLECTED PAYMENT 
+            MKK         MISUSED CREDIT CARD / EXCEEDED CREDIT   
+            MOJ         ACTIVELY REPORTING VAT                  
+            MON         NOT REPORTING VAT                       
+            MRJ         REGISTERED FOR VAT                      
+            MRN         NOT REGISTERED FOR VAT                  
+            NA          PRESENT NAME REGISTERED                 
+            NAD         CHANGE OF NAME                          
+            NB          NEW ACCOUNTS                            
+            NBO         ARTICLES OF ASSOCIATION                 
+            NB1         NEW ACCOUNTS ON NEW COMPANY             
+            NF          TRADE PROHIBITION                       
+            NID         NEW DECLARATION OF INCOME               
+            NJ          ADJUSTED NAME                           
+            NYS         LOCATED IN                              
+            OM          UNDER-AGE                               
+            OMYN        UNDER AGE                               
+            OPF         OTHER REMARK ON PERSON                  
+            OVL         ASSIGNMENT                              
+            PSPARR    -  THE PERSON IS BLOCKED                   
+            PTYP301   -  OVERDUE PAYMENT FOR TAX ACCOUNT         
+            RKA       -  RECONSTRUCTION CONCLUDED                
+            RKF       -  RECONSTRUCTION EXPIRED                  
+            RKI       -  RECONSTRUCTION OPENED                   
+            SA        -  TAX ARREARS                             
+            SAD       -  SANCTION CHARGE FOR DIESEL OIL          
+            SB        -  TAX ARREARS                             
+            SEA       -  SPECIAL CHARGE                          
+            SF        -  TAX ARREARS                             
+            SIS       -  SPECIAL INCOME TAX/ARTISTS              
+            SK        -  TAX ARREARS                             
+            SLN       -                                          
+            SM        -  TAX ARREARS                             
+            SMA       -  STUDY LOAN FEES                         
+            SMX       -  OUTSTANDING VALUE-ADDED TAX             
+            SNI       -  CHANGE OF NACE-CODE                     
+            SO        -  TAX ACCOUNT                             
+            SOT       -  CONGESTION CHARGE                       
+            SOX       -  TAX ACCOUNT                             
+            SP        -  TAX ARREARS                             
+            SR        -  TAX ARREARS                             
+            SRB       -  AUDITOR DESELECTED                      
+            SRT       -  AUDITOR ADDED                           
+            SS        -  NOTE! CURRENT EVENT IN THE COMPANY      
+            SSA       -  CHANGE OF BOARD                         
+            SSE       -  CHANGE OF BOARD TOTAL, NOT COMPLETE     
+            SSO       -  CHANGE OF BOARD TOTAL, UNAUTHORIZED     
+            SST       -  CHANGE OF BOARD/TOTAL                   
+            RBE       -  INDIVIDUAL DEBT RECONSTR. DETERMINED    
+            RAV       -  INDIVIDUAL DEBT RECONSTRUCTION WITHDRAW 
+            RUH       -  INDIVIDUAL DEBT RECONSTRUCTION REVOKED  
+            ST        -  TAX ARREARS                             
+            STS       -  STAMP DUTY                              
+            STX       -  OUTSTANDING EXTRA TAX                   
+            STY       -  CHANGE OF BOARD                         
+            SU        -  TAX ARREARS                             
+            SV        -  TAX ARREARS                             
+            SVX       -  OUTSTANDING ROAD TAX                    
+            TD        -  JUDGEMENT BY DEFAULT                    
+            TDA       -  JUDGEMENT BY DEFAULT TO COURT - REOPENIN
+            TDU       -  JUDGEMENT BY DEFAULT ANNULLED BY COURT  
+            TOB       -  ADDITIONAL TAX/ILLICIT CONTRUCTION      
+            TOI       -  CUSTOMS DUTY & OTHER IMPORT CHARGES     
+            TU        -  TAX ARREARS                             
+            TVA       -  BROADCAST CHARGE                        
+            UF        -  DISTRAINT, NOT PAID                     
+            UHS       -  MAINTENANCE GRANT-AID                   
+            UP        -  DISCONTINUED                            
+            UPD       -  DISSOLVED BY FISSION                    
+            UPH       -  DISCONTINUED                            
+            UPL       -  DISSOLVED ACCORDING TO § 13:18          
+            UT        -  DISTRAINT, NOT PAID                     
+            UTV       -  EMIGRATED                               
+            VGA       -  ROAD TOLL                               
+            VIF       -  IMPOSED PENALTY REGARDING ACCOUNTS      
+            VP        -  PROTEST OF A BILL                       
+            ZAA       -  FISSION - CONCLUDED                     
+            ZAF       -  FISSION - EXPIRED                       
+            ZAI       -  FISSION START UP                        
+            ZAP       -  TRANSFEREE BY FISSION - START UP        
+            ZAS       -  TRANSFEREE BY FISSION - EXECUTED        
+            ZAT       -  FISSION - PERMISSION REGISTRATION              
+    Petitions:
+      type: object
+      description: Holder for petitions, the list of petitions may be capped if list is too large. The amount of all petitions is the sum on all petitions currently available in Bisnode's database and may differ from doing a sum on all the petitions in the list. 
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: Total number of petitions this company have.
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        petitions:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Petition"
+      required: []
+      title: Petitions
+    Petition:
+      type: object
+      description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date of petition
+        description:
+          type: string
+          description: A textual description of the petition, may be in the local language.
+        creditor:
+          "$ref": "#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/ReportCode"
+      required: []
+      title: Petition
+    CreditInquiries:
+      type: object
+      properties:
+        numberOfInquiries:
+          type: integer
+          format: int32
+          description: Total number of inquiries made on this company
+        creditInquiries:
+          type: array
+          description: A list of the inquiries. TODO - is there a max size for this?
+          items:
+            "$ref": "#/components/schemas/CreditInquiry"
+      required: []
+      title: CreditInquiries
+    Ownership:
+      type: object
+      properties:
+        parentCompanies:
+          "$ref": "#/components/schemas/ParentCompanies"
+        subsidiaries:
+          "$ref": "#/components/schemas/Subsidiaries"
+        familyTree:
+          type: object
+          description: Tree structure of the owner relationships.
+          items:
+            "$ref": "#/components/schemas/FamilyTree"
+      required: []
+      title: Ownership
+    FamilyTree:
+      type: object
+      description: A view of the owner structure. TODO - will we cap data???
+      properties:
+        ultimateParent:
+          "$ref": "#/components/schemas/Company"
+      required: []
+      title: FamilyTree
+    Company:
+      type: object
+      properties:
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+        name:
+          type: string
+          description: name of this company
+        dunsNumber:
+          type: string
+          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        companies:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Company"
+      required: []
+      title: Company
+    ParentCompanies:
+      type: object
+      properties:
+        numberOfParentCompanies:
+          type: integer
+          format: int32
+          description: >-
+            TODO - do we have this
+        parents:
+          type: array
+          description: A list of the parent companies.
+          items:
+            "$ref": "#/components/schemas/ParentCompany"
+      required: []
+      title: ParentCompanies
+    ParentCompany:
+      type: object
+      description: A company relates to another one as it's parent if it owns the majority (>50%) of the capital of that other company.
+      properties:
+        name:
+          type: string
+          description: Name of the company
+        type:
+          type: string
+          description: >-
+            The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
+            TODO - do we have this information??
+          enum: ['PARENT', 'ULTIMATE_PARENT']
+        dunsNumber:
+          type: string
+        country:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        date:
+          type: string
+          description: >-
+            what is 
+        shareCapital:
+          "$ref": "#/components/schemas/Amount"
+      required: []
+      title: Parent
+    SisterCompanies:
+      type: object
+      properties:
+        numberOfSisterCompanies:
+          type: integer
+        sisterCompanies:
+          type: array
+          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
+          items:
+            "$ref": "#/components/schemas/SisterCompany"
+      required: []
+      title: SisterCompanies
+    SisterCompany:
+      type: object
+      description: A company which is owned by the same parent company as another company. One parent company can have one or many subsidiaries, which all are sister companies to each other.
+      properties:
+        name:
+          type: string
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+      required: []
+      title: SisterCompany
+    Subsidiaries:
+      type: object
+      properties:
+        numberOfSubsidiaries:
+          type: integer
+          format: int32
+          description: Total number of subsidiaries this company have.
+        subsidiaries:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Subsidiary"
+      required: []
+      title: Subsidiaries
+    Subsidiary:
+      type: object
+      description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
+      properties:
+        name:
+          type: string
+          description: The name of the company
+        dunsNumber:
+          type: string
+          description: DunsNumber of the company.
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        shareCapital:
+          "$ref": "#/components/schemas/Amount"
+      required: []
+      title: Subsidiary
+    Management:
+      type: object
+      description: Management section
+      properties:
+        boardMembers:
+          "$ref": "#/components/schemas/BoardMembers"
+        auditors:
+          "$ref": "#/components/schemas/Auditors"
+        authorizedSignatory:
+          type: string
+          description: >-
+            Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
+      required: []
+      title: Management
+    Auditors:
+      type: object
+      description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
+      properties:
+        currentAuditors:
+          type: array
+          description: Auditors currently auditing this company
+          items:
+            "$ref": "#/components/schemas/Position"
+      required: []
+      title: Auditors
+    PositionEntity:
+      type: object
+      description: >-
+        An entity, can be a company or a private person.
+      properties:
+        name:
+        type: string
+        description: The name of the person/entity holding this position
+      registrationNumber:
+        type: string
+        description: Typically a social security number or a organisation number in case of a company entity
+      title: PositionEntity
+    Position:
+      type: object
+      properties:
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? TODO - Merge OTHER and UNKNOWN????
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
+        registrationNumber:
+          type: string
+          description: Typically a social security number
+        function:
+          type: string
+          description: |
+            '
+            HVJV = Deputy member
+            SEL = Liquidator
+            VT = Deputy auditor
+            HPJV = Vice-chairperson
+            PIS = House manager with primary responsibility
+            U = Special representative
+            VAH = Responsible manager
+            HVJ = Ordinary member
+            PR = Holder of procuration
+            SEV = Deputy liquidator
+            VTJ = Deputy Managing Director
+            Y = Partner
+            ÄY = Silent partner
+            E = Guardian
+            EH = Trader
+            IS = House Manager
+            JO = Director
+            OI = Person authorised
+            SO = Person authorised during liquidation
+            TJS = Substitute for the Managing Director
+            EDU = Representative
+            HPJ = Chairperson
+            LT = Additional auditor
+            PTI = Auditor with principal responsibility
+            SANS = Administrator in restructuring
+            TIL = Auditor
+            TJ = Managing Director
+            UE = Foreign representative
+            '
+        description:
+          type: string
+          description: A textual description of the function
+      required: []
+      title: Position
+    HistoricalPosition:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private per son or a company?
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        function:
+          type: string
+          description: |
+            '
+            HVJV = Deputy member
+            SEL = Liquidator
+            VT = Deputy auditor
+            HPJV = Vice-chairperson
+            PIS = House manager with primary responsibility
+            U = Special representative
+            VAH = Responsible manager
+            HVJ = Ordinary member
+            PR = Holder of procuration
+            SEV = Deputy liquidator
+            VTJ = Deputy Managing Director
+            Y = Partner
+            ÄY = Silent partner
+            E = Guardian
+            EH = Trader
+            IS = House Manager
+            JO = Director
+            OI = Person authorised
+            SO = Person authorised during liquidation
+            TJS = Substitute for the Managing Director
+            EDU = Representative
+            HPJ = Chairperson
+            LT = Additional auditor
+            PTI = Auditor with principal responsibility
+            SANS = Administrator in restructuring
+            TIL = Auditor
+            TJ = Managing Director
+            UE = Foreign representative
+            '
+        name:
+          type: string
+          description: The name of the person/entity holding this position
+        registrationNumber:
+          type: string
+          description: Typically a social securityNumber
+        resignedDate:
+          type: string
+          format: date
+          description: Date when this person/entity resigned from this position
+      required: []
+      title: HistoricalPosition
+    BoardMembers:
+      type: object
+      properties:
+        currentBoardMembers:
+          type: array
+          description: A list of the current boardmembers
+          items:
+            "$ref": "#/components/schemas/Position"
+        historicalBoardMembers:
+          type: array
+          description: A list of the historical boardmembers. TODO - is there a max size for this ???
+          items:
+            "$ref": "#/components/schemas/HistoricalPosition"
+      required: []
+      title: BoardMembers
+    CompanyInformation:
+      type: object
+      description: CompanyInformation, misc information about the company.
+      properties:
+        capital:
+          "$ref": "#/components/schemas/Capital"
+        companyName:
+          "$ref": "#/components/schemas/CompanyName"
+        contactPoints:
+          "$ref": "#/components/schemas/ContactPoints"
+        identifiers:
+          "$ref": "#/components/schemas/Identifiers"
+        industryCodeSet:
+          "$ref": "#/components/schemas/IndustryCodeSet"
+        legalForm:
+          "$ref": "#/components/schemas/LegalForm"
+        status:
+          "$ref": "#/components/schemas/Status"
+        registrationInformation:
+          "$ref": "#/components/schemas/RegistrationInformation"
+        generalCompanyData:
+          "$ref": "#/components/schemas/GeneralCompanyData"
+      required: []
+      title: CompanyInformation
+    Capital:
+      type: object
+      description: Capital section
+      properties:
+        shareCapital:
+          "$ref": "#/components/schemas/ShareCapital"
+      required: []
+      title: Capital
+    ShareCapital:
+      type: object
+      description: Share capital
+      properties:
+        amount:
+          "$ref": '#/components/schemas/Amount'
+      required: []
+      title: ShareCapital
+    CompanyName:
+      type: object
+      description: >-
+        Different set of names this company is known as or has been known as.
+      properties:
+        secondaryNames:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SecondaryName"
+        historicalNames:
+          type: array
+          description: A list of historical names, does not include the current name.
+          items:
+            "$ref": "#/components/schemas/Name"
+        registeredName:
+          "$ref": "#/components/schemas/Name"
+      required: []
+      title: CompanyName
+    Name:
+      type: object
+      description: A name object
+      properties:
+        date:
+          type: string
+          format: date
+          description: The date when this name was registered??? - TODO is this correct
+        name:
+          type: string
+          description: Name
+      required: []
+      title: Name
+    SecondaryName:
+      type: object
+      description: A secondary name is a trading name, under which a the company can promote part of its business activities.
+      properties:
+        name:
+          type: string
+          description: The registered name
+          example: Nokia Abp
+      required: []
+      title: SecondaryName
+    ContactPoints:
+      type: object
+      description: Methods for getting in contact with this company.
+      properties:
+        electronicContactPoints:
+          "$ref": "#/components/schemas/ElectronicContactPoints"
+        postalAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+        registeredAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+        visitingAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+      required: []
+      title: ContactPoints
+    ElectronicContactPoints:
+      type: object
+      properties:
+        emailAddresses:
+          type: array
+          description: A list of email addresses
+          items:
+            type: string
+        faxNumbers:
+          type: array
+          description: A list of fax numbers
+          items:
+            "$ref": "#/components/schemas/PhoneNumber"
+        phoneNumbers:
+          type: array
+          description: A list of phone numbers
+          items:
+            "$ref": "#/components/schemas/PhoneNumber"
+        webAddresses:
+          type: array
+          description: A list of web addresses
+          items:
+            type: string
+      required: []
+      title: ElectronicContactPoints
+
+    StreetAddress:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City
+          example: Stockholm
+        country:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          example: SE
+        postalCode:
+          type: string
+          description: Postalcode
+          example: 19637
+        street:
+          type: string
+          description: Street address
+          example: Rosenborgsgatan 4-6
+      required: []
+      title: StreetAddress
+   
+    GeneralCompanyData:
+      type: object
+      properties:
+        businessDescription:
+          type: string
+          description: The description registered with the local authorities describing the companys business.
+        country:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        registeredAsEmployer:
+          type: boolean
+          description: >-
+            'To have employees a company needs to be registered as an employer at the local tax office.'
+        registeredInVatList:
+          type: boolean
+          description: This indicates if the company is registered according to the Tax VAT register.
+        import:
+          type: boolean
+          description: >-
+            true if this company is registered for importing goods
+        export:
+          type: boolean
+          description: >-
+            true if this company is registered for exporting goods
+        corporateTax:
+          type: boolean
+          description: >-
+            True if this company, TODO - add description here
+        employeeRange:
+          type: string
+          example: 50-99
+          description: >-
+            A textual description of the range of employees this company have.
+            
+      required: []
+      title: GeneralCompanyData
+    Identifiers:
+      type: object
+      description: A set of identifiers for this company.
+      properties:
+        registrationNumber:
+          type: string
+          description: National registration number
+        dunsNumber:
+          type: string
+          description: duns-number
+      required: []
+      title: Identifiers
+    IndustryCodeSet:
+      type: object
+      description: >-
+        TODO - Do we use sni or nace codes for finland? 
+        Sni and nace code for classification of the business
+      properties:
+        sni2007IndustryCodes:
+          "$ref": "#/components/schemas/Sni2007IndustryCodes"
+      required: []
+      title: IndustryCodeSet
+    Sni2007IndustryCodes:
+      type: object
+      description: 
+      properties:
+        otherIndustryCodes:
+          type: array
+          description: Secondary codes 
+          items:
+            "$ref": "#/components/schemas/Sni2007Code"
+        primaryIndustryCode:
+          "$ref": "#/components/schemas/Sni2007Code"
+      required: []
+      title: Sni2007IndustryCodes
+    Sni2007Code:
+      type: object
+      description: 'Industry code. See https://www.scb.se/dokumentation/klassifikationer-och-standarder/standard-for-svensk-naringsgrensindelning-sni/ for more info.'
+      properties:
+        code:
+          type: string
+          description: the sni code
+          example: 82910
+        description:
+          type: string
+          description: A textual description of the code. 
+          example: "Retail sale of men's, women's and children's clothing in spec. stores"
+      required: []
+      title: IndustryCode
+    LegalForm:
+      type: object
+      description: The company's legalform
+      properties:
+        code:
+          type: string
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
+          description: >-
+            '
+            TODO - add docs here on what legalforms are available
+            '
+        description:
+          type: string
+          description: A textual description of the code.
+        localCode:
+          type: string
+          description: |
+            1  PROPRIETORSHIP
+            2  LIMITED PARTNERSHIP
+            3  LIMITED COMPANY
+            4  CO-OPERATIVE SOCIETY
+            6  ASSOCIATION / FOUNDATION
+            9  ENTREPRENEUR
+            20  HOUSING CO-OPERATIVE SOCIETY
+            21  HOUSING COMPANY
+            22  GENERAL PARTNERSHIP
+            23  VOLUNTARY ASSOCIATION
+            24  MORTGAGE ASSOCIATION
+            25  MUTUAL INDEMNITY INSURANCE AS.
+            26  LIMITED PARTNERSHIP
+            27  CO-OPERATIVE SOCIETY
+            28  CO-OPERATIVE BANK
+            29  LIMITED COMPANY
+            30  FOUNDATION
+            31  OFFICE OF FOREIGN COMPANY
+            32  SAVINGS BANK
+            33  ECONOMIC ASSOCIATION
+            34  INSURANCE LIMITED COMPANY
+            35  INSURANCE ASSOCIATION
+            36  PROPRIETORSHIP
+            37  GOVERNMENT AUTHORITY
+            38  OTHER LEGAL FORM
+            40  GROUP
+            41  RIGHT OF RESIDENCE ASSOCIATION
+            42  PUBLIC LIMITED COMPANY
+            43  PUBLIC MUTUAL INSURANCE CO.
+            44  PUBLIC INSURANCE LTD
+            45  EEIG
+            46  REAL ESTATE LTD
+            47  STATE ENTERPRISE
+            48  SOCIETAS EUROPAEA
+            49  MUTUAL EUROPE INSURANCE COMP.
+      required: []
+      title: LegalForm
+    RegistrationInformation:
+      type: object
+      description: >-
+        
+      properties:
+        registrationDate:
+          type: string
+          format: date
+          description: Official registration date of this company
+      required: []
+      title: RegistrationInformation
+    Status:
+      type: object
+      properties:
+        value:
+          type: string
+          enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
+          description: TODO - Are these statuses correct???
+        date:
+          type: string
+          format: date
+          description: Date when the status last changed
+      required: []
+      title: Status
+    Finance:
+      type: object
+      properties:
+        financialStatements:
+          "$ref": "#/components/schemas/FinancialStatements"
+        floatingCharges:
+          type: array
+          description: >-
+            TODO - do we have a max size here?
+          items:
+            "$ref": '#/components/schemas/FloatingCharge'
+    FloatingCharge:
+      type: object
+      description: >-
+        A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
+      properties:
+        date:
+          description: Date of the floating charge
+          type: string
+          format: date
+          example: 2019-01-01
+        reference:
+          description: reference id of the floating charge
+          type: string
+          example: A1223
+        creditor:
+          "$ref": "#/components/schemas/Creditor"
+        amount:
+          "$ref": "#/components/schemas/Amount"
+      required: []
+      title: Finance
+    FinancialStatements:
+      type: object
+      description: >-
+        auditorsReservation:
+          type: array
+          items:
+            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
+        keyFigures:
+          type: array
+          items:
+            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+        industryKeyFigures:
+          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/FinancialStatement"
+      required: []
+      title: FinancialStatements
+    FinancialStatementsAuditorsReservation:
+      type: object
+      description: >-
+        Auditors reservation/comment codes
+      properties:
+        auditorsReservationCode:
+          type: string
+          description: |
+           TODO - add codes here                      
+        auditorsReservationDescription:
+          type: string
+          description: Textual description of the auditorsReservationCode
+        auditorsCommentCode:
+          type: string
+          description: |
+           TODO - add codes here                      
+        auditorsCommentDescription:
+          type: string
+          description: Textual description of the auditorsCommentCode
+      required: []
+      title: FinancialStatementsAuditorsReservation
+    FinancialStatementKeyFigure:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: >-
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: EUR
+        currentRatio:
+          type: number
+          format: double
+          description: >-
+            Current assets in percent of Short term liabilities.
+            
+            The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
+          example: 19.4
+        equityAssetsRatio:
+          type: number
+          format: double
+          description: >-
+            Calculated equity in percent of the total assets. ???
+        gearing:
+          type: number
+          format: double
+          example: 89.0
+          description: >-
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
+        liabilityRatio:
+          type: number
+          format: double
+          description: >-
+            Debt/equity ratio in brigs web
+            
+            Liabilities in percent of equity.
+            
+            The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
+        profitMargin:
+          type: number
+          format: double
+          description: >-
+            profit rate in brigs web
+            Operating profit/loss plus financial income as a percentage of turnover.
+        quickRatio:
+          type: number
+          format: double
+          description: >-
+           Current assets minus inventories in percent of current liabilities.
+        returnOnEquity:
+          type: number
+          format: double
+          description: >-
+            Profit/loss after financial items as a percentage of the total equity.
+        returnOnInvestments:
+          type: number
+          format: double
+          description: >-
+            TODO - add description
+        returnOnTotalAssets:
+          type: number
+          format: double
+          example: 55.0
+          description: >-
+            TODO - add description here
+        turnover:
+          type: integer
+          format: int64
+          description: >-
+            The company’s total revenues. Net sales + otherOperatingIncome
+        numberOfEmployees:
+          type: integer
+          format: int64
+          example: 5200
+          description: >-
+            Number of employees
+        netWorth:
+          type: integer
+          format: int64
+          description: >-
+            Called equity in brigs web
+            Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
+          example: -1555000
+        totalAssets:
+          type: integer
+          format: int64
+          example: 23444000
+          description: >-
+            TODO - add description
+        daysOfReceiveables:
+          type: number
+          format: double
+          example: 1.4
+          description: >-
+            TODO - Is it correct just to add the description below and change from pay to receive ???
+        daysOfPayables:
+          type: number
+          format: double
+          example: 14.0
+          description: >-
+            Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
+            
+      required: []
+      title: FinancialStatementKeyFigure
+    IncomeStatement:
+      type: object
+      properties:
+        changeInInventories:
+          type: integer
+          format: int64
+          description: >-
+            Change in inventories and work in progress for the last reporting period and the current reporting period. 
+        workPerformedForOwnUse:
+          type: integer
+          format: int64
+          description: >-
+            Work performed by the company for its own use and capitalized here when reported as assets.
+        otherOperatingIncome:
+          type: integer
+          format: int64
+          description: >-
+            Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
+        totalTurnover:
+          type: integer
+          format: int64
+          description: >-
+            The company’s total revenues. Net sales + otherOperatingIncome
+        costOfGoods:
+          type: integer
+          format: int64
+          description: >-
+            Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
+        externalCosts:
+          type: integer
+          format: int64
+          description: >-
+            TODO - what is included in external costs?
+        staffCosts:
+          type: integer
+          format: int64
+          description: >-
+            'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.'
+        resultBeforeExtraordinaryItems:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description here.
+            An extraordinary item is an event or transaction that is considered abnormal, not related to ordinary company activities, and unlikely to recur in the foreseeable future.
+        otherOperatingExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
+        depreciation:
+          type: integer
+          format: int64
+          description: >-
+            Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
+        externalInterestIncome:
+          type: integer
+          format: int64
+          description: >-
+            Interest payed to the company by banks or creditinstitutes.
+        otherFinancialIncome:
+          type: integer
+          format: int64
+          description: >-
+            Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
+        impairmentOfFinancialAssets:
+          type: integer
+          format: int64
+          description: >-
+            TODO - what is this???
+        incomeFromShares:
+          type: integer
+          format: int64
+          description: >-
+            Income from shares. 
+        unspecifiedFinancialItems:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description here
+        taxOnExtraordinaryEarnings:
+          type: integer
+          format: int64
+          description: >-
+            Taxes paid on extraordinary items.
+        externalInterestExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Interest payed from the company to banks or creditinstitutes.
+        taxFromAnotherYear:
+          type: integer
+          format: int64
+          description: >-
+            Taxes postphoned from another year. Examples please??
+        taxAdjustments:
+          type: integer
+          format: int64
+          description: >-
+            Tax adjustments. Examples please??
+        otherFinancialExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
+        operatingResult:
+          type: integer
+          format: int64
+          description: >-
+            The operating result shows what the company has earned in connection with its business activities, that is to say before deduction of interest and taxes
+        extraordinaryIncome:
+          type: integer
+          format: int64
+          description: >-
+            Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
+        extraordinaryExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
+        tax:
+          type: integer
+          format: int64
+          description: >- 
+            Taxes paid.
+        netProfitLoss:
+          type: integer
+          format: int64
+          description: >-
+            A positive value means that the company made a net profit and a negative that it made a net loss.
+    BalanceSheet:
+      type: object
+      properties:
+        assets: 
+           "$ref": "#/components/schemas/Assets"
+        liabilitiesAndEquity:
+          "$ref": "#/components/schemas/LiabilitiesAndEquity"
+      title: BalanceSheet
+      description: >-
+        A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
+    Assets:
+      type: object
+      properties:
+        currentAssets:
+          "$ref": "#/components/schemas/CurrentAssets"
+        nonCurrentAssets:
+          "$ref": "#/components/schemas/NonCurrentAssets"
+      title: Assets
+      description: >-
+        Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
+    CurrentAssets:
+      type: object
+      properties:
+        workInProgress: 
+          type: integer
+          format: int64
+          description: >-  
+            Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
+        totalInventories: 
+          type: integer
+          format: int64
+          description: >-  
+            Total inventories
+        propertyForSale:
+          type: integer
+          format: int64
+          description: >-
+            Estimated value for properties that are to be sold. ????
+        accountsReceivable: 
+          type: integer
+          format: int64
+          description: >-  
+            Accounts receivable is the balance of money due to a firm for goods or services delivered or used but not yet paid for by customers.
+        receivableFromGroupCompanies: 
+          type: integer
+          format: int64
+          description: >-  
+            Receivable from group companies.
+        securities:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Accrued revenues and deferred expenses. Examples ???
+        cash: 
+          type: integer
+          format: int64
+          description: >-  
+            Cash and cash equivalents
+        otherCurrentAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
+        totalCurrentAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
+        totalAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Total assets
+      title: CurrentAssets
+      description: >-
+        Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
+    NonCurrentAssets:
+      type: object
+      properties:
+        capitalisedCostForRnd:
+          type: integer
+          format: int64
+          description: >-
+            Capitalized cost for Research and Development projects.
+        intangibleRights:
+          type: integer
+          format: int64
+          description: >-
+            Concessions, patents, licenses, trademarks and similar rights.  
+        goodwill:
+          type: integer
+          format: int64
+          description: >-
+            Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.  
+        otherIntangibleAssets: 
+          type: integer
+          format: int64
+          description: >-
+            These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
+        intangibleFixedAssets: 
+          type: integer
+          format: int64
+          description: >-
+            intangible fixed assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
+        landAndBuildings: 
+          type: integer
+          format: int64
+          description: >-
+            This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
+        includingLand: 
+          type: integer
+          format: int64
+          description: >-
+            Land is real estate or property, minus buildings and equipment. 
+        machineryAndTools: 
+          type: integer
+          format: int64
+          description: >-
+            Machinery, tools and inventory, etc ...
+        otherTangibleAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
+        totalTangibleNonCurrentAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Total tangible non-current assets.
+        sharesInAssociateCompanies: 
+          type: integer
+          format: int64
+          description: >-  
+            Shares in associated companies.
+        otherInterests:
+          type: integer
+          format: int64
+          description: >-
+            TODO  - add description
+        longtermReceivablesFromGroup:
+          type: integer
+          format: int64
+          description: >- 
+            TODO - add description
+        otherLongtermReceivables:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
+        ownShares:
+          type: integer
+          format: int64
+          description: >-
+            The value of the shares the company owns in their own company.
+        otherFinancialAssets:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
+        totalFinancialNonCurrentAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Total financial non-current assets.
+        totalNonCurrentAssets: 
+          type: integer
+          format: int64
+          description: >-  
+            Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
+              Non-current assets can be considered anything not classified as current.
+      title: NonCurrentAssets
+      description: >-
+        A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
+    LiabilitiesAndEquity:
+      type: object
+      properties:
+        liabilities:
+          "$ref": "#/components/schemas/Liabilities"
+        shareholdersEquity:
+          "$ref": "#/components/schemas/ShareholdersEquity" 
+        totalEquityAndLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Total equity and liabilities
+    Liabilities:
+      type: object
+      properties:
+        currentLiabilities:
+          "$ref": "#/components/schemas/CurrentLiabilities"
+        nonCurrentLiabilities:
+          "$ref": "#/components/schemas/LongTermLiabilities"
+      title: Liabilities
+      description: >-
+        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
+    CurrentLiabilities:
+      type: object
+      properties:
+        shortTermLiabilitiesToCreditInstitutions:
+          type: integer
+          format: int64  
+          description: >-
+            Short-term liabilities to credit institutions. 
+        accountsPayable:
+          type: integer
+          format: int64  
+          description: >-
+            Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
+        liabilitiesToGroupCompanies:
+          type: integer
+          format: int64  
+          description: >-    
+            Short-term liabilities to group companies.
+        otherLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            TODO  - add description. What is the difference to otherCurrentLiabilities ??
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64
+          description: >-
+            TODO - add description
+        otherCurrentLiabilities:
+          type: integer
+          format: int64  
+          description: >-    
+            Other current liabilities.
+        totalCurrentLiabilities:
+          type: integer
+          format: int64  
+          description: >-    
+            Total current liabilities.
+      title: CurrentLiabilities
+      description: >-
+        Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
+    LongTermLiabilities:
+      type: object
+      properties:
+        subordinatedLoans:
+          type: integer
+          format: int64  
+          description: >-
+            Total subordinated loans.  
+        longTermLiabilitiesToCreditInstitutions:
+          type: integer
+          format: int64  
+          description: >-
+            Non-current liabilities to credit institutions.
+        liabilitiesToGroupCompanies:
+          type: integer
+          format: int64  
+          description: >-    
+            Long-term liabilities to group companies.
+        otherLongTermLiabilities:
+          type: integer
+          format: int64  
+          description: >-    
+            Other long-term liabilities.
+        totalLongTermLiabilities:
+          type: integer
+          format: int64  
+          description: >-    
+            Total long-term liabilities
+            
+      title: LongTermLiabilities
+      description: >-
+        Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
+    ShareholdersEquity:
+      type: object
+      properties:
+        shareCapital:
+          type: integer
+          format: int64  
+          description: >-
+            Share capital refers to funds raised by issuing shares in return for cash or other considerations.
+        sharePremiumAccount:
+          type: integer
+          format: int64  
+          description: >-
+            A share premium account is the amount of money paid for a share above the cost of the share.
+        revaluationReserve:
+          type: integer
+          format: int64  
+          description: >-    
+            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
+        transferredEarnings:
+          type: integer
+          format: int64  
+          description: >-    
+            TODO - add description
+        equityBeforeMinorityInterest:
+          type: integer
+          format: int64  
+          description: >-     
+            TODO - add description
+        earningsAfterMinorityInterestShare:
+          type: integer
+          format: int64  
+          description: >-     
+            TODO - add description
+        totalEquity:
+          type: integer
+          format: int64  
+          description: >-     
+            Total equity.
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
+        otherProvision:
+          type: integer
+          format: int64  
+          description: >-     
+            TODO - what is the difference to provisions ??
+        provisions:
+          type: integer
+          format: int64  
+          description: >-     
+            Total provisions  
+      title: ShareholdersEquity
+      description: >-
+        Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
+    FinancialStatement:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: >-
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: SEK
+        balanceSheet:
+          "$ref": "#/components/schemas/BalanceSheet"
+        incomeStatement:
+          "$ref": "#/components/schemas/IncomeStatement"
+      required: []
+      title: FinancialStatement
+    Bankruptcy:
+      type: object
+      description: This section will be available if there is any data related to bankruptcy for this company.
+      properties:
+        date:
+          type: string
+          format: date
+          description: Date when this company went bankrupt.
+    Trustee:
+      type: object
+      description: Name and contact-info to the person/company handling the bankruptcy
+      properties:
+        companyName:
+          type: string
+          description: Name of the company handling the bankruptcy
+          example: Advokatfirman demo
+        name:
+          type: string
+          description: Name of the person assigned to handle the bankruptcy.
+          example: Anders Svensson
+        phoneNumber:
+          "$ref": "#/components/schemas/PhoneNumber"
+        address:
+          type: string
+          description: The address to the person/company assigned to handle this bankruptcy
+        example: 10390, Stockholm
