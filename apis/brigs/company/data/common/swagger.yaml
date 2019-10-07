@@ -688,3 +688,17 @@ components:
           example: "Retail sale of men's, women's and children's clothing in spec. stores"
       required: []
       title: IndustryCode
+    SicCode:
+      type: object
+      description: 'The Standard Industrial Classification (SIC) is a system for classifying industries by a four-digit code. . See https://en.wikipedia.org/wiki/Standard_Industrial_Classification/ for more info.'
+      properties:
+        code:
+          type: string
+          description: the sic code
+          example: 8730
+        description:
+          type: string
+          description: A textual description of the code. 
+          example: "Research, Development, And Testing Services"
+      required: []
+      title: SicCode
