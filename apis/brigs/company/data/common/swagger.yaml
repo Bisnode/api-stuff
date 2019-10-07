@@ -32,6 +32,19 @@ components:
           description: As described in https://en.wikipedia.org/wiki/ISO_4217
       required: []
       title: Amount
+    RatingCreditLimits:
+      type: object
+      description: Current and historical credit limits as recommended by Bisnode. 
+      properties:
+        ratingCreditLimit:
+          "$ref": "#/components/schemas/RatingCreditLimit"
+        historicalRatingCreditLimits:
+          type: array
+          description: TODO - max size ???
+          items:
+            "$ref": "#/components/schemas/RatingCreditLimit"
+      required: []
+      title: RatingCreditLimits
     RatingCreditLimit:
       type: object
       description: >- 
