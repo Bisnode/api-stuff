@@ -26,44 +26,44 @@ components:
       type: object
       properties:
         risk:
-          "$ref": "#/components/schemas/Risk"
+          "$ref": "#/components/schemas/FinnishRisk"
         management:
-          "$ref": "#/components/schemas/Management"
+          "$ref": "#/components/schemas/FinnishManagement"
         companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
+          "$ref": "#/components/schemas/FinnishCompanyInformation"
         finance:
-          "$ref": "#/components/schemas/Finance"
+          "$ref": "#/components/schemas/FinnishFinance"
         ownership:
-          "$ref": "#/components/schemas/Ownership"
+          "$ref": "#/components/schemas/FinnishOwnership"
       required: []
       title: FinnishCompanyData
       description: This is the root object defining which structures reside under the root path.
-    Risk:
+    FinnishRisk:
       type: object
       description: >-
         Risk section.
       properties:
         creditRatings:
-          "$ref": "#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CreditRatings"
         ratingCreditLimits:
-          "$ref": "#/components/schemas/RatingCreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
-          "$ref": "#/components/schemas/PaymentRemarks"
+          "$ref": "#/components/schemas/FinnishPaymentRemarks"
         trade:
-          "$ref": "#/components/schemas/Trade"
+          "$ref": "#/components/schemas/FinnishTrade"
         bankruptcy:
-          "$ref": "#/components/schemas/Bankruptcy"
+          "$ref": "#/components/schemas/FinnishBankruptcy"
         debtCollection:
-          "ref": "#/component/schemas/DebtCollection"
+          "ref": "#/component/schemas/FinnishDebtCollection"
       required: []
-      title: Risk
-    Trade:
+      title: FinnishRisk
+    FinnishTrade:
       type: object
       properties:
         paymentIndex:
-          "$ref": "#/components/schemas/PaymentIndex"
-      title: Trade
-    DebtCollection:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PaymentIndex"
+      title: FinnishTrade
+    FinnishDebtCollection:
       type: object
       properties:
         debtCollectionCases:
@@ -72,181 +72,20 @@ components:
             True if there has been any debt collection cases the last 6 months.
             TODO - describe debt collection cases
       required: []
-      title: DebtCollection
-    RatingCreditLimits:
-      type: object
-      description: Current and historical credit limits as recommended by Bisnode. 
-      properties:
-        creditLimit:
-          "$ref": "#/components/schemas/RatingCreditLimit"
-        historicalRatingCreditLimits:
-          type: array
-          description: TODO - max size ???
-          items:
-            "$ref": "#/components/schemas/RatingCreditLimit"
-      required: []
-      title: CreditLimits
-    Amount:
-      type: object
-      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
-      properties:
-        monetaryAmount:
-          type: integer
-          format: int64
-          description: May be a negative number 
-        currency:
-          type: string
-          description: As described in https://en.wikipedia.org/wiki/ISO_4217
-      required: []
-      title: Amount
-    RatingCreditLimit:
-      type: object
-      description: >- 
-        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
-      properties:
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when the limit was changed/re-calculated.
-      required: []
-      title: RatingCreditLimit
-    CreditInquiry:
+      title: FinnishDebtCollection
+    FinnishCreditInquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of the inquiry
       required: []
-      title: CreditInquiry
-    CreditRatings:
-      type: object
-      description: Current and historical ratings
-      properties:
-        currentCreditRating:
-          "$ref": "#/components/schemas/Rating"
-        historicalCreditRatings:
-          type: array
-          description: Max 99 items.
-          items:
-            "$ref": "#/components/schemas/Rating"
-      required: []
-      title: CreditRatings
-    Rating:
-      type: object
-      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
-      properties:
-        annualReportDate:
-          type: string
-          format: date
-          description: Date of the annual report data the rating was calculated from.
-        date:
-          type: string
-          format: date
-          description: Date when the rating was calculated.
-        code:
-          type: string
-          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
-        description:
-          type: string
-          description: Textual description of the rating. 
-        partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
-      required: []
-      title: Rating
-      maximum: 1100
-    PartJudgements:
-      type: object
-      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
-      properties:
-        abilityToPay:
-          "$ref": "#/components/schemas/PartJudgement"
-        finance:
-          "$ref": "#/components/schemas/PartJudgement"
-        historyOperation:
-          "$ref": "#/components/schemas/PartJudgement"
-        ownership:
-          "$ref": "#/components/schemas/PartJudgement"
-      required: []
-      title: PartJudgements
-    PartJudgement:
-      type: object
-      description: A part judgement. 
-      properties:
-        max:
-          type: integer
-          format: int32
-          description: The max value a company can have.
-        value:
-          type: integer
-          format: int32
-          description: This company's value.
-        description:
-          type: string
-          description: A textual description of the part judgement.
-      required: []
-      title: PartJudgement
-    PaymentIndex:
-      type: object
-      description: A weighted average of the Payment Index of all companies in all industries of the country. 
-      properties:
-        currentPaymentIndex:
-          "$ref": "#/components/schemas/PaymentIndexModel"
-        historicalPaymentIndex:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PaymentIndexModel"
-      required: []
-      title: PaymentIndex
-    PaymentIndexModel:
-      type: object
-      properties:
-        averageDelay:
-          type: integer
-          format: int32
-          description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when this paymentindex score was calculated.
-        invoiceCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of invoices used to calculate the payment index score
-        invoiceSuppliersCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of suppliers that supplied the invoices used to calculate this paymentindex score
-        paymentIndex:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The paymentindex score for this company. See https://en.wikipedia.org/wiki/Paydex for more info on paymentIndex.
-        paymentIndexAllCompanies:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in Sweden
-        paymentIndexLineOfBusiness:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in the same line of business in Sweden.
-      required: []
-      title: PaydexModel
-    PaymentRemarks:
+      title: FinnishCreditInquiry
+    FinnishPaymentRemarks:
       type: object
       properties:
         count:
@@ -254,65 +93,35 @@ components:
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first. TODO - Max size ???
           items:
-            "$ref": "#/components/schemas/PaymentRemark"
+            "$ref": "#/components/schemas/FinnishPaymentRemark"
       required: []
-      title: PaymentRemarks
-    PaymentRemark:
+      title: FinnishPaymentRemarks
+    FinnishPaymentRemark:
       type: object
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of remark
         creditor:
-          "$ref": "#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
         type:
-          "$ref": "#/components/schemas/ReportCode"
+          "$ref": "#/components/schemas/FinnishReportCode"
         description:
           type: string
           description: A textual description of the event type
           example: FISSION - EXPIRED
       required: []
-      title: PaymentRemark
-    Creditor:
-      type: object
-      properties:
-        name:
-          type: string
-          description: >-
-            Name of the creditor
-      title: Creditor
-    PhoneNumber:
-      type: object
-      description: >-
-        Can be a raw phonenumber or splitted into areacode and phonenumber
-      properties:
-        fullNumber:
-          type: string
-          example: 08-0000000
-          description: >-
-            Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
-        areaCode:
-          type: string
-          example: 08
-          description: >-
-            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
-        numberOnly:
-          type: string
-          example: 1000000
-          description: >-
-            TODO _ rename me
-            phoneNumber without areacode
-      title: PhoneNumber
-    ReportCode:
+      title: FinnishPaymentRemark
+    FinnishReportCode:
       type: object
       description: Common codes
       properties:
@@ -640,7 +449,7 @@ components:
             ZAP       -  TRANSFEREE BY FISSION - START UP        
             ZAS       -  TRANSFEREE BY FISSION - EXECUTED        
             ZAT       -  FISSION - PERMISSION REGISTRATION              
-    Petitions:
+    FinnishPetitions:
       type: object
       description: Holder for petitions, the list of petitions may be capped if list is too large. The amount of all petitions is the sum on all petitions currently available in Bisnode's database and may differ from doing a sum on all the petitions in the list. 
       properties:
@@ -649,19 +458,19 @@ components:
           format: int64
           description: Total number of petitions this company have.
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         petitions:
           type: array
           items:
-            "$ref": "#/components/schemas/Petition"
+            "$ref": "#/components/schemas/FinnishPetition"
       required: []
-      title: Petitions
-    Petition:
+      title: FinnishPetitions
+    FinnishPetition:
       type: object
       description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -670,15 +479,15 @@ components:
           type: string
           description: A textual description of the petition, may be in the local language.
         creditor:
-          "$ref": "#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
         type:
-          "$ref": "#/components/schemas/ReportCode"
+          "$ref": "#/components/schemas/FinnishReportCode"
       required: []
-      title: Petition
-    CreditInquiries:
+      title: FinnishPetition
+    FinnishCreditInquiries:
       type: object
       properties:
-        numberOfInquiries:
+        count:
           type: integer
           format: int32
           description: Total number of inquiries made on this company
@@ -686,133 +495,37 @@ components:
           type: array
           description: A list of the inquiries. TODO - is there a max size for this?
           items:
-            "$ref": "#/components/schemas/CreditInquiry"
+            "$ref": "#/components/schemas/FinnishCreditInquiry"
       required: []
-      title: CreditInquiries
-    Ownership:
+      title: FinnishCreditInquiries
+    FinnishOwnership:
       type: object
       properties:
         parentCompanies:
-          "$ref": "#/components/schemas/ParentCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
-          "$ref": "#/components/schemas/Subsidiaries"
+          "$ref": "#/components/schemas/FinnishSubsidiaries"
         familyTree:
           type: object
           description: Tree structure of the owner relationships.
           items:
-            "$ref": "#/components/schemas/FamilyTree"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/FamilyTree"
       required: []
-      title: Ownership
-    FamilyTree:
-      type: object
-      description: A view of the owner structure. TODO - will we cap data???
-      properties:
-        ultimateParent:
-          "$ref": "#/components/schemas/Company"
-      required: []
-      title: FamilyTree
-    Company:
+      title: FinnishOwnership
+    FinnishSubsidiaries:
       type: object
       properties:
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-        name:
-          type: string
-          description: name of this company
-        dunsNumber:
-          type: string
-          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        companies:
-          type: array
-          items:
-            "$ref": "#/components/schemas/Company"
-      required: []
-      title: Company
-    ParentCompanies:
-      type: object
-      properties:
-        numberOfParentCompanies:
-          type: integer
-          format: int32
-          description: >-
-            TODO - do we have this
-        parents:
-          type: array
-          description: A list of the parent companies.
-          items:
-            "$ref": "#/components/schemas/ParentCompany"
-      required: []
-      title: ParentCompanies
-    ParentCompany:
-      type: object
-      description: A company relates to another one as it's parent if it owns the majority (>50%) of the capital of that other company.
-      properties:
-        name:
-          type: string
-          description: Name of the company
-        type:
-          type: string
-          description: >-
-            The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
-            TODO - do we have this information??
-          enum: ['PARENT', 'ULTIMATE_PARENT']
-        dunsNumber:
-          type: string
-        country:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        date:
-          type: string
-          description: >-
-            what is 
-        shareCapital:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: Parent
-    SisterCompanies:
-      type: object
-      properties:
-        numberOfSisterCompanies:
-          type: integer
-        sisterCompanies:
-          type: array
-          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
-          items:
-            "$ref": "#/components/schemas/SisterCompany"
-      required: []
-      title: SisterCompanies
-    SisterCompany:
-      type: object
-      description: A company which is owned by the same parent company as another company. One parent company can have one or many subsidiaries, which all are sister companies to each other.
-      properties:
-        name:
-          type: string
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-      required: []
-      title: SisterCompany
-    Subsidiaries:
-      type: object
-      properties:
-        numberOfSubsidiaries:
+        count:
           type: integer
           format: int32
           description: Total number of subsidiaries this company have.
         subsidiaries:
           type: array
           items:
-            "$ref": "#/components/schemas/Subsidiary"
+            "$ref": "#/components/schemas/FinnishSubsidiary"
       required: []
-      title: Subsidiaries
-    Subsidiary:
+      title: FinnishSubsidiaries
+    FinnishSubsidiary:
       type: object
       description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
       properties:
@@ -826,24 +539,24 @@ components:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         shareCapital:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: Subsidiary
-    Management:
+      title: FinnishSubsidiary
+    FinnishManagement:
       type: object
       description: Management section
       properties:
         boardMembers:
-          "$ref": "#/components/schemas/BoardMembers"
+          "$ref": "#/components/schemas/FinnishBoardMembers"
         auditors:
-          "$ref": "#/components/schemas/Auditors"
+          "$ref": "#/components/schemas/FinnishAuditors"
         authorizedSignatory:
           type: string
           description: >-
             Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
       required: []
-      title: Management
-    Auditors:
+      title: FinnishManagement
+    FinnishAuditors:
       type: object
       description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
       properties:
@@ -851,296 +564,55 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
       required: []
-      title: Auditors
-    PositionEntity:
-      type: object
-      description: >-
-        An entity, can be a company or a private person.
-      properties:
-        name:
-        type: string
-        description: The name of the person/entity holding this position
-      registrationNumber:
-        type: string
-        description: Typically a social security number or a organisation number in case of a company entity
-      title: PositionEntity
-    Position:
-      type: object
-      properties:
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company? TODO - Merge OTHER and UNKNOWN????
-        entity:
-          "$ref": "#/components/schemas/PositionEntity"
-        registrationNumber:
-          type: string
-          description: Typically a social security number
-        function:
-          type: string
-          description: |
-            '
-            HVJV = Deputy member
-            SEL = Liquidator
-            VT = Deputy auditor
-            HPJV = Vice-chairperson
-            PIS = House manager with primary responsibility
-            U = Special representative
-            VAH = Responsible manager
-            HVJ = Ordinary member
-            PR = Holder of procuration
-            SEV = Deputy liquidator
-            VTJ = Deputy Managing Director
-            Y = Partner
-            ÄY = Silent partner
-            E = Guardian
-            EH = Trader
-            IS = House Manager
-            JO = Director
-            OI = Person authorised
-            SO = Person authorised during liquidation
-            TJS = Substitute for the Managing Director
-            EDU = Representative
-            HPJ = Chairperson
-            LT = Additional auditor
-            PTI = Auditor with principal responsibility
-            SANS = Administrator in restructuring
-            TIL = Auditor
-            TJ = Managing Director
-            UE = Foreign representative
-            '
-        description:
-          type: string
-          description: A textual description of the function
-      required: []
-      title: Position
-    HistoricalPosition:
-      type: object
-      properties:
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private per son or a company?
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        function:
-          type: string
-          description: |
-            '
-            HVJV = Deputy member
-            SEL = Liquidator
-            VT = Deputy auditor
-            HPJV = Vice-chairperson
-            PIS = House manager with primary responsibility
-            U = Special representative
-            VAH = Responsible manager
-            HVJ = Ordinary member
-            PR = Holder of procuration
-            SEV = Deputy liquidator
-            VTJ = Deputy Managing Director
-            Y = Partner
-            ÄY = Silent partner
-            E = Guardian
-            EH = Trader
-            IS = House Manager
-            JO = Director
-            OI = Person authorised
-            SO = Person authorised during liquidation
-            TJS = Substitute for the Managing Director
-            EDU = Representative
-            HPJ = Chairperson
-            LT = Additional auditor
-            PTI = Auditor with principal responsibility
-            SANS = Administrator in restructuring
-            TIL = Auditor
-            TJ = Managing Director
-            UE = Foreign representative
-            '
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-        registrationNumber:
-          type: string
-          description: Typically a social securityNumber
-        resignedDate:
-          type: string
-          format: date
-          description: Date when this person/entity resigned from this position
-      required: []
-      title: HistoricalPosition
-    BoardMembers:
+      title: FinnishAuditors
+    FinnishBoardMembers:
       type: object
       properties:
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
-      title: BoardMembers
-    CompanyInformation:
+      title: FinnishBoardMembers
+    FinnishCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "#/components/schemas/Capital"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Capital"
         companyName:
-          "$ref": "#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "#/components/schemas/ContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "#/components/schemas/Identifiers"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Identifiers"
         industryCodeSet:
-          "$ref": "#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
-          "$ref": "#/components/schemas/LegalForm"
+          "$ref": "#/components/schemas/FinnishLegalForm"
         status:
-          "$ref": "#/components/schemas/Status"
+          "$ref": "#/components/schemas/FinnishStatus"
         registrationInformation:
-          "$ref": "#/components/schemas/RegistrationInformation"
+          "$ref": "#/components/schemas/FinnishRegistrationInformation"
         generalCompanyData:
-          "$ref": "#/components/schemas/GeneralCompanyData"
+          "$ref": "#/components/schemas/FinnishGeneralCompanyData"
       required: []
-      title: CompanyInformation
-    Capital:
-      type: object
-      description: Capital section
-      properties:
-        shareCapital:
-          "$ref": "#/components/schemas/ShareCapital"
-      required: []
-      title: Capital
-    ShareCapital:
-      type: object
-      description: Share capital
-      properties:
-        amount:
-          "$ref": '#/components/schemas/Amount'
-      required: []
-      title: ShareCapital
-    CompanyName:
-      type: object
-      description: >-
-        Different set of names this company is known as or has been known as.
-      properties:
-        secondaryNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/SecondaryName"
-        historicalNames:
-          type: array
-          description: A list of historical names, does not include the current name.
-          items:
-            "$ref": "#/components/schemas/Name"
-        registeredName:
-          "$ref": "#/components/schemas/Name"
-      required: []
-      title: CompanyName
-    Name:
-      type: object
-      description: A name object
-      properties:
-        date:
-          type: string
-          format: date
-          description: The date when this name was registered??? - TODO is this correct
-        name:
-          type: string
-          description: Name
-      required: []
-      title: Name
-    SecondaryName:
-      type: object
-      description: A secondary name is a trading name, under which a the company can promote part of its business activities.
-      properties:
-        name:
-          type: string
-          description: The registered name
-          example: Nokia Abp
-      required: []
-      title: SecondaryName
-    ContactPoints:
-      type: object
-      description: Methods for getting in contact with this company.
-      properties:
-        electronicContactPoints:
-          "$ref": "#/components/schemas/ElectronicContactPoints"
-        postalAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        registeredAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        visitingAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-      required: []
-      title: ContactPoints
-    ElectronicContactPoints:
-      type: object
-      properties:
-        emailAddresses:
-          type: array
-          description: A list of email addresses
-          items:
-            type: string
-        faxNumbers:
-          type: array
-          description: A list of fax numbers
-          items:
-            "$ref": "#/components/schemas/PhoneNumber"
-        phoneNumbers:
-          type: array
-          description: A list of phone numbers
-          items:
-            "$ref": "#/components/schemas/PhoneNumber"
-        webAddresses:
-          type: array
-          description: A list of web addresses
-          items:
-            type: string
-      required: []
-      title: ElectronicContactPoints
-
-    StreetAddress:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City
-          example: Stockholm
-        country:
-          type: string
-          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-          example: SE
-        postalCode:
-          type: string
-          description: Postalcode
-          example: 19637
-        street:
-          type: string
-          description: Street address
-          example: Rosenborgsgatan 4-6
-      required: []
-      title: StreetAddress
-   
-    GeneralCompanyData:
+      title: FinnishCompanyInformation
+    FinnishGeneralCompanyData:
       type: object
       properties:
         businessDescription:
           type: string
           description: The description registered with the local authorities describing the companys business.
-        country:
+        countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         registeredAsEmployer:
@@ -1169,57 +641,8 @@ components:
             A textual description of the range of employees this company have.
             
       required: []
-      title: GeneralCompanyData
-    Identifiers:
-      type: object
-      description: A set of identifiers for this company.
-      properties:
-        registrationNumber:
-          type: string
-          description: National registration number
-        dunsNumber:
-          type: string
-          description: duns-number
-      required: []
-      title: Identifiers
-    IndustryCodeSet:
-      type: object
-      description: >-
-        TODO - Do we use sni or nace codes for finland? 
-        Sni and nace code for classification of the business
-      properties:
-        sni2007IndustryCodes:
-          "$ref": "#/components/schemas/Sni2007IndustryCodes"
-      required: []
-      title: IndustryCodeSet
-    Sni2007IndustryCodes:
-      type: object
-      description: 
-      properties:
-        otherIndustryCodes:
-          type: array
-          description: Secondary codes 
-          items:
-            "$ref": "#/components/schemas/Sni2007Code"
-        primaryIndustryCode:
-          "$ref": "#/components/schemas/Sni2007Code"
-      required: []
-      title: Sni2007IndustryCodes
-    Sni2007Code:
-      type: object
-      description: 'Industry code. See https://www.scb.se/dokumentation/klassifikationer-och-standarder/standard-for-svensk-naringsgrensindelning-sni/ for more info.'
-      properties:
-        code:
-          type: string
-          description: the sni code
-          example: 82910
-        description:
-          type: string
-          description: A textual description of the code. 
-          example: "Retail sale of men's, women's and children's clothing in spec. stores"
-      required: []
-      title: IndustryCode
-    LegalForm:
+      title: FinnishGeneralCompanyData
+    FinnishLegalForm:
       type: object
       description: The company's legalform
       properties:
@@ -1272,8 +695,8 @@ components:
             48  SOCIETAS EUROPAEA
             49  MUTUAL EUROPE INSURANCE COMP.
       required: []
-      title: LegalForm
-    RegistrationInformation:
+      title: FinnishLegalForm
+    FinnishRegistrationInformation:
       type: object
       description: >-
         
@@ -1283,8 +706,8 @@ components:
           format: date
           description: Official registration date of this company
       required: []
-      title: RegistrationInformation
-    Status:
+      title: FinnishRegistrationInformation
+    FinnishStatus:
       type: object
       properties:
         value:
@@ -1296,19 +719,19 @@ components:
           format: date
           description: Date when the status last changed
       required: []
-      title: Status
-    Finance:
+      title: FinnishStatus
+    FinnishFinance:
       type: object
       properties:
         financialStatements:
-          "$ref": "#/components/schemas/FinancialStatements"
+          "$ref": "#/components/schemas/FinnishFinancialStatements"
         floatingCharges:
           type: array
           description: >-
             TODO - do we have a max size here?
           items:
-            "$ref": '#/components/schemas/FloatingCharge'
-    FloatingCharge:
+            "$ref": '#/components/schemas/FinnishFloatingCharge'
+    FinnishFloatingCharge:
       type: object
       description: >-
         A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
@@ -1323,32 +746,32 @@ components:
           type: string
           example: A1223
         creditor:
-          "$ref": "#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: Finance
-    FinancialStatements:
+      title: FinnishFinance
+    FinnishFinancialStatements:
       type: object
       description: >-
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
+            "$ref": "#/components/schemas/FinnishFinancialStatementsAuditorsReservation"
         keyFigures:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/FinnishFinancialStatementKeyFigure"
         industryKeyFigures:
-          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+          "$ref": "#/components/schemas/FinnishFinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/components/schemas/FinancialStatement"
+            "$ref": "#/components/schemas/FinnishFinancialStatement"
       required: []
-      title: FinancialStatements
-    FinancialStatementsAuditorsReservation:
+      title: FinnishFinancialStatements
+    FinnishFinancialStatementsAuditorsReservation:
       type: object
       description: >-
         Auditors reservation/comment codes
@@ -1368,8 +791,8 @@ components:
           type: string
           description: Textual description of the auditorsCommentCode
       required: []
-      title: FinancialStatementsAuditorsReservation
-    FinancialStatementKeyFigure:
+      title: FinnishFinancialStatementsAuditorsReservation
+    FinnishFinancialStatementKeyFigure:
       type: object
       properties:
         closingPeriod:
@@ -1446,7 +869,7 @@ components:
           format: int64
           description: >-
             The company’s total revenues. Net sales + otherOperatingIncome
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
           example: 5200
@@ -1459,19 +882,19 @@ components:
             Called equity in brigs web
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
           example: -1555000
-        totalAssets:
+        assetsTotal:
           type: integer
           format: int64
           example: 23444000
           description: >-
             TODO - add description
-        daysOfReceiveables:
+        receiveableDays:
           type: number
           format: double
           example: 1.4
           description: >-
             TODO - Is it correct just to add the description below and change from pay to receive ???
-        daysOfPayables:
+        payablesDays:
           type: number
           format: double
           example: 14.0
@@ -1479,8 +902,8 @@ components:
             Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
             
       required: []
-      title: FinancialStatementKeyFigure
-    IncomeStatement:
+      title: FinnishFinancialStatementKeyFigure
+    FinnishIncomeStatement:
       type: object
       properties:
         changeInInventories:
@@ -1498,7 +921,7 @@ components:
           format: int64
           description: >-
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
-        totalTurnover:
+        turnoverTotal:
           type: integer
           format: int64
           description: >-
@@ -1609,27 +1032,27 @@ components:
           format: int64
           description: >-
             A positive value means that the company made a net profit and a negative that it made a net loss.
-    BalanceSheet:
+    FinnishBalanceSheet:
       type: object
       properties:
         assets: 
-           "$ref": "#/components/schemas/Assets"
+           "$ref": "#/components/schemas/FinnishAssets"
         liabilitiesAndEquity:
-          "$ref": "#/components/schemas/LiabilitiesAndEquity"
+          "$ref": "#/components/schemas/FinnishLiabilitiesAndEquity"
       title: BalanceSheet
       description: >-
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
-    Assets:
+    FinnishAssets:
       type: object
       properties:
         currentAssets:
-          "$ref": "#/components/schemas/CurrentAssets"
+          "$ref": "#/components/schemas/FinnishCurrentAssets"
         nonCurrentAssets:
-          "$ref": "#/components/schemas/NonCurrentAssets"
+          "$ref": "#/components/schemas/FinnishNonCurrentAssets"
       title: Assets
       description: >-
         Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
-    CurrentAssets:
+    FinnishCurrentAssets:
       type: object
       properties:
         workInProgress: 
@@ -1637,7 +1060,7 @@ components:
           format: int64
           description: >-  
             Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
-        totalInventories: 
+        inventoriesTotal: 
           type: integer
           format: int64
           description: >-  
@@ -1677,20 +1100,20 @@ components:
           format: int64
           description: >-  
             Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
-        totalCurrentAssets: 
+        currentAssetsTotal: 
           type: integer
           format: int64
           description: >-  
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-        totalAssets: 
+        assetsTotal: 
           type: integer
           format: int64
           description: >-  
             Total assets
-      title: CurrentAssets
+      title: FinnishCurrentAssets
       description: >-
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
-    NonCurrentAssets:
+    FinnishNonCurrentAssets:
       type: object
       properties:
         capitalisedCostForRnd:
@@ -1738,7 +1161,7 @@ components:
           format: int64
           description: >-  
             Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
-        totalTangibleNonCurrentAssets: 
+        tangibleNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: >-  
@@ -1773,43 +1196,43 @@ components:
           format: int64
           description: >-
             TODO - add description
-        totalFinancialNonCurrentAssets: 
+        financialNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: >-  
             Total financial non-current assets.
-        totalNonCurrentAssets: 
+        nonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: >-  
             Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
               Non-current assets can be considered anything not classified as current.
-      title: NonCurrentAssets
+      title: FinnishNonCurrentAssets
       description: >-
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
-    LiabilitiesAndEquity:
+    FinnishLiabilitiesAndEquity:
       type: object
       properties:
         liabilities:
-          "$ref": "#/components/schemas/Liabilities"
+          "$ref": "#/components/schemas/FinnishLiabilities"
         shareholdersEquity:
-          "$ref": "#/components/schemas/ShareholdersEquity" 
-        totalEquityAndLiabilities:
+          "$ref": "#/components/schemas/FinnishShareholdersEquity" 
+        equityAndLiabilitiesTotal:
           type: integer
           format: int64
           description: >-
             Total equity and liabilities
-    Liabilities:
+    FinnishLiabilities:
       type: object
       properties:
         currentLiabilities:
-          "$ref": "#/components/schemas/CurrentLiabilities"
+          "$ref": "#/components/schemas/FinnishCurrentLiabilities"
         nonCurrentLiabilities:
-          "$ref": "#/components/schemas/LongTermLiabilities"
-      title: Liabilities
+          "$ref": "#/components/schemas/FinnishLongTermLiabilities"
+      title: FinnishLiabilities
       description: >-
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
-    CurrentLiabilities:
+    FinnishCurrentLiabilities:
       type: object
       properties:
         shortTermLiabilitiesToCreditInstitutions:
@@ -1842,15 +1265,15 @@ components:
           format: int64  
           description: >-    
             Other current liabilities.
-        totalCurrentLiabilities:
+        currentLiabilitiesTotal:
           type: integer
           format: int64  
           description: >-    
             Total current liabilities.
-      title: CurrentLiabilities
+      title: FinnishCurrentLiabilities
       description: >-
         Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
-    LongTermLiabilities:
+    FinnishLongTermLiabilities:
       type: object
       properties:
         subordinatedLoans:
@@ -1873,16 +1296,16 @@ components:
           format: int64  
           description: >-    
             Other long-term liabilities.
-        totalLongTermLiabilities:
+        longTermLiabilitiesTotal:
           type: integer
           format: int64  
           description: >-    
             Total long-term liabilities
             
-      title: LongTermLiabilities
+      title: FinnishLongTermLiabilities
       description: >-
         Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
-    ShareholdersEquity:
+    FinnishShareholdersEquity:
       type: object
       properties:
         shareCapital:
@@ -1915,7 +1338,7 @@ components:
           format: int64  
           description: >-     
             TODO - add description
-        totalEquity:
+        equityTotal:
           type: integer
           format: int64  
           description: >-     
@@ -1931,10 +1354,10 @@ components:
           format: int64  
           description: >-     
             Total provisions  
-      title: ShareholdersEquity
+      title: FinnishShareholdersEquity
       description: >-
         Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
-    FinancialStatement:
+    FinnishFinancialStatement:
       type: object
       properties:
         closingPeriod:
@@ -1952,12 +1375,12 @@ components:
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
           example: SEK
         balanceSheet:
-          "$ref": "#/components/schemas/BalanceSheet"
+          "$ref": "#/components/schemas/FinnishBalanceSheet"
         incomeStatement:
-          "$ref": "#/components/schemas/IncomeStatement"
+          "$ref": "#/components/schemas/FinnishIncomeStatement"
       required: []
-      title: FinancialStatement
-    Bankruptcy:
+      title: FinnishFinancialStatement
+    FinnishBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company.
       properties:
@@ -1965,7 +1388,7 @@ components:
           type: string
           format: date
           description: Date when this company went bankrupt.
-    Trustee:
+    FinnishTrustee:
       type: object
       description: Name and contact-info to the person/company handling the bankruptcy
       properties:
@@ -1978,7 +1401,7 @@ components:
           description: Name of the person assigned to handle the bankruptcy.
           example: Anders Svensson
         phoneNumber:
-          "$ref": "#/components/schemas/PhoneNumber"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PhoneNumber"
         address:
           type: string
           description: The address to the person/company assigned to handle this bankruptcy
