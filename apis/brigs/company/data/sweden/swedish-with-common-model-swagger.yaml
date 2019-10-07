@@ -581,7 +581,7 @@ components:
         parentCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Subsidiaries"
+          "$ref": '#/components/schemas/SwedishSubsidiaries'
         sisterCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/SisterCompanies"
         familyTree:
