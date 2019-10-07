@@ -5,7 +5,7 @@ openapi: 3.0.0
 # Optional info section 
 #######################ou
 info:
-  title: Swedish ntrompany Credit Data
+  title: Swedish company Credit Data
   description: | 
     Company model for Swedish company credit data. The same model is used for all legalforms.
     
