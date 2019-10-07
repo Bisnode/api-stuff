@@ -70,7 +70,7 @@ components:
       properties:
         debtBalance:
           "$ref": "#/components/schemas/SwedishDebtBalance"
-      title: FinancialCommitments
+      title: SwedishFinancialCommitments
     SwedishTrade:
       type: object
       properties:
