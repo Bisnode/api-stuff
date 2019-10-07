@@ -1236,41 +1236,41 @@ components:
         localCode:
           type: string
           description: |
-            1	PROPRIETORSHIP
-            2	LIMITED PARTNERSHIP
-            3	LIMITED COMPANY
-            4	CO-OPERATIVE SOCIETY
-            6	ASSOCIATION / FOUNDATION
-            9	ENTREPRENEUR
-            20	HOUSING CO-OPERATIVE SOCIETY
-            21	HOUSING COMPANY
-            22	GENERAL PARTNERSHIP
-            23	VOLUNTARY ASSOCIATION
-            24	MORTGAGE ASSOCIATION
-            25	MUTUAL INDEMNITY INSURANCE AS.
-            26	LIMITED PARTNERSHIP
-            27	CO-OPERATIVE SOCIETY
-            28	CO-OPERATIVE BANK
-            29	LIMITED COMPANY
-            30	FOUNDATION
-            31	OFFICE OF FOREIGN COMPANY
-            32	SAVINGS BANK
-            33	ECONOMIC ASSOCIATION
-            34	INSURANCE LIMITED COMPANY
-            35	INSURANCE ASSOCIATION
-            36	PROPRIETORSHIP
-            37	GOVERNMENT AUTHORITY
-            38	OTHER LEGAL FORM
-            40	GROUP
-            41	RIGHT OF RESIDENCE ASSOCIATION
-            42	PUBLIC LIMITED COMPANY
-            43	PUBLIC MUTUAL INSURANCE CO.
-            44	PUBLIC INSURANCE LTD
-            45	EEIG
-            46	REAL ESTATE LTD
-            47	STATE ENTERPRISE
-            48	SOCIETAS EUROPAEA
-            49	MUTUAL EUROPE INSURANCE COMP.
+            1  PROPRIETORSHIP
+            2  LIMITED PARTNERSHIP
+            3  LIMITED COMPANY
+            4  CO-OPERATIVE SOCIETY
+            6  ASSOCIATION / FOUNDATION
+            9  ENTREPRENEUR
+            20  HOUSING CO-OPERATIVE SOCIETY
+            21  HOUSING COMPANY
+            22  GENERAL PARTNERSHIP
+            23  VOLUNTARY ASSOCIATION
+            24  MORTGAGE ASSOCIATION
+            25  MUTUAL INDEMNITY INSURANCE AS.
+            26  LIMITED PARTNERSHIP
+            27  CO-OPERATIVE SOCIETY
+            28  CO-OPERATIVE BANK
+            29  LIMITED COMPANY
+            30  FOUNDATION
+            31  OFFICE OF FOREIGN COMPANY
+            32  SAVINGS BANK
+            33  ECONOMIC ASSOCIATION
+            34  INSURANCE LIMITED COMPANY
+            35  INSURANCE ASSOCIATION
+            36  PROPRIETORSHIP
+            37  GOVERNMENT AUTHORITY
+            38  OTHER LEGAL FORM
+            40  GROUP
+            41  RIGHT OF RESIDENCE ASSOCIATION
+            42  PUBLIC LIMITED COMPANY
+            43  PUBLIC MUTUAL INSURANCE CO.
+            44  PUBLIC INSURANCE LTD
+            45  EEIG
+            46  REAL ESTATE LTD
+            47  STATE ENTERPRISE
+            48  SOCIETAS EUROPAEA
+            49  MUTUAL EUROPE INSURANCE COMP.
       required: []
       title: LegalForm
     RegistrationInformation:
