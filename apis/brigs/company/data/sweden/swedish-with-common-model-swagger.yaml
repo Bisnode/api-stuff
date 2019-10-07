@@ -3,9 +3,9 @@ openapi: 3.0.0
 
 #######################
 # Optional info section 
-#######################
+#######################ou
 info:
-  title: Swedish Company Credit Data
+  title: Swedish ntrompany Credit Data
   description: | 
     Company model for Swedish company credit data. The same model is used for all legalforms.
     
@@ -491,7 +491,7 @@ components:
     SwedishCreditInquiries:
       type: object
       properties:
-        numberOfInquiries:
+        count:
           type: integer
           format: int32
           description: Total number of inquiries made on this company
@@ -594,7 +594,7 @@ components:
     SwedishSubsidiaries:
       type: object
       properties:
-        numberOfSubsidiaries:
+        count:
           type: integer
           format: int32
           description: Total number of subsidiaries this company have.
@@ -660,7 +660,7 @@ components:
     SwedishBoardMembers:
       type: object
       properties:
-        totalNumberOfBoardMembers:
+        boardMemberCount:
           type: integer
           format: int32
           description: The number of boardmembers the company currently have
@@ -668,31 +668,31 @@ components:
           type: string
           format: date
           description: TODO - what is this ???
-        totalNumberOfDeputies:
+        deputyCount:
           type: integer
           format: int32
           description: The number of deputies the company currently have
-        minBoardMembers:
+        boardMembersMin:
           type: integer
           format: int32
           description: The minimum number of boardmembers the company must have according to the company's article of association ???
-        maxBoardMembers:
+        boardMembersMax:
           type: integer
           format: int32
           description: The maximum number of boardmembers the company can have according to the company's article of association ???
-        minDeputies:
+        DeputiesMin:
           type: integer
           format: int32
           description: The minimum number of deputies the company must have according to the company's article of association ???
-        maxDeputies:
+        deputiesMax:
           type: integer
           format: int32
           description: The maximum number of deputies the company can have according to the company's article of association ???
-        bankruptcyCommitments:
+        bankruptcyCommitmentsCount:
           type: integer
           format: int32
           description: Total number of bankruptcies the members of the current board has been involved in.
-        paymentRemarksOnBoardMembers:
+        paymentRemarksCount:
           type: integer
           format: int32
           description: Total number of paymentremarks the members of the current board has registered on themselves.
@@ -770,7 +770,7 @@ components:
       type: object
       description: 
       properties:
-        numberOfBranches:
+        count:
           type: integer
           format: int32
           description: Total number of branches this company have.
@@ -820,10 +820,11 @@ components:
         businessDescription:
           type: string
           description: The description registered wth the local authorities describing the companys business.
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
-        numberOfAlcoholServicePermits:
+          description: Total number of employees this company have.
+        alcoholServicePermitCount:
           type: integer
           format: int32
           description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
@@ -1204,7 +1205,7 @@ components:
           format: int64
           description: |
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
-        totalTurnover:
+        turnover:
           type: integer
           format: int64
           description: |
@@ -1278,7 +1279,7 @@ components:
           format: int64
           description: |
             Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
-        totalOperatingExpenses:
+        operatingExpensesTotal:
           type: integer
           format: int64
           description: |
@@ -1308,7 +1309,7 @@ components:
           format: int64
           description: |
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
-        totalFinancialIncome:
+        financialIncomeTotal:
           type: integer
           format: int64
           description: Total financial revenues
@@ -1322,7 +1323,7 @@ components:
           format: int64
           description: |
             Interest payed from the company to banks or creditinstitutes.
-        totalInterestExpenses:
+        interestExpensesTotal:
           type: integer
           format: int64
           description: |
@@ -1332,7 +1333,7 @@ components:
           format: int64
           description: |
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
-        totalFinancialCosts:
+        financialCostsTotal:
           type: integer
           format: int64
           description: |
@@ -1357,7 +1358,7 @@ components:
           format: int64
           description: |
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        totalExtraordinaryItems:
+        extraordinaryItemsTotal:
           type: integer
           format: int64
           description: |
@@ -1435,7 +1436,7 @@ components:
           format: int64
           description: |  
             Summation of stock in trade from the annual report. Stock in trade includes raw materials and consumables, work in progress, finished goods and goods for resale.
-        totalInventories: 
+        inventoriesTotal: 
           type: integer
           format: int64
           description: |  
@@ -1455,17 +1456,17 @@ components:
           format: int64
           description: |  
            Other current receivables includes for example bills receivables and client funds.
-        totalCurrentReceivables: 
+        currentReceivablesTotal: 
           type: integer
           format: int64
           description: |  
             The sum of all current receivables.
-        totalCurrentInvestments: 
+        currentInvestmentsTotal: 
           type: integer
           format: int64
           description: |  
             Here the company accounts for funds that have been placed on a very short term, one to three days. In differ to the post cash bank theese funds are not immediately available in the business.
-        totalCashBank: 
+        cashBankTotal: 
           type: integer
           format: int64
           description: |  
@@ -1475,12 +1476,12 @@ components:
           format: int64
           description: |  
             Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
-        totalCurrentAssets: 
+        currentAssetsTotal: 
           type: integer
           format: int64
           description: |  
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-        totalAssets: 
+        assetsTotal: 
           type: integer
           format: int64
           description: |  
@@ -1516,7 +1517,7 @@ components:
           format: int64
           description: |
             These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
-        totalIntangibleAssets: 
+        intangibleAssetsTotal: 
           type: integer
           format: int64
           description: |
@@ -1541,7 +1542,7 @@ components:
           format: int64
           description: |  
             Inventory is the term for the goods available for sale and raw materials used to produce goods available for sale.
-        totalMachineryAndInventory: 
+        machineryAndInventoryTotal: 
           type: integer
           format: int64
           description: |  
@@ -1556,7 +1557,7 @@ components:
           format: int64
           description: |  
             Tangible assets that is a subject for depreciation.
-        totalTangibleNonCurrentAssets: 
+        tangibleNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
@@ -1581,12 +1582,12 @@ components:
           format: int64
           description: |  
             Other non-current assets that is not specified as receivables from/shares in group companies or loans to shareholders/related party.
-        totalFinancialNonCurrentAssets: 
+        financialNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
             The sum of all financial assets
-        totalNonCurrentAssets: 
+        nonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
@@ -1607,7 +1608,7 @@ components:
           "$ref": "#/components/schemas/SwedishLiabilities"
         shareholdersEquity:
           "$ref": "#/components/schemas/SwedishShareholdersEquity" 
-        totalEquityAndLiabilities:
+        equityAndLiabilitiesTotal:
           type: integer
           format: int64
           description: |
@@ -1645,7 +1646,7 @@ components:
           format: int64  
           description: |    
             Other current liabilities then liabilities to credit institutions, accounts payable or liabilities to group comapines or associates.
-        totalCurrentLiabilities:
+        currentLiabilitiesTotal:
           type: integer
           format: int64  
           description: |    
@@ -1676,7 +1677,7 @@ components:
           format: int64  
           description: |    
             Other long-term liabilities then liabilities to credit institutions, accounts payable or liabilities to group comapines or associates.
-        totalLongTermLiabilities:
+        longTermLiabilitiesTotal:
           type: integer
           format: int64  
           description: |    
@@ -1707,7 +1708,7 @@ components:
           format: int64  
           description: |    
             Contains in most cases of legal reserves, in which the company are required to deposit at least 20% of the nominal value of the share capital.
-        totalRestrictedEquity:
+        restrictedEquityTotal:
           type: integer
           format: int64  
           description: |    
@@ -1737,18 +1738,18 @@ components:
           format: int64  
           description: |     
             The equity that the company can freely dispose of, for example upon dividend. 
-        totalEquity:
+        equityTotal:
           type: integer
           format: int64  
           description: |     
             Total equity.
             Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
-        totalUntaxedReserves:
+        untaxedReservesTotal:
           type: integer
           format: int64  
           description: |     
             Today this post mainly consists of accumulated depreciation in addition to plan and tax allocation reserve.
-        totalProvisions:
+        provisionsTotal:
           type: integer
           format: int64  
           description: |     
@@ -1835,11 +1836,11 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         taxAssessment:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
-        numberOfFullyOwned:
+        fullyOwnedCount:
           type: integer
           format: int32
           description: The number of properties this company own 100 percent of.
-        numberOfPartlyOwned:
+        partlyOwnedCount:
           type: integer
           format: int32
           description: The number of properties this company own a part of. Excluding the ones it owns in full.
@@ -1860,7 +1861,7 @@ components:
       description: |
         Taxed property holdings. 
         
-        totalTaxAssessmentValue: Total value of all taxed properties
+        taxAssessmentValueTotal: Total value of all taxed properties
         taxAssessmentValueOfLand: whereof land
         taxAssessmentValueOfBuilding: whereof buildings
          
@@ -1901,7 +1902,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         taxAssessmentValueOfLand:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
-        totalTaxAssessmentValue:
+        taxAssessmentValueTotal:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
       title: SwedishAssessedRealProperty
@@ -1952,7 +1953,7 @@ components:
           type: string
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
-        totalTaxAssessmentValue:
+        taxAssessmentValueTotal:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
       title: SwedishCurrentRealProperty
@@ -2009,7 +2010,7 @@ components:
           description: |
             Other securitys could be the value of capital insurances or other assets that provides security for pension commitments.
               
-        totalSecurities:
+        securitiesTotal:
           type: integer
           format: int64
           description: |
@@ -2035,7 +2036,7 @@ components:
           description: |
             Contingent liability is a potential liability that may occur, depending on the outcome of an uncertain future event. A contingent liability is recorded in the accounting records if the contingency is likely and the amount of the liability can be reasonably estimated.
             
-        totalContingentLiabilities:
+        contingentLiabilitiesTotal:
           type: integer
           format: int64
           description: |
@@ -2048,7 +2049,7 @@ components:
             F - Contingent liabilities exist, but amount missing
             N - Data not available
             Y - Additional contingent liabilities exist but amounts are not specified
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
           description: |
