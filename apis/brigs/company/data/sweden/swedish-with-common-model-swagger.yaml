@@ -1619,7 +1619,7 @@ components:
           "$ref": "#/components/schemas/SwedishCurrentLiabilities"
         nonCurrentLiabilities:
           "$ref": "#/components/schemas/SwedishLongTermLiabilities"
-      title: Liabilities
+      title: SwedishLiabilities
       description: |
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
     SwedishCurrentLiabilities:
@@ -1824,7 +1824,7 @@ components:
           type: string
           description: TODO - what is this???
       required: []
-      title: PayrollTax
+      title: SwedishPayrollTax
     SwedishPropertyHoldings:
       type: object
       description: |
