@@ -664,7 +664,7 @@ components:
           type: integer
           format: int32
           description: The number of boardmembers the company currently have
-        officalAppointmentDate:
+        officialAppointmentDate:
           type: string
           format: date
           description: TODO - what is this ???
