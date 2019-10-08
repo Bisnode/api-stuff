@@ -1177,12 +1177,12 @@ components:
           format: int64
           description: >-
             TODO  - add description
-        longtermReceivablesFromGroup:
+        longTermReceivablesFromGroup:
           type: integer
           format: int64
           description: >- 
             TODO - add description
-        otherLongtermReceivables:
+        otherLongTermReceivables:
           type: integer
           format: int64
           description: >-
