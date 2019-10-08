@@ -634,6 +634,10 @@ components:
           "$ref": "#/components/schemas/Sni2007IndustryCodes"
         naceCodes:
           "$ref": "#/components/schemas/NaceCodes"
+        sicCodes:
+          type: array
+          items:
+            "$ref": '#/components/schemas/SicCode'
       required: []
       title: IndustryCodeSet
     NaceCodes:
