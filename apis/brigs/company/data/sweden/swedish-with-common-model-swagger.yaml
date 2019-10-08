@@ -531,7 +531,7 @@ components:
           type: integer
           format: int64
           description: Total count of public claims.
-        totalClaimsCount:
+        claimsCount:
           type: integer
           format: int64
           description: Total count of claims including public and private claims.
@@ -680,7 +680,7 @@ components:
           type: integer
           format: int32
           description: The maximum number of boardmembers the company can have according to the company's article of association ???
-        DeputiesMin:
+        deputiesMin:
           type: integer
           format: int32
           description: The minimum number of deputies the company must have according to the company's article of association ???
