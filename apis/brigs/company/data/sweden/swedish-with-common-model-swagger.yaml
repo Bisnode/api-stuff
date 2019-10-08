@@ -1728,7 +1728,7 @@ components:
           format: int64  
           description: |     
             Received/given shareholder's contribution, post belonging to total non restricted equity.
-        profitOrlossForTheYear:
+        profitOrLossForTheYear:
           type: integer
           format: int64  
           description: |     
