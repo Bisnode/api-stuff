@@ -66,16 +66,16 @@ components:
       type: object
       description: Current and historical ratings
       properties:
-        currentRating:
-          "$ref": "#/components/schemas/Rating"
-        historicalRatings:
+        currentCreditRating:
+          "$ref": "#/components/schemas/CreditRating"
+        historicalCreditRatings:
           type: array
           description: Max 99 items.
           items:
-            "$ref": "#/components/schemas/Rating"
+            "$ref": "#/components/schemas/CreditRating"
       required: []
       title: CreditRatings
-    Rating:
+    CreditRating:
       type: object
       description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
       properties:
@@ -97,7 +97,7 @@ components:
         partJudgements:
           "$ref": "#/components/schemas/PartJudgements"
       required: []
-      title: Rating
+      title: CreditRating
       maximum: 1100
     PartJudgements:
       type: object
