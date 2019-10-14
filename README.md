@@ -3,7 +3,7 @@
 
 Bellow you find instructions about how to step by step set up a simple Postman collection that enables you to test Bisnode Credit data companies API and play around in a Bisnode sandbox environment.
 
-Step by step:
+Get started with Bisnode Credit data companies API:
 
 1. Download and import Postman collection _bisnode-credit-data-companies.postman_collection.json_ into your Postman instance.
 
