@@ -6,7 +6,7 @@ openapi: 3.0.0
 #######################
 info:
   title: Bisnode Company Search
-  description: >-
+  description: |
     Common components for Company Search REST APIs
   version: '1.0.0'
 
@@ -93,9 +93,9 @@ components:
       title: Link
     Links:
       type: object
-      description: >-
+      description: |
             Links for easy pagination. 
-      example: >-
+      example: |
         '{
           "next": {
             "href": "https://api.bisnode.com/company-search/v1/companies?token=okjoqedqasd"
