@@ -48,7 +48,7 @@ components:
     RatingCreditLimit:
       type: object
       description: | 
-        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
+        Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/
       properties:
         amount:
           "$ref": "#/components/schemas/Amount"
