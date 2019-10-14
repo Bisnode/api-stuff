@@ -50,10 +50,10 @@ Step by step:
 11. Click on button 'Request Token' and you will retrieve your access token
     ![image](https://user-images.githubusercontent.com/54436429/66764271-b714fb00-eea9-11e9-9fbe-c09d08f238c3.png)
 
-12.Click 'Use Token'
+12.Click 'Use Token' 
     ![image](https://user-images.githubusercontent.com/54436429/66764210-9482e200-eea9-11e9-99dd-909d2924a8a5.png)
 
-13. Click 'Update'
+13. Click 'Update' 
 
 Now is your Access Token added to the Postman collection and you can start with testing of Bisnode Credit Information API in the sandbox.
     ![image](https://user-images.githubusercontent.com/54436429/66764637-808bb000-eeaa-11e9-812e-c9cda243c885.png)
