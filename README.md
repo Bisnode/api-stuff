@@ -44,7 +44,7 @@ Step by step:
    - _Client Secret:_ (copy here 'Consumer Secret' value from API Keys - see step 7 above.)
    - _Scope: credit_data_companies_
    - _Client Authentication: Send as Basic Auth header_
- ![image](https://user-images.githubusercontent.com/54436429/66763772-ba5bb700-eea8-11e9-835e-ca00ed1c7f00.png)  
+![image](https://user-images.githubusercontent.com/54436429/66763772-ba5bb700-eea8-11e9-835e-ca00ed1c7f00.png)  
 
 11. Click on button 'Request Token' and you will retrieve your access token
     ![image](https://user-images.githubusercontent.com/54436429/66764271-b714fb00-eea9-11e9-9fbe-c09d08f238c3.png)
