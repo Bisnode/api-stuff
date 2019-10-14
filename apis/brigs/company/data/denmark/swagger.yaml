@@ -7,7 +7,7 @@ openapi: 3.0.0
 info:
   title: Danish Company Credit Data
   description: | 
-    Company model for Danish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
+    Company model for Danish company credit data. The same model is used for all legalforms.
     
       Most of the descriptions for the financial items are taken from www.investopedia.com.
   
@@ -24,212 +24,53 @@ components:
       type: object
       properties:
         companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
+          "$ref": "#/components/schemas/DanishCompanyInformation"
         risk: 
-          "$ref": "#/components/schemas/Risk"
+          "$ref": "#/components/schemas/DanishRisk"
         management:
-          "$ref": "#/components/schemas/Management"
+          "$ref": "#/components/schemas/DanishManagement"
         finance:
-          "$ref": "#/components/schemas/Finance"
+          "$ref": "#/components/schemas/DanishFinance"
         ownership:
-          "$ref": "#/components/schemas/Ownership"
+          "$ref": "#/components/schemas/DanishOwnership"
         events:
-          "$ref": "#/components/schemas/Events"
+          "$ref": "#/components/schemas/DanishEvents"
       title: DanishCompanyData
       description: This is the root object defining which structures reside under the root path.
-    Risk:
+    DanishRisk:
       type: object
       description: |
         Risk section.
       properties:
         creditRatings:
-          "$ref": "#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CreditRatings"
         ratingCreditLimits:
-          "$ref": "#/components/schemas/RatingCreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
-          "$ref": "#/components/schemas/PaymentRemarks"
+          "$ref": "#/components/schemas/DanishPaymentRemarks"
         trade:
-           "$ref": "#/components/schemas/Trade" 
+           "$ref": "#/components/schemas/DanishTrade" 
         financialCommitments:
-          "$ref": "#/components/schemas/FinancialCommitments"
+          "$ref": "#/components/schemas/DanishFinancialCommitments"
         bankruptcy:
-          "$ref": "#/components/schemas/Bankruptcy"
+          "$ref": "#/components/schemas/DanishBankruptcy"
       required: []
-      title: Risk
-    RatingCreditLimits:
-      type: object
-      description: Current and historical credit limits as recommended by Bisnode. 
-      properties:
-        ratingCreditLimit:
-          "$ref": "#/components/schemas/RatingCreditLimit"
-        historicalRatingCreditLimits:
-          type: array
-          description: TODO - max size ?
-          items:
-            "$ref": "#/components/schemas/RatingCreditLimit"
-      required: []
-      title: RatingCreditLimits
-    Amount:
-      type: object
-      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
-      properties:
-        monetaryAmount:
-          type: integer
-          format: int64
-          description: May be a negative number 
-        currency:
-          type: string
-          description: As described in https://en.wikipedia.org/wiki/ISO_4217
-      required: []
-      title: Amount
-    RatingCreditLimit:
-      type: object
-      description: | 
-        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
-      properties:
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when the limit was changed/re-calculated.
-      required: []
-      title: RatingCreditLimit
-    CreditRatings:
-      type: object
-      description: Current and historical ratings
-      properties:
-        currentRating:
-          "$ref": "#/components/schemas/Rating"
-        historicalRatings:
-          type: array
-          description: Max 99 items.
-          items:
-            "$ref": "#/components/schemas/Rating"
-      required: []
-      title: CreditRatings
-    Rating:
-      type: object
-      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
-      properties:
-        annualReportDate:
-          type: string
-          format: date
-          description: Date of the annual report data the rating was calculated from. 
-        date:
-          type: string
-          format: date
-          description: Date when the rating was calculated.
-        code:
-          type: string
-          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
-        description:
-          type: string
-          description: Textual description of the rating. 
-        partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
-      required: []
-      title: Rating
-      maximum: 1100
-    FinancialCommitments:
+      title: DanishRisk
+    DanishFinancialCommitments:
       type: object
       description: |
         Various types of financial commitments this company have.
       properties:
         debtBalance:
-          "$ref": "#/components/schemas/DebtBalance"
-      title: FinancialCommitments
-    Trade:
+          "$ref": "#/components/schemas/DanishDebtBalance"
+      title: DanishFinancialCommitments
+    DanishTrade:
       type: object
       properties:
         paymentIndex:
-          "$ref": "#/components/schemas/PaymentIndex"
-      title: Trade
-    PartJudgements:
-      type: object
-      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
-      properties:
-        finance:
-          "$ref": "#/components/schemas/PartJudgement"
-        historyOperation:
-          "$ref": "#/components/schemas/PartJudgement"
-        ownership:
-          "$ref": "#/components/schemas/PartJudgement"
-      required: []
-      title: PartJudgements
-    PartJudgement:
-      type: object
-      description: A part judgement. 
-      properties:
-        max:
-          type: integer
-          format: int32
-          description: The max value a company can have.
-        value:
-          type: integer
-          format: int32
-          description: This company's value.
-        description:
-          type: string
-          description: A textual description of the part judgement.
-      required: []
-      title: PartJudgement
-    PaymentIndex:
-      type: object
-      description: A weighted average of the Payment Index of all companies in all industries of the country. 
-      properties:
-        currentPaymentIndex:
-          "$ref": "#/components/schemas/PaymentIndexModel"
-        historicalPaymentIndex:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PaymentIndexModel"
-      required: []
-      title: PaymentIndex
-    PaymentIndexModel:
-      type: object
-      properties:
-        averageDelay:
-          type: integer
-          format: int32
-          description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when this paymentindex score was calculated.
-        invoiceCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of invoices used to calculate the payment index score
-        invoiceSuppliersCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of suppliers that supplied the invoices used to calculate this paymentindex score
-        paymentIndex:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The paymentindex score for this company. See https://en.wikipedia.org/wiki/Paydex for more info on paymentIndex.
-        paymentIndexAllCompanies:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in Sweden
-        paymentIndexLineOfBusiness:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in the same line of business in Sweden.
-      required: []
-      title: PaydexIndexModel
-    PaymentRemarks:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PaymentIndex"
+      title: DanishTrade
+    DanishPaymentRemarks:
       type: object
       properties:
         count:
@@ -237,42 +78,35 @@ components:
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ?
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first. TODO - Max size ?
           items:
-            "$ref": "#/components/schemas/PaymentRemark"
+            "$ref": "#/components/schemas/DanishPaymentRemark"
       required: []
-      title: PaymentRemarks
-    Creditor:
-      type: object
-      properties:
-        name:
-          type: string
-          description: |
-            Name of the creditor
-    PaymentRemark:
+      title: DanishPaymentRemarks
+    DanishPaymentRemark:
       type: object
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of remark
         creditor:
-         "$ref": "#/components/schemas/Creditor"
+         "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
         type:
-          "$ref": "#/components/schemas/ReportCode"
+          "$ref": "#/components/schemas/DanishReportCode"
         description:
           type: string
           description: A textual description of the event type
           example: FISSION - EXPIRED
       required: []
-      title: PaymentRemark
-    ReportCode:
+      title: DanishPaymentRemark
+    DanishReportCode:
       type: object
       description: Common codes
       properties:
@@ -601,20 +435,20 @@ components:
             ZAS       -  TRANSFEREE BY FISSION - EXECUTED        
             ZAT       -  FISSION - PERMISSION REGISTRATION              
 
-    DebtBalance:
+    DanishDebtBalance:
       type: object
       description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
       properties:
         currentDebtBalance:
-          "$ref": "#/components/schemas/CurrentDebtBalance"
+          "$ref": "#/components/schemas/DanishCurrentDebtBalance"
         historicalDebtBalance:
           type: array
           description: A list of historical Debtbalances
           items:
-            "$ref": "#/components/schemas/HistoricalDebtBalance"
+            "$ref": "#/components/schemas/DanishHistoricalDebtBalance"
       required: []
       title: DebtBalance
-    CurrentDebtBalance:
+    DanishCurrentDebtBalance:
       type: object
       description: Claims are split into public claims (A-claims), and private claims (E-claims).
       properties:
@@ -630,17 +464,17 @@ components:
           type: integer
           format: int64
           description: Total count of public claims.
-        totalClaimsCount:
+        claimsCount:
           type: integer
           format: int64
           description: Total count of claims including public and private claims.
         privateClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         publicClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: CurrentDebtBalance
-    HistoricalDebtBalance:
+      title: DanishCurrentDebtBalance
+    DanishHistoricalDebtBalance:
       type: object
       description: A list of historical debt balances
       properties:
@@ -650,10 +484,10 @@ components:
           description: year and week number when the debt balance was valid.
           example: '2019-W33'
         balance:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: HistoricalDebtBalance
-    Event:
+      title: DanishHistoricalDebtBalance
+    DanishEvent:
       type: object
       description: Event as received from authority.
       properties:
@@ -666,86 +500,37 @@ components:
           type: string
           description: A textual description of the event, can be in local language
         eventCode: 
-          "$ref": "#/components/schemas/ReportCode"
-      title: Event
-    Events:
+          "$ref": "#/components/schemas/DanishReportCode"
+      title: DanishEvent
+    DanishEvents:
       type: array
       title: Events
       description: Newest events come first. Max xx events. TODO - what is max ?
       items:
-        "$ref": "#/components/schemas/Event"
-    Ownership:
+        "$ref": "#/components/schemas/DanishEvent"
+    DanishOwnership:
       type: object
       properties:
         parentCompanies:
-          "$ref": "#/components/schemas/ParentCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
-          "$ref": "#/components/schemas/Subsidiaries"
+          "$ref": "#/components/schemas/DanishSubsidiaries"
       required: []
-      title: Ownership
-    ParentCompanies:
+      title: DanishOwnership
+    DanishSubsidiaries:
       type: object
       properties:
-        numberOfParentCompanies:
-          type: integer
-          format: int32
-        parents:
-          type: array
-          description: A list of the parent companies.
-          items:
-            "$ref": "#/components/schemas/ParentCompany"
-        historicalParents:
-          type: array
-          description: A list of the historical parent companies.
-          items:
-            "$ref": "#/components/schemas/ParentCompany"
-      required: []
-      title: ParentCompanies
-    ParentCompany:
-      type: object
-      description: A company relates to another one as it's parent if it owns the majority (>50%) of the capital of that other company.
-      properties:
-        name:
-          type: string
-          description: Name of the company
-        type:
-          type: string
-          description: |
-            The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
-          enum: ['PARENT', 'ULTIMATE_PARENT']
-        dunsNumber:
-          type: string
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
-        date:
-          type: string
-          description: |
-            what is 
-        shareCapital:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: Parent
-    Subsidiaries:
-      type: object
-      properties:
-        numberOfSubsidiaries:
+        count:
           type: integer
           format: int32
           description: Total number of subsidiaries this company have.
         subsidiaries:
           type: array
           items:
-            "$ref": "#/components/schemas/Subsidiary"
+            "$ref": "#/components/schemas/DanishSubsidiary"
       required: []
-      title: Subsidiaries
-    Subsidiary:
+      title: DanishSubsidiaries
+    DanishSubsidiary:
       type: object
       description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
       properties:
@@ -769,27 +554,27 @@ components:
           format: date
           description: TODO - what does this date mean?
         shareCapital:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: Subsidiary
-    Management:
+      title: DanishSubsidiary
+    DanishManagement:
       type: object
       description: Management section
       properties:
         directors:
-            "$ref": "#/components/schemas/Directors"
+            "$ref": "#/components/schemas/DanishDirectors"
         decisionMakers:
-            "$ref": "#/components/schemas/DecisionMakers"
+            "$ref": "#/components/schemas/DanishDecisionMakers"
         boardMembers:
-          "$ref": "#/components/schemas/BoardMembers"
+          "$ref": "#/components/schemas/DanishBoardMembers"
         auditors:
-          "$ref": "#/components/schemas/Auditors"
+          "$ref": "#/components/schemas/DanishAuditors"
         authorizedSignatory:
           type: string
           description: TODO ?
       required: []
-      title: Management
-    Auditors:
+      title: DanishManagement
+    DanishAuditors:
       type: object
       description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
       properties:
@@ -797,243 +582,106 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
-      title: Auditors
-    PositionEntity:
-      type: object
-      description: |
-        An entity, can be a company or a provate person.
-      properties:
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-          example: "Leo Messi"
-        registrationNumber:
-          type: string
-          description: Typically a social security number or a oraganisation number in case of a company entity
-          example: "11111111111"
-      title: PositionEntity
-    Position:
-      type: object
-      properties:
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company? 
-        entity:
-          "$ref": "#/components/schemas/PositionEntity"
-        function:
-          type: integer
-          format: int32
-          description: |
-            '
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
-            '
-        description:
-          type: string
-          description: A textual description of the function
-      required: []
-      title: Position
-    HistoricalPosition:
-      type: object
-      properties:
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private per son or a company?
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        function:
-          type: integer
-          format: int32
-          description: |
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
-        entity:
-          "$ref": "#/components/schemas/PositionEntity"
-        resignedDate:
-          type: string
-          format: date
-          description: Date when this person/entity resigned from this position
-      required: []
-      title: HistoricalPosition
-    DecisionMakers:
+      title: DanishAuditors
+    DanishDecisionMakers:
       type: object
       properties:
         currentDecisionMakers:
           type: array
           description: List of the current decision makers
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalDecisionMakers:
           type: array
           description: List of the current decision makers
           items:
-            "$ref": "#/components/schemas/HistoricalPosition" 
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition" 
       required: []
-      title: DecisionMakers
-    Directors:
+      title: DanishDecisionMakers
+    DanishDirectors:
       type: object
       properties:
         currentDirectors:
           type: array
           description: List of the current directors
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalDirectors:
           type: array
           description: List of the current directors
           items:
-            "$ref": "#/components/schemas/HistoricalPosition" 
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition" 
       required: []
-      title: Directors
-    BoardMembers:
+      title: DanishDirectors
+    DanishBoardMembers:
       type: object
       properties:
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers. TODO - is there a max size for this ?
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
-      title: BoardMembers
-    CompanyInformation:
+      title: DanishBoardMembers
+    DanishIdentifiers:
+      type: object
+      description: A set of identifiers for this company.
+      properties:
+        cvrNumber:
+          type: string
+          description: National registration number
+        dunsNumber:
+          type: string
+          description: duns-number
+      required: []
+      title: DanishIdentifiers
+    DanishCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "#/components/schemas/Capital"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Capital"
         companyName:
-          "$ref": "#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "#/components/schemas/ContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "#/components/schemas/Identifiers"
+          "$ref": "#/components/schemas/DanishIdentifiers"
         industryCodeSet:
-          "$ref": "#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
-          "$ref": "#/components/schemas/LegalForm"
+          "$ref": "#/components/schemas/DanishLegalForm"
         historicalLegalForm:
           type: array
           items:
-            "$ref": "#/components/schemas/HistoricalLegalForm"  
+            "$ref": "#/components/schemas/DanishHistoricalLegalForm"  
         status:
-          "$ref": "#/components/schemas/Status"
+          "$ref": "#/components/schemas/DanishStatus"
         registrationInformation:
-          "$ref": "#/components/schemas/RegistrationInformation"
+          "$ref": "#/components/schemas/DanishRegistrationInformation"
         generalCompanyData:
-          "$ref": "#/components/schemas/GeneralCompanyData"
+          "$ref": "#/components/schemas/DanishGeneralCompanyData"
         branches:
-          "$ref": "#/components/schemas/Branches"
+          "$ref": "#/components/schemas/DanishBranches"
       required: []
-      title: CompanyInformation
-    Branches:
+      title: DanishCompanyInformation
+    DanishBranches:
       type: object
       description: 
       properties:
-        numberOfBranches:
+        count:
           type: integer
           format: int32
           description: Total number of branches this company have.
@@ -1041,10 +689,10 @@ components:
           type: array
           description: TODO - How many items can we have here?
           items:
-            "$ref": "#/components/schemas/Branch"
+            "$ref": "#/components/schemas/DanishBranch"
       required: []
-      title: Branches
-    Branch:
+      title: DanishBranches
+    DanishBranch:
       type: object
       description: What is a branch? https://bolagsverket.se/en/bus/business/branch/some-typical-features-of-a-branch-1.12787
       properties:
@@ -1057,7 +705,7 @@ components:
           type: string
           description: The registered address for the bankgiro account.
         address:
-          "$ref": "#/components/schemas/BranchAddress"
+          "$ref": "#/components/schemas/DanishBranchAddress"
         officeNumber:
           type: string
           description: |
@@ -1065,8 +713,8 @@ components:
         dunsNumber:
           type: string
       required: []
-      title: Branch
-    BranchAddress:
+      title: DanishBranch
+    DanishBranchAddress:
       type: object
       properties:
         postalCode:
@@ -1076,194 +724,26 @@ components:
           type: string
           descripion: town
       required: []
-      title: BranchAddress
-    Capital:
-      type: object
-      description: Capital section
-      properties:
-        shareCapital:
-          "$ref": "#/components/schemas/ShareCapital"
-      required: []
-      title: Capital
-    ShareCapital:
-      type: object
-      description: Share capital
-      properties:
-        amount:
-          "$ref": '#/components/schemas/Amount'
-      required: []
-      title: ShareCapital
-    CompanyName:
-      type: object
-      description: |
-        Different set of names this company is known as or has been known as.
-      properties:
-        secondaryNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/SecondaryName"
-        alternativeNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/AlternativeName"
-        historicalNames:
-          type: array
-          description: A list of historical names, does not include the current name.
-          items:
-            "$ref": "#/components/schemas/Name"
-        officialName:
-          "$ref": "#/components/schemas/Name"
-      required: []
-      title: CompanyName
-    Name:
-      type: object
-      description: A name object
-      properties:
-        date:
-          type: string
-          format: date
-          description: The date when this name was registered? - TODO is this correct
-        name:
-          type: string
-          description: Name
-      required: []
-      title: Name
-    SecondaryName:
-      type: object
-      description: A secondary name (bifirma) is a Swedish trading name, under which a the company can promote part of its business activities.
-      properties:
-        name:
-          type: string
-          description: The registered name
-        description:
-          type: string
-          description: Business description
-        date:
-          type: string
-          format: date
-          description: The date when this secondary name was registered.
-        type:
-          type: string
-          description: Company type. TODO - is the same as legalform?
-      required: []
-      title: SecondaryName
-    AlternativeName:
-      type: object
-      description: A name of the company in another language. This is common in countries with more than one official language. The name may not be a translation of a another specific name type like a translation of the Registered name and is thus not the same as "Translated name".
-      properties:
-        name:
-          type: string
-          description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
-        description:
-          type: string
-          description: TODO - what is this
-        date:
-          type: string
-          format: date
-          description: Date when this name was registrered
-      title: AlternativeName
-      required: []
-    ContactPoints:
-      type: object
-      description: Methods for getting in contact with this company.
-      properties:
-        electronicContactPoints:
-          "$ref": "#/components/schemas/ElectronicContactPoints"
-        postalAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        registeredAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        historicalAddress:
-          type: array
-          items: 
-            "$ref": "#/components/schemas/HistoricalStreetAddress"
-      title: ContactPoints
-    ElectronicContactPoints:
-      type: object
-      properties:
-        emailAddresses:
-          type: array
-          description: A list of email addresses
-          items:
-            type: string
-        faxNumbers:
-          type: array
-          description: A list of fax numbers
-          items:
-            "$ref": "#/components/schemas/PhoneNumber"
-        phoneNumbers:
-          type: array
-          description: A list of phone numbers
-          items:
-            "$ref": "#/components/schemas/PhoneNumber"
-        webAddresses:
-          type: array
-          description: A list of web addresses
-          items:
-            type: string
-      required: []
-      title: ElectronicContactPoints
-    PhoneNumber:
-      type: object
-      description: |
-        Can be a raw phonenumber or splitted into areacode and phonenumber
-      properties:
-        fullNumber:
-          type: string
-          example: 08-0000000
-          description: |
-            Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
-        areaCode:
-          type: string
-          example: 08
-          description: |
-            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
-        numberOnly:
-          type: string
-          example: 1000000
-          description: |
-            TODO _ rename me
-            phoneNumber without areacode
+      title: DanishBranchAddress
     
-    HistoricalStreetAddress:
+    DanishHistoricalStreetAddress:
       type: object
       properties:
-        dateOfChange:
+        date:
           type: string
           format: date
-          description: Date when the address has been changed
+          description: Date when the address was changed
         address:
-          "$ref": "#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
       required: []
-      title: HistoricalStreetAddress
-    StreetAddress:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City
-          example: Stockholm
-        country:
-          type: string
-          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-          example: SE
-        postalCode:
-          type: string
-          description: Postalcode
-          example: 19637
-        street:
-          type: string
-          description: Street address
-          example: Rosenborgsgatan 4-6
-      required: []
-      title: StreetAddress
-    GeneralCompanyData:
+      title: DanishHistoricalStreetAddress
+    DanishGeneralCompanyData:
       type: object
       properties:
         businessDescription:
           type: string
           description: The description registered wth the local authorities describing the companys business.
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
         countryCode:
@@ -1281,62 +761,9 @@ components:
           enum: ['HEADQUARTER', 'BRANCH']
           description: Office location, TODO -add more info
       required: []
-      title: GeneralCompanyData
-    Identifiers:
-      type: object
-      description: A set of identifiers for this company.
-      properties:
-        cvrNumber:
-          type: string
-          description: Central Business Register number
-        dunsNumber:
-          type: string
-          description: duns-number
-      required: []
-      title: Identifiers
-    IndustryCodeSet:
-      type: object
-      description: Sni and nace code for classification of the business
-      properties:
-        sicCodes:
-          type: abject
-          items:
-            "$ref": "#/components/schemas/SicCode"
-        naceCodes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/NaceCode"
-      required: []
-      title: IndustryCodeSet
-    NaceCode:
-      type: object
-      description: 'NACE Rev. 2. See https://siccode.com/page/what-is-a-nace-code for more info'
-      properties:
-        code:
-          type: string
-          description: nace code
-          example: 0230
-        description:
-          type: string
-          description: A textual description of the code.
-          example: 'Gathering of wild growing non-wood products'
-      required: []
-      title: NaceCode
-    SicCode:
-      type: object
-      description: 'The Standard Industrial Classification (SIC) is a system for classifying industries by a four-digit code. . See https://en.wikipedia.org/wiki/Standard_Industrial_Classification/ for more info.'
-      properties:
-        code:
-          type: string
-          description: the sic code
-          example: 8730
-        description:
-          type: string
-          description: A textual description of the code. 
-          example: "Research, Development, And Testing Services"
-      required: []
-      title: SicCode
-    LegalForm:
+      title: DanishGeneralCompanyData
+    
+    DanishLegalForm:
       type: object
       description: The company's legalform
       properties:
@@ -1344,13 +771,11 @@ components:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: |
-            '
             LIMITED_COMPANY - https://bolagsverket.se/en/bus/business/limited/2.1144
             SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://bolagsverket.se/en/bus/business/sole
             TRADING_PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400
             LIMITED_PARTNERSHIP - https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
             OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
-            '
         description:
           type: string
           description: A textual description of the code.
@@ -1475,8 +900,8 @@ components:
             99  Other Undertaking  
 
       required: []
-      title: LegalForm
-    HistoricalLegalForm:
+      title: DanishLegalForm
+    DanishHistoricalLegalForm:
       type: object
       description: Historical company legal forms
       properties:
@@ -1485,10 +910,10 @@ components:
           format: date
           description: Date when the legal form has been changed
         legalForm:
-          "$ref": "#/components/schemas/LegalForm"
+          "$ref": "#/components/schemas/DanishLegalForm"
       required: []
-      title: HistoricalLegalForm
-    RegistrationInformation:
+      title: DanishHistoricalLegalForm
+    DanishRegistrationInformation:
       type: object
       description: TODO - what is the difference between these 2 dates
       properties:
@@ -1501,8 +926,8 @@ components:
           format: date
           description: Date when the company was founded
       required: []
-      title: RegistrationInformation
-    Status:
+      title: DanishRegistrationInformation
+    DanishStatus:
       type: object
       properties:
         value:
@@ -1514,31 +939,31 @@ components:
           format: date
           description: Date when the status last changed
       required: []
-      title: Status
-    Finance:
+      title: DanishStatus
+    DanishFinance:
       type: object
       properties:
         financialStatements:
-          "$ref": "#/components/schemas/FinancialStatements"
+          "$ref": "#/components/schemas/DanishFinancialStatements"
       required: []
-      title: Finance
-    FinancialStatements:
+      title: DanishFinance
+    DanishFinancialStatements:
       type: object
       properties:
         keyFigures:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/DanishFinancialStatementKeyFigure"
         industryKeyFigures:
-          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+          "$ref": "#/components/schemas/DanishFinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/components/schemas/FinancialStatement"
+            "$ref": "#/components/schemas/DanishFinancialStatement"
       required: []
-      title: FinancialStatements
-    FinancialStatementsAuditorsReservation:
+      title: DanishFinancialStatements
+    DanishFinancialStatementsAuditorsReservation:
       type: object
       properties:
         auditorsReservationCode:
@@ -1582,8 +1007,8 @@ components:
           format: date
           description: Date of the auditors reservation/comment.
       required: []
-      title: FinancialStatementsAuditorsReservation
-    FinancialStatementKeyFigure:
+      title: DanishFinancialStatementsAuditorsReservation
+    DanishFinancialStatementKeyFigure:
       type: object
       properties:
         closingPeriod:
@@ -1610,17 +1035,17 @@ components:
           format: int64
           description: | 
             Result before tax
-        totalEquity:
+        equityTotal:
           type: integer
           format: int64  
           description: |     
             Total equity
-        totalAssets: 
+        assetsTotal: 
           type: integer
           format: int64
           description: |  
             Total assets
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
           description: |
@@ -1668,7 +1093,7 @@ components:
           format: double
           description: |
             Capital turnover is measured as profit/loss in relation to assets.
-        grossmargin:
+        grossMargin:
           type: number
           format: double
           description: |
@@ -1688,7 +1113,7 @@ components:
           format: int64
           description: |
            Break-even sales --TODO
-        marginOfSafety:
+        safetyMargin:
           type: number
           format: double
           description: |
@@ -1699,12 +1124,14 @@ components:
           format: double
           description: |
              The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies. TODO - is this correct?
+          example: 1.39
         daysOfReceivables:
           type: number
           format: double
           description: |
             A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
              TODO - is this correct ?.
+          example: 2.3
         inventoriesToTurnover:
           type: number
           format: double
@@ -1740,19 +1167,17 @@ components:
           format: double
           description: |
            The payout ratio shows the proportion of earnings paid out as dividends to shareholders, typically expressed as a percentage of the company's earnings. The payout ratio can also be expressed as dividends paid out as a proportion of cash flow. The payout ratio is also known as the dividend payout ratio.
-        changesInSharecapital:
-          type: string
-          enum: ['YES', 'NO']
+        shareCapitalChange:
+          type: boolean
           description: |
            Changes in share capital
-        changeOfAccountingPeriod:
-          type: string
-          enum: ['YES', 'NO']
+        accountingPeriodChange:
+          type: boolean
           description: |
            Change of accouting period
       required: []
-      title: FinancialStatementKeyFigure
-    IncomeStatement:
+      title: DanishFinancialStatementKeyFigure
+    DanishIncomeStatement:
       type: object
       properties:
         grossTurnover:
@@ -1836,7 +1261,7 @@ components:
           type: integer
           format: int64
           description: |
-            'TODO - is this the same as: other expenses not included in nonRecurringItems, researchAndDevelopment, administrativeCosts, costOfGoods and sellingExpenses'
+            TODO - is this the same as: other expenses not included in nonRecurringItems, researchAndDevelopment, administrativeCosts, costOfGoods and sellingExpenses
         otherRevenues:
           type: integer
           format: int64
@@ -1887,12 +1312,12 @@ components:
           format: int64
           description: |
             Unspecified financial items.
-        totalFinancialIncome:
+        financialIncomeTotal:
           type: integer
           format: int64
           description: |
             Total financial revenues
-        totalFinancialCosts:
+        financialCostsTotal:
           type: integer
           format: int64
           description: |
@@ -1912,12 +1337,12 @@ components:
           format: int64
           description: |
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        totalExtraordinaryItems:
+        extraordinaryItemsTotal:
           type: integer
           format: int64
           description: |
              Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
-             extraordinaryIncome - extraordinaryExpenses = totalExtraordinaryItems
+             extraordinaryIncome - extraordinaryExpenses = extraordinaryItemsTotal
         profitLossBeforeTax:
           type: integer
           format: int64
@@ -1968,33 +1393,33 @@ components:
           format: int64  
           description: |    
            Dividend of result.
-      title: IncomeStatement
-    BalanceSheet:
+      title: DanishIncomeStatement
+    DanishBalanceSheet:
       type: object
       properties:
         assets: 
-           "$ref": "#/components/schemas/Assets"
+           "$ref": "#/components/schemas/DanishAssets"
         liabilitiesAndEquity:
-          "$ref": "#/components/schemas/LiabilitiesAndEquity"
-      title: BalanceSheet
+          "$ref": "#/components/schemas/DanishLiabilitiesAndEquity"
+      title: DanishBalanceSheet
       description: |
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
-    Assets:
+    DanishAssets:
       type: object
       properties:
         currentAssets:
-          "$ref": "#/components/schemas/CurrentAssets"
+          "$ref": "#/components/schemas/DanishCurrentAssets"
         nonCurrentAssets:
-          "$ref": "#/components/schemas/NonCurrentAssets"
-        totalAssets: 
+          "$ref": "#/components/schemas/DanishNonCurrentAssets"
+        assetsTotal: 
           type: integer
           format: int64
           description: |  
             Total assets
-      title: Assets
+      title: DanishAssets
       description: |
         Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
-    CurrentAssets:
+    DanishCurrentAssets:
       type: object
       properties:
         inventories: 
@@ -2052,15 +1477,15 @@ components:
           format: int64
           description: |  
             Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
-        totalCurrentAssets: 
+        currentAssetsTotal: 
           type: integer
           format: int64
           description: |  
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-      title: CurrentAssets
+      title: DanishCurrentAssets
       description: |
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
-    NonCurrentAssets:
+    DanishNonCurrentAssets:
       type: object
       properties:
         goodwill:
@@ -2083,7 +1508,7 @@ components:
           format: int64
           description: |
             These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
-        totalIntangibleAssets: 
+        intangibleAssetsTotal: 
           type: integer
           format: int64
           description: |
@@ -2093,7 +1518,7 @@ components:
           format: int64
           description: |
             This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
-        totalMachineryAndInventory: 
+        machineryAndInventoryTotal: 
           type: integer
           format: int64
           description: |  
@@ -2128,7 +1553,7 @@ components:
           format: int64
           description: |  
            Long term Receivables in group.
-        otherFinacialReceivables: 
+        otherFinancialReceivables: 
           type: integer
           format: int64
           description: |  
@@ -2138,48 +1563,48 @@ components:
           format: int64
           description: |  
            Own Shares.
-        otherlFinancialAssets: 
+        otherFinancialAssets: 
           type: integer
           format: int64
           description: |  
             Other financial assets.
-        totalFinancialFixedAssets: 
+        financialFixedAssetsTotal: 
           type: integer
           format: int64
           description: |  
             Total financial fixed assets.
-        totalFixedAssets: 
+        fixedAssetsTotal: 
           type: integer
           format: int64
           description: |  
             Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
               Non-current assets can be considered anything not classified as current.
-      title: NonCurrentAssets
+      title: DanishNonCurrentAssets
       description: |
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
-    LiabilitiesAndEquity:
+    DanishLiabilitiesAndEquity:
       type: object
       properties:
         liabilities:
-          "$ref": "#/components/schemas/Liabilities"
+          "$ref": "#/components/schemas/DanishLiabilities"
         shareholdersEquity:
-          "$ref": "#/components/schemas/ShareholdersEquity" 
-        totalEquityAndLiabilities:
+          "$ref": "#/components/schemas/DanishShareholdersEquity" 
+        equityAndLiabilitiesTotal:
           type: integer
           format: int64
           description: |
             Total equity and liabilities
-    Liabilities:
+    DanishLiabilities:
       type: object
       properties:
         currentLiabilities:
-          "$ref": "#/components/schemas/CurrentLiabilities"
+          "$ref": "#/components/schemas/DanishCurrentLiabilities"
         nonCurrentLiabilities:
-          "$ref": "#/components/schemas/LongTermLiabilities"
-      title: Liabilities
+          "$ref": "#/components/schemas/DanishLongTermLiabilities"
+      title: DanishLiabilities
       description: |
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
-    CurrentLiabilities:
+    DanishCurrentLiabilities:
       type: object
       properties:
         liabilitiesToCreditInstitutions:
@@ -2242,15 +1667,15 @@ components:
           format: int64  
           description: |    
             Other current liabilities.
-        totalCurrentLiabilities:
+        currentLiabilitiesTotal:
           type: integer
           format: int64  
           description: |    
             Total current liabilities.
-      title: CurrentLiabilities
+      title: DanishCurrentLiabilities
       description: |
         Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
-    LongTermLiabilities:
+    DanishLongTermLiabilities:
       type: object
       properties:
         subordinatedLoanWithSpecialConditions:
@@ -2263,7 +1688,7 @@ components:
           format: int64  
           description: |
            Subordinated loan without special conditions
-        totalSubordinatedLoans:
+        subordinatedLoansTotal:
           type: integer
           format: int64  
           description: |    
@@ -2293,15 +1718,15 @@ components:
           format: int64  
           description: |    
             Other long-term liabilities.
-        totalLongTermLiabilities:
+        longTermLiabilitiesTotal:
           type: integer
           format: int64  
           description: |    
             Total long-term liabilities
-      title: LongTermLiabilities
+      title: DanishLongTermLiabilities
       description: |
         Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
-    ShareholdersEquity:
+    DanishShareholdersEquity:
       type: object
       properties:
         shareCapital:
@@ -2319,7 +1744,7 @@ components:
           format: int64  
           description: |    
            Transferred earnings
-        totalRestrictedEquity:
+        restrictedEquityTotal:
           type: integer
           format: int64  
           description: |    
@@ -2350,7 +1775,7 @@ components:
           format: int64  
           description: |     
             Minority interest.
-        totalEquity:
+        equityTotal:
           type: integer
           format: int64  
           description: |     
@@ -2371,15 +1796,15 @@ components:
           format: int64  
           description: |     
             Other provisions 
-        totalProvisions:
+        provisionsTotal:
           type: integer
           format: int64  
           description: |     
             Total provisions  
-      title: ShareholdersEquity
+      title: DanishShareholdersEquity
       description: |
         Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
-    FinancialStatement:
+    DanishFinancialStatement:
       type: object
       properties:
         closingPeriod:
@@ -2398,12 +1823,12 @@ components:
             Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
           example: kDKK
         balanceSheet:
-          "$ref": "#/components/schemas/BalanceSheet"
+          "$ref": "#/components/schemas/DanishBalanceSheet"
         incomeStatement:
-          "$ref": "#/components/schemas/IncomeStatement"
+          "$ref": "#/components/schemas/DanishIncomeStatement"
       required: []
-      title: FinancialStatement
-    Bankruptcy:
+      title: DanishFinancialStatement
+    DanishBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcies for this company. TODO - this section needs more work
       properties:
@@ -2419,8 +1844,8 @@ components:
           description: Name of the court where bankruptcy was declared
           example: Stockholms Tingsrätt
         trustee:
-          "$ref": "#/components/schemas/Trustee"
-    Trustee:
+          "$ref": "#/components/schemas/DanishTrustee"
+    DanishTrustee:
       type: object
       description: Name and contact-info to the person/firm handling the bankruptcy
       properties:
