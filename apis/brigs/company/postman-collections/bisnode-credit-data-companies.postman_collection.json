@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "c6886239-fb27-41d9-ad74-a961d1e2b0ca",
+		"name": "bisnode-credit-data-companies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search Swedish Company  -Org-nr",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"registrationNumber\":\"5561234561\",\n\t\"country\":\"SE\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Swedish Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"SE\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Danish Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"DK\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Finnish Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"FI\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swedish Credit Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"registrationNumber\":\"5561234561\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/se",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies",
+						"se"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Danish Credit Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"registrationNumber\":\"23456789\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/dk",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies",
+						"dk"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finnish Credit Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"registrationNumber\":\"112233445\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/fi",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v1",
+						"companies",
+						"fi"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessToken",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1c006abc-89e2-42fd-b9e0-9c36e4b2d55e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ddf23636-65ae-49d8-a3f3-feb256f4b5e9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
