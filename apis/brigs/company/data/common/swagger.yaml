@@ -327,7 +327,6 @@ components:
           type: integer
           format: int32
           description: |
-            '
             0  MEMBER MANAGING DIR.                    
             1  MANAGER CHAIRMAN                        
             2  DEPUTY & MGR                            
@@ -372,7 +371,6 @@ components:
             97  AUDITOR                                 
             98  DEPUTY AUDITOR                          
             99  DEPUTY LAY AUDITOR                      
-            '
         description:
           type: string
           description: A textual description of the function
