@@ -16,7 +16,7 @@ paths:
   /companies:
     post:
       summary: Fetch credit and risk data on a swedish company
-      description: >-
+      description: |
         Fetch risk and credit data on swedish companies
       requestBody:
         content:
@@ -33,7 +33,7 @@ paths:
   /companies/se:
     post:
       summary: Fetch credit and risk data on a swedish company
-      description: >-
+      description: |
        Fetch risk and credit data on swedish companies
       requestBody:
         content:
@@ -58,7 +58,7 @@ paths:
   /companies/fi:
    post:
      summary: Fetch credit and risk data on a finnish company
-     description: >-
+     description: |
        Fetch risk and credit data on finnish companies
      requestBody:
        content:
@@ -83,7 +83,7 @@ paths:
   /companies/dk:
     post:
       summary: Fetch credit and risk data on a danish company
-      description: >-
+      description: |
        Fetch risk and credit data on danish companies
       requestBody:
         content:
@@ -108,7 +108,7 @@ paths:
   /companies/no:
     post:
       summary: Fetch credit and risk data on a norwegian company
-      description: >-
+      description: |
        Fetch risk and credit data on norwegian companies
       requestBody:
         content:
