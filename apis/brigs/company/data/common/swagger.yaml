@@ -6,7 +6,7 @@ openapi: 3.0.0
 #######################
 info:
   title: Common model for data that are the same between the different countries
-  description: >- 
+  description: | 
     Common models.
   version: "1.0.0"
   contact:
@@ -47,7 +47,7 @@ components:
       title: RatingCreditLimits
     RatingCreditLimit:
       type: object
-      description: >- 
+      description: | 
         'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
       properties:
         amount:
@@ -190,7 +190,7 @@ components:
       properties:
         name:
           type: string
-          description: >-
+          description: |
             Name of the creditor
     FamilyTree:
       type: object
@@ -247,7 +247,7 @@ components:
           description: Name of the company
         type:
           type: string
-          description: >-
+          description: |
             The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
           enum: ['PARENT', 'ULTIMATE_PARENT']
         dunsNumber:
@@ -263,7 +263,7 @@ components:
           max: 100
         date:
           type: string
-          description: >-
+          description: |
             what is 
         shareCapital:
           "$ref": "#/components/schemas/Amount"
@@ -298,7 +298,7 @@ components:
       title: SisterCompany
     PositionEntity:
       type: object
-      description: >-
+      description: |
         An entity, can be a company or a provate person.
       properties:
         name:
@@ -326,7 +326,7 @@ components:
         function:
           type: integer
           format: int32
-          description: >-
+          description: |
             '
             0  MEMBER MANAGING DIR.                    
             1  MANAGER CHAIRMAN                        
@@ -463,7 +463,7 @@ components:
       title: ShareCapital
     CompanyName:
       type: object
-      description: >-
+      description: |
         Different set of names this company is known as or has been known as.
       properties:
         secondaryNames:
@@ -574,23 +574,23 @@ components:
       title: ElectronicContactPoints
     PhoneNumber:
       type: object
-      description: >-
+      description: |
         Can be a raw phonenumber or splitted into areacode and phonenumber
       properties:
         fullNumber:
           type: string
           example: 08-0000000
-          description: >-
+          description: |
             Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
         areaCode:
           type: string
           example: 08
-          description: >-
+          description: |
             A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
         numberOnly:
           type: string
           example: 1000000
-          description: >-
+          description: |
             TODO _ rename me
             phoneNumber without areacode
     StreetAddress:
