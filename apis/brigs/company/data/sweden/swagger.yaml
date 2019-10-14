@@ -2,12 +2,12 @@
 openapi: 3.0.0
 
 #######################
-# Optional info section
-#######################
+# Optional info section 
+#######################ou
 info:
-  title: Swedish Company Credit Data
+  title: Swedish company Credit Data
   description: | 
-    Company model for Swedish company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
+    Company model for Swedish company credit data. The same model is used for all legalforms.
     
       Most of the descriptions for the financial items are taken from www.investopedia.com.
   
@@ -26,236 +26,70 @@ components:
       type: object
       properties:
         risk:
-          "$ref": "#/components/schemas/Risk"
+          "$ref": "#/components/schemas/SwedishRisk"
         management:
-          "$ref": "#/components/schemas/Management"
+          "$ref": "#/components/schemas/SwedishManagement"
         companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
+          "$ref": "#/components/schemas/SwedishCompanyInformation"
         finance:
-          "$ref": "#/components/schemas/Finance"
+          "$ref": "#/components/schemas/SwedishFinance"
         ownership:
-          "$ref": "#/components/schemas/Ownership"
+          "$ref": "#/components/schemas/SwedishOwnership"
         events:
-          "$ref": "#/components/schemas/Events"
+          "$ref": "#/components/schemas/SwedishEvents"
       required: ['risk', 'management', 'companyInformation', 'finance', 'ownership', 'events']
       title: SwedishCompanyData
       description: This is the root object defining which structures reside under the root path.
-    Risk:
+    SwedishRisk:
       type: object
       description: |
         Risk section.
       properties:
         creditRatings:
-          "$ref": "#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CreditRatings"
         ratingCreditLimits:
-          "$ref": "#/components/schemas/RatingCreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
-          "$ref": "#/components/schemas/PaymentRemarks"
+          "$ref": "#/components/schemas/SwedishPaymentRemarks"
         petitions:
-          "$ref": "#/components/schemas/Petitions"
+          "$ref": "#/components/schemas/SwedishPetitions"
         creditInquiries:
-          "$ref": "#/components/schemas/CreditInquiries"
+          "$ref": "#/components/schemas/SwedishCreditInquiries"
         trade:
-          "$ref": "#/components/schemas/Trade"
+          "$ref": "#/components/schemas/SwedishTrade"
         financialCommitments:
-          "$ref": "#/components/schemas/FinancialCommitments"
+          "$ref": "#/components/schemas/SwedishFinancialCommitments"
         bankruptcy:
-          "$ref": "#/components/schemas/Bankruptcy"
+          "$ref": "#/components/schemas/SwedishBankruptcy"
       required: []
-      title: Risk
-    FinancialCommitments:
+      title: SwedishRisk
+    SwedishFinancialCommitments:
       type: object
       description: |
         Various types of financial commitments this company have.
       properties:
         debtBalance:
-          "$ref": "#/components/schemas/DebtBalance"
-      title: FinancialCommitments
-    Trade:
+          "$ref": "#/components/schemas/SwedishDebtBalance"
+      title: SwedishFinancialCommitments
+    SwedishTrade:
       type: object
       properties:
         paymentIndex:
-          "$ref": "#/components/schemas/PaymentIndex"
-      title: Trade
-    RatingCreditLimits:
-      type: object
-      description: Current and historical credit limits as recommended by Bisnode. 
-      properties:
-        ratingCreditLimit:
-          "$ref": "#/components/schemas/RatingCreditLimit"
-        historicalRatingCreditLimits:
-          type: array
-          description: TODO - max size ???
-          items:
-            "$ref": "#/components/schemas/RatingCreditLimit"
-      required: []
-      title: RatingCreditLimits
-    Amount:
-      type: object
-      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
-      properties:
-        monetaryAmount:
-          type: integer
-          format: int64
-          description: May be a negative number 
-        currency:
-          type: string
-          description: As described in https://en.wikipedia.org/wiki/ISO_4217
-      required: []
-      title: Amount
-    RatingCreditLimit:
-      type: object
-      description: | 
-        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
-      properties:
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when the limit was changed/re-calculated.
-        annualReportDate:
-          type: string
-          description: Date of the annual report data the limit was calculated from. Comes in the format 2015-12
-          example: 2015-12
-      required: []
-      title: RatingCreditLimit
-    CreditInquiry:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PaymentIndex"
+      title: SwedishTrade
+    SwedishCreditInquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of the inquiry
       required: []
-      title: CreditInquiry
-    CreditRatings:
-      type: object
-      description: Current and historical ratings
-      properties:
-        currentRating:
-          "$ref": "#/components/schemas/Rating"
-        historicalRatings:
-          type: array
-          description: Max 99 items.
-          items:
-            "$ref": "#/components/schemas/Rating"
-      required: []
-      title: CreditRatings
-    Rating:
-      type: object
-      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
-      properties:
-        annualReportDate:
-          type: string
-          description: Date of the annual report data the rating was calculated from. Comes in the format 2015-12
-          example: 2015-12
-        date:
-          type: string
-          format: date
-          description: Date when the rating was calculated.
-          example: 2018-01-02
-        code:
-          type: string
-          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
-        description:
-          type: string
-          description: Textual description of the rating. 
-        partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
-      required: []
-      title: Rating
-      maximum: 1100
-    PartJudgements:
-      type: object
-      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
-      properties:
-        abilityToPay:
-          "$ref": "#/components/schemas/PartJudgement"
-        finance:
-          "$ref": "#/components/schemas/PartJudgement"
-        historyOperation:
-          "$ref": "#/components/schemas/PartJudgement"
-        ownership:
-          "$ref": "#/components/schemas/PartJudgement"
-      required: []
-      title: PartJudgements
-    PartJudgement:
-      type: object
-      description: A part judgement. 
-      properties:
-        max:
-          type: integer
-          format: int32
-          description: The max value a company can have.
-        value:
-          type: integer
-          format: int32
-          description: This company's value.
-        description:
-          type: string
-          description: A textual description of the part judgement.
-      required: []
-      title: PartJudgement
-    PaymentIndex:
-      type: object
-      description: A weighted average of the Payment Index of all companies in all industries of the country. 
-      properties:
-        currentPaymentIndex:
-          "$ref": "#/components/schemas/PaymentIndexModel"
-        historicalPaymentIndex:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PaymentIndexModel"
-      required: []
-      title: PaymentIndex
-    PaymentIndexModel:
-      type: object
-      properties:
-        averageDelay:
-          type: integer
-          format: int32
-          description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when this paymentindex score was calculated.
-        invoiceCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of invoices used to calculate the payment index score
-        invoiceSuppliersCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of suppliers that supplied the invoices used to calculate this paymentindex score
-        paymentIndex:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The paymentindex score for this company. See https://en.wikipedia.org/wiki/Paydex for more info on paymentIndex.
-        paymentIndexAllCompanies:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in Sweden
-        paymentIndexLineOfBusiness:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in the same line of business in Sweden.
-      required: []
-      title: PaydexModel
-    PaymentRemarks:
+      title: SwedishCreditInquiry
+    SwedishPaymentRemarks:
       type: object
       properties:
         count:
@@ -263,42 +97,35 @@ components:
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first. TODO - Max size ???
           items:
-            "$ref": "#/components/schemas/PaymentRemark"
+            "$ref": "#/components/schemas/SwedishPaymentRemark"
       required: []
-      title: PaymentRemarks
-    PaymentRemark:
+      title: SwedishPaymentRemarks
+    SwedishPaymentRemark:
       type: object
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of remark
         creditor:
-          "$ref": "#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
         type:
-          "$ref": "#/components/schemas/ReportCode"
+          "$ref": "#/components/schemas/SwedishReportCode"
         description:
           type: string
           description: A textual description of the event type
           example: FISSION - EXPIRED
       required: []
-      title: PaymentRemark
-    Creditor:
-      type: object
-      properties:
-        name:
-          type: string
-          description: |
-            Name of the creditor
-    ReportCode:
+      title: SwedishPaymentRemark
+    SwedishReportCode:
       type: object
       description: Common codes
       properties:
@@ -626,7 +453,7 @@ components:
             ZAP       -  TRANSFEREE BY FISSION - START UP        
             ZAS       -  TRANSFEREE BY FISSION - EXECUTED        
             ZAT       -  FISSION - PERMISSION REGISTRATION              
-    Petitions:
+    SwedishPetitions:
       type: object
       description: Holder for petitions, the list of petitions may be capped if list is too large. The amount of all petitions is the sum on all petitions currently available in Bisnode's database and may differ from doing a sum on all the petitions in the list. 
       properties:
@@ -635,19 +462,19 @@ components:
           format: int64
           description: Total number of petitions this company have.
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         petitions:
           type: array
           items:
-            "$ref": "#/components/schemas/Petition"
+            "$ref": "#/components/schemas/SwedishPetition"
       required: []
-      title: Petitions
-    Petition:
+      title: SwedishPetitions
+    SwedishPetition:
       type: object
       description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -656,15 +483,15 @@ components:
           type: string
           description: A textual description of the petition, may be in the local language.
         creditor:
-          "$ref": "#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
         type:
-          "$ref": "#/components/schemas/ReportCode"
+          "$ref": "#/components/schemas/SwedishReportCode"
       required: []
-      title: Petition
-    CreditInquiries:
+      title: SwedishPetition
+    SwedishCreditInquiries:
       type: object
       properties:
-        numberOfInquiries:
+        count:
           type: integer
           format: int32
           description: Total number of inquiries made on this company
@@ -672,23 +499,23 @@ components:
           type: array
           description: A list of the inquiries. TODO - is there a max size for this?
           items:
-            "$ref": "#/components/schemas/CreditInquiry"
+            "$ref": "#/components/schemas/SwedishCreditInquiry"
       required: []
-      title: CreditInquiries
-    DebtBalance:
+      title: SwedishCreditInquiries
+    SwedishDebtBalance:
       type: object
       description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
       properties:
         currentDebtBalance:
-          "$ref": "#/components/schemas/CurrentDebtBalance"
+          "$ref": "#/components/schemas/SwedishCurrentDebtBalance"
         historicalDebtBalance:
           type: array
           description: A list of historical Debtbalances
           items:
-            "$ref": "#/components/schemas/HistoricalDebtBalance"
+            "$ref": "#/components/schemas/SwedishHistoricalDebtBalance"
       required: []
-      title: DebtBalance
-    CurrentDebtBalance:
+      title: SwedishDebtBalance
+    SwedishCurrentDebtBalance:
       type: object
       description: Claims are split into public claims (A-claims), and private claims (E-claims).
       properties:
@@ -704,17 +531,17 @@ components:
           type: integer
           format: int64
           description: Total count of public claims.
-        totalClaimsCount:
+        claimsCount:
           type: integer
           format: int64
           description: Total count of claims including public and private claims.
         privateClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         publicClaimsAmount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: CurrentDebtBalance
-    HistoricalDebtBalance:
+      title: SwedishCurrentDebtBalance
+    SwedishHistoricalDebtBalance:
       type: object
       description: A list of historical debt balances
       properties:
@@ -724,10 +551,10 @@ components:
           description: year and week number when the debt balance was valid.
           example: '2019-W33'
         balance:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: HistoricalDebtBalance
-    Event:
+      title: SwedishHistoricalDebtBalance
+    SwedishEvent:
       type: object
       description: Event as received from authority.
       properties:
@@ -740,146 +567,44 @@ components:
           type: string
           description: A textual description of the event, can be in local language
         eventCode: 
-          "$ref": "#/components/schemas/ReportCode"
-      title: Event
-    Events:
+          "$ref": "#/components/schemas/SwedishReportCode"
+      title: SwedishEvent
+    SwedishEvents:
       type: array
-      title: Events
+      title: SwedishEvents
       description: Newest events come first. Max xx events. TODO - what is max ???
       items:
-        "$ref": "#/components/schemas/Event"
-    Ownership:
+        "$ref": "#/components/schemas/SwedishEvent"
+    SwedishOwnership:
       type: object
       properties:
         parentCompanies:
-          "$ref": "#/components/schemas/ParentCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
-          "$ref": "#/components/schemas/Subsidiaries"
+          "$ref": '#/components/schemas/SwedishSubsidiaries'
         sisterCompanies:
-          "$ref": "#/components/schemas/SisterCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/SisterCompanies"
         familyTree:
           type: object
           description: The top company (Ultimate parent ???)
           properties:
-            "$ref": "#/components/schemas/FamilyTree"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/FamilyTree"
       required: []
-      title: Ownership
-    FamilyTree:
-      type: object
-      description: A view of the owner structure. TODO - will we cap data???
-      properties:
-        ultimateParent:
-          "$ref": "#/components/schemas/Company"
-      required: []
-      title: FamilyTree
-    Company:
+      title: SwedishOwnership
+    SwedishSubsidiaries:
       type: object
       properties:
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-        dunsNumber:
-          type: string
-          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
-        companies:
-          type: array
-          items:
-            "$ref": "#/components/schemas/Company"
-      required: []
-      title: Company
-    ParentCompanies:
-      type: object
-      properties:
-        numberOfParentCompanies:
-          type: integer
-          format: int32
-        parents:
-          type: array
-          description: A list of the parent companies.
-          items:
-            "$ref": "#/components/schemas/ParentCompany"
-      required: []
-      title: ParentCompanies
-    ParentCompany:
-      type: object
-      description: A company relates to another one as it's parent if it owns the majority (>50%) of the capital of that other company.
-      properties:
-        name:
-          type: string
-          description: Name of the company
-        type:
-          type: string
-          description: |
-            The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
-          enum: ['PARENT', 'ULTIMATE_PARENT']
-        dunsNumber:
-          type: string
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
-        date:
-          type: string
-          description: |
-            what is 
-        shareCapital:
-          "$ref": "#/components/schemas/Amount"
-      required: []
-      title: Parent
-    SisterCompanies:
-      type: object
-      properties:
-        numberOfSisterCompanies:
-          type: integer
-        sisterCompanies:
-          type: array
-          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
-          items:
-            "$ref": "#/components/schemas/SisterCompany"
-      required: []
-      title: SisterCompanies
-    SisterCompany:
-      type: object
-      description: A company which is owned by the same parent company as another company. One parent company can have one or many subsidiaries, which all are sister companies to each other.
-      properties:
-        name:
-          type: string
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-      required: []
-      title: SisterCompany
-    Subsidiaries:
-      type: object
-      properties:
-        numberOfSubsidiaries:
+        count:
           type: integer
           format: int32
           description: Total number of subsidiaries this company have.
         subsidiaries:
           type: array
           items:
-            "$ref": "#/components/schemas/Subsidiary"
+            "$ref": "#/components/schemas/SwedishSubsidiary"
       required: []
-      title: Subsidiaries
-    Subsidiary:
+      title: SwedishSubsidiaries
+    SwedishSubsidiary:
       type: object
       description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
       properties:
@@ -903,20 +628,20 @@ components:
           format: date
           description: TODO - what does this date mean???
         shareCapital:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: Subsidiary
-    Management:
+      title: SwedishSubsidiary
+    SwedishManagement:
       type: object
       description: Management section
       properties:
         boardMembers:
-          "$ref": "#/components/schemas/BoardMembers"
+          "$ref": "#/components/schemas/SwedishBoardMembers"
         auditors:
-          "$ref": "#/components/schemas/Auditors"
+          "$ref": "#/components/schemas/SwedishAuditors"
       required: []
-      title: Management
-    Auditors:
+      title: SwedishManagement
+    SwedishAuditors:
       type: object
       description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
       properties:
@@ -924,199 +649,50 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
-      title: Auditors
-    PositionEntity:
-      type: object
-      description: |
-        An entity, can be a company or a provate person.
-      properties:
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-          example: "Leo Messi"
-        registrationNumber:
-          type: string
-          description: Typically a social security number or a oraganisation number in case of a company entity
-          example: "11111111111"
-      title: PositionEntity
-    Position:
+      title: SwedishAuditors
+    SwedishBoardMembers:
       type: object
       properties:
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company? 
-        entity:
-          "$ref": "#/components/schemas/PositionEntity"
-        function:
-          type: integer
-          format: int32
-          description: |
-            '
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
-            '
-        description:
-          type: string
-          description: A textual description of the function
-      required: []
-      title: Position
-    HistoricalPosition:
-      type: object
-      properties:
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private per son or a company?
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        function:
-          type: integer
-          format: int32
-          description: |
-            0  MEMBER MANAGING DIR.                    
-            1  MANAGER CHAIRMAN                        
-            2  DEPUTY & MGR                            
-            3  Managing Dir & Registered Agent         
-            4  MANAGER                                 
-            5  Managing Dir, Deputy & Registered Agent 
-            6  EXTERNAL MGR                            
-            7  Extern Managing Dir & Registered Agent  
-            9  VICE MANAGER CHAIRMAN                   
-            10  MEMBER & VICE MGR                       
-            12  DEPUTY & VICE MGR                       
-            13  Vice Managing Dir, Deputy & Reg. Agent  
-            14  VICE MANAGING DIR.                      
-            15  Vice Managing Dir & Registered Agent    
-            16  EXTERNAL VICE MGR.                      
-            17  Ext Vice Managing Dir & Registered Agent
-            19  MEMBER CHAIRMAN                         
-            20  MEMBER                                  
-            22  Member & Registered Agent               
-            25  EXT.FIRM SIGN.                          
-            26  ACTUARY                                 
-            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
-            30  LIQUIDATOR                              
-            32  DEPUTY                                  
-            33  Chairman, Deputy & Registered Agent     
-            34  Deputy & Registered Agent               
-            36  Registered Agent                        
-            48  PART-OWNER & HOLDER OF PROCURATION      
-            50  PART-OWNER                              
-            60  UNLIMITED PARTNER                       
-            68  LIMITED PARTNER & HOLDER OF PROCURATION 
-            70  LIMITED PARTNER                         
-            72  MANAGER                                 
-            86  HOLDER OF PROCURATION                   
-            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
-            91  AUDITOR & REGISTERED AGENT              
-            92  LAY AUDITOR & REGISTERED AGENT          
-            93  DEPUTY AUDITOR & REGISTERED AGENT       
-            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
-            95  PRINCIPALLY RESPONSIBLE AUDITOR         
-            96  LAY AUDITOR                             
-            97  AUDITOR                                 
-            98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR                      
-        entity:
-          "$ref": "#/components/schemas/PositionEntity"
-        resignedDate:
-          type: string
-          format: date
-          description: Date when this person/entity resigned from this position
-      required: []
-      title: HistoricalPosition
-    BoardMembers:
-      type: object
-      properties:
-        totalNumberOfBoardMembers:
+        boardMemberCount:
           type: integer
           format: int32
           description: The number of boardmembers the company currently have
-        officalAppointmentDate:
+        officialAppointmentDate:
           type: string
           format: date
           description: TODO - what is this ???
-        totalNumberOfDeputies:
+        deputyCount:
           type: integer
           format: int32
           description: The number of deputies the company currently have
-        minBoardMembers:
+        boardMembersMin:
           type: integer
           format: int32
           description: The minimum number of boardmembers the company must have according to the company's article of association ???
-        maxBoardMembers:
+        boardMembersMax:
           type: integer
           format: int32
           description: The maximum number of boardmembers the company can have according to the company's article of association ???
-        minDeputies:
+        deputiesMin:
           type: integer
           format: int32
           description: The minimum number of deputies the company must have according to the company's article of association ???
-        maxDeputies:
+        deputiesMax:
           type: integer
           format: int32
           description: The maximum number of deputies the company can have according to the company's article of association ???
-        bankruptcyCommitments:
+        bankruptcyCommitmentsCount:
           type: integer
           format: int32
           description: Total number of bankruptcies the members of the current board has been involved in.
-        paymentRemarksOnBoardMembers:
+        paymentRemarksCount:
           type: integer
           format: int32
           description: Total number of paymentremarks the members of the current board has registered on themselves.
@@ -1124,59 +700,59 @@ components:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
-      title: BoardMembers
-    CompanyInformation:
+      title: SwedishBoardMembers
+    SwedishCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "#/components/schemas/Capital"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Capital"
         companyName:
-          "$ref": "#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "#/components/schemas/ContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "#/components/schemas/Identifiers"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Identifiers"
         industryCodeSet:
-          "$ref": "#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
-          "$ref": "#/components/schemas/LegalForm"
+          "$ref": "#/components/schemas/SwedishLegalForm"
         status:
-          "$ref": "#/components/schemas/Status"
+          "$ref": "#/components/schemas/SwedishStatus"
         registrationInformation:
-          "$ref": "#/components/schemas/RegistrationInformation"
+          "$ref": "#/components/schemas/SwedishRegistrationInformation"
         generalCompanyData:
-          "$ref": "#/components/schemas/GeneralCompanyData"
+          "$ref": "#/components/schemas/SwedishGeneralCompanyData"
         branches:
-          "$ref": "#/components/schemas/Branches"
+          "$ref": "#/components/schemas/SwedishBranches"
         bankgiroAccounts:
           type: array
           description: A list of the bankgiro accounts this company holds.
           items:
-            "$ref": "#/components/schemas/BankgiroAccount"
+            "$ref": "#/components/schemas/SwedishBankgiroAccount"
       required: []
-      title: CompanyInformation
-    BankgiroAccount:
+      title: SwedishCompanyInformation
+    SwedishBankgiroAccount:
       type: object
       description: 
       properties:
         address:
-          "$ref": "#/components/schemas/BankAddress"
+          "$ref": "#/components/schemas/SwedishBankAddress"
         bankgiroNumber:
           type: string
         valid:
           type: boolean
           description: 'True if the bankgiro account is currently active'
       required: []
-      title: BankgiroAccount
-    BankAddress:
+      title: SwedishBankgiroAccount
+    SwedishBankAddress:
       type: object
       properties:
         town:
@@ -1189,12 +765,12 @@ components:
           type: string
           description: Streaet address
       required: []
-      title: Address
-    Branches:
+      title: SwedishAddress
+    SwedishBranches:
       type: object
       description: 
       properties:
-        numberOfBranches:
+        count:
           type: integer
           format: int32
           description: Total number of branches this company have.
@@ -1202,10 +778,10 @@ components:
           type: array
           description: TODO - How many items can we have here???
           items:
-            "$ref": "#/components/schemas/Branch"
+            "$ref": "#/components/schemas/SwedishBranch"
       required: []
-      title: Branches
-    Branch:
+      title: SwedishBranches
+    SwedishBranch:
       type: object
       description: What is a branch? https://bolagsverket.se/en/bus/business/branch/some-typical-features-of-a-branch-1.12787
       properties:
@@ -1226,7 +802,7 @@ components:
         dunsNumber:
           type: string
       required: []
-      title: Branch
+      title: SwedishBranch
     BranchAddress:
       type: object
       properties:
@@ -1237,188 +813,18 @@ components:
           type: string
           descripion: town
       required: []
-      title: BranchAddress
-    Capital:
-      type: object
-      description: Capital section
-      properties:
-        shareCapital:
-          "$ref": "#/components/schemas/ShareCapital"
-      required: []
-      title: Capital
-    ShareCapital:
-      type: object
-      description: Share capital
-      properties:
-        amount:
-          "$ref": '#/components/schemas/Amount'
-      required: []
-      title: ShareCapital
-    CompanyName:
-      type: object
-      description: |
-        Different set of names this company is known as or has been known as.
-      properties:
-        secondaryNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/SecondaryName"
-        alternativeNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/AlternativeName"
-        historicalNames:
-          type: array
-          description: A list of historical registered names, does not include the current name.
-          items:
-            "$ref": "#/components/schemas/Name"
-        registeredName:
-          "$ref": "#/components/schemas/Name"
-      required: []
-      title: CompanyName
-    Name:
-      type: object
-      description: A name object
-      properties:
-        date:
-          type: string
-          format: date
-          description: The date when this name was registered
-          example: 2011-01-12
-        name:
-          type: string
-          description: Name
-          example: Bisnode AB
-      required: []
-      title: Name
-    SecondaryName:
-      type: object
-      description: A secondary name (bifirma) is a Swedish trading name, under which a the company can promote part of its business activities.
-      properties:
-        name:
-          type: string
-          description: The registered name
-          example: Infodata Applicate
-        description:
-          type: string
-          description: Business description
-          example: För den del av verksamheten som avser utveckling av informationsdatabaser.
-        date:
-          type: string
-          format: date
-          description: The date when this secondary name was registered.
-          example: 2013-04-15
-      required: []
-      title: SecondaryName
-    AlternativeName:
-      type: object
-      description: A name of the company in another language. This is common in countries with more than one official language. The name may not be a translation of a another specific name type like a translation of the Registered name and is thus not the same as "Translated name".
-      properties:
-        name:
-          type: string
-          description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
-        description:
-          type: string
-          description: TODO - what is this
-        date:
-          type: string
-          format: date
-          description: Date when this name was registrered
-      title: AlternativeName
-      required: []
-    ContactPoints:
-      type: object
-      description: Methods for getting in contact with this company.
-      properties:
-        electronicContactPoints:
-          "$ref": "#/components/schemas/ElectronicContactPoints"
-        postalAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        registeredAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        visitingAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-      required: []
-      title: ContactPoints
-    ElectronicContactPoints:
-      type: object
-      properties:
-        emailAddresses:
-          type: array
-          description: A list of email addresses
-          items:
-            type: string
-        faxNumbers:
-          type: array
-          description: A list of fax numbers
-          items:
-            "$ref": "#/components/schemas/PhoneNumber"
-        phoneNumbers:
-          type: array
-          description: A list of phone numbers
-          items:
-            "$ref": "#/components/schemas/PhoneNumber"
-        webAddresses:
-          type: array
-          description: A list of web addresses
-          items:
-            type: string
-      required: []
-      title: ElectronicContactPoints
-    PhoneNumber:
-      type: object
-      description: |
-        Can be a raw phonenumber or splitted into areacode and phonenumber
-      properties:
-        fullNumber:
-          type: string
-          example: 08-0000000
-          description: |
-            Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
-        areaCode:
-          type: string
-          example: 08
-          description: |
-            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
-        numberOnly:
-          type: string
-          example: 1000000
-          description: |
-            TODO _ rename me
-            phoneNumber without areacode
-        
-    StreetAddress:
-      type: object
-      properties:
-        town:
-          type: string
-          description: town
-          example: Stockholm
-        country:
-          type: string
-          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-          example: SE
-        postalCode:
-          type: string
-          description: Postalcode
-          example: 19637
-        street:
-          type: string
-          description: Street address
-          example: Rosenborgsgatan 4-6
-      required: []
-      title: StreetAddress
-   
-    GeneralCompanyData:
+      title: SwedishBranchAddress
+    SwedishGeneralCompanyData:
       type: object
       properties:
         businessDescription:
           type: string
           description: The description registered wth the local authorities describing the companys business.
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
-        numberOfAlcoholServicePermits:
+          description: Total number of employees this company have.
+        alcoholServicePermitCount:
           type: integer
           format: int32
           description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
@@ -1448,82 +854,8 @@ components:
           enum: ['HEADQUARTER', 'BRANCH']
           description: Office location, TODO -add more info
       required: []
-      title: GeneralCompanyData
-    Identifiers:
-      type: object
-      description: A set of identifiers for this company.
-      properties:
-        registrationNumber:
-          type: string
-          description: National registration number
-        dunsNumber:
-          type: string
-          description: duns-number
-      required: []
-      title: Identifiers
-    IndustryCodeSet:
-      type: object
-      description: Sni and nace code for classification of the business
-      properties:
-        sni2007IndustryCodes:
-          "$ref": "#/components/schemas/Sni2007IndustryCodes"
-        naceCodes:
-          "$ref": "#/components/schemas/NaceCodes"
-      required: []
-      title: IndustryCodeSet
-    NaceCodes:
-      type: object
-      properties:
-        primaryNaceCode:
-          "$ref": "#/components/schemas/NaceCode"
-        otherNaceCodes:
-          type: array
-          description: Secondary codes 
-          items:
-            "$ref": "#/components/schemas/NaceCode"
-      title: NaceCodes
-    NaceCode:
-      type: object
-      description: 'NACE Rev. 2. See https://siccode.com/page/what-is-a-nace-code for more info'
-      properties:
-        code:
-          type: string
-          description: nace code
-          example: 0230
-        description:
-          type: string
-          description: A textual description of the code.
-          example: 'Gathering of wild growing non-wood products'
-      required: []
-      title: NaceCode
-    Sni2007IndustryCodes:
-      type: object
-      description: 
-      properties:
-        otherIndustryCodes:
-          type: array
-          description: Secondary codes 
-          items:
-            "$ref": "#/components/schemas/Sni2007Code"
-        primaryIndustryCode:
-          "$ref": "#/components/schemas/Sni2007Code"
-      required: []
-      title: Sni2007IndustryCodes
-    Sni2007Code:
-      type: object
-      description: 'Industry code. See https://www.scb.se/dokumentation/klassifikationer-och-standarder/standard-for-svensk-naringsgrensindelning-sni/ for more info.'
-      properties:
-        code:
-          type: string
-          description: the sni code
-          example: 82910
-        description:
-          type: string
-          description: A textual description of the code. 
-          example: "Retail sale of men's, women's and children's clothing in spec. stores"
-      required: []
-      title: IndustryCode
-    LegalForm:
+      title: SwedishGeneralCompanyData
+    SwedishLegalForm:
       type: object
       description: The company's legalform
       properties:
@@ -1531,13 +863,11 @@ components:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: |
-            '
             LIMITED_COMPANY - https://bolagsverket.se/en/bus/business/limited/2.1144
             SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://bolagsverket.se/en/bus/business/sole
             TRADING_PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400
             LIMITED_PARTNERSHIP - https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
             OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
-            '
         description:
           type: string
           description: A textual description of the code.
@@ -1579,8 +909,8 @@ components:
             98  Other Swedish legal persons subject to special legislation
             99  Type of legal entity not established
       required: []
-      title: LegalForm
-    RegistrationInformation:
+      title: SwedishLegalForm
+    SwedishRegistrationInformation:
       type: object
       description: TODO - what is the difference between these 2 dates
       properties:
@@ -1593,8 +923,8 @@ components:
           format: date
           description: Date when the company was founded
       required: []
-      title: RegistrationInformation
-    Status:
+      title: SwedishRegistrationInformation
+    SwedishStatus:
       type: object
       properties:
         value:
@@ -1606,84 +936,84 @@ components:
           format: date
           description: Date when the status last changed
       required: []
-      title: Status
-    Finance:
+      title: SwedishStatus
+    SwedishFinance:
       type: object
       properties:
         chattelMortgages:
           type: array
           description: "TODO - how many can we get here ???"
           items:
-            "$ref": "#/components/schemas/ChattelMortgage"
+            "$ref": "#/components/schemas/SwedishChattelMortgage"
         claimsOutOfBusiness:
           type: array
           description: "TODO - how many can we get here ???"
           items:
-            "$ref": "#/components/schemas/LiquidationClaim"
+            "$ref": "#/components/schemas/SwedishLiquidationClaim"
         financialStatements:
-          "$ref": "#/components/schemas/FinancialStatements"
+          "$ref": "#/components/schemas/SwedishFinancialStatements"
         payrollTaxes:
           type: array
           items:
-            "$ref": "#/components/schemas/PayrollTax"
+            "$ref": "#/components/schemas/SwedishPayrollTax"
         propertyHoldings:
-          "$ref": "#/components/schemas/PropertyHoldings"
+          "$ref": "#/components/schemas/SwedishPropertyHoldings"
       required: []
-      title: Finance
-    ChattelMortgage:
+      title: SwedishFinance
+    SwedishChattelMortgage:
       type: object
       description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
       properties:
         creditor:
-          "$ref": "#/components/schemas/Creditor"
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor'
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: integer
           description: |
             TODO - date when ??
       required: []
-      title: ChattelMortgage
-    LiquidationClaim:
+      title: SwedishChattelMortgage
+    SwedishLiquidationClaim:
       type: object
       description: |
-        'Claims that can be made in bankruptcy and which therefore entitle to dividend are called liquidation claims. For more info see: https://www4.skatteverket.se/rattsligvagledning/edition/2015.8/322188.html#h-Konkursfordringar'
+        Claims that can be made in bankruptcy and which therefore entitle to dividend are called liquidation claims. For more info see: https://www4.skatteverket.se/rattsligvagledning/edition/2015.8/322188.html#h-Konkursfordringar
       properties:
         company:
           type: string
           description: Name of the company this company has a claim on.
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of the bankruptcy.
       required: []
-      title: LiquidationClaim
-    FinancialStatements:
+      title: SwedishLiquidationClaim
+    SwedishFinancialStatements:
       type: object
       properties:
         groupAccount:
-          "$ref": "#/components/schemas/GroupAccount"
+          "$ref": "#/components/schemas/SwedishGroupAccount"
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
+            "$ref": "#/components/schemas/SwedishFinancialStatementsAuditorsReservation"
         keyFigures:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/SwedishFinancialStatementKeyFigure"
         industryKeyFigures:
-          "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+          "$ref": "#/components/schemas/SwedishFinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/components/schemas/FinancialStatement"
+            "$ref": "#/components/schemas/SwedishFinancialStatement"
       required: []
-      title: FinancialStatements
-    FinancialStatementsAuditorsReservation:
+      title: SwedishFinancialStatements
+    SwedishFinancialStatementsAuditorsReservation:
       type: object
       properties:
         auditorsReservationCode:
@@ -1727,8 +1057,8 @@ components:
           format: date
           description: Date of the auditors reservation/comment.
       required: []
-      title: FinancialStatementsAuditorsReservation
-    FinancialStatementKeyFigure:
+      title: SwedishFinancialStatementsAuditorsReservation
+    SwedishFinancialStatementKeyFigure:
       type: object
       properties:
         closingPeriod:
@@ -1845,8 +1175,8 @@ components:
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
           example: -1555000
       required: []
-      title: FinancialStatementKeyFigure
-    IncomeStatement:
+      title: SwedishFinancialStatementKeyFigure
+    SwedishIncomeStatement:
       type: object
       properties:
         netSales:
@@ -1873,7 +1203,7 @@ components:
           format: int64
           description: |
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
-        totalTurnover:
+        turnover:
           type: integer
           format: int64
           description: |
@@ -1947,7 +1277,7 @@ components:
           format: int64
           description: |
             Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
-        totalOperatingExpenses:
+        operatingExpensesTotal:
           type: integer
           format: int64
           description: |
@@ -1977,7 +1307,7 @@ components:
           format: int64
           description: |
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
-        totalFinancialIncome:
+        financialIncomeTotal:
           type: integer
           format: int64
           description: Total financial revenues
@@ -1991,7 +1321,7 @@ components:
           format: int64
           description: |
             Interest payed from the company to banks or creditinstitutes.
-        totalInterestExpenses:
+        interestExpensesTotal:
           type: integer
           format: int64
           description: |
@@ -2001,7 +1331,7 @@ components:
           format: int64
           description: |
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
-        totalFinancialCosts:
+        financialCostsTotal:
           type: integer
           format: int64
           description: |
@@ -2026,7 +1356,7 @@ components:
           format: int64
           description: |
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        totalExtraordinaryItems:
+        extraordinaryItemsTotal:
           type: integer
           format: int64
           description: |
@@ -2071,27 +1401,27 @@ components:
           format: int64
           description: |
             A positive value means that the company made a net profit and a negative that it made a net loss.
-    BalanceSheet:
+    SwedishBalanceSheet:
       type: object
       properties:
         assets: 
-           "$ref": "#/components/schemas/Assets"
+           "$ref": "#/components/schemas/SwedishAssets"
         liabilitiesAndEquity:
-          "$ref": "#/components/schemas/LiabilitiesAndEquity"
-      title: BalanceSheet
+          "$ref": "#/components/schemas/SwedishLiabilitiesAndEquity"
+      title: SwedishBalanceSheet
       description: |
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
-    Assets:
+    SwedishAssets:
       type: object
       properties:
         currentAssets:
-          "$ref": "#/components/schemas/CurrentAssets"
+          "$ref": "#/components/schemas/SwedishCurrentAssets"
         nonCurrentAssets:
-          "$ref": "#/components/schemas/NonCurrentAssets"
-      title: Assets
+          "$ref": "#/components/schemas/SwedishNonCurrentAssets"
+      title: SwedishAssets
       description: |
         Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
-    CurrentAssets:
+    SwedishCurrentAssets:
       type: object
       properties:
         workInProgress: 
@@ -2104,7 +1434,7 @@ components:
           format: int64
           description: |  
             Summation of stock in trade from the annual report. Stock in trade includes raw materials and consumables, work in progress, finished goods and goods for resale.
-        totalInventories: 
+        inventoriesTotal: 
           type: integer
           format: int64
           description: |  
@@ -2124,17 +1454,17 @@ components:
           format: int64
           description: |  
            Other current receivables includes for example bills receivables and client funds.
-        totalCurrentReceivables: 
+        currentReceivablesTotal: 
           type: integer
           format: int64
           description: |  
             The sum of all current receivables.
-        totalCurrentInvestments: 
+        currentInvestmentsTotal: 
           type: integer
           format: int64
           description: |  
             Here the company accounts for funds that have been placed on a very short term, one to three days. In differ to the post cash bank theese funds are not immediately available in the business.
-        totalCashBank: 
+        cashBankTotal: 
           type: integer
           format: int64
           description: |  
@@ -2144,20 +1474,20 @@ components:
           format: int64
           description: |  
             Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
-        totalCurrentAssets: 
+        currentAssetsTotal: 
           type: integer
           format: int64
           description: |  
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-        totalAssets: 
+        assetsTotal: 
           type: integer
           format: int64
           description: |  
             The sum of all assets.
-      title: CurrentAssets
+      title: SwedishCurrentAssets
       description: |
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
-    NonCurrentAssets:
+    SwedishNonCurrentAssets:
       type: object
       properties:
         claimOnPayment:
@@ -2185,7 +1515,7 @@ components:
           format: int64
           description: |
             These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
-        totalIntangibleAssets: 
+        intangibleAssetsTotal: 
           type: integer
           format: int64
           description: |
@@ -2210,7 +1540,7 @@ components:
           format: int64
           description: |  
             Inventory is the term for the goods available for sale and raw materials used to produce goods available for sale.
-        totalMachineryAndInventory: 
+        machineryAndInventoryTotal: 
           type: integer
           format: int64
           description: |  
@@ -2225,7 +1555,7 @@ components:
           format: int64
           description: |  
             Tangible assets that is a subject for depreciation.
-        totalTangibleNonCurrentAssets: 
+        tangibleNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
@@ -2250,12 +1580,12 @@ components:
           format: int64
           description: |  
             Other non-current assets that is not specified as receivables from/shares in group companies or loans to shareholders/related party.
-        totalFinancialNonCurrentAssets: 
+        financialNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
             The sum of all financial assets
-        totalNonCurrentAssets: 
+        nonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
@@ -2266,32 +1596,32 @@ components:
           format: int64
           description: |  
             Whereof not depreciable non-current costs. Refers to Total non current assets.
-      title: NonCurrentAssets
+      title: SwedishNonCurrentAssets
       description: |
         A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
-    LiabilitiesAndEquity:
+    SwedishLiabilitiesAndEquity:
       type: object
       properties:
         liabilities:
-          "$ref": "#/components/schemas/Liabilities"
+          "$ref": "#/components/schemas/SwedishLiabilities"
         shareholdersEquity:
-          "$ref": "#/components/schemas/ShareholdersEquity" 
-        totalEquityAndLiabilities:
+          "$ref": "#/components/schemas/SwedishShareholdersEquity" 
+        equityAndLiabilitiesTotal:
           type: integer
           format: int64
           description: |
             The sum of all reported liabilities.
-    Liabilities:
+    SwedishLiabilities:
       type: object
       properties:
         currentLiabilities:
-          "$ref": "#/components/schemas/CurrentLiabilities"
+          "$ref": "#/components/schemas/SwedishCurrentLiabilities"
         nonCurrentLiabilities:
-          "$ref": "#/components/schemas/LongTermLiabilities"
-      title: Liabilities
+          "$ref": "#/components/schemas/SwedishLongTermLiabilities"
+      title: SwedishLiabilities
       description: |
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
-    CurrentLiabilities:
+    SwedishCurrentLiabilities:
       type: object
       properties:
         shortTermLiabilitiesToCreditInstitutions:
@@ -2314,15 +1644,15 @@ components:
           format: int64  
           description: |    
             Other current liabilities then liabilities to credit institutions, accounts payable or liabilities to group comapines or associates.
-        totalCurrentLiabilities:
+        currentLiabilitiesTotal:
           type: integer
           format: int64  
           description: |    
             The sum of all reported current liabilities.
-      title: CurrentLiabilities
+      title: SwedishCurrentLiabilities
       description: |
         Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
-    LongTermLiabilities:
+    SwedishLongTermLiabilities:
       type: object
       properties:
         bond:
@@ -2345,15 +1675,15 @@ components:
           format: int64  
           description: |    
             Other long-term liabilities then liabilities to credit institutions, accounts payable or liabilities to group comapines or associates.
-        totalLongTermLiabilities:
+        longTermLiabilitiesTotal:
           type: integer
           format: int64  
           description: |    
             The sum of all reported long-term liabilities.
-      title: LongTermLiabilities
+      title: SwedishLongTermLiabilities
       description: |
         Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
-    ShareholdersEquity:
+    SwedishShareholdersEquity:
       type: object
       properties:
         shareCapital:
@@ -2376,7 +1706,7 @@ components:
           format: int64  
           description: |    
             Contains in most cases of legal reserves, in which the company are required to deposit at least 20% of the nominal value of the share capital.
-        totalRestrictedEquity:
+        restrictedEquityTotal:
           type: integer
           format: int64  
           description: |    
@@ -2396,7 +1726,7 @@ components:
           format: int64  
           description: |     
             Received/given shareholder's contribution, post belonging to total non restricted equity.
-        profitOrlossForTheYear:
+        profitOrLossForTheYear:
           type: integer
           format: int64  
           description: |     
@@ -2406,26 +1736,26 @@ components:
           format: int64  
           description: |     
             The equity that the company can freely dispose of, for example upon dividend. 
-        totalEquity:
+        equityTotal:
           type: integer
           format: int64  
           description: |     
             Total equity.
             Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
-        totalUntaxedReserves:
+        untaxedReservesTotal:
           type: integer
           format: int64  
           description: |     
             Today this post mainly consists of accumulated depreciation in addition to plan and tax allocation reserve.
-        totalProvisions:
+        provisionsTotal:
           type: integer
           format: int64  
           description: |     
             Provisions/allocation differ from liabilities by the fact that on the end of accounting period, they should be sucure or probable in their existence but uncertain in amount and/or due date. (While liabilities are usualy secure on due date).
-      title: ShareholdersEquity
+      title: SwedishShareholdersEquity
       description: |
         Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
-    FinancialStatement:
+    SwedishFinancialStatement:
       type: object
       properties:
         closingPeriod:
@@ -2451,33 +1781,33 @@ components:
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
           example: SEK
         balanceSheet:
-          "$ref": "#/components/schemas/BalanceSheet"
+          "$ref": "#/components/schemas/SwedishBalanceSheet"
         incomeStatement:
-          "$ref": "#/components/schemas/IncomeStatement"
+          "$ref": "#/components/schemas/SwedishIncomeStatement"
         notesAndOtherInformation:
-          "$ref": "#/components/schemas/NotesAndOtherInformation"
+          "$ref": "#/components/schemas/SwedishNotesAndOtherInformation"
       required: []
-      title: FinancialStatement
-    GroupAccount:
+      title: SwedishFinancialStatement
+    SwedishGroupAccount:
       type: object
       properties:
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
+            "$ref": "#/components/schemas/SwedishFinancialStatementsAuditorsReservation"
         financialStatementKeyFigures:
           type: array
           description: The 5 latest 
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyFigure"
+            "$ref": "#/components/schemas/SwedishFinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/components/schemas/FinancialStatement"
+            "$ref": "#/components/schemas/SwedishFinancialStatement"
       required: []
-      title: GroupAccount
-    PayrollTax:
+      title: SwedishGroupAccount
+    SwedishPayrollTax:
       type: object
       description: | 
         EmployersContribution or PayrollTax ???
@@ -2488,27 +1818,27 @@ components:
           format: date
           description: Date when ???
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         referenceNumber:
           type: string
           description: TODO - what is this???
       required: []
-      title: PayrollTax
-    PropertyHoldings:
+      title: SwedishPayrollTax
+    SwedishPropertyHoldings:
       type: object
       description: |
         TODO - how many can we get here ???
         
       properties:
         ownedPartOfTaxAssessment:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         taxAssessment:
-          "$ref": "#/components/schemas/Amount"
-        numberOfFullyOwned:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
+        fullyOwnedCount:
           type: integer
           format: int32
           description: The number of properties this company own 100 percent of.
-        numberOfPartlyOwned:
+        partlyOwnedCount:
           type: integer
           format: int32
           description: The number of properties this company own a part of. Excluding the ones it owns in full.
@@ -2516,20 +1846,20 @@ components:
           type: array
           description: TODO - how many properties can we get here ???
           items:
-            "$ref": "#/components/schemas/AssessedRealProperty"
+            "$ref": "#/components/schemas/SwedishAssessedRealProperty"
         currentRealProperties:
           type: array
           description: TODO - how many properties can we get here ???
           items:
-            "$ref": "#/components/schemas/CurrentRealProperty"
+            "$ref": "#/components/schemas/SwedishCurrentRealProperty"
       required: []
-      title: PropertyHoldings
-    AssessedRealProperty:
+      title: SwedishPropertyHoldings
+    SwedishAssessedRealProperty:
       type: object
       description: |
         Taxed property holdings. 
         
-        totalTaxAssessmentValue: Total value of all taxed properties
+        taxAssessmentValueTotal: Total value of all taxed properties
         taxAssessmentValueOfLand: whereof land
         taxAssessmentValueOfBuilding: whereof buildings
          
@@ -2567,14 +1897,14 @@ components:
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
         taxAssessmentValueOfBuilding:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         taxAssessmentValueOfLand:
-          "$ref": "#/components/schemas/Amount"
-        totalTaxAssessmentValue:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
+        taxAssessmentValueTotal:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: AssessedRealProperty
-    CurrentRealProperty:
+      title: SwedishAssessedRealProperty
+    SwedishCurrentRealProperty:
       type: object
       properties:
         blocked:
@@ -2621,11 +1951,11 @@ components:
           type: string
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
-        totalTaxAssessmentValue:
-          "$ref": "#/components/schemas/Amount"
+        taxAssessmentValueTotal:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: CurrentRealProperty
-    Bankruptcy:
+      title: SwedishCurrentRealProperty
+    SwedishBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
       properties:
@@ -2634,10 +1964,10 @@ components:
           format: date
           description: Date when this company went bankrupt.
         events:
-          "$ref": "#/components/schemas/Event"
+          "$ref": "#/components/schemas/SwedishEvent"
         trustee:
-          "$ref": "#/components/schemas/Trustee"
-    Trustee:
+          "$ref": "#/components/schemas/SwedishTrustee"
+    SwedishTrustee:
       type: object
       description: Name and contact-info to the person/company handling the bankruptcy
       properties:
@@ -2650,12 +1980,12 @@ components:
           description: Name of the person assigned to handle the bankruptcy.
           example: Anders Svensson
         phoneNumber:
-         "$ref": "#/components/schemas/PhoneNumber"
+         "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PhoneNumber"
         address:
           type: string
           description: The address to the person/company assigned to handle this bankruptcy
         example: 10390, Stockholm
-    NotesAndOtherInformation:
+    SwedishNotesAndOtherInformation:
       type: object
       description: |
         Misc information releated to the financial statement
@@ -2678,7 +2008,7 @@ components:
           description: |
             Other securitys could be the value of capital insurances or other assets that provides security for pension commitments.
               
-        totalSecurities:
+        securitiesTotal:
           type: integer
           format: int64
           description: |
@@ -2704,7 +2034,7 @@ components:
           description: |
             Contingent liability is a potential liability that may occur, depending on the outcome of an uncertain future event. A contingent liability is recorded in the accounting records if the contingency is likely and the amount of the liability can be reasonably estimated.
             
-        totalContingentLiabilities:
+        contingentLiabilitiesTotal:
           type: integer
           format: int64
           description: |
@@ -2717,7 +2047,7 @@ components:
             F - Contingent liabilities exist, but amount missing
             N - Data not available
             Y - Additional contingent liabilities exist but amounts are not specified
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
           description: |
