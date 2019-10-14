@@ -618,7 +618,7 @@ components:
         registeredAsEmployer:
           type: boolean
           description: |
-            'To have employees a company needs to be registered as an employer at the local tax office.'
+            To have employees a company needs to be registered as an employer at the local tax office.
         registeredInVatList:
           type: boolean
           description: This indicates if the company is registered according to the Tax VAT register.
@@ -650,9 +650,7 @@ components:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: |
-            '
             TODO - add docs here on what legalforms are available
-            '
         description:
           type: string
           description: A textual description of the code.
@@ -941,7 +939,7 @@ components:
           type: integer
           format: int64
           description: |
-            'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.'
+            Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
         resultBeforeExtraordinaryItems:
           type: integer
           format: int64
