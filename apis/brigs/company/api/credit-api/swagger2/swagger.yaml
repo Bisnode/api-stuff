@@ -1,0 +1,302 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'Company Risk and Credit data API'
+  description: |
+        Bisnode Company risk and credit data API
+        
+        Maybe some words about LON here??
+    
+        Since we don't want to expose any personally identifiable information (PII) parameters in the URL,
+        GET requests with search params is not supported.
+        All decimals are with max 2 fraction digits, unless otherwise stated in the description for that field.
+        
+        This API tries to adhere to the Bisnode Restful API guidelines, TODO - add link here when it is published on github.
+security:
+  - OAuth2: 
+    - riskAndCredit
+paths:
+  /companies:
+    post:
+      summary: Basic search on registrationNumber, dunsnumber and/or name.
+      description: |
+        A simple search on companies. Either registrationNumber, dunsNumber or name must be supplied.
+      parameters:
+        - in: body
+          name: SearchRequest
+          schema:
+            $ref: '#/definitions/SearchRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SearchResponse'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /companies/se:
+    post:
+      summary: Fetch credit and risk data on a swedish company
+      description: |
+        Fetch risk and credit data on swedish companies
+      parameters:
+        - in: body
+          name: RequestModel 
+          schema:
+            $ref: '#/definitions/RequestModel'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SwedishResponseModel'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+  /companies/fi:
+   post:
+     summary: Fetch credit and risk data on a finnish company
+     description: |
+       Fetch risk and credit data on finnish companies
+     parameters:
+      - in: body
+        name: RequestModel
+        schema:
+          $ref: '#/definitions/RequestModel'
+     responses:
+      '200':
+        description: OK
+        schema:
+          $ref: '#/definitions/FinnishResponseModel'
+      '400':
+        description: Bad request - invalid input.
+        schema:
+          $ref: '#/definitions/Error'
+      default:
+        description: Error definition
+        schema:
+          $ref: '#/definitions/Error'
+  /companies/dk:
+    post:
+      summary: Fetch credit and risk data on a danish company
+      description: |
+       Fetch risk and credit data on danish companies
+      parameters:
+        - in: body
+          name: RequestModel
+          schema:
+            $ref: '#/definitions/RequestModel'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DanishResponseModel'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+securityDefinitions:
+   OAuth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: 'https://login.bisnode.com/as/token.oauth2'
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      riskAndCredit: allows access to Bisnode risk and credit data
+definitions:
+    SearchResponse:
+      type: object
+      description: Searchmodel. The order in the list will always be best matches first. TODO - Add some  basic rules for the searches so the client understands the order in the result list..
+      properties:
+        hitCount:
+          type: integer
+          format: int32
+          description: The number of hits this search gave.
+        offset:
+          type: integer
+          format: int32
+          description: Offset value sent in request or the default value if none was given. Do we have a maxy value for this? I.e we don't support fetching lists larger than 10 000 ?
+          minimum: 0
+          default: 0
+        limit: 
+          type: integer
+          format: int32
+          description: Limit value sent in request or the default value if none was given.
+          minimum: 0
+          default: 20
+          maximum: 100
+        companies:
+          type: array
+          description: List of companies
+          items:
+            "$ref": "#/definitions/CompanyOverview"
+        _links:
+          "$ref": '#/definitions/Links'
+      title: SearchResponse
+    CompanyOverview:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the company
+        country:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          example: 'SE'
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+          example: '5564855582'
+        dunsNumber:
+          type: string
+          description: dunsnumber. 
+        active:
+          type: boolean
+          description: Is this company active?
+          example: true
+        headQuarter:
+          type: boolean
+          description: Is this a headquarter? False means that this is a branch.
+          example: false
+        address:
+          "$ref": "#/definitions/Address"
+      title: CompanyOverview
+    Address:
+      type: object
+      description: This is the visiting address of the company
+      properties:
+        street:
+          type: string
+          description: Streetname
+        town:
+          type: string
+          description: Postal town
+        postalCode:
+          type: string
+          description: postalCode
+      title: Address
+    Link:
+      type: object
+      properties:
+        href: 
+          type: string
+          description: A valid URI
+          example: 'https://api.bisnode.com/company-search/v1/companies?param1=xxxx'
+      title: Link
+    Links:
+      type: object
+      description: |
+            Links for easy pagination. 
+      example: |
+        '{
+          "next": {
+            "href": "https://api.bisnode.com/company-search/v1/companies?token=okjoqedqasd"
+          },
+          "prev": {
+            "href": "https://api.bisnode.com/company-search/v1/companies?token=sof2nkn2adz"
+          },
+          "self": {
+            "href": "https://api.bisnode.com/company-search/v1/companies?token=xcxxcx"
+          }
+        }'
+      properties:
+        next:
+          "$ref": '#/definitions/Link'
+        prev:
+          "$ref": '#/definitions/Link'
+        self:
+          "$ref": '#/definitions/Link'
+    SearchRequest:
+      type: object
+      description: Search input.
+      properties:
+        offset:
+          type: integer
+          format: int32
+          description: A positive number telling how many hits should be skipped. A value of 2 will skip the first 2 results that matched the search criteria.
+          minimum: 0
+          default: 0
+        limit: 
+          type: integer
+          format: int32
+          description: The number of hits per call, a value of 0 means only hitcount is returned.
+          minimum: 0
+          default: 20
+          maximum: 100
+        name:
+          type: string
+          description: The name of the company
+          example: 'Bisnode AB'
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+          example: '5564855582'
+        includeInactive:
+          type: boolean
+          description: 'Set to true to include inactive companies'
+          default: false
+        includeBranches:
+          type: boolean
+          description: 'Set to true to include branches in the results'
+          default: false
+        country:
+          type: string
+          description: The country to search in
+          enum: ['SE', 'FI', 'DK']
+        address:
+          "$ref": "#/definitions/Address"
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        message:
+          type: string
+      required:
+        - statusCode
+        - message
+    RequestModel:
+      type: object
+      description: The request model for credit data
+      properties:
+        registrationNumber: 
+          type: string
+          description: A national registrationNumber, can be a socialSecurityNumber for a Sole proprietor
+        reference:
+          type: string
+          description: Freetext for own use. Text will be shown on report and invoice.
+        onBehalfOf:
+          type: string
+          description: Only to be used when ordering on behalf of someone else. This text will be displayed on the letter of notification.
+        language:
+          type: string
+          enum: ['SV', 'EN', 'NO', 'DA', 'FI']
+          description: Supported languages for all the description fields where i18n is supported
+          default: EN
+        
+    
+    DanishResponseModel:
+      $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/1.0.0#/components/schemas/DanishCompanyData'
+    FinnishResponseModel:
+      $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/FinnishCompanyCreditModel/1.0.0#/components/schemas/FinnishCompanyData'
+    SwedishResponseModel:
+      $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /bisnode-apis/CompanyCreditDataAPI/1.0.0
