@@ -13,7 +13,9 @@ Step by step:
 
 3. Sign in with your Bisnode-id.
 
-4. Choose Credit Information B2B API
+4. Choose Credit Information B2B API 
+    ![image](https://user-images.githubusercontent.com/54436429/66765456-41f6f500-eeac-11e9-8365-52d95203b9e8.png)
+    
     ![image](https://user-images.githubusercontent.com/54436429/66762071-8f239880-eea5-11e9-97c0-1531eff40cc7.png)
 
 5. Choose 'SUBSCRIBE TO API' and following page will be shown.
