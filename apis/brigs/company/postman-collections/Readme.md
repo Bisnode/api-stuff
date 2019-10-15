@@ -61,4 +61,4 @@ Get started with Bisnode Credit data companies API:
 
 
     
-                                                ##Happy testing!
+                                                Happy testing!
