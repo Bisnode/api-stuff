@@ -297,6 +297,3 @@ definitions:
       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/SwedishCompanyCreditModel/1.0.0#/components/schemas/SwedishCompanyData'
 schemes:
  - https
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-basePath: /bisnode-apis/CompanyCreditDataAPI/1.0.0
