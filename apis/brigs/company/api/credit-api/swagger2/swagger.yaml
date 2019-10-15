@@ -4,11 +4,11 @@ info:
   title: 'Company Risk and Credit data API'
   description: |
         Bisnode Company risk and credit data API
-        
-        Maybe some words about LON here??
+      
     
         Since we don't want to expose any personally identifiable information (PII) parameters in the URL,
         GET requests with search params is not supported.
+        
         All decimals are with max 2 fraction digits, unless otherwise stated in the description for that field.
         
         This API tries to adhere to the Bisnode Restful API guidelines, TODO - add link here when it is published on github.
