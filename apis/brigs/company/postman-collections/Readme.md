@@ -1,4 +1,4 @@
-## Folder containg postman collections for easy testing
+## Folder containing postman collections for easy testing
 
 ##
 
