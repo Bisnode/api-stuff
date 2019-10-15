@@ -14,7 +14,7 @@ info:
         This API tries to adhere to the Bisnode Restful API guidelines, TODO - add link here when it is published on github.
 security:
   - OAuth2: 
-    - riskAndCredit
+    - credit_data_companies
 paths:
   /companies:
     post:
@@ -116,7 +116,7 @@ securityDefinitions:
     authorizationUrl: 'https://login.bisnode.com/as/token.oauth2'
     tokenUrl: https://example.com/oauth/token
     scopes:
-      riskAndCredit: allows access to Bisnode risk and credit data
+      credit_data_companies: allows access to Bisnode risk and credit data
 definitions:
     SearchResponse:
       type: object
