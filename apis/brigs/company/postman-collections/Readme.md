@@ -1,4 +1,7 @@
 ## Folder containg postman collections for easy testing
+
+
+
 Bellow you find instructions about how to step by step set up a simple Postman collection that enables you to test Bisnode Credit data companies API and play around in a Bisnode sandbox environment.
 
 Get started with Bisnode Credit data companies API:
@@ -58,4 +61,4 @@ Get started with Bisnode Credit data companies API:
 
 
     
-                                                Happy testing!
+                                                ##Happy testing!
