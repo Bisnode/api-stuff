@@ -6,7 +6,7 @@ Bellow you find instructions about how to step by step set up a simple Postman c
 
 Get started with Bisnode Credit data companies API:
 
-1. Download and import Postman collection _bisnode-credit-data-companies.postman_collection.json_ into your Postman instance.
+1. Download and import Postman collection [_bisnode-credit-data-companies.postman_collection.json_](https://raw.githubusercontent.com/Bisnode/api-stuff/master/apis/brigs/company/postman-collections/bisnode-credit-data-companies.postman_collection.json) into your Postman instance.
 
 2. Go to https://developer.bisnode.com/store
 
