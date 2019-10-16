@@ -54,11 +54,12 @@ Get started with Bisnode Credit data companies API:
 
 13. Click 'Update' 
 
-14. Now is your Access Token added to the Postman collection and you can start with testing of Bisnode Credit Information API in the sandbox.
+14. Ensure that on your requests under tab 'Authorization' _Inherit auth from parent_ is set as authorization type.
+    ![image](https://user-images.githubusercontent.com/54436429/66915390-3412b280-f019-11e9-9ec9-662aef8efe75.png)
+
+15. Now is your Access Token added to the Postman collection and you can start with testing of Bisnode Credit Information API in the sandbox.
     
     ![image](https://user-images.githubusercontent.com/54436429/66764637-808bb000-eeaa-11e9-812e-c9cda243c885.png)
-
-15. Ensure that on your requests under tab 'Authorization' _Inherit auth from parent_ is set as authorization type.
 
     
                                                 Happy testing!
