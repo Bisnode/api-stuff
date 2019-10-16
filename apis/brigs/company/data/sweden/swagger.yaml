@@ -731,7 +731,10 @@ components:
         generalCompanyData:
           "$ref": "#/components/schemas/SwedishGeneralCompanyData"
         branches:
-          "$ref": "#/components/schemas/SwedishBranches"
+          type: array
+          description: A list of the branches this company have
+          items:
+            "$ref": "#/components/schemas/SwedishBranches"
         bankgiroAccounts:
           type: array
           description: A list of the bankgiro accounts this company holds.
