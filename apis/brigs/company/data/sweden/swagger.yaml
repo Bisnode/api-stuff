@@ -818,6 +818,42 @@ components:
           example: Rosenborgsgatan 4
       required: []
       title: SwedishBranchAddress
+    SwedishAlcoholServicePermits:
+      type: object
+      properties:
+        servicePlace:
+          type: string
+          description: |
+            Name of the place where this  
+            
+            TODO - should this be called name instead
+        address:
+          type: string
+          description: Address to the service place
+        permitHolder:
+          type: string
+          description: Name of the permit holder
+          example: The Winery Hotel AB
+        type:
+          type: string
+          description: Textual description of the type of permit
+          example: Servering till allmänheten
+        servingType:
+          type: string
+          description: 
+          example: Året runt
+        alcoholBeverageToThePublic:
+          type: string
+          description: |
+            TODO - what value can we have here
+        validFrom:
+          type: string
+          format: date
+          example: 2019-01-01
+          description: From when is this permit valid
+        status:
+          type: string
+          description: TODO - what statuses can we have here
     SwedishGeneralCompanyData:
       type: object
       properties:
