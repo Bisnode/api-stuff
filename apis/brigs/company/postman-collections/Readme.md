@@ -58,7 +58,7 @@ Get started with Bisnode Credit data companies API:
     
     ![image](https://user-images.githubusercontent.com/54436429/66764637-808bb000-eeaa-11e9-812e-c9cda243c885.png)
 
-
+15. Ensure that on your requests under tab 'Authorization' _Inherit auth from parent_ is set as authorization type.
 
     
                                                 Happy testing!
