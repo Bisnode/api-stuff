@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c6886239-fb27-41d9-ad74-a961d1e2b0ca",
+		"_postman_id": "66825373-1419-4791-9c3f-980c27a45e15",
 		"name": "bisnode-credit-data-companies",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -22,7 +22,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"5561234561\",\n\t\"country\":\"SE\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -62,7 +62,7 @@
 					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"SE\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -102,7 +102,7 @@
 					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"DK\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -142,7 +142,7 @@
 					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"FI\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -182,7 +182,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"5561234561\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/se",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/se?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -223,7 +223,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"23456789\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/dk",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/dk?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -264,7 +264,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"112233445\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/fi",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/fi?",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
