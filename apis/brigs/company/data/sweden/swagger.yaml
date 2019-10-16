@@ -861,12 +861,11 @@ components:
       properties:
         code:
           type: string
-          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'PARTNERSHIP', 'OTHER']
           description: |
             LIMITED_COMPANY - https://bolagsverket.se/en/bus/business/limited/2.1144
             SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://bolagsverket.se/en/bus/business/sole
-            TRADING_PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400
-            LIMITED_PARTNERSHIP - https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
+            PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400 and https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
             OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
         description:
           type: string
