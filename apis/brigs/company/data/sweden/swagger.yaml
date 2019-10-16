@@ -790,9 +790,6 @@ components:
         headQuarter:
           type: boolean
           description: 'True if this branch is the headquarter'
-        bankgiroAddress:
-          type: string
-          description: The registered address for the bankgiro account.
         address:
           "$ref": "#/components/schemas/BranchAddress"
         officeNumber:
