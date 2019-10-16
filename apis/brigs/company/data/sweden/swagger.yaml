@@ -812,6 +812,10 @@ components:
         town:
           type: string
           descripion: town
+        street:
+          type: string
+          description: street address
+          example: Rosenborgsgatan 4
       required: []
       title: SwedishBranchAddress
     SwedishGeneralCompanyData:
