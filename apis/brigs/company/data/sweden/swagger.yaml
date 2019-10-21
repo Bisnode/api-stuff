@@ -521,8 +521,8 @@ components:
       properties:
         date:
           type: string
-          format: date
-          description: Date when the claim was submitted to authorities ???
+          description: Year and weeknumber representing the time of this debtbalance
+          example: 2019W42
         privateClaimsCount:
           type: integer
           format: int64
@@ -731,10 +731,7 @@ components:
         generalCompanyData:
           "$ref": "#/components/schemas/SwedishGeneralCompanyData"
         branches:
-          type: array
-          description: A list of the branches this company have
-          items:
-            "$ref": "#/components/schemas/SwedishBranches"
+          "$ref": "#/components/schemas/SwedishBranches"
         bankgiroAccounts:
           type: array
           description: A list of the bankgiro accounts this company holds.
@@ -753,6 +750,10 @@ components:
         valid:
           type: boolean
           description: 'True if the bankgiro account is currently active'
+        name:
+          type: string
+          description: name of the account owner
+          example: Bisnode Kredit AB
       required: []
       title: SwedishBankgiroAccount
     SwedishBankAddress:
@@ -833,14 +834,14 @@ components:
         permitHolder:
           type: string
           description: Name of the permit holder
-          example: The Winery Hotel AB
+          example: The Company AB
         type:
           type: string
           description: Textual description of the type of permit
           example: Servering till allmänheten
         servingType:
           type: string
-          description: 
+          description: TODO - what do we have here?s
           example: Året runt
         alcoholBeverageToThePublic:
           type: string
@@ -892,7 +893,7 @@ components:
         officeType:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
-          description: Office location, TODO -add more info
+          description: Office location, TODO - add more info
       required: []
       title: SwedishGeneralCompanyData
     SwedishLegalForm:
