@@ -9,6 +9,8 @@ info:
   description: |
     Common components for Company Search REST APIs
   version: '1.0.0'
+  contact:
+    email: api-bisnode@bisnode.com
 
 components:
     
