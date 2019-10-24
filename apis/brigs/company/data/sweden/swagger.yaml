@@ -547,7 +547,6 @@ components:
       properties:
         date:
           type: string
-          format: date
           description: year and week number when the debt balance was valid.
           example: '2019-W33'
         balance:
