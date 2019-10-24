@@ -2004,8 +2004,10 @@ components:
           description: Date when this company went bankrupt.
         events:
           "$ref": "#/components/schemas/SwedishEvents"
-        trustee:
-          "$ref": "#/components/schemas/SwedishTrustee"
+        trustees:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SwedishTrustee"
     SwedishTrustee:
       type: object
       description: Name and contact-info to the person/company handling the bankruptcy
