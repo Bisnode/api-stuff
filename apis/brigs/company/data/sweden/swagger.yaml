@@ -572,7 +572,7 @@ components:
     SwedishEvents:
       type: array
       title: SwedishEvents
-      description: Newest events come first. Max xx events. TODO - what is max ???
+      description: Newest events come first.
       items:
         "$ref": "#/components/schemas/SwedishEvent"
     SwedishOwnership:
