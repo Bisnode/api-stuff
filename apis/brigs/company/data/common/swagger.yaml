@@ -449,12 +449,17 @@ components:
       properties:
         shareCapital:
           "$ref": "#/components/schemas/ShareCapital"
-      required: []
       title: Capital
+      required: []
     ShareCapital:
       type: object
       description: Share capital
       properties:
+        date:
+          type: string
+          format: date
+          example: 2019-04-04
+          description: Date when the amount was last changed.
         amount:
           "$ref": '#/components/schemas/Amount'
       required: []
