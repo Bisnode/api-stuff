@@ -553,6 +553,21 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
       title: SwedishHistoricalDebtBalance
+    SwedishSpecialEvent:
+      type: object
+      description: Event as received from authority.
+      properties:
+        date:
+          type: string
+          format: date
+          description: Date when the event occured
+          example: '2019-03-03'
+        description:
+          type: string
+          description: A textual description of the event, can be in local language
+        eventCode: 
+          "$ref": "#/components/schemas/SwedishReportCode"
+      title: SwedishSpecialEvent
     SwedishEvent:
       type: object
       description: Event as received from authority.
@@ -2005,7 +2020,9 @@ components:
           format: date
           description: Date when this company went bankrupt.
         events:
-          "$ref": "#/components/schemas/SwedishEvents"
+          type: array
+          items:
+            "$ref": "#/components/schemas/SwedishSpecialEvent"
         trustees:
           type: array
           items:
