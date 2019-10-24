@@ -197,7 +197,7 @@ definitions:
         href: 
           type: string
           description: A valid URI
-          example: 'https://api.bisnode.com/company-search/v1/companies?param1=xxxx'
+          example: 'https://api.bisnode.com/credit-data-companies/v1/companies?param1=xxxx'
       title: Link
     Links:
       type: object
