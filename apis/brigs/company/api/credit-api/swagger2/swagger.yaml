@@ -206,13 +206,13 @@ definitions:
       example: |
         '{
           "next": {
-            "href": "https://api.bisnode.com/company-search/v1/companies?token=okjoqedqasd"
+            "href": "https://api.bisnode.com/credit-data-companies/v1/companies?token=okjoqedqasd"
           },
           "prev": {
-            "href": "https://api.bisnode.com/company-search/v1/companies?token=sof2nkn2adz"
+            "href": "https://api.bisnode.com/credit-data-companies/v1/companies?token=sof2nkn2adz"
           },
           "self": {
-            "href": "https://api.bisnode.com/company-search/v1/companies?token=xcxxcx"
+            "href": "https://api.bisnode.com/credit-data-companies/v1/companies?token=xcxxcx"
           }
         }'
       properties:
