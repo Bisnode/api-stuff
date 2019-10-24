@@ -2023,9 +2023,7 @@ components:
         phoneNumber:
          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PhoneNumber"
         address:
-          type: string
-          description: The address to the person/company assigned to handle this bankruptcy
-        example: 10390, Stockholm
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress'
     SwedishNotesAndOtherInformation:
       type: object
       description: |
