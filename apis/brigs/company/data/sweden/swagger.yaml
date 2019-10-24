@@ -1113,7 +1113,7 @@ components:
           example: 12
         currency:
           type: string
-          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217 . Applies for all fields in this block and the ones below containg monetary values.
           example: SEK
         currentRatio:
           type: number
