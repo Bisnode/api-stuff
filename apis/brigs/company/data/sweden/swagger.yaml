@@ -2004,7 +2004,7 @@ components:
           format: date
           description: Date when this company went bankrupt.
         events:
-          "$ref": "#/components/schemas/SwedishEvent"
+          "$ref": "#/components/schemas/SwedishEvents"
         trustee:
           "$ref": "#/components/schemas/SwedishTrustee"
     SwedishTrustee:
