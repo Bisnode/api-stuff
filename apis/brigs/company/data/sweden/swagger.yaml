@@ -565,8 +565,10 @@ components:
         description:
           type: string
           description: A textual description of the event, can be in local language
-        eventCode: 
-          "$ref": "#/components/schemas/SwedishReportCode"
+        type: 
+          type: string
+          example: Bolagsverksärende
+          description: The type of the event. A short description in local language
       title: SwedishEvent
     SwedishEvents:
       type: array
