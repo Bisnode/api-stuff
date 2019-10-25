@@ -194,7 +194,7 @@ components:
             Name of the creditor
     FamilyTree:
       type: object
-      description: A view of the owner structure. TODO - will we cap data???
+      description: A view of the owner structure.
       properties:
         ultimateParent:
           "$ref": "#/components/schemas/FamilyTreeCompany"
