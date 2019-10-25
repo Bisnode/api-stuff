@@ -195,22 +195,11 @@ components:
     Company:
       type: object
       properties:
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-        dunsNumber:
-          type: string
-          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
-
+        
+        companies:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Company"
       required: []
       title: Company
     FamilyTree:
