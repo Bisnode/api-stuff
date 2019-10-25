@@ -192,7 +192,7 @@ components:
           type: string
           description: |
             Name of the creditor
-    CompanyModel:
+    Company:
       type: object
       properties:
         registrationNumber:
@@ -213,15 +213,15 @@ components:
         companies:
           type: array
           items:
-            "$ref": "#/components/schemas/CompanyModel"
+            "$ref": "#/components/schemas/Company"
       required: []
-      title: CompanyModel
+      title: Company
     FamilyTree:
       type: object
       description: A view of the owner structure.
       properties:
         ultimateParent:
-          "$ref": "#/components/schemas/CompanyModel"
+          "$ref": "#/components/schemas/Company"
       required: []
       title: FamilyTree
     ParentCompanies:
