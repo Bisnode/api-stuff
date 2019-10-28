@@ -1844,7 +1844,7 @@ components:
           "$ref": "#/components/schemas/DanishTrustee"
     DanishTrustee:
       type: object
-      description: Name and contact-info to the person/firm handling the bankruptcy
+      description: The bankruptcy estate will be administered by a person appointed as trustee. The bankruptcy court appoints the trustee (typically a lawyer)
       properties:
         companyName:
           type: string
