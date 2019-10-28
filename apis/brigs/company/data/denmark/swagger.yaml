@@ -771,8 +771,7 @@ components:
           description: |
             LIMITED_COMPANY - https://erhvervsstyrelsen.dk/selskaber
             SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://erhvervsstyrelsen.dk/personligt-ejede-virksomheder
-            TRADING_PARTNERSHIP - https://erhvervsstyrelsen.dk/interessentskaber
-            LIMITED_PARTNERSHIP - https://erhvervsstyrelsen.dk/kommanditselskaber
+            PARTNERSHIP - Trading partnership - https://erhvervsstyrelsen.dk/interessentskaber. Limited partnership - https://erhvervsstyrelsen.dk/kommanditselskaber
             OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
         description:
           type: string
