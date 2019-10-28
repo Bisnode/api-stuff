@@ -722,7 +722,7 @@ components:
         street:
           type: string
           description: street address
-          example: Rosenborgsgatan 4
+          example: Gyngemose Parkvej 50
       required: []
       title: DanishBranchAddress
     DanishHistoricalStreetAddress:
