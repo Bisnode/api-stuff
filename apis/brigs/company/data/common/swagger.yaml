@@ -441,6 +441,9 @@ components:
           type: string
           format: date
           description: Date when this person/entity resigned from this position
+        description:
+          type: string
+          description: A textual description of the function
       required: []
       title: HistoricalPosition
     Capital:
