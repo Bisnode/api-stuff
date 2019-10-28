@@ -201,6 +201,10 @@ components:
         dunsNumber:
           type: string
           description: For foreign companies a duns-number will be supplied instead of the registrationNumber
+        name:
+          description: Name of this company
+          example: : Bisnode AB
+          type: string
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
