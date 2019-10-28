@@ -221,7 +221,7 @@ components:
       description: A view of the owner structure.
       properties:
         ultimateParent:
-          "$ref": "#/components/schemas/Company"
+          type: string
       required: []
       title: FamilyTree
     ParentCompanies:
