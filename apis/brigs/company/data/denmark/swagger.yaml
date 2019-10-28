@@ -767,7 +767,7 @@ components:
       properties:
         code:
           type: string
-          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'PARTNERSHIP', 'OTHER']
           description: |
             LIMITED_COMPANY - https://erhvervsstyrelsen.dk/selskaber
             SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://erhvervsstyrelsen.dk/personligt-ejede-virksomheder
