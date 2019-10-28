@@ -1,6 +1,5 @@
 # OpenAPI version identifier - required for OpenAPI 3.0 domains
 openapi: 3.0.0
-
 #######################
 # Optional info section
 #######################
@@ -9,11 +8,11 @@ info:
   description: | 
     Company model for Danish company credit data. The same model is used for all legalforms.
     
-      Most of the descriptions for the financial items are taken from www.investopedia.com.
+      Most of the descriptions for the financial items are taken from www.investopedia.com. 
   
   version: "1.0.0"
   contact:
-    email: team-ninjas@bisnode.com
+    email: api-bisnode@bisnode.com
 
 components:
   ####################
@@ -673,59 +672,8 @@ components:
           "$ref": "#/components/schemas/DanishRegistrationInformation"
         generalCompanyData:
           "$ref": "#/components/schemas/DanishGeneralCompanyData"
-        branches:
-          "$ref": "#/components/schemas/DanishBranches"
       required: []
       title: DanishCompanyInformation
-    DanishBranches:
-      type: object
-      description: 
-      properties:
-        count:
-          type: integer
-          format: int32
-          description: Total number of branches this company have.
-        branches:
-          type: array
-          description: TODO - How many items can we have here?
-          items:
-            "$ref": "#/components/schemas/DanishBranch"
-      required: []
-      title: DanishBranches
-    DanishBranch:
-      type: object
-      description: What is a branch? https://bolagsverket.se/en/bus/business/branch/some-typical-features-of-a-branch-1.12787
-      properties:
-        name:
-          type: string
-        headQuarter:
-          type: boolean
-          description: 'True if this branch is the headquarter'
-        bankgiroAddress:
-          type: string
-          description: The registered address for the bankgiro account.
-        address:
-          "$ref": "#/components/schemas/DanishBranchAddress"
-        officeNumber:
-          type: string
-          description: |
-            Branch office number. Unique id for this branch
-        dunsNumber:
-          type: string
-      required: []
-      title: DanishBranch
-    DanishBranchAddress:
-      type: object
-      properties:
-        postalCode:
-          type: string
-          description: postalcode
-        town:
-          type: string
-          descripion: town
-      required: []
-      title: DanishBranchAddress
-    
     DanishHistoricalStreetAddress:
       type: object
       properties:
@@ -762,7 +710,6 @@ components:
           description: Office location, TODO -add more info
       required: []
       title: DanishGeneralCompanyData
-    
     DanishLegalForm:
       type: object
       description: The company's legalform
@@ -771,10 +718,10 @@ components:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
           description: |
-            LIMITED_COMPANY - https://bolagsverket.se/en/bus/business/limited/2.1144
-            SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://bolagsverket.se/en/bus/business/sole
-            TRADING_PARTNERSHIP - https://bolagsverket.se/en/bus/business/trading/about-trading-partnerships-1.10400
-            LIMITED_PARTNERSHIP - https://bolagsverket.se/en/bus/business/limited-partnership/about-limited-partnerships-1.10429
+            LIMITED_COMPANY - https://erhvervsstyrelsen.dk/selskaber
+            SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://erhvervsstyrelsen.dk/personligt-ejede-virksomheder
+            TRADING_PARTNERSHIP - https://erhvervsstyrelsen.dk/interessentskaber
+            LIMITED_PARTNERSHIP - https://erhvervsstyrelsen.dk/kommanditselskaber
             OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
         description:
           type: string
