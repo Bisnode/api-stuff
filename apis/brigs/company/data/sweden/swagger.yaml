@@ -601,9 +601,6 @@ components:
         sisterCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/SisterCompanies"
         familyTree:
-          type: object
-          description: The top company - Ultimate parent
-          properties:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/FamilyTree"
       required: []
       title: SwedishOwnership
