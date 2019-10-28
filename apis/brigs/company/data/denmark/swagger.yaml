@@ -8,7 +8,7 @@ info:
   description: | 
     Company model for Danish company credit data. The same model is used for all legalforms.
     
-      Most of the descriptions for the financial items are taken from www.investopedia.com. 
+      Most of the descriptions for the financial items are taken from www.investopedia.com.
   
   version: "1.0.0"
   contact:
@@ -672,8 +672,59 @@ components:
           "$ref": "#/components/schemas/DanishRegistrationInformation"
         generalCompanyData:
           "$ref": "#/components/schemas/DanishGeneralCompanyData"
+        branches:
+          "$ref": "#/components/schemas/DanishBranches"
       required: []
       title: DanishCompanyInformation
+    DanishBranches:
+      type: object
+      description: 
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of branches this company have.
+        branches:
+          type: array
+          description: TODO - How many items can we have here???
+          items:
+            "$ref": "#/components/schemas/DanishBranch"
+      required: []
+      title: DanishBranches
+    DanishBranch:
+      type: object
+      description: What is a branch? 
+      properties:
+        name:
+          type: string
+        headQuarter:
+          type: boolean
+          description: 'True if this branch is the headquarter'
+        address:
+          "$ref": "#/components/schemas/DanishBranchAddress"
+        officeNumber:
+          type: string
+          description: |
+            Branch office number. Unique id for this branch
+        dunsNumber:
+          type: string
+      required: []
+      title: DanishBranch
+    DanishBranchAddress:
+      type: object
+      properties:
+        postalCode:
+          type: string
+          description: postalcode
+        town:
+          type: string
+          descripion: town
+        street:
+          type: string
+          description: street address
+          example: Rosenborgsgatan 4
+      required: []
+      title: DanishBranchAddress
     DanishHistoricalStreetAddress:
       type: object
       properties:
