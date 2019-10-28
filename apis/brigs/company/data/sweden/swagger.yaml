@@ -722,6 +722,10 @@ components:
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
+        authorizedSignatory:
+          type: string
+          description: A description on which officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement. May be in local language.
+          
       required: []
       title: SwedishBoardMembers
     SwedishCompanyInformation:
