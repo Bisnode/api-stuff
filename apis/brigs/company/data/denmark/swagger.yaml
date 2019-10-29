@@ -749,11 +749,10 @@ components:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         export:
-          type: string
+          type: boolean
           description: Is an export company
         import:
-          type: string
-          enum: ['YES', 'NO']
+          type: boolean
           description: Is an import company
         officeType:
           type: string
