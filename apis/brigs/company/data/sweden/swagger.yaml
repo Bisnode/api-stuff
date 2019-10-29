@@ -1027,9 +1027,9 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
-          format: integer
+          format: date
           description: |
-            TODO - date when ??
+            Date of the floating charge
       required: []
       title: SwedishFloatingCharge
     SwedishLiquidationClaim:
