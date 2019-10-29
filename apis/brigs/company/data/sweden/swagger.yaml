@@ -997,11 +997,11 @@ components:
     SwedishFinance:
       type: object
       properties:
-        chattelMortgages:
+        floatingCharges:
           type: array
           description: "TODO - how many can we get here ???"
           items:
-            "$ref": "#/components/schemas/SwedishChattelMortgage"
+            "$ref": "#/components/schemas/SwedishFloatingCharge"
         claimsOutOfBusiness:
           type: array
           description: "TODO - how many can we get here ???"
@@ -1017,7 +1017,7 @@ components:
           "$ref": "#/components/schemas/SwedishPropertyHoldings"
       required: []
       title: SwedishFinance
-    SwedishChattelMortgage:
+    SwedishFloatingCharge:
       type: object
       description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
       properties:
@@ -1031,7 +1031,7 @@ components:
           description: |
             TODO - date when ??
       required: []
-      title: SwedishChattelMortgage
+      title: SwedishFloatingCharge
     SwedishLiquidationClaim:
       type: object
       description: |
