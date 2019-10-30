@@ -624,6 +624,28 @@ components:
           example: Rosenborgsgatan 4-6
       required: []
       title: StreetAddress
+    HistoricalStreetAddress:
+      type: object
+      properties:
+        town:
+          type: string
+          description: town
+          example: Stockholm
+        postalCode:
+          type: string
+          description: Postalcode
+          example: 19637
+        street:
+          type: string
+          description: Street address
+          example: Rosenborgsgatan 4-6
+        date:
+          type: string
+          format: date
+          description: The date when address change was registered.
+          example: 2013-04-15
+      required: []
+      title: HistoricalStreetAddress
     Identifiers:
       type: object
       description: A set of identifiers for this company.
