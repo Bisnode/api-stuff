@@ -688,7 +688,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
         visitingAddress:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
-        historicalAdress:
+        historicalAddress:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"   
       required: []
       title: DanishContactPoints
