@@ -1015,8 +1015,28 @@ components:
             "$ref": "#/components/schemas/SwedishPayrollTax"
         propertyHoldings:
           "$ref": "#/components/schemas/SwedishPropertyHoldings"
+        employersContributions:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SwedishEmployersContribution"
       required: []
       title: SwedishFinance
+    SwedishEmployersContribution:
+      type: object
+      description: |
+        
+      properties:
+        date:
+          type: string
+          format: date
+          description: Date when the contribution was made
+        agreedAmount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
+        referenceNumber:
+          type: string
+          description: ??
+          example: 122001212
+      title: SwedishEmployersContribution
     SwedishFloatingCharge:
       type: object
       description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
@@ -1883,9 +1903,7 @@ components:
       title: SwedishPayrollTax
     SwedishPropertyHoldings:
       type: object
-      description: |
-        TODO - how many can we get here ???
-        
+      description: All the current and assesed property holdings
       properties:
         ownedPartOfTaxAssessment:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
