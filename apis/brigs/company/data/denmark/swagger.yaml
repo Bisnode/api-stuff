@@ -676,6 +676,22 @@ components:
           "$ref": "#/components/schemas/DanishBranches"
       required: []
       title: DanishCompanyInformation
+    DanishContactPoints:
+      type: object
+      description: Methods for getting in contact with this company.
+      properties:
+        electronicContactPoints:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/ElectronicContactPoints"
+        postalAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
+        registeredAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
+        visitingAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
+        historicalAdress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"   
+      required: []
+      title: DanishContactPoints
     DanishBranches:
       type: object
       description: 
