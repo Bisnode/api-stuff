@@ -491,6 +491,8 @@ components:
             "$ref": "#/components/schemas/Name"
         registeredName:
           "$ref": "#/components/schemas/Name"
+        popularName:
+          "$ref": "#/components/schemas/Name"
       required: []
       title: CompanyName
     Name:
