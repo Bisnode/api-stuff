@@ -1111,8 +1111,8 @@ components:
           description: Textual description of the auditorsReservationCode
         statementDate:
           type: string
-          format: date
-          description: Date of the auditors reservation/comment.
+          description: Date of the auditors reservation/comment. year and month
+          example: 2019-11
       required: []
       title: SwedishFinancialStatementsAuditorsReservation
     SwedishFinancialStatementKeyFigure:
