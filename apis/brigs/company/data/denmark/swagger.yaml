@@ -689,7 +689,10 @@ components:
         visitingAddress:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"
         historicalAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"   
+          type: array
+          description: A list of historical addresses, does not include the current address.
+          items:
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/StreetAddress"   
       required: []
       title: DanishContactPoints
     DanishBranches:
