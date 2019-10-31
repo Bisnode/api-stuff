@@ -122,36 +122,11 @@ components:
           type: integer
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ?
-        paymentRemarks:
-          type: array
-          description: A list of remarks, most recent ones comes first. TODO - Max size ?
-          items:
-            "$ref": "#/components/schemas/DanishPaymentRemark"
         remarksOnPaymentsRegistered:
           type: boolean
           description: 'True if this company has registered remarks in DBR register'
       required: []
       title: DanishPaymentRemarks
-    DanishPaymentRemark:
-      type: object
-      description: Remarks on payments
-      properties:
-        amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date of remark
-        creditor:
-         "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Creditor"
-        type:
-          "$ref": "#/components/schemas/DanishReportCode"
-        description:
-          type: string
-          description: A textual description of the event type
-          example: FISSION - EXPIRED
-      required: []
-      title: DanishPaymentRemark
     DanishReportCode:
       type: object
       description: Common codes
