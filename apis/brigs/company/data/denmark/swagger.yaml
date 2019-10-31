@@ -32,8 +32,6 @@ components:
           "$ref": "#/components/schemas/DanishFinance"
         ownership:
           "$ref": "#/components/schemas/DanishOwnership"
-        events:
-          "$ref": "#/components/schemas/DanishEvents"
       title: DanishCompanyData
       description: This is the root object defining which structures reside under the root path.
     DanishRisk:
@@ -486,27 +484,6 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
       title: DanishHistoricalDebtBalance
-    DanishEvent:
-      type: object
-      description: Event as received from authority.
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when the event occured
-          example: '2019-03-03'
-        description:
-          type: string
-          description: A textual description of the event, can be in local language
-        eventCode: 
-          "$ref": "#/components/schemas/DanishReportCode"
-      title: DanishEvent
-    DanishEvents:
-      type: array
-      title: Events
-      description: Newest events come first. Max xx events. TODO - what is max ?
-      items:
-        "$ref": "#/components/schemas/DanishEvent"
     DanishOwnership:
       type: object
       properties:
