@@ -122,7 +122,7 @@ components:
           type: integer
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ?
-        remarksOnPaymentsRegistered:
+        remarksOnPaymentsRegisteredInDBR:
           type: boolean
           description: 'True if this company has registered remarks in DBR register'
       required: []
