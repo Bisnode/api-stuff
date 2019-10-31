@@ -40,7 +40,7 @@ components:
         Risk section.
       properties:
         creditRatings:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/DanishCreditRatings"
+          "$ref": "#/components/schemas/DanishCreditRatings"
         ratingCreditLimits:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
