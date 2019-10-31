@@ -65,7 +65,7 @@ components:
           items:
             "$ref": "#/components/schemas/DanishCreditRating"
       required: []
-      title: CreditRatings
+      title: DanishCreditRatings
     DanishCreditRating:
       type: object
       description: 'Bisnode rating model.'
@@ -86,21 +86,21 @@ components:
           type: string
           description: Textual description of the rating. 
         partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
+          "$ref": "#/components/schemas/DanishPartJudgements"
       required: []
       title: DanishCreditRating
-    PartJudgements:
+    DanishPartJudgements:
       type: object
-      description: 'The rating is based on 3 PartJudgements: Finance, Ownership and HistoryOperation.''
+      description: 'The rating is based on 3 PartJudgements: Finance, Ownership and HistoryOperation.'
       properties:
         finance:
-          "$ref": "#/components/schemas/PartJudgement"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PartJudgement"
         historyOperation:
-          "$ref": "#/components/schemas/PartJudgement"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PartJudgement"
         ownership:
-          "$ref": "#/components/schemas/PartJudgement"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PartJudgement"
       required: []
-      title: PartJudgements
+      title: DanishPartJudgements
     DanishFinancialCommitments:
       type: object
       description: |
