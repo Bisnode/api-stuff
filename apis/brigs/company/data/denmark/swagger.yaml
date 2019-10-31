@@ -661,21 +661,7 @@ components:
         industryCodeSet:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
-          type: object
-          properties:
-            current:
-              "$ref": "#/components/schemas/DanishLegalForm"
-            historical:
-              type: array
-              description: Danish Historical Legal Forms
-              items:
-                date: 
-                  type: string
-                  format: date
-                  description: Date when the legal form has been changed
-                legalForm:
-                  "$ref": "#/components/schemas/DanishLegalForm"
-          title: DanishLegalForm
+          "$ref": "#/components/schemas/DanishLegalForms"  
         status:
           "$ref": "#/components/schemas/DanishStatus"
         registrationInformation:
@@ -789,6 +775,29 @@ components:
           description: Office location, TODO -add more info
       required: []
       title: DanishGeneralCompanyData
+    DanishLegalForms:
+      type: object
+      description: The company's legalform
+      properties:
+        current:
+          "$ref": "#/components/schemas/DanishLegalForm"
+        historical:
+          type: array
+          items:
+            "$ref": "#/components/schemas/DanishHistoricalLegalForm"
+      title: DanishLegalForms
+    DanishHistoricalLegalForm:
+      type: object
+      description: The company's historical legalforms
+      properties:
+         date: 
+          type: string
+          format: date
+          description: Date when the legal form has been changed
+      legalForm:
+        "$ref": "#/components/schemas/DanishLegalForm"
+      required: []
+      title: DanishHistoricalLegalForm
     DanishLegalForm:
       type: object
       description: The company's legalform
@@ -923,7 +932,6 @@ components:
             85  Municipality Office  
             86  Church  
             99  Other Undertaking  
-
       required: []
       title: DanishLegalForm
     DanishRegistrationInformation:
