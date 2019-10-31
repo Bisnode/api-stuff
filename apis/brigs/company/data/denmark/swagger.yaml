@@ -661,11 +661,21 @@ components:
         industryCodeSet:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
-          "$ref": "#/components/schemas/DanishLegalForm"
-        historicalLegalForm:
-          type: array
-          items:
-            "$ref": "#/components/schemas/DanishHistoricalLegalForm"  
+          type: object
+          description: Danish Legal Form
+          properties:
+            current:
+              "$ref": "#/components/schemas/DanishLegalForm"
+            historical:
+              type: array
+              description: Danish Historical Legal Forms
+              items:
+                date: 
+                  type: string
+                  format: date
+                  description: Date when the legal form has been changed
+                legalForm:
+                  "$ref": "#/components/schemas/DanishLegalForm"
         status:
           "$ref": "#/components/schemas/DanishStatus"
         registrationInformation:
@@ -916,18 +926,6 @@ components:
 
       required: []
       title: DanishLegalForm
-    DanishHistoricalLegalForm:
-      type: object
-      description: Historical company legal forms
-      properties:
-        date: 
-          type: string
-          format: date
-          description: Date when the legal form has been changed
-        legalForm:
-          "$ref": "#/components/schemas/DanishLegalForm"
-      required: []
-      title: DanishHistoricalLegalForm
     DanishRegistrationInformation:
       type: object
       description: TODO - what is the difference between these 2 dates
