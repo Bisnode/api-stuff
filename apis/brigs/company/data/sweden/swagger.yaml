@@ -1146,10 +1146,10 @@ components:
           description: |
             Calculated equity in percent of the total assets. ???
         growthInTurnover:
-          type: integer
-          format: int64
+          type: number
+          format: double
           description: |
-            Growth in turnover, compared to the result from the previous statement.
+            Growth in turnover, compared to the result from the previous statement. In percent.
         interestCoverage:
           type: number
           format: double
@@ -2140,12 +2140,12 @@ components:
             Social costs for all employees, includes pension costs, payroll overhead and similar.
             
         severancePay:
-          type: integer
-          format: int64
+          type: string
+          enum: ['NO', 'YES', 'NOT_CLEAR', 'RESERVE']
           description: |
             Severance pay is the compensation and/or benefits an employer provides to an employee after employment is over. 
             
-            Employers offer packages to employees who are laid off, whose jobs are eliminated because of downsizing, or who retire. Some employees who resign or are fired may also receive a severance package.
+            TODO - what does RESERVE mean?
         currentAccountCredit:
           type: integer
           format: int64
