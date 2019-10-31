@@ -127,6 +127,8 @@ components:
           description: A list of remarks, most recent ones comes first. TODO - Max size ?
           items:
             "$ref": "#/components/schemas/DanishPaymentRemark"
+        remarksOnPaymentsRegisteredInDBR:
+          type: boolean
       required: []
       title: DanishPaymentRemarks
     DanishPaymentRemark:
