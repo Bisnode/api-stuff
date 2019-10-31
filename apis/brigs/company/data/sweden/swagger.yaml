@@ -1216,17 +1216,17 @@ components:
           description: |
             Capital turnover is measured as profit/loss in relation to assets.
         grossMargin:
-          type: number
-          format: double
+          type: integer
+          format: int64
           description: |
-            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
-          example: 33.7
+            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. 
+          example: 33300000
         netMargin:
-          type: number
-          format: double
+          type: integer
+          format: int64
           description: |
-            The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage. 
-          example: 23.4
+            The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. 
+          example: 23333000
         netWorth:
           type: integer
           format: int64
