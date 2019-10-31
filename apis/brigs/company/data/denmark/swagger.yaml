@@ -784,25 +784,17 @@ components:
         historical:
           type: array
           items:
-            "$ref": "#/components/schemas/DanishHistoricalLegalForm"
+            "$ref": "#/components/schemas/DanishLegalForm"
       required: []
       title: DanishLegalForms
-    DanishHistoricalLegalForm:
+    DanishLegalForm:
       type: object
-      description: The company's historical legalforms
+      description: The company's legalform
       properties:
         date: 
           type: string
           format: date
           description: Date when the legal form has been changed
-        legalForm:
-          "$ref": "#/components/schemas/DanishLegalForm"
-      required: []
-      title: DanishHistoricalLegalForm
-    DanishLegalForm:
-      type: object
-      description: The company's legalform
-      properties:
         code:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'PARTNERSHIP', 'OTHER']
