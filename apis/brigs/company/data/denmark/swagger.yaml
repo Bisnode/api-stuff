@@ -40,7 +40,7 @@ components:
         Risk section.
       properties:
         creditRatings:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/DanishCreditRatings"
         ratingCreditLimits:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
@@ -53,6 +53,54 @@ components:
           "$ref": "#/components/schemas/DanishBankruptcy"
       required: []
       title: DanishRisk
+    DanishCreditRatings:
+      type: object
+      description: Current and historical ratings
+      properties:
+        currentCreditRating:
+          "$ref": "#/components/schemas/DanishCreditRating"
+        historicalCreditRatings:
+          type: array
+          description: Max 99 items.
+          items:
+            "$ref": "#/components/schemas/DanishCreditRating"
+      required: []
+      title: CreditRatings
+    DanishCreditRating:
+      type: object
+      description: 'Bisnode rating model.'
+      properties:
+        annualReportDate:
+          type: string
+          description: Date of the annual report data the rating was calculated from. Comes in the format 2015-12
+          example: 2015-12
+        date:
+          type: string
+          format: date
+          description: Date when the rating was calculated.
+          example: 2018-01-02
+        code:
+          type: string
+          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
+        description:
+          type: string
+          description: Textual description of the rating. 
+        partJudgements:
+          "$ref": "#/components/schemas/PartJudgements"
+      required: []
+      title: DanishCreditRating
+    PartJudgements:
+      type: object
+      description: 'The rating is based on 3 PartJudgements: Finance, Ownership and HistoryOperation.''
+      properties:
+        finance:
+          "$ref": "#/components/schemas/PartJudgement"
+        historyOperation:
+          "$ref": "#/components/schemas/PartJudgement"
+        ownership:
+          "$ref": "#/components/schemas/PartJudgement"
+      required: []
+      title: PartJudgements
     DanishFinancialCommitments:
       type: object
       description: |
