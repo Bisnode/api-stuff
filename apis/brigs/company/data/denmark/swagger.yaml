@@ -675,6 +675,7 @@ components:
                   description: Date when the legal form has been changed
                 legalForm:
                   "$ref": "#/components/schemas/DanishLegalForm"
+          title: DanishLegalForm
         status:
           "$ref": "#/components/schemas/DanishStatus"
         registrationInformation:
