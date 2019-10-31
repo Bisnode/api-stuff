@@ -1055,10 +1055,12 @@ components:
           "$ref": "#/components/schemas/SwedishGroupAccount"
         auditorsReservation:
           type: array
+          description: "The reservations from the latest 5 statements will be included."
           items:
             "$ref": "#/components/schemas/SwedishFinancialStatementsAuditorsReservation"
         keyFigures:
           type: array
+          description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/SwedishFinancialStatementKeyFigure"
         industryKeyFigures:
