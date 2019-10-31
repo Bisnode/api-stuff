@@ -781,21 +781,15 @@ components:
       properties:
         current:
           "$ref": "#/components/schemas/DanishLegalForm"
-        historical:
-          type: array
-          items:
-            "$ref": "#/components/schemas/DanishHistoricalLegalForm"
+      required: []
       title: DanishLegalForms
+      
     DanishHistoricalLegalForm:
       type: object
       description: The company's historical legalforms
       properties:
-         date: 
-          type: string
-          format: date
-          description: Date when the legal form has been changed
-      legalForm:
-        "$ref": "#/components/schemas/DanishLegalForm"
+        legalForm:
+          "$ref": "#/components/schemas/DanishLegalForm"
       required: []
       title: DanishHistoricalLegalForm
     DanishLegalForm:
