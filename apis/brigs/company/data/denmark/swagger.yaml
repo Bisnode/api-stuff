@@ -122,8 +122,6 @@ components:
           type: integer
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ?
-        amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first. TODO - Max size ?
