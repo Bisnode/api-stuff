@@ -627,6 +627,9 @@ components:
         dunsNumber:
           type: string
           description: DunsNumber of the company.
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
