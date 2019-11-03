@@ -582,12 +582,12 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
+            "$ref": "#/components/schemas/DanishPosition"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
+            "$ref": "#/components/schemas/DanishHistoricalPosition"
       required: []
       title: DanishAuditors
     DanishDecisionMakers:
@@ -597,12 +597,12 @@ components:
           type: array
           description: List of the current decision makers
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
+            "$ref": "#/components/schemas/DanishPosition"
         historicalDecisionMakers:
           type: array
           description: List of the current decision makers
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition" 
+            "$ref": "#/components/schemas/DanishHistoricalPosition" 
       required: []
       title: DanishDecisionMakers
     DanishDirectors:
@@ -612,12 +612,12 @@ components:
           type: array
           description: List of the current directors
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
+            "$ref": "#/components/schemas/DanishPosition"
         historicalDirectors:
           type: array
           description: List of the current directors
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition" 
+            "$ref": "#/components/schemas/DanishHistoricalPosition" 
       required: []
       title: DanishDirectors
     DanishBoardMembers:
@@ -650,6 +650,19 @@ components:
     DanishPosition:
       type: object
       properties:
+        name:
+          type: string
+          description: The name of the person holding this position 
+          example: 'Leo Messi'
+        function:
+          type: string
+        responsibility:
+          type: string
+      required: []
+      title: DanishPosition
+    DanishHistoricalPosition:
+      type: object
+      properties:
         dateOfChange:
           type: string
           format: date
@@ -663,7 +676,7 @@ components:
         responsibility:
           type: string
       required: []
-      title: DanishPosition
+      title: DanishHistoricalPosition
     DanishCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
