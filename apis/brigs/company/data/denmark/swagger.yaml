@@ -582,22 +582,26 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            name:
-              type: string
-              description: The name of the current auditor
+            "$ref": "#/components/schemas/DanishAuditor"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            name: 
-              type: string
-              description: The name of the former auditor
-            date:
-              type: string
-              format: date
-              description: The date of change 
+            "$ref": "#/components/schemas/DanishAuditor"
       required: []
       title: DanishAuditors
+    DanishAuditor:
+      type: object
+      properties:
+        name: 
+          type: string
+          description: The name of the former auditor
+        date:
+          type: string
+          format: date
+          description: The date of change 
+      required: []
+      title: DanishAuditor
     DanishDecisionMakers:
       type: object
       properties:
