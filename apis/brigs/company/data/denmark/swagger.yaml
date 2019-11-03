@@ -647,6 +647,23 @@ components:
           description: duns-number
       required: []
       title: DanishIdentifiers
+    DanishPosition:
+      type: object
+      properties:
+        dateOfChange:
+          type: string
+          format: date
+          description: Registered date of change.
+        name:
+          type: string
+          description: The name of the person holding this position 
+          example: 'Leo Messi'
+        function:
+          type: string
+        responsibility:
+          type: string
+      required: []
+      title: DanishPosition
     DanishCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
