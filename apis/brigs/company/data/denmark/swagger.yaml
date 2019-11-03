@@ -605,16 +605,11 @@ components:
     DanishDecisionMakers:
       type: object
       properties:
-        currentDecisionMakers:
+        decisionMakers:
           type: array
-          description: List of the current decision makers
+          description: List of the decision makers
           items:
             "$ref": "#/components/schemas/DanishPosition"
-        historicalDecisionMakers:
-          type: array
-          description: List of the current decision makers
-          items:
-            "$ref": "#/components/schemas/DanishHistoricalPosition" 
       required: []
       title: DanishDecisionMakers
     DanishDirectors:
