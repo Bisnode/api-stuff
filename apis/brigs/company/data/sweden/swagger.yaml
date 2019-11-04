@@ -1230,12 +1230,30 @@ components:
           description: |
             The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. 
           example: 23333000
-        netWorth:
+        equity:
           type: integer
           format: int64
           description: |
-            Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
+        resultAfterFinancialItems:
+          type: integer
+          format: int64
+          description: |
+            Result after financial items. 
           example: -1555000
+        assetsTotal:
+          type: integer
+          format: int64
+          description: |
+            An asset is any resource owned by the business. Anything tangible or intangible that can be owned or controlled to produce value and that is held by a company to produce positive economic value is an asset.
+          example: 1555000  
+        turnover:
+          type: integer
+          format: int64
+          description: |
+             A company’s total revenues.
+          example: 1555000  
+        
       required: []
       title: SwedishFinancialStatementKeyFigure
     SwedishIncomeStatement:
