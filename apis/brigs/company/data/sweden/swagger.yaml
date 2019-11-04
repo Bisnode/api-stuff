@@ -1501,6 +1501,11 @@ components:
           "$ref": "#/components/schemas/SwedishCurrentAssets"
         nonCurrentAssets:
           "$ref": "#/components/schemas/SwedishNonCurrentAssets"
+        assetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            The sum of all assets.
       title: SwedishAssets
       description: |
         Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
@@ -1562,11 +1567,6 @@ components:
           format: int64
           description: |  
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-        assetsTotal: 
-          type: integer
-          format: int64
-          description: |  
-            The sum of all assets.
       title: SwedishCurrentAssets
       description: |
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
