@@ -639,6 +639,10 @@ components:
           example: 50-99
           description: |
             A textual description of the range of employees this company have.
+        officeType:
+          type: string
+          enum: ['HEADQUARTER', 'BRANCH']
+          description: Office location, TODO - add more info
             
       required: []
       title: FinnishGeneralCompanyData
