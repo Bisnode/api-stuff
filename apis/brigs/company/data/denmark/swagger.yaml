@@ -1155,11 +1155,36 @@ components:
           format: double
           description: |
             Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts.
-        growthInNetWorth:
+        growthInNetResult:
           type: integer
           format: int64
           description: |
             Growth in net value of an organisation's assets, after deducting any liabilities, compared to the result from the previous statement.
+        growthInTurnover:
+          type: integer
+          format: int64 
+          description: |
+            Growth in turnover
+        growthInGrossProfit:
+          type: integer
+          format: int64 
+          description: |
+            Growth in gross profit
+        growthInPrimaryResult:
+          type: integer
+          format: int64 
+          description: |
+            Growth in primary result
+        growthInPretaxResult:
+          type: integer
+          format: int64 
+          description: |
+            Growth in pree-tax result
+        growthInProfiAndLossAccount:
+          type: integer
+          format: int64 
+          description: |
+            G	Growth in profit and loss account
         capacityRatio:
           type: number
           format: double
