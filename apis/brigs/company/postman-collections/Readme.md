@@ -57,7 +57,7 @@ Get started with Bisnode Credit Information B2B API:
 14. Ensure that under tab 'Authorization' _Inherit auth from parent_ is set as authorization type for your request.
     ![image](https://user-images.githubusercontent.com/54436429/66915390-3412b280-f019-11e9-9ec9-662aef8efe75.png)
 
-15. Now is your Access Token added to the Postman collection and you can start with testing of Bisnode Credit Information API in the sandbox.
+15. Now is your Access Token added to the Postman collection and you can start with testing of Bisnode Credit Information B2B API in the sandbox.
     
     ![image](https://user-images.githubusercontent.com/54436429/66764637-808bb000-eeaa-11e9-812e-c9cda243c885.png)
 
