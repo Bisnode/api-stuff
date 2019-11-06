@@ -858,6 +858,7 @@ components:
     FinnishFinancialStatements:
       type: object
       description: |
+      properties:
         auditorsReservation:
           type: array
           items:
