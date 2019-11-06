@@ -1144,7 +1144,7 @@ components:
            "$ref": "#/components/schemas/FinnishAssets"
         liabilitiesAndEquity:
           "$ref": "#/components/schemas/FinnishLiabilitiesAndEquity"
-      title: BalanceSheet
+      title: FinnishBalanceSheet
       description: |
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
     FinnishAssets:
@@ -1334,7 +1334,7 @@ components:
           "$ref": "#/components/schemas/FinnishCurrentLiabilities"
         nonCurrentLiabilities:
           "$ref": "#/components/schemas/FinnishLongTermLiabilities"
-      title: FinnishLiabilities
+      title: FinnishLiabilitiesAndEquity
       description: |
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
     FinnishCurrentLiabilities:
