@@ -676,12 +676,12 @@ components:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "/components/schemas/FinnishPosition"
+            "$ref": "#/components/schemas/FinnishPosition"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
-            "$ref": "/components/schemas/FinnishHistoricalPosition"
+            "$ref": "#/components/schemas/FinnishHistoricalPosition"
       required: []
       title: FinnishBoardMembers
     FinnishCompanyInformation:
