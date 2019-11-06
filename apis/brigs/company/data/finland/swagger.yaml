@@ -583,34 +583,34 @@ components:
         function:
           type: string
           description: |
-            HVJV	Deputy member
-            SEL		Liquidator
-            VT		Deputy auditor
-            HPJV	Vice-chairperson
-            PIS		House manager with primary responsibility
-            U		  Special representative
-            VAH		Responsible manager
-            HVJ		Ordinary member
-            PR		Holder of procuration
-            SEV		Deputy liquidator
-            VTJ		Deputy Managing Director
-            Y		  Partner
-            ÄY		Silent partner
-            E		  Guardian
-            EH		Trader
-            IS		House Manager
-            JO		Director
-            OI		Person authorised
-            SO		Person authorised during liquidation
-            TJS		Substitute for the Managing Director
-            EDU		Representative
-            HPJ		Chairperson
-            LT		Additional auditor
-            PTI		Auditor with principal responsibility
-            SANS	Administrator in restructuring
-            TIL		Auditor
-            TJ		Managing Director
-            UE		Foreign representative
+            HVJV  Deputy member
+            SEL    Liquidator
+            VT    Deputy auditor
+            HPJV  Vice-chairperson
+            PIS    House manager with primary responsibility
+            U      Special representative
+            VAH    Responsible manager
+            HVJ    Ordinary member
+            PR    Holder of procuration
+            SEV    Deputy liquidator
+            VTJ    Deputy Managing Director
+            Y      Partner
+            ÄY    Silent partner
+            E      Guardian
+            EH    Trader
+            IS    House Manager
+            JO    Director
+            OI    Person authorised
+            SO    Person authorised during liquidation
+            TJS    Substitute for the Managing Director
+            EDU    Representative
+            HPJ    Chairperson
+            LT    Additional auditor
+            PTI    Auditor with principal responsibility
+            SANS  Administrator in restructuring
+            TIL    Auditor
+            TJ    Managing Director
+            UE    Foreign representative
         description:
           type: string
           description: A textual description of the function
@@ -630,34 +630,34 @@ components:
         function:
           type: string
           description: |
-            HVJV	Deputy member
-            SEL		Liquidator
-            VT		Deputy auditor
-            HPJV	Vice-chairperson
-            PIS		House manager with primary responsibility
-            U		  Special representative
-            VAH		Responsible manager
-            HVJ		Ordinary member
-            PR		Holder of procuration
-            SEV		Deputy liquidator
-            VTJ		Deputy Managing Director
-            Y		  Partner
-            ÄY		Silent partner
-            E		  Guardian
-            EH		Trader
-            IS		House Manager
-            JO		Director
-            OI		Person authorised
-            SO		Person authorised during liquidation
-            TJS		Substitute for the Managing Director
-            EDU		Representative
-            HPJ		Chairperson
-            LT		Additional auditor
-            PTI		Auditor with principal responsibility
-            SANS	Administrator in restructuring
-            TIL		Auditor
-            TJ		Managing Director
-            UE		Foreign representative
+            HVJV  Deputy member
+            SEL    Liquidator
+            VT    Deputy auditor
+            HPJV  Vice-chairperson
+            PIS    House manager with primary responsibility
+            U      Special representative
+            VAH    Responsible manager
+            HVJ    Ordinary member
+            PR    Holder of procuration
+            SEV    Deputy liquidator
+            VTJ    Deputy Managing Director
+            Y      Partner
+            ÄY    Silent partner
+            E      Guardian
+            EH    Trader
+            IS    House Manager
+            JO    Director
+            OI    Person authorised
+            SO    Person authorised during liquidation
+            TJS    Substitute for the Managing Director
+            EDU    Representative
+            HPJ    Chairperson
+            LT    Additional auditor
+            PTI    Auditor with principal responsibility
+            SANS  Administrator in restructuring
+            TIL    Auditor
+            TJ    Managing Director
+            UE    Foreign representative
         entity:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PositionEntity"
         resignedDate:
@@ -854,7 +854,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: FinnishFinance
+      title: FinnishFloatingCharge
     FinnishFinancialStatements:
       type: object
       description: |
