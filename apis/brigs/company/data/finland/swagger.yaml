@@ -747,7 +747,7 @@ components:
           description: Office type
         location:
           type: string
-          description: Name of the town where thia company is located
+          description: The place where this company is registered.
           example: Helsinki
       required: []
       title: FinnishGeneralCompanyData
