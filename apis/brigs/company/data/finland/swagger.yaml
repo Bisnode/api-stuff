@@ -567,6 +567,141 @@ components:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
       required: []
       title: FinnishAuditors
+    FinnishPosition:
+      type: object
+      properties:
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/PositionEntity"
+        function:
+          type: string
+          description: |
+            0  MEMBER MANAGING DIR.                    
+            1  MANAGER CHAIRMAN                        
+            2  DEPUTY & MGR                            
+            3  Managing Dir & Registered Agent         
+            4  MANAGER                                 
+            5  Managing Dir, Deputy & Registered Agent 
+            6  EXTERNAL MGR                            
+            7  Extern Managing Dir & Registered Agent  
+            9  VICE MANAGER CHAIRMAN                   
+            10  MEMBER & VICE MGR                       
+            12  DEPUTY & VICE MGR                       
+            13  Vice Managing Dir, Deputy & Reg. Agent  
+            14  VICE MANAGING DIR.                      
+            15  Vice Managing Dir & Registered Agent    
+            16  EXTERNAL VICE MGR.                      
+            17  Ext Vice Managing Dir & Registered Agent
+            19  MEMBER CHAIRMAN                         
+            20  MEMBER                                  
+            22  Member & Registered Agent               
+            25  EXT.FIRM SIGN.                          
+            26  ACTUARY                                 
+            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
+            30  LIQUIDATOR                              
+            32  DEPUTY                                  
+            33  Chairman, Deputy & Registered Agent     
+            34  Deputy & Registered Agent               
+            36  Registered Agent                        
+            48  PART-OWNER & HOLDER OF PROCURATION      
+            50  PART-OWNER                              
+            60  UNLIMITED PARTNER                       
+            68  LIMITED PARTNER & HOLDER OF PROCURATION 
+            70  LIMITED PARTNER                         
+            72  MANAGER                                 
+            86  HOLDER OF PROCURATION                   
+            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
+            91  AUDITOR & REGISTERED AGENT              
+            92  LAY AUDITOR & REGISTERED AGENT          
+            93  DEPUTY AUDITOR & REGISTERED AGENT       
+            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
+            95  PRINCIPALLY RESPONSIBLE AUDITOR         
+            96  LAY AUDITOR                             
+            97  AUDITOR                                 
+            98  DEPUTY AUDITOR                          
+            99  DEPUTY LAY AUDITOR                      
+        description:
+          type: string
+          description: A textual description of the function
+      required: []
+      title: FinnishPosition
+    FinnishHistoricalPosition:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private per son or a company?
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        function:
+          type: integer
+          format: int32
+          description: |
+            0  MEMBER MANAGING DIR.                    
+            1  MANAGER CHAIRMAN                        
+            2  DEPUTY & MGR                            
+            3  Managing Dir & Registered Agent         
+            4  MANAGER                                 
+            5  Managing Dir, Deputy & Registered Agent 
+            6  EXTERNAL MGR                            
+            7  Extern Managing Dir & Registered Agent  
+            9  VICE MANAGER CHAIRMAN                   
+            10  MEMBER & VICE MGR                       
+            12  DEPUTY & VICE MGR                       
+            13  Vice Managing Dir, Deputy & Reg. Agent  
+            14  VICE MANAGING DIR.                      
+            15  Vice Managing Dir & Registered Agent    
+            16  EXTERNAL VICE MGR.                      
+            17  Ext Vice Managing Dir & Registered Agent
+            19  MEMBER CHAIRMAN                         
+            20  MEMBER                                  
+            22  Member & Registered Agent               
+            25  EXT.FIRM SIGN.                          
+            26  ACTUARY                                 
+            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
+            30  LIQUIDATOR                              
+            32  DEPUTY                                  
+            33  Chairman, Deputy & Registered Agent     
+            34  Deputy & Registered Agent               
+            36  Registered Agent                        
+            48  PART-OWNER & HOLDER OF PROCURATION      
+            50  PART-OWNER                              
+            60  UNLIMITED PARTNER                       
+            68  LIMITED PARTNER & HOLDER OF PROCURATION 
+            70  LIMITED PARTNER                         
+            72  MANAGER                                 
+            86  HOLDER OF PROCURATION                   
+            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
+            91  AUDITOR & REGISTERED AGENT              
+            92  LAY AUDITOR & REGISTERED AGENT          
+            93  DEPUTY AUDITOR & REGISTERED AGENT       
+            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
+            95  PRINCIPALLY RESPONSIBLE AUDITOR         
+            96  LAY AUDITOR                             
+            97  AUDITOR                                 
+            98  DEPUTY AUDITOR                          
+            99  DEPUTY LAY AUDITOR                      
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
+        resignedDate:
+          type: string
+          format: date
+          description: Date when this person/entity resigned from this position
+        description:
+          type: string
+          description: A textual description of the function
+      required: []
+      title: FinnishHistoricalPosition
     FinnishBoardMembers:
       type: object
       properties:
