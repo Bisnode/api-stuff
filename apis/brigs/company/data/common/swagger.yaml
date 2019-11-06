@@ -21,7 +21,7 @@ components:
   schemas:
     Amount:
       type: object
-      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
+      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217
       properties:
         monetaryAmount:
           type: integer
@@ -313,6 +313,10 @@ components:
           type: string
           description: Typically a social security number or a oraganisation number in case of a company entity
           example: "11111111111"
+        dateOfBirth:
+          type: string
+          example: 1957-01-21
+          description: A persons birth date in the form of a string.
       title: PositionEntity
     Position:
       type: object
