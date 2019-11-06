@@ -1821,11 +1821,6 @@ components:
           format: int64  
           description: |    
            Transferred earnings
-        restrictedEquityTotal:
-          type: integer
-          format: int64  
-          description: |    
-            Total restricted equity.
         retainedEarnings:
           type: integer
           format: int64  
