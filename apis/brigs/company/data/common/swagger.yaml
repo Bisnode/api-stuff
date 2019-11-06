@@ -36,7 +36,7 @@ components:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
       properties:
-        ratingCreditLimit:
+        currentRatingCreditLimit:
           "$ref": "#/components/schemas/RatingCreditLimit"
         historicalRatingCreditLimits:
           type: array
