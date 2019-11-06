@@ -1354,11 +1354,7 @@ components:
           format: int64
           description: |
             Operating profit is an accounting figure that measures the profit earned from a company's ongoing core business operations, thus excluding deductions of interest and taxes. This value also does not include any profit earned from the firm's investments, such as earnings from firms in which the company has partial interest.
-        externalInterestIncome:
-          type: integer
-          format: int64
-          description: |
-            External interest income. Example ?
+
         otherFinancialIncome:
           type: integer
           format: int64
