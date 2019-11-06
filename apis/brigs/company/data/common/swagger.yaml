@@ -313,7 +313,7 @@ components:
           type: string
           description: Typically a social security number or a oraganisation number in case of a company entity
           example: "11111111111"
-        dateOfBirth:
+        birthDate:
           type: string
           example: 1957-01-21
           description: A persons birth date in the form of a string.
