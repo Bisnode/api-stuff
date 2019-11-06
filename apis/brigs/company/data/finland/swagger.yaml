@@ -857,7 +857,6 @@ components:
       title: FinnishFloatingCharge
     FinnishFinancialStatements:
       type: object
-      description: |
       properties:
         auditorsReservation:
           type: array
