@@ -744,8 +744,11 @@ components:
         officeType:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
-          description: Office location, TODO - add more info
-            
+          description: Office type
+        location:
+          type: string
+          description: Name of the town where thia company is located
+          example: Helsinki
       required: []
       title: FinnishGeneralCompanyData
     FinnishLegalForm:
