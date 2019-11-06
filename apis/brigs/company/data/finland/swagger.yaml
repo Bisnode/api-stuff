@@ -676,12 +676,12 @@ components:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Position"
+            "$ref": "/components/schemas/FinnishPosition"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers. TODO - is there a max size for this ???
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/HistoricalPosition"
+            "$ref": "/components/schemas/FinnishHistoricalPosition"
       required: []
       title: FinnishBoardMembers
     FinnishCompanyInformation:
