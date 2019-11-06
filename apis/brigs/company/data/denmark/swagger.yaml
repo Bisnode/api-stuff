@@ -1817,11 +1817,6 @@ components:
           format: int64  
           description: |    
            Transferred earnings
-        retainedEarnings:
-          type: integer
-          format: int64  
-          description: |    
-            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
         expectedDividend:
           type: integer
           format: int64  
