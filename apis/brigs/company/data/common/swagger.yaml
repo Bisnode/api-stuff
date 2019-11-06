@@ -317,6 +317,10 @@ components:
           type: string
           example: 1957-01-21
           description: A persons birth date in the form of a string.
+        countryCode:
+          type: string
+          description: This entitys nationality
+          example: SE
       title: PositionEntity
     Position:
       type: object
