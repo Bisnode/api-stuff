@@ -982,13 +982,6 @@ components:
           example: 5200
           description: |
             Number of employees
-        netWorth:
-          type: integer
-          format: int64
-          description: |
-            Called equity in brigs web
-            Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
-          example: -1555000
         assetsTotal:
           type: integer
           format: int64
