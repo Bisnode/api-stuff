@@ -6,7 +6,7 @@ openapi: 3.0.0
 #######################
 info:
   title: Links
-  description: Common model for pagination
+  description: Common model for linking
   version: '1.0.0'
 
 components:
