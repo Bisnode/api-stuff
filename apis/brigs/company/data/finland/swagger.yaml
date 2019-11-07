@@ -924,7 +924,7 @@ components:
             
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
           example: 19.4
-        equityCapitalRatio:
+        equityAssetsRatio:
           type: number
           format: double
           description: |
@@ -990,6 +990,12 @@ components:
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
           example: -1555000
         assetsTotal:
+          type: integer
+          format: int64
+          example: 23444000
+          description: |
+            TODO - add description
+        equityTotal:
           type: integer
           format: int64
           example: 23444000
