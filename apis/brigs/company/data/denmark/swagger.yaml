@@ -1621,11 +1621,11 @@ components:
           format: int64
           description: |  
             Shares in associated companies.
-        otherInvestments: 
+        otherInterests: 
           type: integer
           format: int64
           description: |  
-            Other investments.
+            Other Interests.
         receivableFromGroupAndAssociatedCompanies: 
           type: integer
           format: int64
