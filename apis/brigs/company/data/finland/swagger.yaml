@@ -857,7 +857,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: FinnishFinance
+      title: FinnishFloatingCharge
     FinnishFinancialStatements:
       type: object
       description: |
