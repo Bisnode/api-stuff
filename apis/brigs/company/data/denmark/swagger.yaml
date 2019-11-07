@@ -1289,6 +1289,11 @@ components:
           description: |
             Work performed for own use.
             TODO - what does it mean ?
+        externalInterestIncome:
+          type: integer
+          format: int64
+          description: |
+            Interest payed to the company by banks or creditinstitutes.
         otherOperatingIncome:
           type: integer
           format: int64
