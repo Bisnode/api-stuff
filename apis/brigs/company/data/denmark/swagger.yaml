@@ -15,9 +15,9 @@ info:
     email: api-bisnode@bisnode.com
 
 components:
-  ####################
+  #####################
   # Common data models
-  ####################
+  #####################
   schemas:
     DanishCompanyData:
       type: object
@@ -140,10 +140,18 @@ components:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
-        date:
+        dateOfRegistration:
           type: string
           format: date
-          description: Date of remark
+          description: Date of registration of the remark
+        dateOfDeletion:
+          type: string
+          format: date
+          description: Date of deletion of the remark
+        dateOfClaim:
+          type: string
+          format: date
+          description: Means the date on which the application or claim is made, or treated as
         creditor:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
         type:
@@ -151,7 +159,7 @@ components:
         description:
           type: string
           description: A textual description of the event type
-          example: FISSION - EXPIRED
+          example: ROAD TOLL 
       required: []
       title: DanishPaymentRemark
     DanishReportCode:
