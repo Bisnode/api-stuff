@@ -1651,7 +1651,7 @@ components:
           format: int64
           description: |  
             Total financial fixed assets.
-        fixedAssetsTotal: 
+        nonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
