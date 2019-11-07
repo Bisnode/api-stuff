@@ -5,9 +5,9 @@ openapi: 3.0.0
 # Optional info section
 #######################
 info:
-  title: Common model for data that are the same between the different countries
+  title: Common credit model for data that are the same between the different countries
   description: | 
-    Common models.
+    Common credit models.
   version: "1.0.0"
   contact:
     email: api-bisnode@bisnode.com
