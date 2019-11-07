@@ -1812,7 +1812,7 @@ components:
           format: int64  
           description: |    
             Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
-        transferredResult:
+        transferredEarnings:
           type: integer
           format: int64  
           description: |    
