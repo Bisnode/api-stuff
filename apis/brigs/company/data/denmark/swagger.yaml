@@ -1631,11 +1631,11 @@ components:
           format: int64
           description: |  
            Long term Receivables in group.
-        otherFinancialReceivables: 
+        otherLongTermReceivables: 
           type: integer
           format: int64
           description: |  
-           Other finacial receivables.
+           Other financial receivables.
         ownShares: 
           type: integer
           format: int64
