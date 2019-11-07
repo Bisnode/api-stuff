@@ -15,9 +15,9 @@ info:
     email: api-bisnode@bisnode.com
 
 components:
-  #####################
+  ####################
   # Common data models
-  #####################
+  ####################
   schemas:
     DanishCompanyData:
       type: object
