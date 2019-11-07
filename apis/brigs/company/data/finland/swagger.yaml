@@ -805,8 +805,6 @@ components:
       title: FinnishLegalForm
     FinnishRegistrationInformation:
       type: object
-      description: |
-        
       properties:
         registrationDate:
           type: string
@@ -860,7 +858,9 @@ components:
       title: FinnishFloatingCharge
     FinnishFinancialStatements:
       type: object
-      description: |
+      description: | 
+            Company financial data
+      properties:
         auditorsReservation:
           type: array
           items:
