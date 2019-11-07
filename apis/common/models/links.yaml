@@ -1,0 +1,41 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: Links
+  description: Common model for pagination
+  version: '1.0.0'
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    Links:
+      type: object
+      description: Used for pagination
+      properties:
+        first:
+          type: string
+          description: A URI that points to the first page/result
+        next:
+          type: string
+          description: A URI that points to the next page/result
+        prev:
+          type: string
+          description: A URI that points to the previous page/result
+        last:
+          type: string
+          description: A URI that points to the last page/result
+    Link:
+      type: object
+      required:
+        - href
+      properties:
+        href:
+          type: string
+          description: A valid URI
