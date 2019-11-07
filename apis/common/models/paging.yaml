@@ -1,0 +1,33 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: Bisnode Common Components
+  description: Paging model
+  version: '1.0.0'
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    Paging:
+      type: object
+      description: Paging object
+      properties:
+        resultCount:
+          type: integer
+          format: int32
+          description: Total number of hits from the search 
+        limit:
+          type: integer
+          format: int32
+          description: Number of results per call
+        offset:
+          type: integer
+          format: int32
+          description: Where to start to results from. I.e an offset of 10 would skip the first 10 results and return the next 20 results if limit we're set to 20.
