@@ -144,7 +144,7 @@ components:
           type: string
           format: date
           description: Date of registration of the remark
-        dateOfDeletion:
+        dateToBeDeleted:
           type: string
           format: date
           description: Date of deletion of the remark
@@ -154,6 +154,8 @@ components:
           description: Means the date on which the application or claim is made, or treated as
         creditor:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+        address:
+           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
         type:
           "$ref": "#/components/schemas/DanishReportCode"
         description:
