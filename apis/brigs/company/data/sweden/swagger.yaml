@@ -1145,11 +1145,11 @@ components:
             
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
           example: 19.4
-        equityCapitalRatio:
+        equityAssetsRatio:
           type: number
           format: double
           description: |
-            Calculated equity in percent of the total assets. ???
+            Calculated equity in percent of the total assets.
         growthInTurnover:
           type: number
           format: double
