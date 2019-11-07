@@ -6,7 +6,7 @@ openapi: 3.0.0
 #######################
 info:
   title: Bisnode Common Components
-  description: Paging model
+  description: Common paging model
   version: '1.0.0'
 
 components:
