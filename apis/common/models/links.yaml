@@ -20,17 +20,13 @@ components:
       description: Used for pagination
       properties:
         first:
-          type: string
-          description: A URI that points to the first page/result
+          "$ref": '#/components/schemas/Link'
         next:
-          type: string
-          description: A URI that points to the next page/result
+          "$ref": '#/components/schemas/Link'
         prev:
-          type: string
-          description: A URI that points to the previous page/result
+          "$ref": '#/components/schemas/Link'
         last:
-          type: string
-          description: A URI that points to the last page/result
+          "$ref": '#/components/schemas/Link'
     Link:
       type: object
       required:
