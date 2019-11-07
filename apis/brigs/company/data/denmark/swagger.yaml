@@ -1620,7 +1620,7 @@ components:
           type: integer
           format: int64
           description: |  
-            Shares in associated companies.s.
+            Shares in associated companies.
         otherInvestments: 
           type: integer
           format: int64
