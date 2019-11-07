@@ -128,7 +128,7 @@ components:
           type: array
           description: A list of remarks, most recent ones comes first. TODO - Max size ???
           items:
-            "$ref": "#/components/schemas/FinnishPaymentRemark"
+            "$ref": "#/components/schemas/DanishPaymentRemark"
         remarksOnPaymentsRegisteredInDBR:
           type: boolean
           description: 'True if this company has registered remarks in DBR register'
@@ -153,7 +153,7 @@ components:
           description: A textual description of the event type
           example: FISSION - EXPIRED
       required: []
-      title: FinnishPaymentRemark
+      title: DanishPaymentRemark
     DanishReportCode:
       type: object
       description: Common codes
