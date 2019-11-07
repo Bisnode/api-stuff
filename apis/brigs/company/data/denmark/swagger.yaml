@@ -1596,7 +1596,7 @@ components:
           format: int64
           description: |
             This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
-        machineryAndInventoryTotal: 
+        machineryAndTools: 
           type: integer
           format: int64
           description: |  
