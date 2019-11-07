@@ -134,7 +134,7 @@ components:
           description: 'True if this company has registered remarks in DBR register'
       required: []
       title: DanishPaymentRemarks
-     DanshPaymentRemark:
+    DanishPaymentRemark:
       type: object
       description: Remarks on payments
       properties:
