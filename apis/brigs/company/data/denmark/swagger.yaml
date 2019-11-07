@@ -134,6 +134,26 @@ components:
           description: 'True if this company has registered remarks in DBR register'
       required: []
       title: DanishPaymentRemarks
+     DanshPaymentRemark:
+      type: object
+      description: Remarks on payments
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          type: string
+          format: date
+          description: Date of remark
+        creditor:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/DanishReportCode"
+        description:
+          type: string
+          description: A textual description of the event type
+          example: FISSION - EXPIRED
+      required: []
+      title: FinnishPaymentRemark
     DanishReportCode:
       type: object
       description: Common codes
