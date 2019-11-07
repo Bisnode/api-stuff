@@ -1426,7 +1426,7 @@ components:
           format: int64
           description: | 
             Result before tax
-        taxOnExtraordinaryResult:
+        taxOnExtraordinaryEarnings:
           type: integer
           format: int64
           description: |
