@@ -1646,7 +1646,7 @@ components:
           format: int64
           description: |  
             Other financial assets.
-        financialFixedAssetsTotal: 
+        financialNonCurrentAssetsTotal: 
           type: integer
           format: int64
           description: |  
