@@ -1616,7 +1616,7 @@ components:
           format: int64
           description: |  
             Tangible assets total.
-        participatingInvestments: 
+        sharesInAssociateCompanies: 
           type: integer
           format: int64
           description: |  
