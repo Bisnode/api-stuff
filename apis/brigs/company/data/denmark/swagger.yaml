@@ -140,15 +140,15 @@ components:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
-        dateOfRegistration:
+        registrationDate:
           type: string
           format: date
           description: Date of registration of the remark
-        dateToBeDeleted:
+        deletionDate:
           type: string
           format: date
           description: Date of deletion of the remark
-        dateOfClaim:
+        claimDate:
           type: string
           format: date
           description: Means the date on which the application or claim is made, or treated as
@@ -712,7 +712,7 @@ components:
     DanishHistoricalPosition:
       type: object
       properties:
-        dateOfChange:
+        changeDate:
           type: string
           format: date
           description: Registered date of change.
