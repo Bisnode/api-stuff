@@ -192,6 +192,8 @@ components:
           type: string
           description: |
             Name of the creditor
+        address:
+          "$ref": "#/components/schemas/StreetAddress"  
     Company:
       type: object
       properties:
