@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "66825373-1419-4791-9c3f-980c27a45e15",
+		"_postman_id": "36112b72-1567-445a-bb6b-680f36387fcd",
 		"name": "bisnode-credit-data-companies",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"registrationNumber\":\"5561234561\",\n\t\"country\":\"SE\"\n}"
+					"raw": "{\n\t\"registrationNumber\":\"5560391954\",\n\t\"country\":\"SE\"\n}"
 				},
 				"url": {
 					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
@@ -46,20 +46,20 @@
 			"response": []
 		},
 		{
-			"name": "Search Swedish Company",
+			"name": "Search Swedish Company - Name",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"SE\"\n}"
+					"raw": "{\n\t\"name\":\"Testföretag\",\n\t\"country\":\"SE\"\n}"
 				},
 				"url": {
 					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
@@ -99,10 +99,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"DK\"\n}"
+					"raw": "{\n\t\"name\":\"D&B Demo A/S\",\n\t\"country\":\"DK\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -139,7 +139,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"Bisnode\",\n\t\"country\":\"FI\"\n}"
+					"raw": "{\n\t\"name\":\"Tytärtesti100 Oy\",\n\t\"country\":\"FI\"\n}"
 				},
 				"url": {
 					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
@@ -179,7 +179,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"registrationNumber\":\"5561234561\"\n}"
+					"raw": "{\n\t\"registrationNumber\":\"5560391954\"\n}"
 				},
 				"url": {
 					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/se?",
@@ -261,7 +261,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"registrationNumber\":\"112233445\"\n}"
+					"raw": "{\n\t\"registrationNumber\":\"11111111\"\n}"
 				},
 				"url": {
 					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/fi?",
@@ -294,7 +294,7 @@
 		"oauth2": [
 			{
 				"key": "accessToken",
-				"value": "",
+				"value": "86yCiT0lUAmBwfXpNp2ErPrHcKA7",
 				"type": "string"
 			},
 			{
