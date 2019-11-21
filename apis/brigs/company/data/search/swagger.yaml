@@ -67,6 +67,7 @@ components:
         dunsNumber:
           type: string
           description: 'Dun & Bradstreet D-U-N-S® Number. https://www.dnb.com/duns-number/get-a-duns.html'
+          example: '427813563'
         address:
           "$ref": "#/components/schemas/Address"
       required: []
