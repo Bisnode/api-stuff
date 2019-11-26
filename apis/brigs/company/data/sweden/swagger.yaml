@@ -95,12 +95,12 @@ components:
         count:
           type: integer
           format: int32
-          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. TODO - max size ???
+          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. 
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
-          description: A list of remarks, most recent ones comes first. TODO - Max size ???
+          description: A list of remarks, most recent ones comes first. 
           items:
             "$ref": "#/components/schemas/SwedishPaymentRemark"
       required: []
@@ -497,7 +497,7 @@ components:
           description: Total number of inquiries made on this company
         creditInquiries:
           type: array
-          description: A list of the inquiries. TODO - is there a max size for this?
+          description: A list of the inquiries.
           items:
             "$ref": "#/components/schemas/SwedishCreditInquiry"
       required: []
@@ -642,7 +642,7 @@ components:
         date:
           type: string
           format: date
-          description: TODO - what does this date mean???
+          description: 
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
@@ -683,7 +683,7 @@ components:
         officialAppointmentDate:
           type: string
           format: date
-          description: TODO - what is this ???
+          description: 
         deputyCount:
           type: integer
           format: int32
@@ -719,7 +719,7 @@ components:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
         historicalBoardMembers:
           type: array
-          description: A list of the historical boardmembers. TODO - is there a max size for this ???
+          description: A list of the historical boardmembers.
           items:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
         authorizedSignatory:
@@ -800,7 +800,7 @@ components:
           description: Total number of branches this company have.
         branches:
           type: array
-          description: TODO - How many items can we have here???
+          description: A list of branches
           items:
             "$ref": "#/components/schemas/SwedishBranch"
       required: []
@@ -845,9 +845,7 @@ components:
         servicePlace:
           type: string
           description: |
-            Name of the place where this  
-            
-            TODO - should this be called name instead
+            Name of the place where this permit is valid for.
         address:
           type: string
           description: Address to the service place
@@ -861,7 +859,7 @@ components:
           example: Servering till allmänheten
         servingType:
           type: string
-          description: TODO - what do we have here?s
+          description: 
           example: Året runt
         alcoholBeverageToThePublic:
           type: string
@@ -909,11 +907,11 @@ components:
         activeInVatStatusDate:
           type: string
           format: date
-          description: Date when ??? - TODO
+          description: Date
         officeType:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
-          description: Office location, TODO - add more info
+          description: Office location
       required: []
       title: SwedishGeneralCompanyData
     SwedishLegalForm:
@@ -972,7 +970,7 @@ components:
       title: SwedishLegalForm
     SwedishRegistrationInformation:
       type: object
-      description: TODO - what is the difference between these 2 dates
+      description: 
       properties:
         articlesOfAssociationDate:
           type: string
@@ -990,7 +988,7 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - More detailed description on the statuses goes here, when is a company not started or dormant
+          description: 
         date:
           type: string
           format: date
@@ -1002,12 +1000,12 @@ components:
       properties:
         floatingCharges:
           type: array
-          description: "TODO - how many can we get here ???"
+          description: A list of floating charges
           items:
             "$ref": "#/components/schemas/SwedishFloatingCharge"
         claimsOutOfBusiness:
           type: array
-          description: "TODO - how many can we get here ???"
+          description: A list of claimsOutOfBusiness
           items:
             "$ref": "#/components/schemas/SwedishLiquidationClaim"
         financialStatements:
@@ -1893,18 +1891,17 @@ components:
     SwedishPayrollTax:
       type: object
       description: | 
-        EmployersContribution or PayrollTax ???
-        TODO - describe this
+        PayrollTax
       properties:
         date:
           type: string
           format: date
-          description: Date when ???
+          description: Date
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         referenceNumber:
           type: string
-          description: TODO - what is this???
+          description:
       required: []
       title: SwedishPayrollTax
     SwedishPropertyHoldings:
@@ -1925,12 +1922,12 @@ components:
           description: The number of properties this company own a part of. Excluding the ones it owns in full.
         assessedRealProperties:
           type: array
-          description: TODO - how many properties can we get here ???
+          description: A list of properties. Max 5.
           items:
             "$ref": "#/components/schemas/SwedishAssessedRealProperty"
         currentRealProperties:
           type: array
-          description: TODO - how many properties can we get here ???
+          description: A list of properties
           items:
             "$ref": "#/components/schemas/SwedishCurrentRealProperty"
       required: []
@@ -1991,9 +1988,7 @@ components:
         blocked:
           type: string
           description: | 
-            TODO 
-            'if true it means that the information is under investigation by the tax office???
-            '
+            
         objectType:
           type: string
           description: |
