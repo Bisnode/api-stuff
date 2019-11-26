@@ -126,7 +126,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
-          description: A list of remarks, most recent ones comes first. TODO - Max size ???
+          description: A list of remarks, most recent ones comes first.
           items:
             "$ref": "#/components/schemas/DanishPaymentRemark"
         remarksOnPaymentsRegisteredInDBR:
@@ -587,7 +587,7 @@ components:
         date:
           type: string
           format: date
-          description: TODO - what does this date mean?
+          description: 
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
@@ -606,7 +606,7 @@ components:
           "$ref": "#/components/schemas/DanishAuditors"
         authorizedSignatory:
           type: string
-          description: TODO ?
+          description: 
       required: []
       title: DanishManagement
     DanishAuditors:
@@ -677,7 +677,7 @@ components:
             "$ref": "#/components/schemas/DanishPosition"
         historicalBoardMembers:
           type: array
-          description: A list of the historical boardmembers. TODO - is there a max size for this ?
+          description: A list of the historical boardmembers.
           items:
             "$ref": "#/components/schemas/DanishHistoricalPosition"
       required: []
@@ -779,7 +779,7 @@ components:
           description: Total number of branches this company have.
         branches:
           type: array
-          description: TODO - How many items can we have here???
+          description: A list of branches
           items:
             "$ref": "#/components/schemas/DanishBranch"
       required: []
@@ -850,7 +850,7 @@ components:
         officeType:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
-          description: Office location, TODO -add more info
+          description: Office location
       required: []
       title: DanishGeneralCompanyData
     DanishLegalForms:
@@ -1007,7 +1007,7 @@ components:
       title: DanishLegalForm
     DanishRegistrationInformation:
       type: object
-      description: TODO - what is the difference between these 2 dates
+      description: 
       properties:
         articlesOfAssociationDate:
           type: string
@@ -1025,7 +1025,7 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - More detailed description on the statuses goes here, when is a company not started or dormant
+          description: 
         date:
           type: string
           format: date
@@ -1224,12 +1224,12 @@ components:
           type: number
           format: double
           description: |
-           Capacity Ratio --TODO
+           Capacity Ratio
         breakEvenSales:
           type: integer
           format: int64
           description: |
-           Break-even sales --TODO
+           Break-even sales
         safetyMargin:
           type: number
           format: double
@@ -1240,14 +1240,13 @@ components:
           type: number
           format: double
           description: |
-             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies. TODO - is this correct?
+             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies.
           example: 1.39
         daysOfReceivables:
           type: number
           format: double
           description: |
             A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
-             TODO - is this correct ?.
           example: 2.3
         inventoriesToTurnover:
           type: number
@@ -1267,7 +1266,7 @@ components:
           type: number
           format: double
           description: |
-           Shows in '%' TODO  -- add more info here
+           Shows in '%'
         gearing:
           type: number
           format: double
@@ -1278,7 +1277,7 @@ components:
           type: number
           format: double
           description: |
-           Profit Rate. Shows in '%'.  TODO  -- add more info here
+           Profit Rate. Shows in '%'.
         payoutRatio:
           type: number
           format: double
@@ -1302,7 +1301,7 @@ components:
           format: int64
           example: 482000
           description: |
-            TODO - is this the same as sales/netSales ?
+            
         tax:
           type: integer
           format: int64
@@ -1323,7 +1322,6 @@ components:
           format: int64
           description: |
             Work performed for own use.
-            TODO - what does it mean ?
         externalInterestIncome:
           type: integer
           format: int64
@@ -1353,7 +1351,7 @@ components:
           type: integer
           format: int64
           description: |
-           Gross contribution margin --TODO - add more info
+           Gross contribution margin
         sellingExpenses:
           type: integer
           format: int64
@@ -1383,7 +1381,7 @@ components:
           type: integer
           format: int64
           description: |
-            TODO - is this the same as: other expenses not included in nonRecurringItems, researchAndDevelopment, administrativeCosts, costOfGoods and sellingExpenses
+            
         otherRevenues:
           type: integer
           format: int64
@@ -1414,12 +1412,12 @@ components:
           type: integer
           format: int64
           description: |
-            Income from shares  -TODO add more info
+            Income from shares
         incomeFromOtherShares:
           type: integer
           format: int64
           description: |
-            Income from other shares  -TODO add more info
+            Income from other shares
         impairmentsOfFinancialAssets:
           type: integer
           format: int64
@@ -1444,7 +1442,7 @@ components:
           type: integer
           format: int64
           description: |
-            Secondary items. --TODO - what is this?
+            Secondary items.
         extraordinaryIncome:
           type: integer
           format: int64
@@ -1500,7 +1498,7 @@ components:
           type: integer
           format: int64
           description: |
-            Minority interest -- TODO - add more info
+            Minority interest
         resultAfterMinorityInterestShare:
           type: integer
           format: int64
@@ -1769,7 +1767,7 @@ components:
           type: integer
           format: int64  
           description: |    
-            Other liabilities. --TODO - what is this (exists in BRiGS)?
+            Other liabilities.
         accruedRevenuesAndDeferredExpenses:
           type: integer
           format: int64  
