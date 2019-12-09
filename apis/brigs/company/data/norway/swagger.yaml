@@ -46,189 +46,34 @@ components:
         Risk section.
       properties:
         creditRatings:
-          "$ref": "#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CreditRatings"
         creditLimits:
-          "$ref": "#/components/schemas/CreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
-          "$ref": "#/components/schemas/PaymentRemarks"
+          "$ref": "#/components/schemas/NorwegianPaymentRemarks"
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
       title: NorwegianRisk
-    CreditLimits:
-      type: object
-      description: Current and historical credit limits as recommended by Bisnode. 
-      properties:
-        creditLimit:
-          "$ref": "#/components/schemas/CreditLimit"
-        historicalCreditLimits:
-          type: array
-          description: TODO - max size ???
-          items:
-            "$ref": "#/components/schemas/CreditLimit"
-      required: []
-      title: CreditLimits
-    Amount:
-      type: object
-      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217.  
-      properties:
-        monetaryAmount:
-          type: integer
-          format: int64
-          description: May be a negative number 
-        currency:
-          type: string
-          description: As described in https://en.wikipedia.org/wiki/ISO_4217
-      required: []
-      title: Amount
-    CreditLimit:
-      type: object
-      description: >- 
-        'Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/'
-      properties:
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when the limit was changed/re-calculated.
-      required: []
-      title: CreditLimit
     Inquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
           description: Date of the inquiry
       required: []
       title: Inquiry
-    CreditRatings:
-      type: object
-      description: Current and historical ratings
-      properties:
-        currentRating:
-          "$ref": "#/components/schemas/Rating"
-        historicalRatings:
-          type: array
-          description: Max 99 items.
-          items:
-            "$ref": "#/components/schemas/Rating"
-        partJudgements:
-          "$ref": "#/components/schemas/PartJudgements"
-      required: []
-      title: CreditRatings
-    Rating:
-      type: object
-      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
-      properties:
-        annualReportDate:
-          type: string
-          format: date
-          description: Date of the annual report data the rating was calculated from. 
-        date:
-          type: string
-          format: date
-          description: Date when the rating was calculated.
-        code:
-          type: string
-          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
-        description:
-          type: string
-          description: Textual description of the rating. 
-      required: []
-      title: Rating
-      maximum: 1100
-    PartJudgements:
-      type: object
-      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
-      properties:
-        abilityToPay:
-          "$ref": "#/components/schemas/PartJudgement"
-        finance:
-          "$ref": "#/components/schemas/PartJudgement"
-        historyOperation:
-          "$ref": "#/components/schemas/PartJudgement"
-        ownership:
-          "$ref": "#/components/schemas/PartJudgement"
-      required: []
-      title: PartJudgements
-    PartJudgement:
-      type: object
-      description: A part judgement. 
-      properties:
-        max:
-          type: integer
-          format: int32
-          description: The max value a company can have.
-        value:
-          type: integer
-          format: int32
-          description: This company's value.
-        description:
-          type: string
-          description: A textual description of the part judgement.
-      required: []
-      title: PartJudgement
-    PaymentIndex:
-      type: object
-      description: A weighted average of the Payment Index of all companies in all industries of the country. 
-      properties:
-        currentPaymentIndex:
-          "$ref": "#/components/schemas/PaymentIndexModel"
-        historicalPaymentIndex:
-          type: array
-          items:
-            "$ref": "#/components/schemas/PaymentIndexModel"
-      required: []
-      title: PaymentIndex
-    PaymentIndexModel:
+    NorwegianTrade:
       type: object
       properties:
-        averageDelay:
-          type: integer
-          format: int32
-          description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
-        amount:
-          "$ref": "#/components/schemas/Amount"
-        date:
-          type: string
-          format: date
-          description: Date when this paymentindex score was calculated.
-        invoiceCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of invoices used to calculate the payment index score
-        invoiceSuppliersCount:
-          type: integer
-          format: int64
-          minimum: 0
-          description: The number of suppliers that supplied the invoices used to calculate this paymentindex score
         paymentIndex:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The paymentindex score for this company. See https://en.wikipedia.org/wiki/Paydex for more info on paymentIndex.
-        paymentIndexAllCompanies:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in Sweden
-        paymentIndexLineOfBusiness:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 100
-          description: The average paymentindex score for all companies in the same line of business in Sweden.
-      required: []
-      title: PaydexModel
-    PaymentRemarks:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+      title: NorwegianTrade
+    NorwegianPaymentRemarks:
       type: object
       description: >-
         TODO - add description. What does amount referr to?
@@ -244,25 +89,25 @@ components:
           description: >-
             Number of remarks that have been paid in part
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
-          description: A list of remarks, most recent ones comes first. TODO - Max size ???
+          description: A list of remarks, most recent ones comes first.
           items:
-            "$ref": "#/components/schemas/PaymentRemark"
+            "$ref": "#/components/schemas/NorwegianPaymentRemark"
         voluntaryPledges:
           type: array
           description: A list of voluntary pledges
           items:
             "$ref": "#/components/schemas/VoluntaryPledge"
       required: []
-      title: PaymentRemarks
-    PaymentRemark:
+      title: NorwegianPaymentRemarks
+    NorwegianPaymentRemark:
       type: object
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -291,14 +136,14 @@ components:
         
         
       required: []
-      title: PaymentRemark
+      title: NorwegianPaymentRemark
     VoluntaryPledge:
       type: object
       description: >-
         TODO - what is this?
       properties:
         amount:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
           type: string
           format: date
@@ -430,7 +275,7 @@ components:
           description: >-
             what is 
         shareCapital:
-          "$ref": "#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
       title: ShareholderCompany
     Subsidiaries:
@@ -581,7 +426,7 @@ components:
             "$ref": "#/components/schemas/Position"
         historicalBoardMembers:
           type: array
-          description: A list of the historical boardmembers. TODO - is there a max size for this ???
+          description: A list of the historical boardmembers.
           items:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
@@ -591,7 +436,7 @@ components:
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "#/components/schemas/Capital"
+          "$ref": "#/components/schemas/NorwegianCapital"
         companyName:
           "$ref": "#/components/schemas/CompanyName"
         contactPoints:
@@ -620,18 +465,15 @@ components:
           type: integer
           format: int32
           description: >-
-            TODO - do we have this information?
             Total number of branches this company have. (workplaces)
         branches:
           type: array
-          description: TODO - How many items can we have here???
           items:
             "$ref": "#/components/schemas/Branch"
       required: []
       title: Branches
     Branch:
       type: object
-      description: What is a branch? Is there a definition we can use?
       properties:
         name:
           type: string
@@ -661,22 +503,22 @@ components:
           descripion: town
       required: []
       title: BranchAddress
-    Capital:
+    NorwegianCapital:
       type: object
-      description: Capital section - TODO more descriptive here please.
+      description: Capital section
       properties:
         shareCapital:
           "$ref": "#/components/schemas/ShareCapital"
         paidUpCapital:
           "$ref": "#/components/schemas/PaidUpCapital"
       required: []
-      title: Capital
+      title: NorwegianCapital
     PaidUpCapital:
       type: object
-      description: Paid up capital - TODO what is the diffrence to share capital
+      description: Paid up capital
       properties:
         amount:
-          "$ref": '#/components/schemas/Amount'
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
       title: PaidUpCapital
     ShareCapital:
@@ -684,7 +526,7 @@ components:
       description: Share capital
       properties:
         amount:
-          "$ref": '#/components/schemas/Amount'
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
       title: ShareCapital
     CompanyName:
