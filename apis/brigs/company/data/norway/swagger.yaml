@@ -78,18 +78,6 @@ components:
       description: >-
         TODO - add description. What does amount referr to?
       properties:
-        paidInFullCount:
-          type: integer
-          format: int32
-          description: >-
-            Number of remarks that have been paid in full
-        paidInPartCount:
-          type: integer
-          format: int32
-          description: >-
-            Number of remarks that have been paid in part
-        amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first.
@@ -133,8 +121,6 @@ components:
           format: date
           description: >-
             Date when this remark should be paid.
-        
-        
       required: []
       title: NorwegianPaymentRemark
     NorwegianVoluntaryPledge:
@@ -147,7 +133,7 @@ components:
         date:
           type: string
           format: date
-          description: Date
+          description: Registration date
         creditor:
           type: string
           description: Creditor
