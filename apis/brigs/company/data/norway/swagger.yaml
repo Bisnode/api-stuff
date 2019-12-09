@@ -1092,7 +1092,7 @@ components:
           format: int64
           description: >-
             A fixed asset is a long-term tangible piece of property or equipment that a firm owns and uses in its operations to generate income. Fixed assets are not expected to be consumed or converted into cash within a year. Fixed assets most commonly appear on the balance sheet as property, plant, and equipment (PP&E). 
-        totalIntangibleAssets:
+        intangibleAssetsTotal:
           type: integer
           format: int64
           description: >-
