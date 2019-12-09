@@ -1229,71 +1229,6 @@ components:
       type: object
       properties:
        
-        liabilities:
-          type: integer
-          format: int64
-          description: >-
-            Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries.
-        longTermLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
-        provisions:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        provisionsForPensionsAndSimilarLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        provisionsForDeferredTaxes:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        otherProvisions:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        longTermLiabilitiesOtherThanProvisions:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        convertibleBonds:
-          type: integer
-          format: int64
-          description: >-
-            A convertible bond is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
-        bondLoans:
-          type: integer
-          format: int64
-          description: >-
-            A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
-        longTermDebtsToBanks:
-          type: integer
-          format: int64
-          description: >-
-              "Long-term debt is debt that matures in more than one year. Long-term debt can be viewed from two perspectives: financial statement reporting by the issuer and financial investing. In financial statement reporting, companies must record long-term debt issuance and all of its associated payment obligations on its financial statements. On the flip side, investing in long-term debt includes putting money into debt investments with maturities of more than one year."
-        longTermPayablesToGroupEnterprises:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        subordinatedLoans:
-          type: integer
-          format: int64
-          description: >-
-            Subordinated debt (loan) (also known as a subordinated debenture) is an unsecured loan or bond that ranks below other, more senior loans or securities with respect to claims on assets or earnings. Subordinated debentures are thus also known as junior securities. In the case of borrower default, creditors who own subordinated debt will not be paid out until after senior bondholders are paid in full.
-        otherlongTermLiabilities:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
         shortTermDebts:
           type: integer
           format: int64
@@ -1373,6 +1308,66 @@ components:
     NorwegianLongTermLiabilities:
       type: object
       properties:
+        longTermLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
+        provisions:
+          type: integer
+          format: int64
+          description: >-
+           Provisions
+        provisionsForPensionsAndSimilarLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Provisions for pensions and similar liabilities
+        provisionsForDeferredTaxes:
+          type: integer
+          format: int64
+          description: >-
+            Provisions for deferred taxes
+        otherProvisions:
+          type: integer
+          format: int64
+          description: >-
+            Other provisions
+        liabilitiesOtherThanProvisions:
+          type: integer
+          format: int64
+          description: >-
+            Long term liabilitites other than provisions
+        convertibleBonds:
+          type: integer
+          format: int64
+          description: >-
+            A convertible bond is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
+        bondLoans:
+          type: integer
+          format: int64
+          description: >-
+            A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
+        debtsToBanks:
+          type: integer
+          format: int64
+          description: >-
+              "Long-term debt is debt that matures in more than one year. Long-term debt can be viewed from two perspectives: financial statement reporting by the issuer and financial investing. In financial statement reporting, companies must record long-term debt issuance and all of its associated payment obligations on its financial statements. On the flip side, investing in long-term debt includes putting money into debt investments with maturities of more than one year."
+        payablesToGroupEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            Long term payables to group enterprises
+        subordinatedLoans:
+          type: integer
+          format: int64
+          description: >-
+            Subordinated debt (loan) (also known as a subordinated debenture) is an unsecured loan or bond that ranks below other, more senior loans or securities with respect to claims on assets or earnings. Subordinated debentures are thus also known as junior securities. In the case of borrower default, creditors who own subordinated debt will not be paid out until after senior bondholders are paid in full.
+        otherlongTermLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Other long term liabilities
         
       title: NorwegianLongTermLiabilities
     NorwegianShareholdersEquity:
