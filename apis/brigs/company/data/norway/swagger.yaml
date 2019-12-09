@@ -1048,36 +1048,38 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        shortTermInvestmentShares:
+            Investment in associated enterprises total
+        investmentShares:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        shortTermInvestmentBonds:
+            Short term investments shares
+        investmentBonds:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        shortTermInvestmentsFinancialInstruments:
+           Short term investments bonds
+        investmentsFinancialInstruments:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+            Short term investments financial instruments
         otherFinancialIntruments:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+            Other financial instruments
         cashAndBankBalance:
           type: integer
           format: int64
           description: >-
             The sum of cash in hand and money in the bank.
             TODO - fix this description
-        shortTermInvestmentsOther:
+        investmentsOther:
           type: integer
           format: int64
+          description: >-
+            Short term investments other
       title: NorwegianCurrentAssets
       description: |
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
