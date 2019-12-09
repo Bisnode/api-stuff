@@ -1097,7 +1097,7 @@ components:
           format: int64
           description: >-
             Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
-        researchAndDevelopment:
+        capitalisedCostForRnd:
           type: integer
           format: int64
           description: >-
@@ -1127,11 +1127,11 @@ components:
           format: int64
           description: >-
             This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc.
-        plantAndMachinery:
+        machineryAndTools:
           type: integer
           format: int64
           description: >-
-            plant and machinery
+            Total machinery and inventory.
         shipsRigsAeroplanes:
           type: integer
           format: int64
@@ -1140,12 +1140,13 @@ components:
         equipment:
           type: integer
           format: int64
-          description: equipment
+          description: >-
+            Equipment
         financialAssetsTotal:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+            Financial assets total
         investmentInSubsidiaries:
           type: integer
           format: int64
@@ -1156,22 +1157,21 @@ components:
           format: int64
           description: >-
             Investments made in group companies
-        longTermReceivablesFromGroupEnterprises:
+        receivablesFromGroupEnterprises:
           type: integer
           format: int64
           description: >-
-            TODO - add description
+            Long term receivables from group enterprises
         investmentsInAssociatedEnterprises:
           type: integer
           format: int64
           description: >-
             Investments made in associated enterprices
-            TODO - what does associated entrprises mean?
-        longTermReceivablesFromAssociatedEnterprises:
+        receivablesFromAssociatedEnterprises:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+            Long term receivables from associated enterprises
         investmentsInOtherEnterprises:
           type: integer
           format: int64
@@ -1181,23 +1181,17 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+           Other receivables
         pensionFund:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+           Pension fund
         otherFixedAssets:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        totalCurrentAssets:
-          type: integer
-          format: int64
-          description: >-  
-            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
-        
+           Other fixed assets
       title: NorwegianNonCurrentAssets
     NorwegianLiabilitiesAndEquity:
       type: object
