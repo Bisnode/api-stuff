@@ -1209,7 +1209,7 @@ components:
           type: integer
           format: int64
           description: |
-            The sum of all reported liabilities.
+            The sum of all reported equity and liabilities.
     NorwegianLiabilities:
       type: object
       properties:
@@ -1217,66 +1217,18 @@ components:
           "$ref": "#/components/schemas/NorwegianCurrentLiabilities"
         nonCurrentLiabilities:
           "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
+        liabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            The sum of all reported liabilities.
       title: NorwegianLiabilities
       description: |
         Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
     NorwegianCurrentLiabilities:
       type: object
       properties:
-        equity:
-          type: integer
-          format: int64
-          description: >-
-            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
-        paidInCapital:
-          type: integer
-          format: int64
-          description: >-
-            Paid-up capital is the amount of money a company has received from shareholders in exchange for shares of stock. Paid-up capital is created when a company sells its shares on the primary market directly to investors. When shares are bought and sold among investors on the secondary market, no additional paid-up capital is created as proceeds in those transactions go to the selling shareholders, not the issuing company.
-        shareCapital:
-          type: integer
-          format: int64
-          description: >-
-            Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock. The amount of share capital or equity financing a company has can change over time. A company that wishes to raise more equity can obtain authorization to issue and sell additional shares, thereby increasing its share capital.
-        ownShares:
-          type: integer
-          format: int64
-          description: >-
-            The value of the shares the company owns in their own company.
-        sharePremium:
-          type: integer
-          format: int64
-          description: >-
-            A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
-        restrictedEquity:
-          type: integer
-          format: int64
-          description: >-
-            Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
-
-            Restricted equity is a security for other stakeholders (not shareholders) in a corporation such as lenders, suppliers, the state and employees. Restricted equity must exist since the shareholders never have to pay the debt in a bankruptcy. The shareholders in a limited company are free from liability in bankruptcy.
-
-            Restricted equity includes share capital, revaluation reserves and other reserves
-        retainedEarnings:
-          type: integer
-          format: int64
-          description: >-    
-            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
-        reserveForValuationVariances:
-          type: integer
-          format: int64
-          description: >-
-            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet for the purpose of maintaining a reserve account tied to certain assets. This line item can be used when a revaluation assessment finds that the carrying value of the asset has changed.
-        otherEquity:
-          type: integer
-          format: int64
-          description: >-
-            TODO - examples
-        minorityInterestsTotal:
-          type: integer
-          format: int64
-          description: >-
-            A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another compan.
+       
         liabilities:
           type: integer
           format: int64
@@ -1426,7 +1378,60 @@ components:
     NorwegianShareholdersEquity:
       type: object
       properties:
-      
+        equity:
+          type: integer
+          format: int64
+          description: >-
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
+        paidInCapital:
+          type: integer
+          format: int64
+          description: >-
+            Paid-up capital is the amount of money a company has received from shareholders in exchange for shares of stock. Paid-up capital is created when a company sells its shares on the primary market directly to investors. When shares are bought and sold among investors on the secondary market, no additional paid-up capital is created as proceeds in those transactions go to the selling shareholders, not the issuing company.
+        shareCapital:
+          type: integer
+          format: int64
+          description: >-
+            Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock. The amount of share capital or equity financing a company has can change over time. A company that wishes to raise more equity can obtain authorization to issue and sell additional shares, thereby increasing its share capital.
+        ownShares:
+          type: integer
+          format: int64
+          description: >-
+            The value of the shares the company owns in their own company.
+        sharePremium:
+          type: integer
+          format: int64
+          description: >-
+            A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
+        restrictedEquity:
+          type: integer
+          format: int64
+          description: >-
+            Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
+
+            Restricted equity is a security for other stakeholders (not shareholders) in a corporation such as lenders, suppliers, the state and employees. Restricted equity must exist since the shareholders never have to pay the debt in a bankruptcy. The shareholders in a limited company are free from liability in bankruptcy.
+
+            Restricted equity includes share capital, revaluation reserves and other reserves
+        retainedEarnings:
+          type: integer
+          format: int64
+          description: >-    
+            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
+        reserveForValuationVariances:
+          type: integer
+          format: int64
+          description: >-
+            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet for the purpose of maintaining a reserve account tied to certain assets. This line item can be used when a revaluation assessment finds that the carrying value of the asset has changed.
+        otherEquity:
+          type: integer
+          format: int64
+          description: >-
+            TODO - examples
+        minorityInterestsTotal:
+          type: integer
+          format: int64
+          description: >-
+            A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another compan.
       title: NorwegianShareholdersEquity
     NorwegianFinancialStatement:
       type: object
