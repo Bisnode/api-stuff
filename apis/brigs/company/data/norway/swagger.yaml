@@ -1210,79 +1210,6 @@ components:
           format: int64
           description: |
             The sum of all reported equity and liabilities.
-    NorwegianLiabilities:
-      type: object
-      properties:
-        currentLiabilities:
-          "$ref": "#/components/schemas/NorwegianCurrentLiabilities"
-        nonCurrentLiabilities:
-          "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
-        liabilitiesTotal:
-          type: integer
-          format: int64
-          description: |
-            The sum of all reported liabilities.
-      title: NorwegianLiabilities
-      description: |
-        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
-    NorwegianCurrentLiabilities:
-      type: object
-      properties:
-       
-        shortTermDebts:
-          type: integer
-          format: int64
-          description: >-
-            Short term debt, also called current liabilities, is a firm's financial obligations that are expected to be paid off within a year. It is listed under the current liabilities portion of the total liabilities section of a company's balance sheet.
-        convertibleLoans:
-          type: integer
-          format: int64
-          description: >-
-            Loan that entitles the lender (or the holder of loan debenture) to convert the loan to common or preferred stock (ordinary or preference shares) at a specified conversion rate and within a specified timeframe.
-        certificateLoans:
-          type: integer
-          format: int64
-          description: >-
-            A certificate secured loan is a type of agreement in which you pledge a type of deposit account to a financial institution in exchange for access to a sum of money. You can use this money to make a major purchase, consolidate bills, pay personal expenses or finance higher education. The deposit account that you pledge in a certificate loan is known as a certificate of deposit. With this type of account, you agree to invest a sum of money with a financial institution for a specific period of time and, in exchange, the bank agrees to pay you interest on your money.
-        shortTermDebtsToBanks:
-          type: integer
-          format: int64
-          description: Short term debts to banks.
-        tradePayables:
-          type: integer
-          format: int64
-          description: >-
-            Liabilities owed to suppliers for purchases or services rendered. More commonly referred to as accounts payable.
-        taxPayables:
-          type: integer
-          format: int64
-          description: >-
-            Income tax payable is a type of account in the current liabilities section of a company's balance sheet. It is compiled of taxes due to the government within one year. The calculation of income tax payable is according to the prevailing tax law in the company's home country.
-        publicDutiesPayable:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        shortTermPayablesToGroupEnterprises:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        proposedDividends:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        otherShortTermDebts:
-          type: integer
-          format: int64
-          description: >-
-            TODO - describe this
-        liabilitiesAndEquity:
-          type: integer
-          format: int64
-          description: >-
-            Sum of liabilities and equity
         wagesToLeaderOrCeo:
           type: integer
           format: int64
@@ -1304,6 +1231,73 @@ components:
           description: >-
             Wages and payments to consultants.
         
+    NorwegianLiabilities:
+      type: object
+      properties:
+        currentLiabilities:
+          "$ref": "#/components/schemas/NorwegianCurrentLiabilities"
+        nonCurrentLiabilities:
+          "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
+        liabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            The sum of all reported liabilities.
+      title: NorwegianLiabilities
+      description: |
+        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
+    NorwegianCurrentLiabilities:
+      type: object
+      properties:
+        shortTermLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Short term debt, also called current liabilities, is a firm's financial obligations that are expected to be paid off within a year. It is listed under the current liabilities portion of the total liabilities section of a company's balance sheet.
+        convertibleLoans:
+          type: integer
+          format: int64
+          description: >-
+            Loan that entitles the lender (or the holder of loan debenture) to convert the loan to common or preferred stock (ordinary or preference shares) at a specified conversion rate and within a specified timeframe.
+        certificateLoans:
+          type: integer
+          format: int64
+          description: >-
+            A certificate secured loan is a type of agreement in which you pledge a type of deposit account to a financial institution in exchange for access to a sum of money. You can use this money to make a major purchase, consolidate bills, pay personal expenses or finance higher education. The deposit account that you pledge in a certificate loan is known as a certificate of deposit. With this type of account, you agree to invest a sum of money with a financial institution for a specific period of time and, in exchange, the bank agrees to pay you interest on your money.
+        liabilitiessToBanks:
+          type: integer
+          format: int64
+          description: Short term debts to banks.
+        tradePayables:
+          type: integer
+          format: int64
+          description: >-
+            Liabilities owed to suppliers for purchases or services rendered. More commonly referred to as accounts payable.
+        taxPayables:
+          type: integer
+          format: int64
+          description: >-
+            Income tax payable is a type of account in the current liabilities section of a company's balance sheet. It is compiled of taxes due to the government within one year. The calculation of income tax payable is according to the prevailing tax law in the company's home country.
+        publicDutiesPayable:
+          type: integer
+          format: int64
+          description: >-
+            Public duties payable
+        payablesToGroupEnterprises:
+          type: integer
+          format: int64
+          description: >-
+           Short term payables to group enterprises
+        proposedDividends:
+          type: integer
+          format: int64
+          description: >-
+            Proposed dividends
+        otherShortTermLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Other short term debts
       title: NorwegianCurrentLiabilities
     NorwegianLongTermLiabilities:
       type: object
@@ -1348,7 +1342,7 @@ components:
           format: int64
           description: >-
             A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
-        debtsToBanks:
+        liabilitiesToBanks:
           type: integer
           format: int64
           description: >-
