@@ -25,22 +25,22 @@ components:
     NorwegianCompanyData:
       type: object
       properties:
-        companyInformation:
-          "$ref": "#/components/schemas/CompanyInformation"
         risk:
-          "$ref": "#/components/schemas/Risk"
+          "$ref": "#/components/schemas/NorwegianRisk"
         management:
-          "$ref": "#/components/schemas/Management"
+          "$ref": "#/components/schemas/NorwegianManagement"
+        companyInformation:
+          "$ref": "#/components/schemas/NorwegianCompanyInformation"
         finance:
-          "$ref": "#/components/schemas/Finance"
+          "$ref": "#/components/schemas/NorwegianFinance"
         ownership:
-          "$ref": "#/components/schemas/Ownership"
+          "$ref": "#/components/schemas/NorwegianOwnership"
         events:
-          "$ref": "#/components/schemas/Events"
+          "$ref": "#/components/schemas/NorwegianEvents"
       required: []
       title: NorwegianCompanyData
       description: This is the root object defining which structures reside under the root path.
-    Risk:
+    NorwegianRisk:
       type: object
       description: >-
         Risk section.
@@ -54,7 +54,7 @@ components:
         bankruptcy:
           "$ref": "#/components/schemas/Bankruptcy"
       required: []
-      title: Risk
+      title: NorwegianRisk
     CreditLimits:
       type: object
       description: Current and historical credit limits as recommended by Bisnode. 
@@ -370,7 +370,7 @@ components:
       description: Newest events come first. Max xx events. TODO - what is max ???
       items:
         "$ref": "#/components/schemas/Event"
-    Ownership:
+    NorwegianOwnership:
       type: object
       properties:
         shareHolders:
@@ -382,7 +382,7 @@ components:
             "$ref": "#/components/schemas/ShareholderCompany"
         subsidiaries:
           "$ref": "#/components/schemas/Subsidiaries"
-      title: Ownership
+      title: NorwegianOwnership
     Company:
       type: object
       properties:
@@ -473,7 +473,7 @@ components:
           description: TODO - what does this date mean???
       required: []
       title: Subsidiary
-    Management:
+    NorwegianManagement:
       type: object
       description: Management section
       properties:
@@ -490,7 +490,7 @@ components:
           description: >-
             TODO - add a good description here
       required: []
-      title: Management
+      title: NorwegianManagement
     Auditors:
       type: object
       description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
@@ -586,7 +586,7 @@ components:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
       title: BoardMembers
-    CompanyInformation:
+    NorwegianCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
       properties:
@@ -611,7 +611,7 @@ components:
         branches:
           "$ref": "#/components/schemas/Branches"
       required: []
-      title: CompanyInformation
+      title: NorwegianCompanyInformation
     Branches:
       type: object
       description: 
@@ -938,13 +938,13 @@ components:
           description: TODO - do we have a date
       required: []
       title: Status
-    Finance:
+    NorwegianFinance:
       type: object
       properties:
         financialStatements:
           "$ref": "#/components/schemas/FinancialStatements"
       required: []
-      title: Finance
+      title: NorwegianFinance
     GroupAccount:
       type: object
       properties:
