@@ -989,6 +989,8 @@ components:
           description: |  
             The sum of all assets.
       title: NorwegianAssets
+      description: |
+        Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
     NorwegianCurrentAssets:
       type: object
       properties:
