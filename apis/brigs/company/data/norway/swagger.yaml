@@ -970,13 +970,26 @@ components:
       type: object
       properties:
         assets: 
-           "$ref": "#/components/schemas/NorwegianBalanceSheetAssets"
+           "$ref": "#/components/schemas/NorwegianAssets"
         liabilitiesAndEquity:
-          "$ref": "#/components/schemas/NorwegianBalanceSheetLiabilities"
+          "$ref": "#/components/schemas/NorwegianLiabilitiesAndEquity"
       title: NorwegianBalanceSheet
       description: >-
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
-    NorwegianBalanceSheetAssets:
+    NorwegianAssets:
+      type: object
+      properties:
+        currentAssets:
+          "$ref": "#/components/schemas/NorwegianCurrentAssets"
+        nonCurrentAssets:
+          "$ref": "#/components/schemas/NorwegianNonCurrentAssets"
+        assetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            The sum of all assets.
+      title: NorwegianAssets
+    NorwegianCurrentAssets:
       type: object
       properties:
         fixedAssetsTotal:
@@ -1173,7 +1186,33 @@ components:
           format: int64
           description: >-
             Total assets refers to the total amount of assets owned by this company.
-    NorwegianBalanceSheetLiabilities:
+    NorwegianNonCurrentAssets:
+      type: object
+      properties:
+      title: NorwegianNonCurrentAssets
+    NorwegianLiabilitiesAndEquity:
+      type: object
+      properties:
+        liabilities:
+          "$ref": "#/components/schemas/NorwegianLiabilities"
+        shareholdersEquity:
+          "$ref": "#/components/schemas/NorwegianShareholdersEquity" 
+        equityAndLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            The sum of all reported liabilities.
+    NorwegianLiabilities:
+      type: object
+      properties:
+        currentLiabilities:
+          "$ref": "#/components/schemas/NorwegianCurrentLiabilities"
+        nonCurrentLiabilities:
+          "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
+      title: NorwegianLiabilities
+      description: |
+        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
+    NorwegianCurrentLiabilities:
       type: object
       properties:
         equity:
@@ -1229,7 +1268,7 @@ components:
           type: integer
           format: int64
           description: >-
-            A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another company.
+            A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another compan.
         liabilities:
           type: integer
           format: int64
@@ -1369,6 +1408,18 @@ components:
           format: int64
           description: >-
             Wages and payments to consultants.
+        
+      title: NorwegianCurrentLiabilities
+    NorwegianLongTermLiabilities:
+      type: object
+      properties:
+        
+      title: NorwegianLongTermLiabilities
+    NorwegianShareholdersEquity:
+      type: object
+      properties:
+      
+      title: NorwegianShareholdersEquity
     NorwegianFinancialStatement:
       type: object
       properties:
