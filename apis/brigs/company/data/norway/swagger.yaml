@@ -998,7 +998,7 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+           Inventories
         rawMaterialAndConsumables:
           type: integer
           format: int64
@@ -1008,32 +1008,37 @@ components:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+            Produced goods
         finishedProductsAndGoods:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        currentReceivables:
+            Finished products and goods
+        currentReceivablesTotal:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        otherShortTermReceivables:
+            Current receivables total
+        otherReceivables:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        shortTermReceivablesFromGroupEnterprises:
+           Other short term receivables
+        tradeReceivables:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
-        unpaidContributedCapitalShortTerm:
+           Short term trade receivables
+        receivableFromGroupAndAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+            Short term receivable from group and associated companies.
+        unpaidContributedCapital:
           type: integer
           format: int64
           description: >-
-            TODO - describe this
+            Unpaid contributed capital short term
         investmentsTotal:
           type: integer
           format: int64
