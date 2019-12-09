@@ -55,7 +55,7 @@ components:
           "$ref": "#/components/schemas/NorwegianBankruptcy"
       required: []
       title: NorwegianRisk
-    Inquiry:
+    NorwegianInquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
@@ -66,7 +66,7 @@ components:
           format: date
           description: Date of the inquiry
       required: []
-      title: Inquiry
+      title: NorwegianInquiry
     NorwegianTrade:
       type: object
       properties:
@@ -99,7 +99,7 @@ components:
           type: array
           description: A list of voluntary pledges
           items:
-            "$ref": "#/components/schemas/VoluntaryPledge"
+            "$ref": "#/components/schemas/NorwegianVoluntaryPledge"
       required: []
       title: NorwegianPaymentRemarks
     NorwegianPaymentRemark:
@@ -137,7 +137,7 @@ components:
         
       required: []
       title: NorwegianPaymentRemark
-    VoluntaryPledge:
+    NorwegianVoluntaryPledge:
       type: object
       description: >-
         TODO - what is this?
@@ -169,8 +169,8 @@ components:
           description: >-
             Diary number
       required: []
-      title: VoluntaryPledge
-    Event:
+      title: NorwegianVoluntaryPledge
+    NorwegianEvent:
       type: object
       description: Event as received from authority.
       properties:
@@ -190,31 +190,13 @@ components:
           type: string
           description: Where did the event come from
           example: FORETAKSREGISTERET
-      title: Event
-    SpecialEvent:
-      type: object
-      description: Special events concerning bancruptcy.
-      properties:
-        date:
-          type: string
-          format: date
-          description: Date when the event occured
-          example: '2019-03-03'
-        status:
-          type: string
-          description: >-
-            TODO - what statuses do we have?
-        name: 
-          type: string
-          description: >-
-            Name of the events. TODO examples
-      title: SpecialEvent
+      title: Norwegian
     NorwegianEvents:
       type: array
       title: NorwegianEvents
-      description: Newest events come first. Max xx events. TODO - what is max ???
+      description: Newest events come first.
       items:
-        "$ref": "#/components/schemas/Event"
+        "$ref": "#/components/schemas/NorwegianEvent"
     NorwegianOwnership:
       type: object
       properties:
@@ -224,35 +206,11 @@ components:
             TODO - how many will be returned
             TODO - Will we only display companies that owns more than 50% or similar???
           items:
-            "$ref": "#/components/schemas/ShareholderCompany"
+            "$ref": "#/components/schemas/NorwegianShareholderCompany"
         subsidiaries:
-          "$ref": "#/components/schemas/Subsidiaries"
+          "$ref": "#/components/schemas/NorwegianSubsidiaries"
       title: NorwegianOwnership
-    Company:
-      type: object
-      properties:
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-        dunsNumber:
-          type: string
-          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
-        countryCode:
-          type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-        ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
-        companies:
-          type: array
-          items:
-            "$ref": "#/components/schemas/Company"
-      required: []
-      title: Company
-    ShareholderCompany:
+    NorwegianShareholderCompany:
       type: object
       description: Company which owns shares in this company.
       properties:
@@ -277,8 +235,8 @@ components:
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: ShareholderCompany
-    Subsidiaries:
+      title: NorwegianShareholderCompany
+    NorwegianSubsidiaries:
       type: object
       properties:
         numberOfSubsidiaries:
@@ -290,10 +248,10 @@ components:
         subsidiaries:
           type: array
           items:
-            "$ref": "#/components/schemas/Subsidiary"
+            "$ref": "#/components/schemas/NorwegianSubsidiary"
       required: []
-      title: Subsidiaries
-    Subsidiary:
+      title: NorwegianSubsidiaries
+    NorwegianSubsidiary:
       type: object
       description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
       properties:
@@ -317,7 +275,7 @@ components:
           format: date
           description: TODO - what does this date mean???
       required: []
-      title: Subsidiary
+      title: NorwegianSubsidiary
     NorwegianManagement:
       type: object
       description: Management section
@@ -344,70 +302,14 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
       title: NorwegianAuditors
-    Position:
-      type: object
-      properties:
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company? TODO - Merge OTHER and UNKNOWN????
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-        registrationNumber:
-          type: string
-          description: Typically a social security number, could be a duns-number as well
-        function:
-          type: integer
-          format: int32
-          description: >-
-        location:
-          type: string
-          description: >-
-            'A countrycode as described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-            TODO - is this correct?? or could it be other stuff here'
-      required: []
-      title: Position
-    HistoricalPosition:
-      type: object
-      properties:
-        type:
-          type: string
-          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private per son or a company?
-        enteredDate:
-          type: string
-          format: date
-          description: Date when this person/entity entered this position.
-        function:
-          type: integer
-          format: int32
-          description: |
-            TODO - add description                 
-        name:
-          type: string
-          description: The name of the person/entity holding this position
-        registrationNumber:
-          type: string
-          description: Typically a social securityNumber, could be a duns-number as well.
-        resignedDate:
-          type: string
-          format: date
-          description: Date when this person/entity resigned from this position
-      required: []
-      title: HistoricalPosition
     NorwegianBoardMembers:
       type: object
       properties:
@@ -423,12 +325,12 @@ components:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers.
           items:
-            "$ref": "#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
       required: []
       title: NorwegianBoardMembers
     NorwegianCompanyInformation:
@@ -438,26 +340,26 @@ components:
         capital:
           "$ref": "#/components/schemas/NorwegianCapital"
         companyName:
-          "$ref": "#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "#/components/schemas/ContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "#/components/schemas/Identifiers"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
         industryCodeSet:
-          "$ref": "#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
-          "$ref": "#/components/schemas/LegalForm"
+          "$ref": "#/components/schemas/NorwegianLegalForm"
         status:
-          "$ref": "#/components/schemas/Status"
+          "$ref": "#/components/schemas/NorwegianStatus"
         registrationInformation:
-          "$ref": "#/components/schemas/RegistrationInformation"
+          "$ref": "#/components/schemas/NorwegianRegistrationInformation"
         generalCompanyData:
-          "$ref": "#/components/schemas/GeneralCompanyData"
+          "$ref": "#/components/schemas/NorwegianGeneralCompanyData"
         branches:
-          "$ref": "#/components/schemas/Branches"
+          "$ref": "#/components/schemas/NorwegianBranches"
       required: []
       title: NorwegianCompanyInformation
-    Branches:
+    NorwegianBranches:
       type: object
       description: 
       properties:
@@ -469,19 +371,19 @@ components:
         branches:
           type: array
           items:
-            "$ref": "#/components/schemas/Branch"
+            "$ref": "#/components/schemas/NorwegianBranch"
       required: []
-      title: Branches
-    Branch:
+      title: NorwegianBranches
+    NorwegianBranch:
       type: object
       properties:
         name:
           type: string
           description: Name of the branch
         visitingAddress:
-          "$ref": "#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
         postalAddress:
-          "$ref": "#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
         registrationNumber:
           description: Local registration number
           type: string
@@ -491,8 +393,8 @@ components:
           description: >-
             The number of empoyees that work at this branch
       required: []
-      title: Branch
-    BranchAddress:
+      title: NorwegianBranch
+    NorwegianBranchAddress:
       type: object
       properties:
         postalCode:
@@ -502,136 +404,34 @@ components:
           type: string
           descripion: town
       required: []
-      title: BranchAddress
+      title: NorwegianBranchAddress
     NorwegianCapital:
       type: object
       description: Capital section
       properties:
         shareCapital:
-          "$ref": "#/components/schemas/ShareCapital"
+          "$ref": "#/components/schemas/NorwegianShareCapital"
         paidUpCapital:
-          "$ref": "#/components/schemas/PaidUpCapital"
+          "$ref": "#/components/schemas/NorwegianPaidUpCapital"
       required: []
       title: NorwegianCapital
-    PaidUpCapital:
+    NorwegianPaidUpCapital:
       type: object
       description: Paid up capital
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: PaidUpCapital
-    ShareCapital:
+      title: NorwegianPaidUpCapital
+    NorwegianShareCapital:
       type: object
       description: Share capital
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
-      title: ShareCapital
-    CompanyName:
-      type: object
-      description: >-
-        Different set of names this company is known as or has been known as.
-      properties:
-        tradingStyleNames:
-          type: array
-          items:
-            "$ref": "#/components/schemas/TradingStyleName"
-        historicalNames:
-          type: array
-          description: A list of historical names, does not include the current name.
-          items:
-            "$ref": "#/components/schemas/Name"
-        officialName:
-          "$ref": "#/components/schemas/Name"
-      required: []
-      title: CompanyName
-    Name:
-      type: object
-      description: A name object
-      properties:
-        date:
-          type: string
-          format: date
-          description: The date when this name was registered??? - TODO is this correct
-        name:
-          type: string
-          description: Name
-      required: []
-      title: Name
-    TradingStyleName:
-      type: object
-      description: A trading style or trading name is a name a business chooses to use in addition to their official registered name.
-      properties:
-        name:
-          type: string
-          description: The additional name
-      required: []
-      title: TradingStyleName
-    ContactPoints:
-      type: object
-      description: Methods for getting in contact with this company.
-      properties:
-        electronicContactPoints:
-          "$ref": "#/components/schemas/ElectronicContactPoints"
-        postalAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        registeredAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-        visitingAddress:
-          "$ref": "#/components/schemas/StreetAddress"
-      required: []
-      title: ContactPoints
-    ElectronicContactPoints:
-      type: object
-      properties:
-        emailAddresses:
-          type: array
-          description: A list of email addresses
-          items:
-            type: string
-        faxNumbers:
-          type: array
-          description: A list of fax numbers
-          items:
-            type: string
-        phoneNumbers:
-          type: array
-          description: A list of phone numbers
-          items:
-            type: string
-        webAddresses:
-          type: array
-          description: A list of web addresses
-          items:
-            type: string
-      required: []
-      title: ElectronicContactPoints
-
-    StreetAddress:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City
-          example: Stockholm
-        country:
-          type: string
-          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
-          example: SE
-        postalCode:
-          type: string
-          description: Postalcode
-          example: 19637
-        street:
-          type: string
-          description: Street address
-          example: Rosenborgsgatan 4-6
-      required: []
-      title: StreetAddress
-   
-    GeneralCompanyData:
+      title: NorwegianShareCapital
+    NorwegianGeneralCompanyData:
       type: object
       properties:
         businessDescription:
@@ -651,80 +451,8 @@ components:
           description: >-
             TODO - what is this?
       required: []
-      title: GeneralCompanyData
-    Identifiers:
-      type: object
-      description: A set of identifiers for this company.
-      properties:
-        bisnodeId:
-          type: string
-          description: A unique id set by Bisnode
-        registrationNumber:
-          type: string
-          description: National registration number
-        dunsNumber:
-          type: string
-          description: duns-number
-        vatNumber:
-          type: string
-          description: >-
-            A VAT identification number is an identifier used in many countries, including the countries of the European Union, for value added tax purposes. 
-      required: []
-      title: Identifiers
-    IndustryCodeSet:
-      type: object
-      description: Sni and nace code for classification of the business
-      properties:
-        sni2007IndustryCodes:
-          "$ref": "#/components/schemas/Sni2007IndustryCodes"
-        naceCodes:
-          type: array
-          items:
-            "$ref": "#/components/schemas/NaceCode"
-      required: []
-      title: IndustryCodeSet
-    NaceCode:
-      type: object
-      description: 'NACE Rev. 2. See https://siccode.com/page/what-is-a-nace-code for more info'
-      properties:
-        code:
-          type: string
-          description: nace code
-          example: 0230
-        description:
-          type: string
-          description: A textual description of the code.
-          example: 'Gathering of wild growing non-wood products'
-      required: []
-      title: NaceCode
-    Sni2007IndustryCodes:
-      type: object
-      description: 
-      properties:
-        otherIndustryCodes:
-          type: array
-          description: Secondary codes 
-          items:
-            "$ref": "#/components/schemas/Sni2007Code"
-        primaryIndustryCode:
-          "$ref": "#/components/schemas/Sni2007Code"
-      required: []
-      title: Sni2007IndustryCodes
-    Sni2007Code:
-      type: object
-      description: 'Industry code. See https://www.scb.se/dokumentation/klassifikationer-och-standarder/standard-for-svensk-naringsgrensindelning-sni/ for more info.'
-      properties:
-        code:
-          type: string
-          description: the sni code
-          example: 82910
-        description:
-          type: string
-          description: A textual description of the code. 
-          example: "Retail sale of men's, women's and children's clothing in spec. stores"
-      required: []
-      title: IndustryCode
-    LegalForm:
+      title: NorwegianGeneralCompanyData
+    NorwegianLegalForm:
       type: object
       description: The company's legalform
       properties:
@@ -741,8 +469,8 @@ components:
           description: A textual description of the code.
           example: AS
       required: []
-      title: LegalForm
-    RegistrationInformation:
+      title: NorwegianLegalForm
+    NorwegianRegistrationInformation:
       type: object
       description: TODO - what is the difference between these 3 dates
       properties:
@@ -766,8 +494,8 @@ components:
           description: Where was the company registered.
           example: Foretaksregisteret
       required: []
-      title: RegistrationInformation
-    Status:
+      title: NorwegianRegistrationInformation
+    NorwegianStatus:
       type: object
       properties:
         value:
@@ -779,45 +507,45 @@ components:
           format: date
           description: TODO - do we have a date
       required: []
-      title: Status
+      title: NorwegianStatus
     NorwegianFinance:
       type: object
       properties:
         financialStatements:
-          "$ref": "#/components/schemas/FinancialStatements"
+          "$ref": "#/components/schemas/NorwegianFinancialStatements"
       required: []
       title: NorwegianFinance
-    GroupAccount:
+    NorwegianGroupAccount:
       type: object
       properties:
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/components/schemas/FinancialStatement"
-    FinancialStatements:
+            "$ref": "#/components/schemas/NorwegianFinancialStatement"
+    NorwegianFinancialStatements:
       type: object
       properties:
         groupAccount:
-          "$ref": "#/components/schemas/GroupAccount"
+          "$ref": "#/components/schemas/NorwegianGroupAccount"
         auditorsReservation:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementsAuditorsReservation"
-        keyRatios:
+            "$ref": "#/components/schemas/NorwegianFinancialStatementsAuditorsReservation"
+        keyFigures:
           type: array
           items:
-            "$ref": "#/components/schemas/FinancialStatementKeyRatio"
-        industryKeyRatios:
-          "$ref": "#/components/schemas/FinancialStatementKeyRatio"
+            "$ref": "#/components/schemas/NorwegianFinancialStatementKeyFigure"
+        industryKeyFigures:
+          "$ref": "#/components/schemas/NorwegianFinancialStatementKeyFigure"
         financialStatements:
           type: array
           description: "The 5 latest will be returned sorted on date desc"
           items:
-            "$ref": "#/components/schemas/FinancialStatement"
+            "$ref": "#/components/schemas/NorwegianFinancialStatement"
       required: []
-      title: FinancialStatements
-    FinancialStatementsAuditorsReservation:
+      title: NorwegianFinancialStatements
+    NorwegianFinancialStatementsAuditorsReservation:
       type: object
       properties:
         auditorsReservationCode:
@@ -837,8 +565,8 @@ components:
             TODO - Date of the auditors reservation/comment.
                    Or the date of the annual report they audited ???
       required: []
-      title: FinancialStatementsAuditorsReservation
-    FinancialStatementKeyRatio:
+      title: NorwegianFinancialStatementsAuditorsReservation
+    NorwegianFinancialStatementKeyFigure:
       type: object
       properties:
         currentRatio:
@@ -969,8 +697,8 @@ components:
             Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
         
       required: []
-      title: FinancialStatementKeyRatio
-    IncomeStatement:
+      title: NorwegianFinancialStatementKeyRatio
+    NorwegianIncomeStatement:
       type: object
       properties:
         grossTurnover:
@@ -1184,18 +912,18 @@ components:
           format: int64
           description: >-
             A positive value means that the company made a net profit and a negative that it made a net loss.
-    BalanceSheet:
+    NorwegianBalanceSheet:
       type: object
       properties:
         assets: 
-           "$ref": "#/components/schemas/BalanceSheetAssets"
+           "$ref": "#/components/schemas/NorwegianBalanceSheetAssets"
         liabilitiesAndEquity:
-          "$ref": "#/components/schemas/BalanceSheetLiabilities"
+          "$ref": "#/components/schemas/NorwegianBalanceSheetLiabilities"
       title: BalanceSheet
       description: >-
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
     
-    BalanceSheetAssets:
+    NorwegianBalanceSheetAssets:
       type: object
       properties:
         fixedAssetsTotal:
@@ -1392,7 +1120,7 @@ components:
           format: int64
           description: >-
             Total assets refers to the total amount of assets owned by this company.
-    BalanceSheetLiabilities:
+    NorwegianBalanceSheetLiabilities:
       type: object
       properties:
         equity:
@@ -1588,7 +1316,7 @@ components:
           format: int64
           description: >-
             Wages and payments to consultants.
-    FinancialStatement:
+    NorwegianFinancialStatement:
       type: object
       properties:
         closingPeriod:
@@ -1606,11 +1334,11 @@ components:
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
           example: SEK
         balanceSheet:
-          "$ref": "#/components/schemas/BalanceSheet"
+          "$ref": "#/components/schemas/NorwegianBalanceSheet"
         incomeStatement:
-          "$ref": "#/components/schemas/IncomeStatement"
+          "$ref": "#/components/schemas/NorwegianIncomeStatement"
       required: []
-      title: FinancialStatement
+      title: NorwegianFinancialStatement
     NorwegianBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
@@ -1618,7 +1346,5 @@ components:
         date:
           type: string
           format: date
-          description: Date when this company went bankrupt. - TODO - do we have this or do we only have the special events??
-        events:
-          "$ref": "#/components/schemas/SpecialEvent"
+          description: Date when this company went bankrupt.
       title: NorwegianBankruptcy
