@@ -323,9 +323,9 @@ components:
       description: Management section
       properties:
         boardMembers:
-          "$ref": "#/components/schemas/BoardMembers"
+          "$ref": "#/components/schemas/NorwegianBoardMembers"
         auditors:
-          "$ref": "#/components/schemas/Auditors"
+          "$ref": "#/components/schemas/NorwegianAuditors"
         authorizedSignatory:
           type: string
           description: >-
@@ -336,7 +336,7 @@ components:
             TODO - add a good description here
       required: []
       title: NorwegianManagement
-    Auditors:
+    NorwegianAuditors:
       type: object
       description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
       properties:
@@ -351,7 +351,7 @@ components:
           items:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
-      title: Auditors
+      title: NorwegianAuditors
     Position:
       type: object
       properties:
@@ -408,7 +408,7 @@ components:
           description: Date when this person/entity resigned from this position
       required: []
       title: HistoricalPosition
-    BoardMembers:
+    NorwegianBoardMembers:
       type: object
       properties:
         totalNumberOfBoardMembers:
@@ -430,7 +430,7 @@ components:
           items:
             "$ref": "#/components/schemas/HistoricalPosition"
       required: []
-      title: BoardMembers
+      title: NorwegianBoardMembers
     NorwegianCompanyInformation:
       type: object
       description: CompanyInformation, misc information about the company.
