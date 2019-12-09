@@ -262,6 +262,81 @@ components:
           description: TODO - what does this date mean???
       required: []
       title: NorwegianSubsidiary
+    NorwegianPosition:
+      type: object
+      properties:
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+        function:
+           type: string
+           description: |
+            
+        description:
+          type: string
+          description: A textual description of the function
+        assignments:
+          type: array
+          description: Assignments in other companies for this person/entity
+          items:
+             "$ref": "#/components/schemas/NorwegianAssignment"
+      required: []
+      title: NorwegianPosition
+    NorwegianHistoricalPosition:
+      type: object
+      properties:
+        enteredDate:
+          type: string
+          format: date
+          description: Date when this person/entity entered this position.
+        resignedDate:
+          type: string
+          format: date
+          description: Date when this person/entity resigned from this position.
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+        function:
+           type: string
+           description: |
+            
+        description:
+          type: string
+          description: A textual description of the function
+        assignments:
+          type: array
+          description: Assignments in other companies for this person/entity
+          items:
+             "$ref": "#/components/schemas/NorwegianAssignment"
+      required: []
+      title: NorwegianHistoricalPosition
+    NorwegianAssignment:
+      type: object
+      properties:
+        function:
+          type: string
+          description: |
+            
+        name:
+          type: string
+          description: The name of the company where this person/entity has assignments
+        dunsNumber:
+          type: string
+          description: The duns of the company where this person/entity has assignments 
+        registrationNumber:
+          type: string
+          description: The registration number of the company where this person/entity has assignments 
+      title: NorwegianAssignment     
     NorwegianManagement:
       type: object
       description: Management section
@@ -299,24 +374,24 @@ components:
     NorwegianBoardMembers:
       type: object
       properties:
-        totalNumberOfBoardMembers:
+        BoardMemberCount:
           type: integer
           format: int32
           description: The number of boardmembers the company currently have
         officalAppointmentDate:
           type: string
           format: date
-          description: TODO - what is this ???
+          description: 
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
+            "$ref": "#/components/schemas/NorwegianPosition"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers.
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
+            "$ref": "#/components/schemas/NorwegianHistoricalPosition"
       required: []
       title: NorwegianBoardMembers
     NorwegianCompanyInformation:
