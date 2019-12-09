@@ -52,7 +52,7 @@ components:
         paymentRemarks:
           "$ref": "#/components/schemas/NorwegianPaymentRemarks"
         bankruptcy:
-          "$ref": "#/components/schemas/Bankruptcy"
+          "$ref": "#/components/schemas/NorwegianBankruptcy"
       required: []
       title: NorwegianRisk
     Inquiry:
@@ -1611,7 +1611,7 @@ components:
           "$ref": "#/components/schemas/IncomeStatement"
       required: []
       title: FinancialStatement
-    Bankruptcy:
+    NorwegianBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
       properties:
@@ -1621,3 +1621,4 @@ components:
           description: Date when this company went bankrupt. - TODO - do we have this or do we only have the special events??
         events:
           "$ref": "#/components/schemas/SpecialEvent"
+      title: NorwegianBankruptcy
