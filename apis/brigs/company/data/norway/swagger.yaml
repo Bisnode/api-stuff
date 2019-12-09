@@ -364,9 +364,9 @@ components:
           description: >-
             Name of the events. TODO examples
       title: SpecialEvent
-    Events:
+    NorwegianEvents:
       type: array
-      title: Events
+      title: NorwegianEvents
       description: Newest events come first. Max xx events. TODO - what is max ???
       items:
         "$ref": "#/components/schemas/Event"
