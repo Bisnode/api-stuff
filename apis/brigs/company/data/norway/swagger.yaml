@@ -230,7 +230,6 @@ components:
           format: int32
           description: >-
             Total number of subsidiaries this company have.
-            TODO - do we have this information
         subsidiaries:
           type: array
           items:
@@ -533,18 +532,12 @@ components:
       title: NorwegianLegalForm
     NorwegianRegistrationInformation:
       type: object
-      description: TODO - what is the difference between these 3 dates
       properties:
         articlesOfAssociationDate:
           type: string
           format: date
           example: 2018-10-01
           description: Date when the article of association was created/submitted???
-        foundationDate:
-          type: string
-          format: date
-          example: 2018-08-11
-          description: Date when the company was founded
         registrationDate:
           type: string
           format: date
