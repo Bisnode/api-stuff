@@ -1183,14 +1183,14 @@ components:
         shortTermInvestmentsOther:
           type: integer
           format: int64
-        totalAssets:
-          type: integer
-          format: int64
-          description: >-
-            Total assets refers to the total amount of assets owned by this company.
+      title: NorwegianCurrentAssets
+      description: |
+        Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
+    
     NorwegianNonCurrentAssets:
       type: object
       properties:
+        
       title: NorwegianNonCurrentAssets
     NorwegianLiabilitiesAndEquity:
       type: object
