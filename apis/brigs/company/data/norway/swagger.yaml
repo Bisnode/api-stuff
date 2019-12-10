@@ -1210,27 +1210,6 @@ components:
           format: int64
           description: |
             The sum of all reported equity and liabilities.
-        wagesToLeaderOrCeo:
-          type: integer
-          format: int64
-          description: >-
-            Wages paid to the head of the company. Usually the CEO.
-        renumerationToAuditor:
-          type: integer
-          format: int64
-          description: >-
-            The audit fee payed by client to the auditor.
-        wagesAndPaymentsToBoard:
-          type: integer
-          format: int64
-          description: >-
-            Wages and payments to board members
-        wagesAndPaymentsToConsultants:
-          type: integer
-          format: int64
-          description: >-
-            Wages and payments to consultants.
-        
     NorwegianLiabilities:
       type: object
       properties:
@@ -1443,8 +1422,36 @@ components:
           "$ref": "#/components/schemas/NorwegianBalanceSheet"
         incomeStatement:
           "$ref": "#/components/schemas/NorwegianIncomeStatement"
+        notesAndOtherInformation:
+          "$ref": "#/components/schemas/NorwegianNotesAndOtherInformation"
       required: []
       title: NorwegianFinancialStatement
+    NorwegianNotesAndOtherInformation:
+      type: object
+      description: |
+        Misc information releated to the financial statement
+      properties:
+        wagesToLeaderOrCeo:
+          type: integer
+          format: int64
+          description: >-
+            Wages paid to the head of the company. Usually the CEO.
+        renumerationToAuditor:
+          type: integer
+          format: int64
+          description: >-
+            The audit fee payed by client to the auditor.
+        wagesAndPaymentsToBoard:
+          type: integer
+          format: int64
+          description: >-
+            Wages and payments to board members
+        wagesAndPaymentsToConsultants:
+          type: integer
+          format: int64
+          description: >-
+            Wages and payments to consultants.
+      title: NorwegianNotesAndOtherInformation
     NorwegianBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
