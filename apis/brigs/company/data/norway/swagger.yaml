@@ -779,7 +779,7 @@ components:
           description: >-
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
             TODO - also named as otherFinancialIncome
-        totalTurnover:
+        turnover:
           type: integer
           format: int64
           description: >-
