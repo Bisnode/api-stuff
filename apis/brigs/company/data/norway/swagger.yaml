@@ -759,8 +759,6 @@ components:
           type: integer
           format: int64
           example: 482000
-          description: >-
-            TODO - is this the same as sales/netSales ???
         netSales:
           type: integer
           format: int64
@@ -771,8 +769,6 @@ components:
           format: int64
           description: >-
             Change in inventories and work in progress for the last reporting period and the current reporting period. 
-            
-            TODO - Also called changeInStock and movementInStock (solsidan)
         otherOperatingIncome:
           type: integer
           format: int64
@@ -784,7 +780,6 @@ components:
           format: int64
           description: >-
             The company’s total revenues. Net sales + otherOperatingIncome
-            TODO - totalTurnover vs revenue
         costOfGoods:
           type: integer
           format: int64
@@ -833,7 +828,7 @@ components:
           format: int64
           description: >-
             A write-down is an accounting term for the reduction in the book value of an asset when its fair market value (FMV) has fallen below the carrying book value, and thus become an impaired asset. The amount to be written down is the difference between the book value of the asset and the amount of cash that the business can obtain by disposing of it in the most optimal manner.
-        totalOperatingExpenses:
+        operatingExpensesTotal:
           type: integer
           format: int64
           description: >-
@@ -872,7 +867,7 @@ components:
           description: >-
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
             TODO - is this the same as income from other investments ??
-        totalFinancialIncome:
+        financialIncomeTotal:
           type: integer
           format: int64
           description: Total financial revenues
@@ -886,7 +881,7 @@ components:
           format: int64
           description: >-
             Interest payed from the company to banks or creditinstitutes.
-        totalInterestExpenses:
+        interestExpensesTotal:
           type: integer
           format: int64
           description: >-
@@ -896,7 +891,7 @@ components:
           format: int64
           description: >-
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
-        totalFinancialCosts:
+        financialCostsTotal :
           type: integer
           format: int64
           description: >-
@@ -921,7 +916,7 @@ components:
           format: int64
           description: >-
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        totalExtraordinaryItems:
+        xtraordinaryItemsTotal:
           type: integer
           format: int64
           description: >-
