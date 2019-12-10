@@ -1044,7 +1044,7 @@ components:
           format: int64
           description: >-
             Total amount spent on investments.
-        investmentsInAssociatedEnterpricesTotal:
+        investmentsInAssociatedEnterprisesTotal:
           type: integer
           format: int64
           description: >-
@@ -1166,7 +1166,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Investments made in associated enterprices
+            Investments made in associated enterprises
         receivablesFromAssociatedEnterprises:
           type: integer
           format: int64
