@@ -176,7 +176,7 @@ components:
           type: string
           description: Where did the event come from
           example: FORETAKSREGISTERET
-      title: Norwegian
+      title: NorwegianEvent
     NorwegianEvents:
       type: array
       title: NorwegianEvents
