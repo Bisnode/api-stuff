@@ -916,7 +916,7 @@ components:
           format: int64
           description: >-
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        xtraordinaryItemsTotal:
+        extraordinaryItemsTotal:
           type: integer
           format: int64
           description: >-
