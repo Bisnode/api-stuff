@@ -372,7 +372,7 @@ components:
     NorwegianBoardMembers:
       type: object
       properties:
-        BoardMemberCount:
+        boardMemberCount:
           type: integer
           format: int32
           description: The number of boardmembers the company currently have
