@@ -276,10 +276,23 @@ components:
         function:
            type: string
            description: |
-            
+            1  - Chairman
+            2  - Deputy chairman
+            3  - Board member
+            4  - Employees representative
+            5  - Deputy board member
+            6  - Observer
+            7  - Representative foreign entity
+            20 - Managing Director
+            21 - Company Secretary
+            30 - Auditor
+            35 - Certified Accountant
+            40 - Contact
+            S1 - Proprietor
         description:
           type: string
           description: A textual description of the function
+          example: Chairman
         assignments:
           type: array
           description: Assignments in other companies for this person/entity
