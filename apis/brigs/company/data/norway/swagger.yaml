@@ -187,10 +187,9 @@ components:
       type: object
       properties:
         shareHolders:
+          type: array
           description: >-
             A list of Companies that holds shares in this company. 
-            TODO - how many will be returned
-            TODO - Will we only display companies that owns more than 50% or similar???
           items:
             "$ref": "#/components/schemas/NorwegianShareholderCompany"
         subsidiaries:
