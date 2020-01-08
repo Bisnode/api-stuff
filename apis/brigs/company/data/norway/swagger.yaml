@@ -224,7 +224,7 @@ components:
     NorwegianSubsidiaries:
       type: object
       properties:
-        numberOfSubsidiaries:
+        count:
           type: integer
           format: int32
           description: >-
@@ -435,7 +435,7 @@ components:
       type: object
       description: 
       properties:
-        numberOfBranches:
+        count:
           type: integer
           format: int32
           description: >-
@@ -459,7 +459,7 @@ components:
         registrationNumber:
           description: Local registration number
           type: string
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int32
           description: >-
@@ -509,7 +509,7 @@ components:
         businessDescription:
           type: string
           description: The description registered with the local authorities describing the companys business.
-        numberOfEmployees:
+        employeeCount:
           type: integer
           format: int64
         countryCode:
