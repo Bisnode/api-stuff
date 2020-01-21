@@ -1,0 +1,1335 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section 
+#######################
+info:
+  title: Finnish Company Credit Data
+  description: | 
+    Company model for Finnish company credit data. The same model is used for all legalforms.
+    
+      Most of the descriptions for the financial items are taken from www.investopedia.com.
+  
+  version: "2.0.0"
+  contact:
+    email: api-bisnode@bisnode.com
+
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    FinnishCompanyData:
+      type: object
+      properties:
+        risk:
+          "$ref": "#/components/schemas/FinnishRisk"
+        management:
+          "$ref": "#/components/schemas/FinnishManagement"
+        companyInformation:
+          "$ref": "#/components/schemas/FinnishCompanyInformation"
+        finance:
+          "$ref": "#/components/schemas/FinnishFinance"
+        ownership:
+          "$ref": "#/components/schemas/FinnishOwnership"
+      required: []
+      title: FinnishCompanyData
+      description: This is the root object defining which structures reside under the root path.
+    FinnishRisk:
+      type: object
+      description: |
+        Risk section.
+      properties:
+        creditRatings:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CreditRatings"
+        ratingCreditLimits:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
+        paymentRemarks:
+          "$ref": "#/components/schemas/FinnishPaymentRemarks"
+        trade:
+          "$ref": "#/components/schemas/FinnishTrade"
+        bankruptcy:
+          "$ref": "#/components/schemas/FinnishBankruptcy"
+        debtCollection:
+          "$ref": "#/components/schemas/FinnishDebtCollection"
+      required: []
+      title: FinnishRisk
+    FinnishTrade:
+      type: object
+      properties:
+        paymentIndex:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+      title: FinnishTrade
+    FinnishDebtCollection:
+      type: object
+      properties:
+        debtCollectionCases:
+          type: boolean
+          description: |
+            True if there has been any debt collection cases the last 6 months.
+      required: []
+      title: FinnishDebtCollection
+    FinnishCreditInquiry:
+      type: object
+      description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: FinnishCreditInquiry
+    FinnishPaymentRemarks:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks.
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        paymentRemarks:
+          type: array
+          description: A list of remarks, most recent ones comes first.
+          items:
+            "$ref": "#/components/schemas/FinnishPaymentRemark"
+      required: []
+      title: FinnishPaymentRemarks
+    FinnishPaymentRemark:
+      type: object
+      description: Remarks on payments
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        creditor:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/FinnishReportCode"
+        description:
+          type: string
+          description: A textual description of the event type
+          example: FISSION - EXPIRED
+      required: []
+      title: FinnishPaymentRemark
+    FinnishReportCode:
+      type: object
+      description: Common codes
+      properties:
+        code:
+          type: string
+          description: |
+            A0    No
+            A1    Increased share capital
+            A10    Intercomp. Payable is subord.
+            A11    Financial problems
+            A12    The bank has stopped credit
+            A13    Payments stopped
+            A14    Payments stopped / winding-up
+            A15    Debt negotiations
+            A16    Bankrupt
+            A17    Headquarter dissolved
+            A18    Process of winding-up
+            A19    Activities stopped
+            A2    Improved result
+            A20    Errors in the accounts
+            A21    Statement converted to nok
+            A22    Contributed fresh capital
+            A23    Voluntary bankruptcy
+            A3    Receive compensation
+            A4    Refinancing is accomplished
+            A5    Subordinated loan from abroad
+            A6    Subord. Loan from parent comp.
+            A7    Subord. Loan from the group
+            A8    Guarantee from parent company
+            A9    Guarantee from the group
+            A99    Special event is registered
+            D001    Normal
+            D010    Bankruptcy request
+            D011    Dissolved after bankruptcy
+            D020    Liquidation notification
+            D021    Dissolved after liquidation
+            D030    Dissolve request by court
+            D031    Dissolution by court
+            D032    Ceased trading
+            D040    Converted
+            D050    Dissolve request
+            D051    Mergered and dissolved
+            D055    Fission / de-merger request
+            D056    Dissolved after de-merger / fission
+            D060    Liquidation re-opened
+            D070    Ceased trading
+            D090    Ceased trading
+            D100    Ongoing business
+            D110    Being established
+            D200    Unknown active Danish company
+            D210    Unknown inactive Danish company
+            D220    Unknown active foreign company
+            D230    Unknown inactive foreign company
+            D300    Being liquidated
+            D330    Bankruptcy proceedings
+            D350    Payments suspended
+            D360    Being compulsory dissolved
+            D400    Dissolved
+            D410    Dissolved after bankruptcy
+            D420    Dissolved after merger
+            D430    Compulsory dissolved
+            D440    Dissolved after demerger
+            D450    Dissolved after liquidation
+            D480    Reopened
+            D500    Suspension of payment
+            D900    Ongoing business
+            D910    Ongoing business
+            D911    Being established
+            D930    Being liquidated
+            D933    Bankruptcy proceedings
+            D935    Payments suspended
+            D936    Being compulsory dissolved
+            D940    Dissolved
+            D941    Dissolved after bankruptcy
+            D942    Dissolved after merger
+            D943    Compulsory dissolved
+            D944    Dissolved after demerger
+            D945    Dissolved after liquidation
+            D948    Reopened
+            D999    Not stated
+            EVT    Not registred company
+            KT    Bankruptcy
+            K1    Voluntary winding-up
+            K2    Compulsory winding-up
+            K4    Merger with
+            K5    The company auditor resigned
+            K6    Board of directors resigned
+            K7    Accounts not filed
+            K8    Chariman of the board resigned
+            K9    Fission
+            LAK    Dissolved
+            LI    Dissolved
+            MK    Bankrupt
+            RP    Remark of payment
+            TA    Compulsory dissolved
+            40    Bankrupt
+            42    Liquidation
+            44    Suspension of payments
+            52    Dissolved
+    FinnishPetitions:
+      type: object
+      description: Holder for petitions, the list of petitions may be capped if list is too large. The amount of all petitions is the sum on all petitions currently available in Bisnode's database and may differ from doing a sum on all the petitions in the list. 
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: Total number of petitions this company have.
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        petitions:
+          type: array
+          items:
+            "$ref": "#/components/schemas/FinnishPetition"
+      required: []
+      title: FinnishPetitions
+    FinnishPetition:
+      type: object
+      description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        description:
+          type: string
+          description: A textual description of the petition, may be in the local language.
+        creditor:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/FinnishReportCode"
+      required: []
+      title: FinnishPetition
+    FinnishCreditInquiries:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of inquiries made on this company
+        creditInquiries:
+          type: array
+          description: A list of the inquiries.
+          items:
+            "$ref": "#/components/schemas/FinnishCreditInquiry"
+      required: []
+      title: FinnishCreditInquiries
+    FinnishOwnership:
+      type: object
+      properties:
+        parentCompanies:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ParentCompanies"
+        subsidiaries:
+          "$ref": "#/components/schemas/FinnishSubsidiaries"
+        familyTree:
+          type: object
+          description: Tree structure of the owner relationships.
+          items:
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/FamilyTree"
+      required: []
+      title: FinnishOwnership
+    FinnishSubsidiaries:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of subsidiaries this company have.
+        subsidiaries:
+          type: array
+          items:
+            "$ref": "#/components/schemas/FinnishSubsidiary"
+      required: []
+      title: FinnishSubsidiaries
+    FinnishSubsidiary:
+      type: object
+      description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
+      properties:
+        name:
+          type: string
+          description: The name of the company
+        dunsNumber:
+          type: string
+          description: DunsNumber of the company.
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        shareCapital:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: FinnishSubsidiary
+    FinnishManagement:
+      type: object
+      description: Management section
+      properties:
+        boardMembers:
+          "$ref": "#/components/schemas/FinnishBoardMembers"
+        auditors:
+          "$ref": "#/components/schemas/FinnishAuditors"
+        authorizedSignatory:
+          type: string
+          description: |
+            Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
+      required: []
+      title: FinnishManagement
+    FinnishAuditors:
+      type: object
+      description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
+      properties:
+        currentAuditors:
+          type: array
+          description: Auditors currently auditing this company
+          items:
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
+      required: []
+      title: FinnishAuditors
+    FinnishPosition:
+      type: object
+      properties:
+        enteredDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+        function:
+           type: string
+           description: |
+            HVJV  Deputy member
+            SEL    Liquidator
+            VT    Deputy auditor
+            HPJV  Vice-chairperson
+            PIS    House manager with primary responsibility
+            U      Special representative
+            VAH    Responsible manager
+            HVJ    Ordinary member
+            PR    Holder of procuration
+            SEV    Deputy liquidator
+            VTJ    Deputy Managing Director
+            Y      Partner
+            ÄY    Silent partner
+            E      Guardian
+            EH    Trader
+            IS    House Manager
+            JO    Director
+            OI    Person authorised
+            SO    Person authorised during liquidation
+            TJS    Substitute for the Managing Director
+            EDU    Representative
+            HPJ    Chairperson
+            LT    Additional auditor
+            PTI    Auditor with principal responsibility
+            SANS  Administrator in restructuring
+            TIL    Auditor
+            TJ    Managing Director
+            UE    Foreign representative
+        description:
+          type: string
+          description: A textual description of the function
+        assignments:
+          type: array
+          description: Assignments in other companies for this person/entity
+          items:
+             "$ref": "#/components/schemas/Assignment"
+      required: []
+      title: FinnishPosition
+    Assignment:
+      type: object
+      properties:
+        function:
+          type: string
+          description: |
+            HVJV  Deputy member
+            SEL    Liquidator
+            VT    Deputy auditor
+            HPJV  Vice-chairperson
+            PIS    House manager with primary responsibility
+            U      Special representative
+            VAH    Responsible manager
+            HVJ    Ordinary member
+            PR    Holder of procuration
+            SEV    Deputy liquidator
+            VTJ    Deputy Managing Director
+            Y      Partner
+            ÄY    Silent partner
+            E      Guardian
+            EH    Trader
+            IS    House Manager
+            JO    Director
+            OI    Person authorised
+            SO    Person authorised during liquidation
+            TJS    Substitute for the Managing Director
+            EDU    Representative
+            HPJ    Chairperson
+            LT    Additional auditor
+            PTI    Auditor with principal responsibility
+            SANS  Administrator in restructuring
+            TIL    Auditor
+            TJ    Managing Director
+            UE    Foreign representative
+        name:
+          type: string
+          description: The name of the company where this person/entity has assignments
+        dunsNumber:
+          type: string
+          description: The duns of the company where this person/entity has assignments 
+        registrationNumber:
+          type: string
+          description: The registration number of the company where this person/entity has assignments 
+        remark:
+          "$ref": "#/components/schemas/RemarkInAssignment"
+      title: Assignment     
+    RemarkInAssignment:
+      type: object
+      description: Indicate if this company has remarks on payment
+      properties:
+        hasRemarksOnPayment:
+          type: boolean
+          description: |
+            'true' if this company has remarks on payment 
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: RemarkInAssignment   
+    FinnishHistoricalPosition:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private per son or a company?
+        enteredDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        function:
+          type: string
+          description: |
+            HVJV  Deputy member
+            SEL    Liquidator
+            VT    Deputy auditor
+            HPJV  Vice-chairperson
+            PIS    House manager with primary responsibility
+            U      Special representative
+            VAH    Responsible manager
+            HVJ    Ordinary member
+            PR    Holder of procuration
+            SEV    Deputy liquidator
+            VTJ    Deputy Managing Director
+            Y      Partner
+            ÄY    Silent partner
+            E      Guardian
+            EH    Trader
+            IS    House Manager
+            JO    Director
+            OI    Person authorised
+            SO    Person authorised during liquidation
+            TJS    Substitute for the Managing Director
+            EDU    Representative
+            HPJ    Chairperson
+            LT    Additional auditor
+            PTI    Auditor with principal responsibility
+            SANS  Administrator in restructuring
+            TIL    Auditor
+            TJ    Managing Director
+            UE    Foreign representative
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+        resignedDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        description:
+          type: string
+          description: A textual description of the function
+      required: []
+      title: FinnishHistoricalPosition
+    FinnishBoardMembers:
+      type: object
+      properties:
+        currentBoardMembers:
+          type: array
+          description: A list of the current boardmembers
+          items:
+            "$ref": "#/components/schemas/FinnishPosition"
+        historicalBoardMembers:
+          type: array
+          description: A list of the historical boardmembers.
+          items:
+            "$ref": "#/components/schemas/FinnishHistoricalPosition"
+      required: []
+      title: FinnishBoardMembers
+    FinnishCompanyInformation:
+      type: object
+      description: CompanyInformation, misc information about the company.
+      properties:
+        capital:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Capital"
+        companyName:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
+        contactPoints:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ContactPoints"
+        identifiers:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+        industryCodeSet:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
+        legalForm:
+          "$ref": "#/components/schemas/FinnishLegalForm"
+        registrationInformation:
+          "$ref": "#/components/schemas/FinnishRegistrationInformation"
+        generalCompanyData:
+          "$ref": "#/components/schemas/FinnishGeneralCompanyData"
+      required: []
+      title: FinnishCompanyInformation
+    FinnishGeneralCompanyData:
+      type: object
+      properties:
+        businessDescription:
+          type: string
+          description: The description registered with the local authorities describing the companys business.
+        countryCode:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        registeredAsEmployer:
+          type: boolean
+          description: |
+            To have employees a company needs to be registered as an employer at the local tax office.
+        registeredInVatList:
+          type: boolean
+          description: This indicates if the company is registered according to the Tax VAT register.
+        import:
+          type: boolean
+          description: |
+            true if this company is registered for importing goods
+        export:
+          type: boolean
+          description: |
+            true if this company is registered for exporting goods
+        corporateTax:
+          type: boolean
+          description: |
+            
+        employeeRange:
+          type: string
+          example: 50-99
+          description: |
+            A textual description of the range of employees this company have.
+        officeType:
+          type: string
+          enum: ['HEADQUARTER', 'BRANCH']
+          description: Office type
+        location:
+          type: string
+          description: The place where this company is registered.
+          example: Helsinki
+      required: []
+      title: FinnishGeneralCompanyData
+    FinnishLegalForm:
+      type: object
+      description: The company's legalform
+      properties:
+        code:
+          type: string
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
+          description: |
+            
+        description:
+          type: string
+          description: A textual description of the code.
+        localCode:
+          type: string
+          description: |
+            1  PROPRIETORSHIP
+            2  LIMITED PARTNERSHIP
+            3  LIMITED COMPANY
+            4  CO-OPERATIVE SOCIETY
+            6  ASSOCIATION / FOUNDATION
+            9  ENTREPRENEUR
+            20  HOUSING CO-OPERATIVE SOCIETY
+            21  HOUSING COMPANY
+            22  GENERAL PARTNERSHIP
+            23  VOLUNTARY ASSOCIATION
+            24  MORTGAGE ASSOCIATION
+            25  MUTUAL INDEMNITY INSURANCE AS.
+            26  LIMITED PARTNERSHIP
+            27  CO-OPERATIVE SOCIETY
+            28  CO-OPERATIVE BANK
+            29  LIMITED COMPANY
+            30  FOUNDATION
+            31  OFFICE OF FOREIGN COMPANY
+            32  SAVINGS BANK
+            33  ECONOMIC ASSOCIATION
+            34  INSURANCE LIMITED COMPANY
+            35  INSURANCE ASSOCIATION
+            36  PROPRIETORSHIP
+            37  GOVERNMENT AUTHORITY
+            38  OTHER LEGAL FORM
+            40  GROUP
+            41  RIGHT OF RESIDENCE ASSOCIATION
+            42  PUBLIC LIMITED COMPANY
+            43  PUBLIC MUTUAL INSURANCE CO.
+            44  PUBLIC INSURANCE LTD
+            45  EEIG
+            46  REAL ESTATE LTD
+            47  STATE ENTERPRISE
+            48  SOCIETAS EUROPAEA
+            49  MUTUAL EUROPE INSURANCE COMP.
+      required: []
+      title: FinnishLegalForm
+    FinnishRegistrationInformation:
+      type: object
+      properties:
+        registrationDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: FinnishRegistrationInformation
+    FinnishStatus:
+      type: object
+      properties:
+        value:
+          type: string
+          enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
+          description: 
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: FinnishStatus
+    FinnishFinance:
+      type: object
+      properties:
+        financialStatements:
+          "$ref": "#/components/schemas/FinnishFinancialStatements"
+        floatingCharges:
+          type: array
+          description: |
+            A list of floating charges
+          items:
+            "$ref": '#/components/schemas/FinnishFloatingCharge'
+    FinnishFloatingCharge:
+      type: object
+      description: |
+        A floating charge, also known as a floating lien, is a security interest or lien over a group of non-constant assets. The assets may change in quantity and value. Companies will use floating charges as a means of securing a loan. Typically, a loan might be secured by fixed assets such as property or equipment, but with a floating charge, the underlying assets are usually current assets or short-term assets that can change in value.
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        reference:
+          description: reference id of the floating charge
+          type: string
+          example: A1223
+        creditor:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: FinnishFloatingCharge
+    FinnishFinancialStatements:
+      type: object
+      description: | 
+            Company financial data
+      properties:
+        auditorsReservation:
+          type: array
+          items:
+            "$ref": "#/components/schemas/FinnishFinancialStatementsAuditorsReservation"
+        keyFigures:
+          type: array
+          items:
+            "$ref": "#/components/schemas/FinnishFinancialStatementKeyFigure"
+        industryKeyFigures:
+          "$ref": "#/components/schemas/FinnishFinancialStatementKeyFigure"
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/FinnishFinancialStatement"
+      required: []
+      title: FinnishFinancialStatements
+    FinnishFinancialStatementsAuditorsReservation:
+      type: object
+      description: |
+        Auditors reservation/comment codes
+      properties:
+        auditorsReservationCode:
+          type: string
+          description: |
+           TODO - add codes here                      
+        auditorsReservationDescription:
+          type: string
+          description: Textual description of the auditorsReservationCode
+        auditorsCommentCode:
+          type: string
+          description: |
+           TODO - add codes here                      
+        auditorsCommentDescription:
+          type: string
+          description: Textual description of the auditorsCommentCode
+      required: []
+      title: FinnishFinancialStatementsAuditorsReservation
+    FinnishFinancialStatementKeyFigure:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: |
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: EUR
+        currentRatio:
+          type: number
+          format: double
+          description: |
+            Current assets in percent of Short term liabilities.
+            
+            The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
+          example: 19.4
+        equityAssetsRatio:
+          type: number
+          format: double
+          description: |
+            Calculated equity in percent of the total assets. ???
+        gearing:
+          type: number
+          format: double
+          example: 89.0
+          description: |
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
+        liabilityRatio:
+          type: number
+          format: double
+          description: |
+            Debt/equity ratio in brigs web
+            
+            Liabilities in percent of equity.
+            
+            The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
+        profitMargin:
+          type: number
+          format: double
+          description: |
+            profit rate in brigs web
+            Operating profit/loss plus financial income as a percentage of turnover.
+        quickRatio:
+          type: number
+          format: double
+          description: |
+           Current assets minus inventories in percent of current liabilities.
+        returnOnEquity:
+          type: number
+          format: double
+          description: |
+            Profit/loss after financial items as a percentage of the total equity.
+        returnOnInvestments:
+          type: number
+          format: double
+          description: |
+            
+        returnOnTotalAssets:
+          type: number
+          format: double
+          example: 55.0
+          description: |
+            
+        turnover:
+          type: integer
+          format: int64
+          description: |
+            The company’s total revenues. Net sales + otherOperatingIncome
+        employeeCount:
+          type: integer
+          format: int64
+          example: 5200
+          description: |
+            Number of employees
+        assetsTotal:
+          type: integer
+          format: int64
+          example: 23444000
+          description: |
+            
+        equityTotal:
+          type: integer
+          format: int64
+          example: 23444000
+          description: |
+            
+        daysOfPayables:
+          type: number
+          format: double
+          description: |
+             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies.
+          example: 3.0
+        daysOfReceivables:
+          type: number
+          format: double
+          description: |
+            A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
+          example: 2.4
+            
+      required: []
+      title: FinnishFinancialStatementKeyFigure
+    FinnishIncomeStatement:
+      type: object
+      properties:
+        changeInInventories:
+          type: integer
+          format: int64
+          description: |
+            Change in inventories and work in progress for the last reporting period and the current reporting period. 
+        workPerformedForOwnUse:
+          type: integer
+          format: int64
+          description: |
+            Work performed by the company for its own use and capitalized here when reported as assets.
+        otherOperatingIncome:
+          type: integer
+          format: int64
+          description: |
+            Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
+        turnoverTotal:
+          type: integer
+          format: int64
+          description: |
+            The company’s total revenues. Net sales + otherOperatingIncome
+        costOfGoods:
+          type: integer
+          format: int64
+          description: |
+            Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
+        externalCosts:
+          type: integer
+          format: int64
+          description: |
+            
+        staffCosts:
+          type: integer
+          format: int64
+          description: |
+            Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
+        resultBeforeExtraordinaryItems:
+          type: integer
+          format: int64
+          description: |
+            An extraordinary item is an event or transaction that is considered abnormal, not related to ordinary company activities, and unlikely to recur in the foreseeable future.
+        otherOperatingExpenses:
+          type: integer
+          format: int64
+          description: |
+            Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
+        depreciation:
+          type: integer
+          format: int64
+          description: |
+            Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
+        externalInterestIncome:
+          type: integer
+          format: int64
+          description: |
+            Interest payed to the company by banks or creditinstitutes.
+        otherFinancialIncome:
+          type: integer
+          format: int64
+          description: |
+            Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
+        impairmentsOfFinancialAssets:
+          type: integer
+          format: int64
+          description: |
+            
+        incomeFromShares:
+          type: integer
+          format: int64
+          description: |
+            Income from shares. 
+        unspecifiedFinancialItems:
+          type: integer
+          format: int64
+          description: |
+            
+        taxOnExtraordinaryEarnings:
+          type: integer
+          format: int64
+          description: |
+            Taxes paid on extraordinary items.
+        externalInterestExpenses:
+          type: integer
+          format: int64
+          description: |
+            Interest payed from the company to banks or creditinstitutes.
+        taxFromOtherYears:
+          type: integer
+          format: int64
+          description: |
+            Taxes postphoned from another year. Examples please??
+        taxAdjustments:
+          type: integer
+          format: int64
+          description: |
+            Tax adjustments. Examples please??
+        otherFinancialExpenses:
+          type: integer
+          format: int64
+          description: |
+            Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
+        operatingResult:
+          type: integer
+          format: int64
+          description: |
+            The operating result shows what the company has earned in connection with its business activities, that is to say before deduction of interest and taxes
+        extraordinaryIncome:
+          type: integer
+          format: int64
+          description: |
+            Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
+        extraordinaryExpenses:
+          type: integer
+          format: int64
+          description: |
+            Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
+        taxOnAnnualResult:
+          type: integer
+          format: int64
+          description: | 
+            Taxes paid.
+        netProfitLoss:
+          type: integer
+          format: int64
+          description: |
+            A positive value means that the company made a net profit and a negative that it made a net loss.
+    FinnishBalanceSheet:
+      type: object
+      properties:
+        assets: 
+           "$ref": "#/components/schemas/FinnishAssets"
+        liabilitiesAndEquity:
+          "$ref": "#/components/schemas/FinnishLiabilitiesAndEquity"
+      title: BalanceSheet
+      description: |
+        A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
+    FinnishAssets:
+      type: object
+      properties:
+        currentAssets:
+          "$ref": "#/components/schemas/FinnishCurrentAssets"
+        nonCurrentAssets:
+          "$ref": "#/components/schemas/FinnishNonCurrentAssets"
+        assetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total assets
+      title: Assets
+      description: |
+        Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
+    FinnishCurrentAssets:
+      type: object
+      properties:
+        workInProgress: 
+          type: integer
+          format: int64
+          description: |  
+            Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
+        inventoriesTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total inventories
+        propertyForSale:
+          type: integer
+          format: int64
+          description: |
+            Estimated value for properties that are to be sold. ????
+        accountsReceivable: 
+          type: integer
+          format: int64
+          description: |  
+            Accounts receivable is the balance of money due to a firm for goods or services delivered or used but not yet paid for by customers.
+        receivableFromGroupAndAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+            Receivable from group companies.
+        securities:
+          type: integer
+          format: int64
+          description: |
+            
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64
+          description: |
+            Accrued revenues and deferred expenses. Examples ???
+        cashAndCashEquivalents: 
+          type: integer
+          format: int64
+          description: |  
+            Cash and cash equivalents
+        otherCurrentAssets: 
+          type: integer
+          format: int64
+          description: |  
+            Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
+        currentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
+      title: FinnishCurrentAssets
+      description: |
+        Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
+    FinnishNonCurrentAssets:
+      type: object
+      properties:
+        capitalisedCostForRnd:
+          type: integer
+          format: int64
+          description: |
+            Capitalized cost for Research and Development projects.
+        intangibleRights:
+          type: integer
+          format: int64
+          description: |
+            Concessions, patents, licenses, trademarks and similar rights.  
+        goodwill:
+          type: integer
+          format: int64
+          description: |
+            Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.  
+        otherIntangibleAssets: 
+          type: integer
+          format: int64
+          description: |
+            These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
+        intangibleAssetsTotal: 
+          type: integer
+          format: int64
+          description: |
+              Total intangible assets.. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
+        landAndBuildings: 
+          type: integer
+          format: int64
+          description: |
+            This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
+        machineryAndTools: 
+          type: integer
+          format: int64
+          description: |
+            Machinery, tools and inventory, etc ...
+        plantUnderConstruction: 
+          type: integer
+          format: int64
+          description: |
+           Plant under construction
+        otherTangibleAssets: 
+          type: integer
+          format: int64
+          description: |  
+            Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
+        tangibleNonCurrentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total tangible non-current assets.
+        sharesInAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+            Shares in associated companies.
+        otherInterests:
+          type: integer
+          format: int64
+          description: |
+            
+        longTermReceivablesFromGroup:
+          type: integer
+          format: int64
+          description: | 
+            
+        otherLongTermReceivables:
+          type: integer
+          format: int64
+          description: |
+            
+        ownShares:
+          type: integer
+          format: int64
+          description: |
+            The value of the shares the company owns in their own company.
+        otherFinancialAssets:
+          type: integer
+          format: int64
+          description: |
+            
+        financialNonCurrentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total financial non-current assets.
+        nonCurrentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
+              Non-current assets can be considered anything not classified as current.
+      title: FinnishNonCurrentAssets
+      description: |
+        A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
+    FinnishLiabilitiesAndEquity:
+      type: object
+      properties:
+        liabilities:
+          "$ref": "#/components/schemas/FinnishLiabilities"
+        shareholdersEquity:
+          "$ref": "#/components/schemas/FinnishShareholdersEquity" 
+        equityAndLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            Total equity and liabilities
+    FinnishLiabilities:
+      type: object
+      properties:
+        currentLiabilities:
+          "$ref": "#/components/schemas/FinnishCurrentLiabilities"
+        nonCurrentLiabilities:
+          "$ref": "#/components/schemas/FinnishLongTermLiabilities"
+      title: FinnishLiabilities
+      description: |
+        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
+    FinnishCurrentLiabilities:
+      type: object
+      properties:
+        shortTermLiabilitiesToCreditInstitutions:
+          type: integer
+          format: int64  
+          description: |
+            Short-term liabilities to credit institutions. 
+        accountsPayable:
+          type: integer
+          format: int64  
+          description: |
+            Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
+        advancePayments:
+          type: integer
+          format: int64  
+          description: |
+            Prepayments
+        liabilitiesToGroupCompanies:
+          type: integer
+          format: int64  
+          description: |    
+            Short-term liabilities to group companies.
+        otherLiabilities:
+          type: integer
+          format: int64
+          description: |
+            
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64
+          description: |
+            
+        otherCurrentLiabilities:
+          type: integer
+          format: int64  
+          description: |    
+            Other current liabilities.
+        currentLiabilitiesTotal:
+          type: integer
+          format: int64  
+          description: |    
+            Total current liabilities.
+      title: FinnishCurrentLiabilities
+      description: |
+        Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
+    FinnishLongTermLiabilities:
+      type: object
+      properties:
+        subordinatedLoans:
+          type: integer
+          format: int64  
+          description: |
+            Total subordinated loans.  
+        longTermLiabilitiesToCreditInstitutions:
+          type: integer
+          format: int64  
+          description: |
+            Non-current liabilities to credit institutions.
+        liabilitiesToGroupCompanies:
+          type: integer
+          format: int64  
+          description: |    
+            Long-term liabilities to group companies.
+        otherLongTermLiabilities:
+          type: integer
+          format: int64  
+          description: |    
+            Other long-term liabilities.
+        longTermLiabilitiesTotal:
+          type: integer
+          format: int64  
+          description: |    
+            Total long-term liabilities
+            
+      title: FinnishLongTermLiabilities
+      description: |
+        Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
+    FinnishShareholdersEquity:
+      type: object
+      properties:
+        shareCapital:
+          type: integer
+          format: int64  
+          description: |
+            Share capital refers to funds raised by issuing shares in return for cash or other considerations.
+        sharePremiumAccount:
+          type: integer
+          format: int64  
+          description: |
+            A share premium account is the amount of money paid for a share above the cost of the share.
+        revaluationReserve:
+          type: integer
+          format: int64  
+          description: |    
+            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
+        transferredEarnings:
+          type: integer
+          format: int64  
+          description: |    
+            
+        otherReserves:
+          type: integer
+          format: int64  
+          description: |     
+            Other reserves
+        equityBeforeMinorityInterest:
+          type: integer
+          format: int64  
+          description: |     
+            
+        earningsAfterMinorityInterestShare:
+          type: integer
+          format: int64  
+          description: |     
+            
+        equityTotal:
+          type: integer
+          format: int64  
+          description: |     
+            Total equity.
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
+        otherProvisions:
+          type: integer
+          format: int64  
+          description: |     
+            
+        provisionsTotal:
+          type: integer
+          format: int64  
+          description: |     
+            Total provisions  
+      title: FinnishShareholdersEquity
+      description: |
+        Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
+    FinnishFinancialStatement:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: |
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: SEK
+        balanceSheet:
+          "$ref": "#/components/schemas/FinnishBalanceSheet"
+        incomeStatement:
+          "$ref": "#/components/schemas/FinnishIncomeStatement"
+      required: []
+      title: FinnishFinancialStatement
+    FinnishBankruptcy:
+      type: object
+      description: This section will be available if there is any data related to bankruptcy for this company.
+      properties:
+        bankrupt:
+          type: boolean
+          description: A flag indicating this company is bankrupt.
+    FinnishTrustee:
+      type: object
+      description: Name and contact-info to the person/company handling the bankruptcy
+      properties:
+        companyName:
+          type: string
+          description: Name of the company handling the bankruptcy
+          example: Advokatfirman demo
+        name:
+          type: string
+          description: Name of the person assigned to handle the bankruptcy.
+          example: Anders Svensson
+        phoneNumber:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PhoneNumber"
+        address:
+          type: string
+          description: The address to the person/company assigned to handle this bankruptcy
+        example: 10390, Stockholm
