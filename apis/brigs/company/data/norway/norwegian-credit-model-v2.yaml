@@ -1,0 +1,1435 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: Norwegian Company Credit Data
+  description: >- 
+    Company model for Norwegian company credit data. The same model is used for all legalforms, however there are some sections that will be missing for Sole proprietorships and parterships. This will be reflected in the documentation for that section.
+    
+      Most of the descriptions for the financial items are taken from www.investopedia.com.
+  
+  version: "2.0.0"
+  contact:
+    email: api-bisnode@bisnode.com
+
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    NorwegianCompanyData:
+      type: object
+      properties:
+        risk:
+          "$ref": "#/components/schemas/NorwegianRisk"
+        management:
+          "$ref": "#/components/schemas/NorwegianManagement"
+        companyInformation:
+          "$ref": "#/components/schemas/NorwegianCompanyInformation"
+        finance:
+          "$ref": "#/components/schemas/NorwegianFinance"
+        ownership:
+          "$ref": "#/components/schemas/NorwegianOwnership"
+        events:
+          "$ref": "#/components/schemas/NorwegianEvents"
+      required: []
+      title: NorwegianCompanyData
+      description: This is the root object defining which structures reside under the root path.
+    NorwegianRisk:
+      type: object
+      description: >-
+        Risk section.
+      properties:
+        creditRatings:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CreditRatings"
+        creditLimits:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
+        paymentRemarks:
+          "$ref": "#/components/schemas/NorwegianPaymentRemarks"
+        bankruptcy:
+          "$ref": "#/components/schemas/NorwegianBankruptcy"
+      required: []
+      title: NorwegianRisk
+    NorwegianInquiry:
+      type: object
+      description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: NorwegianInquiry
+    NorwegianTrade:
+      type: object
+      properties:
+        paymentIndex:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+      title: NorwegianTrade
+    NorwegianPaymentRemarks:
+      type: object
+      description: >-
+        TODO - add description. What does amount referr to?
+      properties:
+        paymentRemarks:
+          type: array
+          description: A list of remarks, most recent ones comes first.
+          items:
+            "$ref": "#/components/schemas/NorwegianPaymentRemark"
+        voluntaryPledges:
+          type: array
+          description: A list of voluntary pledges
+          items:
+            "$ref": "#/components/schemas/NorwegianVoluntaryPledge"
+      required: []
+      title: NorwegianPaymentRemarks
+    NorwegianPaymentRemark:
+      type: object
+      description: Remarks on payments
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        creditor:
+          type: string
+          description: Creditor
+          example: Bisnode AS
+        type:
+          type: string
+          description: >-
+            TODO - what types do we have here?
+        source:
+          type: string
+          description: The source of the information
+          example: SVEA FINANS AS
+        reference:
+          type: string
+          description: >-
+            A reference id
+        dueDate:
+          type: string
+          format: date
+          description: >-
+            Date when this remark should be paid.
+      required: []
+      title: NorwegianPaymentRemark
+    NorwegianVoluntaryPledge:
+      type: object
+      description: >-
+        TODO - what is this?
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        creditor:
+          type: string
+          description: Creditor
+          example: Bisnode AS
+        type:
+          type: string
+          description: >-
+            TODO - what types do we have here?
+        source:
+          type: string
+          description: The source of the information
+          example: LØSØREREGISTERET
+        reference:
+          type: string
+          description: >-
+            A reference id
+        diaryNumber:
+          type: string
+          description: >-
+            Diary number
+      required: []
+      title: NorwegianVoluntaryPledge
+    NorwegianEvent:
+      type: object
+      description: Event as received from authority.
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        details:
+          type: string
+          description: Details of the events. TODO - I18n??
+        type: 
+          type: string
+          description: >-
+            TODO - what types do we have here?
+        source:
+          type: string
+          description: Where did the event come from
+          example: FORETAKSREGISTERET
+      title: NorwegianEvent
+    NorwegianEvents:
+      type: array
+      title: NorwegianEvents
+      description: Newest events come first.
+      items:
+        "$ref": "#/components/schemas/NorwegianEvent"
+    NorwegianOwnership:
+      type: object
+      properties:
+        shareHolders:
+          type: array
+          description: >-
+            A list of Companies that holds shares in this company. 
+          items:
+            "$ref": "#/components/schemas/NorwegianShareholderCompany"
+        subsidiaries:
+          "$ref": "#/components/schemas/NorwegianSubsidiaries"
+      title: NorwegianOwnership
+    NorwegianShareholderCompany:
+      type: object
+      description: Company which owns shares in this company.
+      properties:
+        name:
+          type: string
+          description: Name of the company
+        dunsNumber:
+          type: string
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        ownershipInPercent:
+          type: integer
+          format: int32
+          description: Ownership in percent
+          min: 0
+          max: 100
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        shareCapital:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: NorwegianShareholderCompany
+    NorwegianSubsidiaries:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: >-
+            Total number of subsidiaries this company have.
+        subsidiaries:
+          type: array
+          items:
+            "$ref": "#/components/schemas/NorwegianSubsidiary"
+      required: []
+      title: NorwegianSubsidiaries
+    NorwegianSubsidiary:
+      type: object
+      description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
+      properties:
+        name:
+          type: string
+          description: The name of the company
+        dunsNumber:
+          type: string
+          description: DunsNumber of the company.
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        ownershipInPercent:
+          type: integer
+          format: int32
+          description: Ownership in percent
+          min: 0
+          max: 100
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: NorwegianSubsidiary
+    NorwegianPosition:
+      type: object
+      properties:
+        enteredDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+        function:
+           type: string
+           description: |
+            1  - Chairman
+            2  - Deputy chairman
+            3  - Board member
+            4  - Employees representative
+            5  - Deputy board member
+            6  - Observer
+            7  - Representative foreign entity
+            20 - Managing Director
+            21 - Company Secretary
+            30 - Auditor
+            35 - Certified Accountant
+            40 - Contact
+            S1 - Proprietor
+        description:
+          type: string
+          description: A textual description of the function
+          example: Chairman
+        assignments:
+          type: array
+          description: Assignments in other companies for this person/entity
+          items:
+             "$ref": "#/components/schemas/NorwegianAssignment"
+      required: []
+      title: NorwegianPosition
+    NorwegianHistoricalPosition:
+      type: object
+      properties:
+        enteredDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        resignedDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+        function:
+           type: string
+           description: |
+            
+        description:
+          type: string
+          description: A textual description of the function
+        assignments:
+          type: array
+          description: Assignments in other companies for this person/entity
+          items:
+             "$ref": "#/components/schemas/NorwegianAssignment"
+      required: []
+      title: NorwegianHistoricalPosition
+    NorwegianAssignment:
+      type: object
+      properties:
+        function:
+          type: string
+          description: |
+            
+        name:
+          type: string
+          description: The name of the company where this person/entity has assignments
+        dunsNumber:
+          type: string
+          description: The duns of the company where this person/entity has assignments 
+        registrationNumber:
+          type: string
+          description: The registration number of the company where this person/entity has assignments 
+      title: NorwegianAssignment     
+    NorwegianManagement:
+      type: object
+      description: Management section
+      properties:
+        boardMembers:
+          "$ref": "#/components/schemas/NorwegianBoardMembers"
+        auditors:
+          "$ref": "#/components/schemas/NorwegianAuditors"
+        authorizedSignatory:
+          type: string
+          description: >-
+            Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
+        procuration:
+          type: string
+          description: >-
+            TODO - add a good description here
+      required: []
+      title: NorwegianManagement
+    NorwegianAuditors:
+      type: object
+      description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
+      properties:
+        currentAuditors:
+          type: array
+          description: Auditors currently auditing this company
+          items:
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
+        historicalAuditors:
+          type: array
+          description: Historical auditors
+          items:
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
+      required: []
+      title: NorwegianAuditors
+    NorwegianBoardMembers:
+      type: object
+      properties:
+        boardMemberCount:
+          type: integer
+          format: int32
+          description: The number of boardmembers the company currently have
+        officialAppointmentDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        currentBoardMembers:
+          type: array
+          description: A list of the current boardmembers
+          items:
+            "$ref": "#/components/schemas/NorwegianPosition"
+        historicalBoardMembers:
+          type: array
+          description: A list of the historical boardmembers.
+          items:
+            "$ref": "#/components/schemas/NorwegianHistoricalPosition"
+      required: []
+      title: NorwegianBoardMembers
+    NorwegianCompanyInformation:
+      type: object
+      description: CompanyInformation, misc information about the company.
+      properties:
+        capital:
+          "$ref": "#/components/schemas/NorwegianCapital"
+        companyName:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
+        contactPoints:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ContactPoints"
+        identifiers:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+        industryCodeSet:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
+        legalForm:
+          "$ref": "#/components/schemas/NorwegianLegalForm"
+        status:
+          "$ref": "#/components/schemas/NorwegianStatus"
+        registrationInformation:
+          "$ref": "#/components/schemas/NorwegianRegistrationInformation"
+        generalCompanyData:
+          "$ref": "#/components/schemas/NorwegianGeneralCompanyData"
+        branches:
+          "$ref": "#/components/schemas/NorwegianBranches"
+      required: []
+      title: NorwegianCompanyInformation
+    NorwegianBranches:
+      type: object
+      description: 
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: >-
+            Total number of branches this company have. (workplaces)
+        branches:
+          type: array
+          items:
+            "$ref": "#/components/schemas/NorwegianBranch"
+      required: []
+      title: NorwegianBranches
+    NorwegianBranch:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the branch
+        visitingAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+        postalAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+        registrationNumber:
+          description: Local registration number
+          type: string
+        employeeCount:
+          type: integer
+          format: int32
+          description: >-
+            The number of empoyees that work at this branch
+      required: []
+      title: NorwegianBranch
+    NorwegianBranchAddress:
+      type: object
+      properties:
+        postalCode:
+          type: string
+          description: postalcode
+        town:
+          type: string
+          descripion: town
+      required: []
+      title: NorwegianBranchAddress
+    NorwegianCapital:
+      type: object
+      description: Capital section
+      properties:
+        shareCapital:
+          "$ref": "#/components/schemas/NorwegianShareCapital"
+        paidUpCapital:
+          "$ref": "#/components/schemas/NorwegianPaidUpCapital"
+      required: []
+      title: NorwegianCapital
+    NorwegianPaidUpCapital:
+      type: object
+      description: Paid up capital
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: NorwegianPaidUpCapital
+    NorwegianShareCapital:
+      type: object
+      description: Share capital
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: NorwegianShareCapital
+    NorwegianGeneralCompanyData:
+      type: object
+      properties:
+        businessDescription:
+          type: string
+          description: The description registered with the local authorities describing the companys business.
+        employeeCount:
+          type: integer
+          format: int64
+        countryCode:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        registeredInVat:
+          type: boolean
+          description: This indicates if the company is registered according to the Tax VAT register. TODO - is this correct
+        establishment:
+          type: string
+          description: >-
+            TODO - what is this?
+      required: []
+      title: NorwegianGeneralCompanyData
+    NorwegianLegalForm:
+      type: object
+      description: The company's legalform
+      properties:
+        code:
+          type: string
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
+          description: >-
+            '
+            TODO - are the enum values above correct?
+            TODO - add descriptions here
+            '
+        description:
+          type: string
+          description: A textual description of the code.
+          example: AS
+      required: []
+      title: NorwegianLegalForm
+    NorwegianRegistrationInformation:
+      type: object
+      properties:
+        articlesOfAssociationDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        registrationDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        registeredIn:
+          type: string
+          description: Where was the company registered.
+          example: Foretaksregisteret
+      required: []
+      title: NorwegianRegistrationInformation
+    NorwegianStatus:
+      type: object
+      properties:
+        value:
+          type: string
+          enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
+          description: TODO - What statuses do we have
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: NorwegianStatus
+    NorwegianFinance:
+      type: object
+      properties:
+        financialStatements:
+          "$ref": "#/components/schemas/NorwegianFinancialStatements"
+      required: []
+      title: NorwegianFinance
+    NorwegianGroupAccount:
+      type: object
+      properties:
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/NorwegianFinancialStatement"
+    NorwegianFinancialStatements:
+      type: object
+      properties:
+        groupAccount:
+          "$ref": "#/components/schemas/NorwegianGroupAccount"
+        auditorsReservation:
+          type: array
+          items:
+            "$ref": "#/components/schemas/NorwegianFinancialStatementsAuditorsReservation"
+        keyFigures:
+          type: array
+          items:
+            "$ref": "#/components/schemas/NorwegianFinancialStatementKeyFigure"
+        industryKeyFigures:
+          "$ref": "#/components/schemas/NorwegianFinancialStatementKeyFigure"
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/NorwegianFinancialStatement"
+      required: []
+      title: NorwegianFinancialStatements
+    NorwegianFinancialStatementsAuditorsReservation:
+      type: object
+      properties:
+        auditorsReservationCode:
+          type: string
+          description: |
+            TODO - add proper codes for norway if they have this
+            
+        auditorsReservationDescription:
+          type: string
+          description: >-
+            Textual description of the auditorsReservationCode ?? 
+            OR the actual comment ???
+        statementDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: NorwegianFinancialStatementsAuditorsReservation
+    NorwegianFinancialStatementKeyFigure:
+      type: object
+      properties:
+        currentRatio:
+          type: number
+          format: double
+          description: >-
+            Current assets in percent of Short term liabilities.
+            
+            The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
+          example: 19.4
+        interestCoverage:
+          type: number
+          format: double
+          description: >-
+            TODO - This is interest coverage ratio in brigs web - which one to use?
+            Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
+          example: 2.0
+        interestOnLiability:
+          type: number
+          format: double
+          description: >-
+            Interest on liability expressed in percent
+          example: 5.0
+        quickRatio:
+          type: number
+          format: double
+          description: >-
+           Current assets minus inventories in percent of current liabilities.
+           example: 17.0
+        returnOnEquity:
+          type: number
+          format: double
+          description: >-
+            Profit/loss after financial items as a percentage of the total equity.
+          example: 22.55
+        returnOnTotalAssets:
+          type: number
+          format: double
+          example: 25.0
+          description: >-
+            Profit/loss after financial items plus financial costs as a percentage of the total capital.
+        turnoverAssets:
+          type: number
+          format: double
+          description: >-
+            Capital turnover is measured as profit/loss in relation to assets.
+          example: 33.7
+        netProfitMargin:
+          type: number
+          format: double
+          description: >-
+            The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage. 
+          example: 23.4
+        netWorth:
+          type: integer
+          format: int64
+          description: >-
+            Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
+          example: -1555000
+        grossMargin:
+          type: number
+          format: double
+          description: >-
+            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
+        equityToTurnover:
+          type: number
+          format: double
+          example: 20.15
+          description: >-
+            TODO - add description here
+        returnOnInvestment:
+          type: number
+          format: double
+          example: 22.25
+          description: >-
+            Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an investment or compare the efficiency of a number of different investments. ROI tries to directly measure the amount of return on a particular investment, relative to the investment’s cost. To calculate ROI, the benefit (or return) of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
+
+        equityRatio:
+          type: number
+          format: double
+          example: 13.0
+          description: >-
+            The equity ratio is a financial ratio indicating the relative proportion of equity used to finance a company's assets. The two components are often taken from the firm's balance sheet or statement of financial position (so-called book value), but the ratio may also be calculated using market values for both, if the company's equities are publicly traded. 
+        liquidAssetsOfTurnover:
+          type: number
+          format: double
+          description: >-
+            Liquid assets in percent of total turnover. A liquid asset is an asset that can easily be converted into cash within a short amount of time.
+          example: 13.77
+        workingCapital:
+          type: integer
+          format: int64
+          example: 1200000
+          description: >-
+            Working capital is the difference between a company’s current assets, such as cash, accounts receivable (customers’ unpaid bills) and inventories of raw materials and finished goods, and its current liabilities, such as accounts payable. Working capital is a measure of a company's liquidity, operational efficiency and its short-term financial health
+        longTermStockFinancing:
+          type: number
+          format: double
+          example: 99.37
+          description: >-
+            TODO - add description
+        gearing:
+          type: number
+          format: double
+          example: 89.0
+          description: >-
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
+        stockTurnover:
+          type: number
+          format: double
+          example: 89.0
+          description: >-
+              Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
+
+              An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
+
+        daysOfReceiveables:
+          type: number
+          format: double
+          example: 1.4
+          description: >-
+            TODO - Is it correct just to add the description below and change from pay to receive ???
+        daysOfPayables:
+          type: number
+          format: double
+          example: 14.0
+          description: >-
+            Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
+        
+      required: []
+      title: NorwegianFinancialStatementKeyFigure
+    NorwegianIncomeStatement:
+      type: object
+      properties:
+        grossTurnover:
+          type: integer
+          format: int64
+          example: 482000
+        netSales:
+          type: integer
+          format: int64
+          description: >-
+            Net sales is the sum of a company's gross sales minus its returns, allowances, and discounts.
+        changeInInventories:
+          type: integer
+          format: int64
+          description: >-
+            Change in inventories and work in progress for the last reporting period and the current reporting period. 
+        otherOperatingIncome:
+          type: integer
+          format: int64
+          description: >-
+            Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
+            TODO - also named as otherFinancialIncome
+        turnover:
+          type: integer
+          format: int64
+          description: >-
+            The company’s total revenues. Net sales + otherOperatingIncome
+        costOfGoods:
+          type: integer
+          format: int64
+          description: >-
+            Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
+            
+            TODO - is this the same as commoditiesAndNecessities/rawmaterialsAndConsumables
+        sellingExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service. 
+            
+            Function based only
+        administrativeCosts:
+          type: integer
+          format: int64
+          description: >-
+            Administrative expenses/costs are the expenses that an organization incurs for administrationcosts and not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
+            
+            Function based only
+        commoditiesAndNecessities:
+          type: integer
+          format: int64
+          description: >-
+            Raw materials and consumables for processing in production.
+            
+            TODO - also named rawMaterialsAndConsumables
+        otherOperatingExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
+        staffCosts:
+          type: integer
+          format: int64
+          description: >-
+            'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
+        depreciation:
+          type: integer
+          format: int64
+          description: >-
+            Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
+        writedown:
+          type: integer
+          format: int64
+          description: >-
+            A write-down is an accounting term for the reduction in the book value of an asset when its fair market value (FMV) has fallen below the carrying book value, and thus become an impaired asset. The amount to be written down is the difference between the book value of the asset and the amount of cash that the business can obtain by disposing of it in the most optimal manner.
+        operatingExpensesTotal:
+          type: integer
+          format: int64
+          description: >-
+            An operating expense is an expense a business incurs through its normal business operations. Often abbreviated as OPEX, operating expenses include rent, equipment, inventory costs, marketing, payroll, insurance, and funds allocated for research and development. One of the typical responsibilities that management must contend with is determining how to reduce operating expenses without significantly affecting a firm's ability to compete with its competitors.
+        operatingProfitAfterDepreciation:
+          type: integer
+          format: int64
+          description: >-
+            The operating profit (loss) is the difference between the business revenue and costs including nonRecurringFinancialItems during the fiscal year.
+            TODO - is this the same as operationalResult
+        incomeFromInvestmentsInGroupEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            The net from dividend income, impairment and reserved write-downs.
+            TODO - is this correct
+        incomeFromInvestmentsInGroupAssociates:
+          type: integer
+          format: int64
+          description: >-
+            TODO  - what is the difference from incomeFromInvestmentsInGroupEnterprises
+        interestIncomeFromGroupCompanies:
+          type: integer
+          format: int64
+          description: >-
+            Interest payed to the company by group or affiliate.
+        externalInterestIncome:
+          type: integer
+          format: int64
+          description: >-
+            Interest payed to the company by banks or creditinstitutes.
+            TODO - also named interestIncome
+        otherFinancialIncome:
+          type: integer
+          format: int64
+          description: >-
+            Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
+            TODO - is this the same as income from other investments ??
+        financialIncomeTotal:
+          type: integer
+          format: int64
+          description: Total financial revenues
+        interestExpenseToGroupCompanies:
+          type: integer
+          format: int64
+          description: >-
+            Interest payed from the company to group or affiliate.
+        externalInterestExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Interest payed from the company to banks or creditinstitutes.
+        interestExpensesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Total sum of interest payed from the company.
+        otherFinancialExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
+        financialCostsTotal :
+          type: integer
+          format: int64
+          description: >-
+            Total financial costs. A sum of all costs.
+        nonRecurringFinancialItems:
+          type: integer
+          format: int64
+          description: >-
+            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations.
+        profitLossAfterFinancialItems:
+          type: integer
+          format: int64
+          description: >-
+            Profit/Loss after financials shows the years total result of the business. 
+        extraordinaryIncome:
+          type: integer
+          format: int64
+          description: >-
+            Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
+        extraordinaryExpenses:
+          type: integer
+          format: int64
+          description: >-
+            Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
+        extraordinaryItemsTotal:
+          type: integer
+          format: int64
+          description: >-
+             Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
+             
+             extraordinaryIncome - extraordinaryExpenses = totalExtraordinaryItems
+             
+        resultBeforeAllocations:
+          type: integer
+          format: int64
+          description:  >-
+            Earnings before appropriations
+            or
+            Result before allocation
+        groupContribution:
+          type: integer
+          format: int64
+          description: >-
+            Given or obtained contribution from/to group or affiliate.
+        shareholdersContribution:
+          type: integer
+          format: int64
+          description: >-
+            A shareholder contribution means that any or all shareholders pay money to the company without obtaining new shares. The motive may be that the owners want to avoid the company having to be liquidated.
+        appropriations:
+          type: integer
+          format: int64
+          description: >-
+            Appropriations is a way of postpone taxes for some of the companys result by allocations to untaxed reserves. The appropriations mainly used is tax allocation reserve.
+        profitLossBeforeTax:
+          type: integer
+          format: int64
+          description: >- 
+            Result before tax
+        tax:
+          type: integer
+          format: int64
+          description: >- 
+            Taxes paid.
+        netProfitLoss:
+          type: integer
+          format: int64
+          description: >-
+            A positive value means that the company made a net profit and a negative that it made a net loss.
+    NorwegianBalanceSheet:
+      type: object
+      properties:
+        assets: 
+           "$ref": "#/components/schemas/NorwegianAssets"
+        liabilitiesAndEquity:
+          "$ref": "#/components/schemas/NorwegianLiabilitiesAndEquity"
+      title: NorwegianBalanceSheet
+      description: >-
+        A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
+    NorwegianAssets:
+      type: object
+      properties:
+        currentAssets:
+          "$ref": "#/components/schemas/NorwegianCurrentAssets"
+        nonCurrentAssets:
+          "$ref": "#/components/schemas/NorwegianNonCurrentAssets"
+        assetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            The sum of all assets.
+      title: NorwegianAssets
+      description: |
+        Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
+    NorwegianCurrentAssets:
+      type: object
+      properties:
+        inventories:
+          type: integer
+          format: int64
+          description: >-
+           Inventories
+        rawMaterialAndConsumables:
+          type: integer
+          format: int64
+          description: >-
+            Raw materials and consumables for processing in production.
+        producedGoods:
+          type: integer
+          format: int64
+          description: >-
+            Produced goods
+        finishedProductsAndGoods:
+          type: integer
+          format: int64
+          description: >-
+            Finished products and goods
+        currentReceivablesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Current receivables total
+        otherReceivables:
+          type: integer
+          format: int64
+          description: >-
+           Other short term receivables
+        tradeReceivables:
+          type: integer
+          format: int64
+          description: >-
+           Short term trade receivables
+        receivableFromGroupAndAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+            Short term receivable from group and associated companies.
+        unpaidContributedCapital:
+          type: integer
+          format: int64
+          description: >-
+            Unpaid contributed capital short term
+        investmentsTotal:
+          type: integer
+          format: int64
+          description: >-
+            Total amount spent on investments.
+        investmentsInAssociatedEnterprisesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Investment in associated enterprises total
+        investmentShares:
+          type: integer
+          format: int64
+          description: >-
+            Short term investments shares
+        investmentBonds:
+          type: integer
+          format: int64
+          description: >-
+           Short term investments bonds
+        investmentsFinancialInstruments:
+          type: integer
+          format: int64
+          description: >-
+            Short term investments financial instruments
+        otherFinancialIntruments:
+          type: integer
+          format: int64
+          description: >-
+            Other financial instruments
+        cashAndBankBalance:
+          type: integer
+          format: int64
+          description: >-
+            The sum of cash in hand and money in the bank.
+            TODO - fix this description
+        investmentsOther:
+          type: integer
+          format: int64
+          description: >-
+            Short term investments other
+        currentAssetsTotal:
+          type: integer
+          format: int64
+          description: >-  
+            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
+      title: NorwegianCurrentAssets
+      description: |
+        Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
+    
+    NorwegianNonCurrentAssets:
+      type: object
+      properties:
+        intangibleAssetsTotal:
+          type: integer
+          format: int64
+          description: >-
+            Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
+        capitalisedCostForRnd:
+          type: integer
+          format: int64
+          description: >-
+            Research and development (R&D) expenses are associated with the research and development of a company's goods or services. A company generally incurs R&D expenses in the process of finding and creating new products or services.
+        intangibleRights:
+          type: integer
+          format: int64
+          description: >-
+            Concessions, patents, licenses, trademarks and similar rights.
+        deferredTaxAsset:
+          type: integer
+          format: int64
+          description: >-
+            A deferred tax asset is an asset on a company's balance sheet that may be used to reduce its taxable income. It can refer to a situation where a business has overpaid taxes or taxes paid in advance on its balance sheet. These taxes are eventually returned to the business in the form of tax relief, and the over-payment is, therefore, an asset for the company.
+        goodwill:
+          type: integer
+          format: int64
+          description: >-
+            Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset. 
+        tangibleAssets:
+          type: integer
+          format: int64
+          description: >-
+            A tangible asset is an asset that has a finite monetary value and usually a physical form. Tangible assets can typically always be transacted for some monetary value though the liquidity of different markets will vary. Tangible assets are the opposite of intangible assets which have a theorized value rather than a transactional exchange value.
+        landAndBuildings:
+          type: integer
+          format: int64
+          description: >-
+            This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc.
+        machineryAndTools:
+          type: integer
+          format: int64
+          description: >-
+            Total machinery and inventory.
+        shipsRigsAeroplanes:
+          type: integer
+          format: int64
+          description: >-
+            ships, rigs and aeroplanes
+        equipment:
+          type: integer
+          format: int64
+          description: >-
+            Equipment
+        financialAssetsTotal:
+          type: integer
+          format: int64
+          description: >-
+            Financial assets total
+        investmentInSubsidiaries:
+          type: integer
+          format: int64
+          description: >-
+            Investments made in subsidiaries
+        investmentsInOtherGroupCompanies:
+          type: integer
+          format: int64
+          description: >-
+            Investments made in group companies
+        receivablesFromGroupEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            Long term receivables from group enterprises
+        investmentsInAssociatedEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            Investments made in associated enterprises
+        receivablesFromAssociatedEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            Long term receivables from associated enterprises
+        investmentsInOtherEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            Investments made in other enterprises.
+        otherReceivables:
+          type: integer
+          format: int64
+          description: >-
+           Other receivables
+        pensionFund:
+          type: integer
+          format: int64
+          description: >-
+           Pension fund
+        otherFixedAssets:
+          type: integer
+          format: int64
+          description: >-
+           Other fixed assets
+        fixedAssetsTotal:
+          type: integer
+          format: int64
+          description: >-
+            A fixed asset is a long-term tangible piece of property or equipment that a firm owns and uses in its operations to generate income. Fixed assets are not expected to be consumed or converted into cash within a year. Fixed assets most commonly appear on the balance sheet as property, plant, and equipment (PP&E). 
+      title: NorwegianNonCurrentAssets
+    NorwegianLiabilitiesAndEquity:
+      type: object
+      properties:
+        liabilities:
+          "$ref": "#/components/schemas/NorwegianLiabilities"
+        shareholdersEquity:
+          "$ref": "#/components/schemas/NorwegianShareholdersEquity" 
+        equityAndLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            The sum of all reported equity and liabilities.
+    NorwegianLiabilities:
+      type: object
+      properties:
+        currentLiabilities:
+          "$ref": "#/components/schemas/NorwegianCurrentLiabilities"
+        nonCurrentLiabilities:
+          "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
+        liabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            The sum of all reported liabilities.
+      title: NorwegianLiabilities
+      description: |
+        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
+    NorwegianCurrentLiabilities:
+      type: object
+      properties:
+        shortTermLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Short term debt, also called current liabilities, is a firm's financial obligations that are expected to be paid off within a year. It is listed under the current liabilities portion of the total liabilities section of a company's balance sheet.
+        convertibleLoans:
+          type: integer
+          format: int64
+          description: >-
+            Loan that entitles the lender (or the holder of loan debenture) to convert the loan to common or preferred stock (ordinary or preference shares) at a specified conversion rate and within a specified timeframe.
+        certificateLoans:
+          type: integer
+          format: int64
+          description: >-
+            A certificate secured loan is a type of agreement in which you pledge a type of deposit account to a financial institution in exchange for access to a sum of money. You can use this money to make a major purchase, consolidate bills, pay personal expenses or finance higher education. The deposit account that you pledge in a certificate loan is known as a certificate of deposit. With this type of account, you agree to invest a sum of money with a financial institution for a specific period of time and, in exchange, the bank agrees to pay you interest on your money.
+        liabilitiessToBanks:
+          type: integer
+          format: int64
+          description: Short term debts to banks.
+        tradePayables:
+          type: integer
+          format: int64
+          description: >-
+            Liabilities owed to suppliers for purchases or services rendered. More commonly referred to as accounts payable.
+        taxPayables:
+          type: integer
+          format: int64
+          description: >-
+            Income tax payable is a type of account in the current liabilities section of a company's balance sheet. It is compiled of taxes due to the government within one year. The calculation of income tax payable is according to the prevailing tax law in the company's home country.
+        publicDutiesPayable:
+          type: integer
+          format: int64
+          description: >-
+            Public duties payable
+        payablesToGroupEnterprises:
+          type: integer
+          format: int64
+          description: >-
+           Short term payables to group enterprises
+        proposedDividends:
+          type: integer
+          format: int64
+          description: >-
+            Proposed dividends
+        otherShortTermLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Other short term debts
+      title: NorwegianCurrentLiabilities
+    NorwegianLongTermLiabilities:
+      type: object
+      properties:
+        longTermLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: >-
+            Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
+        provisions:
+          type: integer
+          format: int64
+          description: >-
+           Provisions
+        provisionsForPensionsAndSimilarLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Provisions for pensions and similar liabilities
+        provisionsForDeferredTaxes:
+          type: integer
+          format: int64
+          description: >-
+            Provisions for deferred taxes
+        otherProvisions:
+          type: integer
+          format: int64
+          description: >-
+            Other provisions
+        liabilitiesOtherThanProvisions:
+          type: integer
+          format: int64
+          description: >-
+            Long term liabilitites other than provisions
+        convertibleBonds:
+          type: integer
+          format: int64
+          description: >-
+            A convertible bond is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
+        bondLoans:
+          type: integer
+          format: int64
+          description: >-
+            A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
+        liabilitiesToBanks:
+          type: integer
+          format: int64
+          description: >-
+              "Long-term debt is debt that matures in more than one year. Long-term debt can be viewed from two perspectives: financial statement reporting by the issuer and financial investing. In financial statement reporting, companies must record long-term debt issuance and all of its associated payment obligations on its financial statements. On the flip side, investing in long-term debt includes putting money into debt investments with maturities of more than one year."
+        payablesToGroupEnterprises:
+          type: integer
+          format: int64
+          description: >-
+            Long term payables to group enterprises
+        subordinatedLoans:
+          type: integer
+          format: int64
+          description: >-
+            Subordinated debt (loan) (also known as a subordinated debenture) is an unsecured loan or bond that ranks below other, more senior loans or securities with respect to claims on assets or earnings. Subordinated debentures are thus also known as junior securities. In the case of borrower default, creditors who own subordinated debt will not be paid out until after senior bondholders are paid in full.
+        otherlongTermLiabilities:
+          type: integer
+          format: int64
+          description: >-
+            Other long term liabilities
+        
+      title: NorwegianLongTermLiabilities
+    NorwegianShareholdersEquity:
+      type: object
+      properties:
+        equity:
+          type: integer
+          format: int64
+          description: >-
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
+        paidInCapital:
+          type: integer
+          format: int64
+          description: >-
+            Paid-up capital is the amount of money a company has received from shareholders in exchange for shares of stock. Paid-up capital is created when a company sells its shares on the primary market directly to investors. When shares are bought and sold among investors on the secondary market, no additional paid-up capital is created as proceeds in those transactions go to the selling shareholders, not the issuing company.
+        shareCapital:
+          type: integer
+          format: int64
+          description: >-
+            Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock. The amount of share capital or equity financing a company has can change over time. A company that wishes to raise more equity can obtain authorization to issue and sell additional shares, thereby increasing its share capital.
+        ownShares:
+          type: integer
+          format: int64
+          description: >-
+            The value of the shares the company owns in their own company.
+        sharePremium:
+          type: integer
+          format: int64
+          description: >-
+            A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
+        restrictedEquity:
+          type: integer
+          format: int64
+          description: >-
+            Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
+
+            Restricted equity is a security for other stakeholders (not shareholders) in a corporation such as lenders, suppliers, the state and employees. Restricted equity must exist since the shareholders never have to pay the debt in a bankruptcy. The shareholders in a limited company are free from liability in bankruptcy.
+
+            Restricted equity includes share capital, revaluation reserves and other reserves
+        retainedEarnings:
+          type: integer
+          format: int64
+          description: >-    
+            Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
+        reserveForValuationVariances:
+          type: integer
+          format: int64
+          description: >-
+            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet for the purpose of maintaining a reserve account tied to certain assets. This line item can be used when a revaluation assessment finds that the carrying value of the asset has changed.
+        otherEquity:
+          type: integer
+          format: int64
+          description: >-
+            TODO - examples
+        minorityInterestsTotal:
+          type: integer
+          format: int64
+          description: >-
+            A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another compan.
+      title: NorwegianShareholdersEquity
+    NorwegianFinancialStatement:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: >-
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: SEK
+        balanceSheet:
+          "$ref": "#/components/schemas/NorwegianBalanceSheet"
+        incomeStatement:
+          "$ref": "#/components/schemas/NorwegianIncomeStatement"
+        notesAndOtherInformation:
+          "$ref": "#/components/schemas/NorwegianNotesAndOtherInformation"
+      required: []
+      title: NorwegianFinancialStatement
+    NorwegianNotesAndOtherInformation:
+      type: object
+      description: |
+        Misc information releated to the financial statement
+      properties:
+        wagesToLeaderOrCeo:
+          type: integer
+          format: int64
+          description: >-
+            Wages paid to the head of the company. Usually the CEO.
+        renumerationToAuditor:
+          type: integer
+          format: int64
+          description: >-
+            The audit fee payed by client to the auditor.
+        wagesAndPaymentsToBoard:
+          type: integer
+          format: int64
+          description: >-
+            Wages and payments to board members
+        wagesAndPaymentsToConsultants:
+          type: integer
+          format: int64
+          description: >-
+            Wages and payments to consultants.
+      title: NorwegianNotesAndOtherInformation
+    NorwegianBankruptcy:
+      type: object
+      description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      title: NorwegianBankruptcy
