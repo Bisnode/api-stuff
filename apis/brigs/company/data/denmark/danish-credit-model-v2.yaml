@@ -1,0 +1,1935 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+#######################
+# Optional info section
+#######################
+info:
+  title: Danish Company Credit Data
+  description: | 
+    Company model for Danish company credit data. The same model is used for all legalforms.
+    
+      Most of the descriptions for the financial items are taken from www.investopedia.com.
+  
+  version: "2.0.0"
+  contact:
+    email: api-bisnode@bisnode.com
+
+components:
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    DanishCompanyData:
+      type: object
+      properties:
+        companyInformation:
+          "$ref": "#/components/schemas/DanishCompanyInformation"
+        risk: 
+          "$ref": "#/components/schemas/DanishRisk"
+        management:
+          "$ref": "#/components/schemas/DanishManagement"
+        finance:
+          "$ref": "#/components/schemas/DanishFinance"
+        ownership:
+          "$ref": "#/components/schemas/DanishOwnership"
+      title: DanishCompanyData
+      description: This is the root object defining which structures reside under the root path.
+    DanishRisk:
+      type: object
+      description: |
+        Risk section.
+      properties:
+        creditRatings:
+          "$ref": "#/components/schemas/DanishCreditRatings"
+        ratingCreditLimits:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
+        paymentRemarks:
+          "$ref": "#/components/schemas/DanishPaymentRemarks"
+        trade:
+           "$ref": "#/components/schemas/DanishTrade" 
+        financialCommitments:
+          "$ref": "#/components/schemas/DanishFinancialCommitments"
+        bankruptcy:
+          "$ref": "#/components/schemas/DanishBankruptcy"
+      required: []
+      title: DanishRisk
+    DanishCreditRatings:
+      type: object
+      description: Current and historical ratings
+      properties:
+        currentCreditRating:
+          "$ref": "#/components/schemas/DanishCreditRating"
+        historicalCreditRatings:
+          type: array
+          description: Max 99 items.
+          items:
+            "$ref": "#/components/schemas/DanishCreditRating"
+      required: []
+      title: DanishCreditRatings
+    DanishCreditRating:
+      type: object
+      description: 'Bisnode rating model.'
+      properties:
+        annualReportDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        code:
+          type: string
+          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
+        description:
+          type: string
+          description: Textual description of the rating. 
+        partJudgements:
+          "$ref": "#/components/schemas/DanishPartJudgements"
+      required: []
+      title: DanishCreditRating
+    DanishPartJudgements:
+      type: object
+      description: 'The rating is based on 3 PartJudgements: Finance, Ownership and HistoryOperation.'
+      properties:
+        finance:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PartJudgement"
+        historyOperation:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PartJudgement"
+        ownership:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PartJudgement"
+      required: []
+      title: DanishPartJudgements
+    DanishFinancialCommitments:
+      type: object
+      description: |
+        Various types of financial commitments this company have.
+      properties:
+        debtBalance:
+          "$ref": "#/components/schemas/DanishDebtBalance"
+      title: DanishFinancialCommitments
+    DanishTrade:
+      type: object
+      properties:
+        paymentIndex:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+      title: DanishTrade
+    DanishPaymentRemarks:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of payment remarks
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        paymentRemarks:
+          type: array
+          description: A list of remarks, most recent ones comes first.
+          items:
+            "$ref": "#/components/schemas/DanishPaymentRemark"
+        remarksOnPaymentsRegisteredInDBR:
+          type: boolean
+          description: 'True if this company has registered remarks in DBR register'
+      required: []
+      title: DanishPaymentRemarks
+    DanishPaymentRemark:
+      type: object
+      description: Remarks on payments
+      properties:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        registrationDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        deletionDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        claimDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        creditor:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/DanishReportCode"
+        description:
+          type: string
+          description: A textual description of the event type
+          example: ROAD TOLL 
+      required: []
+      title: DanishPaymentRemark
+    DanishReportCode:
+      type: object
+      description: Common codes
+      properties:
+        code:
+          type: string
+          description: |
+            BOF       -  CRIME VICTIM FUND                       
+            BOM       -  (RESOURCES FROM) FINES                  
+            EUB       -  EU FINE                                 
+            FBO       -  CORPORATE FINE                          
+            NOB       -  NORDIC FINES,ETC.                       
+            NOS       -  NORDIC TAX                              
+            OKL       -  UNCLASSIFIED                            
+            ISA       -  INFRASTRUCTURE FEE                      
+            RGR       -  JUDICAL ASSITANCE - RIGHTS OF RECOURSE  
+            RHK       -  LEGAL AID COST                          
+            SRV       -  SPECIAL LEGAL EFFECT                    
+            STF       -  MISC. GOVERNMENT CLAIMS (RECEIVABLES)   
+            KKV       -  DECLARED BANKRUPT                       
+            UNS       -  NON-NORDIC TAX                          
+            VTE       -  FINE                                    
+            RFI       -  BUSINESS LINKED DEBT RECONSTR. INITIATED
+            RFB       -  BUSINESSLINKED DEBT RECONSTR. DETERMINED
+            RSI       -  RESOLUTION INITIATED                    
+            FBB       -  REVOKED PERMISSION TO RUN BAB/FAB       
+            FBA       -  CHANGED PERMISSIONDATE TO RUN BAB/FAB   
+            RFA       -  BUSINESS LINKED DEBT RECONSTR. WITHDRAWN
+            RSA       -  RESOLUTION ENDED                        
+            FBT       -  DATE OF PERMISSION TO RUN BAB/FAB       
+            RFU       -  BUSINESS LINKED DEBT RECONSTR. REVOKED  
+            BYB       -  NEW LEGAL FORM: BANKING COMPANY         
+            RSU       -  RESOLUTION REVOKED                      
+            BYF       -  NEW LEGAL FORM: INSURANCE COMPANY       
+            BYA       -  NEW LEGAL FORM: LIMITED COMPANY         
+            ÅF        -  REPOSSESSION OF GOODS                   
+            ÅT        -  REPOSSESSION                            
+            ÄB        -  CHANGE OF FINANCIAL STATEMENT DATE      
+            ÄD        -  CHANGE OF BOARD/PARTLY                  
+            ÄDE       -  CHANGE OF BOARD PARTIAL, NOT COMPLETE   
+            ÄDO       -  CHANGE OF BOARD PARTIAL, UNAUTHORIZED   
+            ÄF        -  MARRIAGE SETTLEMENT                     
+            ÄFF       -  CHANGE OF LEGAL FORM                    
+            ÄH        -  CHANGE OF PARTOWNERS                    
+            ÄHE       -  CHANGE OF PARTOWN.,ONLY ONE PARTOWN.LEFT
+            ÄHS       -  CHANGE OF PARTOWNERS,PARTOWNERS MISSING 
+            ÄK        -  CHANGE OF UNLIMITED PARTNER             
+            ÄKD       -  CHANGE OF LIMITED PARTNER               
+            ÄKE       -  CHANGE OF PARTNER(LIM.PARTNER MISSING)  
+            ÄKS       -  CHANGE OF UNLIM.PARTN,UNLIM.PARTN.MISS. 
+            ÄR        -  CHANGE OF AUDITOR                       
+            ÄS        -  CHANGE OF BOARD                         
+            ÄT        -  CHANGE OF BOARD/TOTAL                   
+            ÄTE       -  CHANGE OF BOARD TOTAL, NOT COMPLETE     
+            ÄTO       -  CHANGE OF BOARD TOTAL, UNAUTHORIZED     
+            ÖLA       -  OVERLOAD CHARGE                         
+            ÖV        -  ASSIGNMENT                              
+            AÄA       -  CHANGE OF ADDRESS                       
+            AÄP       -  CHANGE OF POST CODE/TOWN                
+            AAV       -  REPOSSESSION OF GOODS                   
+            ABD       -  CHANGE OF BOARD/PARTLY                  
+            AC        -  SANCTIONED COMPOSITION                  
+            AD        -  CHANGE OF PARTOWNERS                    
+            ADA       -  CHANGE OF ADDRESS                       
+            ADF       -  CHANGE OF PARTOWN, ONLY ONE PARTOWN LEFT
+            ADO       -  CHANGE OF BOARD PARTIAL, UNAUTHORIZED   
+            ADP       -  CHANGE OF POST CODE/TOWN                
+            ADS       -  CHANGE OF PARTOWNERS, PARTOWNERS MISSING
+            AF        -  COMPOSITION PROPOSAL                    
+            AFF       -  CHANGE OF LEGAL FORM                    
+            AFO       -  MARRIAGE SETTLEMENT                     
+            AH        -  EVICTION                                
+            AK        -  CHANGE OF SHARE CAPITAL                 
+            AKD       -  CHANGE OF LIMITED PARTNER               
+            AKE       -  CHANGE OF PARTNER(LIM PARTNER MISSING)  
+            AKF       -  ISSUE OF BONUS SHARES                   
+            AKL       -  CHANGE OF UNLIM PARTN,UNLIM PARTN MISS  
+            AKM       -  CHANGE OF UNLIMITED PARTNER             
+            AKN       -  ISSUE OF NEW SHARES                     
+            AKS       -  SHARE CAPITAL REDUCTION                 
+            ALI       -  LIQUIDATION ANNOUNCEMENT                
+            ARJ       -  REGISTERED AS EMPLOYER                  
+            ARN       -  NOT REGISTERED AS EMPLOYER              
+            ARR       -  CHANGE OF AUDITOR                       
+            ASD       -  CHANGE OF BOARD/PARTLY                  
+            ASF       -  CHANGE OF BOARD PARTIAL, NOT_COMPLETE   
+            AT        -  REPOSSESSION                            
+            AV        -  DELETED                                 
+            AVE       -  DELETED, OWN REQUEST                    
+            AVLIDEN   -  DECEASED                                
+            AVP       -  DELETED SINCE SHARE CAP < 100 TSEK      
+            BA        -  PETITION INJ. TO PAY                    
+            BD        -  INJUNCTION TO PAY                       
+            BFA       -  PETITION INJ. TO PAY                    
+            BFD       -  PETITION INJ. TO PAY PARTLY DENIED      
+            BFE       -  INJ. TO PAY PASSED TO COURT - REOPENING 
+            BFF       -  INJ TO PAY PASSED TO COURT DUE TO APPEAL
+            BFH       -  PETITION INJ. TO PAY TOTALLY DENIED     
+            BFI       -  INJUNCTION TO PAY ANNULLED BY COURT     
+            BFK       -  PETITION INJ. TO PAY WITHDRAWN          
+            BFL       -  PETITION INJ. TO PAY WITHDRAWN          
+            BFM       -  PETITION INJ. TO PAY TOTALLY DENIED     
+            BFN       -  PETITION INJ. TO PAY PARTLY DENIED      
+            BFO       -  PETITION INJ. TO PAY PASSED TO COURT    
+            BFP       -  PETITION INJ. TO PAY DEPRECIATED        
+            BFR       -  PETITION INJ. TO PAY PASSED TO COURT    
+            BFS       -  INJ. TO PAY PASSED TO COURT - REOPENING 
+            BFT       -  INJ TO PAY PASSED TO COURT DUE TO APPEAL
+            BFU       -  INJUNCTION TO PAY                       
+            BFV       -  PETITION INJ. TO PAY DEPRECIATED        
+            BFX       -  PETITION INJ. TO PAY                    
+            BFY       -  INJUNCTION TO PAY                       
+            BI        -  SUSPENSION OF PAYMENTS                  
+            BIH       -  SUSPENSION OF PAYMENTS CANCELED         
+            BSA       -  BUILDING CHARGE/SPECIAL CHARGE          
+            CÄ        -  CHANGE IN MARITAL STATUS                
+            CA        -  CHANGE OF MARITAL STATUS                
+            DÄR       -  REGISTRATION OFFICE ANNOUNCEMENT        
+            DÖF       -  OTHER CLAIMS                            
+            DÖK       -  INCREASED SHARE-CAPITAL                 
+            DAA       -  INCREASED SHARE-CAPITAL                 
+            DAB       -  DECISION ABOUT COMPOSITION              
+            DAF       -  COMPANY DELETED FROM PUBLIC REGISTER    
+            DAK       -  TRANSFORMATION OF SHARE-CAPITAL         
+            DAR       -  THE COMPANY HAS NO QUALIFIED AUDITOR    
+            DAU       -  COMPOSITION DISCONTINUED                
+            DAV       -  COMPANY DELETED FROM PUBLIC REGISTER    
+            DDE       -  FISSION                                 
+            DF        -  DECEASED                                
+            DFM       -  MERGER MOTHER- + DAUGHTER COMPANY       
+            DFO       -  GOVERNMENT CLAIMS                       
+            DFU       -  MERGER MESSAGE                          
+            DKA       -  BANKRUPTCY PROCEEDINGS CONCLUDED        
+            DKK       -  COMPANY BANKRUPT                        
+            DKU       -  DECISION ABOUT BANKRUPTCY CANCELLED     
+            DLÅ       -  DECISION ABOUT LIQUIDATION CANCELLED    
+            DLA       -  LIQUIDATION CONCLUDED                   
+            DLB       -  DECISION ABOUT LIQUIDATION CANCELLED    
+            DLF       -  LIQUIDATION CONTINUING                  
+            DLH       -  DECISION ABOUT LIQUIDATION CANCELLED    
+            DLI       -  LIQUIDATION/LIQUIDATOR                  
+            DLT       -  LIQUIDATION REPORTED TO COURT           
+            DLU       -  LIQUIDATION CANCELLED COMPANY DISSOLVED 
+            DNE       -  REDUCTION OF SHARE CAPITAL              
+            DNY       -  NEW FORMATION OF LIMITED COMPANY        
+            DOA       -  NEGOTIATIONS ABOUT PUBLIC COMPOSITION   
+            DOE       -  DECISION NOT TO CHANGE ARTICLES OF ASS. 
+            DOF       -  CHANGE IN ARTICLES OF ASSOCIATION + FIRM
+            DOP       -  CHANGE IN ARTICLES OF ASSOCIATION + FIRM
+            DOR       -  CHANGE IN ARTICLES OF ASSOCIATION       
+            DOS       -  CHANGE OF BOARD                         
+            DPA       -  CHANGE OF COMPANIES POSTAL ADDRESS      
+            DR        -  REGISTRATION OFFICE ANNOUNCEMENT        
+            DRÄ       -  CHANGE IN ARTICLES OF ASSOCIATION       
+            DRB       -  CHANGE IN ARTICLES OF ASSICIATION       
+            DRF       -  COURTS APPROVAL OF MERGER               
+            DRU       -  REGISTRATION WITHOUT FEE                
+            DSF       -  CHANGE OF BOARD/SIGNATURE/VICE PRESIDENT
+            DSG       -  CHANGE OF BOARD                         
+            DUR       -  CHANGE OF AUDITOR                       
+            DUS       -  CHANGE OF BOARD                         
+            DVO       -  CHANGE IN ARTICLES OF ASSOCIATION       
+            DVR       -  IMPOSED MONEY PENALTY                   
+            EKB       -  FINANCIAL AID                           
+            EUS       -  EU SOCIAL SECURIEU SOCIAL SECURITY      
+            FAA       -  MERGER CONCLUDED                        
+            FAF       -  MERGER                                  
+            FAI       -  MERGER                                  
+            FAO       -  MERGER                                  
+            FAP       -  MERGER                                  
+            FAR       -  MERGER                                  
+            FAS       -  MERGER CONCLUDED                        
+            FAT       -  MERGER                                  
+            FDA       -  MERGER CONCLUDED                        
+            FDF       -  MERGER                                  
+            FDI       -  MERGER                                  
+            FDO       -  MERGER                                  
+            FDP       -  MERGER                                  
+            FDR       -  MERGER                                  
+            FDS       -  MERGER CONCLUDED                        
+            FEA       -  DELAY CHARGES                           
+            FF        -  NEW LEGAL FORM                          
+            FI        -  CHATTEL MORTGAGE                        
+            FKA       -  MERGER CONCLUDED                        
+            FKF       -  MERGER                                  
+            FKI       -  MERGER                                  
+            FKN       -  MERGER                                  
+            FKO       -  MERGER                                  
+            FKP       -  MERGER                                  
+            FKR       -  MERGER                                  
+            FKT       -  MERGER                                  
+            FORV      -  ADMINISTRATOR                           
+            FPA       -  PARKING FINE                            
+            FS        -  CHATTEL MORTGAGE TOTAL AMOUNT           
+            FSO       -  NOT REGISTRED FOR F-TAX                 
+            FSP       -  NOT REGISTRED FOR F-TAX                 
+            FSPARR    -  THE PRIVATE FIRM IS BLOCKED             
+            FSQ       -  NOT REGISTRED FOR F-TAX                 
+            FSR       -  NOT REGISTRED FOR F-TAX                 
+            FSS       -  REGISTRED FOR F-TAX                     
+            FST       -  REGISTRED FOR F-TAX                     
+            FSTAT9    -  NOT ACTIVE                              
+            FS6       -  NOT REGISTRED FOR F-TAX                 
+            FS7       -  NOT REGISTRED FOR F-TAX                 
+            FS8       -  REGISTRED FOR F-TAX                     
+            FS9       -  REGISTRED FOR F-TAX                     
+            FU        -  MERGER                                  
+            FUA       -  MERGER CONCLUDED                        
+            FUO       -  MERGER                                  
+            FUP       -  MERGER                                  
+            HBSPARR   -  THE PARTNERSHIP IS BLOCKED              
+            HD          JUDGEMENT IN RENT SUIT                  
+            IK          COLLECTION                              
+            IOI         IMMIGRATED                              
+            IOU         EMIGRATED                               
+            KA          BANKRUPTCY PETITION                     
+            KAÅ         BANKRUP.PETITION REVERSED               
+            KAA         BANKRUP.PETITION, REJECTED              
+            KAC         BANKRUP.PETITION REVERSED               
+            KAE         BANKRUP.PETITION NOT CONCL.             
+            KCB         MOVE TO OWN GROUP                       
+            KCK         NEW ULTIMATE PARENT                     
+            KCM         NEW PARENT COMPANY                      
+            KCU         WITHDRAWN OF GROUP                      
+            KF          CLAIMS ON BANKRUPT COMPANIES            
+            KFS         UNPRIVILEGED CLAIMS                     
+            KK          BANKRUPTCY                              
+            KKF         BANKRUPTCY                              
+            KKM         BANKRUPTCY                              
+            RIN         INDIVIDUAL DEBT RECONSTRUCTION INITIATED
+            KLM         LAND SURVEYING CHARGE                   
+            KM          BANKRUPTCY                              
+            KMÖ         BANKRUPTCY                              
+            KN          BANKRUPTCY DISCONTINUED                 
+            KO          BANKRUPTCY                              
+            KPS         COUPON TAX                              
+            KS          CLAIMS ON BANKRUPT COMPANIES            
+            KUÖ         BANKRUPTCY CONCLUDED                    
+            LA          PETITION DEBT-RECOVERY CASE             
+            LD          JUDGEM.DEBT-RECOV.CASE                  
+            LI          LIQUIDATION                             
+            LIA         LIQUIDATION CONCLUDED                   
+            LIF         LIQUIDATION                             
+            LIK         LIQUIDATION                             
+            MBK         MISUSED BANKACCOUNT / MISUSED CREDIT    
+            MHB         MISUSED MORTGAGE LOAN                   
+            MKB         MISUSED CREDIT CARD / NEGLECTED PAYMENT 
+            MKK         MISUSED CREDIT CARD / EXCEEDED CREDIT   
+            MOJ         ACTIVELY REPORTING VAT                  
+            MON         NOT REPORTING VAT                       
+            MRJ         REGISTERED FOR VAT                      
+            MRN         NOT REGISTERED FOR VAT                  
+            NA          PRESENT NAME REGISTERED                 
+            NAD         CHANGE OF NAME                          
+            NB          NEW ACCOUNTS                            
+            NBO         ARTICLES OF ASSOCIATION                 
+            NB1         NEW ACCOUNTS ON NEW COMPANY             
+            NF          TRADE PROHIBITION                       
+            NID         NEW DECLARATION OF INCOME               
+            NJ          ADJUSTED NAME                           
+            NYS         LOCATED IN                              
+            OM          UNDER-AGE                               
+            OMYN        UNDER AGE                               
+            OPF         OTHER REMARK ON PERSON                  
+            OVL         ASSIGNMENT                              
+            PSPARR    -  THE PERSON IS BLOCKED                   
+            PTYP301   -  OVERDUE PAYMENT FOR TAX ACCOUNT         
+            RKA       -  RECONSTRUCTION CONCLUDED                
+            RKF       -  RECONSTRUCTION EXPIRED                  
+            RKI       -  RECONSTRUCTION OPENED                   
+            SA        -  TAX ARREARS                             
+            SAD       -  SANCTION CHARGE FOR DIESEL OIL          
+            SB        -  TAX ARREARS                             
+            SEA       -  SPECIAL CHARGE                          
+            SF        -  TAX ARREARS                             
+            SIS       -  SPECIAL INCOME TAX/ARTISTS              
+            SK        -  TAX ARREARS                             
+            SLN       -                                          
+            SM        -  TAX ARREARS                             
+            SMA       -  STUDY LOAN FEES                         
+            SMX       -  OUTSTANDING VALUE-ADDED TAX             
+            SNI       -  CHANGE OF NACE-CODE                     
+            SO        -  TAX ACCOUNT                             
+            SOT       -  CONGESTION CHARGE                       
+            SOX       -  TAX ACCOUNT                             
+            SP        -  TAX ARREARS                             
+            SR        -  TAX ARREARS                             
+            SRB       -  AUDITOR DESELECTED                      
+            SRT       -  AUDITOR ADDED                           
+            SS        -  NOTE! CURRENT EVENT IN THE COMPANY      
+            SSA       -  CHANGE OF BOARD                         
+            SSE       -  CHANGE OF BOARD TOTAL, NOT COMPLETE     
+            SSO       -  CHANGE OF BOARD TOTAL, UNAUTHORIZED     
+            SST       -  CHANGE OF BOARD/TOTAL                   
+            RBE       -  INDIVIDUAL DEBT RECONSTR. DETERMINED    
+            RAV       -  INDIVIDUAL DEBT RECONSTRUCTION WITHDRAW 
+            RUH       -  INDIVIDUAL DEBT RECONSTRUCTION REVOKED  
+            ST        -  TAX ARREARS                             
+            STS       -  STAMP DUTY                              
+            STX       -  OUTSTANDING EXTRA TAX                   
+            STY       -  CHANGE OF BOARD                         
+            SU        -  TAX ARREARS                             
+            SV        -  TAX ARREARS                             
+            SVX       -  OUTSTANDING ROAD TAX                    
+            TD        -  JUDGEMENT BY DEFAULT                    
+            TDA       -  JUDGEMENT BY DEFAULT TO COURT - REOPENIN
+            TDU       -  JUDGEMENT BY DEFAULT ANNULLED BY COURT  
+            TOB       -  ADDITIONAL TAX/ILLICIT CONTRUCTION      
+            TOI       -  CUSTOMS DUTY & OTHER IMPORT CHARGES     
+            TU        -  TAX ARREARS                             
+            TVA       -  BROADCAST CHARGE                        
+            UF        -  DISTRAINT, NOT PAID                     
+            UHS       -  MAINTENANCE GRANT-AID                   
+            UP        -  DISCONTINUED                            
+            UPD       -  DISSOLVED BY FISSION                    
+            UPH       -  DISCONTINUED                            
+            UPL       -  DISSOLVED ACCORDING TO § 13:18          
+            UT        -  DISTRAINT, NOT PAID                     
+            UTV       -  EMIGRATED                               
+            VGA       -  ROAD TOLL                               
+            VIF       -  IMPOSED PENALTY REGARDING ACCOUNTS      
+            VP        -  PROTEST OF A BILL                       
+            ZAA       -  FISSION - CONCLUDED                     
+            ZAF       -  FISSION - EXPIRED                       
+            ZAI       -  FISSION START UP                        
+            ZAP       -  TRANSFEREE BY FISSION - START UP        
+            ZAS       -  TRANSFEREE BY FISSION - EXECUTED        
+            ZAT       -  FISSION - PERMISSION REGISTRATION              
+
+    DanishDebtBalance:
+      type: object
+      description: The debt balance (unpaid debts) registered with the Enforcement agency. The debt is updated once every week and may not be the same as the sum of all payment remarks since some of the remarks may have been paid after debt balance was updated. 
+      properties:
+        currentDebtBalance:
+          "$ref": "#/components/schemas/DanishCurrentDebtBalance"
+        historicalDebtBalance:
+          type: array
+          description: A list of historical Debtbalances
+          items:
+            "$ref": "#/components/schemas/DanishHistoricalDebtBalance"
+      required: []
+      title: DebtBalance
+    DanishCurrentDebtBalance:
+      type: object
+      description: Claims are split into public claims (A-claims), and private claims (E-claims).
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        privateClaimsCount:
+          type: integer
+          format: int64
+          description: Total count of private claims.
+        publicClaimsCount:
+          type: integer
+          format: int64
+          description: Total count of public claims.
+        claimsCount:
+          type: integer
+          format: int64
+          description: Total count of claims including public and private claims.
+        privateClaimsAmount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+        publicClaimsAmount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: DanishCurrentDebtBalance
+    DanishHistoricalDebtBalance:
+      type: object
+      description: A list of historical debt balances
+      properties:
+        date:
+          type: string
+          format: date
+          description: year and week number when the debt balance was valid.
+          example: '2019-W33'
+        balance:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: DanishHistoricalDebtBalance
+    DanishOwnership:
+      type: object
+      properties:
+        parentCompanies:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ParentCompanies"
+        subsidiaries:
+          "$ref": "#/components/schemas/DanishSubsidiaries"
+      required: []
+      title: DanishOwnership
+    DanishSubsidiaries:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of subsidiaries this company have.
+        subsidiaries:
+          type: array
+          items:
+            "$ref": "#/components/schemas/DanishSubsidiary"
+      required: []
+      title: DanishSubsidiaries
+    DanishSubsidiary:
+      type: object
+      description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
+      properties:
+        name:
+          type: string
+          description: The name of the company
+        dunsNumber:
+          type: string
+          description: DunsNumber of the company.
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        ownershipInPercent:
+          type: integer
+          format: int32
+          description: Ownership in percent
+          min: 0
+          max: 100
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        shareCapital:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+      required: []
+      title: DanishSubsidiary
+    DanishManagement:
+      type: object
+      description: Management section
+      properties:
+        directors:
+            "$ref": "#/components/schemas/DanishDirectors"
+        decisionMakers:
+            "$ref": "#/components/schemas/DanishDecisionMakers"
+        boardMembers:
+          "$ref": "#/components/schemas/DanishBoardMembers"
+        auditors:
+          "$ref": "#/components/schemas/DanishAuditors"
+        authorizedSignatory:
+          type: string
+          description: 
+      required: []
+      title: DanishManagement
+    DanishAuditors:
+      type: object
+      description: An auditor is individual who inspects and verifies the accuracy of a company's operational and/or financial records. Public companies are required to use a public accounting firm for the conduct of an audit of their financial statements.
+      properties:
+        currentAuditors:
+          type: array
+          description: Auditors currently auditing this company
+          items:
+            "$ref": "#/components/schemas/DanishAuditor"
+        historicalAuditors:
+          type: array
+          description: Historical auditors
+          items:
+            "$ref": "#/components/schemas/DanishAuditor"
+      required: []
+      title: DanishAuditors
+    DanishAuditor:
+      type: object
+      properties:
+        name: 
+          type: string
+          description: The name of the former auditor
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: DanishAuditor
+    DanishDecisionMakers:
+      type: object
+      properties:
+        currentDecisionMakers:
+          type: array
+          description: List of the decision makers
+          items:
+            "$ref": "#/components/schemas/DanishPosition"
+        historicalDecisionMakers:
+          type: array
+          description: List of the historical directors
+          items:
+            "$ref": "#/components/schemas/DanishHistoricalPosition" 
+      required: []
+      title: DanishDecisionMakers
+    DanishDirectors:
+      type: object
+      properties:
+        currentDirectors:
+          type: array
+          description: List of the current directors
+          items:
+            "$ref": "#/components/schemas/DanishPosition"
+        historicalDirectors:
+          type: array
+          description: List of the current directors
+          items:
+            "$ref": "#/components/schemas/DanishHistoricalPosition" 
+      required: []
+      title: DanishDirectors
+    DanishBoardMembers:
+      type: object
+      properties:
+        currentBoardMembers:
+          type: array
+          description: A list of the current boardmembers
+          items:
+            "$ref": "#/components/schemas/DanishPosition"
+        historicalBoardMembers:
+          type: array
+          description: A list of the historical boardmembers.
+          items:
+            "$ref": "#/components/schemas/DanishHistoricalPosition"
+      required: []
+      title: DanishBoardMembers
+    DanishIdentifiers:
+      type: object
+      description: A set of identifiers for this company.
+      properties:
+        cvrNumber:
+          type: string
+          description: National registration number
+        dunsNumber:
+          type: string
+          description: duns-number
+      required: []
+      title: DanishIdentifiers
+    DanishPosition:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the person holding this position 
+          example: 'Leo Messi'
+        function:
+          type: string
+        responsibility:
+          type: string
+      required: []
+      title: DanishPosition
+    DanishHistoricalPosition:
+      type: object
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        name:
+          type: string
+          description: The name of the person holding this position 
+          example: 'Leo Messi'
+        function:
+          type: string
+        responsibility:
+          type: string
+      required: []
+      title: DanishHistoricalPosition
+    DanishCompanyInformation:
+      type: object
+      description: CompanyInformation, misc information about the company.
+      properties:
+        capital:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Capital"
+        companyName:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
+        contactPoints:
+          "$ref": "#/components/schemas/DanishContactPoints"
+        identifiers:
+          "$ref": "#/components/schemas/DanishIdentifiers"
+        industryCodeSet:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
+        legalForm:
+          "$ref": "#/components/schemas/DanishLegalForms"  
+        status:
+          "$ref": "#/components/schemas/DanishStatus"
+        registrationInformation:
+          "$ref": "#/components/schemas/DanishRegistrationInformation"
+        generalCompanyData:
+          "$ref": "#/components/schemas/DanishGeneralCompanyData"
+        branches:
+          "$ref": "#/components/schemas/DanishBranches"
+      required: []
+      title: DanishCompanyInformation
+    DanishContactPoints:
+      type: object
+      description: Methods for getting in contact with this company.
+      properties:
+        electronicContactPoints:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ElectronicContactPoints"
+        postalAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+        registeredAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+        visitingAddress:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+        historicalAddress:
+          type: array
+          description: A list of historical addresses, does not include the current address.
+          items:
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalStreetAddress"
+      required: []
+      title: DanishContactPoints
+    DanishBranches:
+      type: object
+      description: 
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of branches this company have.
+        branches:
+          type: array
+          description: A list of branches
+          items:
+            "$ref": "#/components/schemas/DanishBranch"
+      required: []
+      title: DanishBranches
+    DanishBranch:
+      type: object
+      description: What is a branch? 
+      properties:
+        name:
+          type: string
+        headQuarter:
+          type: boolean
+          description: 'True if this branch is the headquarter'
+        address:
+          "$ref": "#/components/schemas/DanishBranchAddress"
+        officeNumber:
+          type: string
+          description: |
+            Branch office number. Unique id for this branch
+        dunsNumber:
+          type: string
+      required: []
+      title: DanishBranch
+    DanishBranchAddress:
+      type: object
+      properties:
+        postalCode:
+          type: string
+          description: postalcode
+        town:
+          type: string
+          descripion: town
+        street:
+          type: string
+          description: street address
+          example: Gyngemose Parkvej 50
+      required: []
+      title: DanishBranchAddress
+    DanishHistoricalStreetAddress:
+      type: object
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        address:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+      required: []
+      title: DanishHistoricalStreetAddress
+    DanishGeneralCompanyData:
+      type: object
+      properties:
+        businessDescription:
+          type: string
+          description: The description registered wth the local authorities describing the companys business.
+        employeeCount:
+          type: integer
+          format: int64
+        countryCode:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        export:
+          type: boolean
+          description: Is an export company
+        import:
+          type: boolean
+          description: Is an import company
+        officeType:
+          type: string
+          enum: ['HEADQUARTER', 'BRANCH']
+          description: Office location
+      required: []
+      title: DanishGeneralCompanyData
+    DanishLegalForms:
+      type: object
+      description: The company's legalform
+      properties:
+        current:
+          "$ref": "#/components/schemas/DanishLegalForm"
+        historical:
+          type: array
+          items:
+            "$ref": "#/components/schemas/DanishLegalForm"
+      required: []
+      title: DanishLegalForms
+    DanishLegalForm:
+      type: object
+      description: The company's legalform
+      properties:
+        date: 
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        code:
+          type: string
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'PARTNERSHIP', 'OTHER']
+          description: |
+            LIMITED_COMPANY - https://erhvervsstyrelsen.dk/selskaber
+            SOLE_PROPRIETORSHIP - Also known as sole trader and sole proprietor: https://erhvervsstyrelsen.dk/personligt-ejede-virksomheder
+            PARTNERSHIP - Trading partnership - https://erhvervsstyrelsen.dk/interessentskaber. Limited partnership - https://erhvervsstyrelsen.dk/kommanditselskaber
+            OTHER - All other legalforms are grouped together in the OTHER category, such as economic associations.
+        description:
+          type: string
+          description: A textual description of the code.
+        localCode:
+          type: string
+          description: |
+            Raw code of the legalForm
+            
+            AA  Public Limited Company  
+            AF  Sub Unit Of Natural Person  
+            AJ  Other Body Corporate  
+            AN  General Partnership  
+            AS  Private Limited Company  
+            ASA  Public Limited Company  
+            AV  Branch  
+            BA  Company With Limited Liability  
+            BL  House Building Cooperative  
+            BO  Other Estates  
+            BR  Housing Cooperative  
+            DA  Gernal Partnership Shared Liability  
+            EF  European Economic Enterprise Group  
+            EN  Sole Proprietorship  
+            ES  Condominum Flat Owner  
+            FK  County Municipal Business Enterprise  
+            FL  Association/Club/Organization  
+            FR  Colloborating Companies Vat  
+            FY  County  
+            F01  Sole Proprietorship  
+            F02  Limited Partnership  
+            F03  Private Limited Company  
+            F04  Co-Operative Society  
+            F06  Association / Foundation  
+            F09  Entrepreneur  
+            F20  Housing Co-Operative Society  
+            F21  Housing Company  
+            F22  General Partnership  
+            F23  Voluntary Association  
+            F24  Mortgage Association  
+            F25  Mutual Indemnity Insurance Ass.  
+            F26  Limited Partnership  
+            F27  Co-Operative Society  
+            F28  Co-Operative Bank  
+            F29  Private Limited Company  
+            F30  Foundation  
+            F31  Office Of Foreign Company  
+            F32  Savings Bank  
+            F33  Economic Association  
+            F34  Insurance Limited Company  
+            F35  Insurance Association  
+            F36  Sole Proprietorship  
+            F37  Gouvernment Authority  
+            F38  Other Legal Form  
+            F40  Group  
+            F41  Cooperative Building Society  
+            F42  Public Limited Company  
+            F43  Public Insurance Company  
+            F44  Limited Company  
+            F45  Eeig   
+            F46  Real Estate Company  
+            GF  Mutual Insurance Company  
+            IJ  Other Non Body Corporate  
+            IK  Inter-Municipal Company   
+            KB  Bankrupt Estate  
+            KF  Municipal Business Enterprise  
+            KI  Council Of Churches  
+            KO  Municipality  
+            KS  Limited Partnership  
+            KT  Joint Office  
+            NF  Norwegian Division Foreign Enterprise  
+            NR  Trading Society  
+            OL  Organization Section  
+            OP  Specially Sectioned Unit  
+            PE  Other Non Body Corporate  
+            PR  Jointly Owned Shipping Company  
+            RE  Accountant  
+            RV  Auditor  
+            SA  State  
+            SE  Joint Ownership Law Of Contract  
+            SF  Public Corporation  
+            SP  Savings Bank  
+            SR  Other Business According To Special Law  
+            ST  Foundation  
+            TV  Compulsary Registered In The Vat List  
+            UB  Voluntery Registration Of Rental Premise  
+            UD  Other  
+            UT  Foreign Entity  
+            VF  Jointly Operated Enterprise  
+            VP  Securities Funds  
+            01  Sole Proprietorship  
+            02  General Partnership  
+            03  Phys. Human Being  
+            04  Joint Shipping Comp  
+            05  Cooperative Society  
+            06  Limited Partnership  
+            07  Society  
+            09  Foundation  
+            10  Ltd. Liability Co.  
+            11  Private Company Ltd  
+            12  Branch  
+            13  Comp. W. Ltd. Liab.  
+            15  Comp. W. Ltd. Liab.  
+            17  Private Foundation  
+            20  Public Authority  
+            23  Vestry  
+            24  Public Management  
+            25  Collaboration  
+            30  Foreign Enterprise  
+            31  Foreign Branch  
+            32  Foreign Branch  
+            35  Eu Company Group  
+            52  Faeroese Priv. Ltd.  
+            53  Faeroese Ltd. Liab.  
+            54  Greenland Ltd. Liab.  
+            55  Greenland Priv. Ltd.  
+            80  Government  
+            81  Public Office  
+            82  Region  
+            83  Regional Office  
+            84  Municipality  
+            85  Municipality Office  
+            86  Church  
+            99  Other Undertaking  
+      required: []
+      title: DanishLegalForm
+    DanishRegistrationInformation:
+      type: object
+      description: 
+      properties:
+        articlesOfAssociationDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        foundationDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: DanishRegistrationInformation
+    DanishStatus:
+      type: object
+      properties:
+        value:
+          type: string
+          enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
+          description: 
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: DanishStatus
+    DanishFinance:
+      type: object
+      properties:
+        financialStatements:
+          "$ref": "#/components/schemas/DanishFinancialStatements"
+      required: []
+      title: DanishFinance
+    DanishFinancialStatements:
+      type: object
+      properties:
+        keyFigures:
+          type: array
+          items:
+            "$ref": "#/components/schemas/DanishFinancialStatementKeyFigure"
+        industryKeyFigures:
+          "$ref": "#/components/schemas/DanishFinancialStatementKeyFigure"
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/DanishFinancialStatement"
+      required: []
+      title: DanishFinancialStatements
+    DanishFinancialStatementsAuditorsReservation:
+      type: object
+      properties:
+        auditorsReservationCode:
+          type: string
+          description: |
+            A  -  AT LEAST ONE OF FOLLOWING THREE CRITERIA IS NOT RECOMMENDED BY THE AUDITOR:                                                               
+                   1. RECOMMENDATION THAT THE INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.
+                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.
+                  3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
+            B  -  AT LEAST ONE BOARD MEMBER, OR THE MANAGING DIRECTOR, IS DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                    
+            C  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH  SHOWS THAT THE COMPANY IS STILL BOUND TO LIQUIDATION.     DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY <50% OF SHARE CAPITAL.                                 
+            D  -  AUDITOR DECLARE BOARDMEMBERS RESPONSIBILITY TO CREATE BALANCE SHEET FOR LIQUIDATION PURPOSES THEN COMPANY'S TOTAL CAPITAL IS < 50 % OF SHARE CAPITAL.                                                             
+            E  -  THE INCOME STATEMENT OR/AND BALANCE SHEET CONTAINS UNCERTAIN OR INCORRECT VALUED ITEMS.                     
+            F  -  DEFICIENCY IN THE COMPANY'S INTERNAL CONTROL.                              
+            G  -  TAXES HAVE NOT BEEN PAID PROPERLY.                                         
+            H  -  BALANCE SHEET FOR LIQUIDATION PURPOSES IS CREATED WHICH SHOWS THAT THE COMPANY IS NOT BOUND TO LIQUIDATION.DEF. BOUND TO LIQUIDATION; SHAREHOLDERS EQUITY < 50 % OF SHARE CAPITAL.                               
+            I  -  UNLEGAL LOAN TO SHAREHOLDER(S).                                            
+            J  -  COMMENTS FROM THE AUDITOR.                                                 
+            K  -  GENERAL INFORMATION OR COMMENT FROM THE AUDITOR IN THE ANNUAL REPORT.      
+            L  -  AT LEAST ONE OF FOLLOWING 3 CRITERIA IS NOT RECOMMENDED BY THE AUDITOR, CONCERNING THE GROUP:                                             
+                   1. RECOMMENDATION THAT THE CONSOLIDATED INCOME STATEMENT AND BALANCE SHEET COULD BE ADOPTED.                                         
+                   2. THE UNAPPROPRIATED RESULT IS DEALT WITH IN ACCORDANCE WITH THE PROPOSAL IN THE ADMINISTRATION REPORT.                              
+                   3. THE BOARD MEMBERS AND MANAGING DIRECTOR ARE DISCHARGED FROM LIABILITY FOR THE FINANCIAL YEAR.                                       
+            M  -  SHAREHOLDERS WILL GUARANTEE CURRENT CAPITAL CONTRIBUTIONS IN ORDER TO COVER SHORT AND LONG-TERM FINANCING.                                       
+            P  -  ANNUAL REPORT IS NOT SENT TO COMPANY HOUSE WITHIN STIPULATED TIME ALT. ANNUAL GENERAL MEETING NOT HELD IN ACCORDANCE WITH SWEDISH COMPANY ACT.    
+            R  -  COMMENT FROM THE AUDITOR.                                                  
+            1   -  CONCRETE OBSERVATIONS ON FLAWS IN ACCOUNTING PRACTICES                     
+            2   -  CONDITIONAL FINDINGS DUE TO INADEQUATE REPORTING                           
+            3   -  CONDITIONAL FINDINGS DUE TO INADEQUATCIES AND FLAWS                        
+            4   -  NEGATIVE OBSERVATIONS (IN THE ACCOUNTING PRACTICES EMPLOYED)               
+            5   -  THE AUDITOR REFRAINS FROM EXPRESSING HIS/HER OPINION  (DUE TO LACK/INACCESSIBILITY OF INFORMATION)            
+            6   -  UNSECURED LOANS TO SHAREHOLDERS                                            
+            7   -  WITHELD TAXES FROM EMPLOYEES ARE NOT DEPOSITED IN A SEPARATE ACCOUNT
+            8   -  LACK OF SUPPORTING DOCUMENTS ON OFFICIAL TRANSACTIONS AND POOR INTERNAL CONTROL PROCEDURES
+            9   -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
+        auditorsReservationDescription:
+          type: string
+          description: Textual description of the auditorsReservationCode
+        statementDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: DanishFinancialStatementsAuditorsReservation
+    DanishFinancialStatementKeyFigure:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: |
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: kDKK
+        netSales: 
+          type: integer
+          format: int64
+          description: |
+            Net sales - sales from the companies main industry or industries.
+        profitLossBeforeTax:
+          type: integer
+          format: int64
+          description: | 
+            Result before tax
+        equityTotal:
+          type: integer
+          format: int64  
+          description: |     
+            Total equity
+        assetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total assets
+        employeeCount:
+          type: integer
+          format: int64
+          description: |
+            The number of employees at the time of this annual report.
+        equityAssetsRatio:
+          type: number
+          format: double
+          description: |
+            Calculated equity in percent of the total assets.
+        quickRatio:
+          type: number
+          format: double
+          description: |
+           Current assets minus inventories in percent of current liabilities.
+        currentRatio:
+          type: number
+          format: double
+          description: |
+            Current assets in percent of Short term liabilities.
+            The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
+          example: 19.25
+        profitMargin:
+          type: number
+          format: double
+          description: |
+            Operating profit/loss plus financial income as a percentage of turnover.
+        returnOnTotalAssets:
+          type: number
+          format: double
+          description: |
+            Profit/loss after financial items plus financial costs as a percentage of the total capital.
+        returnOnEquity:
+          type: number
+          format: double
+          description: |
+            Profit/loss after financial items as a percentage of the total equity.
+        liabilityRatio:
+          type: number
+          format: double
+          description: |
+            Liabilities in percent of equity.
+            The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
+        turnoverAssets:
+          type: number
+          format: double
+          description: |
+            Capital turnover is measured as profit/loss in relation to assets.
+        grossMargin:
+          type: number
+          format: double
+          description: |
+            Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts.
+        growthInNetResult:
+          type: number
+          format: double
+          description: |
+            Growth in net value of an organisation's assets, after deducting any liabilities, compared to the result from the previous statement.
+        growthInTurnover:
+          type: number
+          format: double 
+          description: |
+            Growth in turnover
+        growthInGrossProfit:
+          type: number
+          format: double 
+          description: |
+            Growth in gross profit
+        growthInPrimaryResult:
+          type: number
+          format: double 
+          description: |
+            Growth in primary result
+        growthInPretaxResult:
+          type: number
+          format: double 
+          description: |
+            Growth in pree-tax result
+        growthInProfiAndLossAccount:
+          type: number
+          format: double 
+          description: |
+            Growth in profit and loss account
+        capacityRatio:
+          type: number
+          format: double
+          description: |
+           Capacity Ratio
+        breakEvenSales:
+          type: integer
+          format: int64
+          description: |
+           Break-even sales
+        safetyMargin:
+          type: number
+          format: double
+          description: |
+           The difference between actual sales and break-even sales.
+          example: 100.0
+        daysOfPayables:
+          type: number
+          format: double
+          description: |
+             The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies.
+          example: 1.39
+        daysOfReceivables:
+          type: number
+          format: double
+          description: |
+            A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
+          example: 2.3
+        inventoriesToTurnover:
+          type: number
+          format: double
+          description: |
+            The ratio is used for investigating how much of the capital is tied up in inventories. A high value indicates that the turnover of the stock is slow.
+        equityOfTurnover:
+          type: number
+          format: double
+          description: |
+           Shows in '%'
+        liquidAssetsOfTurnover:
+          type: number
+          format: double
+          description: liquid assets in percent of total turnover.
+        grossMarginInPercent:
+          type: number
+          format: double
+          description: |
+           Shows in '%'
+        gearing:
+          type: number
+          format: double
+          example: 89.0
+          description: |
+            Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
+        profitRate:
+          type: number
+          format: double
+          description: |
+           Profit Rate. Shows in '%'.
+        payoutRatio:
+          type: number
+          format: double
+          description: |
+           The payout ratio shows the proportion of earnings paid out as dividends to shareholders, typically expressed as a percentage of the company's earnings. The payout ratio can also be expressed as dividends paid out as a proportion of cash flow. The payout ratio is also known as the dividend payout ratio.
+        shareCapitalChange:
+          type: boolean
+          description: |
+           Changes in share capital
+        accountingPeriodChange:
+          type: boolean
+          description: |
+           Change of accouting period
+      required: []
+      title: DanishFinancialStatementKeyFigure
+    DanishIncomeStatement:
+      type: object
+      properties:
+        grossTurnover:
+          type: integer
+          format: int64
+          example: 482000
+          description: |
+            
+        tax:
+          type: integer
+          format: int64
+          description: | 
+            Taxes paid.
+        netSales:
+          type: integer
+          format: int64
+          description: |
+            Net sales - sales from the companys main industry or industries.
+        changeInInventories:
+          type: integer
+          format: int64
+          description: |
+            Inventory change is the difference between the inventory totals for the last reporting period and the current reporting period. 
+        workPerformedForOwnUse:
+          type: integer
+          format: int64
+          description: |
+            Work performed for own use.
+        externalInterestIncome:
+          type: integer
+          format: int64
+          description: |
+            Interest payed to the company by banks or creditinstitutes.
+        otherOperatingIncome:
+          type: integer
+          format: int64
+          description: |
+            Other operating income includes revenue from all other operating activities which are not related to the principal activities of the company, such as gains/losses from disposals, interest income, dividend income, etc.
+        costOfGoods:
+          type: integer
+          format: int64
+          description: |
+            Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
+        externalCosts:
+          type: integer
+          format: int64
+          description: |
+            External costs
+        productionCosts:
+          type: integer
+          format: int64
+          description: |
+            Production costs
+        grossContributionMargin:
+          type: integer
+          format: int64
+          description: |
+           Gross contribution margin
+        sellingExpenses:
+          type: integer
+          format: int64
+          description: |
+            Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service. 
+        administrativeCosts:
+          type: integer
+          format: int64
+          description: |
+            Administrative expenses/costs are the expenses that an organization incurs not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
+        researchAndDevelopment:
+          type: integer
+          format: int64
+          description: |
+            Research and development (R&D) expenses are associated with the research and development of a company's goods or services. A company generally incurs R&D expenses in the process of finding and creating new products or services. 
+        staffCosts:
+          type: integer
+          format: int64
+          description: |
+            Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
+        depreciation:
+          type: integer
+          format: int64
+          description: |
+            Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
+        otherOperatingExpenses:
+          type: integer
+          format: int64
+          description: |
+            
+        otherRevenues:
+          type: integer
+          format: int64
+          description: |
+            Other Revenues
+        operatingProfitAfterDepreciation:
+          type: integer
+          format: int64
+          description: |
+            Operating profit is an accounting figure that measures the profit earned from a company's ongoing core business operations, thus excluding deductions of interest and taxes. This value also does not include any profit earned from the firm's investments, such as earnings from firms in which the company has partial interest.
+
+        otherFinancialIncome:
+          type: integer
+          format: int64
+          description: |
+            Income for a company that comes from anything other than its ordinary operations. 
+        externalInterestExpenses:
+          type: integer
+          format: int64
+          description: |
+            Interest income from group companies. Example- Bank loans ?
+        otherFinancialExpenses:
+          type: integer
+          format: int64
+          description: |
+            Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
+        incomeFromShares:
+          type: integer
+          format: int64
+          description: |
+            Income from shares
+        incomeFromOtherShares:
+          type: integer
+          format: int64
+          description: |
+            Income from other shares
+        impairmentsOfFinancialAssets:
+          type: integer
+          format: int64
+          description: |
+            Impairments of financial assets.
+        unspecifiedFinancialItems:
+          type: integer
+          format: int64
+          description: |
+            Unspecified financial items.
+        financialIncomeTotal:
+          type: integer
+          format: int64
+          description: |
+            Total financial revenues
+        financialCostsTotal:
+          type: integer
+          format: int64
+          description: |
+            Total financial costs. A sum of all costs.
+        secondaryItems:
+          type: integer
+          format: int64
+          description: |
+            Secondary items.
+        extraordinaryIncome:
+          type: integer
+          format: int64
+          description: |
+            Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
+        extraordinaryExpenses:
+          type: integer
+          format: int64
+          description: |
+            Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
+        extraordinaryItemsTotal:
+          type: integer
+          format: int64
+          description: |
+             Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
+             extraordinaryIncome - extraordinaryExpenses = extraordinaryItemsTotal
+        profitLossBeforeTax:
+          type: integer
+          format: int64
+          description: | 
+            Result before tax
+        taxOnExtraordinaryEarnings:
+          type: integer
+          format: int64
+          description: |
+            Tax on extraordinary earnings
+        taxOnAnnualResult:
+          type: integer
+          format: int64
+          description: |
+            Tax on profit or loss for the year 
+        taxFromOtherYears:
+          type: integer
+          format: int64
+          description: |
+            Taxes from other years  
+        otherTaxes:
+          type: integer
+          format: int64
+          description: |
+            Other taxes   
+        resultBeforeExtraordinaryItems:  
+          type: integer
+          format: int64 
+          description: |
+            Earnings before extraordinary items
+        annualResult:
+          type: integer
+          format: int64
+          description: |
+            Profit or loss for the year
+        minorityInterest:
+          type: integer
+          format: int64
+          description: |
+            Minority interest
+        resultAfterMinorityInterestShare:
+          type: integer
+          format: int64
+          description: |
+            Earnings after minority interest share
+        dividends:
+          type: integer
+          format: int64  
+          description: |    
+           Dividend of result.
+      title: DanishIncomeStatement
+    DanishBalanceSheet:
+      type: object
+      properties:
+        assets: 
+           "$ref": "#/components/schemas/DanishAssets"
+        liabilitiesAndEquity:
+          "$ref": "#/components/schemas/DanishLiabilitiesAndEquity"
+      title: DanishBalanceSheet
+      description: |
+        A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
+    DanishAssets:
+      type: object
+      properties:
+        currentAssets:
+          "$ref": "#/components/schemas/DanishCurrentAssets"
+        nonCurrentAssets:
+          "$ref": "#/components/schemas/DanishNonCurrentAssets"
+        assetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total assets
+      title: DanishAssets
+      description: |
+        Assets are things that the company owns. They are the resources of the company that have been acquired through transactions, and have future economic value that can be measured and expressed in monetary values. Assets also include costs paid in advance that have not yet expired, such as prepaid advertising, prepaid insurance, prepaid legal fees, and prepaid rent.
+    DanishCurrentAssets:
+      type: object
+      properties:
+        inventories: 
+          type: integer
+          format: int64
+          description: |  
+            Inventories represents raw materials, components and finished products.
+        workInProgress: 
+          type: integer
+          format: int64
+          description: |  
+            Work in progress (WIP) refers to partially-completed goods that are still in the production process. These items do not include raw materials or finished goods. Work in progress is usually comprised of the full amount of raw materials required for a product, since that is added at the beginning of production, plus the cost of additional processing as each unit progresses through the various manufacturing steps.
+        propertyForSale: 
+          type: integer
+          format: int64
+          description: |  
+            Property for sale
+        accountsReceivable: 
+          type: integer
+          format: int64
+          description: |  
+            Accounts receivable is the balance of money due to a firm for goods or services delivered or used but not yet paid for by customers.
+        receivableFromGroupAndAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+            Short term receivable from group and associated companies.
+        otherReceivables: 
+          type: integer
+          format: int64
+          description: |  
+           Other receivables
+        accruedRevenuesAndDeferredExpenses: 
+          type: integer
+          format: int64
+          description: |  
+            Deferred revenue is the portion of a company's revenue that has not been earned, but cash has been collected from customers in the form of a prepayment. Accrued expenses are the expenses of a company that have been incurred but not yet paid.
+        securities: 
+          type: integer
+          format: int64
+          description: |  
+            Marketable securities are a type of liquid asset on the balance sheet of a financial report, meaning they can easily be converted to cash. They include holdings such as stocks, bonds, and other securities that are bought and sold daily.
+        cashAndCashEquivalents: 
+          type: integer
+          format: int64
+          description: |  
+            Cash and cash equivalents refers to the line item on the balance sheet that reports the value of a company's assets that are cash or can be converted into cash immediately. These include bank accounts, marketable securities, commercial paper, Treasury bills, and short-term government bonds with a maturity date of three months or less. Marketable securities and money market holdings are considered cash equivalents because they are liquid and not subject to material fluctuations in value.
+        otherCurrentAssets: 
+          type: integer
+          format: int64
+          description: |  
+            Other current assets (OCA) is a category of things of value that a company owns, benefits from, or uses to generate income that can be converted into cash within one business cycle. They are referred to as “other” because they are uncommon or insignificant, unlike typical current asset items such as cash, securities, accounts receivable, inventory, and prepaid expenses.
+        currentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
+      title: DanishCurrentAssets
+      description: |
+        Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
+    DanishNonCurrentAssets:
+      type: object
+      properties:
+        goodwill:
+          type: integer
+          format: int64
+          description: |
+            Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.  
+        capitalisedCostForRnd:
+          type: integer
+          format: int64
+          description: |
+            Capitalized cost for Research and Development.
+        intangibleRights:
+          type: integer
+          format: int64
+          description: |
+            Concessions, patents, licenses, trademarks and similar rights. 
+        otherIntangibleAssets: 
+          type: integer
+          format: int64
+          description: |
+            These assets could be lease contracts, work in progress, intellectual property rights or anything that is not tangible.
+        intangibleAssetsTotal: 
+          type: integer
+          format: int64
+          description: |
+            Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year. 
+        landAndBuildings: 
+          type: integer
+          format: int64
+          description: |
+            This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc. 
+        machineryAndTools: 
+          type: integer
+          format: int64
+          description: |  
+            Total machinery and inventory.
+        plantUnderConstruction: 
+          type: integer
+          format: int64
+          description: |
+           Plant under construction
+        otherTangibleAssets: 
+          type: integer
+          format: int64
+          description: |  
+            Tangible assets not being any of the above, and is not a subject for depreciation. For example art or any other item with a remaining value over time. Even fixed assets under production, for example an ongoing construction could be placed here.
+        tangibleFixedAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Tangible assets total.
+        sharesInAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+            Shares in associated companies.
+        otherInterests: 
+          type: integer
+          format: int64
+          description: |  
+            Other Interests.
+        receivableFromGroupAndAssociatedCompanies: 
+          type: integer
+          format: int64
+          description: |  
+           Long term Receivables in group.
+        otherLongTermReceivables: 
+          type: integer
+          format: int64
+          description: |  
+           Other financial receivables.
+        ownShares: 
+          type: integer
+          format: int64
+          description: |  
+           Own Shares.
+        otherFinancialAssets: 
+          type: integer
+          format: int64
+          description: |  
+            Other financial assets.
+        financialNonCurrentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Total financial fixed assets.
+        nonCurrentAssetsTotal: 
+          type: integer
+          format: int64
+          description: |  
+            Noncurrent assets are a company’s long-term investments where the full value will not be realized within the accounting year. 
+              Non-current assets can be considered anything not classified as current.
+      title: DanishNonCurrentAssets
+      description: |
+        A noncurrent asset is an asset that is not expected to be consumed within one year. If a company has a high proportion of noncurrent to current assets, this can be an indicator of poor liquidity, since a large amount of cash may be needed to support ongoing investments in noncash assets.
+    DanishLiabilitiesAndEquity:
+      type: object
+      properties:
+        liabilities:
+          "$ref": "#/components/schemas/DanishLiabilities"
+        shareholdersEquity:
+          "$ref": "#/components/schemas/DanishShareholdersEquity" 
+        equityAndLiabilitiesTotal:
+          type: integer
+          format: int64
+          description: |
+            Total equity and liabilities
+    DanishLiabilities:
+      type: object
+      properties:
+        currentLiabilities:
+          "$ref": "#/components/schemas/DanishCurrentLiabilities"
+        nonCurrentLiabilities:
+          "$ref": "#/components/schemas/DanishLongTermLiabilities"
+      title: DanishLiabilities
+      description: |
+        Liabilities are the money that a company owes to outside parties, from bills it has to pay to suppliers to interest on bonds it has issued to creditors to rent, utilities and salaries. 
+    DanishCurrentLiabilities:
+      type: object
+      properties:
+        liabilitiesToCreditInstitutions:
+          type: integer
+          format: int64  
+          description: |
+            Short-term liabilities to credit institutions. 
+        liabilitiesToBank:
+          type: integer
+          format: int64  
+          description: |
+            Current bank liabilities. 
+        liabilitiesToGroupCompaniesAndAssociates:
+          type: integer
+          format: int64  
+          description: |    
+            Short-term liabilities to group companies and associates.
+        liabilitiesToOwners:
+          type: integer
+          format: int64  
+          description: |    
+           Short-term liabilities to owners.
+        accountsPayable:
+          type: integer
+          format: int64  
+          description: |
+            Accounts payable is an accounting entry representing a company's obligation to pay off a short-term debt to its creditors or suppliers.
+        companyTaxes:
+          type: integer
+          format: int64  
+          description: |    
+           Company taxes.
+        dividends:
+          type: integer
+          format: int64  
+          description: |    
+           Dividend of result.
+        advancePayments:
+          type: integer
+          format: int64  
+          description: |    
+           Advance payments.
+        onAccountForWorkInProgress:
+          type: integer
+          format: int64  
+          description: |    
+           On-account for work in progress     
+        otherLiabilities:
+          type: integer
+          format: int64  
+          description: |    
+            Other liabilities.
+        accruedRevenuesAndDeferredExpenses:
+          type: integer
+          format: int64  
+          description: |    
+            Accrued revenues and deferred expenses.
+        otherCurrentLiabilities:
+          type: integer
+          format: int64  
+          description: |    
+            Other current liabilities.
+        currentLiabilitiesTotal:
+          type: integer
+          format: int64  
+          description: |    
+            Total current liabilities.
+      title: DanishCurrentLiabilities
+      description: |
+        Current liabilities are a company's debts or obligations that are due within one year or within a normal operating cycle. Furthermore, current liabilities are settled by the use of a current asset, such as cash, or by creating a new current liability. 
+    DanishLongTermLiabilities:
+      type: object
+      properties:
+        subordinatedLoanWithSpecialConditions:
+          type: integer
+          format: int64  
+          description: |
+           Subordinated loan with special conditions
+        subordinatedLoanWithoutSpecialConditions:
+          type: integer
+          format: int64  
+          description: |
+           Subordinated loan without special conditions
+        subordinatedLoansTotal:
+          type: integer
+          format: int64  
+          description: |    
+            Total subordinated loans.
+        liabilitiesToCreditInstitutions:
+          type: integer
+          format: int64  
+          description: |
+            Long-term liabilities to credit institutions.
+        liabilitiesToBank:
+          type: integer
+          format: int64  
+          description: |
+            Long-term bank liabilities
+        liabilitiesToGroupCompaniesAndAssociates:
+          type: integer
+          format: int64  
+          description: |    
+            Long-term liabilities to group companies and associates.
+        liabilitiesToOwners:
+          type: integer
+          format: int64  
+          description: |    
+           Long-term liabilities to owners.
+        otherLongTermLiabilities:
+          type: integer
+          format: int64  
+          description: |    
+            Other long-term liabilities.
+        longTermLiabilitiesTotal:
+          type: integer
+          format: int64  
+          description: |    
+            Total long-term liabilities
+      title: DanishLongTermLiabilities
+      description: |
+        Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
+    DanishShareholdersEquity:
+      type: object
+      properties:
+        shareCapital:
+          type: integer
+          format: int64  
+          description: |
+            Share capital refers to funds raised by issuing shares in return for cash or other considerations.
+        revaluationReserve:
+          type: integer
+          format: int64  
+          description: |    
+            Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet to account for asset value fluctuations.
+        transferredEarnings:
+          type: integer
+          format: int64  
+          description: |    
+           Transferred earnings
+        expectedDividend:
+          type: integer
+          format: int64  
+          description: |     
+            Expected dividend.
+        otherReserves:
+          type: integer
+          format: int64  
+          description: |     
+            Other reserves
+        equityBeforeMinorityInterest:
+          type: integer
+          format: int64  
+          description: |     
+            Equity before minority interest.
+          example: 44 000
+        minorityInterest:
+          type: integer
+          format: int64  
+          description: |     
+            Minority interest.
+        equityTotal:
+          type: integer
+          format: int64  
+          description: |     
+            Total equity
+            
+        deferredTax:
+          type: integer
+          format: int64  
+          description: |     
+            Deferred tax.
+        pensions:
+          type: integer
+          format: int64  
+          description: |     
+             Pensions 
+        otherProvisions:
+          type: integer
+          format: int64  
+          description: |     
+            Other provisions 
+        provisionsTotal:
+          type: integer
+          format: int64  
+          description: |     
+            Total provisions  
+      title: DanishShareholdersEquity
+      description: |
+        Shareholders' equity is the money attributable to a business' owners, meaning its shareholders. It is also known as "net assets," since it is equivalent to the total assets of a company minus its liabilities, that is, the debt it owes to non-shareholders.      
+    DanishFinancialStatement:
+      type: object
+      properties:
+        closingPeriod:
+          type: string
+          description: Date when the financial statement was closed. The date will be year and month only.
+          example: 2019-12
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: |
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
+        currency:
+          type: string
+          description:  |
+            Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
+          example: kDKK
+        balanceSheet:
+          "$ref": "#/components/schemas/DanishBalanceSheet"
+        incomeStatement:
+          "$ref": "#/components/schemas/DanishIncomeStatement"
+      required: []
+      title: DanishFinancialStatement
+    DanishBankruptcy:
+      type: object
+      description: This section will be available if there is any data related to bankruptcies for this company. TODO - this section needs more work
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        status:
+          type: string
+          description: 'TODO - what statuses can we have here?'
+        name:
+          type: string
+          description: Name of the court where bankruptcy was declared
+          example: Stockholms Tingsrätt
+        trustee:
+          "$ref": "#/components/schemas/DanishTrustee"
+    DanishTrustee:
+      type: object
+      description: The bankruptcy estate will be administered by a person appointed as trustee. The bankruptcy court appoints the trustee (typically a lawyer)
+      properties:
+        companyName:
+          type: string
+          description: Name ofthe company handling the bankruptcy
+          example: Advokatfirman demo
+        name:
+          type: string
+          description: Name of the person assigned to handle the bankruptcy.
+          example: Anders Svensson
+        phoneNumber:
+          type: string
+          description: Phonenumber to the person/company assigned to handle this bankruptcy
+          example: 08-11223344
+        address:
+          type: string
+          description: The address to the person/company assigned to handle this bankruptcy
+        example: 10390, Stockhol
