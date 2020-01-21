@@ -1,0 +1,717 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+#######################
+# Optional info section
+#######################
+info:
+  title: Common credit model for data that are the same between the different countries
+  description: | 
+    Common credit models.
+  version: "2.0.0"
+  contact:
+    email: api-bisnode@bisnode.com
+
+
+components:
+
+  ####################
+  # Common data models
+  ####################
+  schemas:
+    Amount:
+      type: object
+      description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217
+      properties:
+        monetaryAmount:
+          type: integer
+          format: int64
+          description: May be a negative number 
+        currency:
+          type: string
+          description: As described in https://en.wikipedia.org/wiki/ISO_4217
+      required: []
+      title: Amount
+    RatingCreditLimits:
+      type: object
+      description: Current and historical credit limits as recommended by Bisnode. 
+      properties:
+        currentRatingCreditLimit:
+          "$ref": "#/components/schemas/RatingCreditLimit"
+        historicalRatingCreditLimits:
+          type: array
+          description: TODO - max size ???
+          items:
+            "$ref": "#/components/schemas/RatingCreditLimit"
+      required: []
+      title: RatingCreditLimits
+    RatingCreditLimit:
+      type: object
+      description: | 
+        Recommended credit limit: https://www.bisnode.com/about-bisnode/what-we-do/our-approach-to-risk-and-credit/credit-rating-model-company/
+      properties:
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        annualReportDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: RatingCreditLimit
+    CreditRatings:
+      type: object
+      description: Current and historical ratings
+      properties:
+        currentCreditRating:
+          "$ref": "#/components/schemas/CreditRating"
+        historicalCreditRatings:
+          type: array
+          description: Max 99 items.
+          items:
+            "$ref": "#/components/schemas/CreditRating"
+      required: []
+      title: CreditRatings
+    CreditRating:
+      type: object
+      description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
+      properties:
+        annualReportDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        code:
+          type: string
+          description: Rating code. [ AAA, AA, A, B, C, AN, - ]
+        description:
+          type: string
+          description: Textual description of the rating. 
+        partJudgements:
+          "$ref": "#/components/schemas/PartJudgements"
+      required: []
+      title: CreditRating
+      maximum: 1100
+    PartJudgements:
+      type: object
+      description: 'The rating is based on 4 PartJudgements: AbilityToPay, Finance, Ownership and HistoryOperation. More info here: https://www.bisnode.se/om-bisnode/vad-vi-gor/vart-satt-att-se-pa-risk-och-kredit/kreditvarderingsmodell-foretag/'
+      properties:
+        abilityToPay:
+          "$ref": "#/components/schemas/PartJudgement"
+        finance:
+          "$ref": "#/components/schemas/PartJudgement"
+        historyOperation:
+          "$ref": "#/components/schemas/PartJudgement"
+        ownership:
+          "$ref": "#/components/schemas/PartJudgement"
+      required: []
+      title: PartJudgements
+    PartJudgement:
+      type: object
+      description: A part judgement. 
+      properties:
+        max:
+          type: integer
+          format: int32
+          description: The max value a company can have.
+        value:
+          type: integer
+          format: int32
+          description: This company's value.
+        description:
+          type: string
+          description: A textual description of the part judgement.
+      required: []
+      title: PartJudgement
+    PaymentIndex:
+      type: object
+      description: A weighted average of the Payment Index of all companies in all industries of the country. 
+      properties:
+        currentPaymentIndex:
+          "$ref": "#/components/schemas/PaymentIndexModel"
+        historicalPaymentIndex:
+          type: array
+          items:
+            "$ref": "#/components/schemas/PaymentIndexModel"
+      required: []
+      title: PaymentIndex
+    PaymentIndexModel:
+      type: object
+      properties:
+        averageDelay:
+          type: integer
+          format: int32
+          description: Average days of payment delay of invoices (from due date). A negative value means that the invoices are paid before the due date and a positive value that it is payed after the due date.
+        amount:
+          "$ref": "#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        invoiceCount:
+          type: integer
+          format: int64
+          minimum: 0
+          description: The number of invoices used to calculate the payment index score
+        invoiceSuppliersCount:
+          type: integer
+          format: int64
+          minimum: 0
+          description: The number of suppliers that supplied the invoices used to calculate this paymentindex score
+        paymentIndex:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: The paymentindex score for this company. See https://en.wikipedia.org/wiki/Paydex for more info on paymentIndex.
+        paymentIndexAllCompanies:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: The average paymentindex score for all companies in Sweden
+        paymentIndexLineOfBusiness:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: The average paymentindex score for all companies in the same line of business in Sweden.
+      required: []
+      title: PaymentIndexModel
+    Creditor:
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            Name of the creditor
+        address:
+          "$ref": "#/components/schemas/StreetAddress"  
+    Company:
+      type: object
+      properties:
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+        dunsNumber:
+          type: string
+          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
+        name:
+          description: Name of this company
+          example: Bisnode AB
+          type: string
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        ownershipInPercent:
+          type: integer
+          format: int32
+          description: Ownership in percent
+          min: 0
+          max: 100
+        companies:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Company"
+      required: []
+      title: Company
+    FamilyTree:
+      type: object
+      description: A view of the owner structure.
+      properties:
+        ultimateParent:
+          "$ref": "#/components/schemas/Company"
+      required: []
+      title: FamilyTree
+    ParentCompanies:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: The number of parent companies
+        parents:
+          type: array
+          description: A list of the parent companies.
+          items:
+            "$ref": "#/components/schemas/ParentCompany"
+      required: []
+      title: ParentCompanies
+    ParentCompany:
+      type: object
+      description: A company relates to another one as it's parent if it owns the majority (>50%) of the capital of that other company.
+      properties:
+        name:
+          type: string
+          description: Name of the company
+        type:
+          type: string
+          description: |
+            The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
+          enum: ['PARENT', 'ULTIMATE_PARENT']
+        dunsNumber:
+          type: string
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        ownershipInPercent:
+          type: integer
+          format: int32
+          description: Ownership in percent
+          min: 0
+          max: 100
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        shareCapital:
+          "$ref": "#/components/schemas/Amount"
+      required: []
+      title: Parent
+    SisterCompanies:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of sister companies
+        sisterCompanies:
+          type: array
+          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
+          items:
+            "$ref": "#/components/schemas/SisterCompany"
+      required: []
+      title: SisterCompanies
+    SisterCompany:
+      type: object
+      description: A company which is owned by the same parent company as another company. One parent company can have one or many subsidiaries, which all are sister companies to each other.
+      properties:
+        name:
+          type: string
+        countryCode:
+          type: string
+          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+        registrationNumber:
+          type: string
+          description: The national registrationNumber for this company.
+      required: []
+      title: SisterCompany
+    PositionEntity:
+      type: object
+      description: |
+        An entity, can be a company or a provate person.
+      properties:
+        name:
+          type: string
+          description: The name of the person/entity holding this position
+          example: "Leo Messi"
+        registrationNumber:
+          type: string
+          description: Typically a social security number or a oraganisation number in case of a company entity
+          example: "11111111111"
+        birthDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        countryCode:
+          type: string
+          description: This entitys nationality
+          example: SE
+      title: PositionEntity
+    Position:
+      type: object
+      properties:
+        enteredDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private person or a company? 
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
+        function:
+          type: integer
+          format: int32
+          description: |
+            0  MEMBER MANAGING DIR.                    
+            1  MANAGER CHAIRMAN                        
+            2  DEPUTY & MGR                            
+            3  Managing Dir & Registered Agent         
+            4  MANAGER                                 
+            5  Managing Dir, Deputy & Registered Agent 
+            6  EXTERNAL MGR                            
+            7  Extern Managing Dir & Registered Agent  
+            9  VICE MANAGER CHAIRMAN                   
+            10  MEMBER & VICE MGR                       
+            12  DEPUTY & VICE MGR                       
+            13  Vice Managing Dir, Deputy & Reg. Agent  
+            14  VICE MANAGING DIR.                      
+            15  Vice Managing Dir & Registered Agent    
+            16  EXTERNAL VICE MGR.                      
+            17  Ext Vice Managing Dir & Registered Agent
+            19  MEMBER CHAIRMAN                         
+            20  MEMBER                                  
+            22  Member & Registered Agent               
+            25  EXT.FIRM SIGN.                          
+            26  ACTUARY                                 
+            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
+            30  LIQUIDATOR                              
+            32  DEPUTY                                  
+            33  Chairman, Deputy & Registered Agent     
+            34  Deputy & Registered Agent               
+            36  Registered Agent                        
+            48  PART-OWNER & HOLDER OF PROCURATION      
+            50  PART-OWNER                              
+            60  UNLIMITED PARTNER                       
+            68  LIMITED PARTNER & HOLDER OF PROCURATION 
+            70  LIMITED PARTNER                         
+            72  MANAGER                                 
+            86  HOLDER OF PROCURATION                   
+            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
+            91  AUDITOR & REGISTERED AGENT              
+            92  LAY AUDITOR & REGISTERED AGENT          
+            93  DEPUTY AUDITOR & REGISTERED AGENT       
+            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
+            95  PRINCIPALLY RESPONSIBLE AUDITOR         
+            96  LAY AUDITOR                             
+            97  AUDITOR                                 
+            98  DEPUTY AUDITOR                          
+            99  DEPUTY LAY AUDITOR                      
+        description:
+          type: string
+          description: A textual description of the function
+      required: []
+      title: Position
+    HistoricalPosition:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
+          description: What type is this person/entity. I.e is this a private per son or a company?
+        enteredDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        function:
+          type: integer
+          format: int32
+          description: |
+            0  MEMBER MANAGING DIR.                    
+            1  MANAGER CHAIRMAN                        
+            2  DEPUTY & MGR                            
+            3  Managing Dir & Registered Agent         
+            4  MANAGER                                 
+            5  Managing Dir, Deputy & Registered Agent 
+            6  EXTERNAL MGR                            
+            7  Extern Managing Dir & Registered Agent  
+            9  VICE MANAGER CHAIRMAN                   
+            10  MEMBER & VICE MGR                       
+            12  DEPUTY & VICE MGR                       
+            13  Vice Managing Dir, Deputy & Reg. Agent  
+            14  VICE MANAGING DIR.                      
+            15  Vice Managing Dir & Registered Agent    
+            16  EXTERNAL VICE MGR.                      
+            17  Ext Vice Managing Dir & Registered Agent
+            19  MEMBER CHAIRMAN                         
+            20  MEMBER                                  
+            22  Member & Registered Agent               
+            25  EXT.FIRM SIGN.                          
+            26  ACTUARY                                 
+            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
+            30  LIQUIDATOR                              
+            32  DEPUTY                                  
+            33  Chairman, Deputy & Registered Agent     
+            34  Deputy & Registered Agent               
+            36  Registered Agent                        
+            48  PART-OWNER & HOLDER OF PROCURATION      
+            50  PART-OWNER                              
+            60  UNLIMITED PARTNER                       
+            68  LIMITED PARTNER & HOLDER OF PROCURATION 
+            70  LIMITED PARTNER                         
+            72  MANAGER                                 
+            86  HOLDER OF PROCURATION                   
+            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
+            91  AUDITOR & REGISTERED AGENT              
+            92  LAY AUDITOR & REGISTERED AGENT          
+            93  DEPUTY AUDITOR & REGISTERED AGENT       
+            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
+            95  PRINCIPALLY RESPONSIBLE AUDITOR         
+            96  LAY AUDITOR                             
+            97  AUDITOR                                 
+            98  DEPUTY AUDITOR                          
+            99  DEPUTY LAY AUDITOR                      
+        entity:
+          "$ref": "#/components/schemas/PositionEntity"
+        resignedDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        description:
+          type: string
+          description: A textual description of the function
+      required: []
+      title: HistoricalPosition
+    Capital:
+      type: object
+      description: Capital section
+      properties:
+        shareCapital:
+          "$ref": "#/components/schemas/ShareCapital"
+      title: Capital
+      required: []
+    ShareCapital:
+      type: object
+      description: Share capital
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        amount:
+          "$ref": '#/components/schemas/Amount'
+      required: []
+      title: ShareCapital
+    CompanyName:
+      type: object
+      description: |
+        Different set of names this company is known as or has been known as.
+      properties:
+        secondaryNames:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SecondaryName"
+        alternativeNames:
+          type: array
+          items:
+            "$ref": "#/components/schemas/AlternativeName"
+        historicalNames:
+          type: array
+          description: A list of historical registered names, does not include the current name.
+          items:
+            "$ref": "#/components/schemas/Name"
+        registeredName:
+          "$ref": "#/components/schemas/Name"
+        popularName:
+          "$ref": "#/components/schemas/Name"
+      required: []
+      title: CompanyName
+    Name:
+      type: object
+      description: A name object
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+        name:
+          type: string
+          description: Name
+          example: Bisnode AB
+      required: []
+      title: Name
+    SecondaryName:
+      type: object
+      description: A secondary name is a trading name, under which a the company can promote part of its business activities.
+      properties:
+        name:
+          type: string
+          description: The registered name
+          example: Infodata Applicate
+        description:
+          type: string
+          description: Business description
+          example: For the part of the business that concerns the development of information databases.
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: SecondaryName
+    AlternativeName:
+      type: object
+      description: A name of the company in another language. This is common in countries with more than one official language. The name may not be a translation of a another specific name type like a translation of the Registered name and is thus not the same as "Translated name".
+      properties:
+        name:
+          type: string
+          description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
+        description:
+          type: string
+          description: TODO - what is this
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      title: AlternativeName
+      required: []
+    ContactPoints:
+      type: object
+      description: Methods for getting in contact with this company.
+      properties:
+        electronicContactPoints:
+          "$ref": "#/components/schemas/ElectronicContactPoints"
+        postalAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+        registeredAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+        visitingAddress:
+          "$ref": "#/components/schemas/StreetAddress"
+      required: []
+      title: ContactPoints
+    ElectronicContactPoints:
+      type: object
+      properties:
+        emailAddresses:
+          type: array
+          description: A list of email addresses
+          items:
+            type: string
+        faxNumbers:
+          type: array
+          description: A list of fax numbers
+          items:
+            "$ref": "#/components/schemas/PhoneNumber"
+        phoneNumbers:
+          type: array
+          description: A list of phone numbers
+          items:
+            "$ref": "#/components/schemas/PhoneNumber"
+        webAddresses:
+          type: array
+          description: A list of web addresses
+          items:
+            type: string
+      required: []
+      title: ElectronicContactPoints
+    PhoneNumber:
+      type: object
+      description: |
+        Can be a raw phonenumber or splitted into areacode and phonenumber
+      properties:
+        fullNumber:
+          type: string
+          example: 08-0000000
+          description: |
+            Unformatted full number, can come as 080000000, 08 0000000 or 08-0000000
+        areaCode:
+          type: string
+          example: 08
+          description: |
+            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
+        numberOnly:
+          type: string
+          example: 1000000
+          description: |
+            TODO _ rename me
+            phoneNumber without areacode
+    StreetAddress:
+      type: object
+      properties:
+        town:
+          type: string
+          description: town
+          example: Stockholm
+        countryCode:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          example: SE
+        postalCode:
+          type: string
+          description: Postalcode
+          example: 19637
+        street:
+          type: string
+          description: Street address
+          example: Rosenborgsgatan 4-6
+      required: []
+      title: StreetAddress
+    HistoricalStreetAddress:
+      type: object
+      properties:
+        town:
+          type: string
+          description: town
+          example: Stockholm
+        postalCode:
+          type: string
+          description: Postalcode
+          example: 19637
+        street:
+          type: string
+          description: Street address
+          example: Rosenborgsgatan 4-6
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+      required: []
+      title: HistoricalStreetAddress
+    Identifiers:
+      type: object
+      description: A set of identifiers for this company.
+      properties:
+        registrationNumber:
+          type: string
+          description: National registration number
+        dunsNumber:
+          type: string
+          description: duns-number
+      required: []
+      title: Identifiers
+    IndustryCodeSet:
+      type: object
+      description: Sni and nace code for classification of the business
+      properties:
+        sni2007IndustryCodes:
+          "$ref": "#/components/schemas/Sni2007IndustryCodes"
+        naceCodes:
+          "$ref": "#/components/schemas/NaceCodes"
+        sicCodes:
+          type: array
+          items:
+            "$ref": '#/components/schemas/SicCode'
+      required: []
+      title: IndustryCodeSet
+    NaceCodes:
+      type: object
+      properties:
+        primaryNaceCode:
+          "$ref": "#/components/schemas/NaceCode"
+        otherNaceCodes:
+          type: array
+          description: Secondary codes 
+          items:
+            "$ref": "#/components/schemas/NaceCode"
+      title: NaceCodes
+    NaceCode:
+      type: object
+      description: 'NACE Rev. 2. See https://siccode.com/page/what-is-a-nace-code for more info'
+      properties:
+        code:
+          type: string
+          description: nace code
+          example: 0230
+        description:
+          type: string
+          description: A textual description of the code.
+          example: 'Gathering of wild growing non-wood products'
+      required: []
+      title: NaceCode
+    Sni2007IndustryCodes:
+      type: object
+      description: 
+      properties:
+        otherIndustryCodes:
+          type: array
+          description: Secondary codes 
+          items:
+            "$ref": "#/components/schemas/Sni2007Code"
+        primaryIndustryCode:
+          "$ref": "#/components/schemas/Sni2007Code"
+      required: []
+      title: Sni2007IndustryCodes
+    Sni2007Code:
+      type: object
+      description: 'Industry code. See https://www.scb.se/dokumentation/klassifikationer-och-standarder/standard-for-svensk-naringsgrensindelning-sni/ for more info.'
+      properties:
+        code:
+          type: string
+          description: the sni code
+          example: 82910
+        description:
+          type: string
+          description: A textual description of the code. 
+          example: "Retail sale of men's, women's and children's clothing in spec. stores"
+      required: []
+      title: IndustryCode
+    SicCode:
+      type: object
+      description: 'The Standard Industrial Classification (SIC) is a system for classifying industries by a four-digit code. . See https://en.wikipedia.org/wiki/Standard_Industrial_Classification/ for more info.'
+      properties:
+        code:
+          type: string
+          description: the sic code
+          example: 8730
+        description:
+          type: string
+          description: A textual description of the code. 
+          example: "Research, Development, And Testing Services"
+      required: []
+      title: SicCode
