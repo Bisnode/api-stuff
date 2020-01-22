@@ -46,9 +46,9 @@ components:
         Risk section.
       properties:
         creditRatings:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CreditRatings"
         ratingCreditLimits:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/SwedishPaymentRemarks"
         petitions:
@@ -75,14 +75,14 @@ components:
       type: object
       properties:
         paymentIndex:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PaymentIndex"
       title: SwedishTrade
     SwedishCreditInquiry:
       type: object
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
@@ -95,7 +95,7 @@ components:
           format: int32
           description: Total number of payment remarks, can differ from the list size which may be capped if there are too many remarks. 
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first. 
@@ -108,11 +108,11 @@ components:
       description: Remarks on payments 
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/SwedishReportCode"
         description:
@@ -458,7 +458,7 @@ components:
           format: int64
           description: Total number of petitions this company have.
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         petitions:
           type: array
           items:
@@ -470,14 +470,14 @@ components:
       description: A Petition to pay is sent in by the creditor to the Enforcement agency when a debtor does not pay in due time. Reminders can be sent first. The Enforcement agency act on behalf of the creditor, it does not take over the debt. The enforcement agency sends out a letter to the debtor saying that there is a debt which should be paid. The Debtor signs the note and sends it back. The debtor can protest or pay. If protested on, the case is sent to court and credit info companies will not get more information except if there is a default judgement. There are petitions sent to persons but credit info companies does only receive petitions where the debtor are organizations.
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         description:
           type: string
           description: A textual description of the petition, may be in the local language.
         creditor:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/SwedishReportCode"
       required: []
@@ -530,9 +530,9 @@ components:
           format: int64
           description: Total count of claims including public and private claims.
         privateClaimsAmount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         publicClaimsAmount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: SwedishCurrentDebtBalance
     SwedishHistoricalDebtBalance:
@@ -544,7 +544,7 @@ components:
           description: year and week number when the debt balance was valid.
           example: '2019-W33'
         balance:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: SwedishHistoricalDebtBalance
     SwedishSpecialEvent:
@@ -586,13 +586,13 @@ components:
       type: object
       properties:
         parentCompanies:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ParentCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
           "$ref": '#/components/schemas/SwedishSubsidiaries'
         sisterCompanies:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/SisterCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/SisterCompanies"
         familyTree:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/FamilyTree"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/FamilyTree"
       required: []
       title: SwedishOwnership
     SwedishSubsidiaries:
@@ -633,7 +633,7 @@ components:
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: SwedishSubsidiary
     SwedishManagement:
@@ -654,12 +654,12 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Position"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalPosition"
       required: []
       title: SwedishAuditors
     SwedishBoardMembers:
@@ -703,12 +703,12 @@ components:
           type: array
           description: A list of the current boardmembers
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Position"
         historicalBoardMembers:
           type: array
           description: A list of the historical boardmembers.
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalPosition"
         authorizedSignatory:
           type: string
           description: A description on which officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement. May be in local language.
@@ -720,15 +720,15 @@ components:
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Capital"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Capital"
         companyName:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         industryCodeSet:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
           "$ref": "#/components/schemas/SwedishLegalForm"
         status:
@@ -1002,9 +1002,9 @@ components:
       description: 'Description in Swedish here: https://www.bolagsverket.se/om/oss/fler/inteckningar'
       properties:
         creditor:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor'
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
@@ -1018,7 +1018,7 @@ components:
           type: string
           description: Name of the company this company has a claim on.
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
@@ -1868,7 +1868,7 @@ components:
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         referenceNumber:
           type: string
           description:
@@ -1879,9 +1879,9 @@ components:
       description: All the current and assesed property holdings
       properties:
         ownedPartOfTaxAssessment:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         taxAssessment:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         fullyOwnedCount:
           type: integer
           format: int32
@@ -1945,11 +1945,11 @@ components:
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
         taxAssessmentValueOfBuilding:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         taxAssessmentValueOfLand:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         taxAssessmentValueTotal:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: SwedishAssessedRealProperty
     SwedishCurrentRealProperty:
@@ -1998,7 +1998,7 @@ components:
           description: Real Estate registration key. 'Fastighetsbeteckning'
           example: Baggeby 8:1
         taxAssessmentValueTotal:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: SwedishCurrentRealProperty
     SwedishBankruptcy:
@@ -2028,9 +2028,9 @@ components:
           description: Name of the person assigned to handle the bankruptcy.
           example: Anders Svensson
         phoneNumber:
-         "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PhoneNumber"
+         "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PhoneNumber"
         address:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress'
     SwedishNotesAndOtherInformation:
       type: object
       description: |
