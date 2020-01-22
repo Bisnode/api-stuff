@@ -57,12 +57,12 @@ components:
       title: NorwegianRisk
     NorwegianInquiry:
       type: object
-      description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models.
+      description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models. 
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: NorwegianInquiry
     NorwegianTrade:
@@ -95,7 +95,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
           type: string
           description: Creditor
@@ -127,7 +127,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
           type: string
           description: Creditor
@@ -155,7 +155,7 @@ components:
       description: Event as received from authority.
       properties:
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         details:
           type: string
           description: Details of the events. TODO - I18n??
@@ -205,7 +205,7 @@ components:
           min: 0
           max: 100
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
@@ -244,14 +244,14 @@ components:
           min: 0
           max: 100
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: NorwegianSubsidiary
     NorwegianPosition:
       type: object
       properties:
         enteredDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         type:
           type: string
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
@@ -289,9 +289,9 @@ components:
       type: object
       properties:
         enteredDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         resignedDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         type:
           type: string
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
@@ -371,7 +371,7 @@ components:
           format: int32
           description: The number of boardmembers the company currently have
         officialAppointmentDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         currentBoardMembers:
           type: array
           description: A list of the current boardmembers
@@ -525,9 +525,9 @@ components:
       type: object
       properties:
         articlesOfAssociationDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         registrationDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         registeredIn:
           type: string
           description: Where was the company registered.
@@ -542,7 +542,7 @@ components:
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
           description: TODO - What statuses do we have
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: NorwegianStatus
     NorwegianFinance:
@@ -596,7 +596,7 @@ components:
             Textual description of the auditorsReservationCode ?? 
             OR the actual comment ???
         statementDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: NorwegianFinancialStatementsAuditorsReservation
     NorwegianFinancialStatementKeyFigure:
@@ -1431,5 +1431,5 @@ components:
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
       properties:
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       title: NorwegianBankruptcy
