@@ -15,7 +15,7 @@ components:
   # Common data models
   ####################
   schemas:
-    Date:
+    LocalDate:
       type: object
       description: |
         Date object, split up in year, month and day. Null values will be omitted.
@@ -47,4 +47,4 @@ components:
           description: Day of month
           example: 23
       required: []
-      title: Date
+      title: LocalDate
