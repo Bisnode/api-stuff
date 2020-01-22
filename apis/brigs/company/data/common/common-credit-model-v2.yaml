@@ -52,9 +52,9 @@ components:
         amount:
           "$ref": "#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         annualReportDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: RatingCreditLimit
     CreditRatings:
@@ -75,9 +75,9 @@ components:
       description: 'Bisnode rating model. More info here: https://www.bisnode.se/kunskap/vara-tankar-om/sa-fungerar-kreditrating/'
       properties:
         annualReportDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         code:
           type: string
           description: Rating code. [ AAA, AA, A, B, C, AN, - ]
@@ -142,7 +142,7 @@ components:
         amount:
           "$ref": "#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         invoiceCount:
           type: integer
           format: int64
@@ -256,7 +256,7 @@ components:
           min: 0
           max: 100
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
           "$ref": "#/components/schemas/Amount"
       required: []
@@ -302,7 +302,7 @@ components:
           description: Typically a social security number or a oraganisation number in case of a company entity
           example: "11111111111"
         birthDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         countryCode:
           type: string
           description: This entitys nationality
@@ -312,7 +312,7 @@ components:
       type: object
       properties:
         enteredDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         type:
           type: string
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
@@ -380,7 +380,7 @@ components:
           enum: ['OTHER', 'PERSON', 'UNKNOWN', 'LIMITED_COMPANY', 'PARTNERSHIP']
           description: What type is this person/entity. I.e is this a private per son or a company?
         enteredDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         function:
           type: integer
           format: int32
@@ -432,7 +432,7 @@ components:
         entity:
           "$ref": "#/components/schemas/PositionEntity"
         resignedDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         description:
           type: string
           description: A textual description of the function
@@ -451,7 +451,7 @@ components:
       description: Share capital
       properties:
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         amount:
           "$ref": '#/components/schemas/Amount'
       required: []
@@ -485,7 +485,7 @@ components:
       description: A name object
       properties:
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         name:
           type: string
           description: Name
@@ -505,7 +505,7 @@ components:
           description: Business description
           example: For the part of the business that concerns the development of information databases.
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SecondaryName
     AlternativeName:
@@ -519,7 +519,7 @@ components:
           type: string
           description: TODO - what is this
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       title: AlternativeName
       required: []
     ContactPoints:
@@ -619,7 +619,7 @@ components:
           description: Street address
           example: Rosenborgsgatan 4-6
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: HistoricalStreetAddress
     Identifiers:
