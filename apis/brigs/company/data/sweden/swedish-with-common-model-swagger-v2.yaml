@@ -564,10 +564,7 @@ components:
       description: Event as received from authority.
       properties:
         date:
-          type: string
-          format: date
-          description: Date when the event occured
-          example: '2019-03-03'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         description:
           type: string
           description: A textual description of the event, can be in local language
