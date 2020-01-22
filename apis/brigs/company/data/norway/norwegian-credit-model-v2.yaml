@@ -46,9 +46,9 @@ components:
         Risk section.
       properties:
         creditRatings:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CreditRatings"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CreditRatings"
         creditLimits:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/NorwegianPaymentRemarks"
         bankruptcy:
@@ -60,7 +60,7 @@ components:
       description: Inquiries are requests generated when a customer makes a credit inquiry on another company or person in order to give the object a loan, a credit or for example sign a rental agreement. The inquiries may be used as a variabel in Bisnode's Rating and Scoring models. 
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
@@ -69,7 +69,7 @@ components:
       type: object
       properties:
         paymentIndex:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PaymentIndex"
       title: NorwegianTrade
     NorwegianPaymentRemarks:
       type: object
@@ -93,7 +93,7 @@ components:
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
@@ -125,7 +125,7 @@ components:
         TODO - what is this?
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
@@ -207,7 +207,7 @@ components:
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: NorwegianShareholderCompany
     NorwegianSubsidiaries:
@@ -257,7 +257,7 @@ components:
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
           description: What type is this person/entity. I.e is this a private person or a company? 
         entity:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PositionEntity"
         function:
            type: string
            description: |
@@ -297,7 +297,7 @@ components:
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
           description: What type is this person/entity. I.e is this a private person or a company? 
         entity:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PositionEntity"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PositionEntity"
         function:
            type: string
            description: |
@@ -355,12 +355,12 @@ components:
           type: array
           description: Auditors currently auditing this company
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Position"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Position"
         historicalAuditors:
           type: array
           description: Historical auditors
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalPosition"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalPosition"
       required: []
       title: NorwegianAuditors
     NorwegianBoardMembers:
@@ -391,13 +391,13 @@ components:
         capital:
           "$ref": "#/components/schemas/NorwegianCapital"
         companyName:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ContactPoints"
         identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         industryCodeSet:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
           "$ref": "#/components/schemas/NorwegianLegalForm"
         status:
@@ -432,9 +432,9 @@ components:
           type: string
           description: Name of the branch
         visitingAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
         postalAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
         registrationNumber:
           description: Local registration number
           type: string
@@ -471,7 +471,7 @@ components:
       description: Paid up capital
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: NorwegianPaidUpCapital
     NorwegianShareCapital:
@@ -479,7 +479,7 @@ components:
       description: Share capital
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: NorwegianShareCapital
     NorwegianGeneralCompanyData:
