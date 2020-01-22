@@ -42,7 +42,7 @@ components:
         creditRatings:
           "$ref": "#/components/schemas/DanishCreditRatings"
         ratingCreditLimits:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/RatingCreditLimits"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/DanishPaymentRemarks"
         trade:
@@ -89,11 +89,11 @@ components:
       description: 'The rating is based on 3 PartJudgements: Finance, Ownership and HistoryOperation.'
       properties:
         finance:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PartJudgement"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PartJudgement"
         historyOperation:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PartJudgement"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PartJudgement"
         ownership:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PartJudgement"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PartJudgement"
       required: []
       title: DanishPartJudgements
     DanishFinancialCommitments:
@@ -108,7 +108,7 @@ components:
       type: object
       properties:
         paymentIndex:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/PaymentIndex"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PaymentIndex"
       title: DanishTrade
     DanishPaymentRemarks:
       type: object
@@ -118,7 +118,7 @@ components:
           format: int32
           description: Total number of payment remarks
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         paymentRemarks:
           type: array
           description: A list of remarks, most recent ones comes first.
@@ -134,7 +134,7 @@ components:
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         registrationDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         deletionDate:
@@ -142,7 +142,7 @@ components:
         claimDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/DanishReportCode"
         description:
@@ -512,9 +512,9 @@ components:
           format: int64
           description: Total count of claims including public and private claims.
         privateClaimsAmount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         publicClaimsAmount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: DanishCurrentDebtBalance
     DanishHistoricalDebtBalance:
@@ -527,14 +527,14 @@ components:
           description: year and week number when the debt balance was valid.
           example: '2019-W33'
         balance:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: DanishHistoricalDebtBalance
     DanishOwnership:
       type: object
       properties:
         parentCompanies:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ParentCompanies"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
           "$ref": "#/components/schemas/DanishSubsidiaries"
       required: []
@@ -574,7 +574,7 @@ components:
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
       title: DanishSubsidiary
     DanishManagement:
@@ -710,15 +710,15 @@ components:
       description: CompanyInformation, misc information about the company.
       properties:
         capital:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Capital"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Capital"
         companyName:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/CompanyName"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CompanyName"
         contactPoints:
           "$ref": "#/components/schemas/DanishContactPoints"
         identifiers:
           "$ref": "#/components/schemas/DanishIdentifiers"
         industryCodeSet:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/IndustryCodeSet"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
           "$ref": "#/components/schemas/DanishLegalForms"  
         status:
@@ -736,18 +736,18 @@ components:
       description: Methods for getting in contact with this company.
       properties:
         electronicContactPoints:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ElectronicContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ElectronicContactPoints"
         postalAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
         registeredAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
         visitingAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
         historicalAddress:
           type: array
           description: A list of historical addresses, does not include the current address.
           items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/HistoricalStreetAddress"
+            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalStreetAddress"
       required: []
       title: DanishContactPoints
     DanishBranches:
@@ -805,7 +805,7 @@ components:
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         address:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
       required: []
       title: DanishHistoricalStreetAddress
     DanishGeneralCompanyData:
