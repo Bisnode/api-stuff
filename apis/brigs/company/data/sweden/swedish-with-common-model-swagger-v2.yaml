@@ -84,7 +84,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SwedishCreditInquiry
     SwedishPaymentRemarks:
@@ -110,7 +110,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Creditor"
         type:
@@ -472,7 +472,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         description:
           type: string
           description: A textual description of the petition, may be in the local language.
@@ -552,7 +552,7 @@ components:
       description: Event as received from authority.
       properties:
         date:
-         "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+         "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         description:
           type: string
           description: A textual description of the event, can be in local language
@@ -631,7 +631,7 @@ components:
           min: 0
           max: 100
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
       required: []
@@ -670,7 +670,7 @@ components:
           format: int32
           description: The number of boardmembers the company currently have
         officialAppointmentDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date' 
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel' 
         deputyCount:
           type: integer
           format: int32
@@ -892,7 +892,7 @@ components:
           type: boolean
           description: This indicates if the company is registered according to the Tax VAT register.
         activeInVatStatusDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         officeType:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
@@ -958,9 +958,9 @@ components:
       description: 
       properties:
         articlesOfAssociationDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         foundationDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SwedishRegistrationInformation
     SwedishStatus:
@@ -971,7 +971,7 @@ components:
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
           description: 
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SwedishStatus
     SwedishFinance:
@@ -1006,7 +1006,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SwedishFloatingCharge
     SwedishLiquidationClaim:
@@ -1020,7 +1020,7 @@ components:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SwedishLiquidationClaim
     SwedishFinancialStatements:
@@ -1087,7 +1087,7 @@ components:
           type: string
           description: Textual description of the auditorsReservationCode
         statementDate:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: SwedishFinancialStatementsAuditorsReservation
     SwedishFinancialStatementKeyFigure:
@@ -1866,7 +1866,7 @@ components:
         PayrollTax
       properties:
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
         referenceNumber:
@@ -2006,7 +2006,7 @@ components:
       description: This section will be available if there is any data related to bankruptcy for this company. The events will be a list of events related to the bankruptcy. Events here can be duplicated in events block as well.
       properties:
         date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/Date'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         events:
           type: array
           items:
