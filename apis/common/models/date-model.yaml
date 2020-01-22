@@ -15,7 +15,7 @@ components:
   # Common data models
   ####################
   schemas:
-    LocalDate:
+    Date:
       type: object
       description: |
         Date object, split up in year, month and day. Null values will be omitted.
@@ -47,4 +47,37 @@ components:
           description: Day of month
           example: 23
       required: []
-      title: LocalDate
+      title: Date
+    Date2:
+      type: object
+      description: |
+        Date object, split up in year, month and day. Null values will be omitted.
+        This model is used in cases where we don't always have a full date.
+      example: |
+        '{
+          "year": "2012",
+          "month": "1",
+          "day": "23"
+        }'
+      properties:
+        year:
+          type: integer
+          format: int32
+          description: Full year including century
+          example: 2012
+        month:
+          type: integer
+          format: int32
+          description: Month-number
+          minimum: 1
+          maximum: 12
+          example: 2
+        day:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+          description: Day of month
+          example: 23
+      required: []
+      title: Date2
