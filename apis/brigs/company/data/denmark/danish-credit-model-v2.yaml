@@ -1072,9 +1072,7 @@ components:
       type: object
       properties:
         closingPeriod:
-          type: string
-          description: Date when the financial statement was closed. The date will be year and month only.
-          example: 2019-12
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         fiscalPeriod:
           type: integer
           format: int32
