@@ -113,10 +113,7 @@ components:
           description: >-
             A reference id
         dueDate:
-          type: string
-          format: date
-          description: >-
-            Date when this remark should be paid.
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: NorwegianPaymentRemark
     NorwegianVoluntaryPledge:
