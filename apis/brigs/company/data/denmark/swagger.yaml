@@ -1649,6 +1649,16 @@ components:
           format: int64
           description: |  
             Tangible assets total.
+        participatingInvestments: 
+          type: integer
+          format: int64
+          description: |  
+            Participating investments.
+        otherInvestments: 
+          type: integer
+          format: int64
+          description: |  
+            Other investments.
         sharesInAssociatedCompanies: 
           type: integer
           format: int64
@@ -1664,6 +1674,11 @@ components:
           format: int64
           description: |  
            Long term Receivables in group.
+        receivablesFromOwners: 
+          type: integer
+          format: int64
+          description: |  
+            Receivables from owners
         otherLongTermReceivables: 
           type: integer
           format: int64
