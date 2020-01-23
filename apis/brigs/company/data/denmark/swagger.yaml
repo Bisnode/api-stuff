@@ -1679,7 +1679,7 @@ components:
           format: int64
           description: |  
            Long term Receivables in group.
-        otherLongTermReceivables: 
+        otherFinancialReceivables: 
           type: integer
           format: int64
           description: |  
