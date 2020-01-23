@@ -1563,6 +1563,11 @@ components:
           format: int64
           description: |  
             Short term receivable from group and associated companies.
+        receivablesFromOwners: 
+          type: integer
+          format: int64
+          description: |  
+            Receivables from owners
         otherReceivables: 
           type: integer
           format: int64
