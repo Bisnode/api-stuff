@@ -540,9 +540,7 @@ components:
       description: A list of historical debt balances
       properties:
         date:
-          type: string
-          description: year and week number when the debt balance was valid.
-          example: '2019-W33'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         balance:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
       required: []
