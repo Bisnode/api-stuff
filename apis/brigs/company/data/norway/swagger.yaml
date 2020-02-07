@@ -75,8 +75,7 @@ components:
       title: NorwegianTrade
     NorwegianPaymentRemarks:
       type: object
-      description: >-
-        TODO - add description. What does amount referr to?
+      description:
       properties:
         paymentRemarks:
           type: array
@@ -106,8 +105,7 @@ components:
           example: Bisnode AS
         type:
           type: string
-          description: >-
-            TODO - what types do we have here?
+          description: Type of remark
         source:
           type: string
           description: The source of the information
@@ -125,8 +123,7 @@ components:
       title: NorwegianPaymentRemark
     NorwegianVoluntaryPledge:
       type: object
-      description: >-
-        TODO - what is this?
+      description:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Amount"
@@ -140,8 +137,6 @@ components:
           example: Bisnode AS
         type:
           type: string
-          description: >-
-            TODO - what types do we have here?
         source:
           type: string
           description: The source of the information
@@ -167,11 +162,10 @@ components:
           example: '2019-03-03'
         details:
           type: string
-          description: Details of the events. TODO - I18n??
+          description: Details of the events.
         type: 
           type: string
-          description: >-
-            TODO - what types do we have here?
+          description: Type of the event
         source:
           type: string
           description: Where did the event come from
@@ -257,7 +251,7 @@ components:
         date:
           type: string
           format: date
-          description: TODO - what does this date mean???
+          description:
       required: []
       title: NorwegianSubsidiary
     NorwegianPosition:
@@ -362,8 +356,7 @@ components:
             Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
         procuration:
           type: string
-          description: >-
-            TODO - add a good description here
+          description:
       required: []
       title: NorwegianManagement
     NorwegianAuditors:
@@ -517,11 +510,9 @@ components:
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         registeredInVat:
           type: boolean
-          description: This indicates if the company is registered according to the Tax VAT register. TODO - is this correct
+          description: This indicates if the company is registered according to the Tax VAT register.
         establishment:
           type: string
-          description: >-
-            TODO - what is this?
       required: []
       title: NorwegianGeneralCompanyData
     NorwegianLegalForm:
@@ -531,11 +522,7 @@ components:
         code:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_PARTNERSHIP', 'LIMITED_PARTNERSHIP', 'OTHER']
-          description: >-
-            '
-            TODO - are the enum values above correct?
-            TODO - add descriptions here
-            '
+          description:
         description:
           type: string
           description: A textual description of the code.
@@ -567,11 +554,9 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - What statuses do we have
         date:
           type: string
           format: date
-          description: TODO - do we have a date
       required: []
       title: NorwegianStatus
     NorwegianFinance:
@@ -616,20 +601,15 @@ components:
       properties:
         auditorsReservationCode:
           type: string
-          description: |
-            TODO - add proper codes for norway if they have this
-            
         auditorsReservationDescription:
           type: string
           description: >-
-            Textual description of the auditorsReservationCode ?? 
-            OR the actual comment ???
+            Textual description of the auditorsReservationCode
         statementDate:
           type: string
           format: date
           description: >-
-            TODO - Date of the auditors reservation/comment.
-                   Or the date of the annual report they audited ???
+              Date of the auditors reservation/comment.
       required: []
       title: NorwegianFinancialStatementsAuditorsReservation
     NorwegianFinancialStatementKeyFigure:
@@ -647,7 +627,6 @@ components:
           type: number
           format: double
           description: >-
-            TODO - This is interest coverage ratio in brigs web - which one to use?
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
           example: 2.0
         interestOnLiability:
@@ -701,8 +680,6 @@ components:
           type: number
           format: double
           example: 20.15
-          description: >-
-            TODO - add description here
         returnOnInvestment:
           type: number
           format: double
@@ -732,8 +709,7 @@ components:
           type: number
           format: double
           example: 99.37
-          description: >-
-            TODO - add description
+          description:
         gearing:
           type: number
           format: double
@@ -748,13 +724,10 @@ components:
               Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
 
               An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
-
         daysOfReceiveables:
           type: number
           format: double
           example: 1.4
-          description: >-
-            TODO - Is it correct just to add the description below and change from pay to receive ???
         daysOfPayables:
           type: number
           format: double
@@ -786,7 +759,6 @@ components:
           format: int64
           description: >-
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
-            TODO - also named as otherFinancialIncome
         turnover:
           type: integer
           format: int64
@@ -797,8 +769,6 @@ components:
           format: int64
           description: >-
             Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
-            
-            TODO - is this the same as commoditiesAndNecessities/rawmaterialsAndConsumables
         sellingExpenses:
           type: integer
           format: int64
@@ -811,15 +781,11 @@ components:
           format: int64
           description: >-
             Administrative expenses/costs are the expenses that an organization incurs for administrationcosts and not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
-            
-            Function based only
         commoditiesAndNecessities:
           type: integer
           format: int64
           description: >-
             Raw materials and consumables for processing in production.
-            
-            TODO - also named rawMaterialsAndConsumables
         otherOperatingExpenses:
           type: integer
           format: int64
@@ -850,18 +816,14 @@ components:
           format: int64
           description: >-
             The operating profit (loss) is the difference between the business revenue and costs including nonRecurringFinancialItems during the fiscal year.
-            TODO - is this the same as operationalResult
         incomeFromInvestmentsInGroupEnterprises:
           type: integer
           format: int64
           description: >-
             The net from dividend income, impairment and reserved write-downs.
-            TODO - is this correct
         incomeFromInvestmentsInGroupAssociates:
           type: integer
           format: int64
-          description: >-
-            TODO  - what is the difference from incomeFromInvestmentsInGroupEnterprises
         interestIncomeFromGroupCompanies:
           type: integer
           format: int64
@@ -872,13 +834,11 @@ components:
           format: int64
           description: >-
             Interest payed to the company by banks or creditinstitutes.
-            TODO - also named interestIncome
         otherFinancialIncome:
           type: integer
           format: int64
           description: >-
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
-            TODO - is this the same as income from other investments ??
         financialIncomeTotal:
           type: integer
           format: int64
@@ -1081,7 +1041,6 @@ components:
           format: int64
           description: >-
             The sum of cash in hand and money in the bank.
-            TODO - fix this description
         investmentsOther:
           type: integer
           format: int64
@@ -1357,7 +1316,7 @@ components:
           type: integer
           format: int64
           description: >-
-            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
         paidInCapital:
           type: integer
           format: int64
@@ -1400,8 +1359,6 @@ components:
         otherEquity:
           type: integer
           format: int64
-          description: >-
-            TODO - examples
         minorityInterestsTotal:
           type: integer
           format: int64
