@@ -1946,7 +1946,7 @@ components:
       title: DanishFinancialStatement
     DanishBankruptcy:
       type: object
-      description: This section will be available if there is any data related to bankruptcies for this company. TODO - this section needs more work
+      description: This section will be available if there is any data related to bankruptcies for this company.
       properties:
         date:
           type: string
@@ -1954,7 +1954,7 @@ components:
           description: Date when the status changed
         status:
           type: string
-          description: 'TODO - what statuses can we have here?'
+          description: Status
         name:
           type: string
           description: Name of the court where bankruptcy was declared
