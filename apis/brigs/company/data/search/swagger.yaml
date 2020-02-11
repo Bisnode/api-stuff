@@ -20,7 +20,7 @@ components:
   schemas:
     SearchResponse:
       type: object
-      description: Searchmodel. The order in the list will always be best matches first. TODO - Add some  basic rules for the searches so the client understands the order in the result list..
+      description: Searchmodel. The order in the list will always be best matches first.
       properties:
         hitCount:
           type: integer
@@ -119,7 +119,7 @@ components:
           "$ref": '#/components/schemas/Link'
     SearchRequest:
       type: object
-      description: Search input. TODO - is wildcards supported?
+      description: Search input.
       properties:
         offset:
           type: integer
