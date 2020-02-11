@@ -575,7 +575,7 @@ components:
           type: string
           example: 08
           description: |
-            A valid swedish areacode. See https://sv.wikipedia.org/wiki/Lista_%C3%B6ver_svenska_riktnummer
+            An areacode.
         numberOnly:
           type: string
           example: 1000000
