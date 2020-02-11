@@ -5,7 +5,7 @@ openapi: 3.0.0
 # Optional info section
 #######################
 info:
-  title: Bisnode Company Search
+  title: Bisnode Company Search Model
   description: |
     Common components for Company Search REST APIs
   version: '1.0.0'
