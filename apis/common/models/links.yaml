@@ -5,7 +5,7 @@ openapi: 3.0.0
 # Optional info section
 #######################
 info:
-  title: Links
+  title: Bisnode Links Model
   description: Common model for linking
   version: '1.0.0'
 
