@@ -1895,7 +1895,7 @@ components:
       title: DanishFinancialStatement
     DanishBankruptcy:
       type: object
-      description: This section will be available if there is any data related to bankruptcies for this company. 
+      description: This section will be available if there is any data related to bankruptcies for this company.
       properties:
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
