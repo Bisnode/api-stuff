@@ -845,8 +845,6 @@ components:
           example: Året runt
         alcoholBeverageToThePublic:
           type: string
-          description: |
-            TODO - what value can we have here
         validFrom:
           type: string
           format: date
@@ -854,7 +852,6 @@ components:
           description: From when is this permit valid
         status:
           type: string
-          description: TODO - what statuses can we have here
     SwedishGeneralCompanyData:
       type: object
       properties:
@@ -2124,8 +2121,7 @@ components:
           enum: ['NO', 'YES', 'NOT_CLEAR', 'RESERVE']
           description: |
             Severance pay is the compensation and/or benefits an employer provides to an employee after employment is over. 
-            
-            TODO - what does RESERVE mean?
+
         currentAccountCredit:
           type: integer
           format: int64
