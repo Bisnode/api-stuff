@@ -698,15 +698,11 @@ components:
       properties:
         auditorsReservationCode:
           type: string
-          description: |
-           TODO - add codes here                      
         auditorsReservationDescription:
           type: string
           description: Textual description of the auditorsReservationCode
         auditorsCommentCode:
           type: string
-          description: |
-           TODO - add codes here                      
         auditorsCommentDescription:
           type: string
           description: Textual description of the auditorsCommentCode
