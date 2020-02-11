@@ -11,7 +11,7 @@ info:
         
         All decimals are with max 2 fraction digits, unless otherwise stated in the description for that field.
         
-        This API tries to adhere to the Bisnode Restful API guidelines, TODO - add link here when it is published on github.
+        This API tries to adhere to the Bisnode Restful API guidelines,
   contact:
     email: api-bisnode@bisnode.com
 security:
