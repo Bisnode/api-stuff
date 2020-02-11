@@ -5,9 +5,9 @@ openapi: 3.0.0
 # Optional info section
 #######################
 info:
-  title: Common credit model for data that are the same between the different countries
+  title: Bisnode Common Credit Models
   description: | 
-    Common credit models.
+    Common credit model for data that are the same between the different countries
   version: "1.0.0"
   contact:
     email: api-bisnode@bisnode.com
@@ -40,7 +40,7 @@ components:
           "$ref": "#/components/schemas/RatingCreditLimit"
         historicalRatingCreditLimits:
           type: array
-          description: TODO - max size ???
+          description: 
           items:
             "$ref": "#/components/schemas/RatingCreditLimit"
       required: []
@@ -283,7 +283,7 @@ components:
           description: Number of sister companies
         sisterCompanies:
           type: array
-          description: TODO - should we have this ??? requires some transformation logic since we don't have it today.
+          description: 
           items:
             "$ref": "#/components/schemas/SisterCompany"
       required: []
@@ -548,7 +548,7 @@ components:
           description: "The name. For more info see: https://bolagsverket.se/ff/foretagsformer/namn/valja/sarskilt-foretagsnamn-och-pa-frammande-sprak-1.2572"
         description:
           type: string
-          description: TODO - what is this
+          description: 
         date:
           type: string
           format: date
@@ -613,7 +613,6 @@ components:
           type: string
           example: 1000000
           description: |
-            TODO _ rename me
             phoneNumber without areacode
     StreetAddress:
       type: object
