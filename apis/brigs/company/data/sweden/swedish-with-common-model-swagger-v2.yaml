@@ -610,12 +610,8 @@ components:
         name:
           type: string
           description: The name of the company
-        dunsNumber:
-          type: string
-          description: DunsNumber of the company.
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
+        identifiers:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
@@ -802,8 +798,8 @@ components:
           type: string
           description: |
             Branch office number. Unique id for this branch
-        dunsNumber:
-          type: string
+        identifiers:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers'
       required: []
       title: SwedishBranch
     BranchAddress:
