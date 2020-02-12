@@ -572,8 +572,9 @@ components:
         name:
           type: string
           description: The name of the company
-        identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
+        dunsNumber:
+          type: string
+          description: DunsNumber of the company.
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
@@ -685,8 +686,12 @@ components:
       type: object
       description: A set of identifiers for this company.
       properties:
-        identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
+        cvrNumber:
+          type: string
+          description: National registration number
+        dunsNumber:
+          type: string
+          description: duns-number
       required: []
       title: DanishIdentifiers
     DanishPosition:
@@ -794,8 +799,8 @@ components:
           type: string
           description: |
             Branch office number. Unique id for this branch
-        identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
+        dunsNumber:
+          type: string
       required: []
       title: DanishBranch
     DanishBranchAddress:
