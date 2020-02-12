@@ -297,9 +297,8 @@ components:
         name:
           type: string
           description: The name of the company
-        dunsNumber:
-          type: string
-          description: DunsNumber of the company.
+        identifiers:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
@@ -421,12 +420,8 @@ components:
         name:
           type: string
           description: The name of the company where this person/entity has assignments
-        dunsNumber:
-          type: string
-          description: The duns of the company where this person/entity has assignments 
-        registrationNumber:
-          type: string
-          description: The registration number of the company where this person/entity has assignments 
+        identifiers:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         remark:
           "$ref": "#/components/schemas/RemarkInAssignment"
       title: Assignment     
