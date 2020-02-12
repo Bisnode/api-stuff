@@ -631,6 +631,11 @@ components:
         dunsNumber:
           type: string
           description: duns-number
+        vatNumber:
+          type: string
+          description: 
+            | 
+              A value added tax identification number. See https://en.wikipedia.org/wiki/VAT_identification_number
       required: []
       title: Identifiers
     IndustryCodeSet:
