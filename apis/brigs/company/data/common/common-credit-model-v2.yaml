@@ -23,7 +23,7 @@ components:
       description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217
       properties:
         monetaryAmount:
-          type: integer
+          type: float
           format: int64
           description: May be a negative number 
         currency:
