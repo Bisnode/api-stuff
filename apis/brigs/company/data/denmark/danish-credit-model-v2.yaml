@@ -663,14 +663,6 @@ components:
             "$ref": "#/components/schemas/DanishHistoricalPosition"
       required: []
       title: DanishBoardMembers
-    DanishIdentifiers:
-      type: object
-      description: A set of identifiers for this company.
-      properties:
-        identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
-      required: []
-      title: DanishIdentifiers
     DanishPosition:
       type: object
       properties:
@@ -710,7 +702,7 @@ components:
         contactPoints:
           "$ref": "#/components/schemas/DanishContactPoints"
         identifiers:
-          "$ref": "#/components/schemas/DanishIdentifiers"
+           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         industryCodeSet:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/IndustryCodeSet"
         legalForm:
