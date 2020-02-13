@@ -22,12 +22,13 @@ components:
       type: object
       description: A model describing a monetary value in an amount and a currency. All currencies will be expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217
       properties:
-        monetaryAmount:
-          type: float
-          format: int64
-          description: May be a negative number 
+        amount:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: Amount formatted using period as the decimal point.
         currency:
           type: string
+          pattern: "^[A-Z]{3}$"
           description: As described in https://en.wikipedia.org/wiki/ISO_4217
       required: []
       title: Amount
