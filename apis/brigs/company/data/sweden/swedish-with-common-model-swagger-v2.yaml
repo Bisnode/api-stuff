@@ -841,6 +841,10 @@ components:
           example: Året runt
         alcoholBeverageToThePublic:
           type: string
+          description: A string describing what kind of beverages are allowed to be served to the pulic. Local language only
+        alcoholBeverageToClosedGroup:
+          type: string
+          description: A string describing what kind of beverages are allowed to be served to a closed group. Local language only
         validFromDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         status:
