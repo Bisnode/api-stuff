@@ -817,7 +817,7 @@ components:
           example: Rosenborgsgatan 4
       required: []
       title: SwedishBranchAddress
-    SwedishAlcoholServicePermits:
+    SwedishAlcoholServicePermit:
       type: object
       properties:
         servicePlace:
@@ -862,7 +862,7 @@ components:
           type: array
           description: A list of Alcohol service permits. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
           items:
-            "$ref": "#/components/schemas/SwedishAlcoholServicePermits"
+            "$ref": "#/components/schemas/SwedishAlcoholServicePermit"
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
