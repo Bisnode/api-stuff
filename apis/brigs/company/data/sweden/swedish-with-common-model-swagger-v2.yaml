@@ -825,19 +825,18 @@ components:
           description: |
             Name of the place where this permit is valid for.
         address:
-          type: string
-          description: Address to the service place
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress'
         permitHolder:
           type: string
           description: Name of the permit holder
           example: The Company AB
         type:
           type: string
-          description: Textual description of the type of permit
+          description: Textual description of the type of permit. Local language only.
           example: Servering till allmänheten
         servingType:
           type: string
-          description: 
+          description: A textual description on how you are allowed to serve alcohol. Local language only.
           example: Året runt
         alcoholBeverageToThePublic:
           type: string
