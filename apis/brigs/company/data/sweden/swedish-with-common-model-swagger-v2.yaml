@@ -841,11 +841,8 @@ components:
           example: Året runt
         alcoholBeverageToThePublic:
           type: string
-        validFrom:
-          type: string
-          format: date
-          example: 2019-01-01
-          description: From when is this permit valid
+        validFromDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         status:
           type: string
     SwedishGeneralCompanyData:
