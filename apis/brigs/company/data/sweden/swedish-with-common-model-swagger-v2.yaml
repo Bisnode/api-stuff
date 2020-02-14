@@ -858,10 +858,11 @@ components:
           type: integer
           format: int64
           description: Total number of employees this company have.
-        alcoholServicePermitCount:
-          type: integer
-          format: int32
-          description: The number of alcohol service permits this company have. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
+        alcoholServicePermits:
+          type: array
+          description: A list of Alcohol service permits. See https://sv.wikipedia.org/wiki/Utsk%C3%A4nkningstillst%C3%A5nd
+          items:
+            "$ref": "#/components/schemas/SwedishAlcoholServicePermits"
         countryCode:
           type: string
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
