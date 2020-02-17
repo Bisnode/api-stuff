@@ -603,6 +603,42 @@ components:
           example: Rosenborgsgatan 4-6
       required: []
       title: StreetAddress
+    PostalOfficeBox:
+      type: object
+      description: A postal office box
+      properties:
+        countryCode:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          example: SE
+        postalOffice:
+          type: string
+          description: The name of the post office where the post office box is placed. This is used for postal offices in bigger towns.
+        boxNumber:
+          type: string
+          description: The number or identifier of a postal office box.
+        town:
+          type: string
+          description: town
+          example: Stockholm
+        postalCode:
+          type: string
+          description: Postalcode
+          example: 19637
+    Address:
+      type: object
+      description: A composite object for addresses
+      properties:
+        streetAddress:
+          "$ref": '#/components/schemas/StreetAddress'
+        postalOfficeBox:
+          "$ref": '#/components/schemas/PostalOfficeBox'
+    HistoricalAddress:
+      type: object
+      description: A composite object for historic addresses
+      properties:
+        streetAddress:
+          "$ref": '#/components/schemas/HistoricalStreetAddress'
     HistoricalStreetAddress:
       type: object
       properties:
