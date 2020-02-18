@@ -162,7 +162,7 @@ definitions:
           description: Is this a headquarter? False means that this is a branch.
           example: false
         address:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/models/StreetAddress"
+          $ref: '#/definitions/AddressModel'
       title: CompanyOverview
     SearchRequest:
       type: object
@@ -207,7 +207,7 @@ definitions:
           description: The country to search in
           enum: ['SE', 'FI', 'DK']
         address:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/models/StreetAddress"
+          $ref: '#/definitions/AddressModel'
       required: ['country']
     RequestModel:
       type: object
@@ -227,7 +227,8 @@ definitions:
           enum: ['SV', 'EN', 'NO', 'DA', 'FI']
           description: Supported languages for all the description fields where i18n is supported
           default: EN
-        
+    AddressModel:
+      $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/models/StreetAddress'
     DanishResponseModel:
       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/2.0.0#/components/schemas/DanishCompanyData'
     FinnishResponseModel:
