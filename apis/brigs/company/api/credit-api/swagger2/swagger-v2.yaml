@@ -162,22 +162,8 @@ definitions:
           description: Is this a headquarter? False means that this is a branch.
           example: false
         address:
-          "$ref": "#/definitions/Address"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/models/StreetAddress"
       title: CompanyOverview
-    Address:
-      type: object
-      description: This is the visiting address of the company
-      properties:
-        street:
-          type: string
-          description: Streetname
-        town:
-          type: string
-          description: Postal town
-        postalCode:
-          type: string
-          description: postalCode
-      title: Address
     SearchRequest:
       type: object
       description: Search input.
@@ -221,7 +207,7 @@ definitions:
           description: The country to search in
           enum: ['SE', 'FI', 'DK']
         address:
-          "$ref": "#/definitions/Address"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/models/StreetAddress"
       required: ['country']
     RequestModel:
       type: object
