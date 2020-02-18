@@ -625,6 +625,32 @@ components:
           type: string
           description: Postalcode
           example: 19637
+    HistoricalPostalOfficeBox:
+      type: object
+      description: A postal office box
+      properties:
+        countryCode:
+          type: string
+          description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          example: SE
+        postalOffice:
+          type: string
+          description: The name of the post office where the post office box is placed. This is used for postal offices in bigger towns.
+        boxNumber:
+          type: string
+          description: The number or identifier of a postal office box.
+        town:
+          type: string
+          description: town
+          example: Stockholm
+        postalCode:
+          type: string
+          description: Postalcode
+          example: 19637
+        validToDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+        validFromDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
     Address:
       type: object
       description: A composite object for addresses
@@ -634,11 +660,20 @@ components:
         postalOfficeBox:
           "$ref": '#/components/schemas/PostalOfficeBox'
     HistoricalAddress:
-      type: object
+      type: array
       description: A composite object for historic addresses
+      items:
       properties:
-        streetAddress:
-          "$ref": '#/components/schemas/HistoricalStreetAddress'
+        streetAddresses:
+          type: array
+          description: A list of historical addresses, newest ones first
+          items:
+            "$ref": '#/components/schemas/HistoricalStreetAddress'
+        postalOfficeBoxes:
+          type: array
+          description: A list of historical postalOfficeBoxes, newest ones first
+          items:
+            "$ref": '#/components/schemas/HistoricalPostalOfficeBox'
     HistoricalStreetAddress:
       type: object
       properties:
@@ -664,7 +699,9 @@ components:
         boxNumber:
           type: string
           description: The number or identifier of a postal office box.
-        date:
+        validToDate:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+        validFromDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: HistoricalStreetAddress
