@@ -530,11 +530,11 @@ components:
         electronicContactPoints:
           "$ref": "#/components/schemas/ElectronicContactPoints"
         postalAddress:
-          "$ref": "#/components/schemas/StreetAddress"
+          "$ref": "#/components/schemas/Address"
         registeredAddress:
-          "$ref": "#/components/schemas/StreetAddress"
+          "$ref": "#/components/schemas/Address"
         visitingAddress:
-          "$ref": "#/components/schemas/StreetAddress"
+          "$ref": "#/components/schemas/Address"
       required: []
       title: ContactPoints
     ElectronicContactPoints:
