@@ -535,6 +535,12 @@ components:
           "$ref": "#/components/schemas/Address"
         visitingAddress:
           "$ref": "#/components/schemas/Address"
+        historicalPostalAddress:
+          "$ref": "#/components/schemas/HistoricalAddress"
+        historicalRegisteredAddress:
+          "$ref": "#/components/schemas/HistoricalAddress"
+        historicalVisitingAddress:
+          "$ref": "#/components/schemas/HistoricalAddress"
       required: []
       title: ContactPoints
     ElectronicContactPoints:
