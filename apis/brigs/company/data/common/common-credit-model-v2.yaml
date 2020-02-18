@@ -666,9 +666,8 @@ components:
         postalOfficeBox:
           "$ref": '#/components/schemas/PostalOfficeBox'
     HistoricalAddress:
-      type: array
+      type: object
       description: A composite object for historic addresses
-      items:
       properties:
         streetAddresses:
           type: array
