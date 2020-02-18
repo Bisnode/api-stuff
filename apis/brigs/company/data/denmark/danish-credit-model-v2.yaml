@@ -700,7 +700,7 @@ components:
         companyName:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CompanyName"
         contactPoints:
-          "$ref": "#/components/schemas/DanishContactPoints"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ContactPoints"
         identifiers:
            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         industryCodeSet:
@@ -717,25 +717,6 @@ components:
           "$ref": "#/components/schemas/DanishBranches"
       required: []
       title: DanishCompanyInformation
-    DanishContactPoints:
-      type: object
-      description: Methods for getting in contact with this company.
-      properties:
-        electronicContactPoints:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ElectronicContactPoints"
-        postalAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
-        registeredAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
-        visitingAddress:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
-        historicalAddress:
-          type: array
-          description: A list of historical addresses, does not include the current address.
-          items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalStreetAddress"
-      required: []
-      title: DanishContactPoints
     DanishBranches:
       type: object
       description: 
