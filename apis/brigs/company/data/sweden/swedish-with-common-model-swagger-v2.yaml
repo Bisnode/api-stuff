@@ -765,7 +765,7 @@ components:
           description: postalcode
         street:
           type: string
-          description: Streaet address
+          description: Street address
       required: []
       title: SwedishAddress
     SwedishBranches:
