@@ -199,6 +199,7 @@ components:
           type: string
           pattern: '^\d*(\.\d*)?$'
           description: Ownership in percent, formatted using period as the decimal point.
+          example: '26.5'
         companies:
           type: array
           items:
