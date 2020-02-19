@@ -1095,86 +1095,124 @@ components:
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217 . Applies for all fields in this block and the ones below containg monetary values.
           example: SEK
         currentRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             Current assets in percent of Short term liabilities.
             
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
-          example: 19.4
+            
+            Formatted using period as the decimal point.
+          example: "19.4"
         equityAssetsRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "25.4"
           description: |
             Calculated equity in percent of the total assets.
+            
+            Formatted using period as the decimal point.
+            
         growthInTurnover:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: |
             Growth in turnover, compared to the result from the previous statement. In percent.
+            
+            Formatted using period as the decimal point.
         interestCoverage:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
-          example: 2.0
+          example: "2.0"
         interestOnLiability:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             Interest on liability expressed in percent
-          example: 5.0
+            
+            Formatted using period as the decimal point.
+          example: "5.0"
         liabilityRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             Liabilities in percent of equity.
             
             The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
+            
+            Formatted using period as the decimal point.
         liquidAssetsOfTurnover:
-          type: number
-          format: double
-          description: liquid assets in percent of total turnover.
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "33.3"
+          description: |
+            liquid assets in percent of total turnover.
+            
+            Formatted using period as the decimal point.
         netSalesPerEmployee:
           type: integer
           format: int64
           description: |
             Net sales per employee.
         netSalesTrendIndex:
-          type: number
-          format: double
-          description: The trend for netsales. Comparing this years value with previous year. In percent
-          example: 5.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: |
+            The trend for netsales. Comparing this years value with previous year. In percent
+            
+            Formatted using period as the decimal point.
+          example: "5.0"
         profitMargin:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "22.1"
           description: |
             Operating profit/loss plus financial income as a percentage of turnover.
+            
+            Formatted using period as the decimal point.
         quickRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "0.0"
           description: |
            Current assets minus inventories in percent of current liabilities.
+           
+           Formatted using period as the decimal point.
         returnOnEquity:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "44.2"
           description: |
             Profit/loss after financial items as a percentage of the total equity.
+            
+            Formatted using period as the decimal point.
         returnOnTotalAssets:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "33.0"
           description: |
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
+            
+            Formatted using period as the decimal point.
         riskMargin:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "3.0"
           description: |
             Return on total capital minus average interest on liabilities.
+            
+            Formatted using period as the decimal point.
         turnoverAssets:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "39.4"
           description: |
             Capital turnover is measured as profit/loss in relation to assets.
+            
+            Formatted using period as the decimal point.
         grossMargin:
           type: integer
           format: int64
@@ -1910,10 +1948,13 @@ components:
           type: string
           description: https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
         ownershipInPercent:
-          type: number
-          format: double
-          description: Ownership in percent
-          example: 50.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: |
+            Ownership in percent
+            
+            Formatted using period as the decimal point.
+          example: "50.0"
         propertyTypeCode:
           type: string
           description: |
@@ -1963,10 +2004,13 @@ components:
           type: string
           description: https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/
         ownershipInPercent:
-          type: number
-          format: double
-          description: Ownership in percent
-          example: 50.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: |
+            Ownership in percent
+            
+            Formatted using period as the decimal point.
+          example: "50.0"
         propertyTypeCode:
           type: string
           description: |
