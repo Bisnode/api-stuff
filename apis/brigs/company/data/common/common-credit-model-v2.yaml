@@ -240,8 +240,8 @@ components:
           description: |
             The parent is either a PARENT (parent 1 level up) or an ULTIMATE_PARENT (top level parent)
           enum: ['PARENT', 'ULTIMATE_PARENT']
-        dunsNumber:
-          type: string
+        identifiers:
+           "$ref": "#/components/schemas/Identifiers"
         countryCode:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
