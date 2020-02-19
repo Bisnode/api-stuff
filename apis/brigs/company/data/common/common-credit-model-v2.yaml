@@ -186,12 +186,8 @@ components:
     Company:
       type: object
       properties:
-        registrationNumber:
-          type: string
-          description: The national registrationNumber for this company.
-        dunsNumber:
-          type: string
-          description: For foreign companies a duns-number will be supplied instead of the registrationNumber
+        identifiers:
+          "$ref": '#/components/schemas/Identifiers'
         name:
           description: Name of this company
           example: Bisnode AB
