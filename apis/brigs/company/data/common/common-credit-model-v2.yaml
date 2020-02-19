@@ -196,11 +196,9 @@ components:
           type: string
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         ownershipInPercent:
-          type: integer
-          format: int32
-          description: Ownership in percent
-          min: 0
-          max: 100
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: Ownership in percent, formatted using period as the decimal point.
         companies:
           type: array
           items:
