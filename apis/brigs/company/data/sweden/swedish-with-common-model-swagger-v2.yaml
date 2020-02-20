@@ -1154,8 +1154,9 @@ components:
         netSalesPerEmployee:
           type: integer
           format: int64
+          example: 55
           description: |
-            Net sales per employee.
+            Net sales per employee. In local currency.
         netSalesTrendIndex:
           type: string
           pattern: '^\d*(\.\d*)?$'
