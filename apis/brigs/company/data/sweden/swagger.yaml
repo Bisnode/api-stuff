@@ -911,6 +911,10 @@ components:
           type: string
           enum: ['HEADQUARTER', 'BRANCH']
           description: Office location
+        location:
+          type: string
+          example: Stockholm
+          description: Where the company is seated.
       required: []
       title: SwedishGeneralCompanyData
     SwedishLegalForm:
