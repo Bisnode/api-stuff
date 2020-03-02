@@ -536,7 +536,7 @@ components:
           type: string
           format: date
           example: 2018-10-01
-          description: Date when the article of association was created/submitted???
+          description: Date when the article of association was created/submitted
         registrationDate:
           type: string
           format: date
@@ -721,7 +721,7 @@ components:
           format: double
           example: 89.0
           description: >-
-              Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
+              Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"
 
               An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
         daysOfReceiveables:
