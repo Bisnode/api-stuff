@@ -668,19 +668,19 @@ components:
         boardMembersMin:
           type: integer
           format: int32
-          description: The minimum number of boardmembers the company must have according to the company's article of association ???
+          description: The minimum number of boardmembers the company must have according to the company's article of association
         boardMembersMax:
           type: integer
           format: int32
-          description: The maximum number of boardmembers the company can have according to the company's article of association ???
+          description: The maximum number of boardmembers the company can have according to the company's article of association
         deputiesMin:
           type: integer
           format: int32
-          description: The minimum number of deputies the company must have according to the company's article of association ???
+          description: The minimum number of deputies the company must have according to the company's article of association
         deputiesMax:
           type: integer
           format: int32
-          description: The maximum number of deputies the company can have according to the company's article of association ???
+          description: The maximum number of deputies the company can have according to the company's article of association
         bankruptcyCommitmentsCount:
           type: integer
           format: int32
@@ -1206,17 +1206,14 @@ components:
           pattern: '^\d*(\.\d*)?$'
           example: "3.0"
           description: |
-            Return on total capital minus average interest on liabilities.
-            
+            Return on total capital minus average interest on liabilitie.
             Formatted using period as the decimal point.
         turnoverAssets:
           type: string
           pattern: '^\d*(\.\d*)?$'
           example: "39.4"
           description: |
-            Capital turnover is measured as profit/loss in relation to assets.
-            
-            Formatted using period as the decimal point.
+            Capital turnover is measured as profit/loss in relation to assets.Formatted using period as the decimal point.
         grossMargin:
           type: integer
           format: int64
@@ -1956,7 +1953,6 @@ components:
           pattern: '^\d*(\.\d*)?$'
           description: |
             Ownership in percent
-            
             Formatted using period as the decimal point.
           example: "50.0"
         propertyTypeCode:
@@ -2012,7 +2008,6 @@ components:
           pattern: '^\d*(\.\d*)?$'
           description: |
             Ownership in percent
-            
             Formatted using period as the decimal point.
           example: "50.0"
         propertyTypeCode:
