@@ -691,19 +691,19 @@ components:
         boardMembersMin:
           type: integer
           format: int32
-          description: The minimum number of boardmembers the company must have according to the company's article of association ???
+          description: The minimum number of boardmembers the company must have according to the company's article of association 
         boardMembersMax:
           type: integer
           format: int32
-          description: The maximum number of boardmembers the company can have according to the company's article of association ???
+          description: The maximum number of boardmembers the company can have according to the company's article of association
         deputiesMin:
           type: integer
           format: int32
-          description: The minimum number of deputies the company must have according to the company's article of association ???
+          description: The minimum number of deputies the company must have according to the company's article of association
         deputiesMax:
           type: integer
           format: int32
-          description: The maximum number of deputies the company can have according to the company's article of association ???
+          description: The maximum number of deputies the company can have according to the company's article of association
         bankruptcyCommitmentsCount:
           type: integer
           format: int32
@@ -978,7 +978,7 @@ components:
         articlesOfAssociationDate:
           type: string
           format: date
-          description: Date when the article of association was created/submitted???
+          description: Date when the article of association was created/submitted
         foundationDate:
           type: string
           format: date
