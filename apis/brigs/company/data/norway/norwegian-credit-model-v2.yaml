@@ -572,8 +572,8 @@ components:
         auditorsReservationDescription:
           type: string
           description: >-
-            Textual description of the auditorsReservationCode ?? 
-            OR the actual comment ???
+            Textual description of the auditorsReservationCode
+            OR the actual comment
         statementDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
@@ -686,7 +686,7 @@ components:
           format: double
           example: 89.0
           description: >-
-              Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
+              Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"
 
               An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
 
