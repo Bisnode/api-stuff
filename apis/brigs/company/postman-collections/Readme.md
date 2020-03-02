@@ -2,7 +2,9 @@
 
 ##
 
-Below you find instructions about how to step by step set up a simple Postman collection that enables you to test Bisnode Credit Information B2B API and play around in a Bisnode sandbox environment. Postman can be downloaded here: https://www.getpostman.com/downloads/
+Below you find instructions about how to step by step set up a simple Postman collection that enables you to test Bisnode Credit Information B2B API and play around in a Bisnode sandbox environment. Postman can be downloaded here: https://www.getpostman.com/downloads/ 
+
+This example is for version v1, if you are using any other version of the api just substitute v1 with the correct version in the url's below. For instance v2.
 
 Get started with Bisnode Credit Information B2B API:
 
