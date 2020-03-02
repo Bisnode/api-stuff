@@ -511,7 +511,7 @@ components:
         date:
           type: string
           format: date
-          description: Date when the claim was submitted to authorities ?
+          description: Date when the claim was submitted to authorities
         privateClaimsCount:
           type: integer
           format: int64
@@ -786,7 +786,6 @@ components:
       title: DanishBranches
     DanishBranch:
       type: object
-      description: What is a branch? 
       properties:
         name:
           type: string
@@ -1012,7 +1011,7 @@ components:
         articlesOfAssociationDate:
           type: string
           format: date
-          description: Date when the article of association was created/submitted?
+          description: Date when the article of association was created/submitted
         foundationDate:
           type: string
           format: date
@@ -1402,7 +1401,7 @@ components:
           type: integer
           format: int64
           description: |
-            Interest income from group companies. Example- Bank loans ?
+            Interest income from group companies. Example- Bank loans
         otherFinancialExpenses:
           type: integer
           format: int64
