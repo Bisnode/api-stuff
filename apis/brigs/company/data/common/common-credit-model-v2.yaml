@@ -832,12 +832,10 @@ components:
           max: 100
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
-          description: TODO - add description
         identifiers:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-          description: TODO - add description
       title: CompanyShareholder
     PersonShareholder:
       type: object
@@ -857,7 +855,6 @@ components:
           max: 100
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
-          description: TODO - add description
         birthDate:
           type: string
           description: The date on which the owner was born.
@@ -882,7 +879,6 @@ components:
           max: 100
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
-          description: TODO - add description
       title: Subsidiary
     CompanyStatus:
       type: object
