@@ -806,30 +806,34 @@ components:
       properties:
         companyShareholders:
           type: array
-          description: A list of companies that hold shares in this company.
+          description: |
+            A list of companies that hold shares in this company.
           items:
             "$ref": "#/components/schemas/CompanyShareholder"
         personShareholders:
           type: array
-          description: A list of people who hold shares in this company.
+          description: |
+            A list of people who hold shares in this company.
           items:
             "$ref": "#/components/schemas/PersonShareholder"
     CompanyShareholder:
       type: object
-      description: Company which owns shares in this company.
+      description: |
+        Company which owns shares in this company.
       properties:
         name:
           type: string
-          description: Name of the company.
+          description: |
+            Name of the company.
         countryCode:
           type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          description: |
+            'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         ownershipInPercent:
-          type: number
-          format: float
-          description: Ownership in percentage.
-          min: 0
-          max: 100
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: |
+            Ownership in percentage. Using period as the decimal point.
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
         identifiers:
@@ -839,29 +843,33 @@ components:
       title: CompanyShareholder
     PersonShareholder:
       type: object
-      description: Person who owns shares in this company.
+      description: |
+        Person who owns shares in this company.
       properties:
         name:
           type: string
-          description: Name of the company.
+          description: |
+            Name of the company.
         countryCode:
           type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          description: |
+            'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         ownershipInPercent:
-          type: number
-          format: float
-          description: Ownership in percentage.
-          min: 0
-          max: 100
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: |
+            Ownership in percentage. Using period as the decimal point.
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
         birthDate:
           type: string
-          description: The date on which the owner was born.
+          description: |
+            The date on which the owner was born.
       title: PersonShareholder
     Subsidiary:
       type: object
-      description: A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
+      description: |
+        A company relates to another one as it's subsidiary as and when that other company owns the majority (>50%) of the capital of the company in focus.
       properties:
         name:
           type: string
@@ -870,13 +878,13 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         countryCode:
           type: string
-          description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
+          description: |
+            'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         ownershipInPercent:
-          type: number
-          format: float
-          description: Ownership in percent
-          min: 0
-          max: 100
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: |
+            Ownership in percentage. Using period as the decimal point.
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
       title: Subsidiary
@@ -886,7 +894,8 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - add description
+          description: |
+            TODO - add description
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
