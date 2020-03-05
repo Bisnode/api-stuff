@@ -862,9 +862,7 @@ components:
         date:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
         birthDate:
-          type: string
-          description: |
-            The date on which the owner was born.
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
       title: PersonShareholder
     Subsidiary:
       type: object
