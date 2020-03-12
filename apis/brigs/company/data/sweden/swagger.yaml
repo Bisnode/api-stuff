@@ -610,8 +610,8 @@ components:
       decription: 'Swedish sole proprietor only'
       type: object
       properties:
-        proprietor:
-          "$ref": "#/components/schemas/SwedishProprietor"    
+        proprietorDetails:
+          "$ref": "#/components/schemas/SwedishProprietorDetails"    
         incomeInformation: 
           type: object
           properties:
@@ -621,7 +621,7 @@ components:
               "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"  
       required: []
       title: SwedishProprietorInformation
-    SwedishProprietor:
+    SwedishProprietorDetails:
       description: 'Proprietors general data'
       type: object
       properties:
@@ -638,7 +638,7 @@ components:
           type: string
           description: 'Textual description of civil status of the properietor'
       required: []
-      title: SwedishProprietor
+      title: SwedishProprietorDetails
     SwedishProprietorIncomeInformation:
       description: 'Proprietors income information'
       type: object
