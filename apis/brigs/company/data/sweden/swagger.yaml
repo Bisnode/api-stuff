@@ -594,6 +594,8 @@ components:
     SwedishOwnership:
       type: object
       properties:
+        proprietorInformation:
+           "$ref": "#/components/schemas/SwedishProprietorInformation"    
         parentCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
@@ -604,6 +606,13 @@ components:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/FamilyTree"
       required: []
       title: SwedishOwnership
+    SwedishProprietorInformation:
+      decription: 'Swedish sole proprietor only'
+      type: object
+      properties:
+        
+      required: []
+      title: SwedishProprietor
     SwedishSubsidiaries:
       type: object
       properties:
