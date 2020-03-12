@@ -612,6 +612,13 @@ components:
       properties:
         proprietor:
           "$ref": "#/components/schemas/SwedishProprietor"    
+        incomeInformation: 
+          type: object
+          properties:
+            currentYear:
+              "$ref": "#/components/schemas/SwedishProprietorIncomeInformation" 
+            previousYear:
+              "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"  
       required: []
       title: SwedishProprietorInformation
     SwedishProprietor:
@@ -632,6 +639,15 @@ components:
           description: 'Textual description of civil status of the properietor'
       required: []
       title: SwedishProprietor
+    SwedishProprietorIncomeInformation:
+      description: 'Proprietors income information'
+      type: object
+      properties:
+        totalIncome:
+          type: int32
+          description: Total proprietors income.
+      required: []
+      title: SwedishProprietorIncomeInformation
     SwedishSubsidiaries:
       type: object
       properties:
