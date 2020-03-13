@@ -643,6 +643,9 @@ components:
       description: 'Proprietors income information'
       type: object
       properties:
+        assessmentYear:
+          type: string
+          description: 'Assessment year. Income tax return year is assessmentYear+1' 
         totalIncome:
           type: integer
           format: int64
