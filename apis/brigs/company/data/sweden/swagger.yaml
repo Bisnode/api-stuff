@@ -645,11 +645,57 @@ components:
       properties:
         assessmentYear:
           type: string
-          description: 'Assessment year. Income tax return year is assessmentYear+1' 
+          description: 'Assessment year. Income tax return year in Sweden is assessmentYear+1.' 
+          example: '2019'
         totalIncome:
           type: integer
           format: int64
-          description: Total proprietors income.
+          description: 'Total proprietors income for assesment year.'
+        incomeFromEmployment:
+          type: integer
+          format: int64
+          description: 'Proprietors salary from employment'
+        incomeFromBusiness:
+          type: integer
+          format: int64
+          description: 'Proprietors income from active business activity'
+        deficitFromBusiness:
+          type: integer
+          format: int64
+          description: 'Proprietors deficit from active business activity'
+        incomeFromPassiveBusiness:
+          type: integer
+          format: int64
+          description: 'Proprietors income from dormant business activity'
+        deficitFromPassiveBusiness:
+          type: integer
+          format: int64
+          description: 'Proprietors deficit from dormant business activity'
+        deficitOfCapitalContribution:
+          type: integer
+          format: int64
+          description: 'Surpluses/deficits of capital contribution'
+          example: '-20'
+        ordinaryDeduction:
+          type: integer
+          format: int64
+          description: 'Ordinary deduction'
+        taxDeductionEarnedIncome:
+          type: integer
+          format: int64
+          description: 'Tax deduction on income from employment'
+        totalTaxedIncome:
+          type: integer
+          format: int64
+          description: 'Total assessed earned income'
+        taxableAssets:
+          type: integer
+          format: int64
+          description: "Principal's taxable wealth" 
+        finalTax:
+          type: integer
+          format: int64
+          description: "Final tax" 
       required: []
       title: SwedishProprietorIncomeInformation
     SwedishSubsidiaries:
