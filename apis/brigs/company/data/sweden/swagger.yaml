@@ -720,6 +720,12 @@ components:
           description: 'Company name which principal is involved'
         identifiers:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+        enteredDate:
+          type: string
+          format: date
+          description: 'Date when this person/entity entered this position.'
+        status:
+        
         function:
           type: integer
           format: int32
@@ -767,7 +773,7 @@ components:
             96  LAY AUDITOR                             
             97  AUDITOR                                 
             98  DEPUTY AUDITOR                          
-            99  DEPUTY LAY AUDITOR         
+            99  DEPUTY LAY AUDITOR  
       required: []
       title: SwedishProprietorBusinessAssignments
     SwedishSubsidiaries:
