@@ -619,6 +619,19 @@ components:
               "$ref": "#/components/schemas/SwedishProprietorIncomeInformation" 
             previousYear:
               "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"  
+        businessAssignments:
+          type: object
+          properties:
+            currentAssignments:
+              type: array
+              description: 'A list of current proprietors assigments in other companies.'
+              items:
+                "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments" 
+            historicalAssignments:
+              type: array
+              description: 'A list of historical proprietors assigments in other companies.'
+              items:
+                "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments" 
       required: []
       title: SwedishProprietorInformation
     SwedishProprietorDetails:
@@ -698,6 +711,65 @@ components:
           description: "Final tax" 
       required: []
       title: SwedishProprietorIncomeInformation
+    SwedishProprietorBusinessAssignments:
+      description: 'Proprietors assignment in other companies'
+      type: object
+      properties:
+        companyName: 
+          type: string
+          description: 'Company name which principal is involved'
+        identifiers:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+        function:
+          type: integer
+          format: int32
+          description: |
+            0  MEMBER MANAGING DIR.                    
+            1  MANAGER CHAIRMAN                        
+            2  DEPUTY & MGR                            
+            3  Managing Dir & Registered Agent         
+            4  MANAGER                                 
+            5  Managing Dir, Deputy & Registered Agent 
+            6  EXTERNAL MGR                            
+            7  Extern Managing Dir & Registered Agent  
+            9  VICE MANAGER CHAIRMAN                   
+            10  MEMBER & VICE MGR                       
+            12  DEPUTY & VICE MGR                       
+            13  Vice Managing Dir, Deputy & Reg. Agent  
+            14  VICE MANAGING DIR.                      
+            15  Vice Managing Dir & Registered Agent    
+            16  EXTERNAL VICE MGR.                      
+            17  Ext Vice Managing Dir & Registered Agent
+            19  MEMBER CHAIRMAN                         
+            20  MEMBER                                  
+            22  Member & Registered Agent               
+            25  EXT.FIRM SIGN.                          
+            26  ACTUARY                                 
+            27  ACTUARY & SIGNATORY NOT ON THE BOARD    
+            30  LIQUIDATOR                              
+            32  DEPUTY                                  
+            33  Chairman, Deputy & Registered Agent     
+            34  Deputy & Registered Agent               
+            36  Registered Agent                        
+            48  PART-OWNER & HOLDER OF PROCURATION      
+            50  PART-OWNER                              
+            60  UNLIMITED PARTNER                       
+            68  LIMITED PARTNER & HOLDER OF PROCURATION 
+            70  LIMITED PARTNER                         
+            72  MANAGER                                 
+            86  HOLDER OF PROCURATION                   
+            90  PRINCIPALLY RESP. AUDITOR & REG. AGENT  
+            91  AUDITOR & REGISTERED AGENT              
+            92  LAY AUDITOR & REGISTERED AGENT          
+            93  DEPUTY AUDITOR & REGISTERED AGENT       
+            94  DEPUTY LAY AUDITOR & REGISTERED AGENT   
+            95  PRINCIPALLY RESPONSIBLE AUDITOR         
+            96  LAY AUDITOR                             
+            97  AUDITOR                                 
+            98  DEPUTY AUDITOR                          
+            99  DEPUTY LAY AUDITOR         
+      required: []
+      title: SwedishProprietorBusinessAssignments
     SwedishSubsidiaries:
       type: object
       properties:
