@@ -724,8 +724,11 @@ components:
           type: string
           format: date
           description: 'Date when this person/entity entered this position.'
-        status:
-        
+        statusCode:
+          "$ref": "#/components/schemas/SwedishReportCode"
+        statusCodeDate:
+          type: string
+          description: "The date of current status for the company"
         function:
           type: integer
           format: int32
