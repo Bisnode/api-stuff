@@ -718,14 +718,11 @@ components:
         identifiers:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
         enteredDate:
-          type: string
-          format: date
-          description: 'Date when this person/entity entered this position.'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         statusCode:
           "$ref": "#/components/schemas/SwedishReportCode"
         statusCodeDate:
-          type: string
-          description: "The date of current status for the company"
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         function:
           type: integer
           format: int32
