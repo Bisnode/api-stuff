@@ -656,7 +656,7 @@ components:
       type: object
       properties:
         assessmentYear:
-         "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         totalIncome:
           type: integer
           format: int64
