@@ -646,7 +646,7 @@ components:
         civilStatusCode:
           type: integer
           format: int32
-          description: 'Civil status of the properietor'
+          description: 'Civil status of the proprietor'
         civilStatusDescription:
           type: string
           description: 'Textual description of civil status of the properietor'
