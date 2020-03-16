@@ -638,6 +638,9 @@ components:
       description: 'Proprietors general data'
       type: object
       properties:
+        identificationNumber:
+          type: string
+          description:  'Proprietors identification number, e.g social security number in Sweden'
         name: 
           type: string
           description: 'Name of the proprietor'
