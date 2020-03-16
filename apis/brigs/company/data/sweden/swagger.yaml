@@ -644,8 +644,7 @@ components:
         address:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
         civilStatusCode:
-          type: integer
-          format: int32
+          type: string
           description: |
             'P  MARRIED/REGISTERED PARTNERSHIP        
              T  FORMERLY MARRIED              
