@@ -646,7 +646,18 @@ components:
         civilStatusCode:
           type: integer
           format: int32
-          description: 'Civil status of the proprietor'
+          description: |
+            'P  MARRIED/REGISTERED PARTNERSHIP        
+             T  FORMERLY MARRIED              
+             X  NOT MARRIED                   
+             1  UNMARRIED                     
+             2  MARRIED                       
+             3  MARRIED 
+             4  DIVORCED                      
+             5  WIDOW/WIDOWER                 
+             6  DECEASED                      
+             7  MARRIED                       
+             8  UNMARRIED'
         civilStatusDescription:
           type: string
           description: 'Textual description of civil status of the properietor'
