@@ -656,9 +656,7 @@ components:
       type: object
       properties:
         assessmentYear:
-          type: string
-          description: 'Assessment year. Income tax return year in Sweden is assessmentYear+1.' 
-          example: '2019'
+         "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         totalIncome:
           type: integer
           format: int64
