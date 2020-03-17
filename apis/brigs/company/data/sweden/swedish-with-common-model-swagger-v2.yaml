@@ -679,10 +679,11 @@ components:
           type: integer
           format: int64
           description: 'Proprietors deficit from dormant business activity'
-        deficitOfCapitalContribution:
+        surplusesDeficitsOfCapitalContribution:
           type: integer
           format: int64
-          description: 'Surpluses/deficits of capital contribution'
+          description: |
+            'Surpluses/deficits of capital contribution.'
           example: '-20'
         ordinaryDeduction:
           type: integer
