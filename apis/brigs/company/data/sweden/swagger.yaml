@@ -615,18 +615,7 @@ components:
         incomeInformation: 
           "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
-          type: object
-          properties:
-            currentAssignments:
-              type: array
-              description: 'A list of current proprietors assigments in other companies.'
-              items:
-                "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments" 
-            historicalAssignments:
-              type: array
-              description: 'A list of historical proprietors assigments in other companies.'
-              items:
-                "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments" 
+          "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"  
       required: []
       title: SwedishProprietorInformation
     SwedishProprietorDetails:
