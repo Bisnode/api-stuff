@@ -705,16 +705,16 @@ components:
     SwedishProprietorBusinessAssignments:
       type: object
       properties:
-      currentAssignments:
-        type: array
-        description: 'A list of current proprietors assigments in other companies.'
-        items:
-          "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
-      historicalAssignments:
-        type: array
-        description: 'A list of historical proprietors assigments in other companies.'
-        items:
-          "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
+        currentAssignments:
+          type: array
+          description: 'A list of current proprietors assigments in other companies.'
+          items:
+            "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
+        historicalAssignments:
+          type: array
+          description: 'A list of historical proprietors assigments in other companies.'
+          items:
+            "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
       required: []
       title: SwedishProprietorBusinessAssignments
     SwedishProprietorBusinessAssignment:
