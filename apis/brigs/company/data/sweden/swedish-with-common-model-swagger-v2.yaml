@@ -650,6 +650,16 @@ components:
       description: 'Proprietors income information'
       type: object
       properties:
+        currentYear:
+          "$ref": "#/components/schemas/SwedishProprietorIncome" 
+        previousYear:
+          "$ref": "#/components/schemas/SwedishProprietorIncome" 
+      rquired: []
+      title: SwedishProprietorIncomeInformation
+    SwedishProprietorIncome:
+      description: 'Proprietors income information'
+      type: object
+      properties:
         assessmentYear:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         totalIncome:
@@ -702,7 +712,7 @@ components:
           format: int64
           description: "Final tax" 
       required: []
-      title: SwedishProprietorIncomeInformation
+      title: SwedishProprietorIncome
     SwedishProprietorBusinessAssignments:
       description: 'Proprietors assignment in other companies'
       type: object
