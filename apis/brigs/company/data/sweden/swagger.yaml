@@ -613,12 +613,7 @@ components:
         proprietorDetails:
           "$ref": "#/components/schemas/SwedishProprietorDetails"    
         incomeInformation: 
-          type: object
-          properties:
-            currentYear:
-              "$ref": "#/components/schemas/SwedishProprietorIncomeInformation" 
-            previousYear:
-              "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"  
+          "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
           type: object
           properties:
@@ -666,6 +661,16 @@ components:
       required: []
       title: SwedishProprietorDetails
     SwedishProprietorIncomeInformation:
+      description: 'Proprietors income information'
+      type: object
+      properties:
+        currentYear:
+          "$ref": "#/components/schemas/SwedishProprietorIncome" 
+        previousYear:
+          "$ref": "#/components/schemas/SwedishProprietorIncome" 
+      rquired: []
+      title: SwedishProprietorIncomeInformation
+    SwedishProprietorIncome:
       description: 'Proprietors income information'
       type: object
       properties:
@@ -723,8 +728,23 @@ components:
           format: int64
           description: "Final tax" 
       required: []
-      title: SwedishProprietorIncomeInformation
+      title: SwedishProprietorIncome
     SwedishProprietorBusinessAssignments:
+      type: object
+      properties:
+      currentAssignments:
+        type: array
+        description: 'A list of current proprietors assigments in other companies.'
+        items:
+          "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
+      historicalAssignments:
+        type: array
+        description: 'A list of historical proprietors assigments in other companies.'
+        items:
+          "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
+      required: []
+      title: SwedishProprietorBusinessAssignments
+    SwedishProprietorBusinessAssignment:
       description: 'Proprietors assignment in other companies'
       type: object
       properties:
@@ -791,7 +811,7 @@ components:
             98  DEPUTY AUDITOR                          
             99  DEPUTY LAY AUDITOR  
       required: []
-      title: SwedishProprietorBusinessAssignments
+      title: SwedishProprietorBusinessAssignment
     SwedishSubsidiaries:
       type: object
       properties:
