@@ -599,12 +599,7 @@ components:
         proprietorDetails:
           "$ref": "#/components/schemas/SwedishProprietorDetails"    
         incomeInformation: 
-          type: object
-          properties:
-            currentYear:
-              "$ref": "#/components/schemas/SwedishProprietorIncomeInformation" 
-            previousYear:
-              "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"  
+          "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
           type: object
           properties:
