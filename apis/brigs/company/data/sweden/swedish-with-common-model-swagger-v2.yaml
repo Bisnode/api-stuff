@@ -592,6 +592,7 @@ components:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/FamilyTree"
       required: []
       title: SwedishOwnership
+      
     SwedishProprietorInformation:
       decription: 'Swedish sole proprietor only'
       type: object
@@ -604,6 +605,7 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
       required: []
       title: SwedishProprietorInformation
+      
     SwedishProprietorDetails:
       description: 'Proprietors general data'
       type: object
@@ -635,6 +637,7 @@ components:
           description: 'Textual description of civil status of the properietor'
       required: []
       title: SwedishProprietorDetails
+      
     SwedishProprietorIncomeInformation:
       description: 'Proprietors income information'
       type: object
@@ -645,6 +648,7 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorIncome" 
       rquired: []
       title: SwedishProprietorIncomeInformation
+      
     SwedishProprietorIncome:
       description: 'Proprietors income information'
       type: object
@@ -702,6 +706,7 @@ components:
           description: "Final tax" 
       required: []
       title: SwedishProprietorIncome
+      
     SwedishProprietorBusinessAssignments:
       type: object
       properties:
@@ -717,6 +722,7 @@ components:
             "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
       required: []
       title: SwedishProprietorBusinessAssignments
+      
     SwedishProprietorBusinessAssignment:
       description: 'Proprietors assignment in other companies'
       type: object
@@ -782,6 +788,7 @@ components:
             99  DEPUTY LAY AUDITOR  
       required: []
       title: SwedishProprietorBusinessAssignment
+      
     SwedishSubsidiaries:
       type: object
       properties:
