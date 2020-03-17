@@ -617,7 +617,7 @@ components:
           type: string
           description: 'Name of the proprietor'
         address:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/StreetAddress"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress"
         civilStatusCode:
           type: string
           description: |
@@ -733,7 +733,7 @@ components:
           type: string
           description: 'Company name which principal is involved'
         identifiers:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/Identifiers"
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         enteredDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         statusCode:
