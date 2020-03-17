@@ -691,10 +691,12 @@ components:
           type: integer
           format: int64
           description: 'Proprietors deficit from dormant business activity'
-        deficitOfCapitalContribution:
+        surplusesDeficitsOfCapitalContribution:
           type: integer
           format: int64
-          description: 'Surpluses/deficits of capital contribution'
+          description:  | 
+                'Surpluses/deficits of capital contribution. 
+                Contributed capital, also known as paid-in capital, is the cash and other assets that shareholders have given a company in exchange for stock.'
           example: '-20'
         ordinaryDeduction:
           type: integer
