@@ -736,6 +736,8 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers"
         enteredDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+        resignedDate:
+         "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         statusCode:
           "$ref": "#/components/schemas/SwedishReportCode"
         statusCodeDate:
