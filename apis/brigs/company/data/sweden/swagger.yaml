@@ -748,6 +748,10 @@ components:
           type: string
           format: date
           description: 'Date when this person/entity entered this position.'
+        resignedDate:
+          type: string
+          format: date
+          description: 'Date when this person/entity resigned this position. Used in historical assignment'
         statusCode:
           "$ref": "#/components/schemas/SwedishReportCode"
         statusCodeDate:
