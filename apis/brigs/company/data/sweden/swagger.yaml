@@ -758,6 +758,7 @@ components:
           "$ref": "#/components/schemas/SwedishReportCode"
         statusCodeDate:
           type: string
+          format: date
           description: "The date of current status for the company"
         function:
           type: integer
