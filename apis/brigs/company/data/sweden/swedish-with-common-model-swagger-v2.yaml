@@ -1301,7 +1301,7 @@ components:
           example: SEK
         currentRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             Current assets in percent of Short term liabilities.
             
@@ -1311,7 +1311,7 @@ components:
           example: "19.4"
         equityAssetsRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "25.4"
           description: |
             Calculated equity in percent of the total assets.
@@ -1320,7 +1320,7 @@ components:
             
         growthInTurnover:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: |
             Growth in turnover, compared to the result from the previous statement. In percent.
@@ -1328,13 +1328,13 @@ components:
             Formatted using period as the decimal point.
         interestCoverage:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
           example: "2.0"
         interestOnLiability:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             Interest on liability expressed in percent
             
@@ -1342,7 +1342,7 @@ components:
           example: "5.0"
         liabilityRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             Liabilities in percent of equity.
             
@@ -1351,7 +1351,7 @@ components:
             Formatted using period as the decimal point.
         liquidAssetsOfTurnover:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "33.3"
           description: |
             liquid assets in percent of total turnover.
@@ -1365,7 +1365,7 @@ components:
             Net sales per employee. In local currency.
         netSalesTrendIndex:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             The trend for netsales. Comparing this years value with previous year. In percent
             
@@ -1373,7 +1373,7 @@ components:
           example: "5.0"
         profitMargin:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "22.1"
           description: |
             Operating profit/loss plus financial income as a percentage of turnover.
@@ -1381,7 +1381,7 @@ components:
             Formatted using period as the decimal point.
         quickRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "0.0"
           description: |
            Current assets minus inventories in percent of current liabilities.
@@ -1389,7 +1389,7 @@ components:
            Formatted using period as the decimal point.
         returnOnEquity:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "44.2"
           description: |
             Profit/loss after financial items as a percentage of the total equity.
@@ -1397,7 +1397,7 @@ components:
             Formatted using period as the decimal point.
         returnOnTotalAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "33.0"
           description: |
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
@@ -1405,14 +1405,14 @@ components:
             Formatted using period as the decimal point.
         riskMargin:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "3.0"
           description: |
-            Return on total capital minus average interest on liabilitie.
+            Return on total capital minus average interest on liabilities.
             Formatted using period as the decimal point.
         turnoverAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "39.4"
           description: |
             Capital turnover is measured as profit/loss in relation to assets.Formatted using period as the decimal point.
