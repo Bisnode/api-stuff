@@ -1095,7 +1095,7 @@ components:
           type: boolean
           example: true
           description: |
-                "True if this company pays corporate tax."
+                "True if this company is registered for corporate tax."
       required: []
       title: SwedishGeneralCompanyData
     SwedishLegalForm:
