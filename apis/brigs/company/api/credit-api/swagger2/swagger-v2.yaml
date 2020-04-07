@@ -163,6 +163,11 @@ definitions:
           example: false
         address:
           $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress'
+        legalForm:
+          type: string
+          enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'PARTNERSHIP', 'OTHER']
+          description: |
+              LegalForm of this company
       title: CompanyOverview
     SearchRequest:
       type: object
