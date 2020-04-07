@@ -1091,6 +1091,11 @@ components:
           type: string
           example: Stockholm
           description: Where the company is seated.
+        corporateTax:
+          type: boolean
+          example: true
+          description: |
+                "True if this company pays corporate tax."
       required: []
       title: SwedishGeneralCompanyData
     SwedishLegalForm:
