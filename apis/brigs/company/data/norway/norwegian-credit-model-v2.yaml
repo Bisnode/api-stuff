@@ -74,26 +74,38 @@ components:
     NorwegianPaymentRemarks:
       type: object
       description: >-
-        TODO - add description. What does amount referr to?
+        TODO - add description.
+      properties:
+        paymentRemarksGroups:
+          type: array
+          description: Payment remarks groupped by incident.
+          items:
+            "$ref": "#/components/schemas/NorwegianPaymentRemarksGroup"
+        voluntaryRegistrations:
+          type: array
+          description: A list of voluntary registrations.
+          items:
+            "$ref": "#/components/schemas/NorwegianVoluntaryRegistration"
+      required: []
+      title: NorwegianPaymentRemarks
+    NorwegianPaymentRemarksGroup:
+      type: object
+      description: >-
+        A group of remarks related to the same incident. Each remark represents a different state of the incident.
       properties:
         paymentRemarks:
           type: array
-          description: A list of remarks, most recent ones comes first.
+          description: A list of remarks related to the same incident, sorted chronologically in descending order.
           items:
             "$ref": "#/components/schemas/NorwegianPaymentRemark"
-        voluntaryPledges:
-          type: array
-          description: A list of voluntary pledges
-          items:
-            "$ref": "#/components/schemas/NorwegianVoluntaryPledge"
       required: []
-      title: NorwegianPaymentRemarks
+      title: NorwegianPaymentRemarksGroup
     NorwegianPaymentRemark:
       type: object
       description: Remarks on payments
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
+          "$ref": "#/components/schemas/NorwegianPaymentRemarkAmount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
@@ -102,8 +114,34 @@ components:
           example: Bisnode AS
         type:
           type: string
+          enum: [
+            'DEBT_COLLECTION_WITH_NON_PAYMENT_INSTALMENT',
+            'DEBT_COLLECTION',
+            'DEBT_COLLECTION_WITH_CONTINUATED_PROCEEDINGS',
+            'DEBT_COLLECTION_WITH_ACTIONS_FOR_COURT_PROCEEDINGS',
+            'SEIZURE',
+            'SEQUESTRATION',
+            'COURT_JUDGEMENT',
+            'CHARGE_DECISION',
+            'CHARGE_ON_PROPERTY',
+            'BAN_ON_DISPOSAL_OF_ASSETS_PRIOR_TO_BANKRUPTCY',
+            'TEMPORARY_PRECAUTIONARY_MEASURE',
+            'VOLUNTARY_DEBT_SETTLEMENT',
+            'DEBT_SETTLEMENTS_PROCEEDINGS',
+            'COMPULSORY_DEBT_SETTLEMENT',
+            'NOTHING_FOR_DISTRAINT',
+            'DEBT_COLLECTION_WITH_DEDUCTION_IN_SALARY',
+            'DISTRAINT_ON_RENTAL_AGREEMENT',
+            'DEBT_COLLECTION_WITH_PERCENT_DEDUCTION_IN_SALARY',
+            'DISTRAINT_1',
+            'DISTRAINT_2',
+            'DISTRAINT_3',
+            'DISTRAINT_4',
+            'COMPOSITION_APPROVED',
+            'OTHER'
+          ]
           description: >-
-            TODO - what types do we have here?
+            TODO - Add description for each type
         source:
           type: string
           description: The source of the information
@@ -116,13 +154,13 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
       title: NorwegianPaymentRemark
-    NorwegianVoluntaryPledge:
+    NorwegianVoluntaryRegistration:
       type: object
       description: >-
-        TODO - what is this?
+        TODO - add description
       properties:
         amount:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
+          "$ref": "#/components/schemas/NorwegianPaymentRemarkAmount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         creditor:
@@ -131,8 +169,21 @@ components:
           example: Bisnode AS
         type:
           type: string
+          enum: [
+            'SECURITY_IN_AQUACULTURE_LICENCE',
+            'SECURITY_IN_EQUIPMENT',
+            'MORTGAGE_IN_VALUE_OF_DEBT',
+            'SECURITY_IN_FISHING_EQUIPMENT',
+            'SECURITY_IN_RAILWAY',
+            'SECURITY_IN_MOTOR_VEHICLES',
+            'LEASING_AGREEMENT',
+            'SECURITY_IN_AGRICULTURAL_MOVABLES',
+            'SECURITY_IN_VEHICLE',
+            'SECURITY_IN_STOCKS',
+            'OTHER'
+          ]
           description: >-
-            TODO - what types do we have here?
+            TODO - add description for each type
         source:
           type: string
           description: The source of the information
@@ -146,7 +197,17 @@ components:
           description: >-
             Diary number
       required: []
-      title: NorwegianVoluntaryPledge
+      title: NorwegianVoluntaryRegistration
+    NorwegianPaymentRemarkAmount:
+      type: object
+      description: Represents an amount for a payment remark. Only the percentage or the monetary amount can be populated for an instance.
+      properties:
+        monetaryAmount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
+        percentage:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: TODO - add description
     NorwegianEvent:
       type: object
       description: Event as received from authority.
@@ -608,13 +669,31 @@ components:
         auditorsReservationCode:
           type: string
           description: |
-            TODO - add proper codes for norway if they have this
-
+            TODO: Emil these are the codes taken from ontology please review.
+            A - Unlawful loan to shareholders, the manager, members of the board or others
+            B - Tax reduction is not placed in own account or not fully paid in
+            C - Lack of documentary evidence and internal control
+            D - Sharecapital is lost. Continued operations assuming additonal capital and/or improved results
+            E - Uncertainty about continued operations
+            F - Unlawful loan to the manager/members of the board/employees/others
+            G - Weaknesses in the company’s routines/internal control/documentary evidence
+            H - Annual report/accounts not delivered within the lawful time limit
+            I - The company has acquired own shares contrary to the Company shares Act
+            J - The company’s assets are not transferred to the company
+            K - The company has a case in dispute in progress
+            L - The auditor refers to notes/annual report
+            M - Other adverse remarks
+            N - Valuation of assets
+            O - Accounts for the previous year are not audited by the present auditor and the opening balance cannot be verified
+            P - The annual report does contain sufficient information (e.g. if in the event of termination there exists a risk of significant loss in realizing the company’s assets)
+            R - Weaknesses in the company’s routines/internal control/documentary evidence
+            T - Other reservations
+            Y - Negative remarks in the Auditors Report
+            Z - The auditor is unable to express an opinion
         auditorsReservationDescription:
           type: string
           description: >-
-            Textual description of the auditorsReservationCode ??
-            OR the actual comment ???
+            Textual description of the auditorsReservationCode
         statementDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
       required: []
@@ -622,130 +701,169 @@ components:
     NorwegianFinancialStatementKeyFigure:
       type: object
       properties:
+        closingPeriod:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+        fiscalPeriod:
+          type: integer
+          format: int32
+          description: >-
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+          example: 12
         currentRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Current assets in percent of Short term liabilities.
 
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
-          example: 19.4
         interestCoverage:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             TODO - This is interest coverage ratio in brigs web - which one to use?
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
-          example: 2.0
         interestOnLiability:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Interest on liability expressed in percent
-          example: 5.0
         quickRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Current assets minus inventories in percent of current liabilities.
-            example: 17.0
         returnOnEquity:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Profit/loss after financial items as a percentage of the total equity.
-          example: 22.55
         returnOnTotalAssets:
-          type: number
-          format: double
-          example: 25.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
         turnoverAssets:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Capital turnover is measured as profit/loss in relation to assets.
-          example: 33.7
         netProfitMargin:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage.
-          example: 23.4
         netWorth:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
-          example: -1555000
         grossMargin:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
         equityToTurnover:
-          type: number
-          format: double
-          example: 20.15
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             TODO - add description here
         returnOnInvestment:
-          type: number
-          format: double
-          example: 22.25
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an investment or compare the efficiency of a number of different investments. ROI tries to directly measure the amount of return on a particular investment, relative to the investment’s cost. To calculate ROI, the benefit (or return) of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
 
         equityRatio:
-          type: number
-          format: double
-          example: 13.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             The equity ratio is a financial ratio indicating the relative proportion of equity used to finance a company's assets. The two components are often taken from the firm's balance sheet or statement of financial position (so-called book value), but the ratio may also be calculated using market values for both, if the company's equities are publicly traded.
         liquidAssetsOfTurnover:
-          type: number
-          format: double
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Liquid assets in percent of total turnover. A liquid asset is an asset that can easily be converted into cash within a short amount of time.
-          example: 13.77
         workingCapital:
-          type: integer
-          format: int64
-          example: 1200000
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Working capital is the difference between a company’s current assets, such as cash, accounts receivable (customers’ unpaid bills) and inventories of raw materials and finished goods, and its current liabilities, such as accounts payable. Working capital is a measure of a company's liquidity, operational efficiency and its short-term financial health
         longTermStockFinancing:
-          type: number
-          format: double
-          example: 99.37
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             TODO - add description
         gearing:
-          type: number
-          format: double
-          example: 89.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage.
         stockTurnover:
-          type: number
-          format: double
-          example: 89.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
 
             An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
 
-        daysOfReceiveables:
-          type: number
-          format: double
-          example: 1.4
+        daysOfReceivables:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             TODO - Is it correct just to add the description below and change from pay to receive ???
+        cashRatio:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
+          description: >-
+            TODO - Add description
+        profitMargin:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
+          description: >-
+            TODO - Add description
+        resultMargin:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
+          description: >-
+            TODO - Add description
+        debtorRatio:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
+          description: >-
+            TODO - Add description
+        creditorRatio:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
+          description: >-
+            TODO - Add description
         daysOfPayables:
-          type: number
-          format: double
-          example: 14.0
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "100.0"
           description: >-
             Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
 
@@ -755,211 +873,196 @@ components:
       type: object
       properties:
         grossTurnover:
-          type: integer
-          format: int64
-          example: 482000
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          example: "482000"
         netSales:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Net sales is the sum of a company's gross sales minus its returns, allowances, and discounts.
         changeInInventories:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Change in inventories and work in progress for the last reporting period and the current reporting period.
         otherOperatingIncome:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
             TODO - also named as otherFinancialIncome
-        turnover:
-          type: integer
-          format: int64
-          description: >-
-            The company’s total revenues. Net sales + otherOperatingIncome
         costOfGoods:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
 
             TODO - is this the same as commoditiesAndNecessities/rawmaterialsAndConsumables
-        sellingExpenses:
-          type: integer
-          format: int64
-          description: >-
-            Selling expense is reported on the income statement as the sum of all direct and indirect selling expenses of a company. It includes all the costs not directly tied to making a product or performing a service.
-
-            Function based only
-        administrativeCosts:
-          type: integer
-          format: int64
-          description: >-
-            Administrative expenses/costs are the expenses that an organization incurs for administrationcosts and not directly tied to a specific function such as manufacturing, production or sales. These expenses are related to the organization as a whole as opposed to an individual department.
-
-            Function based only
-        commoditiesAndNecessities:
-          type: integer
-          format: int64
-          description: >-
-            Raw materials and consumables for processing in production.
-
-            TODO - also named rawMaterialsAndConsumables
         otherOperatingExpenses:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
         staffCosts:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
         depreciation:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
         writedown:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A write-down is an accounting term for the reduction in the book value of an asset when its fair market value (FMV) has fallen below the carrying book value, and thus become an impaired asset. The amount to be written down is the difference between the book value of the asset and the amount of cash that the business can obtain by disposing of it in the most optimal manner.
-        operatingExpensesTotal:
-          type: integer
-          format: int64
-          description: >-
-            An operating expense is an expense a business incurs through its normal business operations. Often abbreviated as OPEX, operating expenses include rent, equipment, inventory costs, marketing, payroll, insurance, and funds allocated for research and development. One of the typical responsibilities that management must contend with is determining how to reduce operating expenses without significantly affecting a firm's ability to compete with its competitors.
-        operatingProfitAfterDepreciation:
-          type: integer
-          format: int64
-          description: >-
-            The operating profit (loss) is the difference between the business revenue and costs including nonRecurringFinancialItems during the fiscal year.
-            TODO - is this the same as operationalResult
         incomeFromInvestmentsInGroupEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             The net from dividend income, impairment and reserved write-downs.
             TODO - is this correct
         incomeFromInvestmentsInGroupAssociates:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             TODO  - what is the difference from incomeFromInvestmentsInGroupEnterprises
         interestIncomeFromGroupCompanies:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Interest payed to the company by group or affiliate.
         externalInterestIncome:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Interest payed to the company by banks or creditinstitutes.
             TODO - also named interestIncome
         otherFinancialIncome:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
             TODO - is this the same as income from other investments ??
         financialIncomeTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: Total financial revenues
         interestExpenseToGroupCompanies:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Interest payed from the company to group or affiliate.
-        externalInterestExpenses:
-          type: integer
-          format: int64
-          description: >-
-            Interest payed from the company to banks or creditinstitutes.
         interestExpensesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Total sum of interest payed from the company.
         otherFinancialExpenses:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
         financialCostsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Total financial costs. A sum of all costs.
-        nonRecurringFinancialItems:
-          type: integer
-          format: int64
-          description: >-
-            A non-recurring item refers to an entry that appears on a company's financial statements that is unlikely to happen again. It represents a one-time expense involving an unpredictable event and is not part of a firm’s normal, day-to-day operations.
         profitLossAfterFinancialItems:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Profit/Loss after financials shows the years total result of the business.
         extraordinaryIncome:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
         extraordinaryExpenses:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
-        extraordinaryItemsTotal:
-          type: integer
-          format: int64
-          description: >-
-            Extraordinary items consisted of gains or losses from events that were unusual and infrequent in nature that were separately classified, presented, and disclosed on companies' financial statements.
-
-            extraordinaryIncome - extraordinaryExpenses = totalExtraordinaryItems
-
         resultBeforeAllocations:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description:  >-
             Earnings before appropriations
             or
             Result before allocation
         groupContribution:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Given or obtained contribution from/to group or affiliate.
-        shareholdersContribution:
-          type: integer
-          format: int64
-          description: >-
-            A shareholder contribution means that any or all shareholders pay money to the company without obtaining new shares. The motive may be that the owners want to avoid the company having to be liquidated.
-        appropriations:
-          type: integer
-          format: int64
-          description: >-
-            Appropriations is a way of postpone taxes for some of the companys result by allocations to untaxed reserves. The appropriations mainly used is tax allocation reserve.
         profitLossBeforeTax:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Result before tax
         tax:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Taxes paid.
-        netProfitLoss:
-          type: integer
-          format: int64
+        incomeFromOtherInvestments:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
-            A positive value means that the company made a net profit and a negative that it made a net loss.
+            TODO
+        writeDownsOfCurrentAssetsOtherThanCurrentFinancialAssets:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        writeDownOnOtherFinancialCurrentAssets:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        writeDownOnFinancialFixedAssets:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        taxExpenseOnOrdinaryResult:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        taxExpenseOnExtraordinaryResult:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        minorityShareholding:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        resultForTheYear:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        dividend:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        transferredAssessmentDifferences:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
+        transferredOtherEquity:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
+          description: >-
+            TODO
     NorwegianBalanceSheet:
       type: object
       properties:
@@ -978,8 +1081,8 @@ components:
         nonCurrentAssets:
           "$ref": "#/components/schemas/NorwegianNonCurrentAssets"
         assetsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             The sum of all assets.
       title: NorwegianAssets
@@ -989,94 +1092,94 @@ components:
       type: object
       properties:
         inventories:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Inventories
         rawMaterialAndConsumables:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Raw materials and consumables for processing in production.
         producedGoods:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Produced goods
         finishedProductsAndGoods:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Finished products and goods
         currentReceivablesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Current receivables total
         otherReceivables:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other short term receivables
         tradeReceivables:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term trade receivables
         receivableFromGroupAndAssociatedCompanies:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             Short term receivable from group and associated companies.
         unpaidContributedCapital:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Unpaid contributed capital short term
         investmentsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Total amount spent on investments.
         investmentsInAssociatedEnterprisesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Investment in associated enterprises total
         investmentShares:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term investments shares
         investmentBonds:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term investments bonds
         investmentsFinancialInstruments:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term investments financial instruments
-        otherFinancialIntruments:
-          type: integer
-          format: int64
+        otherFinancialInstruments:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other financial instruments
         cashAndBankBalance:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             The sum of cash in hand and money in the bank.
             TODO - fix this description
         investmentsOther:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term investments other
         currentAssetsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
       title: NorwegianCurrentAssets
@@ -1087,108 +1190,108 @@ components:
       type: object
       properties:
         intangibleAssetsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year.
         capitalisedCostForRnd:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Research and development (R&D) expenses are associated with the research and development of a company's goods or services. A company generally incurs R&D expenses in the process of finding and creating new products or services.
         intangibleRights:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Concessions, patents, licenses, trademarks and similar rights.
         deferredTaxAsset:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A deferred tax asset is an asset on a company's balance sheet that may be used to reduce its taxable income. It can refer to a situation where a business has overpaid taxes or taxes paid in advance on its balance sheet. These taxes are eventually returned to the business in the form of tax relief, and the over-payment is, therefore, an asset for the company.
         goodwill:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.
         tangibleAssets:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A tangible asset is an asset that has a finite monetary value and usually a physical form. Tangible assets can typically always be transacted for some monetary value though the liquidity of different markets will vary. Tangible assets are the opposite of intangible assets which have a theorized value rather than a transactional exchange value.
         landAndBuildings:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc.
         machineryAndTools:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Total machinery and inventory.
         shipsRigsAeroplanes:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             ships, rigs and aeroplanes
         equipment:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Equipment
         financialAssetsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Financial assets total
         investmentInSubsidiaries:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Investments made in subsidiaries
         investmentsInOtherGroupCompanies:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Investments made in group companies
         receivablesFromGroupEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Long term receivables from group enterprises
         investmentsInAssociatedEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Investments made in associated enterprises
         receivablesFromAssociatedEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Long term receivables from associated enterprises
         investmentsInOtherEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Investments made in other enterprises.
         otherReceivables:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other receivables
         pensionFund:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Pension fund
         otherFixedAssets:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other fixed assets
         fixedAssetsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A fixed asset is a long-term tangible piece of property or equipment that a firm owns and uses in its operations to generate income. Fixed assets are not expected to be consumed or converted into cash within a year. Fixed assets most commonly appear on the balance sheet as property, plant, and equipment (PP&E).
       title: NorwegianNonCurrentAssets
@@ -1200,8 +1303,8 @@ components:
         shareholdersEquity:
           "$ref": "#/components/schemas/NorwegianShareholdersEquity"
         equityAndLiabilitiesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             The sum of all reported equity and liabilities.
     NorwegianLiabilities:
@@ -1212,8 +1315,8 @@ components:
         nonCurrentLiabilities:
           "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
         liabilitiesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: |
             The sum of all reported liabilities.
       title: NorwegianLiabilities
@@ -1223,52 +1326,52 @@ components:
       type: object
       properties:
         shortTermLiabilitiesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term debt, also called current liabilities, is a firm's financial obligations that are expected to be paid off within a year. It is listed under the current liabilities portion of the total liabilities section of a company's balance sheet.
         convertibleLoans:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Loan that entitles the lender (or the holder of loan debenture) to convert the loan to common or preferred stock (ordinary or preference shares) at a specified conversion rate and within a specified timeframe.
         certificateLoans:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A certificate secured loan is a type of agreement in which you pledge a type of deposit account to a financial institution in exchange for access to a sum of money. You can use this money to make a major purchase, consolidate bills, pay personal expenses or finance higher education. The deposit account that you pledge in a certificate loan is known as a certificate of deposit. With this type of account, you agree to invest a sum of money with a financial institution for a specific period of time and, in exchange, the bank agrees to pay you interest on your money.
-        liabilitiessToBanks:
-          type: integer
-          format: int64
+        liabilitiesToBanks:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: Short term debts to banks.
         tradePayables:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Liabilities owed to suppliers for purchases or services rendered. More commonly referred to as accounts payable.
         taxPayables:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Income tax payable is a type of account in the current liabilities section of a company's balance sheet. It is compiled of taxes due to the government within one year. The calculation of income tax payable is according to the prevailing tax law in the company's home country.
         publicDutiesPayable:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Public duties payable
         payablesToGroupEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Short term payables to group enterprises
         proposedDividends:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Proposed dividends
         otherShortTermLiabilities:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other short term debts
       title: NorwegianCurrentLiabilities
@@ -1276,63 +1379,63 @@ components:
       type: object
       properties:
         longTermLiabilitiesTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
         provisions:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Provisions
         provisionsForPensionsAndSimilarLiabilities:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Provisions for pensions and similar liabilities
         provisionsForDeferredTaxes:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Provisions for deferred taxes
         otherProvisions:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other provisions
         liabilitiesOtherThanProvisions:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Long term liabilitites other than provisions
         convertibleBonds:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A convertible bond is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
         bondLoans:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
         liabilitiesToBanks:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             "Long-term debt is debt that matures in more than one year. Long-term debt can be viewed from two perspectives: financial statement reporting by the issuer and financial investing. In financial statement reporting, companies must record long-term debt issuance and all of its associated payment obligations on its financial statements. On the flip side, investing in long-term debt includes putting money into debt investments with maturities of more than one year."
         payablesToGroupEnterprises:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Long term payables to group enterprises
         subordinatedLoans:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Subordinated debt (loan) (also known as a subordinated debenture) is an unsecured loan or bond that ranks below other, more senior loans or securities with respect to claims on assets or earnings. Subordinated debentures are thus also known as junior securities. In the case of borrower default, creditors who own subordinated debt will not be paid out until after senior bondholders are paid in full.
-        otherlongTermLiabilities:
-          type: integer
-          format: int64
+        otherLongTermLiabilities:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Other long term liabilities
 
@@ -1341,33 +1444,28 @@ components:
       type: object
       properties:
         equity:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
-        paidInCapital:
-          type: integer
-          format: int64
-          description: >-
-            Paid-up capital is the amount of money a company has received from shareholders in exchange for shares of stock. Paid-up capital is created when a company sells its shares on the primary market directly to investors. When shares are bought and sold among investors on the secondary market, no additional paid-up capital is created as proceeds in those transactions go to the selling shareholders, not the issuing company.
         shareCapital:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock. The amount of share capital or equity financing a company has can change over time. A company that wishes to raise more equity can obtain authorization to issue and sell additional shares, thereby increasing its share capital.
         ownShares:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             The value of the shares the company owns in their own company.
         sharePremium:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
         restrictedEquity:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
 
@@ -1375,23 +1473,23 @@ components:
 
             Restricted equity includes share capital, revaluation reserves and other reserves
         retainedEarnings:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
         reserveForValuationVariances:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet for the purpose of maintaining a reserve account tied to certain assets. This line item can be used when a revaluation assessment finds that the carrying value of the asset has changed.
         otherEquity:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             TODO - examples
         minorityInterestsTotal:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another compan.
       title: NorwegianShareholdersEquity
@@ -1424,23 +1522,23 @@ components:
         Misc information releated to the financial statement
       properties:
         wagesToLeaderOrCeo:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Wages paid to the head of the company. Usually the CEO.
-        renumerationToAuditor:
-          type: integer
-          format: int64
+        remunerationToAuditor:
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             The audit fee payed by client to the auditor.
         wagesAndPaymentsToBoard:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Wages and payments to board members
         wagesAndPaymentsToConsultants:
-          type: integer
-          format: int64
+          type: string
+          pattern: '^\d*(\.\d*)?$'
           description: >-
             Wages and payments to consultants.
       title: NorwegianNotesAndOtherInformation
