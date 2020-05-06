@@ -624,6 +624,9 @@ components:
         registeredByEr:
           type: boolean
           description: TODO
+        creditBlocked:
+          type: boolean
+          description: TODO
       required: []
       title: NorwegianActiveStatus
     NorwegianFinance:
