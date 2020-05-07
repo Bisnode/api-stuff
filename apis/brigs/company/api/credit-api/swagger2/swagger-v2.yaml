@@ -13,7 +13,7 @@ info:
         
         This API tries to adhere to the Bisnode Restful API guidelines,
   contact:
-    email: api-bisnode@bisnode.com
+    email: api-support@bisnode.com
 security:
   - OAuth2: 
     - credit_data_companies
