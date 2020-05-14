@@ -37,7 +37,7 @@ components:
           "$ref": "#/components/schemas/NorwegianOwnership"
         events:
           "$ref": "#/components/schemas/NorwegianEvents"
-      required: []
+
       title: NorwegianCompanyData
       description: This is the root object defining which structures reside under the root path.
     NorwegianRisk:
@@ -53,7 +53,7 @@ components:
           "$ref": "#/components/schemas/NorwegianPaymentRemarks"
         bankruptcy:
           "$ref": "#/components/schemas/NorwegianBankruptcy"
-      required: []
+
       title: NorwegianRisk
     NorwegianInquiry:
       type: object
@@ -63,7 +63,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: NorwegianInquiry
     NorwegianTrade:
       type: object
@@ -86,7 +86,7 @@ components:
           description: A list of voluntary registrations.
           items:
             "$ref": "#/components/schemas/NorwegianVoluntaryRegistration"
-      required: []
+
       title: NorwegianPaymentRemarks
     NorwegianPaymentRemarksGroup:
       type: object
@@ -98,7 +98,7 @@ components:
           description: A list of remarks related to the same incident, sorted chronologically in descending order.
           items:
             "$ref": "#/components/schemas/NorwegianPaymentRemark"
-      required: []
+
       title: NorwegianPaymentRemarksGroup
     NorwegianPaymentRemark:
       type: object
@@ -152,7 +152,7 @@ components:
             A reference id
         dueDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: NorwegianPaymentRemark
     NorwegianVoluntaryRegistration:
       type: object
@@ -196,7 +196,7 @@ components:
           type: string
           description: >-
             Diary number
-      required: []
+
       title: NorwegianVoluntaryRegistration
     NorwegianPaymentRemarkAmount:
       type: object
@@ -312,7 +312,6 @@ components:
       properties:
         enteredDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-          description: Date when this person/entity entered this position.
         type:
           type: string
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
@@ -344,7 +343,7 @@ components:
           description: Assignments in other companies for this person/entity
           items:
             "$ref": "#/components/schemas/NorwegianAssignment"
-      required: []
+
       title: NorwegianPosition
     NorwegianHistoricalPosition:
       type: object
@@ -371,7 +370,7 @@ components:
           description: Assignments in other companies for this person/entity
           items:
             "$ref": "#/components/schemas/NorwegianAssignment"
-      required: []
+
       title: NorwegianHistoricalPosition
     NorwegianAssignment:
       type: object
@@ -408,7 +407,7 @@ components:
           type: string
           description: >-
             TODO - add a good description here
-      required: []
+
       title: NorwegianManagement
     NorwegianAuditors:
       type: object
@@ -424,7 +423,7 @@ components:
           description: Historical auditors
           items:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalPosition"
-      required: []
+
       title: NorwegianAuditors
     NorwegianBoardMembers:
       type: object
@@ -441,7 +440,7 @@ components:
           description: A list of the historical boardmembers.
           items:
             "$ref": "#/components/schemas/NorwegianHistoricalPosition"
-      required: []
+
       title: NorwegianBoardMembers
     NorwegianCompanyInformation:
       type: object
@@ -467,11 +466,10 @@ components:
           "$ref": "#/components/schemas/NorwegianGeneralCompanyData"
         branches:
           "$ref": "#/components/schemas/NorwegianBranches"
-      required: []
+
       title: NorwegianCompanyInformation
     NorwegianBranches:
       type: object
-      description:
       properties:
         count:
           type: integer
@@ -482,7 +480,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/NorwegianBranch"
-      required: []
+
       title: NorwegianBranches
     NorwegianBranch:
       type: object
@@ -502,19 +500,8 @@ components:
           format: int32
           description: >-
             The number of empoyees that work at this branch
-      required: []
+
       title: NorwegianBranch
-    NorwegianBranchAddress:
-      type: object
-      properties:
-        postalCode:
-          type: string
-          description: postalcode
-        town:
-          type: string
-          descripion: town
-      required: []
-      title: NorwegianBranchAddress
     NorwegianCapital:
       type: object
       description: Capital section
@@ -523,7 +510,7 @@ components:
           "$ref": "#/components/schemas/NorwegianShareCapital"
         paidUpCapital:
           "$ref": "#/components/schemas/NorwegianPaidUpCapital"
-      required: []
+
       title: NorwegianCapital
     NorwegianPaidUpCapital:
       type: object
@@ -531,7 +518,7 @@ components:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: NorwegianPaidUpCapital
     NorwegianShareCapital:
       type: object
@@ -539,7 +526,7 @@ components:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: NorwegianShareCapital
     NorwegianGeneralCompanyData:
       type: object
@@ -556,7 +543,7 @@ components:
         registeredInVat:
           type: boolean
           description: This indicates if the company is registered according to the Tax VAT register. TODO - is this correct
-      required: []
+
       title: NorwegianGeneralCompanyData
     NorwegianLegalForm:
       type: object
@@ -580,7 +567,7 @@ components:
             Raw code of the legal form
             TODO - add legal form codes
             '
-      required: []
+
       title: NorwegianLegalForm
     NorwegianRegistrationInformation:
       type: object
@@ -597,7 +584,7 @@ components:
           type: string
           description: Where was the company registered.
           example: Foretaksregisteret
-      required: []
+
       title: NorwegianRegistrationInformation
     NorwegianStatus:
       type: object
@@ -610,7 +597,7 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         additionalInformation:
           "$ref": '#/components/schemas/NorwegianActiveStatus'
-      required: []
+
       title: NorwegianStatus
     NorwegianActiveStatus:
       type: object
@@ -627,14 +614,14 @@ components:
         creditBlocked:
           type: boolean
           description: TODO
-      required: []
+
       title: NorwegianActiveStatus
     NorwegianFinance:
       type: object
       properties:
         financialStatements:
           "$ref": "#/components/schemas/NorwegianFinancialStatements"
-      required: []
+
       title: NorwegianFinance
     NorwegianGroupAccount:
       type: object
@@ -664,7 +651,7 @@ components:
           description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/NorwegianFinancialStatement"
-      required: []
+
       title: NorwegianFinancialStatements
     NorwegianFinancialStatementsAuditorsReservation:
       type: object
@@ -699,7 +686,7 @@ components:
             Textual description of the auditorsReservationCode
         statementDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: NorwegianFinancialStatementsAuditorsReservation
     NorwegianFinancialStatementKeyFigure:
       type: object
@@ -870,7 +857,7 @@ components:
           description: >-
             Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
 
-      required: []
+
       title: NorwegianFinancialStatementKeyFigure
     NorwegianIncomeStatement:
       type: object
@@ -1517,7 +1504,7 @@ components:
           "$ref": "#/components/schemas/NorwegianIncomeStatement"
         notesAndOtherInformation:
           "$ref": "#/components/schemas/NorwegianNotesAndOtherInformation"
-      required: []
+
       title: NorwegianFinancialStatement
     NorwegianNotesAndOtherInformation:
       type: object
