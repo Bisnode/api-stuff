@@ -60,7 +60,7 @@ components:
           "$ref": "#/components/schemas/SwedishFinancialCommitments"
         bankruptcy:
           "$ref": "#/components/schemas/SwedishBankruptcy"
-      required: []
+
       title: SwedishRisk
     SwedishFinancialCommitments:
       type: object
@@ -84,7 +84,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: SwedishCreditInquiry
     SwedishPaymentRemarks:
       type: object
@@ -100,7 +100,7 @@ components:
           description: A list of remarks, most recent ones comes first. 
           items:
             "$ref": "#/components/schemas/SwedishPaymentRemark"
-      required: []
+
       title: SwedishPaymentRemarks
     SwedishPaymentRemark:
       type: object
@@ -118,7 +118,7 @@ components:
           type: string
           description: A textual description of the event type
           example: FISSION - EXPIRED
-      required: []
+
       title: SwedishPaymentRemark
     SwedishReportCode:
       type: object
@@ -462,7 +462,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/SwedishPetition"
-      required: []
+
       title: SwedishPetitions
     SwedishPetition:
       type: object
@@ -479,7 +479,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/SwedishReportCode"
-      required: []
+
       title: SwedishPetition
     SwedishCreditInquiries:
       type: object
@@ -493,7 +493,7 @@ components:
           description: A list of the inquiries.
           items:
             "$ref": "#/components/schemas/SwedishCreditInquiry"
-      required: []
+
       title: SwedishCreditInquiries
     SwedishDebtBalance:
       type: object
@@ -506,7 +506,7 @@ components:
           description: A list of historical Debtbalances
           items:
             "$ref": "#/components/schemas/SwedishHistoricalDebtBalance"
-      required: []
+
       title: SwedishDebtBalance
     SwedishCurrentDebtBalance:
       type: object
@@ -532,7 +532,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         publicClaimsAmount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: SwedishCurrentDebtBalance
     SwedishHistoricalDebtBalance:
       type: object
@@ -542,7 +542,7 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         balance:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: SwedishHistoricalDebtBalance
     SwedishSpecialEvent:
       type: object
@@ -589,12 +589,10 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/SisterCompanies"
         familyTree:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/FamilyTree"
-      required: []
       title: SwedishOwnership
-      
     SwedishProprietorInformation:
-      decription: 'Swedish sole proprietor only'
       type: object
+      description: 'Swedish sole proprietor only'
       properties:
         proprietorDetails:
           "$ref": "#/components/schemas/SwedishProprietorDetails"    
@@ -602,12 +600,10 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
-      required: []
       title: SwedishProprietorInformation
-      
     SwedishProprietorDetails:
-      description: 'Proprietors general data'
       type: object
+      description: 'Proprietors general data'
       properties:
         identificationNumber:
           type: string
@@ -634,18 +630,17 @@ components:
         civilStatusDescription:
           type: string
           description: 'Textual description of civil status of the properietor'
-      required: []
+
       title: SwedishProprietorDetails
       
     SwedishProprietorIncomeInformation:
-      description: 'Proprietors income information'
       type: object
+      description: 'Proprietors income information'
       properties:
         currentYear:
           "$ref": "#/components/schemas/SwedishProprietorIncome" 
         previousYear:
           "$ref": "#/components/schemas/SwedishProprietorIncome" 
-      rquired: []
       title: SwedishProprietorIncomeInformation
       
     SwedishProprietorIncome:
@@ -705,7 +700,7 @@ components:
           type: integer
           format: int64
           description: "Final tax" 
-      required: []
+
       title: SwedishProprietorIncome
       
     SwedishProprietorBusinessAssignments:
@@ -721,7 +716,7 @@ components:
           description: 'A list of historical proprietors assigments in other companies.'
           items:
             "$ref": "#/components/schemas/SwedishProprietorBusinessAssignment" 
-      required: []
+
       title: SwedishProprietorBusinessAssignments
       
     SwedishProprietorBusinessAssignment:
@@ -789,7 +784,7 @@ components:
             97  AUDITOR                                 
             98  DEPUTY AUDITOR                          
             99  DEPUTY LAY AUDITOR  
-      required: []
+
       title: SwedishProprietorBusinessAssignment
       
     SwedishSubsidiaries:
@@ -803,7 +798,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/SwedishSubsidiary"
-      required: []
+
       title: SwedishSubsidiaries
     SwedishSubsidiary:
       type: object
@@ -826,7 +821,7 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: SwedishSubsidiary
     SwedishManagement:
       type: object
@@ -836,7 +831,7 @@ components:
           "$ref": "#/components/schemas/SwedishBoardMembers"
         auditors:
           "$ref": "#/components/schemas/SwedishAuditors"
-      required: []
+
       title: SwedishManagement
     SwedishAuditors:
       type: object
@@ -852,7 +847,7 @@ components:
           description: Historical auditors
           items:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalPosition"
-      required: []
+
       title: SwedishAuditors
     SwedishBoardMembers:
       type: object
@@ -905,7 +900,7 @@ components:
           type: string
           description: A description on which officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement. May be in local language.
           
-      required: []
+
       title: SwedishBoardMembers
     SwedishCompanyInformation:
       type: object
@@ -936,11 +931,10 @@ components:
           description: A list of the bankgiro accounts this company holds.
           items:
             "$ref": "#/components/schemas/SwedishBankgiroAccount"
-      required: []
+
       title: SwedishCompanyInformation
     SwedishBankgiroAccount:
       type: object
-      description: 
       properties:
         address:
           "$ref": "#/components/schemas/SwedishBankAddress"
@@ -953,7 +947,7 @@ components:
           type: string
           description: name of the account owner
           example: Bisnode Kredit AB
-      required: []
+
       title: SwedishBankgiroAccount
     SwedishBankAddress:
       type: object
@@ -967,11 +961,10 @@ components:
         street:
           type: string
           description: Street address
-      required: []
+
       title: SwedishAddress
     SwedishBranches:
       type: object
-      description: 
       properties:
         count:
           type: integer
@@ -982,7 +975,6 @@ components:
           description: A list of branches
           items:
             "$ref": "#/components/schemas/SwedishBranch"
-      required: []
       title: SwedishBranches
     SwedishBranch:
       type: object
@@ -994,29 +986,30 @@ components:
           type: boolean
           description: 'True if this branch is the headquarter'
         address:
-          "$ref": "#/components/schemas/BranchAddress"
+          "$ref": "#/components/schemas/SwedishBranchAddress"
         officeNumber:
           type: string
           description: |
             Branch office number. Unique id for this branch
         identifiers:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Identifiers'
-      required: []
+
       title: SwedishBranch
-    BranchAddress:
+    SwedishBranchAddress:
       type: object
       properties:
         postalCode:
           type: string
           description: postalcode
-        town:
-          type: string
-          descripion: town
         street:
           type: string
           description: street address
           example: Rosenborgsgatan 4
-      required: []
+        town:
+          type: string
+          description: town
+          example: Stockholm
+
       title: SwedishBranchAddress
     SwedishAlcoholServicePermit:
       type: object
@@ -1096,7 +1089,7 @@ components:
           example: true
           description: |
                 "True if this company is registered for corporate tax."
-      required: []
+
       title: SwedishGeneralCompanyData
     SwedishLegalForm:
       type: object
@@ -1150,17 +1143,16 @@ components:
             96  Foreign legal persons
             98  Other Swedish legal persons subject to special legislation
             99  Type of legal entity not established
-      required: []
+
       title: SwedishLegalForm
     SwedishRegistrationInformation:
       type: object
-      description: 
       properties:
         articlesOfAssociationDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         foundationDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: SwedishRegistrationInformation
     SwedishStatus:
       type: object
@@ -1168,10 +1160,8 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: 
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
       title: SwedishStatus
     SwedishFinance:
       type: object
@@ -1194,7 +1184,7 @@ components:
             "$ref": "#/components/schemas/SwedishPayrollTax"
         propertyHoldings:
           "$ref": "#/components/schemas/SwedishPropertyHoldings"
-      required: []
+
       title: SwedishFinance
     SwedishFloatingCharge:
       type: object
@@ -1206,7 +1196,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: SwedishFloatingCharge
     SwedishLiquidationClaim:
       type: object
@@ -1220,7 +1210,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: SwedishLiquidationClaim
     SwedishFinancialStatements:
       type: object
@@ -1244,7 +1234,7 @@ components:
           description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/SwedishFinancialStatement"
-      required: []
+
       title: SwedishFinancialStatements
     SwedishFinancialStatementsAuditorsReservation:
       type: object
@@ -1287,7 +1277,7 @@ components:
           description: Textual description of the auditorsReservationCode
         statementDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: SwedishFinancialStatementsAuditorsReservation
     SwedishFinancialStatementKeyFigure:
       type: object
@@ -1460,7 +1450,7 @@ components:
           type: integer
           description: |
             Total nUmber of employees.
-      required: []
+
       title: SwedishFinancialStatementKeyFigure
     SwedishIncomeStatement:
       type: object
@@ -2070,7 +2060,7 @@ components:
           "$ref": "#/components/schemas/SwedishIncomeStatement"
         notesAndOtherInformation:
           "$ref": "#/components/schemas/SwedishNotesAndOtherInformation"
-      required: []
+
       title: SwedishFinancialStatement
     SwedishGroupAccount:
       type: object
@@ -2089,7 +2079,7 @@ components:
           description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/SwedishFinancialStatement"
-      required: []
+
       title: SwedishGroupAccount
     SwedishPayrollTax:
       type: object
@@ -2102,8 +2092,6 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         referenceNumber:
           type: string
-          description:
-      required: []
       title: SwedishPayrollTax
     SwedishPropertyHoldings:
       type: object
@@ -2131,7 +2119,7 @@ components:
           description: A list of properties
           items:
             "$ref": "#/components/schemas/SwedishCurrentRealProperty"
-      required: []
+
       title: SwedishPropertyHoldings
     SwedishAssessedRealProperty:
       type: object
@@ -2183,7 +2171,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         taxAssessmentValueTotal:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: SwedishAssessedRealProperty
     SwedishCurrentRealProperty:
       type: object
@@ -2234,7 +2222,7 @@ components:
           example: Baggeby 8:1
         taxAssessmentValueTotal:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: SwedishCurrentRealProperty
     SwedishBankruptcy:
       type: object
