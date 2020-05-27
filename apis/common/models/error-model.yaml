@@ -22,7 +22,7 @@ components:
           type: integer
           format: int32
           description: http status code
-          example: 200
+          example: 400
         statusText:
           type: string
           description: http status code description
@@ -52,7 +52,7 @@ components:
         rejectedValue:
           type: string
           description: The value that was rejected
-          example: 10
+          example: "10"
         message:
           type: string
           description: Detailed description of the error
