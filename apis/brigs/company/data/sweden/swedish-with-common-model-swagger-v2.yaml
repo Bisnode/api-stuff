@@ -807,8 +807,8 @@ components:
       properties:
         remark:
           "$ref": "#/components/schemas/SwedishPaymentRemarks" 
-          paidInformation:
-            "$ref": "#/components/schemas/SwedishRemarkPaidInformation"
+        paidInformation:
+          "$ref": "#/components/schemas/SwedishRemarkPaidInformation"
       title: SwedishProprietorRemark
       
     SwedishRemarkPaidInformation:
