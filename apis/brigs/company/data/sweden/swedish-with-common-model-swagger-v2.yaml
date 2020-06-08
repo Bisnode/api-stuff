@@ -805,22 +805,24 @@ components:
       type: object
       description: Remark on a proprietor.
       properties:
-        remark:
-          "$ref": "#/components/schemas/SwedishPaymentRemarks" 
-        paidInformation:
-          "$ref": "#/components/schemas/SwedishRemarkPaidInformation"
-      title: SwedishProprietorRemark
-      
-    SwedishRemarkPaidInformation:
-      description: Remarks on payment, paid
-      type: object
-      properties:
-        code:
+        amount:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+        creditor:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
+        type:
+          "$ref": "#/components/schemas/SwedishReportCode"
+        description:
+          type: string
+          description: A textual description of the remark type
+          example: Distraint, not paid
+        paidCode:
           type: string
           description: D = partly paid, H = fully paid
-        date:
+        paidDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'    
-      title: SwedishRemarkPaidInformation
+      title: SwedishProprietorRemark
       
     SwedishSubsidiaries:
       type: object
