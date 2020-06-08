@@ -816,6 +816,7 @@ components:
       type: object
       properties:
         code:
+          type: string
           description: D = partly paid, H = fully paid
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'    
