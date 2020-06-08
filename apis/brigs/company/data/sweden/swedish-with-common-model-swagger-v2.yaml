@@ -581,7 +581,7 @@ components:
       properties:
         proprietorInformation:
            "$ref": "#/components/schemas/SwedishProprietorInformation"
-        partOwnerInformation:
+        partOwnersInformation:
            "$ref": "#/components/schemas/SwedishPartOwnersInformation"
         parentCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ParentCompanies"
