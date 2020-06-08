@@ -581,6 +581,8 @@ components:
       properties:
         proprietorInformation:
            "$ref": "#/components/schemas/SwedishProprietorInformation"
+        partOwnerInformation:
+           "$ref": "#/components/schemas/SwedishPartOwnerInformation"
         parentCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
@@ -600,8 +602,20 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
-        proprietorRemarks: 
-          "$ref": "#/components/schemas/SwedishProprietorRemarks"   
+      title: SwedishProprietorInformation
+      
+    SwedishPartOwnerInformation:
+      type: object
+      description: 'Swedish sole proprietor only'
+      properties:
+        partOwnerDetails:
+          "$ref": "#/components/schemas/SwedishProprietorDetails"    
+        incomeInformation: 
+          "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
+        businessAssignments:
+          "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
+        partOwnerRemarks: 
+          "$ref": "#/components/schemas/SwedishPartOwnerRemarks"   
       title: SwedishProprietorInformation
     SwedishProprietorDetails:
       type: object
@@ -788,18 +802,18 @@ components:
             99  DEPUTY LAY AUDITOR  
 
       title: SwedishProprietorBusinessAssignment
-    SwedishProprietorRemarks:
+    SwedishPartOwnerRemarks:
       type: object
-      description: 'Proprietors remearks'
+      description: Part owner remarks
       properties:
         remarks:
           type: array
           items:
-            "$ref": "#/components/schemas/SwedishProprietorRemark"  
-      title: SwedishProprietorRemarks
-    SwedishProprietorRemark:
+            "$ref": "#/components/schemas/SwedishPartOwnerRemark"  
+      title: SwedishPartOwnerRemarks
+    SwedishPartOwnerRemark:
       type: object
-      description: Remark on a proprietor.
+      description: Remark on a part owner.
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
@@ -818,7 +832,7 @@ components:
           description: D = partly paid, H = fully paid
         paidDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'    
-      title: SwedishProprietorRemark
+      title: SwedishPartOwnerRemark
       
     SwedishSubsidiaries:
       type: object
