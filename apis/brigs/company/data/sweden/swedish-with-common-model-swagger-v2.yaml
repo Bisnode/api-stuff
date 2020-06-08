@@ -600,6 +600,8 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
+        proprietorRemarks: 
+          "$ref": "#/components/schemas/SwedishProprietorRemarks"   
       title: SwedishProprietorInformation
     SwedishProprietorDetails:
       type: object
@@ -786,6 +788,38 @@ components:
             99  DEPUTY LAY AUDITOR  
 
       title: SwedishProprietorBusinessAssignment
+    SwedishProprietorRemarks:
+      type: object
+      description: 'Proprietors remearks'
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of remarks for this proprietor.
+        remarks:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SwedishProprietorRemark"  
+      title: SwedishProprietorRemarks
+    SwedishProprietorRemark:
+      type: object
+      description: Remark on a proprietor.
+      properties:
+        remark:
+          "$ref": "#/components/schemas/SwedishPaymentRemarks" 
+          paidInformation:
+            "$ref": "#/components/schemas/SwedishRemarkPaidInformation 
+      title: SwedishProprietorRemark
+      
+    SwedishRemarkPaidInformation:
+      description: Remarks on payment, paid
+      type: object
+      properties:
+        code:
+          description: D = partly paid, H = fully paid
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'    
+      title: SwedishRemarkPaidInformation
       
     SwedishSubsidiaries:
       type: object
@@ -798,7 +832,6 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/SwedishSubsidiary"
-
       title: SwedishSubsidiaries
     SwedishSubsidiary:
       type: object
