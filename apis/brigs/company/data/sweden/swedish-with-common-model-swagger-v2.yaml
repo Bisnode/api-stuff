@@ -792,10 +792,6 @@ components:
       type: object
       description: 'Proprietors remearks'
       properties:
-        count:
-          type: integer
-          format: int32
-          description: Total number of remarks for this proprietor.
         remarks:
           type: array
           items:
