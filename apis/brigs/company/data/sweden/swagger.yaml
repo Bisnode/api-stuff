@@ -595,7 +595,7 @@ components:
       type: object
       properties:
         proprietorInformation:
-           "$ref": "#/components/schemas/SwedishProprietorInformation"    
+           "$ref": "#/components/schemas/SwedishProprietorInformation"
         parentCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/1.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
