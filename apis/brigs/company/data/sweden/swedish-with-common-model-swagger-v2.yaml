@@ -582,7 +582,7 @@ components:
         proprietorInformation:
            "$ref": "#/components/schemas/SwedishProprietorInformation"
         partOwnerInformation:
-           "$ref": "#/components/schemas/SwedishPartOwnerInformation"
+           "$ref": "#/components/schemas/SwedishPartOwnersInformation"
         parentCompanies:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/ParentCompanies"
         subsidiaries:
@@ -616,7 +616,20 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
         partOwnerRemarks: 
           "$ref": "#/components/schemas/SwedishPartOwnerRemarks"   
-      title: SwedishProprietorInformation
+      title: SwedishPartOwnerInformation
+      
+    SwedishPartOwnersInformation:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Total number of part owners this company have.
+        partOwners:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SwedishPartOwnerInformation"
+      title: SwedishPartOwnersInformation
     SwedishProprietorDetails:
       type: object
       description: 'Proprietors general data'
