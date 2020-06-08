@@ -630,6 +630,7 @@ components:
           items:
             "$ref": "#/components/schemas/SwedishPartOwnerInformation"
       title: SwedishPartOwnersInformation
+      
     SwedishProprietorDetails:
       type: object
       description: 'Proprietors general data'
