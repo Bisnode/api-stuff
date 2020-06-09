@@ -2433,3 +2433,20 @@ components:
           format: int64
           description: |
             A dividend is the distribution of reward from a portion of the company's earnings and is paid to a class of its shareholders. Dividends are decided and managed by the company’s board of directors, though they must be approved by the shareholders through their voting rights. Dividends can be issued as cash payments, as shares of stock, or other property, though cash dividends are the most common.
+    SwedishActionsOfDistraint:
+      properties:
+        actionsOfDistraint:
+          type: array
+          description: List of action of distraint
+          items:
+            "$ref": "#/components/schemas/SwedishActionOfDistraint"
+      title: SwedishActionsOfDistraint
+        
+    SwedishActionOfDistraint:
+      type: object
+      properties:
+        code: 
+          type: string
+        description: 
+          type: string
+      title: SwedishActionOfDistraint
