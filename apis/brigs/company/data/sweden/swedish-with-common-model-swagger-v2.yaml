@@ -2459,7 +2459,7 @@ components:
       
     SwedishDistraintCode:
       type: object
-      description: List of Swedish distraint code 
+      description: List of Swedish distraint codes 
       properties:
         code:
           type: string
