@@ -620,8 +620,6 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
         partOwnerRemarks: 
           "$ref": "#/components/schemas/SwedishPartOwnerRemarks" 
-        actionsOfDistraint:
-          "$ref": "#/components/schemas/SwedishActionsOfDistraint"
       title: SwedishPartOwnerInformation
       
     SwedishPartOwnersInformation:
