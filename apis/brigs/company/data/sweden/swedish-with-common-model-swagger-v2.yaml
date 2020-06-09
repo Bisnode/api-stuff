@@ -604,8 +604,6 @@ components:
           "$ref": "#/components/schemas/SwedishProprietorIncomeInformation"   
         businessAssignments:
           "$ref": "#/components/schemas/SwedishProprietorBusinessAssignments"
-        actionsOfDistraint:
-          "$ref": "#/components/schemas/SwedishActionsOfDistraint"
       title: SwedishProprietorInformation
       
     SwedishPartOwnerInformation:
