@@ -60,6 +60,8 @@ components:
           "$ref": "#/components/schemas/SwedishFinancialCommitments"
         bankruptcy:
           "$ref": "#/components/schemas/SwedishBankruptcy"
+        actionsOfDistraint:
+          "$ref": "#/components/schemas/SwedishActionsOfDistraint"
 
       title: SwedishRisk
     SwedishFinancialCommitments:
@@ -2464,21 +2466,21 @@ components:
         code:
           type: string
           description: |
-            A	Official duty has been done on other place than debtor's house.
-            B	Official duty has been done at debtor's house.
-            E	Debtor is not living at mentioned address.
-            F	Debtor has been interrogated.
-            G	Personal contact with debtor has been done.
-            H	Debtor owns property without distraint value.
-            I	Debtor is employed but distraint of salary is not possible.
-            K	Debtor is declared bankrupt.
-            L	Debtor is employed but distraint of salary is not possible.
-            M	Limited investigation of debtor's assets.
-            R	Complete investigation of debtor's assets.
-            S	List of debtor's assets has been made (debtor is under oath).
-            T	List of debtor's assets has been made.
-            U	Limited distraint of company assets (chattel mortgage).
-            V	Debtor is evicted.
-            Ä	Debtor owns property but distraint has been waived.
-            Ö	Surplus tax has been checked.
+            A  Official duty has been done on other place than debtor's house.
+            B  Official duty has been done at debtor's house.
+            E  Debtor is not living at mentioned address.
+            F  Debtor has been interrogated.
+            G  Personal contact with debtor has been done.
+            H  Debtor owns property without distraint value.
+            I  Debtor is employed but distraint of salary is not possible.
+            K  Debtor is declared bankrupt.
+            L  Debtor is employed but distraint of salary is not possible.
+            M  Limited investigation of debtor's assets.
+            R  Complete investigation of debtor's assets.
+            S  List of debtor's assets has been made (debtor is under oath).
+            T  List of debtor's assets has been made.
+            U  Limited distraint of company assets (chattel mortgage).
+            V  Debtor is evicted.
+            Ä  Debtor owns property but distraint has been waived.
+            Ö  Surplus tax has been checked.
       title: SwedishDistraintCode
