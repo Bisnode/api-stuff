@@ -2447,7 +2447,7 @@ components:
       type: object
       properties:
         code: 
-          type: string
+         "$ref": "#/components/schemas/SwedishDistraintCode"
         description: 
           type: string
       title: SwedishActionOfDistraint
