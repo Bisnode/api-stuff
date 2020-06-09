@@ -2434,6 +2434,7 @@ components:
           description: |
             A dividend is the distribution of reward from a portion of the company's earnings and is paid to a class of its shareholders. Dividends are decided and managed by the company’s board of directors, though they must be approved by the shareholders through their voting rights. Dividends can be issued as cash payments, as shares of stock, or other property, though cash dividends are the most common.
     SwedishActionsOfDistraint:
+      type: object
       properties:
         actionsOfDistraint:
           type: array
@@ -2450,3 +2451,30 @@ components:
         description: 
           type: string
       title: SwedishActionOfDistraint
+      
+    SwedishDistraintCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: |
+            A	Official duty has been done on other place than debtor's house.
+            B	Official duty has been done at debtor's house.
+            E	Debtor is not living at mentioned address.
+            F	Debtor has been interrogated.
+            G	Personal contact with debtor has been done.
+            H	Debtor owns property without distraint value.
+            I	Debtor is employed but distraint of salary is not possible.
+            K	Debtor is declared bankrupt.
+            L	Debtor is employed but distraint of salary is not possible.
+            M	Limited investigation of debtor's assets.
+            R	Complete investigation of debtor's assets.
+            S	List of debtor's assets has been made (debtor is under oath).
+            T	List of debtor's assets has been made.
+            U	Limited distraint of company assets (chattel mortgage).
+            V	Debtor is evicted.
+            Ä	Debtor owns property but distraint has been waived.
+            Ö	Surplus tax has been checked.
+            
+    
+      title: SwedishDistraintCode
