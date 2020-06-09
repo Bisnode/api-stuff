@@ -606,7 +606,7 @@ components:
       
     SwedishPartOwnerInformation:
       type: object
-      description: 'Swedish limited partnership only'
+      description: 'Swedish partnership only'
       properties:
         partOwnerDetails:
           "$ref": "#/components/schemas/SwedishProprietorDetails"    
