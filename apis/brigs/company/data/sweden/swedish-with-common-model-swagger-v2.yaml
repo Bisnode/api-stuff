@@ -2454,6 +2454,7 @@ components:
       
     SwedishDistraintCode:
       type: object
+      description: List of Swedish distraint code 
       properties:
         code:
           type: string
@@ -2475,6 +2476,4 @@ components:
             V	Debtor is evicted.
             Ä	Debtor owns property but distraint has been waived.
             Ö	Surplus tax has been checked.
-            
-    
       title: SwedishDistraintCode
