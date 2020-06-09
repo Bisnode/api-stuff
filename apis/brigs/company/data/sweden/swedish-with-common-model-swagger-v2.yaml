@@ -663,7 +663,7 @@ components:
              8  UNMARRIED'
         civilStatusDescription:
           type: string
-          description: 'Textual description of civil status of the properietor'
+          description: 'A textual description of civil status of the properietor'
 
       title: SwedishProprietorDetails
       
@@ -1090,7 +1090,7 @@ components:
           example: The Company AB
         type:
           type: string
-          description: Textual description of the type of permit. Local language only.
+          description: A textual description of the type of permit. Local language only.
           example: Servering till allmänheten
         servingType:
           type: string
@@ -1338,7 +1338,7 @@ components:
             9   -  FULL/PARTIAL SHARE CAPITAL IS LOST. FUTURE OPERATION DEPEND ON AVAILABILITY OF ADDITIONAL CAPITAL AND/OR IMPROVMENT IN OPERATING/NET RESULTS                                                      
         auditorsReservationDescription:
           type: string
-          description: Textual description of the auditorsReservationCode
+          description: A textual description of the auditorsReservationCode
         statementDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
 
@@ -2454,7 +2454,7 @@ components:
          "$ref": "#/components/schemas/SwedishDistraintCode"
         description: 
           type: string
-          description: Textual description of the distraint
+          description:  A textual description of the distraint
       title: SwedishActionOfDistraint
       
     SwedishDistraintCode:
