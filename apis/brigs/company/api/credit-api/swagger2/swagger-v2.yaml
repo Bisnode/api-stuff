@@ -64,6 +64,14 @@ paths:
           description: Bad request - invalid input.
           schema:
             $ref: '#/definitions/Error'
+        '404':
+          description: Company not found.
+          schema:
+            $ref: '#/definitions/Error'
+        '451':
+          description: Even though the company exist we can't deliver any data due to legal reasons.
+          schema:
+            $ref: '#/definitions/Error'
         default:
           description: Error definition
           schema:
@@ -87,6 +95,14 @@ paths:
         description: Bad request - invalid input.
         schema:
           $ref: '#/definitions/Error'
+      '404':
+          description: Company not found.
+          schema:
+            $ref: '#/definitions/Error'
+      '451':
+          description: Even though the company exist we can't deliver any data due to legal reasons.
+          schema:
+            $ref: '#/definitions/Error'
       default:
         description: Error definition
         schema:
@@ -108,6 +124,14 @@ paths:
             $ref: '#/definitions/DanishResponseModel'
         '400':
           description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Company not found.
+          schema:
+            $ref: '#/definitions/Error'
+        '451':
+          description: Even though the company exist we can't deliver any data due to legal reasons.
           schema:
             $ref: '#/definitions/Error'
         default:
