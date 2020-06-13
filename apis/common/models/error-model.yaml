@@ -33,7 +33,6 @@ components:
           example: Validation error
         timestamp:
           type: string
-          format: date-time
           example: 2020-06-12T21:15:44.3949
           description: |
             ISO-8601 date format. See https://en.wikipedia.org/wiki/ISO_8601
