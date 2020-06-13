@@ -31,6 +31,12 @@ components:
           type: string
           description: Description of the error
           example: Validation error
+        timestamp:
+          type: string
+          format: date-time
+          example: 2020-06-12T21:15:44.3949
+          description: |
+            ISO-8601 date format. See https://en.wikipedia.org/wiki/ISO_8601
         subErrors:
           type: array
           description: A list of of the errors
