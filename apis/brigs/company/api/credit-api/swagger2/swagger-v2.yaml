@@ -138,6 +138,29 @@ paths:
           description: Error definition
           schema:
             $ref: '#/definitions/Error'
+  /companies/no:
+    post:
+      summary: Fetch credit and risk data on a norwegian company
+      description: |
+        Fetch risk and credit data on norwegian companies
+      parameters:
+        - in: body
+          name: RequestModel 
+          schema:
+            $ref: '#/definitions/RequestModel'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/NorwegianResponseModel'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
 securityDefinitions:
    OAuth2:
     type: oauth2
@@ -234,7 +257,7 @@ definitions:
         country:
           type: string
           description: The country to search in
-          enum: ['SE', 'FI', 'DK']
+          enum: ['SE', 'FI', 'DK', 'NO']
         address:
           $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/StreetAddress'
       required: ['country']
