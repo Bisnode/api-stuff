@@ -208,8 +208,13 @@ components:
             SECURITY_IN_AQUACULTURE_LICENCE - Voluntary lien pledged as security for loans or credit in one or another form.
             SECURITY_IN_EQUIPMENT - Voluntary lien pledged as security for loans or credit in one or another form.
             MORTGAGE_IN_VALUE_OF_DEBT - This is a form of voluntary lien in which debtor's outstanding receivables are pledged as security for a loan, other provision of credit, or transferred to a factoring company as a part of a financing. In the latter case, the company “sells” its receivables, and receives a settlement for them in advance. This way they are covered against losses on claims, but must pay the factoring company a percentage of the nominal value of the receivable. However, most factoring agreements can be equated with other voluntary liens in which the creditor, in addition to, or instead of another type of security, gets the debtor's outstanding receivables as security.
-           SECURITY_IN_FISHING_EQUIPMENT -  
-            
+            SECURITY_IN_FISHING_EQUIPMENT - Voluntary lien pledged as security for loans or credit in one or another form.
+            SECURITY_IN_RAILWAY - Voluntary lien pledged as security for loans or credit in one or another form.
+            SECURITY_IN_MOTOR_VEHICLES - Voluntary lien pledged as security for loans or credit in one or another form.
+            LEASING_AGREEMENT - Voluntary lien pledged as security for loans or credit in one or another form.
+            SECURITY_IN_AGRICULTURAL_MOVABLES - Voluntary lien pledged as security for loans or credit in one or another form.
+            SECURITY_IN_VEHICLE - Voluntary lien pledged as security for loans or credit in one or another form.
+            SECURITY_IN_STOCKS - Voluntary lien pledged as security for loans or credit in one or another form.
         source:
           type: string
           description: The source of the information
@@ -314,16 +319,18 @@ components:
       properties:
         year:
           type: integer
-          description: TODO
+          description: Year of assessment.
         taxClass:
           type: string
-          description: TODO
+          description: |
+            Tax class defines how the person is to be treated by the tax authorities, either as a single person or together with another person as a married couple.
         municipalityName:
           type: string
-          description: TODO
+          description: |
+            Within the county there are different municipalities. From 01.01.2018 the number of municipalities are 422, but will be reduced even further down from 01.01.2020. The plan is then to reduce the number down to 370.
         municipalityNumber:
           type: string
-          description: TODO
+          description: The iso 3166 municipality code.
         calculatedGrossIncome:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         assessedTax:
@@ -426,13 +433,12 @@ components:
           "$ref": "#/components/schemas/NorwegianAuditors"
         authorizedSignatory:
           type: string
-          description: >-
+          description: |
             Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
         procuration:
           type: string
-          description: >-
-            TODO - add a good description here
-
+          description: |
+            Limited signing authority body.
       title: NorwegianManagement
     NorwegianAuditors:
       type: object
@@ -543,7 +549,6 @@ components:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-
       title: NorwegianPaidUpCapital
     NorwegianShareCapital:
       type: object
@@ -551,7 +556,6 @@ components:
       properties:
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-
       title: NorwegianShareCapital
     NorwegianGeneralCompanyData:
       type: object
@@ -567,8 +571,7 @@ components:
           description: 'As described in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         registeredInVat:
           type: boolean
-          description: This indicates if the company is registered according to the Tax VAT register. TODO - is this correct
-
+          description: This indicates if the company is registered according to the Tax VAT register.
       title: NorwegianGeneralCompanyData
     NorwegianLegalForm:
       type: object
@@ -629,17 +632,16 @@ components:
       properties:
         registeredVATByMVR:
           type: boolean
-          description: TODO
+          description: Registration status codes VAT by MVR.
         registeredByFr:
           type: boolean
-          description: TODO
+          description: This status tells if the company is registered in the Register of Business Enterprises (Foretaksregisteret) or not.
         registeredByEr:
           type: boolean
-          description: TODO
+          description: This status tells if the entity is registered in the Central Coordinating Register for Legal Entities (Enhetsregisteret) or not.
         creditBlocked:
           type: boolean
-          description: TODO
-
+          description: Voluntary block for credit.
       title: NorwegianActiveStatus
     NorwegianFinance:
       type: object
@@ -676,7 +678,6 @@ components:
           description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/NorwegianFinancialStatement"
-
       title: NorwegianFinancialStatements
     NorwegianFinancialStatementsAuditorsReservation:
       type: object
@@ -684,7 +685,7 @@ components:
         auditorsReservationCode:
           type: string
           description: |
-            TODO: Emil these are the codes taken from ontology please review.
+            TODO: these are the codes taken from ontology please review.
             A - Unlawful loan to shareholders, the manager, members of the board or others
             B - Tax reduction is not placed in own account or not fully paid in
             C - Lack of documentary evidence and internal control
@@ -736,70 +737,70 @@ components:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             TODO - This is interest coverage ratio in brigs web - which one to use?
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
+            The ratio shows the company's ability to pay its interests. A value equal to 1 implies that the result after financial income matches the financial costs exactly. A value less than one implies that the company isn't able to cover their interest costs and doesn't do any profit.
         interestOnLiability:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Interest on liability expressed in percent
         quickRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Current assets minus inventories in percent of current liabilities.
         returnOnEquity:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Profit/loss after financial items as a percentage of the total equity.
         returnOnTotalAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
         turnoverAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Capital turnover is measured as profit/loss in relation to assets.
         netProfitMargin:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage.
         netWorth:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
         grossMargin:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
         equityToTurnover:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
-            TODO - add description here
+          description: |
+             The ratio shows the equity in percentage of the turnover. It is a part of the explanation on how the company is financed.
         returnOnInvestment:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an investment or compare the efficiency of a number of different investments. ROI tries to directly measure the amount of return on a particular investment, relative to the investment’s cost. To calculate ROI, the benefit (or return) of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
-
         equityRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -816,73 +817,69 @@ components:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
-            Working capital is the difference between a company’s current assets, such as cash, accounts receivable (customers’ unpaid bills) and inventories of raw materials and finished goods, and its current liabilities, such as accounts payable. Working capital is a measure of a company's liquidity, operational efficiency and its short-term financial health
+          description: |
+            Working capital is the difference between a company’s current assets, such as cash, accounts receivable (customers’ unpaid bills) and inventories of raw materials and finished goods, and its current liabilities, such as accounts payable. Working capital is a measure of a company's liquidity, operational efficiency and its short-term financial health.
         longTermStockFinancing:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
-            TODO - add description
+          description: |
+            Long-term stock financing (Equity + Long term debts - Fixed assets)/Goods.
         gearing:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage.
         stockTurnover:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
-
             An increasing inventory turnover figure or one which is much larger than the "average" for an industry may indicate poor inventory management.
-
         daysOfReceivables:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
-            TODO - Is it correct just to add the description below and change from pay to receive ???
+          description: |
+            Days of receivables is a financial ratio that indicates the average time (in days) that it takes for a company to get payment on their invoices.
         cashRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
-            TODO - Add description
+          description: |
+            Cash ratio.
         profitMargin:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
-            TODO - Add description
+          description: |
+            EBITA - (Earnings Before Interest, Taxes and Amortization) in relation to turnover
         resultMargin:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: 
             TODO - Add description
         debtorRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: 
             TODO - Add description
         creditorRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: 
             TODO - Add description
         daysOfPayables:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: >-
+          description: |
             Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
-
-
       title: NorwegianFinancialStatementKeyFigure
     NorwegianIncomeStatement:
       type: object
