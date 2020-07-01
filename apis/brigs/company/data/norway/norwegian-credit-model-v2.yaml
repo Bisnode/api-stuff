@@ -206,8 +206,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         percentage:
           type: string
-          pattern: '^\d*(\.\d*)?$'
-          description: TODO - add description
+          pattern: '^(-)?\d*(\.\d*)?$'
     NorwegianEvent:
       type: object
       description: Event as received from authority.
@@ -701,7 +700,7 @@ components:
           example: 12
         currentRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Current assets in percent of Short term liabilities.
@@ -709,105 +708,105 @@ components:
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
         interestCoverage:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - This is interest coverage ratio in brigs web - which one to use?
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
         interestOnLiability:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Interest on liability expressed in percent
         quickRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Current assets minus inventories in percent of current liabilities.
         returnOnEquity:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Profit/loss after financial items as a percentage of the total equity.
         returnOnTotalAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Profit/loss after financial items plus financial costs as a percentage of the total capital.
         turnoverAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Capital turnover is measured as profit/loss in relation to assets.
         netProfitMargin:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             The net profit margin is equal to how much net income or profit is generated as a percentage of revenue. Net profit margin is the ratio of net profits to revenues for a company or business segment. Net margin is expressed as a percentage.
         netWorth:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Net worth is a quantitative concept that measures the value of an entity and can be applicable to individuals, corporations, sectors and even countries. Simply stated, net worth is the difference between assets and liabilities. Positive net worth means that assets exceed liabilities while negative net worth describes the opposite scenario.
         grossMargin:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Gross margin is a company's net sales revenue minus its cost of goods sold (COGS). The gross margin represents the amount of sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the amount, the more the company retains on each dollar of sales to service its other costs and debt obligations. A firm's net sales is gross revenue less returns, allowances, and discounts. Expressed in percentage of the net sales.
         equityToTurnover:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - add description here
         returnOnInvestment:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an investment or compare the efficiency of a number of different investments. ROI tries to directly measure the amount of return on a particular investment, relative to the investment’s cost. To calculate ROI, the benefit (or return) of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
 
         equityRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             The equity ratio is a financial ratio indicating the relative proportion of equity used to finance a company's assets. The two components are often taken from the firm's balance sheet or statement of financial position (so-called book value), but the ratio may also be calculated using market values for both, if the company's equities are publicly traded.
         liquidAssetsOfTurnover:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Liquid assets in percent of total turnover. A liquid asset is an asset that can easily be converted into cash within a short amount of time.
         workingCapital:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Working capital is the difference between a company’s current assets, such as cash, accounts receivable (customers’ unpaid bills) and inventories of raw materials and finished goods, and its current liabilities, such as accounts payable. Working capital is a measure of a company's liquidity, operational efficiency and its short-term financial health
         longTermStockFinancing:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - add description
         gearing:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage.
         stockTurnover:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Stock turnover is a financial efficiency ratio that helps answer a questions like "have we got too much money tied up in inventory"?
@@ -816,43 +815,43 @@ components:
 
         daysOfReceivables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - Is it correct just to add the description below and change from pay to receive ???
         cashRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - Add description
         profitMargin:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - Add description
         resultMargin:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - Add description
         debtorRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - Add description
         creditorRatio:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             TODO - Add description
         daysOfPayables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: >-
             Days payable is a financial ratio that indicates the average time (in days) that a company takes to pay its bills and invoices.
@@ -864,193 +863,193 @@ components:
       properties:
         grossTurnover:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           example: "482000"
         netSales:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Net sales is the sum of a company's gross sales minus its returns, allowances, and discounts.
         changeInInventories:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Change in inventories and work in progress for the last reporting period and the current reporting period.
         otherOperatingIncome:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
             TODO - also named as otherFinancialIncome
         costOfGoods:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
 
             TODO - is this the same as commoditiesAndNecessities/rawmaterialsAndConsumables
         otherOperatingExpenses:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
         staffCosts:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
         depreciation:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
         writedown:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A write-down is an accounting term for the reduction in the book value of an asset when its fair market value (FMV) has fallen below the carrying book value, and thus become an impaired asset. The amount to be written down is the difference between the book value of the asset and the amount of cash that the business can obtain by disposing of it in the most optimal manner.
         incomeFromInvestmentsInGroupEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             The net from dividend income, impairment and reserved write-downs.
             TODO - is this correct
         incomeFromInvestmentsInGroupAssociates:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO  - what is the difference from incomeFromInvestmentsInGroupEnterprises
         interestIncomeFromGroupCompanies:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Interest payed to the company by group or affiliate.
         externalInterestIncome:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Interest payed to the company by banks or creditinstitutes.
             TODO - also named interestIncome
         otherFinancialIncome:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
             TODO - is this the same as income from other investments ??
         financialIncomeTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: Total financial revenues
         interestExpenseToGroupCompanies:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Interest payed from the company to group or affiliate.
         interestExpensesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Total sum of interest payed from the company.
         otherFinancialExpenses:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
         financialCostsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Total financial costs. A sum of all costs.
         profitLossAfterFinancialItems:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Profit/Loss after financials shows the years total result of the business.
         extraordinaryIncome:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
         extraordinaryExpenses:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
         resultBeforeAllocations:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description:  >-
             Earnings before appropriations
             or
             Result before allocation
         groupContribution:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Given or obtained contribution from/to group or affiliate.
         profitLossBeforeTax:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Result before tax
         tax:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Taxes paid.
         incomeFromOtherInvestments:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         writeDownsOfCurrentAssetsOtherThanCurrentFinancialAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         writeDownOnOtherFinancialCurrentAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         writeDownOnFinancialFixedAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         taxExpenseOnOrdinaryResult:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         taxExpenseOnExtraordinaryResult:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         minorityShareholding:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         resultForTheYear:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         dividend:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         transferredAssessmentDifferences:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
         transferredOtherEquity:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO
     NorwegianBalanceSheet:
@@ -1072,7 +1071,7 @@ components:
           "$ref": "#/components/schemas/NorwegianNonCurrentAssets"
         assetsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             The sum of all assets.
       title: NorwegianAssets
@@ -1083,93 +1082,93 @@ components:
       properties:
         inventories:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Inventories
         rawMaterialAndConsumables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Raw materials and consumables for processing in production.
         producedGoods:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Produced goods
         finishedProductsAndGoods:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Finished products and goods
         currentReceivablesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Current receivables total
         otherReceivables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other short term receivables
         tradeReceivables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term trade receivables
         receivableFromGroupAndAssociatedCompanies:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             Short term receivable from group and associated companies.
         unpaidContributedCapital:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Unpaid contributed capital short term
         investmentsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Total amount spent on investments.
         investmentsInAssociatedEnterprisesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Investment in associated enterprises total
         investmentShares:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term investments shares
         investmentBonds:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term investments bonds
         investmentsFinancialInstruments:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term investments financial instruments
         otherFinancialInstruments:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other financial instruments
         cashAndBankBalance:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             The sum of cash in hand and money in the bank.
             TODO - fix this description
         investmentsOther:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term investments other
         currentAssetsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Current assets include cash, cash equivalents, accounts receivable, stock inventory, marketable securities, pre-paid liabilities, and other liquid assets.
       title: NorwegianCurrentAssets
@@ -1181,107 +1180,107 @@ components:
       properties:
         intangibleAssetsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Total intangible assets. Intangible assets are economic resources that have no physical presence. They include patents, trademarks, copyrights, and goodwill. Accounting for intangible assets differs depending on the type of asset, and they can be either amortized or tested for impairment each year.
         capitalisedCostForRnd:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Research and development (R&D) expenses are associated with the research and development of a company's goods or services. A company generally incurs R&D expenses in the process of finding and creating new products or services.
         intangibleRights:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Concessions, patents, licenses, trademarks and similar rights.
         deferredTaxAsset:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A deferred tax asset is an asset on a company's balance sheet that may be used to reduce its taxable income. It can refer to a situation where a business has overpaid taxes or taxes paid in advance on its balance sheet. These taxes are eventually returned to the business in the form of tax relief, and the over-payment is, therefore, an asset for the company.
         goodwill:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Goodwill represents values that arises when you buy a company. If you pay a price that is higher than the value of the assets in the company the remaining amount is concidered as goodwill. Goodwill can be a subject of depreciations. It is an intangible asset.
         tangibleAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A tangible asset is an asset that has a finite monetary value and usually a physical form. Tangible assets can typically always be transacted for some monetary value though the liquidity of different markets will vary. Tangible assets are the opposite of intangible assets which have a theorized value rather than a transactional exchange value.
         landAndBuildings:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             This is property or real estate. There are many kinds of property like land buildings, golf courses, cabins, mining areas etc.
         machineryAndTools:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Total machinery and inventory.
         shipsRigsAeroplanes:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             ships, rigs and aeroplanes
         equipment:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Equipment
         financialAssetsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Financial assets total
         investmentInSubsidiaries:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Investments made in subsidiaries
         investmentsInOtherGroupCompanies:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Investments made in group companies
         receivablesFromGroupEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Long term receivables from group enterprises
         investmentsInAssociatedEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Investments made in associated enterprises
         receivablesFromAssociatedEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Long term receivables from associated enterprises
         investmentsInOtherEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Investments made in other enterprises.
         otherReceivables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other receivables
         pensionFund:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Pension fund
         otherFixedAssets:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other fixed assets
         fixedAssetsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A fixed asset is a long-term tangible piece of property or equipment that a firm owns and uses in its operations to generate income. Fixed assets are not expected to be consumed or converted into cash within a year. Fixed assets most commonly appear on the balance sheet as property, plant, and equipment (PP&E).
       title: NorwegianNonCurrentAssets
@@ -1294,7 +1293,7 @@ components:
           "$ref": "#/components/schemas/NorwegianShareholdersEquity"
         equityAndLiabilitiesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             The sum of all reported equity and liabilities.
     NorwegianLiabilities:
@@ -1306,7 +1305,7 @@ components:
           "$ref": "#/components/schemas/NorwegianLongTermLiabilities"
         liabilitiesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             The sum of all reported liabilities.
       title: NorwegianLiabilities
@@ -1317,51 +1316,51 @@ components:
       properties:
         shortTermLiabilitiesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term debt, also called current liabilities, is a firm's financial obligations that are expected to be paid off within a year. It is listed under the current liabilities portion of the total liabilities section of a company's balance sheet.
         convertibleLoans:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Loan that entitles the lender (or the holder of loan debenture) to convert the loan to common or preferred stock (ordinary or preference shares) at a specified conversion rate and within a specified timeframe.
         certificateLoans:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A certificate secured loan is a type of agreement in which you pledge a type of deposit account to a financial institution in exchange for access to a sum of money. You can use this money to make a major purchase, consolidate bills, pay personal expenses or finance higher education. The deposit account that you pledge in a certificate loan is known as a certificate of deposit. With this type of account, you agree to invest a sum of money with a financial institution for a specific period of time and, in exchange, the bank agrees to pay you interest on your money.
         liabilitiesToBanks:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: Short term debts to banks.
         tradePayables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Liabilities owed to suppliers for purchases or services rendered. More commonly referred to as accounts payable.
         taxPayables:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Income tax payable is a type of account in the current liabilities section of a company's balance sheet. It is compiled of taxes due to the government within one year. The calculation of income tax payable is according to the prevailing tax law in the company's home country.
         publicDutiesPayable:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Public duties payable
         payablesToGroupEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Short term payables to group enterprises
         proposedDividends:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Proposed dividends
         otherShortTermLiabilities:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other short term debts
       title: NorwegianCurrentLiabilities
@@ -1370,62 +1369,62 @@ components:
       properties:
         longTermLiabilitiesTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Long-term liabilities are financial obligations of a company that are due more than one year in the future. The current portion of long-term debt is listed separately to provide a more accurate view of a company's current liquidity and the company’s ability to pay current liabilities as they become due. Long-term liabilities are also called long-term debt or noncurrent liabilities.
         provisions:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Provisions
         provisionsForPensionsAndSimilarLiabilities:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Provisions for pensions and similar liabilities
         provisionsForDeferredTaxes:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Provisions for deferred taxes
         otherProvisions:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other provisions
         liabilitiesOtherThanProvisions:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Long term liabilitites other than provisions
         convertibleBonds:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A convertible bond is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
         bondLoans:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A bond (loan) is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental). A bond could be thought of as an I.O.U. between the lender and borrower that includes the details of the loan and its payments. Bonds are used by companies, municipalities, states, and sovereign governments to finance projects and operations. Owners of bonds are debtholders, or creditors, of the issuer. Bond details include the end date when the principal of the loan is due to be paid to the bond owner and usually includes the terms for variable or fixed interest payments made by the borrower.
         liabilitiesToBanks:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             "Long-term debt is debt that matures in more than one year. Long-term debt can be viewed from two perspectives: financial statement reporting by the issuer and financial investing. In financial statement reporting, companies must record long-term debt issuance and all of its associated payment obligations on its financial statements. On the flip side, investing in long-term debt includes putting money into debt investments with maturities of more than one year."
         payablesToGroupEnterprises:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Long term payables to group enterprises
         subordinatedLoans:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Subordinated debt (loan) (also known as a subordinated debenture) is an unsecured loan or bond that ranks below other, more senior loans or securities with respect to claims on assets or earnings. Subordinated debentures are thus also known as junior securities. In the case of borrower default, creditors who own subordinated debt will not be paid out until after senior bondholders are paid in full.
         otherLongTermLiabilities:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other long term liabilities
 
@@ -1435,27 +1434,27 @@ components:
       properties:
         equity:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
         shareCapital:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Share capital consists of all funds raised by a company in exchange for shares of either common or preferred shares of stock. The amount of share capital or equity financing a company has can change over time. A company that wishes to raise more equity can obtain authorization to issue and sell additional shares, thereby increasing its share capital.
         ownShares:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             The value of the shares the company owns in their own company.
         sharePremium:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
         restrictedEquity:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
 
@@ -1464,22 +1463,22 @@ components:
             Restricted equity includes share capital, revaluation reserves and other reserves
         retainedEarnings:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Retained earnings are the cumulative net earnings or profit of a firm after accounting for dividends.
         reserveForValuationVariances:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Revaluation reserve is an accounting term used when a company creates a line item on its balance sheet for the purpose of maintaining a reserve account tied to certain assets. This line item can be used when a revaluation assessment finds that the carrying value of the asset has changed.
         otherEquity:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             TODO - examples
         minorityInterestsTotal:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             A minority interest, which is also referred to as non-controlling interest (NCI), is ownership of less than 50% of a company’s equity by an investor or another compan.
       title: NorwegianShareholdersEquity
@@ -1513,22 +1512,22 @@ components:
       properties:
         wagesToLeaderOrCeo:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Wages paid to the head of the company. Usually the CEO.
         remunerationToAuditor:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             The audit fee payed by client to the auditor.
         wagesAndPaymentsToBoard:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Wages and payments to board members
         wagesAndPaymentsToConsultants:
           type: string
-          pattern: '^\d*(\.\d*)?$'
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Wages and payments to consultants.
       title: NorwegianNotesAndOtherInformation
