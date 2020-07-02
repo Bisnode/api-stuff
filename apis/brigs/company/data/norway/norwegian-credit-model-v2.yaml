@@ -37,7 +37,6 @@ components:
           "$ref": "#/components/schemas/NorwegianOwnership"
         events:
           "$ref": "#/components/schemas/NorwegianEvents"
-
       title: NorwegianCompanyData
       description: This is the root object defining which structures reside under the root path.
     NorwegianRisk:
@@ -53,7 +52,6 @@ components:
           "$ref": "#/components/schemas/NorwegianPaymentRemarks"
         bankruptcy:
           "$ref": "#/components/schemas/NorwegianBankruptcy"
-
       title: NorwegianRisk
     NorwegianInquiry:
       type: object
@@ -63,7 +61,6 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-
       title: NorwegianInquiry
     NorwegianTrade:
       type: object
@@ -86,7 +83,6 @@ components:
           description: A list of voluntary registrations.
           items:
             "$ref": "#/components/schemas/NorwegianVoluntaryRegistration"
-
       title: NorwegianPaymentRemarks
     NorwegianPaymentRemarksGroup:
       type: object
@@ -98,7 +94,6 @@ components:
           description: A list of remarks related to the same incident, sorted chronologically in descending order.
           items:
             "$ref": "#/components/schemas/NorwegianPaymentRemark"
-
       title: NorwegianPaymentRemarksGroup
     NorwegianPaymentRemark:
       type: object
@@ -375,7 +370,6 @@ components:
           description: Assignments in other companies for this person/entity
           items:
             "$ref": "#/components/schemas/NorwegianAssignment"
-
       title: NorwegianPosition
     NorwegianHistoricalPosition:
       type: object
@@ -402,7 +396,6 @@ components:
           description: Assignments in other companies for this person/entity
           items:
             "$ref": "#/components/schemas/NorwegianAssignment"
-
       title: NorwegianHistoricalPosition
     NorwegianAssignment:
       type: object
@@ -454,7 +447,6 @@ components:
           description: Historical auditors
           items:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/HistoricalPosition"
-
       title: NorwegianAuditors
     NorwegianBoardMembers:
       type: object
@@ -471,7 +463,6 @@ components:
           description: A list of the historical boardmembers.
           items:
             "$ref": "#/components/schemas/NorwegianHistoricalPosition"
-
       title: NorwegianBoardMembers
     NorwegianCompanyInformation:
       type: object
@@ -497,7 +488,6 @@ components:
           "$ref": "#/components/schemas/NorwegianGeneralCompanyData"
         branches:
           "$ref": "#/components/schemas/NorwegianBranches"
-
       title: NorwegianCompanyInformation
     NorwegianBranches:
       type: object
@@ -511,7 +501,6 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/NorwegianBranch"
-
       title: NorwegianBranches
     NorwegianBranch:
       type: object
@@ -531,7 +520,6 @@ components:
           format: int32
           description: >-
             The number of empoyees that work at this branch
-
       title: NorwegianBranch
     NorwegianCapital:
       type: object
@@ -541,7 +529,6 @@ components:
           "$ref": "#/components/schemas/NorwegianShareCapital"
         paidUpCapital:
           "$ref": "#/components/schemas/NorwegianPaidUpCapital"
-
       title: NorwegianCapital
     NorwegianPaidUpCapital:
       type: object
@@ -595,7 +582,6 @@ components:
             Raw code of the legal form
             TODO - add legal form codes
             '
-
       title: NorwegianLegalForm
     NorwegianRegistrationInformation:
       type: object
@@ -612,7 +598,6 @@ components:
           type: string
           description: Where was the company registered.
           example: Foretaksregisteret
-
       title: NorwegianRegistrationInformation
     NorwegianStatus:
       type: object
@@ -625,7 +610,6 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         additionalInformation:
           "$ref": '#/components/schemas/NorwegianActiveStatus'
-
       title: NorwegianStatus
     NorwegianActiveStatus:
       type: object
@@ -648,7 +632,6 @@ components:
       properties:
         financialStatements:
           "$ref": "#/components/schemas/NorwegianFinancialStatements"
-
       title: NorwegianFinance
     NorwegianGroupAccount:
       type: object
@@ -712,7 +695,6 @@ components:
             Textual description of the auditorsReservationCode
         statementDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-
       title: NorwegianFinancialStatementsAuditorsReservation
     NorwegianFinancialStatementKeyFigure:
       type: object
@@ -794,7 +776,7 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: |
-             The ratio shows the equity in percentage of the turnover. It is a part of the explanation on how the company is financed.
+            The ratio shows the equity in percentage of the turnover. It is a part of the explanation on how the company is financed.
         returnOnInvestment:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -860,19 +842,19 @@ components:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: 
+          description:
             TODO - Add description
         debtorRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: 
+          description:
             TODO - Add description
         creditorRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description: 
+          description:
             TODO - Add description
         daysOfPayables:
           type: string
@@ -1516,7 +1498,6 @@ components:
           "$ref": "#/components/schemas/NorwegianIncomeStatement"
         notesAndOtherInformation:
           "$ref": "#/components/schemas/NorwegianNotesAndOtherInformation"
-
       title: NorwegianFinancialStatement
     NorwegianNotesAndOtherInformation:
       type: object
