@@ -954,7 +954,6 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Financial income that is not interest or profit participation from affiliate. For example dividend, profit from bonds or result from stock trading.
-            TODO - is this the same as income from other investments ??
         financialIncomeTotal:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -962,105 +961,105 @@ components:
         interestExpenseToGroupCompanies:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Interest payed from the company to group or affiliate.
         interestExpensesTotal:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Total sum of interest payed from the company.
         otherFinancialExpenses:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Other financial expenses not covered by externalInterestExpenses and interestExpenseToGroupCompanies.
         financialCostsTotal:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Total financial costs. A sum of all costs.
         profitLossAfterFinancialItems:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Profit/Loss after financials shows the years total result of the business.
         extraordinaryIncome:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Extraordinary income is an unusual earning that results from unusual circumstances unlikely to be repeated. For example, if a corporation sells off idle real estate, this would generate income for the company, but it would be extraordinary, because it’s unlikely to keep selling real estate on a regular basis.
         extraordinaryExpenses:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Extraordinary expenses is unusual expenses that results from unusual circumstances unlikely to be repeated.
         resultBeforeAllocations:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description:  >-
+          description:  |
             Earnings before appropriations
             or
             Result before allocation
         groupContribution:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Given or obtained contribution from/to group or affiliate.
         profitLossBeforeTax:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Result before tax
         tax:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Taxes paid.
         incomeFromOtherInvestments:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         writeDownsOfCurrentAssetsOtherThanCurrentFinancialAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         writeDownOnOtherFinancialCurrentAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         writeDownOnFinancialFixedAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         taxExpenseOnOrdinaryResult:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         taxExpenseOnExtraordinaryResult:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         minorityShareholding:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         resultForTheYear:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             TODO
         dividend:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
-            TODO
+          description: |
+            Proposed dividend for the fiscal year accounted for.
         transferredAssessmentDifferences:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -1079,7 +1078,7 @@ components:
         liabilitiesAndEquity:
           "$ref": "#/components/schemas/NorwegianLiabilitiesAndEquity"
       title: NorwegianBalanceSheet
-      description: >-
+      description: |
         A balance sheet is a financial statement that reports a company's assets, liabilities and shareholders' equity at a specific point in time, and provides a basis for computing rates of return and evaluating its capital structure. It is a financial statement that provides a snapshot of what a company owns and owes, as well as the amount invested by shareholders.
     NorwegianAssets:
       type: object
@@ -1179,7 +1178,6 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             The sum of cash in hand and money in the bank.
-            TODO - fix this description
         investmentsOther:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -1193,7 +1191,6 @@ components:
       title: NorwegianCurrentAssets
       description: |
         Cash and other resources that are expected to turn to cash or to be used up within one year of the balance sheet date. (If a company's operating cycle is longer than one year, an item is a current asset if it will turn to cash or be used up within the operating cycle.) Current assets are presented in the order of liquidity, i.e., cash, temporary investments, accounts receivable, inventory, supplies, prepaid insurance.
-
     NorwegianNonCurrentAssets:
       type: object
       properties:
@@ -1446,7 +1443,6 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Other long term liabilities
-
       title: NorwegianLongTermLiabilities
     NorwegianShareholdersEquity:
       type: object
@@ -1455,7 +1451,7 @@ components:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
-            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off. TODO - is this correct?
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
         shareCapital:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -1469,16 +1465,14 @@ components:
         sharePremium:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             A share premium account is typically listed on a company’s balance sheet. This account is credited for money paid, or promised to be paid, by a shareholder for a share, but only when the shareholder pays more than the cost of a share. This account can be used to write off equity-related expenses, such as underwriting costs, and may also be used to issue bonus shares.
         restrictedEquity:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Restricted equity is equity that is bound to a limited company. Restricted equity may never be distributed to shareholders.
-
             Restricted equity is a security for other stakeholders (not shareholders) in a corporation such as lenders, suppliers, the state and employees. Restricted equity must exist since the shareholders never have to pay the debt in a bankruptcy. The shareholders in a limited company are free from liability in bankruptcy.
-
             Restricted equity includes share capital, revaluation reserves and other reserves
         retainedEarnings:
           type: string
