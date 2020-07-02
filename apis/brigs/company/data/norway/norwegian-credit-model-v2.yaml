@@ -855,7 +855,7 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: |
-            EBITA - (Earnings Before Interest, Taxes and Amortization) in relation to turnover
+            EBITA - (Earnings Before Interest, Taxes and Amortization) in relation to turnover.
         resultMargin:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -891,57 +891,53 @@ components:
         netSales:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Net sales is the sum of a company's gross sales minus its returns, allowances, and discounts.
         changeInInventories:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Change in inventories and work in progress for the last reporting period and the current reporting period.
         otherOperatingIncome:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Other operation income that doesn't count to the normal sales, for example rental income for companys that doesn't conduct property management.
-            TODO - also named as otherFinancialIncome
         costOfGoods:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Cost of goods sold (COGS) refers to the direct costs attributable to the production of the goods sold in a company. This amount includes the cost of the materials used in creating the good along with the direct labor costs used to produce the good. It excludes indirect expenses, such as distribution costs and sales force costs.
-
-            TODO - is this the same as commoditiesAndNecessities/rawmaterialsAndConsumables
         otherOperatingExpenses:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Costs outside of the companys main business and that appropriately can't be placed in other posts in the income statement.
         staffCosts:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             'Staff costs naturally include salary costs (including social security contributions) but also Recruitment costs, training costs, Costs for staff health care, pension costs and Business health care costs.
         depreciation:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             Depreciation is an accounting method of allocating the cost of a tangible asset over its useful life and is used to account for declines in value. Businesses depreciate long-term assets for both tax and accounting purposes.
         writedown:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
+          description: |
             A write-down is an accounting term for the reduction in the book value of an asset when its fair market value (FMV) has fallen below the carrying book value, and thus become an impaired asset. The amount to be written down is the difference between the book value of the asset and the amount of cash that the business can obtain by disposing of it in the most optimal manner.
         incomeFromInvestmentsInGroupEnterprises:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
-            The net from dividend income, impairment and reserved write-downs.
-            TODO - is this correct
+          description: |
+            The net from dividend income, impairment and reserved write-downs in closely related companies.
         incomeFromInvestmentsInGroupAssociates:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
-            TODO  - what is the difference from incomeFromInvestmentsInGroupEnterprises
+            The net from dividend income, impairment and reserved write-downs from companies within the group.
         interestIncomeFromGroupCompanies:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
