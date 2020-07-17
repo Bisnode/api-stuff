@@ -46,7 +46,7 @@ components:
       properties:
         creditRatings:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CreditRatings"
-        creditLimits:
+        ratingCreditLimits:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/RatingCreditLimits"
         paymentRemarks:
           "$ref": "#/components/schemas/NorwegianPaymentRemarks"
