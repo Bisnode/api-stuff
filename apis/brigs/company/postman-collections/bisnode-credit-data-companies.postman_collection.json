@@ -22,7 +22,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"5560391954\",\n\t\"country\":\"SE\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -31,7 +31,7 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
 						"companies"
 					],
 					"query": [
@@ -62,7 +62,7 @@
 					"raw": "{\n\t\"name\":\"Testföretag\",\n\t\"country\":\"SE\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -71,7 +71,7 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
 						"companies"
 					],
 					"query": [
@@ -102,7 +102,7 @@
 					"raw": "{\n\t\"name\":\"D&B Demo A/S\",\n\t\"country\":\"DK\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -111,7 +111,7 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
 						"companies"
 					],
 					"query": [
@@ -142,7 +142,7 @@
 					"raw": "{\n\t\"name\":\"Tytärtesti100 Oy\",\n\t\"country\":\"FI\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -151,7 +151,47 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Norwegian Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"SVAR DIREKTE AS\", \n\"country\": \"NO\"\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v2",
 						"companies"
 					],
 					"query": [
@@ -182,7 +222,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"5560391954\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/se?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies/se",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -191,7 +231,7 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
 						"companies",
 						"se"
 					],
@@ -223,7 +263,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"23456789\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/dk?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies/dk",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -232,7 +272,7 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
 						"companies",
 						"dk"
 					],
@@ -264,7 +304,7 @@
 					"raw": "{\n\t\"registrationNumber\":\"11111111\"\n}"
 				},
 				"url": {
-					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v1/companies/fi?",
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies/fi",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -273,9 +313,50 @@
 					],
 					"path": [
 						"credit-data-companies",
-						"v1",
+						"v2",
 						"companies",
 						"fi"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Norwegian Credit Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"registrationNumber\": \"937340303\",\n    \"language\": \"EN\",\n    \"segments\" : [\"RISK\", \"FINANCE\", \"MANAGEMENT\", \"OWNERSHIP\", \"EVENTS\"]\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies/no",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v2",
+						"companies",
+						"no"
 					],
 					"query": [
 						{
