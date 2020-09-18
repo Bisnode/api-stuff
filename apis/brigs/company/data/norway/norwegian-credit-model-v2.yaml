@@ -70,8 +70,8 @@ components:
       title: NorwegianTrade
     NorwegianPaymentRemarks:
       type: object
-      description: >-
-        TODO - add description.
+      description: |
+        It is a remark registered to a person or an enterprise concerning a debt collection case, judgement by consent, attachment of property or earnings or insolvency.
       properties:
         paymentRemarksGroups:
           type: array
@@ -173,8 +173,8 @@ components:
       title: NorwegianPaymentRemark
     NorwegianVoluntaryRegistration:
       type: object
-      description: >-
-        TODO - add description
+      description: |
+        These are voluntary forms of voluntary lodging of security placed as security for a loan or some other form of credit.
       properties:
         amount:
           "$ref": "#/components/schemas/NorwegianPaymentRemarkAmount"
@@ -241,11 +241,55 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         details:
           type: string
-          description: Details of the events. TODO - I18n??
+          description: Details of the events.
         type:
           type: string
-          description: >-
-            TODO - what types do we have here?
+          description: |
+            Bankruptcy event code (5 codes):
+              MK: Bankruptcy initiated
+              TK: Bankruptcy dismissed by court
+              AK: Bankrut’s estate closed by court
+              AB: Abandonment
+              TA: Compulsory winded-up
+            Debt collection event code (4 codes):
+              AO: Debt collection with non-payment instalment
+              RS: Debt collection with actions for court proceedings
+              IN: Debt collection
+              NR: Debt collection with continuated proceedings
+            Debt settlement for company event code (1 code):
+              MA: Composition approved
+            Debt settlement of private person event code (3 codes):
+              FG: Voluntary debt settlement
+              TG: Compulsory debt settlement
+              GF: Debt settlements proceedings
+            Norwegian distraint event code (8 codes):
+              LT: Debt collection with deduction in salary
+              TP: Debt collection with % deduction in salary
+              UL: Distraint
+              UA: Distraint
+              UP: Distraint
+              TL: Distraint on rental agreement
+              UB: Distraint
+              IS: Nothing for distraint
+            Norwegian other event code (7 codes):
+              DO: Court judgement
+              HF: Charge on property
+              HE: Charge decision
+              HR: Ban on disposal of assets prior to bankruptcy
+              AV: Sequestration
+              AR: Seizure
+              MF: Temporary precautionary measure
+            Voluntary event code (10 codes):
+              FA: Security/Mortgage in value of debt
+              AT: Security/Mortgage in aquaculture license
+              LA: Leasing agreement
+              DT: Security/Mortgage in equipment
+              FP: Security/Mortgage in fishing equipment
+              LP: Security/Mortgage in agricultural movables
+              JB: Security/Mortgage in railway
+              SP: Security/Mortgage in vehicle
+              KA: Security/Mortgage in motor vehicles/construction machinery
+              VL: Security/Mortgage in stocks
         source:
           type: string
           description: Where did the event come from
@@ -381,7 +425,6 @@ components:
         type:
           type: string
           enum: ['OTHER', 'PERSON', 'LIMITED_COMPANY', 'PARTNERSHIP']
-          description: What type is this person/entity. I.e is this a private person or a company?
         entity:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PositionEntity"
         function:
@@ -567,21 +610,63 @@ components:
         code:
           type: string
           enum: ['LIMITED_COMPANY', 'SOLE_PROPRIETORSHIP', 'TRADING_LIMITED_PARTNERSHIP', 'NORWAY_DIVISION_FOREIGN_ENTERPRISE', 'OTHER']
-          description: >-
-            '
-            TODO - add descriptions here
-            '
         description:
           type: string
           description: A textual description of the code.
           example: AS
         localCode:
           type: string
-          description: >-
-            '
-            Raw code of the legal form
-            TODO - add legal form codes
-            '
+          description: |
+            AAFY - Sub Unit of natural Person
+            ADOS - Administrative entity in public sector
+            ANNA - Other body corporate
+            ANS - General Partnership
+            AS - Private Limited Company
+            ASA - Public Limited Company
+            AVD - Branch
+            BA - Company with Limited Liability
+            BBL - House Building Cooperative
+            BO - Other estates
+            BRL - Housing Cooperative
+            DA - General Partnership Shared liab.
+            ENK - Sole Proprietorship
+            EOFG - European econ. enterprise group
+            ESEK - Condominium flat owner
+            FEMV - Colloborating Companies Va
+            FKF - County municipal business enterprise
+            FLI - Association/Club/Organization
+            FYLK - County
+            GFS - Mutual Insurance Company
+            IKJP - Other non body corporate
+            IKS - Inter-municipal company
+            KBO - Bankrupt Estate
+            KF - Municipal business enterprise
+            KIRK - Council of Churches
+            KOMM - Municipality
+            KS - Limited Partnership
+            KTRF - Joint Office
+            NUF - Norw. division foreign enterpr.
+            OPMV - Specially sectioned unit
+            ORGL - Organisation Section
+            PERS - Other non body corporate
+            PK - Pension Fund
+            PRE - Jointly Owned Shipping Company
+            REGN - Accountant
+            REV - Auditor
+            SA - Cooperative society
+            SAM - Joint ownership law of contract
+            SE - Societas Europea
+            SF - Public Corporation
+            SPA - Savings Bank
+            STAT - State
+            STI - Foundation
+            SÆR - Other Business acc. special law
+            TVAM - Compulsary reg. in the VAT List
+            UDEF - Other
+            UTBG - Volunt. reg. of rental premise
+            UTLA - Foreign entity
+            VIFE - Jointly operated enterprise
+            VPFO - Securities funds
       title: NorwegianLegalForm
     NorwegianRegistrationInformation:
       type: object
@@ -605,7 +690,6 @@ components:
         value:
           type: string
           enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: TODO - What statuses do we have
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         additionalInformation:
@@ -668,7 +752,6 @@ components:
         auditorsReservationCode:
           type: string
           description: |
-            TODO: these are the codes taken from ontology please review.
             A - Unlawful loan to shareholders, the manager, members of the board or others
             B - Tax reduction is not placed in own account or not fully paid in
             C - Lack of documentary evidence and internal control
@@ -713,14 +796,12 @@ components:
           example: "100.0"
           description: >-
             Current assets in percent of Short term liabilities.
-
-            The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
+            The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities.
         interestCoverage:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: |
-            TODO - This is interest coverage ratio in brigs web - which one to use?
             Measures the extent to which interest is covered by earnings before interest and taxes (EBIT) plus depreciation.
             The ratio shows the company's ability to pay its interests. A value equal to 1 implies that the result after financial income matches the financial costs exactly. A value less than one implies that the company isn't able to cover their interest costs and doesn't do any profit.
         interestOnLiability:
@@ -728,7 +809,7 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
           description: |
-            Interest on liability expressed in percent
+            Interest on liability expressed in percent.
         quickRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -842,20 +923,14 @@ components:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description:
-            TODO - Add description
         debtorRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description:
-            TODO - Add description
         creditorRatio:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
           example: "100.0"
-          description:
-            TODO - Add description
         daysOfPayables:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -930,7 +1005,6 @@ components:
           pattern: '^(-)?\d*(\.\d*)?$'
           description: >-
             Interest payed to the company by banks or creditinstitutes.
-            TODO - also named interestIncome
         otherFinancialIncome:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -1000,43 +1074,27 @@ components:
         incomeFromOtherInvestments:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         writeDownsOfCurrentAssetsOtherThanCurrentFinancialAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         writeDownOnOtherFinancialCurrentAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         writeDownOnFinancialFixedAssets:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         taxExpenseOnOrdinaryResult:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         taxExpenseOnExtraordinaryResult:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         minorityShareholding:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         resultForTheYear:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: |
-            TODO
         dividend:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
@@ -1045,13 +1103,9 @@ components:
         transferredAssessmentDifferences:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
-            TODO
         transferredOtherEquity:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
-            TODO
     NorwegianBalanceSheet:
       type: object
       properties:
@@ -1469,8 +1523,6 @@ components:
         otherEquity:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
-          description: >-
-            TODO - examples
         minorityInterestsTotal:
           type: string
           pattern: '^(-)?\d*(\.\d*)?$'
