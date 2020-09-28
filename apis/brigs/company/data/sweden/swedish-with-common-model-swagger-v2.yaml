@@ -1246,7 +1246,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/SwedishPayrollTax"
-        turnoverInterval:
+        turnoverIntervals:
           type: array
           items:
             "$ref": "#/components/schemas/SwedishTurnoverInterval"
