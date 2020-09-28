@@ -1246,6 +1246,10 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/SwedishPayrollTax"
+        turnoverInterval:
+          type: array
+          items:
+            "$ref": "#/components/schemas/SwedishTurnoverInterval"
         propertyHoldings:
           "$ref": "#/components/schemas/SwedishPropertyHoldings"
 
@@ -2157,6 +2161,16 @@ components:
         referenceNumber:
           type: string
       title: SwedishPayrollTax
+    SwedishTurnoverInterval:
+      type: object
+      description: | 
+        Turnover interval (Based on VAT report). Swedish sole and proprietor companies only
+      properties:
+        date:
+          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
+        interval:
+          type: string
+      title: SwedishTurnoverInterval
     SwedishPropertyHoldings:
       type: object
       description: All the current and assesed property holdings
