@@ -2170,7 +2170,7 @@ components:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
         interval:
           type: string
-          description: 'Sales intervals in thousands SEK'
+          description: 'Turnover intervals in thousands SEK'
           example: '200-299'
       title: SwedishTurnoverInterval
     SwedishPropertyHoldings:
