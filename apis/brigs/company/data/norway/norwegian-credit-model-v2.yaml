@@ -48,6 +48,8 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CreditRatings"
         ratingCreditLimits:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/RatingCreditLimits"
+        failureScores:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Scores"
         paymentRemarks:
           "$ref": "#/components/schemas/NorwegianPaymentRemarks"
         bankruptcy:
