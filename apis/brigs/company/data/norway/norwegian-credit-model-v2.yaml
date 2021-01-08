@@ -41,8 +41,9 @@ components:
       description: This is the root object defining which structures reside under the root path.
     NorwegianRisk:
       type: object
-      description: >-
+      description: |
         Risk section.
+        The Norweigan failure score model predicts the likelihood of a company becoming insolvent within 12 months.
       properties:
         creditRatings:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/CreditRatings"
