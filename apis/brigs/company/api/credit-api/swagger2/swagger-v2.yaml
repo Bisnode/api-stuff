@@ -36,15 +36,18 @@ paths:
           description: Error definition
           schema:
             $ref: '#/definitions/Error'
-            
   /companies/se:
     post:
+      produces:
+        - application/json
+        - application/pdf
       summary: Fetch credit and risk data on a swedish company
       description: |
-        Fetch risk and credit data on swedish companies
+        Fetch risk and credit data on swedish companies.
+        To get a pdf representation of the data set the Accept header to 'application/pdf'.
       parameters:
         - in: body
-          name: RequestModel 
+          name: RequestModel
           schema:
             $ref: '#/definitions/RequestModel'
       responses:
@@ -68,42 +71,143 @@ paths:
           description: Error definition
           schema:
             $ref: '#/definitions/Error'
-  /companies/fi:
-   post:
-     summary: Fetch credit and risk data on a finnish company
-     description: |
-       Fetch risk and credit data on finnish companies
-     parameters:
-      - in: body
-        name: RequestModel
-        schema:
-          $ref: '#/definitions/RequestModel'
-     responses:
-      '200':
-        description: OK
-        schema:
-          $ref: '#/definitions/FinnishResponseModel'
-      '400':
-        description: Bad request - invalid input.
-        schema:
-          $ref: '#/definitions/Error'
-      '404':
+  /companies/se/annual-reports:
+    post:
+      summary: List all the annual reports available on a swedish company
+      description: |
+        List all the annual reports available on a swedish company
+      parameters:
+        - in: body
+          name: RequestModel
+          schema:
+            $ref: '#/definitions/AnnualReportSearchRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AnnualReportSearchResponse'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
           description: Company not found.
           schema:
             $ref: '#/definitions/Error'
-      '451':
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+  /companies/{country}/annual-reports/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: annual report id
+        - in: path
+          name: country
+          type: string
+          required: true
+          description: |
+            "Supported countries: se,fi,dk"
+      produces:
+        - application/pdf
+        - application/json
+      summary: Fetch the annual report with the given id
+      description: |
+        Download a pdf using the id from a previous search.
+        To get a pdf representation of the data set the Accept header to 'application/pdf'.
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: file
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Not found.
+
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+  /companies/fi:
+    post:
+      produces:
+        - application/json
+        - application/pdf
+      summary: Fetch credit and risk data on a finnish company
+      description: |
+        Fetch risk and credit data on finnish companies.
+        To get a pdf representation of the data set the Accept header to 'application/pdf'.
+      parameters:
+        - in: body
+          name: RequestModel
+          schema:
+            $ref: '#/definitions/RequestModel'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/FinnishResponseModel'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Company not found.
+          schema:
+            $ref: '#/definitions/Error'
+        '451':
           description: Even though the company exist we can't deliver any data due to legal reasons.
           schema:
             $ref: '#/definitions/Error'
-      default:
-        description: Error definition
-        schema:
-          $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+  /companies/fi/annual-reports:
+    post:
+      summary: List all the annual reports available on a finnish company
+      description: |
+        List all the annual reports available on a finnish company
+      parameters:
+        - in: body
+          name: RequestModel
+          schema:
+            $ref: '#/definitions/AnnualReportSearchRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AnnualReportSearchResponse'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Company not found.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
   /companies/dk:
     post:
+      produces:
+        - application/json
+        - application/pdf
       summary: Fetch credit and risk data on a danish company
       description: |
-       Fetch risk and credit data on danish companies
+        Fetch risk and credit data on danish companies.
+        To get a pdf representation of the data set the Accept header to 'application/pdf'.
       parameters:
         - in: body
           name: RequestModel
@@ -130,14 +234,45 @@ paths:
           description: Error definition
           schema:
             $ref: '#/definitions/Error'
-  /companies/no:
+  /companies/dk/annual-reports:
     post:
-      summary: Fetch credit and risk data on a norwegian company
+      summary: List all the annual reports available on a danish company
       description: |
-        Fetch risk and credit data on norwegian companies
+        List all the annual reports available on a danish company
       parameters:
         - in: body
-          name: RequestModel 
+          name: RequestModel
+          schema:
+            $ref: '#/definitions/AnnualReportSearchRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/AnnualReportSearchResponse'
+        '400':
+          description: Bad request - invalid input.
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Company not found.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Error definition
+          schema:
+            $ref: '#/definitions/Error'
+  /companies/no:
+    post:
+      produces:
+        - application/json
+        - application/pdf
+      summary: Fetch credit and risk data on a norwegian company
+      description: |
+        Fetch risk and credit data on norwegian companies.
+        To get a pdf representation of the data set the Accept header to 'application/pdf'.
+      parameters:
+        - in: body
+          name: RequestModel
           schema:
             $ref: '#/definitions/RequestModel'
       responses:
@@ -166,6 +301,49 @@ securityDefinitions:
     scopes:
       credit_data_companies: allows access to Bisnode risk and credit data
 definitions:
+    AnnualReportSearchRequest:
+      type: object
+      description: Model for annual report search
+      properties:
+        registrationNumber:
+          type: string
+          description: The registration number / organisation number
+          example: 1010101010
+    AnnualReportSearchResponse:
+      type: object
+      description: Search response model
+      properties:
+        annualReports:
+          type: array
+          items:
+            $ref: '#/definitions/AnnualReport'
+    AnnualReport:
+      type: object
+      description: Annual report model
+      properties:
+        typeCode:
+          type: string
+          enum: ['N', 'K', 'D']
+          description: |
+            "N - Normal period
+             K - annual report for the group
+             D - part of the year"
+        id:
+          type: string
+          description: The id for this report, to be used when fetching the report
+        startDate:
+          $ref: "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
+        endDate:
+          $ref: "https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel"
+        link:
+          $ref: '#/definitions/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: Link to the report
+          example: /companies/se/annual-reports/2312i3y1h-123123
     SearchResponse:
       type: object
       description: |
@@ -282,7 +460,7 @@ definitions:
             enum: ['RISK', 'FINANCE', 'MANAGEMENT', 'OWNERSHIP', 'EVENTS', 'COMPANY_INFORMATION']
           description: |
             See below the possible segments per country.
-            NO
+            NO and SE
               Allowed segments - RISK, FINANCE, MANAGEMENT, OWNERSHIP, EVENTS and COMPANY_INFORMATION.
               Note that COMPANY_INFORMATION is always included in the response. If no segments are given then all are returned.
     DanishResponseModel:
