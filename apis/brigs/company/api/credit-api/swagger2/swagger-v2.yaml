@@ -462,6 +462,9 @@ definitions:
             See below the possible segments per country.
             NO and SE
               Allowed segments - RISK, FINANCE, MANAGEMENT, OWNERSHIP, EVENTS and COMPANY_INFORMATION.
+            DK and FI
+              Allowed segments - RISK, FINANCE, MANAGEMENT, OWNERSHIP and COMPANY_INFORMATION.
+              
               Note that COMPANY_INFORMATION is always included in the response. If no segments are given then all are returned.
     DanishResponseModel:
       $ref: 'https://api.swaggerhub.com/domains/bisnode-apis/DanishCompanyCreditModel/2.0.0#/components/schemas/DanishCompanyData'
