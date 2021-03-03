@@ -62,6 +62,8 @@ components:
           "$ref": "#/components/schemas/SwedishBankruptcy"
         actionsOfDistraint:
           "$ref": "#/components/schemas/SwedishActionsOfDistraint"
+        failureScores:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Scores"
 
       title: SwedishRisk
     SwedishFinancialCommitments:
