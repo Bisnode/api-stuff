@@ -11,6 +11,7 @@ security:
     - credit_data_companies
 host: sandbox-api.bisnode.com
 basePath: /credit-data-companies/v2
+
 paths:
   /companies:
     post:
