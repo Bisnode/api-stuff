@@ -36,6 +36,7 @@ paths:
           description: Error definition
           schema:
             $ref: '#/definitions/Error'
+            
   /companies/se:
     post:
       produces:
