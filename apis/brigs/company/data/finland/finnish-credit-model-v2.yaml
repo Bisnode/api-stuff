@@ -15,9 +15,7 @@ info:
   contact:
     email: api-bisnode@bisnode.com
 
-
 components:
-
   ####################
   # Common data models
   ####################
@@ -35,7 +33,7 @@ components:
           "$ref": "#/components/schemas/FinnishFinance"
         ownership:
           "$ref": "#/components/schemas/FinnishOwnership"
-      required: []
+
       title: FinnishCompanyData
       description: This is the root object defining which structures reside under the root path.
     FinnishRisk:
@@ -55,7 +53,9 @@ components:
           "$ref": "#/components/schemas/FinnishBankruptcy"
         debtCollection:
           "$ref": "#/components/schemas/FinnishDebtCollection"
-      required: []
+        failureScores:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Scores"
+
       title: FinnishRisk
     FinnishTrade:
       type: object
@@ -70,7 +70,7 @@ components:
           type: boolean
           description: |
             True if there has been any debt collection cases the last 6 months.
-      required: []
+
       title: FinnishDebtCollection
     FinnishCreditInquiry:
       type: object
@@ -80,7 +80,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: FinnishCreditInquiry
     FinnishPaymentRemarks:
       type: object
@@ -96,7 +96,7 @@ components:
           description: A list of remarks, most recent ones comes first.
           items:
             "$ref": "#/components/schemas/FinnishPaymentRemark"
-      required: []
+
       title: FinnishPaymentRemarks
     FinnishPaymentRemark:
       type: object
@@ -114,7 +114,7 @@ components:
           type: string
           description: A textual description of the event type
           example: FISSION - EXPIRED
-      required: []
+
       title: FinnishPaymentRemark
     FinnishReportCode:
       type: object
@@ -230,7 +230,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/FinnishPetition"
-      required: []
+
       title: FinnishPetitions
     FinnishPetition:
       type: object
@@ -247,7 +247,7 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
         type:
           "$ref": "#/components/schemas/FinnishReportCode"
-      required: []
+
       title: FinnishPetition
     FinnishCreditInquiries:
       type: object
@@ -261,7 +261,7 @@ components:
           description: A list of the inquiries.
           items:
             "$ref": "#/components/schemas/FinnishCreditInquiry"
-      required: []
+
       title: FinnishCreditInquiries
     FinnishOwnership:
       type: object
@@ -271,11 +271,8 @@ components:
         subsidiaries:
           "$ref": "#/components/schemas/FinnishSubsidiaries"
         familyTree:
-          type: object
-          description: Tree structure of the owner relationships.
-          items:
-            "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/FamilyTree"
-      required: []
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/FamilyTree"
+
       title: FinnishOwnership
     FinnishSubsidiaries:
       type: object
@@ -288,7 +285,7 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/FinnishSubsidiary"
-      required: []
+
       title: FinnishSubsidiaries
     FinnishSubsidiary:
       type: object
@@ -304,7 +301,7 @@ components:
           description: 'Country code as described in: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'
         shareCapital:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: FinnishSubsidiary
     FinnishManagement:
       type: object
@@ -318,7 +315,7 @@ components:
           type: string
           description: |
             Officer or representative vested (explicitly, implicitly, or through conduct) with the powers to commit the authorizing organization to a binding agreement.
-      required: []
+
       title: FinnishManagement
     FinnishAuditors:
       type: object
@@ -329,7 +326,7 @@ components:
           description: Auditors currently auditing this company
           items:
             "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Position"
-      required: []
+
       title: FinnishAuditors
     FinnishPosition:
       type: object
@@ -381,7 +378,7 @@ components:
           description: Assignments in other companies for this person/entity
           items:
              "$ref": "#/components/schemas/Assignment"
-      required: []
+
       title: FinnishPosition
     Assignment:
       type: object
@@ -435,7 +432,7 @@ components:
             'true' if this company has remarks on payment 
         date:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: RemarkInAssignment   
     FinnishHistoricalPosition:
       type: object
@@ -484,7 +481,7 @@ components:
         description:
           type: string
           description: A textual description of the function
-      required: []
+
       title: FinnishHistoricalPosition
     FinnishBoardMembers:
       type: object
@@ -499,7 +496,7 @@ components:
           description: A list of the historical boardmembers.
           items:
             "$ref": "#/components/schemas/FinnishHistoricalPosition"
-      required: []
+
       title: FinnishBoardMembers
     FinnishCompanyInformation:
       type: object
@@ -521,7 +518,7 @@ components:
           "$ref": "#/components/schemas/FinnishRegistrationInformation"
         generalCompanyData:
           "$ref": "#/components/schemas/FinnishGeneralCompanyData"
-      required: []
+
       title: FinnishCompanyInformation
     FinnishGeneralCompanyData:
       type: object
@@ -564,7 +561,7 @@ components:
           type: string
           description: The place where this company is registered.
           example: Helsinki
-      required: []
+
       title: FinnishGeneralCompanyData
     FinnishLegalForm:
       type: object
@@ -616,26 +613,15 @@ components:
             47  STATE ENTERPRISE
             48  SOCIETAS EUROPAEA
             49  MUTUAL EUROPE INSURANCE COMP.
-      required: []
+
       title: FinnishLegalForm
     FinnishRegistrationInformation:
       type: object
       properties:
         registrationDate:
           "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
+
       title: FinnishRegistrationInformation
-    FinnishStatus:
-      type: object
-      properties:
-        value:
-          type: string
-          enum: ['ACTIVE', 'INACTIVE', 'NOTSTARTED_OR_DORMANT']
-          description: 
-        date:
-          "$ref": 'https://api.swaggerhub.com/domains/bisnode-apis/DateModel/1.0.0#/components/schemas/DateModel'
-      required: []
-      title: FinnishStatus
     FinnishFinance:
       type: object
       properties:
@@ -662,13 +648,15 @@ components:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Creditor"
         amount:
           "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Amount"
-      required: []
+
       title: FinnishFloatingCharge
     FinnishFinancialStatements:
       type: object
       description: | 
             Company financial data
       properties:
+        groupAccount:
+          "$ref": "#/components/schemas/FinnishGroupAccount"
         auditorsReservation:
           type: array
           items:
@@ -684,7 +672,7 @@ components:
           description: "The 5 latest will be returned sorted on date desc"
           items:
             "$ref": "#/components/schemas/FinnishFinancialStatement"
-      required: []
+
       title: FinnishFinancialStatements
     FinnishFinancialStatementsAuditorsReservation:
       type: object
@@ -701,7 +689,7 @@ components:
         auditorsCommentDescription:
           type: string
           description: Textual description of the auditorsCommentCode
-      required: []
+
       title: FinnishFinancialStatementsAuditorsReservation
     FinnishFinancialStatementKeyFigure:
       type: object
@@ -719,60 +707,82 @@ components:
           description: Currency expressed with the ISO standard 4217, see https://en.wikipedia.org/wiki/ISO_4217. Applies for all fields in this block and the ones below containg monetary values.
           example: EUR
         currentRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             Current assets in percent of Short term liabilities.
             
             The current ratio is a liquidity ratio that measures whether or not a firm has enough resources to meet its short-term obligations. It compares a firm's current assets to its current liabilities
-          example: 19.4
+            
+            Formatted using period as the decimal point.
+          example: "19.4"
         equityAssetsRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "19.5"
           description: |
-            Calculated equity in percent of the total assets. ???
+            Calculated equity in percent of the total assets.
+            
+            Formatted using period as the decimal point.
         gearing:
-          type: number
-          format: double
-          example: 89.0
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "89.0"
           description: |
             Gearing refers to the relationship, or ratio, of a company's debt to equity. Gearing shows the extent to which a firm's operations are funded by lenders versus shareholders—in other words, it measures a company’s financial leverage. 
-        liabilityRatio:
-          type: number
-          format: double
-          description: |
-            Debt/equity ratio in brigs web
             
+            Formatted using period as the decimal point.
+        liabilityRatio:
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "99.5"
+          description: |
             Liabilities in percent of equity.
             
             The liabilities to assets (L/A) ratio is a solvency ratio that examines how much of a company's assets are made of liabilities. A ratio of 20 percent means that 20 percent of the company are liabilities.
+            
+            Formatted using period as the decimal point.
         profitMargin:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "55.0"
           description: |
             profit rate in brigs web
             Operating profit/loss plus financial income as a percentage of turnover.
+            
+            Formatted using period as the decimal point.
         quickRatio:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "99.5"
           description: |
            Current assets minus inventories in percent of current liabilities.
+           
+           Formatted using period as the decimal point.
         returnOnEquity:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "11.0"
           description: |
             Profit/loss after financial items as a percentage of the total equity.
+            
+            Formatted using period as the decimal point.
         returnOnInvestments:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "33.5"
           description: |
+            Return on Investment (ROI) is a performance measure used to evaluate the efficiency of an investment or compare the efficiency of a number of different investments. ROI tries to directly measure the amount of return on a particular investment, relative to the investment’s cost. To calculate ROI, the benefit (or return) of an investment is divided by the cost of the investment. The result is expressed as a percentage or a ratio.
             
+            Formatted using period as the decimal point.
         returnOnTotalAssets:
-          type: number
-          format: double
-          example: 55.0
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
+          example: "55.0"
           description: |
+            Return on assets (ROA) is an indicator of how profitable a company is relative to its total assets. ROA gives a manager, investor, or analyst an idea as to how efficient a company's management is at using its assets to generate earnings. Return on assets is displayed as a percentage.
             
+            Formatted using period as the decimal point.
         turnover:
           type: integer
           format: int64
@@ -789,27 +799,32 @@ components:
           format: int64
           example: 23444000
           description: |
-            
+            An asset is any resource owned by the business. Anything tangible or intangible that can be owned or controlled to produce value and that is held by a company to produce positive economic value is an asset.
         equityTotal:
           type: integer
           format: int64
           example: 23444000
           description: |
-            
+            Total equity.
+            Equity is typically referred to as shareholder equity (also known as shareholders' equity) which represents the amount of money that would be returned to a company’s shareholders if all of the assets were liquidated and all of the company's debt was paid off.
         daysOfPayables:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
              The average time (in days) that a company takes to pay its bills and invoices to its trade creditors, which include suppliers, vendors or other companies.
-          example: 3.0
+             
+             Formatted using period as the decimal point.
+          example: "3.0"
         daysOfReceivables:
-          type: number
-          format: double
+          type: string
+          pattern: '^(-)?\d*(\.\d*)?$'
           description: |
             A measure of the average number of days that it takes a company to collect payment after a sale has been made. 
-          example: 2.4
             
-      required: []
+            Formatted using period as the decimal point.
+          example: "2.4"
+            
+
       title: FinnishFinancialStatementKeyFigure
     FinnishIncomeStatement:
       type: object
@@ -903,12 +918,12 @@ components:
           type: integer
           format: int64
           description: |
-            Taxes postphoned from another year. Examples please??
+            Taxes postphoned from another year. 
         taxAdjustments:
           type: integer
           format: int64
           description: |
-            Tax adjustments. Examples please??
+            Tax adjustments. 
         otherFinancialExpenses:
           type: integer
           format: int64
@@ -981,7 +996,7 @@ components:
           type: integer
           format: int64
           description: |
-            Estimated value for properties that are to be sold. ????
+            Estimated value for properties that are to be sold.
         accountsReceivable: 
           type: integer
           format: int64
@@ -1001,7 +1016,7 @@ components:
           type: integer
           format: int64
           description: |
-            Accrued revenues and deferred expenses. Examples ???
+            Accrued revenues and deferred expenses.
         cashAndCashEquivalents: 
           type: integer
           format: int64
@@ -1283,7 +1298,7 @@ components:
           type: integer
           format: int32
           description: |
-            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs.
+            Fiscal year-end refers to the completion of a one-year, or 12-month, accounting period. A fiscal year is the period used for calculating annual financial statements. A company's fiscal year may differ from the calendar year, and may not close on December 31 due to the nature of a company's needs. Value expressed in number of months.
           example: 12
         currency:
           type: string
@@ -1293,8 +1308,17 @@ components:
           "$ref": "#/components/schemas/FinnishBalanceSheet"
         incomeStatement:
           "$ref": "#/components/schemas/FinnishIncomeStatement"
-      required: []
+
       title: FinnishFinancialStatement
+    FinnishGroupAccount:
+      type: object
+      properties:
+        financialStatements:
+          type: array
+          description: "The 5 latest will be returned sorted on date desc"
+          items:
+            "$ref": "#/components/schemas/FinnishFinancialStatement"
+      title: FinnishGroupAccount
     FinnishBankruptcy:
       type: object
       description: This section will be available if there is any data related to bankruptcy for this company.
@@ -1302,21 +1326,3 @@ components:
         bankrupt:
           type: boolean
           description: A flag indicating this company is bankrupt.
-    FinnishTrustee:
-      type: object
-      description: Name and contact-info to the person/company handling the bankruptcy
-      properties:
-        companyName:
-          type: string
-          description: Name of the company handling the bankruptcy
-          example: Advokatfirman demo
-        name:
-          type: string
-          description: Name of the person assigned to handle the bankruptcy.
-          example: Anders Svensson
-        phoneNumber:
-          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/PhoneNumber"
-        address:
-          type: string
-          description: The address to the person/company assigned to handle this bankruptcy
-        example: 10390, Stockholm
