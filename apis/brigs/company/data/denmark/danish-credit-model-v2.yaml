@@ -51,6 +51,8 @@ components:
           "$ref": "#/components/schemas/DanishFinancialCommitments"
         bankruptcy:
           "$ref": "#/components/schemas/DanishBankruptcy"
+        failureScores:
+          "$ref": "https://api.swaggerhub.com/domains/bisnode-apis/CommonCreditModel/2.0.0#/components/schemas/Scores"
 
       title: DanishRisk
     DanishCreditRatings:
