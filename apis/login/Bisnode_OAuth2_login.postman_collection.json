@@ -131,7 +131,7 @@
 								},
 								{
 									"key": "scope",
-									"value": "",
+									"value": "credit_data_companies credit_data_persons no_beneficialowner b2b_aml_screen bpds b2c_aml_ident_screen  b2b_aml_ident_screen no_beneficialowner_finance b2c_aml_screen aml_smart_connect",
 									"type": "text"
 								}
 							]
