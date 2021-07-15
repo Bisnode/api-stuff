@@ -1,13 +1,295 @@
 {
 	"info": {
 		"_postman_id": "1e78657a-888a-40b1-8cfb-8470c0cfa1eb",
-		"name": "FI B2C API",
+		"name": "bisnode-credit-data-persons",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Sandbox",
 			"item": [
+				{
+					"name": "Search DK Persons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_SANDBOX}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"dateOfBirth\": \"1985-01-01\",\r\n  \"fullName\": \"Hans Hansen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/dk",
+							"host": [
+								"{{HOST_API_SANDBOX}}"
+							],
+							"path": [
+								"{{B2C_ENDPOINT}}",
+								"persons",
+								"dk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search NO Persons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_SANDBOX}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"dateOfBirth\": \"1901-01-01\",\r\n    \"fullName\": \"DEMO PERSON\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/no",
+							"host": [
+								"{{HOST_API_SANDBOX}}"
+							],
+							"path": [
+								"{{B2C_ENDPOINT}}",
+								"persons",
+								"no"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search SE Persons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_SANDBOX}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"fullName\": \"Walker, Testperson Ann Kim\", \r\n    \"town\": \"Solna\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/se",
+							"host": [
+								"{{HOST_API_SANDBOX}}"
+							],
+							"path": [
+								"{{B2C_ENDPOINT}}",
+								"persons",
+								"se"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Data DK Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_SANDBOX}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"language\": \"en\",\r\n  \"nationalIdentificationNumber\": \"0101851001\"\r\n}"
+						},
+						"url": {
+							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/dk/credit-data",
+							"host": [
+								"{{HOST_API_SANDBOX}}"
+							],
+							"path": [
+								"{{B2C_ENDPOINT}}",
+								"persons",
+								"dk",
+								"credit-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Data NO Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_SANDBOX}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"language\": \"en\",\r\n  \"nationalIdentificationNumber\": \"01010112377\"\r\n}"
+						},
+						"url": {
+							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/no/credit-data",
+							"host": [
+								"{{HOST_API_SANDBOX}}"
+							],
+							"path": [
+								"{{B2C_ENDPOINT}}",
+								"persons",
+								"no",
+								"credit-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Data SE Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN_SANDBOX}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"language\": \"en\",\r\n  \"nationalIdentificationNumber\": \"4502198429\"\r\n}"
+						},
+						"url": {
+							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/se/credit-data",
+							"host": [
+								"{{HOST_API_SANDBOX}}"
+							],
+							"path": [
+								"{{B2C_ENDPOINT}}",
+								"persons",
+								"se",
+								"credit-data"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Credit Data FI Person - Sandbox - Large",
 					"request": {
@@ -436,438 +718,20 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST_API_SANDBOX",
+			"value": "https://sandbox-api.bisnode.com"
 		},
 		{
-			"name": "Prod",
-			"item": [
-				{
-					"name": "Credit Data FI Person - Prod - Large",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"LARGE\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_DVV_BASIC",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_DVV_BASIC\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_DVV_COLLECTION",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_DVV_COLLECTION\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_DVV_FINANCE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_DVV_FINANCE\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_DVV_LENDER",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_DVV_LENDER\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_LARGE_AND_DVV_BASIC",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_LARGE_AND_DVV_BASIC\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_LARGE_AND_DVV_COLLECTION",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_LARGE_AND_DVV_COLLECTION\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_LARGE_AND_DVV_FINANCE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_LARGE_AND_DVV_FINANCE\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - FINNISH_LARGE_AND_DVV_LENDER",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\",\n    \"reasonCode\": \"1\",\n    \"reportType\": \"FINNISH_LARGE_AND_DVV_LENDER\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi/credit-data",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi",
-								"credit-data"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - Person Search SSN",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nationalIdentificationNumber\": \"010113A953J\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Data FI Person - Prod - Person Search Bisnode ID",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BEARER_TOKEN_PROD}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"personId\": \"FI2101006369103\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_SANDBOX}}/{{B2C_ENDPOINT}}/persons/fi",
-							"host": [
-								"{{HOST_API_SANDBOX}}"
-							],
-							"path": [
-								"{{B2C_ENDPOINT}}",
-								"persons",
-								"fi"
-							]
-						}
-					},
-					"response": []
-				}
-			]
+			"key": "B2C_ENDPOINT",
+			"value": "credit-data-persons/v1"
+		},
+		{
+			"key": "BEARER_TOKEN_SANDBOX",
+			"value": ""
 		}
 	]
 }
