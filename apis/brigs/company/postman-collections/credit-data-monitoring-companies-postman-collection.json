@@ -21,7 +21,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sandbox-api.qa.aws.blue.bisnode.net/rgs-portfolio-monitoring-api/v1/portfolio/events?countries=FI",
+					"raw": "https://sandbox-api.bisnode.com/rgs-portfolio-monitoring-api/v1/portfolio/events?countries=FI",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
@@ -63,7 +63,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sandbox-api.qa.aws.blue.bisnode.net/rgs-portfolio-monitoring-api/v1/portfolio/events?countries=SE",
+					"raw": "https://sandbox-api.bisnode.com/rgs-portfolio-monitoring-api/v1/portfolio/events?countries=SE",
 					"protocol": "https",
 					"host": [
 						"sandbox-api",
