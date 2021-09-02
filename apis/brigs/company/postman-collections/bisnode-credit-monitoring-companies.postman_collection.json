@@ -1,14 +1,240 @@
 {
 	"info": {
-		"_postman_id": "5db1e243-b9e4-4455-a256-496dd76548dd",
-		"name": "Credit Monitoring Companies API",
-		"description": "Portfolio functionality API\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com",
+		"_postman_id": "e542fd33-b0e8-47af-8c5a-00fe09aae950",
+		"name": "Credit Monitoring Companies",
+		"description": "Monitoring Risk and Credit data for companies\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "portfolio",
 			"item": [
+				{
+					"name": "events",
+					"item": [
+						{
+							"name": "find Events For Portfolio",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/portfolio/events?startDate=2021-01-01&endDate=2021-08-31&page=0&size=20&by=REGISTRATION_DATE&direction=DESC",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portfolio",
+										"events"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2021-01-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2021-08-31"
+										},
+										{
+											"key": "page",
+											"value": "0",
+											"description": "Zero-based page index (0..N)"
+										},
+										{
+											"key": "size",
+											"value": "20",
+											"description": "The size of the page to be returned"
+										},
+										{
+											"key": "by",
+											"value": "REGISTRATION_DATE",
+											"description": "(Required) Sorting criteria"
+										},
+										{
+											"key": "direction",
+											"value": "DESC",
+											"description": "(Required) Sorting criteria"
+										}
+									]
+								},
+								"description": "Get the events for a portfolio in a paginated form. Allows to filter and sort events."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/events?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&eventCategory=RISK&eventCategory=BASIC_INFORMATION&country=SE&page=0&size=20&by=REGISTRATION_DATE&direction=DESC",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"events"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "yyyy-MM-dd"
+												},
+												{
+													"key": "endDate",
+													"value": "yyyy-MM-dd"
+												},
+												{
+													"key": "eventCategory",
+													"value": "RISK"
+												},
+												{
+													"key": "eventCategory",
+													"value": "BASIC_INFORMATION"
+												},
+												{
+													"key": "country",
+													"value": "SE"
+												},
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "by",
+													"value": "REGISTRATION_DATE"
+												},
+												{
+													"key": "direction",
+													"value": "DESC"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"page\": {\n  \"content\": [\n   {\n    \"id\": \"sed fugiat do\",\n    \"eventDate\": \"2012-10-09T02:53:26.855Z\",\n    \"registrationDate\": \"adipisicing tempor dolore\",\n    \"companyInformation\": {\n     \"country\": \"quis in deserunt\",\n     \"registrationNumber\": \"reprehenderit eu cillum\",\n     \"name\": \"commodo ex\",\n     \"legalForm\": \"culpa i\",\n     \"duns\": \"adipisicing enim\",\n     \"objectReference\": {\n      \"id\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"references\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"addedDate\": \"1981-12-10T05:00:19.897Z\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"occaecat laborum in\"\n    }\n   },\n   {\n    \"id\": \"reprehenderit consequat dolor sint\",\n    \"eventDate\": \"1961-07-10T15:27:37.267Z\",\n    \"registrationDate\": \"laboris Ut ea occaecat\",\n    \"companyInformation\": {\n     \"country\": \"dolor\",\n     \"registrationNumber\": \"officia\",\n     \"name\": \"anim consequat\",\n     \"legalForm\": \"Excepteur ex enim sed officia\",\n     \"duns\": \"culpa enim amet pariatur\",\n     \"objectReference\": {\n      \"id\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"references\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"addedDate\": \"2019-10-24T08:07:53.463Z\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"do\"\n    }\n   }\n  ],\n  \"totalPages\": -8749678,\n  \"currentPage\": 91393471,\n  \"totalEvents\": 36006110\n },\n \"filters\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "get Event Codes By Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/portfolio/events/category/FI?eventCategories=FINANCIAL_INFORMATION,RISK",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portfolio",
+										"events",
+										"category",
+										"FI"
+									],
+									"query": [
+										{
+											"key": "eventCategories",
+											"value": "FINANCIAL_INFORMATION,RISK"
+										}
+									]
+								},
+								"description": "Get the event codes by category. Allows to filter by categories"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/events/category/:country?eventCategories=ad&eventCategories=consectetur et cillum",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"events",
+												"category",
+												":country"
+											],
+											"query": [
+												{
+													"key": "eventCategories",
+													"value": "ad"
+												},
+												{
+													"key": "eventCategories",
+													"value": "consectetur et cillum"
+												}
+											],
+											"variable": [
+												{
+													"key": "country"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
 				{
 					"name": "companies",
 					"item": [
@@ -28,7 +254,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/portfolio/companies?page=0&size=20&by=COUNTRY&direction=DESC",
+									"raw": "{{baseUrl}}/portfolio/companies?page=0&size=20&by=RATING&direction=ASC",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -49,11 +275,12 @@
 										},
 										{
 											"key": "by",
-											"value": "COUNTRY"
+											"value": "RATING",
+											"description": "(Required) Sorting criteria"
 										},
 										{
 											"key": "direction",
-											"value": "DESC",
+											"value": "ASC",
 											"description": "(Required) Sorting criteria"
 										}
 									]
@@ -73,7 +300,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/portfolio/companies?rating=ullamco aute dolore officia&rating=est in reprehenderit&page=0&size=20&by=ADDED_DATE&direction=DESC",
+											"raw": "{{baseUrl}}/portfolio/companies?rating=adipisi&page=0&size=20&by=RATING&direction=ASC",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -84,11 +311,7 @@
 											"query": [
 												{
 													"key": "rating",
-													"value": "ullamco aute dolore officia"
-												},
-												{
-													"key": "rating",
-													"value": "est in reprehenderit"
+													"value": "adipisi"
 												},
 												{
 													"key": "page",
@@ -100,11 +323,11 @@
 												},
 												{
 													"key": "by",
-													"value": "ADDED_DATE"
+													"value": "RATING"
 												},
 												{
 													"key": "direction",
-													"value": "DESC"
+													"value": "ASC"
 												}
 											]
 										}
@@ -119,7 +342,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"companies\": [\n  {\n   \"country\": \"ullamco\",\n   \"registrationNumber\": \"culp\",\n   \"name\": \"est\",\n   \"legalForm\": \"culpa elit\",\n   \"duns\": \"sit in velit\",\n   \"objectReference\": {\n    \"id\": \"et\",\n    \"references\": [\n     \"tempor aliqua consequat\",\n     \"pariatur non reprehenderit enim velit\"\n    ]\n   },\n   \"addedDate\": \"1968-04-15T19:49:21.536Z\"\n  },\n  {\n   \"country\": \"dolore ipsum\",\n   \"registrationNumber\": \"exercitation dolore id\",\n   \"name\": \"nulla et proident\",\n   \"legalForm\": \"ex ea v\",\n   \"duns\": \"cupidatat dolor\",\n   \"objectReference\": {\n    \"id\": \"ut proident\",\n    \"references\": [\n     \"ut fugiat\",\n     \"commodo fugiat\"\n    ]\n   },\n   \"addedDate\": \"1992-11-28T17:07:14.505Z\"\n  }\n ]\n}"
+									"body": "{\n \"companies\": [\n  {\n   \"country\": \"non ut Lorem fugiat\",\n   \"registrationNumber\": \"tempor sit Excepteur esse amet\",\n   \"name\": \"sit deserunt voluptate\",\n   \"legalForm\": \"ipsum Duis minim elit sed\",\n   \"duns\": \"commodo laborum voluptate\",\n   \"objectReference\": {\n    \"id\": \"offi\",\n    \"references\": [\n     \"ullamco veniam\",\n     \"in et\"\n    ]\n   },\n   \"addedDate\": \"2010-06-20T20:44:49.641Z\"\n  },\n  {\n   \"country\": \"dolore qui consequat adipisicing nulla\",\n   \"registrationNumber\": \"sunt cupidatat consectetur nostrud enim\",\n   \"name\": \"veniam\",\n   \"legalForm\": \"eiusmod deserunt nisi\",\n   \"duns\": \"eiusmod sed veniam nisi\",\n   \"objectReference\": {\n    \"id\": \"ex eu\",\n    \"references\": [\n     \"\",\n     \"elit in mollit\"\n    ]\n   },\n   \"addedDate\": \"1954-01-16T13:48:56.311Z\"\n  }\n ]\n}"
 								}
 							]
 						},
@@ -145,7 +368,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"FI\",\n            \"registrationNumber\": \"200967437\"\n        },\n        {\n            \"country\": \"SE\",\n            \"registrationNumber\": \"5561234567\"\n        }\n    ]\n}"
+									"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"FI\",\n            \"registrationNumber\": \"200967437\"\n        },\n        {\n            \"country\": \"FI\",\n            \"registrationNumber\": \"260428882\"\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "{{baseUrl}}/portfolio/companies",
@@ -173,7 +396,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"SI\",\n            \"registrationNumber\": \"in\",\n            \"duns\": \"dolor incididunt aute reprehenderit veniam\"\n        },\n        {\n            \"country\": \"HK\",\n            \"registrationNumber\": \"consectetur eu et ex\",\n            \"duns\": \"officia aliquip\"\n        }\n    ]\n}"
+											"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"TK\",\n            \"registrationNumber\": \"dolore nisi\",\n            \"duns\": \"ipsum id dolore\"\n        },\n        {\n            \"country\": \"MS\",\n            \"registrationNumber\": \"ei\",\n            \"duns\": \"qui labore tempor minim ex\"\n        }\n    ]\n}"
 										},
 										"url": {
 											"raw": "{{baseUrl}}/portfolio/companies",
@@ -196,7 +419,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n \"companies\": [\n  {\n   \"country\": \"MO\",\n   \"registrationNumber\": \"reprehenderit labore\",\n   \"name\": \"ad\",\n   \"rating\": \"eu fugiat\",\n   \"legalForm\": \"dolor aliquip tempor sunt\",\n   \"duns\": \"irure\",\n   \"addedDate\": \"1964-03-10T19:46:38.133Z\",\n   \"objectReference\": {\n    \"id\": \"aliqua dolor\",\n    \"references\": [\n     \"Lorem\",\n     \"Duis qui dolore reprehenderit\"\n    ]\n   },\n   \"test\": true,\n   \"countryRegistrationNumber\": \"nostrud enim\"\n  },\n  {\n   \"country\": \"UK\",\n   \"registrationNumber\": \"ut cillum\",\n   \"name\": \"labore sed\",\n   \"rating\": \"dolore est magna nulla\",\n   \"legalForm\": \"in fugiat in rep\",\n   \"duns\": \"cillum proident et\",\n   \"addedDate\": \"1961-10-31T15:05:13.422Z\",\n   \"objectReference\": {\n    \"id\": \"qui dolor\",\n    \"references\": [\n     \"c\",\n     \"elit enim aliquip\"\n    ]\n   },\n   \"test\": false,\n   \"countryRegistrationNumber\": \"deserunt\"\n  }\n ],\n \"companiesUnableToAdd\": [\n  {\n   \"country\": \"TH\",\n   \"registrationNumber\": \"dolor elit commodo\",\n   \"duns\": \"Excepteur sed\"\n  },\n  {\n   \"country\": \"VA\",\n   \"registrationNumber\": \"sunt \",\n   \"duns\": \"pariatur do\"\n  }\n ]\n}"
+									"body": "{\n \"companies\": [\n  {\n   \"country\": \"VI\",\n   \"registrationNumber\": \"anim eiusmod commodo dolore magna\",\n   \"name\": \"minim est ut\",\n   \"rating\": \"commodo ut eiusmod veniam\",\n   \"legalForm\": \"dolore aute\",\n   \"duns\": \"tempor velit exercitation consequat eiusmod\",\n   \"addedDate\": \"1956-03-22T00:37:12.834Z\",\n   \"objectReference\": {\n    \"id\": \"voluptate ad tempor veniam in\",\n    \"references\": [\n     \"labore qui ex exercitation\",\n     \"occaecat ut\"\n    ]\n   },\n   \"test\": true\n  },\n  {\n   \"country\": \"KG\",\n   \"registrationNumber\": \"aliquip elit do consectetur\",\n   \"name\": \"esse voluptate et\",\n   \"rating\": \"Lore\",\n   \"legalForm\": \"nisi Duis ad fugiat aute\",\n   \"duns\": \"adipisicing proident\",\n   \"addedDate\": \"2014-12-04T04:39:16.127Z\",\n   \"objectReference\": {\n    \"id\": \"fu\",\n    \"references\": [\n     \"Ut proide\",\n     \"minim Duis\"\n    ]\n   },\n   \"test\": false\n  }\n ],\n \"companiesUnableToAdd\": [\n  {\n   \"country\": \"PS\",\n   \"registrationNumber\": \"elit consequat nulla dolor occaecat\",\n   \"duns\": \"nisi sunt Lorem mollit magna\"\n  },\n  {\n   \"country\": \"CP\",\n   \"registrationNumber\": \"et irure ullamco laboris sunt\",\n   \"duns\": \"anim incididunt Ut\"\n  }\n ]\n}"
 								}
 							]
 						},
@@ -222,7 +445,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"SE\",\n            \"registrationNumber\": \"5561234567\"\n        }\n    ]\n}"
+									"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"FI\",\n            \"registrationNumber\": \"260428882\"\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "{{baseUrl}}/portfolio/companies",
@@ -250,7 +473,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"SI\",\n            \"registrationNumber\": \"in\",\n            \"duns\": \"dolor incididunt aute reprehenderit veniam\"\n        },\n        {\n            \"country\": \"HK\",\n            \"registrationNumber\": \"consectetur eu et ex\",\n            \"duns\": \"officia aliquip\"\n        }\n    ]\n}"
+											"raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"TK\",\n            \"registrationNumber\": \"dolore nisi\",\n            \"duns\": \"ipsum id dolore\"\n        },\n        {\n            \"country\": \"MS\",\n            \"registrationNumber\": \"ei\",\n            \"duns\": \"qui labore tempor minim ex\"\n        }\n    ]\n}"
 										},
 										"url": {
 											"raw": "{{baseUrl}}/portfolio/companies",
@@ -273,7 +496,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n {\n  \"referrerId\": \"Ut\",\n  \"country\": \"JO\",\n  \"registrationNumber\": \"ad enim\",\n  \"addedDate\": \"1981-11-11T11:58:46.342Z\",\n  \"removedDate\": \"1950-01-23T15:30:29.610Z\"\n },\n {\n  \"referrerId\": \"sint sit mollit et\",\n  \"country\": \"AO\",\n  \"registrationNumber\": \"id nostrud sed\",\n  \"addedDate\": \"2018-06-21T10:25:30.972Z\",\n  \"removedDate\": \"1956-06-20T03:27:14.635Z\"\n }\n]"
+									"body": "[\n {\n  \"referrerId\": \"qui quis aliquip ad\",\n  \"country\": \"YT\",\n  \"registrationNumber\": \"aliquip incididunt\",\n  \"addedDate\": \"2002-04-10T09:06:58.429Z\",\n  \"removedDate\": \"1947-07-02T18:23:40.158Z\"\n },\n {\n  \"referrerId\": \"ad commodo eiusmod consectetur esse\",\n  \"country\": \"RE\",\n  \"registrationNumber\": \"deserunt laborum\",\n  \"addedDate\": \"1999-10-10T22:22:09.729Z\",\n  \"removedDate\": \"1958-09-21T01:25:45.703Z\"\n }\n]"
 								}
 							]
 						}
@@ -282,16 +505,6 @@
 				{
 					"name": "get Portfolio",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -337,7 +550,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n \"status\": \"ACTIVE\",\n \"created\": \"2014-09-06T14:33:50.359Z\",\n \"lastModified\": \"1942-10-11T03:34:57.671Z\",\n \"totalCompanies\": 50959733\n}"
+							"body": "{\n \"status\": \"ACTIVE\",\n \"created\": \"2005-07-11T12:46:31.097Z\",\n \"lastModified\": \"1980-12-08T11:50:27.668Z\",\n \"totalCompanies\": 24274324\n}"
 						}
 					]
 				},
@@ -357,7 +570,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/portfolio/company/country/DK/registrationNumber/13287511",
+							"raw": "{{baseUrl}}/portfolio/company/country/FI/registrationNumber/200967437",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -365,9 +578,9 @@
 								"portfolio",
 								"company",
 								"country",
-								"DK",
+								"FI",
 								"registrationNumber",
-								"13287511"
+								"200967437"
 							]
 						},
 						"description": "Checks if a company exists in the portfolio"
@@ -418,136 +631,6 @@
 							],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "find Events For Portfolio",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/portfolio/events?startDate=2020-11-03&page=0&size=20&by=NAME&direction=DESC",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portfolio",
-								"events"
-							],
-							"query": [
-								{
-									"key": "startDate",
-									"value": "2020-11-03"
-								},
-								{
-									"key": "page",
-									"value": "0",
-									"description": "Zero-based page index (0..N)"
-								},
-								{
-									"key": "size",
-									"value": "20",
-									"description": "The size of the page to be returned"
-								},
-								{
-									"key": "by",
-									"value": "NAME"
-								},
-								{
-									"key": "direction",
-									"value": "DESC"
-								}
-							]
-						},
-						"description": "Get the events for a portfolio in paginated form. Allows to filter and sort events."
-					},
-					"response": [
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "Authorization",
-										"value": "<API Key>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/portfolio/events?startDate=2020-11-03&endDate=2021-04-03&eventCategory=INSOLVENCY_INACTIVITY&eventCategory=INSOLVENCY_INACTIVITY&countries=SE&countries=SE&page=0&size=20&by=REGISTRATION_DATE&direction=ASC",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"portfolio",
-										"events"
-									],
-									"query": [
-										{
-											"key": "startDate",
-											"value": "2020-11-03"
-										},
-										{
-											"key": "endDate",
-											"value": "2021-04-03"
-										},
-										{
-											"key": "eventCategory",
-											"value": "INSOLVENCY_INACTIVITY"
-										},
-										{
-											"key": "eventCategory",
-											"value": "INSOLVENCY_INACTIVITY"
-										},
-										{
-											"key": "countries",
-											"value": "SE"
-										},
-										{
-											"key": "countries",
-											"value": "SE"
-										},
-										{
-											"key": "page",
-											"value": "0"
-										},
-										{
-											"key": "size",
-											"value": "20"
-										},
-										{
-											"key": "by",
-											"value": "REGISTRATION_DATE"
-										},
-										{
-											"key": "direction",
-											"value": "ASC"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"page\": {\n  \"content\": [\n   {\n    \"id\": \"qui Duis irure et\",\n    \"eventDate\": \"1969-09-25T01:27:37.296Z\",\n    \"registrationDate\": \"sed nulla in est\",\n    \"companyInformation\": {\n     \"country\": \"velit sunt\",\n     \"registrationNumber\": \"deserunt sed in\",\n     \"name\": \"lab\",\n     \"legalForm\": \"ipsum dolore do culpa aliquip\",\n     \"duns\": \"Ut in consectetur\",\n     \"objectReference\": {\n      \"id\": \"consequat incididunt aliquip mollit qui\",\n      \"references\": [\n       \"pariatur deserunt eu\",\n       \"elit aliquip culpa esse\"\n      ]\n     },\n     \"addedDate\": \"2005-10-19T07:16:09.648Z\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"pro\"\n    }\n   },\n   {\n    \"id\": \"tempor elit ut id\",\n    \"eventDate\": \"1971-06-30T13:12:46.855Z\",\n    \"registrationDate\": \"anim magna proident\",\n    \"companyInformation\": {\n     \"country\": \"in aliqua officia non\",\n     \"registrationNumber\": \"ullamco dolor sed officia\",\n     \"name\": \"dolor culpa cupidatat\",\n     \"legalForm\": \"mollit elit\",\n     \"duns\": \"anim\",\n     \"objectReference\": {\n      \"id\": \"dolore commodo\",\n      \"references\": [\n       \"sint mollit\",\n       \"exercitation ad reprehenderit\"\n      ]\n     },\n     \"addedDate\": \"2017-05-11T08:31:45.587Z\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"anim nulla velit laboris Lorem\"\n    }\n   }\n  ],\n  \"totalPages\": 36960308,\n  \"currentPage\": 36281620,\n  \"totalEvents\": 10244356\n },\n \"filters\": {}\n}"
 						}
 					]
 				}
