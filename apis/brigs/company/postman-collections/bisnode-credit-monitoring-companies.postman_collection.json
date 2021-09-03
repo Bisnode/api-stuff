@@ -254,7 +254,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/portfolio/companies?page=0&size=20&by=RATING&direction=ASC",
+									"raw": "{{baseUrl}}/portfolio/companies?page=0&size=20&by=NAME&direction=ASC",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -275,7 +275,7 @@
 										},
 										{
 											"key": "by",
-											"value": "RATING",
+											"value": "Name",
 											"description": "(Required) Sorting criteria"
 										},
 										{
