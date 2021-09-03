@@ -275,7 +275,7 @@
 										},
 										{
 											"key": "by",
-											"value": "Name",
+											"value": "NAME",
 											"description": "(Required) Sorting criteria"
 										},
 										{
