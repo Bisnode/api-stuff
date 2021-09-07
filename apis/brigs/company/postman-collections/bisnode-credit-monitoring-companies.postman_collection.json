@@ -28,7 +28,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/portfolio/events?startDate=2021-01-01&endDate=2021-08-31&page=0&size=20&by=REGISTRATION_DATE&direction=DESC",
+									"raw": "{{baseUrl}}/portfolio/events?startDate=2021-01-01&endDate=2021-08-31&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -56,12 +56,12 @@
 											"description": "The size of the page to be returned"
 										},
 										{
-											"key": "by",
+											"key": "sortBy",
 											"value": "REGISTRATION_DATE",
 											"description": "(Required) Sorting criteria"
 										},
 										{
-											"key": "direction",
+											"key": "sortDirection",
 											"value": "DESC",
 											"description": "(Required) Sorting criteria"
 										}
@@ -82,7 +82,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/portfolio/events?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&eventCategory=RISK&eventCategory=BASIC_INFORMATION&country=SE&page=0&size=20&by=REGISTRATION_DATE&direction=DESC",
+											"raw": "{{baseUrl}}/portfolio/events?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&eventCategory=RISK&eventCategory=BASIC_INFORMATION&country=SE&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -120,11 +120,11 @@
 													"value": "20"
 												},
 												{
-													"key": "by",
+													"key": "sortBy",
 													"value": "REGISTRATION_DATE"
 												},
 												{
-													"key": "direction",
+													"key": "sortDirection",
 													"value": "DESC"
 												}
 											]
@@ -254,7 +254,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/portfolio/companies?page=0&size=20&by=NAME&direction=ASC",
+									"raw": "{{baseUrl}}/portfolio/companies?page=0&size=20&sortBy=NAME&sortDirection=ASC",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -274,12 +274,12 @@
 											"description": "The size of the page to be returned"
 										},
 										{
-											"key": "by",
+											"key": "sortBy",
 											"value": "NAME",
 											"description": "(Required) Sorting criteria"
 										},
 										{
-											"key": "direction",
+											"key": "sortDirection",
 											"value": "ASC",
 											"description": "(Required) Sorting criteria"
 										}
@@ -300,7 +300,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/portfolio/companies?rating=adipisi&page=0&size=20&by=RATING&direction=ASC",
+											"raw": "{{baseUrl}}/portfolio/companies?rating=adipisi&page=0&size=20&sortBy=RATING&sortDirection=ASC",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -322,11 +322,11 @@
 													"value": "20"
 												},
 												{
-													"key": "by",
+													"key": "sortBy",
 													"value": "RATING"
 												},
 												{
-													"key": "direction",
+													"key": "sortDirection",
 													"value": "ASC"
 												}
 											]
