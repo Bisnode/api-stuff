@@ -28,7 +28,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/portfolio/events?startDate=2021-01-01&endDate=2021-08-31&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
+									"raw": "{{baseUrl}}/portfolio/events?startDate=2021-01-01T00:00:00&endDate=2021-08-31T00:00:00&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -39,11 +39,11 @@
 									"query": [
 										{
 											"key": "startDate",
-											"value": "2021-01-01"
+											"value": "2021-01-01T00:00:00"
 										},
 										{
 											"key": "endDate",
-											"value": "2021-08-31"
+											"value": "2021-08-31T00:00:00"
 										},
 										{
 											"key": "page",
@@ -82,7 +82,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/portfolio/events?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&eventCategory=RISK&eventCategory=BASIC_INFORMATION&country=SE&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
+											"raw": "{{baseUrl}}/portfolio/events?startDate=yyyy-MM-ddTHH:mm:ss&endDate=yyyy-MM-ddTHH:mm:ss&eventCategory=RISK&eventCategory=BASIC_INFORMATION&country=SE&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -93,11 +93,11 @@
 											"query": [
 												{
 													"key": "startDate",
-													"value": "yyyy-MM-dd"
+													"value": "yyyy-MM-ddTHH:mm:ss"
 												},
 												{
 													"key": "endDate",
-													"value": "yyyy-MM-dd"
+													"value": "yyyy-MM-ddTHH:mm:ss"
 												},
 												{
 													"key": "eventCategory",
