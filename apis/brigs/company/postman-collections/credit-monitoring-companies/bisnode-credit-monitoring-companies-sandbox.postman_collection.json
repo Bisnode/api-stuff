@@ -642,6 +642,238 @@
           ]
         }
       ]
+    },
+    {
+      "name": "references",
+      "item": [
+        {
+          "name": "add Reference To Company",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"FI\",\n                \"registrationNumber\": \"200967437\"\n            },\n            \"references\": [\n                \"reference 1\",\n                \"reference 2\"\n            ]\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/references",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "references"
+              ]
+            },
+            "description": "Add references to the specified companies."
+          },
+          "response": [
+            {
+              "name": "OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"FI\",\n                \"registrationNumber\": \"200967437 \"\n            },\n            \"references\": [\n                \"reference 1\",\n                \"reference 2\"\n            ]\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/references",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "references"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "delete References From Companies",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"FI\",\n                \"registrationNumber\": \"200967437\"\n            },\n            \"references\": [\n                \"reference 2\"   \n            ]\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/references",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "references"
+              ]
+            },
+            "description": "Delete references from the specified companies."
+          },
+          "response": [
+            {
+              "name": "No Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"FI\",\n                \"registrationNumber\": \"200967437 \"\n            },\n            \"references\": [\n                \"reference 2\",\n          ]\n        }    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/references",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "references"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "delete References All From Companies",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"country\": \"FI\",\n        \"registrationNumber\": \"200967437\"\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/references/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "references",
+                "all"
+              ]
+            },
+            "description": "Delete all references from the specified companies."
+          },
+          "response": [
+            {
+              "name": "No Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n    {\n        \"country\": \"FI\",\n        \"registrationNumber\": \"200967437\"\n    }    \n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/references/all",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "references",
+                    "all"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
     }
   ],
   "auth": {
