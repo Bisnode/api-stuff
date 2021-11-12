@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "3de02e0c-c135-4177-bd31-82c4ddf1b1c7",
+    "_postman_id": "e3a585a6-00a3-475e-8326-5d68a6e84067",
     "name": "Credit Monitoring Companies Production",
     "description": "Monitoring Risk and Credit data for companies\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -13,14 +13,14 @@
           "name": "events",
           "item": [
             {
-              "name": "find Events For Portfolio",
+              "name": "Find Events For Portfolio",
               "request": {
                 "auth": {
                   "type": "bearer",
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "{{accessToken}}",
+                      "value": "",
                       "type": "string"
                     }
                   ]
@@ -62,13 +62,12 @@
                     },
                     {
                       "key": "sortBy",
-                      "value": "REGISTRATION_DATE",
-                      "description": "(Required) Sorting criteria"
+                      "value": "REGISTRATION_DATE"
                     },
                     {
                       "key": "sortDirection",
                       "value": "DESC",
-                      "description": "(Required) Sorting criteria"
+                      "description": "Sorting direction for events."
                     }
                   ]
                 },
@@ -87,11 +86,9 @@
                       }
                     ],
                     "url": {
-                      "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/events?startDate=yyyy-MM-ddTHH:mm:ss&endDate=yyyy-MM-ddTHH:mm:ss&eventCategory=RISK&eventCategory=BASIC_INFORMATION&country=SE&page=0&size=20&sortBy=REGISTRATION_DATE&sortDirection=DESC",
+                      "raw": "{{baseUrl}}/portfolio/events?startDate=<dateTime>&endDate=<dateTime>&eventCategory=<string>&eventCategory=<string>&country=<string>&country=<string>&language=en&page=0&size=20&sortBy=EVENT_DATE&sortDirection=DESC",
                       "host": [
-                        "api",
-                        "bisnode",
-                        "com"
+                        "{{baseUrl}}"
                       ],
                       "path": [
                         "portfolio",
@@ -100,23 +97,31 @@
                       "query": [
                         {
                           "key": "startDate",
-                          "value": "yyyy-MM-ddTHH:mm:ss"
+                          "value": "<dateTime>"
                         },
                         {
                           "key": "endDate",
-                          "value": "yyyy-MM-ddTHH:mm:ss"
+                          "value": "<dateTime>"
                         },
                         {
                           "key": "eventCategory",
-                          "value": "RISK"
+                          "value": "<string>"
                         },
                         {
                           "key": "eventCategory",
-                          "value": "BASIC_INFORMATION"
+                          "value": "<string>"
                         },
                         {
                           "key": "country",
-                          "value": "SE"
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "language",
+                          "value": "en"
                         },
                         {
                           "key": "page",
@@ -128,7 +133,7 @@
                         },
                         {
                           "key": "sortBy",
-                          "value": "REGISTRATION_DATE"
+                          "value": "EVENT_DATE"
                         },
                         {
                           "key": "sortDirection",
@@ -147,19 +152,19 @@
                     }
                   ],
                   "cookie": [],
-                  "body": "{\n \"page\": {\n  \"content\": [\n   {\n    \"id\": \"sed fugiat do\",\n    \"eventDate\": \"2012-10-09T02:53:26.855Z\",\n    \"registrationDate\": \"adipisicing tempor dolore\",\n    \"companyInformation\": {\n     \"country\": \"quis in deserunt\",\n     \"registrationNumber\": \"reprehenderit eu cillum\",\n     \"name\": \"commodo ex\",\n     \"legalForm\": \"culpa i\",\n     \"duns\": \"adipisicing enim\",\n     \"objectReference\": {\n      \"id\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"references\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"addedDate\": \"1981-12-10T05:00:19.897Z\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"occaecat laborum in\"\n    }\n   },\n   {\n    \"id\": \"reprehenderit consequat dolor sint\",\n    \"eventDate\": \"1961-07-10T15:27:37.267Z\",\n    \"registrationDate\": \"laboris Ut ea occaecat\",\n    \"companyInformation\": {\n     \"country\": \"dolor\",\n     \"registrationNumber\": \"officia\",\n     \"name\": \"anim consequat\",\n     \"legalForm\": \"Excepteur ex enim sed officia\",\n     \"duns\": \"culpa enim amet pariatur\",\n     \"objectReference\": {\n      \"id\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"references\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"addedDate\": \"2019-10-24T08:07:53.463Z\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"do\"\n    }\n   }\n  ],\n  \"totalPages\": -8749678,\n  \"currentPage\": 91393471,\n  \"totalEvents\": 36006110\n },\n \"filters\": {}\n}"
+                  "body": "{\n \"page\": {\n  \"content\": [\n   {\n    \"id\": \"<string>\",\n    \"eventDate\": \"<dateTime>\",\n    \"registrationDate\": \"<string>\",\n    \"companyInformation\": {\n     \"country\": \"<string>\",\n     \"registrationNumber\": \"<string>\",\n     \"name\": \"<string>\",\n     \"legalForm\": \"<string>\",\n     \"rating\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"duns\": \"<string>\",\n     \"objectReference\": {\n      \"id\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"references\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"addedDate\": \"<dateTime>\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"<string>\",\n     \"description\": \"<string>\"\n    }\n   },\n   {\n    \"id\": \"<string>\",\n    \"eventDate\": \"<dateTime>\",\n    \"registrationDate\": \"<string>\",\n    \"companyInformation\": {\n     \"country\": \"<string>\",\n     \"registrationNumber\": \"<string>\",\n     \"name\": \"<string>\",\n     \"legalForm\": \"<string>\",\n     \"rating\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"duns\": \"<string>\",\n     \"objectReference\": {\n      \"id\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"references\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"addedDate\": \"<dateTime>\"\n    },\n    \"details\": {\n     \"type\": {\n      \"code\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"category\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"description\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"change\": {\n      \"oldValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"newValue\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"amount\": {\n      \"value\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"comment\": \"<string>\",\n     \"description\": \"<string>\"\n    }\n   }\n  ],\n  \"totalPages\": \"<integer>\",\n  \"currentPage\": \"<integer>\",\n  \"totalEvents\": \"<long>\"\n },\n \"filters\": \"<object>\"\n}"
                 }
               ]
             },
             {
-              "name": "get Event Codes By Category",
+              "name": "Get Event Codes By Category",
               "request": {
                 "auth": {
                   "type": "bearer",
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "{{accessToken}}",
+                      "value": "",
                       "type": "string"
                     }
                   ]
@@ -167,7 +172,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/events/category/FI",
+                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/events/category/SE",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -180,7 +185,7 @@
                     "portfolio",
                     "events",
                     "category",
-                    "FI"
+                    "SE"
                   ]
                 },
                 "description": "Get the event codes by category. Allows to filter by categories"
@@ -198,11 +203,9 @@
                       }
                     ],
                     "url": {
-                      "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/events/category/:country?eventCategories=ad&eventCategories=consectetur et cillum",
+                      "raw": "{{baseUrl}}/portfolio/events/category/:country?eventCategories=<string>&eventCategories=<string>",
                       "host": [
-                        "api",
-                        "bisnode",
-                        "com"
+                        "{{baseUrl}}"
                       ],
                       "path": [
                         "portfolio",
@@ -213,16 +216,286 @@
                       "query": [
                         {
                           "key": "eventCategories",
-                          "value": "ad"
+                          "value": "<string>"
                         },
                         {
                           "key": "eventCategories",
-                          "value": "consectetur et cillum"
+                          "value": "<string>"
                         }
                       ],
                       "variable": [
                         {
-                          "key": "country"
+                          "key": "country",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "<object>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "company",
+          "item": [
+            {
+              "name": "Check Company In Portfolio",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"country\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"duns\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/company",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "bisnode",
+                    "com"
+                  ],
+                  "path": [
+                    "credit-monitoring-companies",
+                    "v1",
+                    "portfolio",
+                    "company"
+                  ]
+                },
+                "description": "Checks if a company exists in the portfolio"
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"country\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"duns\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portfolio/company",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portfolio",
+                        "company"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Find Events For Company",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/company/:country/:registrationNumber?startDate=2021-01-01T00:00:00&endDate=2021-11-12T23:59:59&eventCategory=PAYMENT_ABILITY&language=en&page=0&size=20&sortBy=EVENT_DATE&sortDirection=DESC",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "bisnode",
+                    "com"
+                  ],
+                  "path": [
+                    "credit-monitoring-companies",
+                    "v1",
+                    "portfolio",
+                    "company",
+                    ":country",
+                    ":registrationNumber"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2021-01-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2021-11-12T23:59:59"
+                    },
+                    {
+                      "key": "eventCategory",
+                      "value": "PAYMENT_ABILITY"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0",
+                      "description": "Zero-based page index (0..N)"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20",
+                      "description": "The size of the page to be returned"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "EVENT_DATE",
+                      "description": "Sorting property for events."
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "DESC",
+                      "description": "Sorting direction for events."
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "country",
+                      "value": null
+                    },
+                    {
+                      "key": "registrationNumber",
+                      "value": null
+                    }
+                  ]
+                },
+                "description": "Get the events for a company by country and registration number. Allows to filter and sort events."
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/portfolio/company/:country/:registrationNumber?startDate=<dateTime>&endDate=<dateTime>&eventCategory=<string>&eventCategory=<string>&language=en&page=0&size=20&sortBy=EVENT_DATE&sortDirection=DESC",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portfolio",
+                        "company",
+                        ":country",
+                        ":registrationNumber"
+                      ],
+                      "query": [
+                        {
+                          "key": "startDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "endDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "eventCategory",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "eventCategory",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "language",
+                          "value": "en"
+                        },
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "20"
+                        },
+                        {
+                          "key": "sortBy",
+                          "value": "EVENT_DATE"
+                        },
+                        {
+                          "key": "sortDirection",
+                          "value": "DESC"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "country",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        },
+                        {
+                          "key": "registrationNumber",
+                          "value": "<string>",
+                          "description": "(Required) "
                         }
                       ]
                     }
@@ -247,14 +520,14 @@
           "name": "companies",
           "item": [
             {
-              "name": "find Portfolio Companies",
+              "name": "Find Portfolio Companies",
               "request": {
                 "auth": {
                   "type": "bearer",
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "{{accessToken}}",
+                      "value": "",
                       "type": "string"
                     }
                   ]
@@ -262,7 +535,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies?page=0&size=20&sortBy=NAME&sortDirection=ASC",
+                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies?page=0&size=20&sortBy=ADDED_DATE&sortDirection=DESC",
                   "protocol": "https",
                   "host": [
                     "api",
@@ -288,13 +561,13 @@
                     },
                     {
                       "key": "sortBy",
-                      "value": "NAME",
-                      "description": "(Required) Sorting criteria"
+                      "value": "ADDED_DATE",
+                      "description": "Sorting property for companies."
                     },
                     {
                       "key": "sortDirection",
-                      "value": "ASC",
-                      "description": "(Required) Sorting criteria"
+                      "value": "DESC",
+                      "description": "Sorting direction for companies."
                     }
                   ]
                 },
@@ -313,11 +586,9 @@
                       }
                     ],
                     "url": {
-                      "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies?rating=adipisi&page=0&size=20&sortBy=RATING&sortDirection=ASC",
+                      "raw": "{{baseUrl}}/portfolio/companies?rating=<string>&rating=<string>&page=0&size=20&sortBy=ADDED_DATE&sortDirection=DESC",
                       "host": [
-                        "api",
-                        "bisnode",
-                        "com"
+                        "{{baseUrl}}"
                       ],
                       "path": [
                         "portfolio",
@@ -326,7 +597,11 @@
                       "query": [
                         {
                           "key": "rating",
-                          "value": "adipisi"
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "rating",
+                          "value": "<string>"
                         },
                         {
                           "key": "page",
@@ -338,11 +613,11 @@
                         },
                         {
                           "key": "sortBy",
-                          "value": "RATING"
+                          "value": "ADDED_DATE"
                         },
                         {
                           "key": "sortDirection",
-                          "value": "ASC"
+                          "value": "DESC"
                         }
                       ]
                     }
@@ -357,19 +632,19 @@
                     }
                   ],
                   "cookie": [],
-                  "body": "{\n \"companies\": [\n  {\n   \"country\": \"non ut Lorem fugiat\",\n   \"registrationNumber\": \"tempor sit Excepteur esse amet\",\n   \"name\": \"sit deserunt voluptate\",\n   \"legalForm\": \"ipsum Duis minim elit sed\",\n   \"duns\": \"commodo laborum voluptate\",\n   \"objectReference\": {\n    \"id\": \"offi\",\n    \"references\": [\n     \"ullamco veniam\",\n     \"in et\"\n    ]\n   },\n   \"addedDate\": \"2010-06-20T20:44:49.641Z\"\n  },\n  {\n   \"country\": \"dolore qui consequat adipisicing nulla\",\n   \"registrationNumber\": \"sunt cupidatat consectetur nostrud enim\",\n   \"name\": \"veniam\",\n   \"legalForm\": \"eiusmod deserunt nisi\",\n   \"duns\": \"eiusmod sed veniam nisi\",\n   \"objectReference\": {\n    \"id\": \"ex eu\",\n    \"references\": [\n     \"\",\n     \"elit in mollit\"\n    ]\n   },\n   \"addedDate\": \"1954-01-16T13:48:56.311Z\"\n  }\n ]\n}"
+                  "body": "{\n \"companies\": [\n  {\n   \"country\": \"<string>\",\n   \"registrationNumber\": \"<string>\",\n   \"name\": \"<string>\",\n   \"legalForm\": \"<string>\",\n   \"rating\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n   },\n   \"duns\": \"<string>\",\n   \"objectReference\": {\n    \"id\": \"<string>\",\n    \"references\": [\n     \"<string>\"\n    ]\n   },\n   \"addedDate\": \"<dateTime>\"\n  },\n  {\n   \"country\": \"<string>\",\n   \"registrationNumber\": \"<string>\",\n   \"name\": \"<string>\",\n   \"legalForm\": \"<string>\",\n   \"rating\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n   },\n   \"duns\": \"<string>\",\n   \"objectReference\": {\n    \"id\": \"<string>\",\n    \"references\": [\n     \"<string>\"\n    ]\n   },\n   \"addedDate\": \"<dateTime>\"\n  }\n ]\n}"
                 }
               ]
             },
             {
-              "name": "add Companies To Portfolio",
+              "name": "Add Companies To Portfolio",
               "request": {
                 "auth": {
                   "type": "bearer",
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "{{accessToken}}",
+                      "value": "",
                       "type": "string"
                     }
                   ]
@@ -383,7 +658,12 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": ""
+                  "raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        },\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
                 },
                 "url": {
                   "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies",
@@ -416,14 +696,17 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"TK\",\n            \"registrationNumber\": \"dolore nisi\",\n            \"duns\": \"ipsum id dolore\"\n        },\n        {\n            \"country\": \"MS\",\n            \"registrationNumber\": \"ei\",\n            \"duns\": \"qui labore tempor minim ex\"\n        }\n    ]\n}"
+                      "raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        },\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        }\n    ],\n    \"companyCountries\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
                     },
                     "url": {
-                      "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies",
+                      "raw": "{{baseUrl}}/portfolio/companies",
                       "host": [
-                        "api",
-                        "bisnode",
-                        "com"
+                        "{{baseUrl}}"
                       ],
                       "path": [
                         "portfolio",
@@ -441,19 +724,19 @@
                     }
                   ],
                   "cookie": [],
-                  "body": "{\n \"companies\": [\n  {\n   \"country\": \"VI\",\n   \"registrationNumber\": \"anim eiusmod commodo dolore magna\",\n   \"name\": \"minim est ut\",\n   \"rating\": \"commodo ut eiusmod veniam\",\n   \"legalForm\": \"dolore aute\",\n   \"duns\": \"tempor velit exercitation consequat eiusmod\",\n   \"addedDate\": \"1956-03-22T00:37:12.834Z\",\n   \"objectReference\": {\n    \"id\": \"voluptate ad tempor veniam in\",\n    \"references\": [\n     \"labore qui ex exercitation\",\n     \"occaecat ut\"\n    ]\n   },\n   \"test\": true\n  },\n  {\n   \"country\": \"KG\",\n   \"registrationNumber\": \"aliquip elit do consectetur\",\n   \"name\": \"esse voluptate et\",\n   \"rating\": \"Lore\",\n   \"legalForm\": \"nisi Duis ad fugiat aute\",\n   \"duns\": \"adipisicing proident\",\n   \"addedDate\": \"2014-12-04T04:39:16.127Z\",\n   \"objectReference\": {\n    \"id\": \"fu\",\n    \"references\": [\n     \"Ut proide\",\n     \"minim Duis\"\n    ]\n   },\n   \"test\": false\n  }\n ],\n \"companiesUnableToAdd\": [\n  {\n   \"country\": \"PS\",\n   \"registrationNumber\": \"elit consequat nulla dolor occaecat\",\n   \"duns\": \"nisi sunt Lorem mollit magna\"\n  },\n  {\n   \"country\": \"CP\",\n   \"registrationNumber\": \"et irure ullamco laboris sunt\",\n   \"duns\": \"anim incididunt Ut\"\n  }\n ]\n}"
+                  "body": "{\n \"companies\": [\n  {\n   \"country\": \"<string>\",\n   \"registrationNumber\": \"<string>\",\n   \"name\": \"<string>\",\n   \"rating\": \"<string>\",\n   \"legalForm\": \"<string>\",\n   \"duns\": \"<string>\",\n   \"addedDate\": \"<dateTime>\",\n   \"objectReference\": {\n    \"id\": \"<string>\",\n    \"references\": [\n     \"<string>\"\n    ]\n   },\n   \"test\": \"<boolean>\"\n  },\n  {\n   \"country\": \"<string>\",\n   \"registrationNumber\": \"<string>\",\n   \"name\": \"<string>\",\n   \"rating\": \"<string>\",\n   \"legalForm\": \"<string>\",\n   \"duns\": \"<string>\",\n   \"addedDate\": \"<dateTime>\",\n   \"objectReference\": {\n    \"id\": \"<string>\",\n    \"references\": [\n     \"<string>\"\n    ]\n   },\n   \"test\": \"<boolean>\"\n  }\n ],\n \"companiesUnableToAdd\": [\n  {\n   \"country\": \"<string>\",\n   \"registrationNumber\": \"<string>\",\n   \"duns\": \"<string>\"\n  },\n  {\n   \"country\": \"<string>\",\n   \"registrationNumber\": \"<string>\",\n   \"duns\": \"<string>\"\n  }\n ]\n}"
                 }
               ]
             },
             {
-              "name": "delete Companies From Portfolio",
+              "name": "Delete Companies From Portfolio",
               "request": {
                 "auth": {
                   "type": "bearer",
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "{{accessToken}}",
+                      "value": "",
                       "type": "string"
                     }
                   ]
@@ -467,7 +750,12 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": ""
+                  "raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
                 },
                 "url": {
                   "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies",
@@ -500,14 +788,17 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"TK\",\n            \"registrationNumber\": \"dolore nisi\",\n            \"duns\": \"ipsum id dolore\"\n        },\n        {\n            \"country\": \"MS\",\n            \"registrationNumber\": \"ei\",\n            \"duns\": \"qui labore tempor minim ex\"\n        }\n    ]\n}"
+                      "raw": "{\n    \"companyIds\": [\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        },\n        {\n            \"country\": \"<string>\",\n            \"registrationNumber\": \"<string>\",\n            \"duns\": \"<string>\"\n        }\n    ],\n    \"companyCountries\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
                     },
                     "url": {
-                      "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/companies",
+                      "raw": "{{baseUrl}}/portfolio/companies",
                       "host": [
-                        "api",
-                        "bisnode",
-                        "com"
+                        "{{baseUrl}}"
                       ],
                       "path": [
                         "portfolio",
@@ -525,21 +816,21 @@
                     }
                   ],
                   "cookie": [],
-                  "body": "[\n {\n  \"referrerId\": \"qui quis aliquip ad\",\n  \"country\": \"YT\",\n  \"registrationNumber\": \"aliquip incididunt\",\n  \"addedDate\": \"2002-04-10T09:06:58.429Z\",\n  \"removedDate\": \"1947-07-02T18:23:40.158Z\"\n },\n {\n  \"referrerId\": \"ad commodo eiusmod consectetur esse\",\n  \"country\": \"RE\",\n  \"registrationNumber\": \"deserunt laborum\",\n  \"addedDate\": \"1999-10-10T22:22:09.729Z\",\n  \"removedDate\": \"1958-09-21T01:25:45.703Z\"\n }\n]"
+                  "body": "[\n {\n  \"referrerId\": \"<string>\",\n  \"country\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"addedDate\": \"<dateTime>\",\n  \"removedDate\": \"<dateTime>\"\n },\n {\n  \"referrerId\": \"<string>\",\n  \"country\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"addedDate\": \"<dateTime>\",\n  \"removedDate\": \"<dateTime>\"\n }\n]"
                 }
               ]
             }
           ]
         },
         {
-          "name": "get Portfolio",
+          "name": "Get Portfolio",
           "request": {
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{accessToken}}",
+                  "value": "",
                   "type": "string"
                 }
               ]
@@ -575,11 +866,9 @@
                   }
                 ],
                 "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio",
+                  "raw": "{{baseUrl}}/portfolio",
                   "host": [
-                    "api",
-                    "bisnode",
-                    "com"
+                    "{{baseUrl}}"
                   ],
                   "path": [
                     "portfolio"
@@ -596,19 +885,24 @@
                 }
               ],
               "cookie": [],
-              "body": "{\n \"status\": \"ACTIVE\",\n \"created\": \"2005-07-11T12:46:31.097Z\",\n \"lastModified\": \"1980-12-08T11:50:27.668Z\",\n \"totalCompanies\": 24274324\n}"
+              "body": "{\n \"status\": \"<string>\",\n \"created\": \"<dateTime>\",\n \"lastModified\": \"<dateTime>\",\n \"totalCompanies\": \"<long>\"\n}"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "name": "references",
+      "item": [
         {
-          "name": "check Company In Portfolio",
+          "name": "Add Reference To Company",
           "request": {
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{accessToken}}",
+                  "value": "",
                   "type": "string"
                 }
               ]
@@ -622,83 +916,13 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/company",
-              "protocol": "https",
-              "host": [
-                "api",
-                "bisnode",
-                "com"
-              ],
-              "path": [
-                "credit-monitoring-companies",
-                "v1",
-                "portfolio",
-                "company"
-              ]
-            },
-            "description": "Checks if a company exists in the portfolio"
-          },
-          "response": [
-            {
-              "name": "OK",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "description": "Added as a part of security scheme: apikey",
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"country\": \"LV\",\n    \"registrationNumber\": \"Excepteur incididunt\",\n    \"duns\": \"irure\"\n}"
-                },
-                "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/company",
-                  "host": [
-                    "api",
-                    "bisnode",
-                    "com"
-                  ],
-                  "path": [
-                    "portfolio",
-                    "company"
-                  ]
+              "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        },\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
                 }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "text",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "*/*"
-                }
-              ],
-              "cookie": [],
-              "body": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "references",
-      "item": [
-        {
-          "name": "add Reference To Company",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
               }
-            ],
+            },
             "url": {
               "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references",
               "protocol": "https",
@@ -710,7 +934,6 @@
               "path": [
                 "credit-monitoring-companies",
                 "v1",
-                "portfolio",
                 "references"
               ]
             },
@@ -728,17 +951,21 @@
                     "value": "<API Key>"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        },\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references",
+                  "raw": "{{baseUrl}}/references",
                   "host": [
-                    "api",
-                    "bisnode",
-                    "com"
+                    "{{baseUrl}}"
                   ],
                   "path": [
-                    "credit-monitoring-companies",
-                    "v1",
-                    "portfolio",
                     "references"
                   ]
                 }
@@ -758,8 +985,18 @@
           ]
         },
         {
-          "name": "delete References From Companies",
+          "name": "Delete References From Companies",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [
               {
@@ -767,6 +1004,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        },\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references",
               "protocol": "https",
@@ -778,7 +1024,6 @@
               "path": [
                 "credit-monitoring-companies",
                 "v1",
-                "portfolio",
                 "references"
               ]
             },
@@ -798,7 +1043,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"FI\",\n                \"registrationNumber\": \"200967437 \"\n            },\n            \"references\": [\n                \"reference 2\",\n          ]\n        }    ]\n}",
+                  "raw": "{\n    \"references\": [\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        },\n        {\n            \"company\": {\n                \"country\": \"<string>\",\n                \"registrationNumber\": \"<string>\"\n            },\n            \"references\": [\n                \"<string>\"\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -806,16 +1051,11 @@
                   }
                 },
                 "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references",
+                  "raw": "{{baseUrl}}/references",
                   "host": [
-                    "api",
-                    "bisnode",
-                    "com"
+                    "{{baseUrl}}"
                   ],
                   "path": [
-                    "credit-monitoring-companies",
-                    "v1",
-                    "portfolio",
                     "references"
                   ]
                 }
@@ -835,8 +1075,18 @@
           ]
         },
         {
-          "name": "delete References All From Companies",
+          "name": "Delete All References From Companies",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "DELETE",
             "header": [
               {
@@ -844,6 +1094,15 @@
                 "value": "application/json"
               }
             ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [],
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references/all",
               "protocol": "https",
@@ -873,16 +1132,21 @@
                     "value": "<API Key>"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n    {\n        \"country\": \"<string>\",\n        \"registrationNumber\": \"<string>\"\n    },\n    {\n        \"country\": \"<string>\",\n        \"registrationNumber\": \"<string>\"\n    }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references/all",
+                  "raw": "{{baseUrl}}/references/all",
                   "host": [
-                    "api",
-                    "bisnode",
-                    "com"
+                    "{{baseUrl}}"
                   ],
                   "path": [
-                    "credit-monitoring-companies",
-                    "v1",
                     "references",
                     "all"
                   ]
@@ -924,5 +1188,12 @@
         "type": "string"
       }
     ]
-  }
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.bisnode.com/credit-monitoring-companies/v1",
+      "type": "string"
+    }
+  ]
 }
