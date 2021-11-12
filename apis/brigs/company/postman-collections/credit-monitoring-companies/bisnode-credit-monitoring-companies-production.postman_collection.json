@@ -20,7 +20,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -164,7 +164,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -259,7 +259,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -351,7 +351,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -527,7 +527,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -644,7 +644,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -736,7 +736,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "",
+                      "value": "{{accessToken}}",
                       "type": "string"
                     }
                   ]
@@ -830,7 +830,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "",
+                  "value": "{{accessToken}}",
                   "type": "string"
                 }
               ]
@@ -902,7 +902,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "",
+                  "value": "{{accessToken}}",
                   "type": "string"
                 }
               ]
@@ -992,7 +992,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "",
+                  "value": "{{accessToken}}",
                   "type": "string"
                 }
               ]
@@ -1082,7 +1082,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "",
+                  "value": "{{accessToken}}",
                   "type": "string"
                 }
               ]
