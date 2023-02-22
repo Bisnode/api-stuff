@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8dda36bf-fcc9-4748-82f8-74bbfb69fc35",
+		"_postman_id": "6cd2d36c-28e7-44c8-a5d0-e54f231ad7a8",
 		"name": "bisnode-credit-data-companies",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43797"
 	},
 	"item": [
 		{
@@ -428,6 +429,72 @@
 						"se",
 						"annual-reports",
 						"389ud9283ud923ewiwd234u"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Articles of association",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"registrationNumber\": \"5561234567\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies/se/articlesOfAssociation",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v2",
+						"companies",
+						"se",
+						"articlesOfAssociation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Certificate of registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"registrationNumber\": \"7502199255\",\n    \"sequenceNumber\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sandbox-api.bisnode.com/credit-data-companies/v2/companies/se/certificateOfRegistration",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"bisnode",
+						"com"
+					],
+					"path": [
+						"credit-data-companies",
+						"v2",
+						"companies",
+						"se",
+						"certificateOfRegistration"
 					]
 				}
 			},
