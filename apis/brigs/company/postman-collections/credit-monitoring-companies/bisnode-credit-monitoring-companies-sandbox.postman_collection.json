@@ -129,12 +129,13 @@
 									"raw": "{\n    \"startDate\": \"2022-11-09T00:00:00\",\n    \"endDate\": \"2023-11-08T00:00:00\",\n    \"eventFilters\": [\n        {\n            \"eventCodes\": [\n                \"BANKRUPT\"\n            ],\n            \"eventCategory\": \"INSOLVENCY_INACTIVITY\"\n        },\n        {\n            \"eventCodes\": [\n                \"RATING_CHANGED\"\n            ],\n            \"eventCategory\": \"RISK\",\n            \"eventCodeFilter\": [\n                {\n                    \"restrictionType\": \"THRESHOLD\",\n                    \"increaseThreshold\": \"AA\",\n                    \"eventCode\": \"RATING_CHANGED\"\n                }\n            ]\n        }\n    ],\n    \"countries\": [\n        \"SE\",\n        \"NO\"\n    ],\n    \"language\": \"en\",\n    \"page\": {\n        \"number\": 0,\n        \"size\": 20\n    },\n    \"sorting\": {\n        \"sortBy\": \"REGISTRATION_DATE\",\n        \"sortDirection\": \"DESC\"\n    }\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8080/credit-monitoring-companies/v1/portfolio/events",
-									"protocol": "http",
+									"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/events",
+									"protocol": "https",
 									"host": [
-										"localhost"
+										"sandbox-api",
+										"bisnode",
+										"com"
 									],
-									"port": "8080",
 									"path": [
 										"credit-monitoring-companies",
 										"v1",
@@ -902,51 +903,6 @@
 			]
 		}
 	],
-	"auth": {
-		"type": "oauth2",
-		"oauth2": [
-			{
-				"key": "clientSecret",
-				"value": "IVjGNVdIBScDGgrNdOENsCBpS8yYvqxkiQWIcSx4AgCaZmwlRFpM4axL76MMBc1P",
-				"type": "string"
-			},
-			{
-				"key": "clientId",
-				"value": "qa-sandbox-piotr-2",
-				"type": "string"
-			},
-			{
-				"key": "tokenName",
-				"value": "Token API",
-				"type": "string"
-			},
-			{
-				"key": "accessTokenUrl",
-				"value": "https://qa-login.bisnode.com/sandbox/v1/token.oauth2",
-				"type": "string"
-			},
-			{
-				"key": "client_authentication",
-				"value": "header",
-				"type": "string"
-			},
-			{
-				"key": "scope",
-				"value": "credit_data_monitoring",
-				"type": "string"
-			},
-			{
-				"key": "grant_type",
-				"value": "client_credentials",
-				"type": "string"
-			},
-			{
-				"key": "addTokenTo",
-				"value": "header",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",
