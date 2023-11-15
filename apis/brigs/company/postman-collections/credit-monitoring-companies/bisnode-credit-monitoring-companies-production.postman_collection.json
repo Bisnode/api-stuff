@@ -893,46 +893,6 @@
 			]
 		}
 	],
-	"auth": {
-		"type": "oauth2",
-		"oauth2": [
-			{
-				"key": "scope",
-				"value": "credit_data_monitoring",
-				"type": "string"
-			},
-			{
-				"key": "accessTokenUrl",
-				"value": "https://login.bisnode.com/v1/token.oauth2",
-				"type": "string"
-			},
-			{
-				"key": "clientSecret",
-				"value": "AKtw0UVIQYYiBjkP45T5GKKcR0HWTqc0xzuwVYPrAVsFdihDm8Rspu26Gb2N3N3z",
-				"type": "string"
-			},
-			{
-				"key": "clientId",
-				"value": "b7683615-e7d2-428d-9a4e-d12be63570ec",
-				"type": "string"
-			},
-			{
-				"key": "grant_type",
-				"value": "client_credentials",
-				"type": "string"
-			},
-			{
-				"key": "tokenName",
-				"value": "Token Api PROD",
-				"type": "string"
-			},
-			{
-				"key": "addTokenTo",
-				"value": "header",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",
