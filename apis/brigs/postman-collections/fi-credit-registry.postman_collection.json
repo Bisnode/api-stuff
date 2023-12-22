@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "25dcc86c-2efe-49ee-a3fc-3537a990223c",
+		"name": "Fi Credit Registry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21781501"
+	},
+	"item": [
+		{
+			"name": "Fi Credit Registry Extract",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{sandbox_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nationalIdentificationNumber\": \"190655-997E\",\r\n    \"creditRegisterExtractPurpose\": [\r\n        \"NewConsumerCredit\",\r\n        \"ChangesToTermsOfConsumerCredit\"\r\n    ]\r\n}"
+				},
+				"url": "https://sandbox-api.bisnode.com/credit-register/v1/credit-registry/fi"
+			},
+			"response": []
+		},
+		{
+			"name": "Fi Credit Registry Extract Purpose",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{sandbox_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sandbox-api.bisnode.com/credit-register/v1/credit-register-extract-purpose"
+			},
+			"response": []
+		}
+	]
+}
