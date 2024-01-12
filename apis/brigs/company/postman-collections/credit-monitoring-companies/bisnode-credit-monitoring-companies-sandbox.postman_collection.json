@@ -1,11 +1,9 @@
 {
 	"info": {
-		"_postman_id": "266ab750-e04f-4e52-a4f0-49e376dc0d4b",
+		"_postman_id": "a2b27878-158d-40e5-956b-eee184436a4b",
 		"name": "Credit Monitoring Companies Sandbox",
 		"description": "Monitoring Risk and Credit data for companies\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "4091789",
-		"_collection_link": "https://cloudy-water-109463.postman.co/workspace/rgs-sandbox-2~b873a4dd-df53-4127-8317-d5f936c750c1/collection/4091789-266ab750-e04f-4e52-a4f0-49e376dc0d4b?action=share&source=collection_link&creator=4091789"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -551,6 +549,1356 @@
 									],
 									"cookie": [],
 									"body": "[\n {\n  \"referrerId\": \"<string>\",\n  \"country\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"addedDate\": \"<dateTime>\",\n  \"removedDate\": \"<dateTime>\"\n },\n {\n  \"referrerId\": \"<string>\",\n  \"country\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"addedDate\": \"<dateTime>\",\n  \"removedDate\": \"<dateTime>\"\n }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "events",
+							"item": [
+								{
+									"name": "Find Events For Category",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"startDate\": \"2024-01-09T11:34:58.525Z\",\n  \"endDate\": \"2024-01-09T11:34:58.525Z\",\n  \"eventFilters\": [\n    {\n      \"eventCategory\": \"BASIC_INFORMATION\",\n      \"eventCodes\": [\n        \"NAME_CHANGED\",\n        \"ACTIVE_CHANGED\"\n      ]\n    }\n  ],\n  \"countries\": [\n    \"SE\"\n  ],\n  \"language\": \"en\",\n  \"page\": {\n    \"number\": 0,\n    \"size\": 20\n  },\n  \"sorting\": {\n    \"sortBy\": \"REGISTRATION_DATE\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId/events",
+											"protocol": "https",
+											"host": [
+												"sandbox-api",
+												"bisnode",
+												"com"
+											],
+											"path": [
+												"credit-monitoring-companies",
+												"v1",
+												"portfolio",
+												"categories",
+												":categoryId",
+												"events"
+											],
+											"variable": [
+												{
+													"key": "categoryId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Get the events for a category in a paginated form. Allows to filter and sort events."
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/events?startDate=yyyy-MM-ddThh:mm:ss&endDate=yyyy-MM-ddThh:mm:ss&eventCategory=OTHER&country=SE&language=en&page=0&size=20&sortBy=EVENT_DATE&sortDirection=DESC",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"events"
+													],
+													"query": [
+														{
+															"key": "startDate",
+															"value": "yyyy-MM-ddThh:mm:ss"
+														},
+														{
+															"key": "endDate",
+															"value": "yyyy-MM-ddThh:mm:ss"
+														},
+														{
+															"key": "eventCategory",
+															"value": "OTHER"
+														},
+														{
+															"key": "country",
+															"value": "SE"
+														},
+														{
+															"key": "language",
+															"value": "en"
+														},
+														{
+															"key": "page",
+															"value": "0",
+															"description": "Zero-based page index (0..N)"
+														},
+														{
+															"key": "size",
+															"value": "20",
+															"description": "The size of the page to be returned"
+														},
+														{
+															"key": "sortBy",
+															"value": "EVENT_DATE",
+															"description": "Sorting property for events."
+														},
+														{
+															"key": "sortDirection",
+															"value": "DESC",
+															"description": "Sorting direction for events."
+														}
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"page\": {\n    \"content\": [\n      {\n        \"id\": \"<string>\",\n        \"eventDate\": \"<dateTime>\",\n        \"registrationDate\": \"<string>\",\n        \"companyInformation\": {\n          \"country\": \"<string>\",\n          \"registrationNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"rating\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"duns\": \"<string>\",\n          \"references\": [\n            \"<string>\"\n          ]\n        },\n        \"details\": {\n          \"type\": {\n            \"code\": \"<string>\",\n            \"category\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"change\": {\n            \"oldValue\": {\n              \"type\": \"PLAIN\"\n            },\n            \"newValue\": {\n              \"type\": \"STRUCTURED\"\n            }\n          },\n          \"amount\": {\n            \"value\": \"<double>\",\n            \"currency\": \"<string>\"\n          },\n          \"comment\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"changeTypeInformation\": {\n          \"code\": \"PAID\",\n          \"description\": \"<string>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"eventDate\": \"<dateTime>\",\n        \"registrationDate\": \"<string>\",\n        \"companyInformation\": {\n          \"country\": \"<string>\",\n          \"registrationNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"rating\": {\n            \"code\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"duns\": \"<string>\",\n          \"references\": [\n            \"<string>\"\n          ]\n        },\n        \"details\": {\n          \"type\": {\n            \"code\": \"<string>\",\n            \"category\": \"<string>\",\n            \"description\": \"<string>\"\n          },\n          \"change\": {\n            \"oldValue\": {\n              \"type\": \"PLAIN\"\n            },\n            \"newValue\": {\n              \"type\": \"CODE\"\n            }\n          },\n          \"amount\": {\n            \"value\": \"<double>\",\n            \"currency\": \"<string>\"\n          },\n          \"comment\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"changeTypeInformation\": {\n          \"code\": \"DISCLAIMER\",\n          \"description\": \"<string>\"\n        }\n      }\n    ],\n    \"totalPages\": \"<integer>\",\n    \"currentPage\": \"<integer>\",\n    \"totalEvents\": \"<long>\"\n  },\n  \"filters\": {\n    \"laborum6\": [\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<long>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<long>\"\n      }\n    ]\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "company",
+							"item": [
+								{
+									"name": "Get Company From Category",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"country\": \"SE\",\n  \"registrationNumber\": \"<string>\",\n  \"duns\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId/companies",
+											"protocol": "https",
+											"host": [
+												"sandbox-api",
+												"bisnode",
+												"com"
+											],
+											"path": [
+												"credit-monitoring-companies",
+												"v1",
+												"portfolio",
+												"categories",
+												":categoryId",
+												"companies"
+											],
+											"variable": [
+												{
+													"key": "categoryId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Fetches a company from a category"
+									},
+									"response": [
+										{
+											"name": "Successfully fetched the company from category",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"country\": \"NO\",\n  \"registrationNumber\": \"<string>\",\n  \"duns\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"country\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"legalForm\": \"<string>\",\n  \"rating\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"duns\": \"<string>\",\n  \"references\": [\n    \"<string>\"\n  ],\n  \"addedDate\": \"<dateTime>\",\n  \"limit\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"SRD\"\n  }\n}"
+										},
+										{
+											"name": "Company or category not found",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"country\": \"NO\",\n  \"registrationNumber\": \"<string>\",\n  \"duns\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"country\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"name\": \"<string>\",\n  \"legalForm\": \"<string>\",\n  \"rating\": {\n    \"code\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"duns\": \"<string>\",\n  \"references\": [\n    \"<string>\"\n  ],\n  \"addedDate\": \"<dateTime>\",\n  \"limit\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"SRD\"\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "companies",
+							"item": [
+								{
+									"name": "Get Category Companies",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId/companies?rating=A&country=SE&page=0&size=20&sortBy=ADDED_DATE&sortDirection=DESC",
+											"protocol": "https",
+											"host": [
+												"sandbox-api",
+												"bisnode",
+												"com"
+											],
+											"path": [
+												"credit-monitoring-companies",
+												"v1",
+												"portfolio",
+												"categories",
+												":categoryId",
+												"companies"
+											],
+											"query": [
+												{
+													"key": "rating",
+													"value": "A",
+													"description": "Retrieve only companies with a certain rating value"
+												},
+												{
+													"key": "country",
+													"value": "SE"
+												},
+												{
+													"key": "page",
+													"value": "0",
+													"description": "Zero-based page index (0..N)"
+												},
+												{
+													"key": "size",
+													"value": "20",
+													"description": "The size of the page to be returned"
+												},
+												{
+													"key": "sortBy",
+													"value": "ADDED_DATE",
+													"description": "Sorting property for companies."
+												},
+												{
+													"key": "sortDirection",
+													"value": "DESC",
+													"description": "Sorting direction for companies."
+												}
+											],
+											"variable": [
+												{
+													"key": "categoryId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Get the list of companies in category, paginated and sorted, filtered by rating"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies?rating=<string>&page=0&size=20&sortBy=ADDED_DATE&sortDirection=DESC",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"query": [
+														{
+															"key": "rating",
+															"value": "<string>",
+															"description": "Retrieve only companies with a certain rating value"
+														},
+														{
+															"key": "page",
+															"value": "0",
+															"description": "Zero-based page index (0..N)"
+														},
+														{
+															"key": "size",
+															"value": "20",
+															"description": "The size of the page to be returned"
+														},
+														{
+															"key": "sortBy",
+															"value": "ADDED_DATE",
+															"description": "Sorting property for companies."
+														},
+														{
+															"key": "sortDirection",
+															"value": "DESC",
+															"description": "Sorting direction for companies."
+														}
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"companies\": [\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"LRD\"\n      }\n    },\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"CUP\"\n      }\n    }\n  ],\n  \"totalCompanies\": \"<long>\",\n  \"currentPage\": \"<integer>\",\n  \"totalPages\": \"<integer>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Add Companies To Category",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"companyIds\": [\n    {\n      \"country\": \"SE\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"FI\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId/companies",
+											"protocol": "https",
+											"host": [
+												"sandbox-api",
+												"bisnode",
+												"com"
+											],
+											"path": [
+												"credit-monitoring-companies",
+												"v1",
+												"portfolio",
+												"categories",
+												":categoryId",
+												"companies"
+											],
+											"variable": [
+												{
+													"key": "categoryId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Adds the listed Companies to the Category"
+									},
+									"response": [
+										{
+											"name": "Successful adding of companies to category",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"companyIds\": [\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"FI\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"companies\": [\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"TRY\"\n      }\n    },\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"MWK\"\n      }\n    }\n  ],\n  \"companiesUnableToAdd\": [\n    {\n      \"country\": \"SE\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Partial success in adding the companies to category",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"companyIds\": [\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"FI\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "Multi-Status (WebDAV) (RFC 4918)",
+											"code": 207,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"companies\": [\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"TRY\"\n      }\n    },\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"MWK\"\n      }\n    }\n  ],\n  \"companiesUnableToAdd\": [\n    {\n      \"country\": \"SE\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Category not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"companyIds\": [\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"FI\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"companies\": [\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"TRY\"\n      }\n    },\n    {\n      \"country\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"name\": \"<string>\",\n      \"legalForm\": \"<string>\",\n      \"rating\": {\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      \"duns\": \"<string>\",\n      \"references\": [\n        \"<string>\"\n      ],\n      \"addedDate\": \"<dateTime>\",\n      \"limit\": {\n        \"amount\": \"<number>\",\n        \"currency\": \"MWK\"\n      }\n    }\n  ],\n  \"companiesUnableToAdd\": [\n    {\n      \"country\": \"SE\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Delete Companies From Category",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"companyIds\": [\n    {\n      \"country\": \"SE\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"FI\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId/companies",
+											"protocol": "https",
+											"host": [
+												"sandbox-api",
+												"bisnode",
+												"com"
+											],
+											"path": [
+												"credit-monitoring-companies",
+												"v1",
+												"portfolio",
+												"categories",
+												":categoryId",
+												"companies"
+											],
+											"variable": [
+												{
+													"key": "categoryId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Deletes the listed Companies from Category"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"companyIds\": [\n    {\n      \"country\": \"NO\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    },\n    {\n      \"country\": \"FI\",\n      \"registrationNumber\": \"<string>\",\n      \"duns\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/portfolio/category/:categoryId/companies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"portfolio",
+														"category",
+														":categoryId",
+														"companies"
+													],
+													"variable": [
+														{
+															"key": "categoryId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"referrerId\": \"<string>\",\n    \"country\": \"NO\",\n    \"registrationNumber\": \"<string>\",\n    \"addedDate\": \"<dateTime>\",\n    \"removedDate\": \"<dateTime>\"\n  },\n  {\n    \"referrerId\": \"<string>\",\n    \"country\": \"FI\",\n    \"registrationNumber\": \"<string>\",\n    \"addedDate\": \"<dateTime>\",\n    \"removedDate\": \"<dateTime>\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Add Category To Portfolio",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories",
+									"protocol": "https",
+									"host": [
+										"sandbox-api",
+										"bisnode",
+										"com"
+									],
+									"path": [
+										"credit-monitoring-companies",
+										"v1",
+										"portfolio",
+										"categories"
+									]
+								},
+								"description": "Add new Category with provided name to current customer Portfolio."
+							},
+							"response": [
+								{
+									"name": "Successful adding of category to portfolio",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								},
+								{
+									"name": "Could not add because category with same name already exists in the portfolio",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								},
+								{
+									"name": "Could not add category for sandbox because limit of 10 categories per portfolio has been reached",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												""
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Categories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories",
+									"protocol": "https",
+									"host": [
+										"sandbox-api",
+										"bisnode",
+										"com"
+									],
+									"path": [
+										"credit-monitoring-companies",
+										"v1",
+										"portfolio",
+										"categories"
+									]
+								},
+								"description": "Retrieve list of categories of the current customer Portfolio."
+							},
+							"response": [
+								{
+									"name": "Retrieved categories",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<string>\",\n    \"categoryName\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"categoryName\": \"<string>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Rename Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId",
+									"protocol": "https",
+									"host": [
+										"sandbox-api",
+										"bisnode",
+										"com"
+									],
+									"path": [
+										"credit-monitoring-companies",
+										"v1",
+										"portfolio",
+										"categories",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": ""
+										}
+									]
+								},
+								"description": "Rename a category"
+							},
+							"response": [
+								{
+									"name": "Successfully updated the name of the given category",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/:categoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								},
+								{
+									"name": "Could not update the name because category with same name already exists in the portfolio",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/:categoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								},
+								{
+									"name": "Category not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"categoryName\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/:categoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"categoryName\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://sandbox-api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories/:categoryId",
+									"protocol": "https",
+									"host": [
+										"sandbox-api",
+										"bisnode",
+										"com"
+									],
+									"path": [
+										"credit-monitoring-companies",
+										"v1",
+										"portfolio",
+										"categories",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": "<string>"
+										}
+									]
+								},
+								"description": "Delete the Category"
+							},
+							"response": [
+								{
+									"name": "Successful deletion of category",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/:categoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Category not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/portfolio/category/:categoryId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"portfolio",
+												"category",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "categoryId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
 								}
 							]
 						}
