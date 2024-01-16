@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "f680ac45-8fc9-4971-9ec2-dc389b841c32",
+		"_postman_id": "3565ee7f-07e3-4057-9fe7-dd177c5de3b9",
 		"name": "Credit Monitoring Companies Production",
 		"description": "Monitoring Risk and Credit data for companies\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11412737"
 	},
 	"item": [
 		{
@@ -557,9 +558,6 @@
 							"item": [
 								{
 									"name": "Find Events For Category",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
 									"request": {
 										"auth": {
 											"type": "bearer",
@@ -571,7 +569,7 @@
 												}
 											]
 										},
-										"method": "GET",
+										"method": "POST",
 										"header": [],
 										"body": {
 											"mode": "raw",
@@ -1533,7 +1531,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories",
+									"raw": "https://api.bisnode.com/credit-monitoring-companies/v1/portfolio/categories?number=0&size=50",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1545,6 +1543,16 @@
 										"v1",
 										"portfolio",
 										"categories"
+									],
+									"query": [
+										{
+											"key": "number",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "50"
+										}
 									]
 								},
 								"description": "Retrieve list of categories of the current customer Portfolio."
