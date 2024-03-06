@@ -1,18 +1,25 @@
 {
 	"info": {
 		"_postman_id": "25dcc86c-2efe-49ee-a3fc-3537a990223c",
-		"name": "Fi Credit Registry",
+		"name": "FI Credit Register",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "21781501"
 	},
 	"item": [
 		{
-			"name": "Fi Credit Registry Extract",
+			"name": "FI Credit Register Extract",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{sandbox_token}}"
+					"type": "oauth2",
+					"oauth2": {
+						"clientId": "your-client-id",
+						"clientSecret": "your-client-secret",
+						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"tokenName": "production sandbox token",
+						"scope": "credit-register credit-register-admin credential:third-party:read:fi_credit_register",
+						"grant_type": "client_credentials",
+						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"addTokenTo": "header"
 					}
 				},
 				"method": "POST",
@@ -32,20 +39,27 @@
 					"mode": "raw",
 					"raw": "{\r\n    \"nationalIdentificationNumber\": \"190655-997E\",\r\n    \"creditRegisterExtractPurpose\": [\r\n        \"NewConsumerCredit\",\r\n        \"ChangesToTermsOfConsumerCredit\"\r\n    ]\r\n}"
 				},
-				"url": "https://sandbox-api.bisnode.com/credit-register/v1/credit-registry/fi"
+				"url": "https://sandbox-api.bisnode.com/credit-register/v1/fi/person"
 			},
 			"response": []
 		},
 		{
-			"name": "Fi Credit Registry Extract Purpose",
+			"name": "FI Credit Register Extract Purpose",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{sandbox_token}}"
+					"type": "oauth2",
+					"oauth2": {
+						"clientId": "your-client-id",
+						"clientSecret": "your-client-secret",
+						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"tokenName": "production sandbox token",
+						"scope": "credit-register credit-register-admin credential:third-party:read:fi_credit_register",
+						"grant_type": "client_credentials",
+						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"addTokenTo": "header"
 					}
 				},
 				"method": "GET",
@@ -65,7 +79,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "https://sandbox-api.bisnode.com/credit-register/v1/credit-register-extract-purpose"
+				"url": "https://sandbox-api.bisnode.com/credit-register/v1/fi/extract-purpose"
 			},
 			"response": []
 		}
