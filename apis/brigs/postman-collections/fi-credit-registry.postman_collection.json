@@ -16,7 +16,7 @@
 						"clientSecret": "your-client-secret",
 						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
 						"tokenName": "production sandbox token",
-						"scope": "credit-register credit-register-admin credential:third-party:read:fi_credit_register",
+						"scope": "credit-register credential:third-party:read:fi_credit_register",
 						"grant_type": "client_credentials",
 						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
 						"addTokenTo": "header"
@@ -56,7 +56,7 @@
 						"clientSecret": "your-client-secret",
 						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
 						"tokenName": "production sandbox token",
-						"scope": "credit-register credit-register-admin credential:third-party:read:fi_credit_register",
+						"scope": "credit-register credential:third-party:read:fi_credit_register",
 						"grant_type": "client_credentials",
 						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
 						"addTokenTo": "header"
