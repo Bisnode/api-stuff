@@ -31,43 +31,15 @@
 			"request": {
 				"auth": {
 					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "clientSecret",
-							"value": "your-client-secret",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "your-client-id",
-							"type": "string"
-						},
-						{
-							"key": "scope",
-							"value": "affordability",
-							"type": "string"
-						},
-						{
-							"key": "accessTokenUrl",
-							"value": "https://login.bisnode.com/as/token.oauth2",
-							"type": "string"
-						},
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "string"
-						},
-						{
-							"key": "tokenName",
-							"value": "production token",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"oauth2": {
+						"clientSecret": "your-client-secret",
+						"clientId": "your-client-id",
+						"scope": "affordability",
+						"accessTokenUrl": "https://login.bisnode.com/as/token.oauth2",
+						"grant_type": "client_credentials",
+						"tokenName": "production token",
+						"addTokenTo": "header"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -80,21 +52,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "https://api.bisnode.com/affordability/v1/person/no",
-					"protocol": "https",
-					"host": [
-						"api",
-						"bisnode",
-						"com"
-					],
-					"path": [
-						"affordability",
-						"v1",
-						"person",
-						"no"
-					]
-				}
+				"url": "https://api.bisnode.com/affordability/v1/person/no"
 			},
 			"response": []
 		},
@@ -123,43 +81,15 @@
 			"request": {
 				"auth": {
 					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "scope",
-							"value": "affordability",
-							"type": "string"
-						},
-						{
-							"key": "clientSecret",
-							"value": "your-client-secret",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "your-client-id",
-							"type": "string"
-						},
-						{
-							"key": "accessTokenUrl",
-							"value": "https://login.bisnode.com/sandbox/v1/token.oauth2",
-							"type": "string"
-						},
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "string"
-						},
-						{
-							"key": "tokenName",
-							"value": "production token",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"oauth2": {
+						"scope": "affordability",
+						"clientSecret": "your-client-secret",
+						"clientId": "your-client-id",
+						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"grant_type": "client_credentials",
+						"tokenName": "production token",
+						"addTokenTo": "header"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -172,21 +102,113 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "https://sandbox-api.bisnode.com/affordability/v1/person/no",
-					"protocol": "https",
-					"host": [
-						"sandbox-api",
-						"bisnode",
-						"com"
-					],
-					"path": [
-						"affordability",
-						"v1",
-						"person",
-						"no"
-					]
+				"url": "https://sandbox-api.bisnode.com/affordability/v1/person/no"
+			},
+			"response": []
+		},
+		{
+			"name": "FI-Sandbox-No-Customer-Input",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"clientSecret": "your-client-secret",
+						"clientId": "your-client-id",
+						"tokenName": "sandbox token",
+						"scope": "affordability credit-register credential:third-party:read:fi_credit_register",
+						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"grant_type": "client_credentials",
+						"addTokenTo": "header",
+						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nationalIdentificationNumber\": \"160162-9968\",\r\n    \"reference\": \"test\",\r\n    \"calculationModelId\": \"d87aa1d9-a4a8-46ba-8241-b8b05ec778a4\",\r\n    \"customerInput\": [\r\n        {\r\n            \"name\": \"creditAppliedAmount\",\r\n            \"value\": 1050.55\r\n        },\r\n        {\r\n            \"name\": \"creditAppliedInstallments\",\r\n            \"value\": 12\r\n        },\r\n        {\r\n            \"name\": \"extractPurposes\",\r\n            \"value\": [\r\n                \"NEW_CONSUMER_CREDIT\",\r\n                \"CHANGES_TO_TERMS_OF_CONSUMER_CREDIT\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://sandbox-api.bisnode.com/affordability/v1/person/fi"
+			},
+			"response": []
+		},
+		{
+			"name": "FI-Sandbox-With-Customer-Input",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"tokenName": "sandbox token",
+						"scope": "affordability credit-register credential:third-party:read:fi_credit_register",
+						"clientSecret": "your-client-secret",
+						"clientId": "your-client-id",
+						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+						"grant_type": "client_credentials",
+						"addTokenTo": "header",
+						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nationalIdentificationNumber\": \"010180-953U\",\r\n    \"reference\": \"test\",\r\n    \"calculationModelId\": \"d80670a4-42e8-4a08-8780-bca192bc7300\",\r\n    \"customerInput\": [\r\n        {\r\n            \"name\": \"civilStatus\",\r\n            \"value\": \"Married\"\r\n        },\r\n        {\r\n            \"name\": \"grossIncome\",\r\n            \"value\": 80000.00\r\n        },\r\n        {\r\n            \"name\": \"propertyType\",\r\n            \"value\": \"RENT\"\r\n        },\r\n        {\r\n            \"name\": \"rent\",\r\n            \"value\": 1200.00\r\n        },\r\n        {\r\n            \"name\": \"creditAppliedAmount\",\r\n            \"value\": 1000.00\r\n        },\r\n        {\r\n            \"name\": \"creditAppliedInstallments\",\r\n            \"value\": 36\r\n        },\r\n        {\r\n            \"name\": \"realEstateLoanAmount\",\r\n            \"value\": 210000.00\r\n        },\r\n        {\r\n            \"name\": \"realEstateLoanInstallments\",\r\n            \"value\": 240\r\n        },\r\n        {\r\n            \"name\": \"carLoanAmount\",\r\n            \"value\": 10000.00\r\n        },\r\n        {\r\n            \"name\": \"carLoanInstallments\",\r\n            \"value\": 60\r\n        },\r\n        {\r\n            \"name\": \"studentLoanAmount\",\r\n            \"value\": 10000.00\r\n        },\r\n        {\r\n            \"name\": \"studentLoanInstallments\",\r\n            \"value\": 120\r\n        },\r\n        {\r\n            \"name\": \"unsecuredLoanAmount\",\r\n            \"value\": 1000.00\r\n        },\r\n        {\r\n            \"name\": \"unsecuredLoanInstallments\",\r\n            \"value\": 36\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://sandbox-api.bisnode.com/affordability/v1/person/fi"
 			},
 			"response": []
 		}
