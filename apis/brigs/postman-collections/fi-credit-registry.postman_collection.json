@@ -1,87 +1,130 @@
 {
 	"info": {
-		"_postman_id": "25dcc86c-2efe-49ee-a3fc-3537a990223c",
-		"name": "FI Credit Register",
+		"_postman_id": "35f4bd84-dea7-4a48-bddf-56a8a7df1bea",
+		"name": "Credit Register",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "21781501"
 	},
 	"item": [
 		{
-			"name": "FI Credit Register Extract",
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": {
-						"clientId": "your-client-id",
-						"clientSecret": "your-client-secret",
-						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
-						"scope": "credit-register credential:third-party:read:fi_credit_register",
-						"tokenName": "production sandbox token",
-						"grant_type": "client_credentials",
-						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
-						"addTokenTo": "header"
-					}
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+			"name": "FI Credit Register",
+			"item": [
+				{
+					"name": "FI Credit Register Extract",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientId": "your-client-id",
+								"clientSecret": "your-client-secret",
+								"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+								"scope": "credit-register credential:third-party:read:fi_credit_register",
+								"tokenName": "production sandbox token",
+								"grant_type": "client_credentials",
+								"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nationalIdentificationNumber\": \"190655-997E\",\r\n    \"creditRegisterExtractPurposes\": [\r\n        \"NEW_CONSUMER_CREDIT\",\r\n        \"CHANGES_TO_TERMS_OF_CONSUMER_CREDIT\"\r\n    ]\r\n}"
+						},
+						"url": "https://sandbox-api.bisnode.com/credit-register/v1/fi/person"
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nationalIdentificationNumber\": \"190655-997E\",\r\n    \"creditRegisterExtractPurposes\": [\r\n        \"NEW_CONSUMER_CREDIT\",\r\n        \"CHANGES_TO_TERMS_OF_CONSUMER_CREDIT\"\r\n    ]\r\n}"
+					"response": []
 				},
-				"url": "https://sandbox-api.bisnode.com/credit-register/v1/fi/person"
-			},
-			"response": []
+				{
+					"name": "FI Credit Register Extract Purpose",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"clientId": "your-client-id",
+								"clientSecret": "your-client-secret",
+								"scope": "credit-register credential:third-party:read:fi_credit_register",
+								"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+								"grant_type": "client_credentials",
+								"tokenName": "production sandbox token"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "https://sandbox-api.bisnode.com/credit-register/v1/fi/extract-purpose"
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "FI Credit Register Extract Purpose",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": {
-						"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
-						"scope": "credit-register credential:third-party:read:fi_credit_register",
-						"clientSecret": "your-client-secret",
-						"clientId": "your-client-id",
-						"tokenName": "production sandbox token",
-						"grant_type": "client_credentials",
-						"redirect_uri": "https://login.bisnode.com/sandbox/v1/token.oauth2",
-						"addTokenTo": "header"
-					}
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+			"name": "NO Credit Register",
+			"item": [
+				{
+					"name": "NO Credit Register Extract",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"scope": "credit-register credential:third-party:owner:no_gjeldsregisteret",
+								"clientSecret": "your-client-secret",
+								"clientId": "your-client-id",
+								"accessTokenUrl": "https://login.bisnode.com/sandbox/v1/token.oauth2",
+								"grant_type": "client_credentials",
+								"tokenName": "production sandbox token"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nationalIdentificationNumber\": \"01013700202\",\r\n    \"reference\": \"01013700202\"\r\n}"
+						},
+						"url": "https://sandbox-api.bisnode.com/credit-register/v1/no/person"
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": "https://sandbox-api.bisnode.com/credit-register/v1/fi/extract-purpose"
-			},
-			"response": []
+					"response": []
+				}
+			]
 		}
 	]
 }
