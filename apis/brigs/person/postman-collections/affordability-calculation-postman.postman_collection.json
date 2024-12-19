@@ -265,7 +265,7 @@
 			"response": []
 		},
 		{
-			"name": "FI-Prod-Test",
+			"name": "FI-Prodtest-customer-data",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -304,7 +304,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nationalIdentificationNumber\": \"test-id\",\r\n  \"reference\": \"string\",\r\n  \"calculationModelId\": \"f84a6e1b-ca1e-43fe-afa3-96a35b1e58d9\",\r\n  \"customerInput\": [\r\n    {\r\n        \"name\": \"gender\",\r\n        \"value\": \"M\"\r\n    },\r\n    {\r\n        \"name\": \"dateOfBirth\",\r\n        \"value\": \"1956-10-23\"\r\n    },\r\n    {\r\n        \"name\": \"numberOfChildren\",\r\n        \"value\": 2\r\n    },\r\n    {\r\n      \"name\": \"civilStatus\",\r\n      \"value\": \"Married\"\r\n    },\r\n    {\r\n      \"name\": \"grossIncome\",\r\n      \"value\": 6000.00\r\n    },\r\n    {\r\n      \"name\": \"propertyType\",\r\n      \"value\": \"RENT\"\r\n    },\r\n    {\r\n      \"name\": \"rent\",\r\n      \"value\": 12345.00\r\n    },\r\n    {\r\n      \"name\": \"creditAppliedAmount\",\r\n      \"value\": 1050.55\r\n    },\r\n    {\r\n      \"name\": \"creditAppliedInstallments\",\r\n      \"value\": 12\r\n    },\r\n    {\r\n      \"name\": \"realEstateLoanAmount\",\r\n      \"value\": 188.00\r\n    },\r\n    {\r\n      \"name\": \"realEstateLoanInstallments\",\r\n      \"value\": 18\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n    \"nationalIdentificationNumber\": \"test-id\",\r\n    \"reference\": \"string\",\r\n    \"calculationModelId\": \"c8676b49-b5f0-4f8b-be5e-98e672455790\",\r\n    \"customerInput\": [\r\n        {\r\n            \"name\": \"gender\",\r\n            \"value\": \"M\"\r\n        },\r\n        {\r\n            \"name\": \"dateOfBirth\",\r\n            \"value\": \"1956-10-23\"\r\n        },\r\n        {\r\n            \"name\": \"numberOfChildren\",\r\n            \"value\": 2\r\n        },\r\n        {\r\n            \"name\": \"civilStatus\",\r\n            \"value\": \"Married\"\r\n        },\r\n        {\r\n            \"name\": \"grossIncome\",\r\n            \"value\": 6000.00\r\n        },\r\n        {\r\n            \"name\": \"propertyType\",\r\n            \"value\": \"RENT\"\r\n        },\r\n        {\r\n            \"name\": \"rent\",\r\n            \"value\": 12345.00\r\n        },\r\n        {\r\n            \"name\": \"creditAppliedAmount\",\r\n            \"value\": 1050.55\r\n        },\r\n        {\r\n            \"name\": \"creditAppliedInstallments\",\r\n            \"value\": 12\r\n        },\r\n        {\r\n            \"name\": \"realEstateLoanAmount\",\r\n            \"value\": 188.00\r\n        },\r\n        {\r\n            \"name\": \"realEstateLoanInstallments\",\r\n            \"value\": 18\r\n        },\r\n        {\r\n            \"name\": \"unsecuredLoanAmount\",\r\n            \"value\": 1000.00\r\n        },\r\n        {\r\n            \"name\": \"unsecuredLoanInstallments\",\r\n            \"value\": 12\r\n        },\r\n        {\r\n            \"name\": \"studentLoanAmount\",\r\n            \"value\": 1000.0\r\n        },\r\n        {\r\n            \"name\": \"studentLoanInstallments\",\r\n            \"value\": 12\r\n        },\r\n        {\r\n            \"name\": \"carLoanAmount\",\r\n            \"value\": 1000.00\r\n        },\r\n        {\r\n            \"name\": \"carLoanInstallments\",\r\n            \"value\": 12\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
