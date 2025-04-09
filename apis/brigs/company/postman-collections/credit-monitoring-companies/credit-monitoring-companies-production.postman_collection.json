@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3565ee7f-07e3-4057-9fe7-dd177c5de3b9",
+		"_postman_id": "b7d05970-8d2e-435d-a69c-aadac57781c7",
 		"name": "Credit Monitoring Companies Production",
 		"description": "Monitoring Risk and Credit data for companies\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11412737"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -248,7 +247,7 @@
 					"name": "companies",
 					"item": [
 						{
-							"name": "Find Portfolio Companies",
+							"name": "Get Portfolio Companies",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -314,7 +313,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/portfolio/companies?rating=<string>&rating=<string>&page=0&size=20&sortBy=ADDED_DATE&sortDirection=DESC",
+											"raw": "{{baseUrl}}/portfolio/companies?rating=<string>&page=0&size=20&sortBy=ADDED_DATE&sortDirection=DESC",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -323,10 +322,6 @@
 												"companies"
 											],
 											"query": [
-												{
-													"key": "rating",
-													"value": "<string>"
-												},
 												{
 													"key": "rating",
 													"value": "<string>"
@@ -2180,8 +2175,8 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"country\": \"FI\",\r\n        \"registrationNumber\": \"<string>\"\r\n    }\r\n]"
 						},
 						"url": {
 							"raw": "https://api.bisnode.com/credit-monitoring-companies/v1/references/all",
@@ -2249,6 +2244,16 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -2274,6 +2279,11 @@
 			"key": "baseUrl",
 			"value": "https://api.bisnode.com/credit-monitoring-companies/v1",
 			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "default"
 		}
 	]
 }
