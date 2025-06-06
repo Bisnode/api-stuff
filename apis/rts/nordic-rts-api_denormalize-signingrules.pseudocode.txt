@@ -1,0 +1,62 @@
+denormalizeSigningRules(var normalizedRts) {
+	List denormalizedRules = emptyList()
+	
+	var signatories = normalizedRts.signatories;
+	
+	for (var normalizedRule : normalizedRts.signingRules) {
+		var denormalizedRule = DenormalizedRule();
+		denormalizedRule.code = normalizedRule.code;
+		denormalizedRule.interpretationLevel = normalizedRule.interpretationLevel;
+		denormalizedRule.signingAuthorityDescription = normalizedRule.signingAuthorityDescription;
+		
+		var ruleId = normalizedRule.id;
+		
+		for (var normalizedGroup : normalizedRule.signatoryGroups) {
+			var denormalizedGroup = DenormalizedSignatoryGroup();
+			denormalizedGroup.groupType = normalizedGroup.groupType;
+			denormalizedGroup.interpretationLevel = normalizedGroup.interpretationLevel;
+			denormalizedGroup.quantity = normalizedGroup.quantity;
+			
+			var groupId = normalizedSignatoryGroup.id;
+			
+			if (normalizedGroup.subGroups.isEmpty()) {
+				denormalizedGroup.signatories = extractSignatories(signatories, ruleId, groupId, null);
+				
+			} else {
+				for (var normalizedSubGroup : normalizedGroup.subGroups) {
+					var denormalizedSubGroup = DenormalizedSignatorySubGroup();
+					denormalizedSubGroup.groupType = normalizedSubGroup.groupType;
+					denormalizedSubGroup.interpretationLevel = normalizedSubGroup.interpretationLevel;
+					
+					var subGroupId = normalizedSubGroup.id;
+					
+					denormalizedSubGroup.signatories = extractSignatories(signatories, ruleId, groupId, subGroupId);
+					
+					denormalizedGroup.subGroups.add(denormalizedSubGroup);
+				}
+			}
+			
+			denormalizedRule.signatoryGroups.add(denormalizedGroup);
+		}
+		
+		denormalizedRules.add(denormalizedRule);
+	}
+	
+	return denormalizedRules;
+}
+
+extractSignatories(var signatories, var ruleId, var groupId, var subGroupId) {
+	List extractedSignatories = emptyList();
+	
+	for (var signatory : signatories) {
+		for (var signingRight : signatory.signingRights) {
+			if (signingRight.ruleId == ruleId && signingRight.groupId == groupId && signingRight.subGroupId == subGroupId) {
+				//you might want to "format" the signatory data as well
+				extractedSgnatories.add(signatory);
+				break;
+			}
+		}
+	}
+	
+	return extractSignatories;
+}
