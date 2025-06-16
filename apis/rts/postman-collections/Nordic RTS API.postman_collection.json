@@ -356,51 +356,6 @@
 			]
 		},
 		{
-			"name": "Signatory",
-			"item": [
-				{
-					"name": "Signatory Companies",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{JWT_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"identifier\": \"$personSSN\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{HOST_API_INTERNAL}}/nordic-rts/v1/rts/signatory-companies/SE",
-							"host": [
-								"{{HOST_API_INTERNAL}}"
-							],
-							"path": [
-								"nordic-rts",
-								"v1",
-								"rts",
-								"signatory-companies",
-								"SE"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "JWT Token API RTS",
 			"request": {
 				"auth": {
