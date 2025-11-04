@@ -1,0 +1,1190 @@
+{
+  "info": {
+    "_postman_id": "501be155-418b-432b-985f-00253dfdf788",
+    "name": "Nordic RTS API Production",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Nordic Right to Sign API - Production Environment\n\nContact Support:\n Name: Bisnode\n Email: api-support@bisnode.com"
+  },
+  "item": [
+    {
+      "name": "Company",
+      "item": [
+        {
+          "name": "Sweden",
+          "item": [
+            {
+              "name": "Detailed Company RTS by Registration Number",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/detailed/SE",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company",
+                    "detailed",
+                    "SE"
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Detailed Company RTS by DUNS",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"duns\": \"<string>\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/detailed/SE",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company",
+                    "detailed",
+                    "SE"
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Compact Company RTS by Registration Number",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/compact/SE?language=sv",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company",
+                    "compact",
+                    "SE"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "sv"
+                    }
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Compact Company RTS by DUNS",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"duns\": \"<string>\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/compact/SE?language=sv",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company",
+                    "compact",
+                    "SE"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "sv"
+                    }
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Norway",
+          "item": [
+            {
+              "name": "Signing Authority",
+              "item": [
+                {
+                  "name": "Detailed Company RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"DEFAULT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Detailed Company RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"DEFAULT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"DEFAULT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/compact/NO?language=sv",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "compact",
+                        "NO"
+                      ],
+                      "query": [
+                        {
+                          "key": "language",
+                          "value": "sv"
+                        }
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"DEFAULT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/compact/NO?language=sv",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "compact",
+                        "NO"
+                      ],
+                      "query": [
+                        {
+                          "key": "language",
+                          "value": "sv"
+                        }
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Procuration Authority",
+              "item": [
+                {
+                  "name": "Detailed Company RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"PROCURATION\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Detailed Company RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"PROCURATION\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"PROCURATION\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/compact/NO?language=sv",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "compact",
+                        "NO"
+                      ],
+                      "query": [
+                        {
+                          "key": "language",
+                          "value": "sv"
+                        }
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"authorityType\": \"PROCURATION\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company/compact/NO?language=sv",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company",
+                        "compact",
+                        "NO"
+                      ],
+                      "query": [
+                        {
+                          "key": "language",
+                          "value": "sv"
+                        }
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Company Signatory",
+      "item": [
+        {
+          "name": "Sweden",
+          "item": [
+            {
+              "name": "Detailed Company Signatory RTS by Registration Number",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/detailed/SE",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company-signatories",
+                    "detailed",
+                    "SE"
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Detailed Company Signatory RTS by DUNS",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/detailed/SE",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company-signatories",
+                    "detailed",
+                    "SE"
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Compact Company Signatory RTS by Registration Number",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/compact/SE",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company-signatories",
+                    "compact",
+                    "SE"
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Compact Company Signatory RTS by DUNS",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{accessToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/compact/SE",
+                  "host": [
+                    "api.bisnode.com"
+                  ],
+                  "path": [
+                    "nordic-rts",
+                    "v1",
+                    "rts",
+                    "company-signatories",
+                    "compact",
+                    "SE"
+                  ],
+                  "protocol": "https"
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Norway",
+          "item": [
+            {
+              "name": "Signing Authority",
+              "item": [
+                {
+                  "name": "Detailed Company Signatory RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Detailed Company Signatory RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company Signatory RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/compact/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "compact",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company Signatory RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/compact/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "compact",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Procuration Authority",
+              "item": [
+                {
+                  "name": "Detailed Company Signatory RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Detailed Company Signatory RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/detailed/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "detailed",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company Signatory RTS by Registration Number",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/compact/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "compact",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Compact Company Signatory RTS by DUNS",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{accessToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://api.bisnode.com/nordic-rts/v1/rts/company-signatories/compact/NO",
+                      "host": [
+                        "api.bisnode.com"
+                      ],
+                      "path": [
+                        "nordic-rts",
+                        "v1",
+                        "rts",
+                        "company-signatories",
+                        "compact",
+                        "NO"
+                      ],
+                      "protocol": "https"
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "JWT Token API RTS",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "{{client_secret}}",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "{{client_id}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "description": "Idenditifcation by credentials",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "nordic_right_to_sign",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://login.bisnode.com/as/token.oauth2",
+          "protocol": "https",
+          "host": [
+            "api.bisnode.com"
+          ],
+          "path": [
+            "nordic-rts",
+            "v1",
+            "as",
+            "token.oauth2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
