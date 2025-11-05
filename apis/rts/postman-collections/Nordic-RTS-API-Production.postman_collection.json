@@ -594,7 +594,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -636,7 +636,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,7 +678,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -720,7 +720,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"196805041234\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -770,7 +770,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -812,7 +812,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -854,7 +854,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -896,7 +896,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"DEFAULT\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -943,7 +943,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -985,7 +985,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -1027,7 +1027,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -1069,7 +1069,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": \"OPEDAL ANDERS\",\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
+                      "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"name\": {\r\n                \"firstName\": \"OPEDAL\",\r\n                \"middleName\": \"ANDERS\",\r\n                \"lastName\": \"ANDRESSON\"\r\n            },\r\n            \"birthDate\": \"1968-05-04\"\r\n        }\r\n    ],\r\n    \"authorityType\": \"PROCURATION\",\r\n    \"signTogether\": \"ANY\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
