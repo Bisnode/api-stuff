@@ -594,7 +594,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\"<ssn>\"],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -636,7 +636,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\"<ssn>\"],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -678,7 +678,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\"<ssn>\"],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -720,7 +720,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\r\n        {\r\n            \"ssn\": \"<string>\"\r\n        }\r\n    ],\r\n    \"signTogether\": \"ANY\"\r\n}",
+                  "raw": "{\r\n    \"registrationNumber\": \"<string>\",\r\n    \"signatories\": [\"<ssn>\"],\r\n    \"signTogether\": \"ANY\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
